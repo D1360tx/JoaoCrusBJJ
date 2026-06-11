@@ -116,6 +116,7 @@ Once the first pieces land, parents start getting instant responses within days,
 - [ ] OK to set up a dedicated number for automated texts (your 512 stays personal)? Y/N
 
 ## 🤔 Bucket 5 — When we talk (no homework needed)
+- [ ] What happens when someone calls while you're teaching? Who answers — or does it go to voicemail? Does anyone call back?
 - [ ] Who besides you can run intro classes / answer leads?
 - [ ] Which classes have room to grow vs. already full?
 - [ ] What's "Primal Flow Practice"? (saw it on your Instagram)

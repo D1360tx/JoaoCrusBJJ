@@ -43,7 +43,7 @@
 | 3.2 | Export/forward of historical inquiries (Gmail search "WPForms"/form notifications) | Win-back campaign fuel — 40–60 reactivations per campaign is the benchmark | ⬜ |
 | 3.3 | Any existing email list anywhere (ESP, Skool exports, book buyers, camp parents)? | Seed list + consent assessment | ⬜ |
 | 3.4 | Free-class flow today: form → then what? Who replies, how fast, by what channel? | Map the human process before automating it | ⬜ |
-| 3.5 | Texting: does he text leads from 512-644-4560 personally? What is 833-532-4152 (the second number on the site)? | SMS automation needs a clear number strategy | ⬜ |
+| 3.5 | Texting: does he text leads from 512-644-4560 personally? **What is 833-532-4152 (the second number on the site)? 🆕 HYPOTHESIS: it's a call-tracking number provisioned by his ads agency** — if so, his call data flows into their system (same owned-asset problem as pixel/leads). Who provisioned it, what platform, where do its call logs go? | SMS automation needs a clear number strategy; call-tracking plan (11 §5.3) needs to know what exists before adding numbers | ⬜ |
 | 3.6 | Chatway live-chat account access + where those chats go | Another lead source to pipe into the CRM | ⬜ |
 | 3.7 | Messenger (m.me/joaocrusbjjatx2) — who answers it? | Same | ⬜ |
 | 3.8 | Camp/program registrations (6 Weeks, Summer Camp) — where does that buyer data live? | Highest-intent local list we have; nurture to membership | ⬜ |
@@ -92,6 +92,7 @@
 | 6.4 | Trial → enrollment conversion (gut feel ok) | Baseline KPI | ⬜ |
 | 6.5 | What is "Primal Flow Practice"? (seen on IG, not on site) | Offer-map completeness | ⬜ |
 | 6.6 | Annual retention gut-check: of 10 kids who join, how many still train a year later? | Against 66.4% industry median | ⬜ |
+| 6.7 | 🆕 **Phone reality: what happens when someone calls during class?** Who answers? Voicemail? Does anyone call back, and how fast? Rough sense of missed calls/week | Sizes the missed-call leak; missed-call text-back (11 §5.3) may be the single fastest revenue fix | ⬜ |
 
 ---
 
