@@ -10,6 +10,10 @@
 - [ ] Active students, roughly: ___ kids / ___ adults / ___ private-only
 - [ ] Who built the website? ___ Where is it hosted / domain registered? ___ (or "ask my web guy: ___")
 - [ ] The Facebook ads agency: who? ___ monthly spend? ___ where do their leads go? ___ did they set you up on any software/CRM? ___
+- [ ] What do you pay the agency besides ad spend, and how is it structured? (retainer $___/mo / % of spend / per appointment / other: ___)
+- [ ] What does their follow-up actually include — confirmation texts? reminders before the appointment? a "what to expect" message? follow-up when someone no-shows? (Easiest: forward me the texts/emails a recent lead received)
+- [ ] Do real humans call your leads, or is it automated/AI texting? ___
+- [ ] What reporting do they send you? (leads → booked → showed → signed up numbers) ___
 - [ ] That custom Twilio texting setup you mentioned — still around? Who built it? ___
 
 ## 💰 Bucket 2 — Your numbers
