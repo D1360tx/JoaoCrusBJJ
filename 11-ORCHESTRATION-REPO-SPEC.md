@@ -16,6 +16,7 @@
 - A revenue dashboard shows month-to-date gross (from Stripe) vs. the agreed baseline — the rev-share number.
 
 **v1 explicitly does NOT do:**
+- **Paid ads (DECIDED 2026-06-11):** we do NOT run ads or touch the agency's lane in v1. Lead sources for our flow: referrals (Buddy Week), GBP/local SEO, IG/content, win-back of historical leads, camp/program buyer nurture — all routed to our landing page. We run fully parallel to the agency with our own system and full flow control. Ads are a future option — and by then the landing page, tracking, and pipeline already exist and are Joao-owned, making it a switch-flip, not a build.
 - Attendance/check-in (phase 2 — retention triggers depend on it)
 - AI receptionist (phase 2 — manual replies first, AI drafts later)
 - Content/social automation, Skool integration, GBP posting
@@ -72,7 +73,7 @@ baseline        org_id, monthly_gross_cents, methodology_text, agreed_at    -- t
 ### 5.1 The front door: custom landing page (scope addition, replaces WP form surgery)
 **Decision (2026-06-11): we do NOT touch Joao's WordPress site.** Instead we build a custom landing page (same repo, Next.js route or separate marketing route group) that becomes the destination for everything WE drive — ads, GBP, IG bio, QR codes — and runs parallel to joaocrusbjj.com.
 
-- **Why:** his current surfaces are incongruent (typos, buried pedigree, mixed audiences — docs 02–06); a clean page is faster to build than WP archaeology, fully measured, and carries zero risk to his live site or whatever his ads agency depends on.
+- **Why:** his current surfaces are incongruent (typos, buried pedigree, mixed audiences — docs 02–06); a clean page is faster to build than WP archaeology, fully measured, and carries zero risk to his live site or whatever his ads agency depends on. Competitive angle (doc 12): Stoic runs a templated 97-Display-style funnel and all three DS schools push the same commodity "free week" — a custom authority-driven page (book, lineage, 500+ families, named method) competes on a dimension templates can't reach.
 - **Content = doc 07 positioning, executed properly:** pedigree line above the fold (Carlson Gracie & De La Riva lineage • 25+ yrs • 500+ families since 2003 • author), kids/family-specialist framing ("the other gyms teach kids jiu-jitsu; he wrote the book on it"), real social proof (video testimonials exist — file 02), the book as credibility artifact, clear single CTA (free intro class / Confidence Kickstart), FAQ for the intimidation barrier, mobile-first, fast.
 - **Form lives here** → `/api/webhooks/form` directly (honeypot + rate-limit), with the REQUIRED SMS-consent checkbox (TCPA): "Yes, text me about my free class."
 - **Tracking from day one:** GA4 + (his existing) Meta Pixel + UTM discipline — every channel measurable, which the old site never was.
