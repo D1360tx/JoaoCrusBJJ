@@ -32,6 +32,7 @@ To build it, I need some information and access from you. I've split it into fou
 - Current rates for everything: kids, adults, families, privates, drop-ins
 - Any old/grandfathered rates or special deals I should know about
 - Month-to-month or contracts? What's your cancellation policy?
+- Your last 12 months of revenue records, however rough (GoDaddy payment history, bank statements, cash notes) — this sets the baseline we agreed to measure the growth work against, so we want it locked in *before* the numbers start moving
 
 **3. Access (I'll send secure instructions for each — don't email passwords):**
 - WordPress admin on joaocrusbjj.com
@@ -112,7 +113,8 @@ Once the first pieces land, parents start getting instant responses within days,
 ---
 
 ## SENDING NOTES (internal)
-- Attach/link the shared checklist where [LINK] appears (Google Doc recommended so we both see check-offs live).
+- **Send procedure:** (1) create a Google Doc titled "JCBJJ Growth Build — Checklist", (2) paste in `assets/joao-shared-checklist.md` (the clean client-facing copy, no internal notes), (3) share it with joaocrus@gmail.com as editor, (4) replace [LINK] in the email with the Doc link, (5) replace [YOUR NAME], (6) send.
+- Baseline framing if Joao asks: trailing 12-month average from his existing records, locked in writing before the work moves the number; the new billing system only measures the forward side. Full mechanics: doc 10 §3.
 - EIN and any credentials: use a secure channel (password manager share, or at minimum a self-expiring note) — the email deliberately tells him not to email passwords.
 - If no reply in 3–4 days: send the short text version as the nudge.
 - On the call, drive Buckets 1, 2, 4 to ✅ live, then walk him through granting Bucket 3 access while screen-sharing.

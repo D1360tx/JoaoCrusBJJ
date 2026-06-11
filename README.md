@@ -22,7 +22,9 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [07-MARKET-BASELINE-AND-POSITIONING.md](07-MARKET-BASELINE-AND-POSITIONING.md) | **US BJJ market research (2026) mapped to Joao → positioning, pricing, re-sequenced plan** |
 | [08-NEEDED-FROM-JOAO.md](08-NEEDED-FROM-JOAO.md) | **Intake checklist: pricing, billing backend, lead tracking, access — unblocks email/SMS automation build** |
 | [09-OUTREACH-DRAFT-JOAO.md](09-OUTREACH-DRAFT-JOAO.md) | Outreach drafts: intake email + text version + plain-language shared checklist for Joao |
-| [10-AUTOMATION-STACK.md](10-AUTOMATION-STACK.md) | Automation architecture: SaaS options vs. lean custom stack (Option D, recommended) + comp-model factor + decision gates |
+| [10-AUTOMATION-STACK.md](10-AUTOMATION-STACK.md) | Automation architecture: SaaS options vs. lean custom stack (Option D, recommended) + comp-model factor + baseline mechanics + decision gates |
+| [11-ORCHESTRATION-REPO-SPEC.md](11-ORCHESTRATION-REPO-SPEC.md) | **Build spec for the custom stack: schema, sequence engine, compliance, 4-week sprint plan** |
+| [assets/joao-shared-checklist.md](assets/joao-shared-checklist.md) | Clean client-facing checklist — paste into Google Doc and share with Joao |
 
 ## Core thesis
 Elite raw material, fragmented presentation. Consolidate 8+ scattered surfaces into
@@ -37,6 +39,7 @@ Elite raw material, fragmented presentation. Consolidate 8+ scattered surfaces i
 - **2026-06-10** — Outreach drafted (09): intake email, text nudge, and 5-bucket shared checklist in client-friendly language. Next: paste checklist into a shared Google Doc, fill [LINK]/[YOUR NAME], send.
 - **2026-06-10** — Assumption pass on 08/09: GoDaddy = Pay Links only (hosting/registrar UNCONFIRMED → now asked as "hosting information"); form-notification inbox, GBP existence, and Meta setup flagged unverified and added as intake questions. Automation stack options doc created (10) — default rec: gym software + GHL-class platform; final pick gated on intake 2.1/2.2, budget, and our agency-license decision.
 - **2026-06-11** — Engagement context added: comp = trade now → % of revenue above baseline. Doc 10 revised: **Option D (lean AI-built custom on Stripe/Twilio/Resend rails, ~$15–50/mo) is the new default**, with a hard speed gate (custom never blocks launch; GHL bridge if sprint can't start now) and Stripe Billing first (it's the baseline's source of truth). Intake adds 1.8 (revenue records → baseline) + 1.9 (budget comfort); outreach checklist updated.
+- **2026-06-11** — Baseline mechanics locked (10 §3): **historical** trailing-12-month average from existing records, agreed in writing before launch; new billing system measures forward side only. Outreach finalized: send procedure in 09, paste-ready client checklist in assets/. Orchestration repo spec drafted (11): Next.js/Supabase/Twilio/Resend/Cal.com/Stripe, sequence engine, compliance checklist, 4-week sprint plan. Next: sprint go-decision → scaffold the build repo; send outreach.
 
 ## Next decisions (from Joao)
 1. Priority goal first: privates, group students, or digital/coach products?

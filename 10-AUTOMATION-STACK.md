@@ -78,8 +78,13 @@ Custom code (Claude/Codex-assisted) handles ONLY the orchestration layer; all ri
 Context: our compensation is currently trade (group classes) with a planned move to **% of revenue above an established baseline.** Three consequences:
 
 1. **Speed beats overhead.** Our upside comes from converted leads, not saved subscriptions. Every week without speed-to-lead is above-baseline revenue that never existed. → **The custom build is never allowed to block the launch.**
-2. **The billing system is our pay stub.** "Revenue above baseline" can't be computed from GoDaddy pay links + cash. Migrating memberships to **Stripe Billing (or gym software) is step one regardless of architecture** — it's the auditable source of truth for both Joao's ops and our compensation. Baseline agreement should be written now: e.g., trailing 6-mo average monthly gross revenue, measured from the billing system, simple % above. (Intake 1.8 gathers the records.)
-3. **Low overhead helps sign-off** and protects the above-baseline pool — a genuine (secondary) argument for Option D.
+2. **The billing system is our pay stub.** "Revenue above baseline" can't be computed from GoDaddy pay links + cash. Migrating memberships to **Stripe Billing (or gym software) is step one regardless of architecture** — it's the auditable source of truth for both Joao's ops and our compensation.
+3. **Baseline mechanics (agree in writing BEFORE the work moves the number):**
+   - **The baseline is HISTORICAL** — a trailing average of monthly gross revenue looking *backward* from the agreement date, reconstructed from existing records (GoDaddy payment history, bank deposits, documented cash). It is NOT measured on the new billing system after the fact — waiting would let our own growth work inflate the baseline and donate our impact to it.
+   - **Window: prefer trailing 12 months** (a BJJ school is seasonal — summer camps, fall enrollment surges — and a 6-month window is biased by whichever half it covers). Use 6 months only if records don't go back further, and note the season it covers.
+   - **The new billing system measures the FORWARD side only:** each month's actual gross (from Stripe) minus the agreed baseline = the pool our % applies to.
+   - **Fairness note, both directions:** cleaner capture (autopay, recovered failed payments, recorded cash) will make revenue *look* higher on day one. Failed-payment recovery genuinely IS our work and should count; previously-unrecorded cash is not growth. Fix: build the baseline from ALL documentable revenue including cash estimates, write down the methodology, and have both parties sign off on one number. Simple and documented beats precise and contested.
+4. **Low overhead helps sign-off** and protects the above-baseline pool — a genuine (secondary) argument for Option D.
 
 ## 4. RECOMMENDATION & DECISION LOGIC (revised)
 
