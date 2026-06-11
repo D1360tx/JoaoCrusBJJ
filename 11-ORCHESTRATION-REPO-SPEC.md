@@ -139,6 +139,7 @@ Auth: Supabase magic-link, two users (us + Joao), org-scoped.
 4. Chat widget replacing Chatway, piped into pipeline
 5. Multi-tenant onboarding flow (client #2)
 6. Call tracking phase 2: DNI on landing page, per-source call reporting, voicemail transcription (Claude API) → lead notes
+7. **Voice AI agent experiment (VAPI-class platform):** after-hours/overflow answering on the tracking numbers — VAPI plugs into Twilio, so the forward-target is a config change, not a rebuild (design constraint: keep `tracking_numbers.forwards_to` swappable). Trust rules: branded honestly as "Joao's booking assistant" (never fake-Joao), capture-and-book goals only, instant human handoff path, transcript → contact timeline. Sequenced AFTER SMS flows prove out: missed-call text-back gets ~80% of the value with zero trust risk for a parents-of-small-kids audience; voice AI earns its way in via after-hours metrics. ~$0.10–0.20/min all-in → trivial at his volume
 
 ## 10. OPEN DECISIONS
 - [ ] Repo name + GitHub org/location (new private repo — confirm and I scaffold it)

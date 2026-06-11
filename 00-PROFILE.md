@@ -14,8 +14,11 @@
 
 ## Joao's Stated Priorities (2026-06-11, per user's direct conversation)
 1. **More private classes** (margin line — plan: 07 Phase 2 §13, landing page gets a privates CTA)
-2. **His system for helping schools incorporate BJJ into their teachings** (= Line B coach/curriculum products — ⚠ clarify: martial-arts schools, or ACADEMIC schools/PE/after-school? He collaborates with Montessori teachers — both readings plausible, different markets)
+2. **His system for helping schools incorporate BJJ into their teachings** — ✅ CLARIFIED: **martial-arts schools** (= Line B as built). He's also interested in **speaking at corporate events** (extends Line C). **After-school programs** flagged by user as uncontested white space worth exploring (nobody local does it; fits his Montessori-informed method; would also feed kids enrollment).
 3. **More group students — especially kids classes** ("kids are his favorite" — aligns with the kids-specialist positioning)
+
+## 🔑 Unadvertised Monopoly Differentiator (2026-06-11, first-party)
+**JCBJJ is the ONLY local school that accepts kids under 4 (age 3+).** Every competitor starts at 4 — it's literally why the user's son enrolled there. And the website doesn't even say it (Little Champions is listed as 4–7). Parents of 3-year-olds have nowhere else to go; they enter Joao's funnel a year before competitors can compete. → Confirm with Joao (official policy? insurance/capacity caveats? wants it advertised?) then make it a headline claim (07 §3, landing page).
 
 ## First-Party Class Observations (user's son enrolled; user attends adult classes)
 - **Kids classes: ~15–17 kids per class** — healthy, real critical mass
