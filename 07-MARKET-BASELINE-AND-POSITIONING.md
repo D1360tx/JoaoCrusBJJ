@@ -154,6 +154,14 @@ For **Stoic Jiu Jitsu** and **JJ Machado Dripping Springs** (+ any new entrants)
 11. Content flywheel at sustainable cadence (podcast weekly/biweekly non-negotiable → blog → 3 IG → 1 email).
 12. Paid ads LAST and small: geo-targeted FB/IG to Drip-area parents, only once follow-up automation is proven.
 
+### 6A. Joao's stated priorities — alignment check (added 2026-06-11)
+Joao's three asks, confirmed directly: **(1) more privates, (2) his school/curriculum system (Line B), (3) more group students, especially kids.** The plan covers all three, with two adjustments from first-party class observations (kids ~15–17/class vs. adults 2–3/class):
+
+- **Privates — pull forward from Phase 2.** No new infrastructure needed: a privates section + CTA goes on the landing page v1, and the near-empty adult time slots are exactly the mat hours privates can fill. Highest margin, his stated want, supply already exists.
+- **Adult program has a cold-start problem — don't market into it as-is.** Inviting adults to a 2-person class triggers the social-proof death spiral (visitors see emptiness and don't join, keeping it empty). Two plays instead: (a) **route adult demand to privates first** (premium, solves emptiness invisibly), then (b) **relaunch group adults as a named, date-bound cohort** — e.g., a 6-week "Adult Foundations" cohort that starts full by design (everyone begins together, founder's rate locking a 12-mo membership per the doc-07 structures). Never sell "join our adult class"; sell "the next cohort starts [date], 10 spots."
+- **Kids — the engine is already proven** (15–17/class is real critical mass). Growth = referral mechanics (Buddy Week works best where mass exists), capacity math (intake 6.2: which slots can absorb more vs. need a new slot), and the landing-page funnel.
+- **Line B (schools/curriculum) stays Phase 2 but keep-warm, not cold:** the content flywheel and outreach already feed it, and the DVD-era testimonials are queued as its launch proof. ⚠ One clarification needed from Joao: by "helping schools incorporate BJJ" does he mean **martial-arts schools** (the existing Skool/DVD coach products) or **academic schools/PE/after-school programs** (a different, possibly bigger B2B market — his Montessori collaboration hints at it)? The answer changes Line B's shape.
+
 ### Phase 2 — Margin + authority (Months 4–6+)
 13. **Privates push** (highest-margin line; Joao's stated priority): position around pedigree, sell 5/10-packs, target teens-of-busy-parents + adult professionals.
 14. **Corporate Boundary Guard** outreach (highest ticket; Austin HR/exec market).

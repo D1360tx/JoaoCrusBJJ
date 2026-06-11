@@ -12,6 +12,16 @@
 - **Experience:** 25+ years teaching BJJ
 - **Positioning:** "Dripping Springs' Most Trusted BJJ Academy for Kids & Families"
 
+## Joao's Stated Priorities (2026-06-11, per user's direct conversation)
+1. **More private classes** (margin line — plan: 07 Phase 2 §13, landing page gets a privates CTA)
+2. **His system for helping schools incorporate BJJ into their teachings** (= Line B coach/curriculum products — ⚠ clarify: martial-arts schools, or ACADEMIC schools/PE/after-school? He collaborates with Montessori teachers — both readings plausible, different markets)
+3. **More group students — especially kids classes** ("kids are his favorite" — aligns with the kids-specialist positioning)
+
+## First-Party Class Observations (user's son enrolled; user attends adult classes)
+- **Kids classes: ~15–17 kids per class** — healthy, real critical mass
+- **Adult classes: 2–3 students observed** (Tue class: user + 2 others; next session expected user + 1) — **essentially empty; adult program has a cold-start problem**
+- Implication: revenue is overwhelmingly kids already; adult mat hours are underused capacity (privates supply / cohort relaunch — see 07 §6A)
+
 ## The Hook / Differentiator
 Not a "win/compete" school. Core message = **emotional regulation, boundary-setting, and confidence** through BJJ.
 - Adults: "emotional regulation under pressure," frames/boundaries as life skills

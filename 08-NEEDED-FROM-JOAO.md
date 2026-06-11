@@ -14,7 +14,7 @@
 | 1.1 | Current membership rates — kids (per tier/frequency), adults, any family pricing | Set the new pricing architecture against benchmarks; find under-pricing | ⬜ |
 | 1.2 | Private lesson rates + any pack pricing | Privates = highest-margin line; structure packs | ⬜ |
 | 1.3 | Drop-in rate (if offered) | Complete the price card | ⬜ |
-| 1.4 | Current student counts: kids vs adults vs privates-only | Are we at the 60–70% kids revenue benchmark? Capacity math | ⬜ |
+| 1.4 | Current student counts: kids vs adults vs privates-only. **⏳ PARTIAL (first-party observation, 2026-06-11): kids ~15–17 per class; adult classes 2–3 students — adult program near-empty. Exact enrolled counts still needed** | Are we at the 60–70% kids revenue benchmark? Capacity math | ⏳ |
 | 1.5 | Rough monthly revenue by line (memberships / privates / camps / programs / books / Skool) | Baseline to measure the plan against | ⬜ |
 | 1.6 | Any legacy/grandfathered rates or handshake deals | Affects repricing rollout | ⬜ |
 | 1.7 | Contract structure today: month-to-month? 6/12-mo agreements? Cancellation policy | Churn lever; informs new commitment structure | ⬜ |
@@ -87,7 +87,8 @@
 | # | Item | Why we need it | Status |
 |---|------|----------------|--------|
 | 6.1 | Who (besides Joao) can handle leads/tours/intro classes? | Routing + escalation in the automation | ⬜ |
-| 6.2 | Class capacity per slot; which classes have room | "Marketing amplifies weaknesses" — don't fill what can't absorb | ⬜ |
+| 6.2 | Class capacity per slot; which classes have room. **Sharpened by observation: adults have huge headroom (2–3/class); the question is really KIDS capacity — at 15–17/class, which kid slots can absorb more before needing a new slot/coach?** | "Marketing amplifies weaknesses" — don't fill what can't absorb | ⬜ |
+| 6.8 | 🆕 **"Helping schools incorporate BJJ" (his priority #2) — which schools?** Martial-arts schools (existing Skool/DVD coach products) or ACADEMIC schools / PE / after-school programs? | The answer changes Line B's market, product shape, and pricing entirely (see 07 §6A) | ⬜ |
 | 6.3 | Typical lead response time today | Baseline KPI; target <5 min automated | ⬜ |
 | 6.4 | Trial → enrollment conversion (gut feel ok) | Baseline KPI | ⬜ |
 | 6.5 | What is "Primal Flow Practice"? (seen on IG, not on site) | Offer-map completeness | ⬜ |

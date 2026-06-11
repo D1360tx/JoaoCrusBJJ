@@ -120,6 +120,8 @@ Once the first pieces land, parents start getting instant responses within days,
 - [ ] Who besides you can run intro classes / answer leads?
 - [ ] Which classes have room to grow vs. already full?
 - [ ] What's "Primal Flow Practice"? (saw it on your Instagram)
+- [ ] When you say helping schools bring BJJ into their teaching — do you mean martial-arts schools, or regular schools (PE / after-school / Montessori)? Or both?
+- [ ] Privates: how many do you teach per week now, and how many would you WANT? Any preferred time blocks?
 - [ ] Should automated messages sound like you personally, or "Team JCBJJ"?
 
 ---
