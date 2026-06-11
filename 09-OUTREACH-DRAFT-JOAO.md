@@ -23,9 +23,10 @@ To build it, I need some information and access from you. I've split it into fou
 
 **1. Quick answers (5 minutes, just text me):**
 - How do members actually pay you each month? (Autopay? Invoices? Venmo/cash/check?)
-- Where do leads live right now — any spreadsheet or system, or just the Gmail inbox?
+- Where do leads live right now — any spreadsheet or system, or just an email inbox? And which email address actually receives the website form submissions?
 - Do you use any gym software at all (now or in the past)?
 - Roughly how many active students: kids vs. adults vs. private-only?
+- Who built your website, and do you know where it's hosted and where the domain is registered? ("No idea, ask my web guy" is a fine answer — just connect me with them.)
 
 **2. Your numbers (helps me finalize pricing recommendations):**
 - Current rates for everything: kids, adults, families, privates, drop-ins
@@ -34,10 +35,11 @@ To build it, I need some information and access from you. I've split it into fou
 
 **3. Access (I'll send secure instructions for each — don't email passwords):**
 - WordPress admin on joaocrusbjj.com
-- Google Business Profile (your Google reviews/maps listing)
-- Facebook/Instagram Business Suite
-- GoDaddy account (site, payments, and domain settings)
-- Your Gmail — just a search-and-forward of old website-form emails. Those old inquiries are gold: we'll run a win-back campaign to them.
+- Your Google reviews/maps listing — do you have a Google Business Profile you control? (If you've never claimed it, no problem — I'll walk you through it.)
+- Facebook page + Instagram
+- Your GoDaddy account (I can see you use their pay links for camp checkout)
+- Hosting + domain info for the website (wherever those live — see the question in bucket 1)
+- The inbox that receives website-form emails — just a search-and-forward of the old ones. Those old inquiries are gold: we'll run a win-back campaign to them.
 
 **4. Business details for texting (starts a clock, so sooner = better):**
 - Legal business name, EIN, and business address — phone carriers require businesses to register before sending automated texts, and approval takes 1–2 weeks. I'd like to start that now.
@@ -65,9 +67,11 @@ Once the first pieces land, parents start getting instant responses within days,
 
 ## ✅ Bucket 1 — Quick answers (text me these today)
 - [ ] How do members pay each month? (autopay / invoice / Venmo / cash / check)
-- [ ] Where do website leads go besides your Gmail? (spreadsheet? notebook? nothing?)
+- [ ] Which email address receives the website form submissions? ___
+- [ ] Are leads tracked anywhere besides that inbox? (spreadsheet? notebook? nothing?)
 - [ ] Any gym software, now or ever? (Mindbody, Zen Planner, Kicksite, etc.)
 - [ ] Active students, roughly: ___ kids / ___ adults / ___ private-only
+- [ ] Who built the website? ___ Where is it hosted / domain registered? ___ (or "ask my web guy: ___")
 
 ## 💰 Bucket 2 — Your numbers
 - [ ] Kids monthly rate(s): ___ (per frequency tier if you have them)
@@ -82,10 +86,11 @@ Once the first pieces land, parents start getting instant responses within days,
 
 ## 🔑 Bucket 3 — Access (I'll send secure share instructions — never email passwords)
 - [ ] WordPress admin → joaocrusbjj.com
-- [ ] Google Business Profile (manager invite to my email)
-- [ ] Facebook + Instagram (Meta Business Suite partner access)
-- [ ] GoDaddy account (site, pay links, domain settings)
-- [ ] Gmail: search "WPForms" → forward me the old form notification emails (old leads = our first win-back campaign)
+- [ ] Google Business Profile — do you control one? Y/N → if yes, manager invite to my email; if no/unsure, I'll walk you through claiming it
+- [ ] Facebook + Instagram (I'll send partner-access steps)
+- [ ] GoDaddy account (your pay links live there)
+- [ ] Website hosting + domain registrar access (whoever/wherever that is — from Bucket 1)
+- [ ] The form-notification inbox: search "WPForms" → forward me the old form emails (old leads = our first win-back campaign)
 - [ ] Skool admin (all 3 communities)
 - [ ] YouTube (both channels)
 

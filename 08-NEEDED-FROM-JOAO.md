@@ -29,13 +29,15 @@
 | 2.4 | Attendance/check-in tracking — anything? (paper, app, memory) | Retention triggers need attendance data | ⬜ |
 | 2.5 | Member records: where do names/emails/phones/belt ranks/start dates live? | Seed data for the member database + segmentation | ⬜ |
 | 2.6 | Waivers — how signed/stored? | Onboarding automation should include e-waiver | ⬜ |
-| 2.7 | GoDaddy account access (site + Pay Links) | Audit current payment flows; DNS for email sending domain | ⬜ |
+| 2.7 | GoDaddy **Pay Links** account access (✅ confirmed in use — paylinks.godaddy.com for camp/program/book checkout) | Audit current payment flows | ⬜ |
+| 2.8 | **Hosting information: where is joaocrusbjj.com hosted, and where is the domain registered?** (UNCONFIRMED — do not assume GoDaddy; Pay Links only proves a GoDaddy *payments* account. Also: who built/maintains the site?) | Site access, DNS for email authentication | ⬜ |
 
 ## 3. LEAD TRACKING & CRM (current state)
 
 | # | Item | Why we need it | Status |
 |---|------|----------------|--------|
-| 3.1 | **Are leads tracked anywhere — database, spreadsheet, notebook, or just the Gmail inbox?** | Audit (file 03) found WPForms Lite → email-only, no storage. Confirm nothing else exists | ⬜ |
+| 3.1 | **Are leads tracked anywhere — database, spreadsheet, notebook, or just an email inbox?** | Audit (file 03) found WPForms Lite → email-only, no storage. Confirm nothing else exists | ⬜ |
+| 3.1b | **Confirm where form notifications actually deliver.** (Audit assumed joaocrus@gmail.com — UNVERIFIED. Could go to an old/unmonitored address) | If notifications go somewhere dead, leads are being lost silently right now | ⬜ |
 | 3.2 | Export/forward of historical inquiries (Gmail search "WPForms"/form notifications) | Win-back campaign fuel — 40–60 reactivations per campaign is the benchmark | ⬜ |
 | 3.3 | Any existing email list anywhere (ESP, Skool exports, book buyers, camp parents)? | Seed list + consent assessment | ⬜ |
 | 3.4 | Free-class flow today: form → then what? Who replies, how fast, by what channel? | Map the human process before automating it | ⬜ |
@@ -49,13 +51,13 @@
 | # | Item | Needed for | Status |
 |---|------|-----------|--------|
 | 4.1 | WordPress admin — joaocrusbjj.com | Form replacement, ESP integration, copy fixes, opt-ins | ⬜ |
-| 4.2 | **Google Business Profile** (manager access) | Review engine, posts, map-pack audit — top local channel | ⬜ |
-| 4.3 | Meta Business Suite (FB page + IG @joaocrusbjj) | Native IG insights (follower authenticity check), lead ads later, Messenger automation | ⬜ |
+| 4.2 | **Google Business Profile** — first confirm one EXISTS and Joao controls it (UNVERIFIED — never audited), then manager access | Review engine, posts, map-pack audit — top local channel | ⬜ |
+| 4.3 | Facebook page + Instagram access (FB page confirmed via m.me link; whether IG is a business account + Meta Business Suite setup UNVERIFIED) | Native IG insights (follower authenticity check), lead ads later, Messenger automation | ⬜ |
 | 4.4 | Google Analytics / Search Console (if any) | Baseline traffic; create if absent | ⬜ |
 | 4.5 | YouTube (both channels) | Consolidation (Phase 1) | ⬜ |
 | 4.6 | Skool admin (all 3 communities) | Member exports, consolidation, funnel wiring | ⬜ |
 | 4.7 | Gmail (joaocrus@gmail.com) — or at least forwarding/delegate | Historical lead recovery (3.2); rerouting notifications | ⬜ |
-| 4.8 | Domain/DNS access (likely GoDaddy, see 2.7) | Email authentication: SPF/DKIM/DMARC for deliverability — required before any sending | ⬜ |
+| 4.8 | Domain registrar / DNS access (registrar UNCONFIRMED — see 2.8) | Email authentication: SPF/DKIM/DMARC for deliverability — required before any sending | ⬜ |
 | 4.9 | Podcast hosting account | Phase 1 consolidation | ⬜ |
 
 ## 5. SMS/EMAIL AUTOMATION PREREQUISITES (compliance + setup)
@@ -65,7 +67,7 @@
 | 5.1 | Legal business name, EIN, business address | **A2P 10DLC registration** — required by US carriers before any business SMS can send | ⬜ |
 | 5.2 | Decision: which number sends automated SMS (new dedicated number recommended; keep 512-644-4560 personal) | Number strategy + registration | ⬜ |
 | 5.3 | Consent status of every existing contact list (did they opt in? to what?) | TCPA/CAN-SPAM compliance; SMS requires express consent — forms must add SMS opt-in checkbox | ⬜ |
-| 5.4 | ESP/automation platform decision + budget sign-off | 07 recommends an all-in-one with email+SMS+pipeline (e.g., gym software with built-in automations, or ESP + SMS layer) | ⬜ |
+| 5.4 | Automation platform decision + budget sign-off | **See doc 10 (automation stack options)** — architecture depends on answers to 2.1/2.2 and budget | ⬜ |
 | 5.5 | Who is the "from" voice — Joao personally, or "Team JCBJJ"? Reply handling: who monitors responses? | Automation that nobody answers backfires | ⬜ |
 | 5.6 | Sending domain choice (e.g., mail.joaocrusbjj.com) | Deliverability hygiene | ⬜ |
 
