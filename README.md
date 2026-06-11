@@ -20,6 +20,7 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [05-INSTAGRAM.md](05-INSTAGRAM.md) | Instagram audit (8K followers, dead engagement) |
 | [06-MASTER-AUDIT-AND-PLAN.md](06-MASTER-AUDIT-AND-PLAN.md) | **Flagship: full audit + restructuring/growth plan** |
 | [07-MARKET-BASELINE-AND-POSITIONING.md](07-MARKET-BASELINE-AND-POSITIONING.md) | **US BJJ market research (2026) mapped to Joao → positioning, pricing, re-sequenced plan** |
+| [08-NEEDED-FROM-JOAO.md](08-NEEDED-FROM-JOAO.md) | **Intake checklist: pricing, billing backend, lead tracking, access — unblocks email/SMS automation build** |
 
 ## Core thesis
 Elite raw material, fragmented presentation. Consolidate 8+ scattered surfaces into
@@ -30,6 +31,7 @@ Elite raw material, fragmented presentation. Consolidate 8+ scattered surfaces i
 - **2026-06-09** — Intelligence gathering complete (files 00–05). Master audit & plan drafted (06).
 - **2026-06-10** — Repo created; centralized log established.
 - **2026-06-10** — Market baseline research merged; positioning + pricing architecture + re-sequenced roadmap drafted (07). New Phase-0 items: gym-management software, GBP/review engine, competitor map (Stoic, JJ Machado DS), no-discount rule, $49 paid-intro rung.
+- **2026-06-10** — Intake checklist created (08): 40+ tracked items across pricing, billing backend, lead tracking, access/credentials, SMS compliance, ops — with the 8-flow automation map they unblock. Next: send priority items (08 §8) to Joao.
 
 ## Next decisions (from Joao)
 1. Priority goal first: privates, group students, or digital/coach products?
