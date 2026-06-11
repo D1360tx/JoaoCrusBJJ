@@ -82,6 +82,8 @@ Once the first pieces land, parents start getting instant responses within days,
 - [ ] Any grandfathered/special rates: ___
 - [ ] Month-to-month or contracts? Cancellation policy: ___
 - [ ] Rough monthly revenue split: memberships / privates / camps / other
+- [ ] Last 6–12 months of revenue records (bank statements, GoDaddy payment history — whatever you have) → this sets the baseline we measure all the growth work against
+- [ ] Monthly budget you're comfortable with for software + ads: $___/mo (I'm designing the stack to keep this LOW — some options run under $50/mo)
 - [ ] Gut check: of 10 kids who join, how many still train a year later? ___
 
 ## 🔑 Bucket 3 — Access (I'll send secure share instructions — never email passwords)

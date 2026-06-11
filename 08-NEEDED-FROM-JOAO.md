@@ -18,6 +18,8 @@
 | 1.5 | Rough monthly revenue by line (memberships / privates / camps / programs / books / Skool) | Baseline to measure the plan against | ⬜ |
 | 1.6 | Any legacy/grandfathered rates or handshake deals | Affects repricing rollout | ⬜ |
 | 1.7 | Contract structure today: month-to-month? 6/12-mo agreements? Cancellation policy | Churn lever; informs new commitment structure | ⬜ |
+| 1.8 | **Last 6–12 months of revenue records** (bank deposits, GoDaddy payment history, whatever exists) | Establishes the **baseline for the revenue-share agreement** (doc 10 §3) — must be set before the growth work moves the number | ⬜ |
+| 1.9 | **Monthly budget comfort for software subscriptions + ad spend** | Gates the SaaS-vs-custom architecture decision (doc 10 §4) and Phase-1 ad tests | ⬜ |
 
 ## 2. BILLING & MEMBERSHIP BACKEND
 
@@ -99,7 +101,7 @@ Once sections 1–5 land, this is the stack we build:
 
 ## 8. PRIORITY ORDER (if Joao can only do a little at a time)
 1. **§3.1–3.2 + §2.1** — where leads/billing live today (determines the whole architecture)
-2. **§1.1–1.4** — pricing + counts (finalizes doc 07 §4)
+2. **§1.1–1.4 + 1.8–1.9** — pricing, counts, revenue records (baseline!), budget comfort (finalizes doc 07 §4 + locks doc 10 architecture + anchors the rev-share agreement)
 3. **§4.1, 4.2, 4.8** — WordPress, GBP, DNS access (lets the build start)
 4. **§5.1–5.3** — business info + consent (starts the ~1–2 week A2P/SMS registration clock early)
 5. Everything else as we go.
