@@ -1,7 +1,8 @@
 # Orchestration Repo Spec — "Gym Growth Stack" v1
 ### The custom automation layer from doc 10 Option D: scope, schema, flows, sprint plan
-> Created 2026-06-11. Status: SPEC — build starts on the sprint go-decision.
+> Created 2026-06-11. **Status: GO — sprint approved 2026-06-11.** Blocked only by intake dependencies (§8) and open decisions (§10).
 > Principle (from doc 10): custom = orchestration ONLY. Billing/SMS/email/booking stay on Stripe/Twilio/Resend/Cal.com. Multi-tenant from day one (this is the productized asset for future clients).
+> Scope update 2026-06-11: **custom landing page added as the front door** (§5.1); WordPress surgery de-scoped — we run parallel to Joao's existing site, we don't touch it.
 
 ---
 
@@ -68,8 +69,20 @@ baseline        org_id, monthly_gross_cents, methodology_text, agreed_at    -- t
 
 ## 5. INTEGRATION SEAMS
 
-- **Website form:** replace WPForms with a plain HTML form (or keep WPForms + webhook add-on) POSTing to `/api/webhooks/form`. Honeypot + rate-limit. SMS-consent checkbox REQUIRED on the form (TCPA) — copy: "Yes, text me about my free class."
+### 5.1 The front door: custom landing page (scope addition, replaces WP form surgery)
+**Decision (2026-06-11): we do NOT touch Joao's WordPress site.** Instead we build a custom landing page (same repo, Next.js route or separate marketing route group) that becomes the destination for everything WE drive — ads, GBP, IG bio, QR codes — and runs parallel to joaocrusbjj.com.
+
+- **Why:** his current surfaces are incongruent (typos, buried pedigree, mixed audiences — docs 02–06); a clean page is faster to build than WP archaeology, fully measured, and carries zero risk to his live site or whatever his ads agency depends on.
+- **Content = doc 07 positioning, executed properly:** pedigree line above the fold (Carlson Gracie & De La Riva lineage • 25+ yrs • 500+ families since 2003 • author), kids/family-specialist framing ("the other gyms teach kids jiu-jitsu; he wrote the book on it"), real social proof (video testimonials exist — file 02), the book as credibility artifact, clear single CTA (free intro class / Confidence Kickstart), FAQ for the intimidation barrier, mobile-first, fast.
+- **Form lives here** → `/api/webhooks/form` directly (honeypot + rate-limit), with the REQUIRED SMS-consent checkbox (TCPA): "Yes, text me about my free class."
+- **Tracking from day one:** GA4 + (his existing) Meta Pixel + UTM discipline — every channel measurable, which the old site never was.
+- **Domain:** subdomain (start.joaocrusbjj.com — needs only a DNS record, not WP access) or standalone domain; open decision §10.
+- WordPress site later gets a simple link/redirect to the landing page; that's the entire extent of WP changes.
+
+### 5.2 Other seams
 - **Chatway / Messenger:** v1 = leave as-is, log manually; phase 2 = pipe in or replace with our widget.
+- **Meta lead ads (NEW):** his agency runs FB ads — if/when those use lead forms, subscribe a Meta Leadgen webhook → same pipeline as the form (speed-to-lead applies to ad leads too). Coordinate with the agency; requires Ads Manager access (intake 4.10).
+- **Existing Twilio (NEW, intake 3.12):** if Joao's old custom SMS setup has a registered A2P account, inherit the account/number instead of registering fresh — saves 1–2 weeks. Audit any stored lists for consent before use.
 - **Stripe:** Payment Links per tier for migration ease → webhooks (`checkout.completed`, `invoice.paid`, `invoice.payment_failed`, `customer.subscription.*`) update memberships + revenue dashboard. Smart Retries ON.
 - **Cal.com:** webhooks `BOOKING_CREATED/CANCELLED/RESCHEDULED`; "showed/no-show" marked manually in admin v1.
 
@@ -95,12 +108,12 @@ Auth: Supabase magic-link, two users (us + Joao), org-scoped.
 
 | Week | Build | Exit criteria |
 |---|---|---|
-| **1 — Capture** | Repo scaffold, schema + RLS, form endpoint, contact/pipeline records, instant email autoresponder, admin auth + contact list. **Submit A2P registration day 1.** Stripe account + first Payment Links. | Form submission → stored + email reply in <2 min. Leads visible in admin. A2P pending. |
+| **1 — Capture** | Repo scaffold, schema + RLS, form endpoint, contact/pipeline records, instant email autoresponder, admin auth + contact list. **Landing page v1 (§5.1) with consented form + GA4/Pixel.** **Submit A2P registration day 1** (or inherit Joao's Twilio, intake 3.12). Stripe account + first Payment Links. | Landing page live; form submission → stored + email reply in <2 min. Leads visible in admin. A2P pending/inherited. |
 | **2 — SMS + booking** | Twilio send/receive + guardrails, speed-to-lead SMS (once A2P clears), Cal.com events + reminder sequences, inbound-reply pause + operator notify. | Test lead gets SMS+email, books, gets reminders; reply pauses sequence; STOP works. |
 | **3 — Pipeline + recovery** | No-book/no-show/trial-nurture sequences, pipeline UI complete, broadcasts (win-back to historical leads from intake 3.2), templates editable. | Full lead lifecycle runs hands-off; first win-back campaign sent. |
 | **4 — Revenue + hardening** | Stripe webhooks → memberships, onboarding sequence, dashboard w/ baseline comparison, runbook docs (the bus-factor mitigation), error alerting. | Dashboard shows MTD vs baseline from live Stripe data. Runbook lets a stranger operate it. |
 
-**Dependencies from intake (can't start week 2+ without):** §5 business details (A2P), §1 pricing (Stripe products), 3.2 historical leads (win-back), form access (WordPress or hosting).
+**Dependencies from intake (can't start week 2+ without):** §5 business details (A2P — or 3.12 Twilio inheritance), §1 pricing (Stripe products), 3.2 historical leads (win-back), DNS record for the landing-page subdomain (2.8) — note: WordPress access is NO LONGER build-blocking (§5.1).
 
 ## 9. PHASE 2 BACKLOG (post-v1, prioritized)
 1. AI receptionist: Claude API drafts replies to inbound SMS (FAQ + booking), operator-approved → later auto-send within rules
@@ -111,10 +124,12 @@ Auth: Supabase magic-link, two users (us + Joao), org-scoped.
 
 ## 10. OPEN DECISIONS
 - [ ] Repo name + GitHub org/location (new private repo — confirm and I scaffold it)
+- [ ] Landing-page domain: start.joaocrusbjj.com subdomain (1 DNS record) vs. standalone domain (zero dependence on his DNS, weaker local-SEO tie) — leaning subdomain
 - [ ] Subdomains: mail.joaocrusbjj.com (email), book.* (Cal.com) — needs DNS access (intake 2.8/4.8)
 - [ ] Operator notification channel for inbound replies (SMS to whom? email? both?)
-- [ ] WPForms+webhook vs. replace form outright (depends on WP access)
+- [ ] ~~WPForms+webhook vs. replace form~~ RESOLVED: custom landing page is the capture surface; WP untouched (§5.1)
 - [ ] Joao's admin access in v1, or operate it fully ourselves initially?
+- [ ] Agency coordination: how our landing page + flows coexist with the agency's current ad funnel (where do THEIR leads route — into our pipeline ideally; intake 3.9/3.10 first)
 
 ## CHANGE LOG
 - 2026-06-11 — Spec drafted; pending sprint go-decision + intake dependencies.

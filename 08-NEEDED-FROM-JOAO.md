@@ -47,6 +47,10 @@
 | 3.6 | Chatway live-chat account access + where those chats go | Another lead source to pipe into the CRM | ⬜ |
 | 3.7 | Messenger (m.me/joaocrusbjjatx2) — who answers it? | Same | ⬜ |
 | 3.8 | Camp/program registrations (6 Weeks, Summer Camp) — where does that buyer data live? | Highest-intent local list we have; nurture to membership | ⬜ |
+| 3.9 | 🆕 **The ad agency: who runs his Facebook ads?** Monthly spend, what campaigns, how long, contract terms, what reporting he gets | NEW FACT (2026-06-11): FB Pixel + an agency running ads exists — never surfaced in the audits. Spend also matters to the baseline conversation | ⬜ |
+| 3.10 | 🆕 **Where do the ad leads go?** (FB lead forms → agency CRM? email? phone?) | May invalidate the "no lead capture" finding for ad traffic — the agency may hold a lead list we don't know about | ⬜ |
+| 3.11 | 🆕 Is he on any marketing platform via the agency (GoHighLevel, etc.) without realizing it? | Agencies commonly run clients on white-labeled GHL — if so, there's an existing CRM/number/funnel to inherit or replace, and it changes the doc 10 architecture conversation | ⬜ |
+| 3.12 | 🆕 **The custom Twilio SMS setup he once mentioned** (texting groups of people) — what exists? Account, number, A2P registration status, lists, who built it, still running? | If an A2P-registered Twilio account already exists, we inherit it and **save the 1–2 week registration wait**; existing lists also need consent review | ⬜ |
 
 ## 4. ACCESS & CREDENTIALS NEEDED
 
@@ -55,12 +59,14 @@
 | 4.1 | WordPress admin — joaocrusbjj.com | Form replacement, ESP integration, copy fixes, opt-ins | ⬜ |
 | 4.2 | **Google Business Profile** — first confirm one EXISTS and Joao controls it (UNVERIFIED — never audited), then manager access | Review engine, posts, map-pack audit — top local channel | ⬜ |
 | 4.3 | Facebook page + Instagram access (FB page confirmed via m.me link; whether IG is a business account + Meta Business Suite setup UNVERIFIED) | Native IG insights (follower authenticity check), lead ads later, Messenger automation | ⬜ |
-| 4.4 | Google Analytics / Search Console (if any) | Baseline traffic; create if absent | ⬜ |
+| 4.4 | Google Analytics / Search Console — do they exist? Access if so; create if absent | Baseline traffic; landing-page measurement; local SEO | ⬜ |
 | 4.5 | YouTube (both channels) | Consolidation (Phase 1) | ⬜ |
 | 4.6 | Skool admin (all 3 communities) | Member exports, consolidation, funnel wiring | ⬜ |
 | 4.7 | Gmail (joaocrus@gmail.com) — or at least forwarding/delegate | Historical lead recovery (3.2); rerouting notifications | ⬜ |
 | 4.8 | Domain registrar / DNS access (registrar UNCONFIRMED — see 2.8) | Email authentication: SPF/DKIM/DMARC for deliverability — required before any sending | ⬜ |
 | 4.9 | Podcast hosting account | Phase 1 consolidation | ⬜ |
+| 4.10 | 🆕 **Meta Ads Manager / ad account access — and critically: who OWNS the ad account, Joao or the agency?** | If the agency owns the account/pixel, Joao loses all ad history + pixel data if they part ways. He should own; agency gets partner access | ⬜ |
+| 4.11 | 🆕 Twilio account access (if 3.12 confirms one exists) | Inherit number + A2P registration | ⬜ |
 
 ## 5. SMS/EMAIL AUTOMATION PREREQUISITES (compliance + setup)
 

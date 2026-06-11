@@ -9,6 +9,8 @@
 - [ ] Any gym software, now or ever? (Mindbody, Zen Planner, Kicksite, etc.)
 - [ ] Active students, roughly: ___ kids / ___ adults / ___ private-only
 - [ ] Who built the website? ___ Where is it hosted / domain registered? ___ (or "ask my web guy: ___")
+- [ ] The Facebook ads agency: who? ___ monthly spend? ___ where do their leads go? ___ did they set you up on any software/CRM? ___
+- [ ] That custom Twilio texting setup you mentioned — still around? Who built it? ___
 
 ## 💰 Bucket 2 — Your numbers
 - [ ] Kids monthly rate(s): ___ (per frequency tier if you have them)
@@ -32,6 +34,9 @@
 - [ ] The form-notification inbox: search "WPForms" → forward me the old form emails (old leads = our first win-back campaign)
 - [ ] Skool admin (all 3 communities)
 - [ ] YouTube (both channels)
+- [ ] Meta Ads Manager — and let's check together whether YOU own the ad account or the agency does (if they own it, you lose your ad history and pixel data if you ever part ways — worth fixing)
+- [ ] Google Analytics / Search Console, if they exist
+- [ ] Twilio account, if that texting setup still exists
 
 ## 📱 Bucket 4 — For automated texting (carrier registration takes 1–2 weeks — start now)
 - [ ] Legal business name: ___

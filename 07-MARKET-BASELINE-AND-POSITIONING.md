@@ -131,6 +131,7 @@ For **Stoic Jiu Jitsu** and **JJ Machado Dripping Springs** (+ any new entrants)
 - [ ] Instagram following/engagement + content style
 - [ ] Lineage/instructor pedigree claims
 - [ ] Free trial / intro funnel mechanics
+- [ ] 🆕 **Meta Ad Library sweep** (public — needs NO account access, just page names): active ads for (a) Joao's own page (his agency is running ads — what are they actually running?), (b) Stoic + JJ Machado DS, (c) Austin-metro gyms, (d) national kids-martial-arts advertisers (Gracie Barra etc.) for proven hooks/offers/creative patterns. Repeat monthly.
 
 ---
 

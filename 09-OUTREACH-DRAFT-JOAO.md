@@ -27,6 +27,8 @@ To build it, I need some information and access from you. I've split it into fou
 - Do you use any gym software at all (now or in the past)?
 - Roughly how many active students: kids vs. adults vs. private-only?
 - Who built your website, and do you know where it's hosted and where the domain is registered? ("No idea, ask my web guy" is a fine answer — just connect me with them.)
+- Tell me about the agency running your Facebook ads: who are they, what's the monthly spend, what are they running, and — important — where do those leads actually go?
+- You mentioned once building a custom texting setup with Twilio to message groups of people. What's the story there — is it still around? (If it is, it could save us two weeks of carrier paperwork.)
 
 **2. Your numbers (helps me finalize pricing recommendations):**
 - Current rates for everything: kids, adults, families, privates, drop-ins
@@ -73,6 +75,8 @@ Once the first pieces land, parents start getting instant responses within days,
 - [ ] Any gym software, now or ever? (Mindbody, Zen Planner, Kicksite, etc.)
 - [ ] Active students, roughly: ___ kids / ___ adults / ___ private-only
 - [ ] Who built the website? ___ Where is it hosted / domain registered? ___ (or "ask my web guy: ___")
+- [ ] The Facebook ads agency: who? ___ monthly spend? ___ where do their leads go? ___ did they set you up on any software/CRM? ___
+- [ ] That custom Twilio texting setup you mentioned — still around? Who built it? ___
 
 ## 💰 Bucket 2 — Your numbers
 - [ ] Kids monthly rate(s): ___ (per frequency tier if you have them)
@@ -96,6 +100,9 @@ Once the first pieces land, parents start getting instant responses within days,
 - [ ] The form-notification inbox: search "WPForms" → forward me the old form emails (old leads = our first win-back campaign)
 - [ ] Skool admin (all 3 communities)
 - [ ] YouTube (both channels)
+- [ ] Meta Ads Manager — and let's check together whether YOU own the ad account or the agency does (if they own it, you lose your ad history and pixel data if you ever part ways — worth fixing)
+- [ ] Google Analytics / Search Console, if they exist
+- [ ] Twilio account, if that texting setup still exists
 
 ## 📱 Bucket 4 — For automated texting (carrier registration takes 1–2 weeks — start now)
 - [ ] Legal business name: ___

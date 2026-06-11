@@ -88,11 +88,13 @@ Context: our compensation is currently trade (group classes) with a planned move
 
 ## 4. RECOMMENDATION & DECISION LOGIC (revised)
 
-**Recommendation: Option D (lean custom) as the default architecture, with Stripe Billing first and a hard speed gate.**
+**DECIDED 2026-06-11: Option D (lean custom), sprint is a GO.** Stripe Billing first, hard speed gate retained.
+
+Context on the GHL question: we're separately launching trybookedout.com (likely GHL-based), so a GHL symbiosis exists on our side — but that would be OUR sub-account economics, and Joao-on-our-GHL entangles client infrastructure with our other venture. Custom keeps Joao's stack independently owned and exportable. One discovery item still open before final lock: **Joao's agency may already have him on GHL or similar without him realizing it (intake 3.11), and he has mentioned a custom Twilio texting setup (intake 3.12)** — understanding his existing backend comes first; we inherit anything useful (especially an A2P-registered Twilio account).
 
 Decision gates (in order):
-1. **Always, week 1, regardless of option:** stop the lead leak — form submissions stored + instant autoresponder (even Option C-style). Begin Stripe Billing migration + A2P registration (longest lead-time item).
-2. **The speed gate (ours):** can we commit the 2–4 week build sprint starting now? **Yes →** Option D from day one, no GHL migration ever needed. **No / uncertain →** launch on GHL (~$97/mo) immediately, build Option D in parallel or later once flows are proven live. (Accept the risk that "later" never feels worth the migration.)
+1. **Always, week 1, regardless of option:** stop the lead leak — form submissions stored + instant autoresponder (even Option C-style). Begin Stripe Billing migration + A2P registration (longest lead-time item — unless intake 3.12 reveals an existing registered Twilio account to inherit).
+2. ~~The speed gate~~ **RESOLVED: custom from day one** (sprint committed; build spec = doc 11).
 3. **Intake 2.2:** if Joao already pays for working gym software → keep it for ops/attendance; custom layer handles marketing flows only.
 4. **Attendance/check-in:** decide after intake — simple custom check-in kiosk is very buildable, but Gymdesk-class (~$75/mo) is an acceptable interim if the sprint needs to stay focused on lead flows.
 5. **Budget (intake 1.9/5.4):** Joao's monthly comfort number determines how much SaaS we can bridge with vs. how aggressive the custom timeline must be.
