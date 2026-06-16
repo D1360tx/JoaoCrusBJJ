@@ -123,7 +123,7 @@ Once the first pieces land, parents start getting instant responses within days,
 - [ ] When you say helping schools bring BJJ into their teaching — do you mean martial-arts schools, or regular schools (PE / after-school / Montessori)? Or both?
 - [ ] Privates: how many do you teach per week now, and how many would you WANT? Any preferred time blocks?
 - [ ] Kids under 4: you take 3-year-olds (we know firsthand!) — is that official policy? Any caveats (insurance, capacity, case-by-case)? Can we advertise "from age 3"? (No other school in the area does this — it's a big deal)
-- [ ] Any email-marketing account anywhere, even one you stopped using? (Mailchimp, Constant Contact…) Any email list exports sitting around?
+- [ ] Do you log into ANY email tool to send newsletters/blasts — now or in the past? (ActiveCampaign, Mailchimp, Constant Contact, ConvertKit, Klaviyo, HubSpot, Flodesk…) Even one you stopped using, or one your ads agency set up. Just want to confirm what's there before we assume. And any email list exports sitting around?
 - [ ] Should automated messages sound like you personally, or "Team JCBJJ"?
 
 ---
