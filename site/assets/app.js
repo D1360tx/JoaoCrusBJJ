@@ -31,17 +31,35 @@
     revs.forEach(function (el) { el.classList.add("in"); });
   }
 
-  // Subtle nav shrink on scroll
+  // Nav scrolled state (theme-aware via CSS class)
   var navEl = document.querySelector(".nav__inner");
   if (navEl) {
     window.addEventListener("scroll", function () {
-      if (window.scrollY > 40) {
-        navEl.style.background = "rgba(10,11,15,.9)";
-      } else {
-        navEl.style.background = "rgba(14,15,20,.72)";
-      }
+      navEl.classList.toggle("scrolled", window.scrollY > 40);
     }, { passive: true });
   }
+
+  // Theme toggle (dark <-> light), persisted, injected on every page
+  var saved = null;
+  try { saved = localStorage.getItem("jc-theme"); } catch (e) {}
+  if (saved) document.body.setAttribute("data-theme", saved);
+
+  function tLabel() {
+    return document.body.getAttribute("data-theme") === "light" ? "◐ Dark mode" : "◑ Light mode";
+  }
+  var toggle = document.createElement("button");
+  toggle.className = "themeToggle";
+  toggle.type = "button";
+  toggle.setAttribute("aria-label", "Toggle light or dark theme");
+  toggle.textContent = tLabel();
+  toggle.addEventListener("click", function () {
+    var next = document.body.getAttribute("data-theme") === "light" ? "" : "light";
+    if (next) document.body.setAttribute("data-theme", next);
+    else document.body.removeAttribute("data-theme");
+    try { localStorage.setItem("jc-theme", next); } catch (e) {}
+    toggle.textContent = tLabel();
+  });
+  document.body.appendChild(toggle);
 
   // Lead-magnet form (preview: fake submit -> success state)
   var form = document.getElementById("leadForm");
