@@ -12,15 +12,15 @@
 - **Experience:** 25+ years teaching BJJ
 - **Positioning:** "Dripping Springs' Most Trusted BJJ Academy for Kids & Families"
 
-## Joao's Stated Priorities (2026-06-11, per Diego's direct conversation)
+## Joao's Stated Priorities (2026-06-11, per my direct conversation with him)
 1. **More private classes** (margin line — plan: 07 Phase 2 §13, landing page gets a privates CTA)
-2. **His system for helping schools incorporate BJJ into their teachings** — ✅ CLARIFIED: **martial-arts schools** (= Line B as built). He's also interested in **speaking at corporate events** (extends Line C). **After-school programs** flagged by Diego as uncontested white space worth exploring (nobody local does it; fits his Montessori-informed method; would also feed kids enrollment).
+2. **His system for helping schools incorporate BJJ into their teachings** — ✅ CLARIFIED: **martial-arts schools** (= Line B as built). He's also interested in **speaking at corporate events** (extends Line C). **After-school programs** I flagged as uncontested white space worth exploring (nobody local does it; fits his Montessori-informed method; would also feed kids enrollment).
 3. **More group students — especially kids classes** ("kids are his favorite" — aligns with the kids-specialist positioning)
 
 ## 🔑 Unadvertised Monopoly Differentiator (2026-06-11, first-party)
-**JCBJJ is the ONLY local school that accepts kids under 4 (age 3+).** Every competitor starts at 4 — it's literally why Diego enrolled his son there. And the website doesn't even say it (Little Champions is listed as 4–7). Parents of 3-year-olds have nowhere else to go; they enter Joao's funnel a year before competitors can compete. → Confirm with Joao (official policy? insurance/capacity caveats? wants it advertised?) then make it a headline claim (07 §3, landing page).
+**JCBJJ is the ONLY local school that accepts kids under 4 (age 3+).** Every competitor starts at 4 — it's literally why I enrolled my son there. And the website doesn't even say it (Little Champions is listed as 4–7). Parents of 3-year-olds have nowhere else to go; they enter Joao's funnel a year before competitors can compete. → Confirm with Joao (official policy? insurance/capacity caveats? wants it advertised?) then make it a headline claim (07 §3, landing page).
 
-## First-Party Class Observations (Diego's son enrolled; Diego attends adult classes)
+## First-Party Class Observations (my son enrolled; I attend adult classes)
 - **Kids classes: ~15–17 per class** — strong, established attendance
 - **Adult classes: 2–3 per session currently** (small group) — clear room to grow; mat hours and instructor time available to fill
 - Takeaway: revenue is majority kids today; adult sessions are open capacity with upside (privates first, then a date-based group cohort — see 07 §6A)
@@ -80,7 +80,7 @@ Free class CTA → contact form / text → coach meeting → enroll. No pricing 
 ---
 
 ## Skool Communities — Full Content Audit
-> URLs confirmed by Diego 2026-06-16; content from the 2026-06-09 public-feed scrape (full detail in `01-SKOOL-COMMUNITIES.md`). Public post feeds were accessible; only the Classroom video modules are login-gated. Re-fetch blocked tonight (Skool login wall + environment HTTP block) — flag below if any field needs a live re-check.
+> URLs confirmed 2026-06-16; content from the 2026-06-09 public-feed scrape (full detail in `01-SKOOL-COMMUNITIES.md`). Public post feeds were accessible; only the Classroom video modules are login-gated. Re-fetch blocked tonight (Skool login wall + environment HTTP block) — flag below if any field needs a live re-check.
 > Skool profile: https://www.skool.com/@joao-crus-6684
 
 ### 1. The BJJ Coach Blueprint  (B2B — coaches) — $99/mo
