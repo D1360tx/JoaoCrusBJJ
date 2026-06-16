@@ -14,7 +14,7 @@
 | 1.1 | Current membership rates — kids (per tier/frequency), adults, any family pricing | Set the new pricing architecture against benchmarks; find under-pricing | ⬜ |
 | 1.2 | Private lesson rates + any pack pricing | Privates = highest-margin line; structure packs | ⬜ |
 | 1.3 | Drop-in rate (if offered) | Complete the price card | ⬜ |
-| 1.4 | Current student counts: kids vs adults vs privates-only. **⏳ PARTIAL (first-party observation, 2026-06-11): kids ~15–17 per class; adult classes 2–3 students — adult program near-empty. Exact enrolled counts still needed** | Are we at the 60–70% kids revenue benchmark? Capacity math | ⏳ |
+| 1.4 | Current student counts: kids vs adults vs privates-only. **⏳ PARTIAL (first-party observation, 2026-06-11): kids ~15–17 per class; adult classes 2–3 per session (small group, room to grow). Exact enrolled counts still needed** | Are we at the 60–70% kids revenue benchmark? Capacity math | ⏳ |
 | 1.5 | Rough monthly revenue by line (memberships / privates / camps / programs / books / Skool) | Baseline to measure the plan against | ⬜ |
 | 1.6 | Any legacy/grandfathered rates or handshake deals | Affects repricing rollout | ⬜ |
 | 1.7 | Contract structure today: month-to-month? 6/12-mo agreements? Cancellation policy | Churn lever; informs new commitment structure | ⬜ |

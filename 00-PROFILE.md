@@ -21,9 +21,9 @@
 **JCBJJ is the ONLY local school that accepts kids under 4 (age 3+).** Every competitor starts at 4 — it's literally why Diego enrolled his son there. And the website doesn't even say it (Little Champions is listed as 4–7). Parents of 3-year-olds have nowhere else to go; they enter Joao's funnel a year before competitors can compete. → Confirm with Joao (official policy? insurance/capacity caveats? wants it advertised?) then make it a headline claim (07 §3, landing page).
 
 ## First-Party Class Observations (Diego's son enrolled; Diego attends adult classes)
-- **Kids classes: ~15–17 kids per class** — healthy, real critical mass
-- **Adult classes: 2–3 students observed** (Tue class: Diego + 2 others; next session expected Diego + 1) — **essentially empty; adult program has a cold-start problem**
-- Implication: revenue is overwhelmingly kids already; adult mat hours are underused capacity (privates supply / cohort relaunch — see 07 §6A)
+- **Kids classes: ~15–17 per class** — strong, established attendance
+- **Adult classes: 2–3 per session currently** (small group) — clear room to grow; mat hours and instructor time available to fill
+- Takeaway: revenue is majority kids today; adult sessions are open capacity with upside (privates first, then a date-based group cohort — see 07 §6A)
 
 ## The Hook / Differentiator
 Not a "win/compete" school. Core message = **emotional regulation, boundary-setting, and confidence** through BJJ.
