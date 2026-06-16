@@ -88,8 +88,8 @@
 |---|------|----------------|--------|
 | 6.1 | Who (besides Joao) can handle leads/tours/intro classes? | Routing + escalation in the automation | ⬜ |
 | 6.2 | Class capacity per slot; which classes have room. **Sharpened by observation: adults have huge headroom (2–3/class); the question is really KIDS capacity — at 15–17/class, which kid slots can absorb more before needing a new slot/coach?** | "Marketing amplifies weaknesses" — don't fill what can't absorb | ⬜ |
-| 6.8 | **"Helping schools incorporate BJJ" (his priority #2) — which schools?** ✅ ANSWERED (via user, 2026-06-11): **martial-arts schools** (Line B as built) + interest in **corporate speaking** (→ Line C). After-school programs = open exploration (07 §6A) | Resolved; after-school pilot question goes to Joao in Phase 2 | ✅ |
-| 6.9 | 🆕 **Confirm the age-3 policy:** does he officially accept kids under 4? Any insurance/capacity/case-by-case caveats? Is he comfortable ADVERTISING "from age 3"? | He's the ONLY local school taking 3-year-olds (first-party — it's why the user's son enrolled) and the site doesn't even say it. Pending confirmation, it becomes a headline landing-page claim (07 §3) | ⬜ |
+| 6.8 | **"Helping schools incorporate BJJ" (his priority #2) — which schools?** ✅ ANSWERED (via Diego, 2026-06-11): **martial-arts schools** (Line B as built) + interest in **corporate speaking** (→ Line C). After-school programs = open exploration (07 §6A) | Resolved; after-school pilot question goes to Joao in Phase 2 | ✅ |
+| 6.9 | 🆕 **Confirm the age-3 policy:** does he officially accept kids under 4? Any insurance/capacity/case-by-case caveats? Is he comfortable ADVERTISING "from age 3"? | He's the ONLY local school taking 3-year-olds (first-party — it's why Diego's son enrolled) and the site doesn't even say it. Pending confirmation, it becomes a headline landing-page claim (07 §3) | ⬜ |
 | 6.3 | Typical lead response time today | Baseline KPI; target <5 min automated | ⬜ |
 | 6.4 | Trial → enrollment conversion (gut feel ok) | Baseline KPI | ⬜ |
 | 6.5 | What is "Primal Flow Practice"? (seen on IG, not on site) | Offer-map completeness | ⬜ |
