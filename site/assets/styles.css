@@ -2,7 +2,8 @@
    JOAO CRUS BJJ — Preview build
    Aesthetic: premium dark · cinematic · authority-first
    Display: Fraunces (editorial serif)  ·  Body: Hanken Grotesk
-   Accent: bronze-gold (prestige) + deep crimson (black-belt bar)
+   Accent: ON-BRAND blue (#2EA3F2 / #0C71C3) + electric-yellow pop (#EDF000),
+           pulled from joaocrusbjj.com. (Token names stay --gold* to avoid churn.)
    ============================================================ */
 
 /* ---------- Tokens ---------- */
@@ -16,10 +17,13 @@
   --line:       rgba(243,239,228,.10);
   --line-2:     rgba(243,239,228,.06);
 
-  --gold:       #C8A24C;
-  --gold-bright:#E4C271;
-  --gold-deep:  #8C6B27;
-  --crimson:    #A02A24;
+  /* On-brand: pulled from joaocrusbjj.com (blue primary + electric-yellow pop).
+     Token names kept as --gold* to avoid churn; they now hold the brand blues. */
+  --gold:       #2EA3F2;   /* brand blue (primary accent) */
+  --gold-bright:#62C0FF;   /* lighter blue — gradient highlights / hover text */
+  --gold-deep:  #0C71C3;   /* deep brand blue — gradients, depth */
+  --crimson:    #4F6ACA;   /* brand indigo — secondary glows / belt bar */
+  --pop:        #EDF000;   /* brand electric-yellow — used sparingly */
 
   --r-sm: 10px;
   --r-md: 16px;
@@ -85,11 +89,11 @@ em,.it{font-style:italic}
   padding:.92em 1.5em;border-radius:var(--r-pill);transition:.4s var(--ease);
   letter-spacing:.01em;white-space:nowrap;
 }
-.btn--gold{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:#15110A;
-  box-shadow:0 10px 30px -10px rgba(200,162,76,.6)}
-.btn--gold:hover{transform:translateY(-2px);box-shadow:0 18px 40px -12px rgba(200,162,76,.7)}
+.btn--gold{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:#04253C;
+  box-shadow:0 10px 30px -10px rgba(46,163,242,.6)}
+.btn--gold:hover{transform:translateY(-2px);box-shadow:0 18px 40px -12px rgba(46,163,242,.7)}
 .btn--ghost{border:1px solid var(--line);color:var(--bone);background:rgba(243,239,228,.02)}
-.btn--ghost:hover{border-color:var(--gold);color:var(--gold-bright);background:rgba(200,162,76,.06)}
+.btn--ghost:hover{border-color:var(--gold);color:var(--gold-bright);background:rgba(46,163,242,.06)}
 .btn--lg{padding:1.05em 1.9em;font-size:1.05rem}
 .arrow{transition:transform .4s var(--ease)}
 .btn:hover .arrow{transform:translateX(4px)}
@@ -125,8 +129,8 @@ em,.it{font-style:italic}
 .hero__bg img{width:100%;height:100%;object-fit:cover;opacity:.42;filter:grayscale(.3) contrast(1.05)}
 .hero__bg::after{content:"";position:absolute;inset:0;
   background:
-    radial-gradient(120% 90% at 78% 18%, rgba(200,162,76,.16), transparent 55%),
-    radial-gradient(90% 80% at 20% 90%, rgba(160,42,36,.14), transparent 60%),
+    radial-gradient(120% 90% at 78% 18%, rgba(46,163,242,.16), transparent 55%),
+    radial-gradient(90% 80% at 20% 90%, rgba(79,106,202,.14), transparent 60%),
     linear-gradient(180deg, rgba(10,11,15,.55) 0%, rgba(10,11,15,.82) 55%, var(--ink) 100%);
 }
 .hero__grid{position:absolute;inset:0;z-index:-1;opacity:.4;
@@ -168,7 +172,7 @@ em,.it{font-style:italic}
 .philo__quote .gold{font-style:italic}
 .philo__grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:54px}
 .philo__card{border:1px solid var(--line);border-radius:var(--r-lg);padding:34px;background:linear-gradient(180deg,var(--ink-2),var(--ink));transition:.4s var(--ease)}
-.philo__card:hover{border-color:rgba(200,162,76,.35);transform:translateY(-4px)}
+.philo__card:hover{border-color:rgba(46,163,242,.35);transform:translateY(-4px)}
 .philo__card h3{margin-bottom:12px}
 .philo__card .tag{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:18px}
 
@@ -179,22 +183,22 @@ em,.it{font-style:italic}
   background:linear-gradient(180deg,var(--ink-2),var(--ink));transition:.45s var(--ease);min-height:230px;
   display:flex;flex-direction:column;justify-content:space-between;
 }
-.card::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 100% at 100% 0,rgba(200,162,76,.1),transparent 55%);opacity:0;transition:.45s}
-.card:hover{border-color:rgba(200,162,76,.4);transform:translateY(-5px);box-shadow:var(--shadow-card)}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 100% at 100% 0,rgba(46,163,242,.1),transparent 55%);opacity:0;transition:.45s}
+.card:hover{border-color:rgba(46,163,242,.4);transform:translateY(-5px);box-shadow:var(--shadow-card)}
 .card:hover::after{opacity:1}
 .card__num{font-family:var(--ff-display);font-style:italic;color:var(--gold);opacity:.55;font-size:1.05rem}
 .card h3{margin:18px 0 8px}
 .card p{font-size:.96rem;color:var(--bone-dim)}
 .card__link{margin-top:18px;font-size:.86rem;font-weight:600;color:var(--gold-bright);display:inline-flex;gap:.5em;align-items:center;letter-spacing:.02em}
 .col-6{grid-column:span 6}.col-4{grid-column:span 4}.col-3{grid-column:span 3}.col-8{grid-column:span 8}.col-12{grid-column:span 12}
-.card--feature{background:linear-gradient(140deg,rgba(160,42,36,.18),var(--ink-2) 60%);border-color:rgba(200,162,76,.3)}
-.badge{display:inline-flex;align-items:center;gap:.5em;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink);background:var(--gold);padding:.4em .8em;border-radius:var(--r-pill)}
+.card--feature{background:linear-gradient(140deg,rgba(79,106,202,.18),var(--ink-2) 60%);border-color:rgba(46,163,242,.3)}
+.badge{display:inline-flex;align-items:center;gap:.5em;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#1A1A00;background:var(--pop);padding:.4em .8em;border-radius:var(--r-pill)}
 
 /* ---------- About / pedigree ---------- */
 .about{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
 .about__media{position:relative}
 .about__media img{width:100%;border-radius:var(--r-lg);filter:grayscale(.25) contrast(1.05);box-shadow:var(--shadow-soft)}
-.about__media .frame{position:absolute;inset:14px;border:1px solid rgba(200,162,76,.35);border-radius:var(--r-lg);pointer-events:none}
+.about__media .frame{position:absolute;inset:14px;border:1px solid rgba(46,163,242,.35);border-radius:var(--r-lg);pointer-events:none}
 .about__badge{position:absolute;left:-22px;bottom:26px;background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 22px;box-shadow:var(--shadow-card)}
 .about__badge b{font-family:var(--ff-display);font-size:1.6rem;display:block;color:var(--gold)}
 .about__badge span{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -205,7 +209,7 @@ em,.it{font-style:italic}
 /* ---------- Media / books+podcast ---------- */
 .media-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px}
 .media-card{border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;background:var(--ink-2);transition:.4s var(--ease)}
-.media-card:hover{border-color:rgba(200,162,76,.35);transform:translateY(-4px)}
+.media-card:hover{border-color:rgba(46,163,242,.35);transform:translateY(-4px)}
 .media-card .kind{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:block}
 .media-card h3{font-size:1.3rem;margin-bottom:8px}
 .media-card p{font-size:.92rem;color:var(--bone-dim)}
@@ -221,14 +225,14 @@ em,.it{font-style:italic}
 .quote::before{content:"\201C";position:absolute;top:6px;right:22px;font-family:var(--ff-display);font-size:5rem;color:var(--gold);opacity:.12;line-height:1}
 
 /* ---------- Lead magnet teaser ---------- */
-.teaser{border:1px solid rgba(200,162,76,.3);border-radius:var(--r-lg);padding:clamp(34px,5vw,60px);
-  background:radial-gradient(120% 140% at 0% 0%,rgba(200,162,76,.12),transparent 50%),linear-gradient(180deg,var(--ink-2),var(--ink));
+.teaser{border:1px solid rgba(46,163,242,.3);border-radius:var(--r-lg);padding:clamp(34px,5vw,60px);
+  background:radial-gradient(120% 140% at 0% 0%,rgba(46,163,242,.12),transparent 50%),linear-gradient(180deg,var(--ink-2),var(--ink));
   display:grid;grid-template-columns:1.3fr .9fr;gap:40px;align-items:center}
 .teaser h2{margin:.2em 0 .4em}
 
 /* ---------- CTA band ---------- */
 .cta{text-align:center;position:relative;overflow:hidden}
-.cta__glow{position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 80% at 50% 120%,rgba(200,162,76,.22),transparent 60%)}
+.cta__glow{position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 80% at 50% 120%,rgba(46,163,242,.22),transparent 60%)}
 .cta h2{font-size:clamp(2.2rem,5vw,4rem);max-width:18ch;margin:.3em auto .5em}
 .cta .lead{margin:0 auto}
 .cta__actions{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
@@ -239,9 +243,9 @@ em,.it{font-style:italic}
 .field{flex:1;display:flex;flex-direction:column;gap:7px}
 .field label{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .field input{background:var(--ink);border:1px solid var(--line);border-radius:var(--r-sm);padding:.95em 1.1em;color:var(--bone);font-family:inherit;font-size:1rem;transition:.3s}
-.field input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,162,76,.15)}
+.field input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(46,163,242,.15)}
 .form small{color:var(--muted);font-size:.8rem}
-.form__success{display:none;padding:22px;border:1px solid rgba(200,162,76,.4);border-radius:var(--r-md);background:rgba(200,162,76,.08);color:var(--gold-bright)}
+.form__success{display:none;padding:22px;border:1px solid rgba(46,163,242,.4);border-radius:var(--r-md);background:rgba(46,163,242,.08);color:var(--gold-bright)}
 .form__success.show{display:block;animation:rise .6s var(--ease)}
 
 /* ---------- Footer ---------- */
@@ -260,7 +264,7 @@ em,.it{font-style:italic}
 
 /* ---------- Sub-page hero (lighter) ---------- */
 .subhero{padding:160px 0 60px;position:relative;overflow:hidden}
-.subhero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(80% 70% at 80% 0,rgba(200,162,76,.12),transparent 55%)}
+.subhero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(80% 70% at 80% 0,rgba(46,163,242,.12),transparent 55%)}
 .subhero .display{font-size:clamp(2.4rem,6vw,4.6rem)}
 .crumb{font-size:.82rem;color:var(--muted);letter-spacing:.04em;margin-bottom:24px}
 .crumb a:hover{color:var(--gold)}
