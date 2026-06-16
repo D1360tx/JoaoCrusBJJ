@@ -72,4 +72,17 @@
       success.scrollIntoView({ behavior: "smooth", block: "center" });
     });
   }
+
+  // Safety net: if any intro element is still hidden after load (e.g. animations
+  // blocked by Reduce Motion), force it visible so content never disappears.
+  window.addEventListener("load", function () {
+    setTimeout(function () {
+      document.querySelectorAll(".rise, .reveal").forEach(function (el) {
+        if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+          el.style.opacity = "1";
+          el.style.transform = "none";
+        }
+      });
+    }, 1400);
+  });
 })();

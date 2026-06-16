@@ -132,7 +132,7 @@ em,.it{font-style:italic}
 .hero__grid{position:absolute;inset:0;z-index:-1;opacity:.32;
   background-image:linear-gradient(var(--line-2) 1px,transparent 1px),linear-gradient(90deg,var(--line-2) 1px,transparent 1px);
   background-size:64px 64px;mask-image:radial-gradient(75% 65% at 62% 32%,#000,transparent)}
-.hero__wrap{flex:1;display:grid;grid-template-columns:1.04fr .96fr;gap:56px;align-items:center;padding-block:24px}
+.hero__wrap{display:grid;grid-template-columns:1.04fr .96fr;gap:56px;align-items:center;padding-block:6px}
 .hero__content{position:relative;max-width:60ch}
 .hero__chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px}
 .chip{display:inline-flex;align-items:center;gap:.5em;font-size:.78rem;font-weight:600;
@@ -149,6 +149,12 @@ em,.it{font-style:italic}
 .hero__avs span+span{margin-left:-13px}
 .hero__trust p{font-size:.9rem;color:var(--bone-dim);line-height:1.35}
 .hero__trust b{color:var(--bone)}
+/* hero stats band */
+.hero__stats{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:30px;padding-top:24px}
+.hero__stat{padding-right:40px;margin-right:40px;border-right:1px solid var(--line)}
+.hero__stat:last-child{border-right:none;margin-right:0;padding-right:0}
+.hero__stat b{font-family:var(--ff-display);font-size:2rem;font-weight:600;display:block;line-height:1}
+.hero__stat span{font-size:.73rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:7px;display:block}
 /* hero media */
 .hero__media{position:relative}
 .hero__shot{aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-soft)}
@@ -378,11 +384,13 @@ body[data-theme="light"] .about__badge b{color:var(--gold-deep)}
   .media-grid,.quotes{grid-template-columns:1fr}
   .hero__rating,.hero__chip-badge{display:none}
   .hero__fact{border-right:none;padding-right:0;margin-right:0;flex:1 0 45%;padding-block:5px}
+  .hero__stat{padding-right:22px;margin-right:22px}
+  .hero__stat b{font-size:1.6rem}
   .foot__top{grid-template-columns:1fr;gap:36px}
   .sched__row{grid-template-columns:1fr}
   .form .row{flex-direction:column}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
-  .reveal{opacity:1;transform:none}
+  .reveal,.rise{opacity:1!important;transform:none!important}
 }
