@@ -23,7 +23,7 @@
 ## 2. Boundary Guard  (B2C — adults, flagship course)
 - **URL:** https://www.skool.com/boundary-guard-7425
 - **Price:** Free trial → paid (price not shown on public page; 60-day framing)
-- **Members:** 6 (1 admin). Co-admin/member: **Diego Campos**
+- **Members:** 6 (1 admin)
 - **Tagline:** "Stop saying yes when you mean no. Boundaries Through Brazilian Jiu-Jitsu (no experience needed). Weekly coaching + community."
 - **Core concept:** Boundaries live in the BODY, not just the mind. Somatic/nervous-system approach via BJJ. "Not information. Embodied transformation."
 - **The Problem (their copy):** You freeze. Say yes when you mean no. Attract toxic relationships. Know what to do but can't do it. Nervous system protecting you with old survival strategies. Talk therapy explains *why*; body still freezes.
@@ -66,7 +66,6 @@
 - **Author of "Grapple with Emotions"** (matches Amazon book).
 - **Host of "Black Belt Parenting Life" podcast** (on Spotify).
 - **Creator of the Kids BJJ Curriculum Course.**
-- Works with **Diego Campos** (admin on Boundary Guard — note: Diego appears in user's other projects too).
 
 ---
 
