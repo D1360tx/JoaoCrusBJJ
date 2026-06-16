@@ -94,7 +94,7 @@ Free class CTA → contact form / text → coach meeting → enroll. No pricing 
 
 ### 2. Boundary Guard  (B2C — adults, flagship course) — free trial → paid
 - **URL:** https://www.skool.com/boundary-guard-7425
-- **Price / scale:** Free trial → paid (price not public; "60-day" framing) · **6 members** (1 admin). Co-admin/member: **Diego Campos**.
+- **Price / scale:** Free trial → paid (price not public; "60-day" framing) · **6 members** (1 admin).
 - **Tagline:** "Stop saying yes when you mean no. Boundaries Through Brazilian Jiu-Jitsu (no experience needed). Weekly coaching + community."
 - **Core concept:** boundaries live in the BODY, not just the mind — somatic/nervous-system approach via BJJ. "Not information. Embodied transformation." Complements (doesn't replace) talk therapy.
 - **The problem (their copy):** you freeze, say yes when you mean no, attract toxic relationships, know what to do but can't do it — old nervous-system survival strategies.
@@ -122,9 +122,8 @@ Free class CTA → contact form / text → coach meeting → enroll. No pricing 
 
 ### Cross-community takeaways
 - **3 distinct audiences:** adults/personal-growth (Boundary Guard) · kids-BJJ coaches (Children Blueprint, free→paid) · general coaches (Coach Blueprint, $99).
-- **All tiny (3 / 6 / 9 members)** = early stage. Near-term lever: fuel the free "Children BJJ Blueprint" funnel and convert to paid; resolve the Coach-Blueprint vs. Children-Blueprint overlap into one clean ladder.
+- **Early stage** (3 / 6 / 9 members). Near-term lever: fuel the free "Children BJJ Blueprint" funnel and convert to paid; resolve the Coach-Blueprint vs. Children-Blueprint overlap into one clean ladder.
 - **Strong existing written content** — Joao already writes high-quality posts; major repurposing opportunity (IG, email, podcast, lead magnets).
-- **Diego Campos** co-admins Boundary Guard (also appears in user's other projects).
 - **Still gated (need login/screenshots to audit depth):** Classroom video modules for all three, plus Calendar / Members / Leaderboards.
 
 ---
