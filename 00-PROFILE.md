@@ -134,7 +134,6 @@ Free class CTA → contact form / text → coach meeting → enroll. No pricing 
 - /coaches/ · /testimonials/ · /got-questions/ · /books-and-podcast/ · /blog/ · /free-class/
 
 ## Open Questions for Joao
-- Belt rank / lineage / competition record?
 - Current student counts (group vs private)?
 - Actual pricing for each offering?
 - Which goal is priority #1: privates, group, or digital products?
