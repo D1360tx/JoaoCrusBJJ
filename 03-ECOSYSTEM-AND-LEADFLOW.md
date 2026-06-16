@@ -93,8 +93,19 @@
 - **Instagram @joaocrusbjj** — exists; cannot scrape (login wall + Firecrawl blocks IG)
 > ⚠️ Two separate YouTube channels = same fragmentation pattern as the websites. Splits audience and SEO authority.
 
-## STILL TO PULL (need user screenshots — bot-blocked)
-- [ ] Instagram @joaocrusbjj — follower count, content style, cadence, engagement (IG hard-blocks scrapers)
-- [ ] YouTube video lists/views for both channels (YouTube 403s bot access to /videos)
-- [ ] Older podcast episodes (behind "Load more" on Spotify)
-- [ ] Skool Classroom curriculum depth (3 communities)
+## DATA-GATHERING STATUS (updated 2026-06-16)
+Most of the original "still to pull" list was since captured via the imginn mirror + a slip-through YouTube scrape. Public data (style/cadence/engagement) never needed screenshots — only **native Insights** do. Reframed below by what's actually still open:
+
+**✅ DONE (no screenshots needed):**
+- Instagram public data — follower count (8K), following (4,041), posts (1,604), content style, cadence, and engagement (0–8 likes/post — the "vanity 8K" finding). See `05-INSTAGRAM.md`. Re-pullable anytime via imginn.
+- YouTube main channel (@jcbjj25 / Joaocrusbjjatx) — video list + view counts. See `04-DVD-STORE-AND-YOUTUBE.md`.
+
+**🟡 OPTIONAL — only one screenshot job has real value:**
+- [ ] **Instagram native Insights (last 90 days)** — the only thing scrapers/mirrors CAN'T show: real **reach/impressions, follower authenticity (real vs ghost), audience demographics, top posts.** Confirms whether the 8K is worth rebuilding or just maintaining. *How:* IG app → Professional Dashboard → see all Insights → 90 days → screenshot overview. **Not blocking** the organic-first build.
+
+**🟡 NICE-TO-HAVE (defer):**
+- [ ] Older podcast back-catalog (behind Spotify "Load more") — only matters for the repurposing flywheel; we have recent episodes + cadence.
+- [ ] 2nd YouTube channel (Black Belt Parenting) exact subs/total views — low priority; known to be small.
+
+**🟢 PHASE 2 ONLY (not needed now):**
+- [ ] Skool Classroom curriculum depth (3 communities) — only when we productize Line B (coach/schools line). Login-gated; screenshots when that phase starts.
