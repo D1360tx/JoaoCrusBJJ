@@ -14,7 +14,7 @@
 | 1.1 | Current membership rates — kids (per tier/frequency), adults, any family pricing | Set the new pricing architecture against benchmarks; find under-pricing | ⬜ |
 | 1.2 | Private lesson rates + any pack pricing | Privates = highest-margin line; structure packs | ⬜ |
 | 1.3 | Drop-in rate (if offered) | Complete the price card | ⬜ |
-| 1.4 | Current student counts: kids vs adults vs privates-only | Are we at the 60–70% kids revenue benchmark? Capacity math | ⬜ |
+| 1.4 | Current student counts: kids vs adults vs privates-only. **⏳ PARTIAL (first-party observation, 2026-06-11): kids ~15–17 per class; adult classes 2–3 students — adult program near-empty. Exact enrolled counts still needed** | Are we at the 60–70% kids revenue benchmark? Capacity math | ⏳ |
 | 1.5 | Rough monthly revenue by line (memberships / privates / camps / programs / books / Skool) | Baseline to measure the plan against | ⬜ |
 | 1.6 | Any legacy/grandfathered rates or handshake deals | Affects repricing rollout | ⬜ |
 | 1.7 | Contract structure today: month-to-month? 6/12-mo agreements? Cancellation policy | Churn lever; informs new commitment structure | ⬜ |
@@ -41,9 +41,9 @@
 | 3.1 | **Are leads tracked anywhere — database, spreadsheet, notebook, or just an email inbox?** | Audit (file 03) found WPForms Lite → email-only, no storage. Confirm nothing else exists | ⬜ |
 | 3.1b | **Confirm where form notifications actually deliver.** (Audit assumed joaocrus@gmail.com — UNVERIFIED. Could go to an old/unmonitored address) | If notifications go somewhere dead, leads are being lost silently right now | ⬜ |
 | 3.2 | Export/forward of historical inquiries (Gmail search "WPForms"/form notifications) | Win-back campaign fuel — 40–60 reactivations per campaign is the benchmark | ⬜ |
-| 3.3 | Any existing email list anywhere (ESP, Skool exports, book buyers, camp parents)? | Seed list + consent assessment | ⬜ |
+| 3.3 | **Any email-marketing software/account anywhere, even unused** (Mailchimp, Constant Contact, ConvertKit…)? And any existing email LIST (ESP exports, Skool members, book buyers, camp parents)? | Site audit (03) confirmed NO ESP integrated on the website — but a standalone account he occasionally uses could still exist. Seed list + consent assessment | ⬜ |
 | 3.4 | Free-class flow today: form → then what? Who replies, how fast, by what channel? | Map the human process before automating it | ⬜ |
-| 3.5 | Texting: does he text leads from 512-644-4560 personally? What is 833-532-4152 (the second number on the site)? | SMS automation needs a clear number strategy | ⬜ |
+| 3.5 | Texting: does he text leads from 512-644-4560 personally? **What is 833-532-4152 (the second number on the site)? 🆕 HYPOTHESIS: it's a call-tracking number provisioned by his ads agency** — if so, his call data flows into their system (same owned-asset problem as pixel/leads). Who provisioned it, what platform, where do its call logs go? | SMS automation needs a clear number strategy; call-tracking plan (11 §5.3) needs to know what exists before adding numbers | ⬜ |
 | 3.6 | Chatway live-chat account access + where those chats go | Another lead source to pipe into the CRM | ⬜ |
 | 3.7 | Messenger (m.me/joaocrusbjjatx2) — who answers it? | Same | ⬜ |
 | 3.8 | Camp/program registrations (6 Weeks, Summer Camp) — where does that buyer data live? | Highest-intent local list we have; nurture to membership | ⬜ |
@@ -51,7 +51,7 @@
 | 3.10 | **Where do the ad leads go?** (FB lead forms → agency CRM? email? phone?) | A lead list almost certainly exists at the agency (they're calling leads, so they hold the data). Need: where it lives, export rights, and **who owns the leads contractually if they part ways** | ⬜ |
 | 3.11 | 🆕 Is he on any marketing platform via the agency (GoHighLevel, etc.) without realizing it? | Agencies commonly run clients on white-labeled GHL — if so, there's an existing CRM/number/funnel to inherit or replace, and it changes the doc 10 architecture conversation | ⬜ |
 | 3.12 | 🆕 **The custom Twilio SMS setup he once mentioned** (texting groups of people) — what exists? Account, number, A2P registration status, lists, who built it, still running? | If an A2P-registered Twilio account already exists, we inherit it and **save the 1–2 week registration wait**; existing lists also need consent review | ⬜ |
-| 3.13 | 🆕 **Exactly what does the agency's follow-up include?** Confirmation SMS? 24h/2h reminders? "What to expect" message? No-show recovery? Human callers or AI texting? Can he show us actual messages a lead receives? | Determines whether our show-up flows fill a gap or would DUPLICATE theirs (duplicate SMS to the same lead is harmful). If they DO send reminders and no-shows are still high → bottleneck is lead quality/offer/speed, not reminders — different fix (see 11 §5.2) | ⬜ |
+| 3.13 | 🆕 **Exactly what does the agency's follow-up include?** Confirmation SMS? 24h/2h reminders? "What to expect" message? No-show recovery? Can he show us actual messages a lead receives? **⏳ PARTIAL: Joao says real humans call the leads (needs double-confirmation; messaging scope still unknown)** | Determines whether our show-up flows fill a gap or would DUPLICATE theirs (duplicate SMS to the same lead is harmful). If they DO send reminders and no-shows are still high → bottleneck is lead quality/offer/speed, not reminders — different fix (see 11 §5.2) | ⏳ |
 | 3.14 | 🆕 **Agency fee structure beyond ad spend:** monthly retainer? % of ad spend? per-appointment or per-show fee? Setup fees? Contract length/cancellation terms | Total acquisition cost (spend + fees) feeds ROI math and the baseline conversation; typical agencies in this niche run $299–1,200/mo retainers on top of spend | ⬜ |
 | 3.15 | 🆕 **What reporting does the agency provide?** Leads → contacted → booked → showed → joined numbers; cost per lead/show/join | If he can't see these numbers, he can't know if $750/mo works — and neither can we. Demand-it item regardless of who runs ads | ⬜ |
 
@@ -87,11 +87,14 @@
 | # | Item | Why we need it | Status |
 |---|------|----------------|--------|
 | 6.1 | Who (besides Joao) can handle leads/tours/intro classes? | Routing + escalation in the automation | ⬜ |
-| 6.2 | Class capacity per slot; which classes have room | "Marketing amplifies weaknesses" — don't fill what can't absorb | ⬜ |
+| 6.2 | Class capacity per slot; which classes have room. **Sharpened by observation: adults have huge headroom (2–3/class); the question is really KIDS capacity — at 15–17/class, which kid slots can absorb more before needing a new slot/coach?** | "Marketing amplifies weaknesses" — don't fill what can't absorb | ⬜ |
+| 6.8 | **"Helping schools incorporate BJJ" (his priority #2) — which schools?** ✅ ANSWERED (via user, 2026-06-11): **martial-arts schools** (Line B as built) + interest in **corporate speaking** (→ Line C). After-school programs = open exploration (07 §6A) | Resolved; after-school pilot question goes to Joao in Phase 2 | ✅ |
+| 6.9 | 🆕 **Confirm the age-3 policy:** does he officially accept kids under 4? Any insurance/capacity/case-by-case caveats? Is he comfortable ADVERTISING "from age 3"? | He's the ONLY local school taking 3-year-olds (first-party — it's why the user's son enrolled) and the site doesn't even say it. Pending confirmation, it becomes a headline landing-page claim (07 §3) | ⬜ |
 | 6.3 | Typical lead response time today | Baseline KPI; target <5 min automated | ⬜ |
 | 6.4 | Trial → enrollment conversion (gut feel ok) | Baseline KPI | ⬜ |
 | 6.5 | What is "Primal Flow Practice"? (seen on IG, not on site) | Offer-map completeness | ⬜ |
 | 6.6 | Annual retention gut-check: of 10 kids who join, how many still train a year later? | Against 66.4% industry median | ⬜ |
+| 6.7 | 🆕 **Phone reality: what happens when someone calls during class?** Who answers? Voicemail? Does anyone call back, and how fast? Rough sense of missed calls/week | Sizes the missed-call leak; missed-call text-back (11 §5.3) may be the single fastest revenue fix | ⬜ |
 
 ---
 

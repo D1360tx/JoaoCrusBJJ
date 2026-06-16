@@ -50,7 +50,12 @@
 - [ ] OK to set up a dedicated number for automated texts (your 512 stays personal)? Y/N
 
 ## 🤔 Bucket 5 — When we talk (no homework needed)
+- [ ] What happens when someone calls while you're teaching? Who answers — or does it go to voicemail? Does anyone call back?
 - [ ] Who besides you can run intro classes / answer leads?
 - [ ] Which classes have room to grow vs. already full?
 - [ ] What's "Primal Flow Practice"? (saw it on your Instagram)
+- [ ] When you say helping schools bring BJJ into their teaching — do you mean martial-arts schools, or regular schools (PE / after-school / Montessori)? Or both?
+- [ ] Privates: how many do you teach per week now, and how many would you WANT? Any preferred time blocks?
+- [ ] Kids under 4: you take 3-year-olds (we know firsthand!) — is that official policy? Any caveats (insurance, capacity, case-by-case)? Can we advertise "from age 3"? (No other school in the area does this — it's a big deal)
+- [ ] Any email-marketing account anywhere, even one you stopped using? (Mailchimp, Constant Contact…) Any email list exports sitting around?
 - [ ] Should automated messages sound like you personally, or "Team JCBJJ"?

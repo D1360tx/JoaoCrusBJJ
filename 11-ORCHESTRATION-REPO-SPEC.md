@@ -16,6 +16,7 @@
 - A revenue dashboard shows month-to-date gross (from Stripe) vs. the agreed baseline — the rev-share number.
 
 **v1 explicitly does NOT do:**
+- **Paid ads (DECIDED 2026-06-11):** we do NOT run ads or touch the agency's lane in v1. Lead sources for our flow: referrals (Buddy Week), GBP/local SEO, IG/content, win-back of historical leads, camp/program buyer nurture — all routed to our landing page. We run fully parallel to the agency with our own system and full flow control. Ads are a future option — and by then the landing page, tracking, and pipeline already exist and are Joao-owned, making it a switch-flip, not a build.
 - Attendance/check-in (phase 2 — retention triggers depend on it)
 - AI receptionist (phase 2 — manual replies first, AI drafts later)
 - Content/social automation, Skool integration, GBP posting
@@ -46,8 +47,11 @@ contacts        id, org_id, first/last, phone (E.164, unique per org), email,
 students        id, org_id, contact_id (guardian), name, birthdate, program, belt  -- phase 2 depth
 pipeline        id, org_id, contact_id, status (new|contacted|booked|showed|trial|member|lost),
                 status_changed_at, lost_reason
-messages        id, org_id, contact_id, channel (sms|email), direction (in|out),
+messages        id, org_id, contact_id, channel (sms|email|call), direction (in|out),
                 body, template_id?, provider_sid, status (queued|sent|delivered|failed), created_at
+calls           id, org_id, contact_id?, tracking_number_id, from_e164, status (answered|missed|voicemail),
+                duration_s, recording_url?, created_at
+tracking_numbers id, org_id, e164, source_label (landing_page|gbp|ig_bio|print), forwards_to
 templates       id, org_id, key, channel, subject?, body (vars: {{first_name}}, {{booking_url}}, ...)
 sequences       id, org_id, key (speed_to_lead|no_book_recovery|no_show|trial_nurture|onboarding|winback)
 sequence_steps  id, sequence_id, step_no, offset_minutes, channel, template_id, stop_if (booked|replied|joined)
@@ -72,8 +76,8 @@ baseline        org_id, monthly_gross_cents, methodology_text, agreed_at    -- t
 ### 5.1 The front door: custom landing page (scope addition, replaces WP form surgery)
 **Decision (2026-06-11): we do NOT touch Joao's WordPress site.** Instead we build a custom landing page (same repo, Next.js route or separate marketing route group) that becomes the destination for everything WE drive — ads, GBP, IG bio, QR codes — and runs parallel to joaocrusbjj.com.
 
-- **Why:** his current surfaces are incongruent (typos, buried pedigree, mixed audiences — docs 02–06); a clean page is faster to build than WP archaeology, fully measured, and carries zero risk to his live site or whatever his ads agency depends on.
-- **Content = doc 07 positioning, executed properly:** pedigree line above the fold (Carlson Gracie & De La Riva lineage • 25+ yrs • 500+ families since 2003 • author), kids/family-specialist framing ("the other gyms teach kids jiu-jitsu; he wrote the book on it"), real social proof (video testimonials exist — file 02), the book as credibility artifact, clear single CTA (free intro class / Confidence Kickstart), FAQ for the intimidation barrier, mobile-first, fast.
+- **Why:** his current surfaces are incongruent (typos, buried pedigree, mixed audiences — docs 02–06); a clean page is faster to build than WP archaeology, fully measured, and carries zero risk to his live site or whatever his ads agency depends on. Competitive angle (doc 12): Stoic runs a templated 97-Display-style funnel and all three DS schools push the same commodity "free week" — a custom authority-driven page (book, lineage, 500+ families, named method) competes on a dimension templates can't reach.
+- **Content = doc 07 positioning, executed properly:** pedigree line above the fold (Carlson Gracie & De La Riva lineage • 25+ yrs • 500+ families since 2003 • author), kids/family-specialist framing ("the other gyms teach kids jiu-jitsu; he wrote the book on it"), real social proof (video testimonials exist — file 02), the book as credibility artifact, clear single CTA (free intro class / Confidence Kickstart), FAQ for the intimidation barrier, mobile-first, fast. **Plus a privates section + CTA** (Joao priority #1, pulled forward per 07 §6A) — adults route to privates first while the group-adult cohort relaunch waits; do NOT advertise the current near-empty adult group classes.
 - **Form lives here** → `/api/webhooks/form` directly (honeypot + rate-limit), with the REQUIRED SMS-consent checkbox (TCPA): "Yes, text me about my free class."
 - **Tracking from day one:** GA4 + (his existing) Meta Pixel + UTM discipline — every channel measurable, which the old site never was.
 - **Domain:** subdomain (start.joaocrusbjj.com — needs only a DNS record, not WP access) or standalone domain; open decision §10.
@@ -87,6 +91,15 @@ baseline        org_id, monthly_gross_cents, methodology_text, agreed_at    -- t
   - **(b) They DO — and no-shows are still high** → reminders aren't the bottleneck; diagnosis shifts to lead quality / offer strength / speed-to-contact / intent filtering. Our levers become the landing page + paid-intro qualification (doc 07's $49 Kickstart filters for seriousness) and measurement of the full funnel, not duplicate messaging. Duplicate SMS from two systems to the same lead is actively harmful — sequence ownership must be agreed with the agency either way.
   - Either way we need the funnel numbers: leads → contacted → booked → showed → joined, and **the full agency cost structure** (retainer? % of ad spend? per-appointment? per-show?) on top of the ~$750/mo spend — total acquisition cost feeds the baseline/ROI math.
 - **Existing Twilio (NEW, intake 3.12):** if Joao's old custom SMS setup has a registered A2P account, inherit the account/number instead of registering fresh — saves 1–2 weeks. Audit any stored lists for consent before use.
+
+### 5.3 Call tracking (Twilio Voice — same account as SMS) 🆕
+Phone is Joao's primary conversion channel (FB offer = "call us"; site pushes call/text), and nothing tracks it today. Decision: **custom on Twilio**, not Ringba (pay-per-call affiliate tooling — wrong category) and not CallRail (fine zero-build fallback at ~$45/mo, unnecessary given Twilio is already in-stack).
+
+- **v1 scope:** 2–3 local (512) tracking numbers — one each for landing page, GBP, IG bio — forwarding to the studio/Joao's cell. Twilio Voice webhooks log every call (`calls` table), match caller ID to contacts, optional recording (TX is one-party consent; still play a brief disclosure whisper if recording).
+- **⭐ Missed-call text-back:** unanswered/voicemail during class hours → instant SMS ("Sorry we missed you! This is Joao Crus BJJ — want to grab a spot for a free class? Book here: …") → contact enters speed-to-lead. Joao teaches all day; missed calls are likely a major silent leak. Plausibly the highest-ROI voice feature.
+- **GBP note:** tracking number goes in the GBP "primary phone" slot with the real number as "additional" (preserves NAP consistency for local SEO).
+- **Phase 2:** dynamic number insertion (DNI) on the landing page for per-campaign attribution; per-source reporting in dashboard.
+- **⚠ Intake tie-in (3.5):** the mystery 833-532-4152 on the website may ALREADY be a call-tracking number provisioned by his agency — if so, his call data flows into their system today (same owned-asset problem as the pixel/leads). Confirm who provisioned it before porting/replacing anything.
 - **Stripe:** Payment Links per tier for migration ease → webhooks (`checkout.completed`, `invoice.paid`, `invoice.payment_failed`, `customer.subscription.*`) update memberships + revenue dashboard. Smart Retries ON.
 - **Cal.com:** webhooks `BOOKING_CREATED/CANCELLED/RESCHEDULED`; "showed/no-show" marked manually in admin v1.
 
@@ -113,7 +126,7 @@ Auth: Supabase magic-link, two users (us + Joao), org-scoped.
 | Week | Build | Exit criteria |
 |---|---|---|
 | **1 — Capture** | Repo scaffold, schema + RLS, form endpoint, contact/pipeline records, instant email autoresponder, admin auth + contact list. **Landing page v1 (§5.1) with consented form + GA4/Pixel.** **Submit A2P registration day 1** (or inherit Joao's Twilio, intake 3.12). Stripe account + first Payment Links. | Landing page live; form submission → stored + email reply in <2 min. Leads visible in admin. A2P pending/inherited. |
-| **2 — SMS + booking** | Twilio send/receive + guardrails, speed-to-lead SMS (once A2P clears), Cal.com events + reminder sequences, inbound-reply pause + operator notify. | Test lead gets SMS+email, books, gets reminders; reply pauses sequence; STOP works. |
+| **2 — SMS + booking** | Twilio send/receive + guardrails, speed-to-lead SMS (once A2P clears), Cal.com events + reminder sequences, inbound-reply pause + operator notify. **Call tracking v1 (§5.3): tracking numbers live, call logging, missed-call text-back.** | Test lead gets SMS+email, books, gets reminders; reply pauses sequence; STOP works. Missed test call → text-back in <1 min, call visible in admin. |
 | **3 — Pipeline + recovery** | No-book/no-show/trial-nurture sequences, pipeline UI complete, broadcasts (win-back to historical leads from intake 3.2), templates editable. | Full lead lifecycle runs hands-off; first win-back campaign sent. |
 | **4 — Revenue + hardening** | Stripe webhooks → memberships, onboarding sequence, dashboard w/ baseline comparison, runbook docs (the bus-factor mitigation), error alerting. | Dashboard shows MTD vs baseline from live Stripe data. Runbook lets a stranger operate it. |
 
@@ -125,6 +138,8 @@ Auth: Supabase magic-link, two users (us + Joao), org-scoped.
 3. Review-request automation (post-promotion, post-positive-interaction) → GBP link
 4. Chat widget replacing Chatway, piped into pipeline
 5. Multi-tenant onboarding flow (client #2)
+6. Call tracking phase 2: DNI on landing page, per-source call reporting, voicemail transcription (Claude API) → lead notes
+7. **Voice AI agent experiment (VAPI-class platform):** after-hours/overflow answering on the tracking numbers — VAPI plugs into Twilio, so the forward-target is a config change, not a rebuild (design constraint: keep `tracking_numbers.forwards_to` swappable). Trust rules: branded honestly as "Joao's booking assistant" (never fake-Joao), capture-and-book goals only, instant human handoff path, transcript → contact timeline. Sequenced AFTER SMS flows prove out: missed-call text-back gets ~80% of the value with zero trust risk for a parents-of-small-kids audience; voice AI earns its way in via after-hours metrics. ~$0.10–0.20/min all-in → trivial at his volume
 
 ## 10. OPEN DECISIONS
 - [ ] Repo name + GitHub org/location (new private repo — confirm and I scaffold it)
