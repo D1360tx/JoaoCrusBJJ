@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joao Crus BJJ — Design Directions to Compare</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#2EA3F2;--deep:#0C71C3;--ink:#0B0C10;--ink2:#13151B;--bone:#F3EFE4;--dim:#9A988F;--line:rgba(243,239,228,.12);--yellow:#EDF000}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Hanken Grotesk",system-ui,sans-serif;background:var(--ink);color:var(--bone);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{width:min(1100px,92vw);margin:0 auto}
+  header{padding:70px 0 36px;text-align:center}
+  .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);font-weight:700}
+  h1{font-family:"Fraunces",serif;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.04;margin:16px 0 14px;letter-spacing:-.02em}
+  h1 em{font-style:italic;color:var(--blue)}
+  .sub{color:var(--dim);max-width:60ch;margin:0 auto;font-size:1.05rem}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:30px 0 70px}
+  .card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--ink2);text-decoration:none;color:inherit;transition:.35s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-5px);border-color:var(--blue);box-shadow:0 24px 60px -30px rgba(46,163,242,.5)}
+  .thumb{aspect-ratio:16/10;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-size:1.4rem;border-bottom:1px solid var(--line)}
+  .t-bold{background:linear-gradient(135deg,#0A0B0F,#0C71C3);}
+  .t-gritty{background:linear-gradient(135deg,#0C0D10,#15171C);}
+  .t-modern{background:linear-gradient(135deg,#2EA3F2,#62C0FF);color:#04253C}
+  .t-editorial{background:linear-gradient(135deg,#101218,#0A0B0F);}
+  .thumb .tag{position:absolute;top:14px;left:14px;font-family:"Hanken Grotesk";font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;background:var(--yellow);color:#1a1a00;padding:.35em .7em;border-radius:99px}
+  .thumb .big{opacity:.92;text-align:center;padding:0 20px}
+  .meta{padding:22px 24px}
+  .meta h3{font-family:"Fraunces",serif;font-size:1.4rem;margin-bottom:6px}
+  .meta p{color:var(--dim);font-size:.95rem}
+  .meta .go{margin-top:14px;color:var(--blue);font-weight:600;font-size:.9rem}
+  .rec{display:inline-block;margin-left:8px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);border:1px solid rgba(237,240,0,.4);border-radius:99px;padding:.2em .6em;vertical-align:middle}
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--dim);font-size:.85rem}
+  footer a{color:var(--blue)}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <span class="eyebrow">Joao Crus BJJ · Design Preview</span>
+    <h1>Four directions,<br><em>one decision.</em></h1>
+    <p class="sub">Same content, same brand blue — four different personalities. Open each, then tell me which feels like Joao's academy. We'll refine the winner.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="grid">
+
+    <a class="card" href="bold.html">
+      <div class="thumb t-bold"><span class="tag">New</span><span class="big">TRAIN HARD.<br>RISE STRONGER.</span></div>
+      <div class="meta">
+        <h3>Bold Athletic <span class="rec">My pick for "BJJ"</span></h3>
+        <p>Combat-sport energy — massive condensed type, belt-stripe motif, action photography, high contrast. Reads instantly as a fight gym.</p>
+        <div class="go">Open variant →</div>
+      </div>
+    </a>
+
+    <a class="card" href="gritty.html">
+      <div class="thumb t-gritty"><span class="tag">New</span><span class="big" style="font-family:'Hanken Grotesk';font-weight:700;letter-spacing:.04em">THE MAT<br>DOESN'T LIE.</span></div>
+      <div class="meta">
+        <h3>Gritty Dojo</h3>
+        <p>Raw and tough — concrete textures, grain, heavy stencil type, duotone photos. Hardcore mat culture and discipline.</p>
+        <div class="go">Open variant →</div>
+      </div>
+    </a>
+
+    <a class="card" href="modern.html">
+      <div class="thumb t-modern"><span class="tag">New</span><span class="big">Confidence on the mat.<br>Calm in life.</span></div>
+      <div class="meta">
+        <h3>Modern Sport</h3>
+        <p>Bright, energetic, family-friendly — light base, dynamic angled photos, vibrant blue + yellow. Premium athletic brand feel.</p>
+        <div class="go">Open variant →</div>
+      </div>
+    </a>
+
+    <a class="card" href="../index.html">
+      <div class="thumb t-editorial"><span class="big" style="color:#C9C5BA">Confidence,<br><em style="color:#2EA3F2;font-style:italic">built rep by rep.</em></span></div>
+      <div class="meta">
+        <h3>Premium Editorial <span class="rec" style="color:#9A988F;border-color:var(--line)">Original</span></h3>
+        <p>The first build — refined, cinematic, magazine feel. Leans into the emotional-regulation message more than the mat.</p>
+        <div class="go">Open original →</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">Preview drafts for review · open each in a tab to compare · the winner gets refined into the real build.</div>
+</footer>
+</body>
+</html>

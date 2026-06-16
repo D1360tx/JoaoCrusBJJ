@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joao Crus Brazilian Jiu-Jitsu — Dripping Springs, TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Saira+Condensed:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#2EA3F2;
+    --deep:#0C71C3;
+    --indigo:#4F6ACA;
+    --pop:#EDF000;
+    --white:#FFFFFF;
+    --ink:#0A0B0F;
+    --ink2:#11131c;
+    --muted:#9aa3b2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--white);
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.01em}
+  .cond{font-family:'Saira Condensed',sans-serif;text-transform:uppercase;letter-spacing:.04em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+  .pop{color:var(--pop)}
+  .blue{color:var(--blue)}
+
+  /* belt motif bar */
+  .belt-bar{display:flex;height:8px;width:100%}
+  .belt-bar span{flex:1}
+  .belt-bar .b1{background:#fff}
+  .belt-bar .b2{background:var(--blue)}
+  .belt-bar .b3{background:#7c4dca}
+  .belt-bar .b4{background:#7a4a1e}
+  .belt-bar .b5{background:#0a0b0f;border-left:1px solid #222}
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.06em;
+    font-size:1.02rem;padding:15px 28px;border:0;cursor:pointer;
+    clip-path:polygon(0 0,100% 0,100% 100%,12px 100%,0 calc(100% - 12px));
+    transition:transform .15s ease, filter .15s ease;
+  }
+  .btn-pop{background:var(--pop);color:var(--ink)}
+  .btn-blue{background:var(--blue);color:var(--white)}
+  .btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.35)}
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(10,11,15,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Anton',sans-serif;font-size:1.25rem;letter-spacing:.02em;text-transform:uppercase}
+  .brand .mark{width:34px;height:34px;background:var(--blue);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;transform:rotate(0deg)}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-family:'Saira Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.92rem;color:#cbd2dd}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{padding:10px 18px}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{width:26px;height:3px;background:#fff;display:block}
+
+  /* HERO */
+  .hero{position:relative;padding-top:68px;background:var(--ink);overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:
+     radial-gradient(900px 600px at 80% -10%, rgba(46,163,242,.28), transparent 60%),
+     radial-gradient(700px 500px at -10% 90%, rgba(79,106,202,.25), transparent 55%);}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:64px 0 56px}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.18em;font-size:.85rem;color:var(--pop);margin-bottom:20px}
+  .kicker::before{content:"";width:34px;height:2px;background:var(--pop)}
+  .hero h1{font-size:clamp(3rem,8.2vw,6.6rem)}
+  .hero h1 .l3{color:var(--blue)}
+  .hero p.sub{margin:22px 0 30px;font-size:1.2rem;max-width:540px;color:#d4dae3}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta{margin-top:30px;display:flex;gap:26px;flex-wrap:wrap;font-family:'Saira Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em}
+  .hero-meta div{font-size:.9rem;color:var(--muted)}
+  .hero-meta b{display:block;font-family:'Anton',sans-serif;font-size:1.9rem;color:#fff;letter-spacing:.02em}
+
+  .hero-visual{position:relative}
+  .hero-img-frame{position:relative;aspect-ratio:4/5;background:linear-gradient(150deg,var(--deep),var(--indigo));overflow:hidden;clip-path:polygon(0 0,100% 0,100% 88%,88% 100%,0 100%);box-shadow:0 30px 70px -20px rgba(0,0,0,.7)}
+  .hero-img-frame img{width:100%;height:100%;object-fit:cover;mix-blend-mode:luminosity;opacity:.92}
+  .hero-img-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,11,15,.7))}
+  .float-card{position:absolute;bottom:18px;left:-14px;background:var(--pop);color:var(--ink);padding:14px 18px;clip-path:polygon(0 0,100% 0,100% 100%,10px 100%,0 calc(100% - 10px));max-width:230px;box-shadow:0 16px 40px rgba(0,0,0,.5);z-index:3}
+  .float-card .t{font-family:'Anton',sans-serif;font-size:1.05rem;text-transform:uppercase;line-height:1}
+  .float-card .d{font-size:.78rem;font-weight:600;margin-top:4px}
+  .float-badge{position:absolute;top:16px;right:-10px;background:var(--ink2);border:1px solid rgba(255,255,255,.12);color:#fff;padding:12px 16px;text-align:center;z-index:3}
+  .float-badge b{font-family:'Anton',sans-serif;font-size:1.8rem;color:var(--blue);display:block;line-height:1}
+  .float-badge span{font-family:'Saira Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.7rem;color:var(--muted)}
+
+  /* TRUST BAR */
+  .trust{background:var(--blue);color:var(--ink)}
+  .trust-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;padding:22px 0;align-items:center}
+  .trust-in .item{font-family:'Anton',sans-serif;font-size:clamp(1.1rem,2.4vw,1.7rem);text-transform:uppercase;display:flex;align-items:center;gap:10px}
+  .trust-in .item small{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:.7em;letter-spacing:.04em;color:#06304f}
+
+  /* SECTION SHELL */
+  section{position:relative}
+  .sec{padding:96px 0}
+  .sec-tag{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.85rem;color:var(--blue);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+  .sec-tag::before{content:"";width:28px;height:2px;background:var(--blue)}
+  .sec h2{font-size:clamp(2.3rem,5.5vw,4.2rem)}
+
+  /* PHILOSOPHY */
+  .philo{background:var(--ink2)}
+  .philo-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .philo blockquote{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.7rem,3.5vw,2.7rem);line-height:1.04;margin:18px 0}
+  .philo blockquote .hl{color:var(--pop)}
+  .philo p{color:#cdd4de;font-size:1.08rem;max-width:520px}
+  .philo .pillars{display:grid;gap:16px}
+  .pillar{border-left:4px solid var(--blue);background:#0a0b0f;padding:20px 22px}
+  .pillar h3{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:.03em;color:#fff;margin-bottom:6px}
+  .pillar p{color:var(--muted);font-size:.98rem;max-width:none}
+  .pillar:nth-child(2){border-color:var(--pop)}
+  .pillar:nth-child(3){border-color:var(--indigo)}
+
+  /* PROGRAMS */
+  .prog-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:46px;flex-wrap:wrap}
+  .prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .pcard{position:relative;background:var(--ink2);border:1px solid rgba(255,255,255,.07);padding:30px 26px 28px;overflow:hidden;transition:transform .18s ease,border-color .18s ease}
+  .pcard:hover{transform:translateY(-6px);border-color:var(--blue)}
+  .pcard .num{position:absolute;top:-18px;right:6px;font-family:'Anton',sans-serif;font-size:6rem;color:rgba(255,255,255,.05);line-height:1}
+  .pcard .age{display:inline-block;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;background:var(--blue);color:var(--ink);padding:5px 11px;margin-bottom:14px}
+  .pcard.feat{background:linear-gradient(160deg,#0C71C3,#0a0b0f)}
+  .pcard.feat .age{background:var(--pop)}
+  .pcard h3{font-family:'Anton',sans-serif;font-size:1.7rem;text-transform:uppercase;margin-bottom:8px}
+  .pcard .tag{font-style:italic;color:var(--pop);font-weight:600;font-size:.95rem;margin-bottom:12px}
+  .pcard p{color:#c3cad4;font-size:.96rem;position:relative;z-index:2}
+  .pcard a.more{display:inline-block;margin-top:16px;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;color:var(--blue)}
+  .pcard.feat a.more{color:var(--pop)}
+
+  /* ABOUT / PEDIGREE */
+  .about{background:var(--ink2);overflow:hidden}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center}
+  .about-img{position:relative;aspect-ratio:3/4;background:linear-gradient(160deg,var(--deep),var(--ink));overflow:hidden;clip-path:polygon(8% 0,100% 0,100% 100%,0 100%,0 8%)}
+  .about-img img{width:100%;height:100%;object-fit:cover;object-position:top center}
+  .about-img .cap{position:absolute;left:0;bottom:0;background:var(--pop);color:var(--ink);padding:12px 18px;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.05rem;letter-spacing:.02em}
+  .about h2{margin:10px 0 18px}
+  .about p{color:#cdd4de;font-size:1.06rem;margin-bottom:14px}
+  .lineage{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+  .lineage span{font-family:'Saira Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:.85rem;border:1px solid rgba(46,163,242,.5);color:#cfe7fb;padding:7px 13px}
+  .cred-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+  .cred{background:#0a0b0f;padding:16px 18px;border-bottom:3px solid var(--blue)}
+  .cred b{font-family:'Anton',sans-serif;font-size:1.9rem;color:#fff;display:block;line-height:1}
+  .cred span{font-family:'Saira Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:.82rem;color:var(--muted)}
+
+  /* BOOKS & PODCAST */
+  .books{background:var(--ink)}
+  .books-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;align-items:stretch}
+  .bcard{background:var(--ink2);border:1px solid rgba(255,255,255,.07);padding:26px;display:flex;flex-direction:column}
+  .bcover{aspect-ratio:3/4;background:linear-gradient(150deg,var(--indigo),var(--deep));margin-bottom:20px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .bcover img{width:100%;height:100%;object-fit:contain}
+  .bcard .lbl{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;color:var(--blue);margin-bottom:6px}
+  .bcard h3{font-family:'Anton',sans-serif;font-size:1.45rem;text-transform:uppercase;margin-bottom:8px}
+  .bcard p{color:#c3cad4;font-size:.95rem;flex:1}
+  .pod{background:linear-gradient(160deg,#0C71C3,#0a0b0f);justify-content:space-between}
+  .pod .wave{display:flex;gap:5px;align-items:flex-end;height:70px;margin-bottom:18px}
+  .pod .wave i{width:7px;background:var(--pop);display:block;border-radius:3px}
+  .pod a.more{color:var(--pop)}
+  .bcard a.more{margin-top:16px;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;color:var(--blue)}
+
+  /* TESTIMONIALS */
+  .testi{background:var(--ink2)}
+  .testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .tcard{background:#0a0b0f;border:1px solid rgba(255,255,255,.07);padding:30px;position:relative}
+  .tcard .stars{color:var(--pop);font-size:1.05rem;letter-spacing:3px;margin-bottom:14px}
+  .tcard p{font-size:1.08rem;color:#e3e8ef;line-height:1.5}
+  .tcard .who{margin-top:18px;font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--blue)}
+  .tcard::before{content:"";position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(180deg,var(--blue),var(--indigo))}
+
+  /* FINAL CTA */
+  .final{position:relative;background:var(--blue);color:var(--ink);overflow:hidden}
+  .final::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 90% 10%, rgba(237,240,0,.4),transparent 60%)}
+  .final-in{position:relative;text-align:center;padding:90px 0}
+  .final h2{font-size:clamp(2.6rem,7vw,5.4rem);color:var(--ink)}
+  .final p{max-width:560px;margin:18px auto 30px;font-size:1.15rem;color:#06304f;font-weight:600}
+  .final .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .final .btn-blk{background:var(--ink);color:#fff}
+  .final .btn-wht{background:var(--white);color:var(--ink)}
+
+  /* FOOTER */
+  footer{background:var(--ink);padding:64px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px}
+  footer .brand{margin-bottom:16px}
+  footer p,footer a{color:#b6bdc8;font-size:.97rem}
+  footer a:hover{color:var(--blue)}
+  .foot-col h4{font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#fff;margin-bottom:14px;font-size:1rem}
+  .foot-col a{display:block;margin-bottom:8px}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:.85rem;font-family:'Saira Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em}
+
+  /* PREVIEW RIBBON */
+  .ribbon{position:fixed;bottom:16px;left:16px;z-index:90;background:var(--pop);color:var(--ink);font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;padding:8px 14px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+
+  /* reveal anim — gated for reduced motion safety */
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.in{opacity:1;transform:none}
+  }
+
+  /* RESPONSIVE */
+  @media (max-width:1024px){
+    .prog-grid{grid-template-columns:1fr 1fr}
+    .books-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:860px){
+    .nav-links{display:none}
+    .burger{display:flex}
+    .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--ink2);padding:22px 28px;gap:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .hero-visual{max-width:430px}
+    .philo-grid,.about-grid,.testi-grid{grid-template-columns:1fr;gap:34px}
+    .about-img{max-width:420px}
+  }
+  @media (max-width:620px){
+    .wrap{padding:0 18px}
+    .sec{padding:70px 0}
+    .prog-grid,.books-grid{grid-template-columns:1fr}
+    .cred-row{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr;gap:30px}
+    .hero-meta{gap:18px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#" class="brand"><span class="mark">JC</span> Joao Crus BJJ</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#method">Method</a>
+      <a href="#programs">Programs</a>
+      <a href="#about">About</a>
+      <a href="#books">Books &amp; Pod</a>
+      <a href="#testi">Reviews</a>
+      <a href="#book" class="btn btn-pop nav-cta">Free Class</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="kicker">Dripping Springs, TX · Est. 2003</span>
+      <h1><span class="l1">Train Hard.</span><br><span class="l2">Think Deeper.</span><br><span class="l3">Rise Stronger.</span></h1>
+      <p class="sub">Most martial arts schools teach you to win. We teach you to <b class="pop">regulate</b>. Relational first, physical second — Brazilian Jiu-Jitsu that builds emotional regulation, boundaries, and real confidence for kids and adults.</p>
+      <div class="hero-cta">
+        <a href="#book" class="btn btn-pop">Book a Free Class</a>
+        <a href="#programs" class="btn btn-ghost">See Programs</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>25+</b> Years Teaching</div>
+        <div><b>500+</b> Families</div>
+        <div><b>★★★★★</b> Google &amp; FB</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-frame">
+        <img src="https://i0.wp.com/joaocrusbjj.com/wp-content/uploads/2026/03/KIDS-BJJ.jpg" alt="Kids training Brazilian Jiu-Jitsu" loading="eager">
+      </div>
+      <div class="float-badge"><b>3+</b><span>Kids From Age</span></div>
+      <div class="float-card">
+        <div class="t">Carlson Gracie Lineage</div>
+        <div class="d">Black belt · taught under the legend himself.</div>
+      </div>
+    </div>
+  </div>
+  <div class="belt-bar"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span><span class="b5"></span></div>
+</header>
+
+<!-- TRUST BAR -->
+<section class="trust">
+  <div class="wrap trust-in">
+    <div class="item">25+ <small>Years</small></div>
+    <div class="item">500+ <small>Families</small></div>
+    <div class="item">Est. 2003</div>
+    <div class="item">4 <small>Languages</small></div>
+    <div class="item">★★★★★ <small>Google &amp; Facebook</small></div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY / METHOD -->
+<section class="philo sec" id="method">
+  <div class="wrap philo-grid">
+    <div class="reveal">
+      <div class="sec-tag">The Method</div>
+      <blockquote>We don't just teach you to <span class="hl">win</span>. We teach you to <span class="hl">regulate</span>.</blockquote>
+      <p>On the mat, you can't fake a boundary. BJJ becomes the safest place to feel big feelings, set limits, and stay calm under pressure. Our Montessori-informed approach turns grappling into a tool for emotional regulation, boundary-setting, and confidence — for the smallest kids to the busiest adults. Come in stressed, leave grounded.</p>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar"><h3>Relational First</h3><p>Connection before correction. We build trust, then technique — every belt earned through real relationship.</p></div>
+      <div class="pillar"><h3>Physical Second</h3><p>World-class grappling and self-defense, taught with patience. No experience or fitness required to start.</p></div>
+      <div class="pillar"><h3>Regulation Over Reaction</h3><p>Big feelings learn brave moves. Students leave able to name emotions, hold boundaries, and stay calm under pressure.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="sec" id="programs">
+  <div class="wrap">
+    <div class="prog-head reveal">
+      <div>
+        <div class="sec-tag">Programs</div>
+        <h2>Find Your Mat</h2>
+      </div>
+      <p style="max-width:360px;color:var(--muted)">From age three to corporate teams — every program built around the same principle: boundaries taught through the body.</p>
+    </div>
+    <div class="prog-grid">
+      <div class="pcard feat reveal"><span class="num">01</span><span class="age">Ages 3–7 · Only school local that takes under-4s</span><h3>Little Champions</h3><div class="tag">Where big feelings learn brave moves.</div><p>Confidence through play, emotional vocabulary, and safe boundaries for our youngest grapplers.</p><a href="#book" class="more">Book a trial →</a></div>
+      <div class="pcard reveal"><span class="num">02</span><span class="age">Ages 8–12</span><h3>Junior Warriors</h3><div class="tag">Train hard, think deeper, rise stronger.</div><p>Real technique and belt curriculum, resilience under pressure, and leadership on and off the mat.</p><a href="#book" class="more">Book a trial →</a></div>
+      <div class="pcard reveal"><span class="num">03</span><span class="age">Adults</span><h3>Fundamentals</h3><div class="tag">Come in stressed, leave grounded.</div><p>White-to-blue progression and real self-defense. No experience or fitness required — just show up.</p><a href="#book" class="more">Book a trial →</a></div>
+      <div class="pcard reveal"><span class="num">04</span><span class="age">1-on-1</span><h3>Private Coaching</h3><div class="tag">The fastest path to progress.</div><p>Personalized, one-on-one instruction tailored to your goals, your pace, and your body.</p><a href="#book" class="more">Inquire →</a></div>
+      <div class="pcard reveal"><span class="num">05</span><span class="age">8-Week · Adults</span><h3>Boundary Guard</h3><div class="tag">Boundaries taught through the body.</div><p>An 8-week program where adults learn to set and hold limits physically. No BJJ experience needed.</p><a href="#book" class="more">Join the next cohort →</a></div>
+      <div class="pcard reveal"><span class="num">06</span><span class="age">Teams · Corporate</span><h3>Team Building &amp; Speaking</h3><div class="tag">On the mat, you can't fake a boundary.</div><p>Experiential team building and corporate speaking for HR and leadership teams.</p><a href="#book" class="more">Request a session →</a></div>
+    </div>
+  </div>
+  <div class="belt-bar" style="margin-top:70px"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span><span class="b5"></span></div>
+</section>
+
+<!-- ABOUT / PEDIGREE -->
+<section class="about sec" id="about">
+  <div class="wrap about-grid">
+    <div class="about-img reveal">
+      <img src="https://i0.wp.com/joaocrusbjj.com/wp-content/uploads/2026/01/JOAO-CRUS-HEAD-SHOT.jpg" alt="Joao Crus, black belt instructor">
+      <div class="cap">Joao Crus · Black Belt</div>
+    </div>
+    <div class="reveal">
+      <div class="sec-tag">The Pedigree</div>
+      <h2>A Lineage You Can Feel</h2>
+      <p>Joao Crus is a Brazilian Jiu-Jitsu black belt who trained, befriended, and then instructed under the legendary <b class="blue">Carlson Gracie</b>. He was further coached by <b class="blue">Ricardo de la Riva</b> — yes, the De La Riva guard is named after him — and by <b class="blue">Marcello Monteiro</b>.</p>
+      <p>Over 25+ years he has guided 500+ families, authored two books, hosts a podcast, speaks four languages, and teaches a Montessori-informed method that coaches and school owners across the US and overseas seek out for advice.</p>
+      <div class="lineage">
+        <span>Carlson Gracie</span><span>Ricardo de la Riva</span><span>Marcello Monteiro</span><span>Montessori-Informed</span>
+      </div>
+      <div class="cred-row">
+        <div class="cred"><b>25+</b><span>Years Teaching</span></div>
+        <div class="cred"><b>500+</b><span>Families Coached</span></div>
+        <div class="cred"><b>2</b><span>Published Books</span></div>
+        <div class="cred"><b>4</b><span>Languages Spoken</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS & PODCAST -->
+<section class="books sec" id="books">
+  <div class="wrap">
+    <div class="prog-head reveal">
+      <div>
+        <div class="sec-tag">Books &amp; Podcast</div>
+        <h2>Off The Mat</h2>
+      </div>
+      <p style="max-width:360px;color:var(--muted)">The same method, in print and on air — for parents and adults healing and growing through BJJ.</p>
+    </div>
+    <div class="books-grid">
+      <div class="bcard reveal">
+        <div class="bcover"><img src="https://i0.wp.com/joaocrusbjj.com/wp-content/uploads/2026/02/GRAPPLE-WITH-EMOTIONS-Picsart-BackgroundRemover.png" alt="Grapple With Emotions book cover"></div>
+        <div class="lbl">Book · For Parents</div>
+        <h3>Grapple With Emotions</h3>
+        <p>How parents can use BJJ to teach kids emotional regulation — turning big feelings into brave moves.</p>
+        <a href="#" class="more">Learn more →</a>
+      </div>
+      <div class="bcard reveal">
+        <div class="bcover"><img src="https://i0.wp.com/joaocrusbjj.com/wp-content/uploads/2026/02/FROM-TRAUMA-TO-TRIUMPH-Picsart-BackgroundRemover.webp" alt="From Trauma to Triumph book cover"></div>
+        <div class="lbl">Book · For Adults</div>
+        <h3>From Trauma to Triumph</h3>
+        <p>A guide for adults to heal and build resilience through the practice of Brazilian Jiu-Jitsu.</p>
+        <a href="#" class="more">Learn more →</a>
+      </div>
+      <div class="bcard pod reveal">
+        <div class="wave" aria-hidden="true">
+          <i style="height:30%"></i><i style="height:65%"></i><i style="height:90%"></i><i style="height:45%"></i><i style="height:75%"></i><i style="height:100%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:80%"></i><i style="height:50%"></i>
+        </div>
+        <div>
+          <div class="lbl" style="color:var(--pop)">Podcast · Spotify &amp; YouTube</div>
+          <h3>Black Belt Parenting Life</h3>
+          <p style="color:#dfe9f5">Conversations on raising regulated, resilient kids — straight from 25+ years on the mat.</p>
+        </div>
+        <a href="#" class="more">Listen now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi sec" id="testi">
+  <div class="wrap">
+    <div class="sec-tag reveal">The Reviews</div>
+    <h2 class="reveal" style="margin-bottom:42px">Happy Son, Happy Mom.</h2>
+    <div class="testi-grid">
+      <div class="tcard reveal"><div class="stars">★★★★★</div><p>"I brought my teenage boys to Joao for self defense, discipline, mental toughness, and confidence. They are very different boys and Joao was able to adjust his teaching techniques on the fly to maximize results. I highly recommend private classes."</p><div class="who">— Darren Sack</div></div>
+      <div class="tcard reveal"><div class="stars">★★★★★</div><p>"I enrolled both of my children into Joao Crus's Brazilian Jiu-Jitsu class and I'm so glad I did. The instructors are fantastic and down to earth — building confidence, discipline, and character along the way. Highly recommended!"</p><div class="who">— John Baron</div></div>
+      <div class="tcard reveal"><div class="stars">★★★★★</div><p>"I was very hesitant to join with my 3.5-year-old. Joao's school is such a lovely and welcoming space that we were both convinced from day one. Happy son, happy mom."</p><div class="who">— Ania Kozak</div></div>
+      <div class="tcard reveal"><div class="stars">★★★★★</div><p>"Coach Joao is a master of technique, but he also helps students see the benefits of BJJ in their daily lives through his wisdom. Highly recommend for adults and especially kids building confidence and resilience."</p><div class="who">— Mike Paclik</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="book">
+  <div class="belt-bar"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span><span class="b5"></span></div>
+  <div class="wrap final-in">
+    <div style="font-family:'Saira Condensed',sans-serif;font-weight:800;letter-spacing:.18em;font-size:.9rem;color:#06304f;margin-bottom:14px">FIRST CLASS IS FREE</div>
+    <h2>Step On The Mat.</h2>
+    <p>No experience, no fitness, no pressure. Bring the whole family — kids from age 3, adults of every level. Come in stressed, leave grounded.</p>
+    <div class="btns">
+      <a href="tel:5126444560" class="btn btn-blk">Text / Call 512-644-4560</a>
+      <a href="mailto:joaocrus@gmail.com" class="btn btn-wht">Email To Book</a>
+    </div>
+  </div>
+  <div class="belt-bar"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span><span class="b5"></span></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#" class="brand"><span class="mark">JC</span> Joao Crus BJJ</a>
+        <p style="max-width:320px">Brazilian Jiu-Jitsu for kids and adults in Dripping Springs, TX. Relational first. Physical second. Building regulation, boundaries, and confidence since 2003.</p>
+        <div class="belt-bar" style="margin-top:18px;max-width:240px"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span><span class="b5"></span></div>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <a href="https://maps.google.com/?q=120+Frog+Pond+Lane+Dripping+Springs+TX+78620" target="_blank">120 Frog Pond Lane<br>Dripping Springs, TX 78620</a>
+        <a href="tel:5126444560">Text / Call: 512-644-4560</a>
+        <a href="mailto:joaocrus@gmail.com">joaocrus@gmail.com</a>
+        <a href="https://instagram.com/joaocrusbjj" target="_blank">@joaocrusbjj</a>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#method">The Method</a>
+        <a href="#programs">Programs</a>
+        <a href="#about">About Joao</a>
+        <a href="#books">Books &amp; Podcast</a>
+        <a href="#book">Book a Free Class</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Joao Crus Brazilian Jiu-Jitsu · Est. 2003</span>
+      <span>Carlson Gracie Lineage · Black Belt</span>
+    </div>
+  </div>
+</footer>
+
+<div class="ribbon">PREVIEW · BOLD ATHLETIC</div>
+
+<script>
+  // Mobile menu
+  var burger=document.getElementById('burger');
+  var navLinks=document.getElementById('navLinks');
+  burger.addEventListener('click',function(){navLinks.classList.toggle('open');});
+  navLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navLinks.classList.remove('open');});});
+
+  // Scroll reveal — only enhances; content visible by default if reduced motion / no JS
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce && 'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+  }
+</script>
+</body>
+</html>
