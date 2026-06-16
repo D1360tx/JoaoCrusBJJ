@@ -122,17 +122,23 @@ Benchmark-anchored, positioned top-third of the Dripping Springs market (affluen
 
 ---
 
-## 5. COMPETITOR MAP — DATA TO PULL (next intel task)
+## 5. COMPETITOR MAP — mostly PULLED (see file 12); remaining gaps below
 
-For **Stoic Jiu Jitsu** and **JJ Machado Dripping Springs** (+ any new entrants):
-- [ ] Published pricing (memberships, kids, drop-in, intro offers)
-- [ ] Full class schedule (esp. kids slots vs. Joao's — schedule gaps = opportunity)
-- [ ] Google review count + rating + recency (and Joao's own, for the gap analysis)
-- [ ] Kids program depth: age splits, curriculum structure, belt/stripe system, camps
-- [ ] Instagram following/engagement + content style
-- [ ] Lineage/instructor pedigree claims
-- [ ] Free trial / intro funnel mechanics
-- [ ] 🆕 **Meta Ad Library sweep** (public — needs NO account access, just page names): active ads for (a) Joao's own page (his agency is running ads — what are they actually running?), (b) Stoic + JJ Machado DS, (c) Austin-metro gyms, (d) national kids-martial-arts advertisers (Gracie Barra etc.) for proven hooks/offers/creative patterns. Repeat monthly.
+> ✅ Most of this was completed in the 2026-06-11 ad-intel sweep (`12-AD-INTEL-SWEEP-2026-06.md`).
+> For **Stoic Jiu Jitsu** and **JJ Machado Dripping Springs** (+ Austin-metro & national patterns):
+
+**✅ DONE (file 12):**
+- [x] Published pricing — confirmed **nobody local publishes pricing** (Stoic, JJM, Joao all opaque).
+- [x] Kids program depth — Stoic splits Little (4–7)/Big (8–12)/teens; JJM kids+adult; both run camps.
+- [x] Lineage/pedigree — JJM = Todd White, 4th-deg under Jean Jacques Machado; Stoic "certified instructor."
+- [x] Free trial / intro funnel mechanics — all three run **"free week trial"**; nobody owns a *named, structured* intro (the gap our $49 Confidence Kickstart fills, §4).
+- [x] Platform/funnel fingerprints — Stoic on 97-Display-style (standing `/Home/Offer/` page → likely paid-ads-ready); JJM on Mindbody/Wellhub (ops-mature, less ad-aggressive).
+
+**🟡 STILL OPEN (genuine gaps):**
+- [ ] **Google review count + rating + recency** for Stoic/JJM vs. Joao's own (the review-gap analysis — not yet pulled; do as part of the GBP/review-engine Phase-0 task).
+- [ ] **Competitor Instagram** following/engagement + content style (not pulled — lower priority).
+- [ ] **Full kids-slot schedule comparison** vs. Joao's (schedule-gap = opportunity; JJM partial, Stoic URL known but not detailed).
+- [ ] 🆕 **Meta Ad Library sweep** — ❌ NOT completable from this environment (all fetches 403'd; see 12 §1). Needs a **20-min human browser pass** with screenshots (exact URLs in 12 §7): Joao's own page, Stoic + JJM, Austin-metro gyms, national kids-MA advertisers. **Repeat monthly.**
 
 ---
 

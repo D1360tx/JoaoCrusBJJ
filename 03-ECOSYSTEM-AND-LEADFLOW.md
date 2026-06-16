@@ -79,7 +79,7 @@
 | Skool: Children BJJ Blueprint | Coach funnel (free→paid) | 9 members |
 | Skool: BJJ Coach Blueprint | Coach course ($99) | 3 members |
 | Spotify/YouTube podcast | Authority/audience | Sporadic |
-| Instagram @joaocrusbjj | Social | (pending pull) |
+| Instagram @joaocrusbjj | Social | ~8K followers (vanity — dead engagement); see `05` |
 | YouTube @Joaocrusbjjatx | Social/video | ~2.28K subs |
 | Amazon (2 books) | Digital product/authority | Live |
 

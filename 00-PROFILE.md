@@ -75,7 +75,7 @@ Free class CTA → contact form / text → coach meeting → enroll. No pricing 
 - **Categories:** Health, Fitness & Dieting
 
 ### Podcast
-- Site has "Books and Podcast" page — https://joaocrusbjj.com/books-and-podcast/ (not yet scraped)
+- "Books and Podcast" page — https://joaocrusbjj.com/books-and-podcast/ ✅ scraped (2026-06-09). Both books + "Black Belt Parenting Life" podcast (Spotify, YouTube @blackbeltparenting2522, FB group, blackbeltparenting.net). Full detail in `03-ECOSYSTEM-AND-LEADFLOW.md`.
 
 ---
 
