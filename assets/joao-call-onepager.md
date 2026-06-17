@@ -38,6 +38,10 @@
 
 ---
 
+## SHOW / PITCH (if time)
+"New site, low-risk: we don't touch your current one — we build a cleaner version on a subdomain (new.joaocrusbjj.com) where **we control the whole flow** — page, forms, tracking, follow-up. Pulls everything into one place and shows off your authority. I've got a rough draft + a few design directions to show you."
+- [ ] ★ Brand assets? logo files / good photos / video? ___  ·  a look he loves or hates? ___
+
 ## CLOSE (say)
 "Great — I've got what I need to start. I'll send a short checklist for the rest, kick off the texting registration, and start wiring up the follow-up. Parents start getting instant responses within days. Anything you want prioritized first?"
 

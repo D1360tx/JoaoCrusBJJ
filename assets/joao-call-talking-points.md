@@ -33,6 +33,17 @@
 
 ---
 
+## 2½ · The new site — one front door we fully control (say + show)
+▸ "Part of fixing the leak is the website itself — and this is low-risk. We **don't touch your current site**; it keeps running exactly as-is. Instead we build a **cleaner version on a subdomain** — something like `new.joaocrusbjj.com` — where **we control every step of the flow**: the page, the forms, the tracking, the follow-up. End to end."
+▸ "That lets us pull everything into one place — your programs, the books, the podcast, the kids curriculum — and finally *show off your authority*: Carlson Gracie and De La Riva, the books, 500+ families, 4.8 stars. Right now that story is scattered across a half-dozen sites and mostly buried."
+▸ "Once it's proven and converting, we can point your main domain at it — but there's zero risk to what you've got in the meantime."
+▸ "I've already started a rough draft — let me show you a few design directions so you can react." *[show the variants / preview]*
+❓ "How do you feel about that approach — a new site on a subdomain that we own the whole flow on?"
+❓ ★ "Do you have brand assets I can use — logo files, good photos, any video? And is there a look you love, or one you can't stand?"
+👂 *Emphasize his live site stays untouched — you're not asking to risk it. The subdomain = full flow control + clean attribution for the baseline/comp.*
+
+---
+
 ## 3 · How you run things now (operations — ask conversationally)
 ❓ ★ "When someone reaches out today — form, call, DM — what actually happens? Who responds, how fast, and how?"
 ❓ ★ "Where do leads live right now — any spreadsheet or system, or just the Gmail inbox? And which email address actually gets the website form submissions?"
