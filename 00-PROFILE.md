@@ -35,10 +35,19 @@ Not a "win/compete" school. Core message = **emotional regulation, boundary-sett
 - **Website:** https://joaocrusbjj.com (WordPress + Divi theme)
 - **Phone/Text:** 512-644-4560 (also a tel: 833-532-4152 on site)
 - **Email:** joaocrus@gmail.com
+- **Address:** 120 Frog Pond Ln **#200**, Dripping Springs, TX 78620 (suite #200 per GBP)
 - **Instagram:** https://www.instagram.com/joaocrusbjj/
 - **YouTube:** https://www.youtube.com/channel/UCLBZ8MYNkWf5_EJTuIYLCdQ (Joaocrusbjjatx, ~2.28K subs)
 - **Messenger:** https://m.me/joaocrusbjjatx2
 - **Live chat:** Chatway widget on site
+
+## 🟢 Google Business Profile — CONFIRMED & STRONG (2026-06-17, screenshot)
+- **Claimed & actively managed** ("Updated by this business 4 weeks ago") — he controls it → just needs to add us as a manager (not claim from scratch).
+- **Rating: 4.8 ★ · 98 Google reviews** — genuinely strong volume + score; real social proof to feature everywhere (site, ads, funnel).
+- Listed as "Martial arts school in Hays County, Texas." Hours shown (closes 7:30 PM). Appointments link → joaocrusbjj.com.
+- **GBP Products already set up:** "No Gi Classes," "KIDS 42 Days Bra…[challenge]," "Kids Group Classes."
+- **Facebook rating: 4.8/5 · 26 votes** (shown in the GBP "reviews from the web").
+- ✅ Partially closes the review-gap intake item — Joao's numbers are known (4.8/98); competitor (Stoic/JJM) review counts still to pull for the comparison (07 §5).
 
 ## Offerings (from website nav)
 - Group Classes (all levels)

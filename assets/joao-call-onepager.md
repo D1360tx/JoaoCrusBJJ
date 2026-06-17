@@ -44,7 +44,7 @@
 ---
 
 ### If there's extra time, also grab:
-833 number? · gym software ever? · who answers calls during class? · Google Business Profile control? · kids-from-age-3 official + OK to advertise? · "schools" = martial-arts or regular? · privates now vs. wanted? · any email tool ever (Mailchimp/ActiveCampaign/etc.)? · messages sound like *you* or "Team JCBJJ"?
+833 number? · gym software ever? · who answers calls during class? · **who manages the Google listing (you / web guy / agency)? → add me as manager** (profile already exists — 4.8★, 98 reviews) · kids-from-age-3 official + OK to advertise? · "schools" = martial-arts or regular? · privates now vs. wanted? · any email tool ever (Mailchimp/ActiveCampaign/etc.)? · messages sound like *you* or "Team JCBJJ"?
 
 ### After the call
 Flip ★ answers into `08` · send `joao-shared-checklist.md` for the long tail · start A2P registration · lock baseline in writing.

@@ -68,7 +68,7 @@
 ## 📇 Listings / directories
 - BBB: https://www.bbb.org/us/tx/dripping-springs/profile/martial-arts/joao-crus-brazilian-jiu-jitsu-0825-90031134
 - Nextdoor: https://nextdoor.com/pages/joao-crus-brazilian-jiu-jitsu-2/
-- **Google Business Profile** — ⬜ assumed to exist but UNCONFIRMED (open intake item; needed for the review-gap / GBP work)
+- **Google Business Profile — ✅ CONFIRMED, claimed & actively managed** (2026-06-17). **4.8★ · 98 reviews.** "Martial arts school, Hays County, TX." Products set up (No Gi, Kids 42-Day challenge, Kids Group). Appointments → joaocrusbjj.com. → need manager access, not a claim.
 
 ---
 

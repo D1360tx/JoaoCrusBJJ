@@ -89,8 +89,10 @@
 ---
 
 ## 8 · Access (don't screen-share-grant live unless there's time — just tee it up)
-▸ "Last bucket is access — WordPress, your Google listing, Facebook/Instagram, GoDaddy, the form inbox, Skool, YouTube, the ad account. I'll send you secure step-by-step instructions for each — never email me passwords. We can do these one at a time this week."
-❓ "Do you have a Google Business Profile you actually control? If not, no problem — I'll walk you through claiming it."
+▸ "Last bucket is access — WordPress, Google, Facebook/Instagram, GoDaddy, the form inbox, Skool, YouTube, the ad account. I'll send secure step-by-step instructions for each — never email me passwords. We can do these one at a time this week."
+▸ "On Google — your profile's in great shape, **4.8 stars with almost 100 reviews**. That's real social proof we're going to put to work everywhere. I just need you to add me as a **manager** on it."
+❓ "Are *you* the one who manages the Google listing, or does someone else have it — your web person or the agency?"
+👂 *We already know the GBP exists and is actively managed (don't ask "do you have one"). The only question is who controls it.*
 
 ---
 
