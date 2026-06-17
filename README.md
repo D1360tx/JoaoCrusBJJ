@@ -27,6 +27,7 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [12-AD-INTEL-SWEEP-2026-06.md](12-AD-INTEL-SWEEP-2026-06.md) | First competitive ad-intel sweep: competitor offers/funnels, agency shortlist, ad-pattern playbook (Ad Library itself needs a 20-min browser pass — §7) |
 | [assets/joao-shared-checklist.md](assets/joao-shared-checklist.md) | Clean client-facing checklist — paste into Google Doc and share with Joao |
 | [assets/url-inventory.md](assets/url-inventory.md) | **Master URL inventory** — every web property, channel, listing, phone/email Joao has (~20 front doors) |
+| [assets/joao-call-talking-points.md](assets/joao-call-talking-points.md) | **Call script** — lead-the-call talking points (reframed from the intake email) with ★ must-get items |
 | [site/](site/) | **Website preview build** — consolidated authority hub + Kids + lead-magnet pages; `site/variants/` holds 3 BJJ design directions (Bold Athletic / Gritty Dojo / Modern Sport) + compare hub |
 
 ## Core thesis
