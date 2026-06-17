@@ -28,6 +28,7 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [assets/joao-shared-checklist.md](assets/joao-shared-checklist.md) | Clean client-facing checklist — paste into Google Doc and share with Joao |
 | [assets/url-inventory.md](assets/url-inventory.md) | **Master URL inventory** — every web property, channel, listing, phone/email Joao has (~20 front doors) |
 | [assets/joao-call-talking-points.md](assets/joao-call-talking-points.md) | **Call script** — lead-the-call talking points (reframed from the intake email) with ★ must-get items |
+| [assets/joao-call-onepager.md](assets/joao-call-onepager.md) | **Call one-pager** — glance sheet: opening lines + just the ★ must-gets |
 | [site/](site/) | **Website preview build** — consolidated authority hub + Kids + lead-magnet pages; `site/variants/` holds 3 BJJ design directions (Bold Athletic / Gritty Dojo / Modern Sport) + compare hub |
 
 ## Core thesis
