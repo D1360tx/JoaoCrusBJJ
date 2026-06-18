@@ -29,13 +29,15 @@ You've got ~8,000 people and you're getting no response, so I want to find out *
 **④ Billing (Zen Planner).**
 - Add me as a read-only user if you can — or just send a screenshot of your current active counts: how many kids / adults / private-only.
 
-**⑤ Google Analytics.**
-- You don't have it yet — I'll set it up. Just add me to your WordPress (I'll send instructions), or I'll send you a small piece of code to paste.
+**⑤ Google Analytics — let's set it up under YOUR Google account.**
+- Better that this lives in your own Google account so you always own the data. It's about 10 minutes: create the free GA4 property, then add me as a user so I can read it. I'm happy to hop on and walk you through it, or send simple steps — your call.
 
-**The 3 numbers (whenever you get a minute):**
+**⑥ Twilio (texting).**
+- You mentioned setting up Twilio before to text people — is that still active, and how far did it get (a number set up, any carrier registration)? If it's already in place, we can likely use it and skip a couple weeks of setup. Just tell me what's there and I'll take it from your answer.
+
+**Two numbers (whenever you get a minute):**
 1. Your current rates — kids, adults, family, privates, drop-in.
 2. Last 12 months of revenue, however rough (Zen Planner can export it). *This sets the starting line we measure the growth against.*
-3. Your legal business name, EIN, and business address — needed to set up automated texting (it has a 1–2 week approval wait, so I want to start it now). **Don't email the EIN — I'll send a secure link for that one.**
 
 That's it. Fastest path is items ①–③ — even just screenshots. If it's easier to screen-share for 15 minutes, say the word.
 
@@ -49,6 +51,7 @@ Diego
 ### Internal notes (don't send)
 - Beehiiv open/click rates are the key diagnostic — lead with that.
 - Zen Planner can export revenue + active members → covers baseline + counts in one place.
+- **GA under Joao's own Google account on purpose** — data ownership + keeps his infra independent (per doc 11). We get a user invite, not control.
+- **Texting: Twilio-first, EIN deferred.** Relationship is new — don't ask for legal name/EIN/address yet. Find out what his existing Twilio setup includes first; if A2P registration is already done, we may skip the registration ask entirely. Only request EIN/business details later, if/when registration is actually needed.
 - After he replies, flip answered items in `08-NEEDED-FROM-JOAO.md` and update the call action plan.
-- EIN via secure link (password-manager share or self-expiring note), never plain email.
 - If no reply in 2–3 days, nudge by text (short).
