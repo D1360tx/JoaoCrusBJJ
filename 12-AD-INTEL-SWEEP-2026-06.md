@@ -42,6 +42,15 @@
 
 **[UNVERIFIED — needs browser]** What the ads themselves say, how many are active, when they launched, whether they run from the DS page or the Austin page. See §7.
 
+### 2.1b 🆕 VERIFICATION SWEEP — local intro-offer landscape (2026-06-17)
+Live check of every DS-area BJJ school to test the "named intro offer is a gap" claim. **Result: it's NOT a gap — every school offers a free trial.** Corrected in `assets/stoic-breakdown.md`.
+- **🆕 Gracie Barra Dripping Springs ([gbdrip.com](https://www.gbdrip.com/)) — 261 Frog Pond Ln, *Joao's own street* (he's at 120).** Previously under-weighted; this is arguably the closest competitor. Opened May 2021 by 4th-deg black belt Alexandre "Dande" Santos + black belt Robert "Max" Bookman. Full GB curriculum; **kids GBK split Tiny Champs (4–6) / Little (7–9) / Juniors (10–12) / Teens (13+)**; homeschool class; **free trial class** (contact form: "I'm interested in: Free Trial"). Phone 512-971-9359.
+- **Stoic** `/offer` ✅ confirmed: "1st class FREE + a FREE bonus," dedicated page with reCAPTCHA + SMS-consent capture (97-Display/`display97` cloudinary assets). Kids 4–12, teens 13–16.
+- **JJ Machado Austin** — **website is DOWN** ([jjmachadoaustin.com](https://www.jjmachadoaustin.com/) → Wix "not connected," 404). Offer (free week) only visible via FB/directories now.
+- **Joao** — "First class FREE" (Yelp/IG confirmed).
+- Austin-metro (GB Austin locations, VOW, Simple Man, Impact, etc.) — all "free trial class."
+- **Takeaways:** (1) free trial = table stakes, not a differentiator; (2) **teen programs exist at BOTH Stoic (13–16) and GB DS (13+)** — Joao's teen gap is filled by two neighbors; (3) **kids start age 4 everywhere** (GB Tiny Champs 4–6) → Joao's **from-age-3** angle still holds; (4) **no school publishes pricing**; (5) GB DS brand authority is a real counter to Joao's pedigree edge — his durable edges are age-3 + specific lineage/body-of-work + 4.8★/98 reviews.
+
 ### 2.2 Stoic Jiu Jitsu (Dripping Springs) — the most marketing-armed local competitor
 
 - Website: [stoicjiujitsu.com](https://stoicjiujitsu.com/) · 391 Sportsplex Suite A, Dripping Springs · [Facebook page](https://www.facebook.com/p/Stoic-Jiu-Jitsu-100091514243695/) (page ID **100091514243695**).
