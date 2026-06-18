@@ -30,6 +30,8 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [assets/joao-call-talking-points.md](assets/joao-call-talking-points.md) | **Call script** — lead-the-call talking points (reframed from the intake email) with ★ must-get items |
 | [assets/joao-call-onepager.md](assets/joao-call-onepager.md) | **Call one-pager** — glance sheet: opening lines + just the ★ must-gets |
 | [calls/2026-06-17-joao-discovery-call.md](calls/2026-06-17-joao-discovery-call.md) | **Discovery call log** — summary, assumption corrections, action plan + full transcript |
+| [assets/joao-intake-email-2026-06-17.md](assets/joao-intake-email-2026-06-17.md) | **Intake email (ready to send)** — post-call; concrete asks, Beehiiv-first |
+| [assets/stoic-breakdown.md](assets/stoic-breakdown.md) | **Stoic competitor breakdown** — client-facing; what their machine does + what we copy |
 | [site/](site/) | **Website preview build** — consolidated authority hub + Kids + lead-magnet pages; `site/variants/` holds 3 BJJ design directions (Bold Athletic / Gritty Dojo / Modern Sport) + compare hub |
 
 ## Core thesis
