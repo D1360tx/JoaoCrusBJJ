@@ -26,7 +26,7 @@
 | # | Item | Why we need it | Status |
 |---|------|----------------|--------|
 | 2.1 | **How are recurring memberships actually charged today?** (GoDaddy Pay Links are one-off — is there autopay? Manual invoices? Cash/check? Venmo?) | The #1 unknown. Determines whether we migrate or build from scratch | ⬜ |
-| 2.2 | Any gym-management software in use, ever (Gymdesk, Kicksite, Zen Planner, Mindbody…)? Login if so | Phase 0 calls for standing one up; don't duplicate | ⬜ |
+| 2.2 | Any gym-management software in use, ever? ✅ ANSWERED (2026-06-17 call): **Zen Planner** (billing + member management). Still want read-only access. | Phase 0: don't duplicate — integrate/migrate around Zen Planner | ✅ |
 | 2.3 | How failed payments are handled today | 2–3% involuntary churn recoverable via automation | ⬜ |
 | 2.4 | Attendance/check-in tracking — anything? (paper, app, memory) | Retention triggers need attendance data | ⬜ |
 | 2.5 | Member records: where do names/emails/phones/belt ranks/start dates live? | Seed data for the member database + segmentation | ⬜ |

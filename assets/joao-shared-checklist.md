@@ -11,8 +11,6 @@
   Answer: ____________________
 - [ ] Are leads tracked anywhere besides that inbox? (spreadsheet? notebook? nothing?)
   Answer: ____________________
-- [ ] Any gym software, now or ever? (Mindbody, Zen Planner, Kicksite, etc.)
-  Answer: ____________________
 - [ ] Active students, roughly: (kids / adults / private-only)
   Answer: ____________________
 - [ ] Who built the website? Where is it hosted / domain registered? (or "ask my web guy")
@@ -55,6 +53,8 @@
   Answer: ____________________
 
 ## 🔑 Bucket 3 — Access
+- [ ] Beehiiv (your email list) — add me as a viewer, or send a screenshot of your audience size + the open & click rates on your last 8–10 emails (and forward me 3 recent ones)
+  Answer: ____________________
 - [ ] Google Business Profile — do you control one? Y/N → if yes, manager invite to my email; if no/unsure, I'll walk you through claiming it
   Answer: ____________________
 - [ ] Facebook + Instagram (Business Manager)
