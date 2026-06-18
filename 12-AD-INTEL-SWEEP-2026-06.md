@@ -51,6 +51,9 @@ Live check of every DS-area BJJ school to test the "named intro offer is a gap" 
 - Austin-metro (GB Austin locations, VOW, Simple Man, Impact, etc.) — all "free trial class."
 - **Takeaways:** (1) free trial = table stakes, not a differentiator; (2) **teen programs exist at BOTH Stoic (13–16) and GB DS (13+)** — Joao's teen gap is filled by two neighbors; (3) **kids start age 4 everywhere** (GB Tiny Champs 4–6) → Joao's **from-age-3** angle still holds; (4) **no school publishes pricing**; (5) GB DS brand authority is a real counter to Joao's pedigree edge — his durable edges are age-3 + specific lineage/body-of-work + 4.8★/98 reviews.
 
+### 2.1c 🆕🔑 OWNERSHIP LINK — Stoic and JJ Machado Austin are the same owners (2026-06-17)
+Verified on stoicjiujitsu.com/instructors: **Marcus Douthitt (Owner/Head Professor) + Laci Douthitt (Owner)** run Stoic, and **purchased JJ Machado Austin in October 2022.** Marcus was a professor at JJM Austin (per earlier intel). → Two of the local "competitors" are **one operation**; Stoic is the marketing-forward brand, JJM Austin (site now down) the legacy one. Full detail: `assets/local-competitors-breakdown.md`. Also re-checked: **Meta MMA** is Muay-Thai/MMA-first with BJJ kids from age 4 (location in DS `[UNVERIFIED]`); **Fit-15** is kickboxing/fitness, NOT BJJ (dropped). Age-3 edge for Joao still holds across the full field.
+
 ### 2.2 Stoic Jiu Jitsu (Dripping Springs) — the most marketing-armed local competitor
 
 - Website: [stoicjiujitsu.com](https://stoicjiujitsu.com/) · 391 Sportsplex Suite A, Dripping Springs · [Facebook page](https://www.facebook.com/p/Stoic-Jiu-Jitsu-100091514243695/) (page ID **100091514243695**).

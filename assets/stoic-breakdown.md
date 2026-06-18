@@ -4,6 +4,7 @@
 > Source: our competitive research (file `12`) + a live verification sweep of every DS-area school (2026-06-17). Confirmed items are marked ✅; a few are inferred from how their site is built — flagged where so.
 
 > ⚠️ **Heads-up flagged during this sweep:** the closest competitor isn't Stoic — it's **Gracie Barra Dripping Springs (261 Frog Pond Ln), literally on your street.** Full Gracie Barra brand, a 4th-degree black belt, a teen program, and the same free-trial offer. Worth watching as much as Stoic.
+> 🔑 **Also verified (2026-06-17):** Stoic's owners (**Marcus & Laci Douthitt**) **also own JJ Machado Austin** (purchased Oct 2022). So Stoic and JJM Austin are *one operation* — see `local-competitors-breakdown.md`.
 
 ---
 

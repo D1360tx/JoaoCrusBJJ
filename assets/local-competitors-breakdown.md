@@ -3,6 +3,9 @@
 > Same format as the Stoic breakdown, for the other local schools. **Verify-don't-assume applies:** every line is tagged `[OBSERVED]` (confirmed from a real source), `[INFERRED]` (reasoned, not confirmed), or `[UNVERIFIED]` (needs checking). Sources: live scrapes of gbdrip.com + searches/listings, 2026-06-17.
 > ⚠️ Read the **"Issues / gaps"** section at the bottom first — there are real verification limits, especially on JJ Machado.
 
+## 🔑 KEY FINDING (verified 2026-06-17): Stoic and JJ Machado Austin are the SAME owners
+**Marcus & Laci Douthitt own Stoic Jiu Jitsu** (confirmed on Stoic's own instructors page) **and they purchased JJ Machado Austin in October 2022.** So two of the three "competitors" are **one operation running two brands.** That reframes the local map: Joao's real competition is **(A) the Douthitt group — Stoic + JJM Austin** and **(B) Gracie Barra DS.** `[OBSERVED — stoicjiujitsu.com/instructors]`
+
 ---
 
 ## 1. Gracie Barra Dripping Springs  ·  the closest competitor (literally)
@@ -26,29 +29,31 @@
 
 ---
 
-## 2. JJ Machado Austin (Dripping Springs)  ·  lineage prestige, broken web
-**4955 Bell Springs Rd Ste 5, Dripping Springs** · (512) 956-0898 · FB [/jjmachadoaustin](https://www.facebook.com/jjmachadoaustin/)
+## 2. JJ Machado Austin (Dripping Springs)  ·  now run by Stoic's owners
+**4955 Bell Springs Rd Ste 5, Dripping Springs** · (512) 956-0898 · Yelp **5.0 (9 reviews)** · FB [/jjmachadoaustin](https://www.facebook.com/jjmachadoaustin/)
 
-> ⚠️ **Their website [jjmachadoaustin.com] is DOWN** (404 / Wix "domain not connected"). Everything below is from FB, Yelp, IG, and directory listings, not their own site.
+> ⚠️ **Their website (jjmachadoaustin.com) is DOWN** (404 / Wix "domain not connected"). Data below is from Yelp, FB, IG, Smoothcomp, and Stoic's own site.
 
-- **Offer `[OBSERVED]`:** **Free trial class**, by appointment — "message us to schedule a free trial class" (their IG). Trials/drop-ins by appointment.
-- **Instructors `[OBSERVED]`:** owner/instructor **Todd White, 4th-degree black belt under Jean Jacques Machado**; (per earlier research, file 12) professors Joseph Lara + Marcus Douthitt.
-- **Programs `[OBSERVED]`:** kids + adults; Gi + NoGi; Fundamental + Advanced; classes 7 days/week including **early-morning (6am) and noon** slots. `[UNVERIFIED]` exact kids age tiers / minimum age (site down).
-- **Channels `[OBSERVED]`:** listed on **Wellhub** (corporate wellness benefit) and **Mindbody** (booking/ops); **Smoothcomp** (competition). `[INFERRED]` more competition-/adult-leaning and ops-mature than marketing-aggressive.
-- **Pricing `[UNVERIFIED]`:** **No confirmed pricing for the Dripping Springs school.** The only rates online ($100 single / $380 week / $599 month-unlimited) are on **jjmachado.com — the flagship Jean Jacques Machado academy, NOT confirmed to be the Austin/DS affiliate's prices.** ⚠️ **Do not treat those as JJM-Austin's rates.**
-- **Positioning `[OBSERVED + INFERRED]`:** their lead asset is **lineage prestige** (the Machado name + Todd White). `[INFERRED]` Weak digital footprint — a down website and no funnel — is a real gap.
+- **🔑 Ownership `[OBSERVED]`:** **Marcus & Laci Douthitt purchased JJM Austin in October 2022** — the same couple who own **Stoic** (see Key Finding above). Founder **Todd White** (a JJ Machado black belt — sources differ: a Yelp photo says "3rd degree," FB/Smoothcomp say "4th degree") appears to be the prior owner.
+- **Offer `[OBSERVED]`:** **Free first week** ("the first week is free and you have nothing to lose" — Yelp review). Trials by appointment.
+- **Programs `[OBSERVED]`:** kids + adults, all ages/levels, Gi + NoGi; family-friendly facility (showers, free weights/cardio, parent workout area). `[UNVERIFIED]` kids minimum age (not stated; likely 4+).
+- **Schedule `[OBSERVED — Yelp]`:** early-AM (6–7am) + noon Mon/Wed/Fri; evenings 5–8pm Mon–Thu; Sat 10am–1pm; **closed Sun** (6 days; competition/adult-leaning hours).
+- **Channels `[OBSERVED]`:** Wellhub (corporate benefit), Mindbody (ops), Smoothcomp (competition).
+- **Pricing `[UNVERIFIED]`:** still not confirmed for this school (a directory lists it "members only"). The $100/$380/$599 online is the **flagship jjmachado.com**, NOT the DS affiliate. ⚠️ **Do not attribute those to JJM-Austin.**
+- **Positioning `[OBSERVED + INFERRED]`:** Machado lineage prestige + family/competition; weak standalone web (site down). `[INFERRED]` **Stoic is clearly the Douthitts' marketing-forward brand; JJM Austin reads as the legacy/secondary one.**
 
 **What we take / how Joao counters:**
-- ✅ **Their weakness is a real opening:** broken website, no funnel, marketing-light. Joao with a proper page + follow-up machine can out-convert them online.
-- **Their edge:** the Machado name + Wellhub corporate reach. Joao's counter: his own **elite lineage (Carlson Gracie + De La Riva)** and a far stronger **kids/family** specialization (JJM leans competition/adult).
+- 🔑 **Reframe the map:** Stoic + JJM Austin are *one operation* (the Douthitts), not two rivals. Joao's real local competition is **the Douthitt group** and **Gracie Barra DS**.
+- JJM's broken website + members-only opacity = an online opening; Joao's counter is his own **elite lineage (Carlson Gracie + De La Riva)**, a far better web/funnel, and **kids/family** specialization (JJM leans competition/adult).
 
 ---
 
-## 3. Others on the radar (flagged — verify before treating as direct competitors)
-- **Meta Mixed Martial Arts** ([metamixedmartialarts.com](https://www.metamixedmartialarts.com/)) `[UNVERIFIED location/status]` — an MMA gym; a Reddit post referenced a "Meta MMA academy in Dripping Springs." Kids BJJ listed **ages 8–13** (starts older). MMA-focused, not pure BJJ. Confirm if actually in DS and active.
-- **Fit-15 Martial Arts and Fitness** (Dripping Springs, on ClassPass) `[UNVERIFIED focus]` — martial-arts + fitness; BJJ depth/age range unknown.
-- **Texas Brazilian Jiu-Jitsu Federation** (FB lists "Dripping Springs TX," after-school kids angle) `[UNVERIFIED]` — unclear if a school vs a federation/events entity. Worth a look given the after-school angle (which we flagged as white space).
-- **Austin-metro (NOT Dripping Springs, lower priority):** Gracie Barra Lakeway, Paragon, Lake Travis JJ Club, AMP BJJ, Immortal Martial Arts, Life Ki-do, etc. — nearby but out of the immediate local market.
+## 3. Others on the radar (checked 2026-06-17)
+- **Meta Mixed Martial Arts** ([metamixedmartialarts.com](https://www.metamixedmartialarts.com/)) `[OBSERVED]` — a **Muay Thai / MMA-first** gym (Bang Muay Thai system, Coach Joe Elgindy) that **also offers BJJ**: Lil' Ninjas BJJ (4–7), Kids BJJ (8–13), Adults BJJ (13+). Squarespace site running **Spark Membership** (a martial-arts CRM/marketing platform — so they DO run automation). `[UNVERIFIED]` exact location — a Reddit post references "Meta MMA in Dripping Springs" but the site shows **no address**; confirm it's truly local. **Kids BJJ starts at 4** → Joao's age-3 edge still holds. MMA/Muay-Thai first, BJJ secondary.
+- **Fit-15 Martial Arts and Fitness** `[OBSERVED]` — ❌ **NOT a BJJ school.** It's "KickFit" (kickboxing + holistic fitness; woman/Asian-owned) inside Sharp Fitness, Dripping Springs. **Dropping it as a BJJ competitor.**
+- **Kingsway Jiu-Jitsu** `[UNVERIFIED location]` — surfaced with **published pricing ($400/mo adults, $350/mo kids)**, but I **could not confirm it's in Dripping Springs**; excluded until location is verified.
+- **Texas Brazilian Jiu-Jitsu Federation** (FB lists "Dripping Springs TX," after-school kids angle) `[UNVERIFIED]` — unclear if a school vs a federation/events entity; worth a look for the after-school angle.
+- **Austin-metro (NOT Dripping Springs, lower priority):** Atos Austin, Gracie Barra Lakeway, Paragon, Lake Travis JJ Club, AMP BJJ, Immortal MA, Life Ki-do, Supreme Academy — nearby but out of the immediate local market.
 
 ---
 
@@ -57,17 +62,19 @@
 |---|---|---|---|---|
 | **Joao Crus** | First class free | **3** ✅ | No | Carlson Gracie/De La Riva, author, podcast, 4.8★/98 |
 | **Gracie Barra DS** | Free trial (email) | 4 | No (terms yes) | GB brand, no-contract membership, on his street |
-| **Stoic** | Free trial + bonus (funnel page) | 4 | No | Most marketing-built (97-Display); amenities |
-| **JJ Machado Austin** | Free trial (by appt) | `[UNVERIFIED]` | No (site down) | Machado lineage; broken website |
+| **Stoic** | Free trial + bonus (funnel page) | 4 | No | 97-Display marketing; **same owners as JJM (Douthitts)** |
+| **JJ Machado Austin** | Free **week** (by appt) | all ages `[UNVERIFIED min]` | No (site down) | **Same owners as Stoic**; Machado lineage; legacy brand |
+| **Meta MMA** `[loc UNVERIFIED]` | `[UNVERIFIED]` | 4 (BJJ) | No | MMA/Muay-Thai-first; runs Spark Membership |
 
-**Consistent takeaways (verified):** (1) **everyone offers a free trial** — table stakes; (2) **nobody local publishes pricing**; (3) **kids start at 4 everywhere except Joao (3)** — his age-3 edge holds; (4) **teens** exist at Stoic (13–16) and GB (13–15) but not currently Joao.
+**Consistent takeaways (verified):** (1) **everyone offers a free trial/week** — table stakes; (2) **nobody local publishes pricing**; (3) **kids start at 4 everywhere except Joao (3)** — his age-3 edge holds even after checking Meta MMA; (4) **teens** exist at Stoic (13–16) and GB (13–15), not currently Joao; (5) **Stoic + JJM Austin are one ownership group** — the local field is effectively **2 operations + Joao**, not 4.
 
 ---
 
 ## 5. ⚠️ Issues / gaps (you asked me to flag these)
-1. **JJ Machado's website is down** — all their info is secondhand (FB/Yelp/IG/Mindbody). If you want their real programs/pricing, we'd need to message them or visit.
-2. **JJM pricing is unconfirmed.** The $100/$380/$599 figures are from the **flagship jjmachado.com**, not the DS affiliate. I deliberately did **not** state them as JJM-Austin's prices. Flag if you want me to try to confirm.
-3. **Peripheral schools** (Meta MMA, Fit-15, Texas BJJ Federation) — I could not confirm they're active Dripping Springs *BJJ* competitors. Listed as `[UNVERIFIED]`, not treated as direct rivals.
-4. **Minor GB discrepancy:** their homepage said Teens "13+," their FAQ said "13–15." I used **13–15** (the more specific FAQ). 
-5. **No pricing is published by any local school** — so any pricing comparison we make is inferred, not from their sites.
-6. **GB "Most Trusted award"** is their own marketing claim — not independently verified.
+1. **🔑 Stoic + JJM Austin are commonly owned** (Marcus & Laci Douthitt, who bought JJM in Oct 2022 — per Stoic's own instructors page). Treat them as ONE operation. `[OBSERVED]`
+2. **JJM pricing still unconfirmed.** Members-only; the $100/$380/$599 online is the **flagship jjmachado.com**, not the DS affiliate. I did **not** attribute it. To get real JJM-Austin pricing we'd have to ask them directly.
+3. **Todd White degree conflict:** a Yelp photo caption says "3rd degree," FB/Smoothcomp say "4th degree." He also appears to be the **prior owner** (pre-2022 Douthitt purchase). Unconfirmed which is current.
+4. **Meta MMA location unconfirmed:** their own site shows no address; only a Reddit post places it in Dripping Springs. It's also **MMA/Muay-Thai-first**, BJJ secondary.
+5. **Fit-15 dropped** — it's kickboxing/fitness, not BJJ. **Kingsway** excluded — location not confirmed local.
+6. **No local school publishes pricing** (except unconfirmed-location Kingsway) — any price comparison is inferred.
+7. **Minor GB discrepancy:** homepage "Teens 13+," FAQ "13–15" → used 13–15. **GB "Most Trusted award"** is their own claim, not independently verified.
