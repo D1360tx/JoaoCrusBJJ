@@ -33,6 +33,7 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [assets/joao-intake-email-2026-06-17.md](assets/joao-intake-email-2026-06-17.md) | **Intake email (ready to send)** — post-call; concrete asks, Beehiiv-first |
 | [assets/stoic-breakdown.md](assets/stoic-breakdown.md) | **Stoic competitor breakdown** — client-facing; what their machine does + what we copy |
 | [assets/assumption-audit.md](assets/assumption-audit.md) | **Assumption audit** — repo-wide flag list of unverified claims (4 tiers) for review |
+| [assets/local-competitors-breakdown.md](assets/local-competitors-breakdown.md) | **Local competitor breakdowns** — Gracie Barra DS + JJ Machado (+ peripheral), source-tagged; companion to the Stoic breakdown |
 | [site/](site/) | **Website preview build** — consolidated authority hub + Kids + lead-magnet pages; `site/variants/` holds 3 BJJ design directions (Bold Athletic / Gritty Dojo / Modern Sport) + compare hub |
 
 ## Core thesis
