@@ -17,6 +17,17 @@
 2. **His system for helping schools incorporate BJJ into their teachings** — ✅ CLARIFIED: **martial-arts schools** (= Line B as built). He's also interested in **speaking at corporate events** (extends Line C). **After-school programs** I flagged as uncontested white space worth exploring (nobody local does it; fits his Montessori-informed method; would also feed kids enrollment).
 3. **More group students — especially kids classes** ("kids are his favorite" — aligns with the kids-specialist positioning)
 
+> 🔴 **UPDATE (2026-06-17 discovery call):** Joao's stated **#1 immediate priority is GENERATING NEW LEADS** — explicitly *not* show-up/retention. He's getting only ~1 website lead/month. Full notes: [`calls/2026-06-17-joao-discovery-call.md`](calls/2026-06-17-joao-discovery-call.md).
+
+## Current Tech Stack (confirmed 2026-06-17 call)
+- **Billing / member management:** Zen Planner.
+- **Email / ESP:** **Beehiiv** — ~8,060 contacts (+ separate old-leads list + ~100 newer leads). Sends weekly kids/parenting content; **getting near-zero response.** ← This overturns our earlier "no ESP" assumption; the list exists, it's just not converting (broad, unsegmented, no message-match).
+- **Website:** WordPress + Divi (self-built).
+- **Analytics:** No Google Analytics yet (agreed to add GA4).
+- **Ads:** FB agency runs ads on their own platform; Joao has access to it.
+- **Design preference:** dark look using his **blue + yellow**; disliked the AI design graphics.
+- **Working style:** wants concrete, objective, testable recommendations — not abstract marketing theory ("the data is what doesn't lie").
+
 ## 🔑 Unadvertised Monopoly Differentiator (2026-06-11, first-party)
 **JCBJJ is the ONLY local school that accepts kids under 4 (age 3+).** Every competitor starts at 4 — it's literally why I enrolled my son there. And the website doesn't even say it (Little Champions is listed as 4–7). Parents of 3-year-olds have nowhere else to go; they enter Joao's funnel a year before competitors can compete. → Confirm with Joao (official policy? insurance/capacity caveats? wants it advertised?) then make it a headline claim (07 §3, landing page).
 
