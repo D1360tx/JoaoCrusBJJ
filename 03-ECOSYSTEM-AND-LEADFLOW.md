@@ -6,7 +6,9 @@
 
 ## 🔴 LEAD CAPTURE AUDIT (contact form) — KEY FINDING
 
-**The website is NOT capturing leads to any database or ESP. Submissions are email-only.**
+**The website FORM is not wired to any database or ESP — its submissions are email-only.**
+
+> ⚠️ **Correction (06-17 call):** an ESP **does** exist separately — **Beehiiv (~8,060 contacts)** — it's just **not connected to the website form**, so web leads don't flow into it. The finding below is about the *form*, not "no ESP at all."
 
 - **Form plugin:** WPForms **Lite** (free) — form ID 177 on /contact-form/ (and the homepage)
 - **Fields:** Name (first/last), Phone, Email, Comment/Message
@@ -18,7 +20,7 @@
 
 ### Why this matters
 - Every inquiry = one email to a Gmail inbox. Spam/buried/missed = **lead lost, no record.**
-- **No email list is being built.** No nurture sequence, no re-marketing, no automation.
+- **The website isn't building the list.** A Beehiiv list (~8,060) exists and gets weekly sends, but the **site form doesn't feed it**, and there's no nurture/segmentation tied to lead source (06-17 call).
 - Books + podcast drive attention but there's **no mechanism to capture/own that audience.**
 
 ### Recommended fix (highest-ROI on the site)
@@ -37,7 +39,7 @@
 - Also a champion **windsurfer/sailor** — won the amateur Caribbean circuit **3×**
 - Was a **top sales rep for Optimum Nutrition**, opened his own supplement store in **1999**
 - **Befriended Carlson Gracie** (legend) — Carlson visited his store regularly; Joao later became an **instructor under Carlson Gracie**
-- Teaching BJJ in Austin area **2 decades**; own school in Dripping Springs **20 years**
+- Teaching BJJ in Austin area **2 decades**; own school in Dripping Springs **~20 years** *(approx; the academy site/coaches page states founded **2003**)*
 - **Recognized expert in teaching kids BJJ** — top coaches/school owners seek his advice; created **instructional DVDs/video resources**; has **affiliated schools across the US and overseas**
 - **Speaks 4 languages**; taught seminars across Europe
 - Parent of **2 children**; resides in Austin, TX

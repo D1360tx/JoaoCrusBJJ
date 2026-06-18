@@ -14,9 +14,9 @@
 ---
 
 ## 1 · The big takeaway (say this — it sets the tone)
-▸ "Bottom line: you're already positioned exactly where the money is. At successful academies, kids and family programs drive 60–70% of revenue — and you're the *only* real kids-development specialist in Dripping Springs. Published method, 20+ years, 500+ families, the Carlson Gracie and De La Riva pedigree. We are **not** changing your positioning. We're building the machine underneath it."
+▸ "Bottom line: you're already positioned where the money is. At successful academies, kids and family programs drive the majority of revenue — industry figures often put it around 60–70%. And you're the **most established** kids-development specialist in Dripping Springs: published method, here since 2003, 500+ families, the Carlson Gracie and De La Riva pedigree. We are **not** changing your positioning — we're building the machine underneath it."
 
-▸ "And one thing nobody else in the area is advertising — you take kids from age 3. Every competitor starts at 4 or 5. That's a real edge we're going to lean on."
+▸ "And one thing nobody else in the area advertises — you take kids from age 3. Every local school we checked starts at 4. That's a real edge we're going to lean on."
 
 👂 *Let him react / add color. This is where he'll feel understood.*
 
@@ -25,7 +25,7 @@
 ## 2 · The core problem we're fixing (say — then pause for reaction)
 ▸ "Here's the gap. Right now when a parent fills out your website form, it sends one email to your Gmail and basically disappears. No record, no automatic follow-up, no list being built."
 
-▸ "The industry data is wild on this — automated lead follow-up beats ad spend. One academy grew 288% mostly just from following up faster. So the first thing we build is simple: **every inquiry gets a text and an email back within 5 minutes, automatically, 24/7. Then a reminder before their free class, a follow-up after, and a check-in if they go quiet.** Nothing slips — even when you're on the mat all day."
+▸ "The industry data is strong on this — fast automated follow-up can outperform ad spend. One academy reportedly grew 288% largely from following up faster. So the first thing we build is simple: **every inquiry gets a text and an email back within 5 minutes, automatically, 24/7. Then a reminder before their free class, a follow-up after, and a check-in if they go quiet.** Nothing slips — even when you're on the mat all day."
 
 ❓ "Does that resonate? Is losing track of leads something you've felt?"
 

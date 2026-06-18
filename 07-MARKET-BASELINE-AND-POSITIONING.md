@@ -84,7 +84,7 @@
 ## 3. POSITIONING (the actual answer)
 
 ### Local academy (Line A) — the moat
-> **"Dripping Springs' kids & family BJJ specialist. 20+ years, 500+ local families. The coach other coaches learn from."**
+> **"Dripping Springs' kids & family BJJ specialist. Since 2003, 500+ families. The coach other coaches learn from."**
 
 - **vs. Austin elite gyms:** don't compete — different sport. They sell competition; Joao sells child development, confidence, and family convenience 5 minutes from home.
 - **vs. Stoic & JJ Machado (the real fight):** they are *generalist gyms with kids programs*. Joao is **the kids-development specialist with a published method** — Carlson Gracie & De La Riva lineage (matches/beats Machado-affiliate lineage prestige), Montessori-informed curriculum, a book parents can hold, a parenting podcast, and a 20-year local track record their schools can't claim. Every touchpoint should make a parent feel: *"the other gyms teach kids jiu-jitsu; this man wrote the book on it."*

@@ -1,5 +1,7 @@
 # Assumption Audit — repo-wide (2026-06-17)
 > Ran a 4-way parallel review of every `.md` file against the **verify-don't-assume** rule. This is the flag list for your review.
+
+> ✅ **STATUS (2026-06-17): Tier 1 + Tier 2 RESOLVED.** Fixed the contradicted ESP claims (02/03 → Beehiiv exists, form not wired), the 2003-vs-20yr note, "500+ local" → "500+ families", "age 4 or 5" → "4 (per our sweep)", and softened all client-facing stats (60–70%, 288%, "beats ad spend" → "can outperform"), "only specialist" → "most established," and Stoic "growing fastest/runs ads/instant capture/analytics✅" → inference-labeled. **Tier 3 + Tier 4 remain open** (relabel/source pass when convenient).
 > Calibration: data from a **real scrape, the 2026-06-17 call, the imginn IG pull, or a screenshot = verified** (cite the source). **First-party self-bio** (his own site/Skool copy) = a *claim*, fine internally but flag before reusing in marketing. **Pure inference stated as fact** or **uncited market stats** = fix.
 > Suggested convention everywhere: tag claims `[OBSERVED]` / `[INFERRED]` / `[UNVERIFIED]` (doc 12 already does this), and in **client-facing** docs either cite or soften to "industry research suggests."
 

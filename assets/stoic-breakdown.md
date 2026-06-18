@@ -1,6 +1,6 @@
 # What Stoic Jiu-Jitsu Is Doing — and What We Take From It
 ### A plain breakdown for Joao
-> Stoic Jiu-Jitsu (Dripping Springs) is the local school growing fastest. They're not better at jiu-jitsu — they have a better **marketing machine**. Here's exactly what that machine is, and what we copy.
+> Stoic Jiu-Jitsu (Dripping Springs) is the **most marketing-armed** school locally — we can't confirm growth numbers, but their setup is the most built-out. They're not better at jiu-jitsu; they have a better **marketing machine**. Here's exactly what that machine is, and what we copy.
 > Source: our competitive research (file `12`) + a live verification sweep of every DS-area school (2026-06-17). Confirmed items are marked ✅; a few are inferred from how their site is built — flagged where so.
 
 > ⚠️ **Heads-up flagged during this sweep:** the closest competitor isn't Stoic — it's **Gracie Barra Dripping Springs (261 Frog Pond Ln), literally on your street.** Full Gracie Barra brand, a 4th-degree black belt, a teen program, and the same free-trial offer. Worth watching as much as Stoic.
@@ -19,7 +19,7 @@ Stoic runs a **martial-arts marketing platform (a "97 Display"-style system)** t
 
 ## 2. Their website is built to convert + run ads
 - The site structure (`/Home/Offer/`, `/Home/Schedule`, `/services`, `/classes/Teen-Martial-Arts`, plus auto-generated local-SEO pages) is the signature of a **managed martial-arts marketing platform**. *(Inferred from their URL structure.)*
-- That kind of platform is **designed to point paid Facebook/Google traffic at the offer page** — so they almost certainly run ads into it.
+- That kind of platform is **built to point paid Facebook/Google traffic at the offer page** — so they're **likely** running ads into it *(not yet confirmed in the Meta Ad Library — that check is still pending)*.
 - → **What we take:** a page structured to convert, with analytics on it, that we can later send ads to. (First we set up Google Analytics so we can *see* what's working — you don't have that yet; they do.)
 
 ## 3. How they got the teen class (you asked)
@@ -29,7 +29,7 @@ Stoic runs a **martial-arts marketing platform (a "97 Display"-style system)** t
 - ⚠️ Note: **Gracie Barra DS also runs a Teens (13+) program** — so *two* local schools have teens and you currently don't. More reason to bring it back, packaged properly.
 
 ## 4. Their positioning leans on amenities
-- They market **facility perks hard** — recovery room, sauna, cold plunge, Normatec boots — and they're on **ClassPass**.
+- They market **facility perks hard** — recovery room, sauna, cold plunge, Normatec boots — and they're on **ClassPass**. *(per our competitor research, file 12)*
 - That's their angle: a premium, modern *facility*.
 - → **What we take:** we **don't** compete on amenities — we'd lose that race and it's not who you are. **Your angle is the opposite and stronger: the coach.** 25 years, Carlson Gracie + De La Riva, author, podcast, Montessori method, kids from age 3, 500+ families. They sell a *gym*; you sell *the expert who develops your kid*. Different lane, and yours is harder to copy.
 
@@ -44,7 +44,7 @@ I checked every BJJ school in the Dripping Springs area (2026-06-17). **Every si
 | **JJ Machado Austin** (Bell Springs Rd) | Free week trial | their website is currently **DOWN (404)** |
 | Austin-metro (GB Austin, VOW, Simple Man, Impact…) | Free trial class | all identical |
 
-→ **The correction (you were right):** you don't need to "invent an offer" — you already have the same free class everyone has. **Stoic doesn't win on the offer; it wins on how it PACKAGES and CAPTURES it:** a dedicated page whose only job is that one signup, an instant SMS/email capture on submit, and a small bonus stacked on top.
+→ **The correction (you were right):** you don't need to "invent an offer" — you already have the same free class everyone has. **Stoic doesn't win on the offer; it wins on how it PACKAGES and CAPTURES it:** a dedicated page whose only job is that one signup, an instant capture on submit *(inferred from their platform type, not directly observed)*, and a small bonus stacked on top.
 → **What we actually take:** put the free class on its **own conversion page**, **capture the lead instantly** (text + email), and **differentiate on what the offer can't** — the **hook** (age-3 / survival framing) and the **coach** (your pedigree). The free class is the ante; the hook and the follow-up are how you win the hand.
 > Pricing: none of the local schools publish pricing (you included) — so that's neutral, not an edge.
 
@@ -56,7 +56,7 @@ I checked every BJJ school in the Dripping Springs area (2026-06-17). **Every si
 | Location | Sportsplex | **261 Frog Pond Ln (your street)** | 120 Frog Pond Ln |
 | Marketing system | ✅ 97-Display (funnel + SEO + ads-ready) | brand-template site | ❌ fragmented; ~1 web lead/mo |
 | Free-trial offer | ✅ dedicated page + bonus | ✅ form | ⚠️ homepage form |
-| Analytics / data | ✅ | likely (GB template) | ❌ not yet (fixing) |
+| Analytics / data | likely (platform) | likely (GB template) | ❌ not yet (fixing) |
 | Teen program | ✅ 13–16 | ✅ 13+ | ❌ discontinued (revive) |
 | Kids start age | 4 | 4 (Tiny Champs 4–6) | ✅ **3** |
 | Authority angle | facility / amenities | Gracie Barra brand | ✅ **Carlson Gracie / De La Riva + author + podcast + 25 yrs** |

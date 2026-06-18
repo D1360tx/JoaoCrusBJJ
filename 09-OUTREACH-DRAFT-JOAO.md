@@ -13,9 +13,9 @@
 
 Hey Joao,
 
-The research phase is done, and the short version is great news: the market data says you're already positioned exactly where the money is. Kids and family programs drive 60–70% of revenue at successful academies, and you're the only true kids-development specialist in Dripping Springs — published method, 20 years, 500+ families. We're not changing your positioning. We're building the machine underneath it.
+The research phase is done, and the short version is great news: you're already positioned where the money is. Industry data suggests kids and family programs drive the majority of revenue at successful academies (figures often cited around 60–70%), and you're the most established kids-development specialist in Dripping Springs — published method, here since 2003, 500+ families. We're not changing your positioning. We're building the machine underneath it.
 
-Here's the problem the next phase solves: right now, when a parent fills out your website form, it sends one email to your Gmail and disappears. No record, no follow-up, no list. Industry data shows automated lead follow-up beats ad spend — one academy grew 288% mostly from this. So the next build is:
+Here's the problem the next phase solves: right now, when a parent fills out your website form, it sends one email to your Gmail and disappears — it doesn't even feed your Beehiiv list. Industry data suggests fast automated follow-up can outperform ad spend — one academy reportedly grew 288% largely from it. So the next build is:
 
 **Every inquiry gets a text and email back within 5 minutes, automatically, 24/7 — then reminders before their free class, a follow-up after, and a check-in if they go quiet. Nothing falls through the cracks, even when you're on the mat.**
 

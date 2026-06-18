@@ -9,7 +9,7 @@
 "Thanks for the time. Finished the research — good news and a clear plan. Quick walkthrough, then a few questions so we can start building."
 
 ## THE WIN (say)
-"You're already positioned where the money is — kids/family drives 60–70% of academy revenue, and you're the only real kids specialist in Dripping Springs. Carlson Gracie + De La Riva pedigree, 20+ years, 500+ families. We're not changing your positioning — we're building the machine under it. And nobody else advertises taking kids from age 3. That's an edge."
+"You're already positioned where the money is — kids/family drives the majority of academy revenue (industry figures often ~60–70%), and you're the most established kids specialist in Dripping Springs. Carlson Gracie + De La Riva pedigree, here since 2003, 500+ families. We're not changing your positioning — we're building the machine under it. And nobody else advertises taking kids from age 3 (every local school we checked starts at 4). That's an edge."
 
 ## THE PROBLEM (say, then pause)
 "Right now a website lead sends one email to Gmail and disappears — no record, no follow-up, no list. We fix that: every inquiry gets a text + email back in 5 minutes, 24/7, then reminders and check-ins. Nothing slips, even when you're on the mat."

@@ -110,4 +110,4 @@ Home · Classes Schedule · Kids Program · Adults Program · 6 Weeks of Confide
 - **Blog uncategorized + only 4 posts** — strong SEO/content opportunity (Joao already writes great long-form on Skool we could repurpose here).
 - **3 separate brand surfaces** (academy site, blackbeltparenting.net, 3 Skool communities) — fragmented. Funnel/ecosystem map needed.
 - **Team Building / corporate** is the highest-ticket offer and gets one buried page — likely under-marketed.
-- **No email capture** beyond the contact form; no visible lead magnet (the books/podcast could feed a list).
+- **No on-site email capture** beyond the contact form; no visible lead magnet. ⚠️ **Correction (06-17 call):** an ESP **does** exist — **Beehiiv (~8,060 contacts)** — it's just **not wired to the website form**, so web visitors/leads don't flow into it automatically.
