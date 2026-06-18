@@ -32,6 +32,7 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [calls/2026-06-17-joao-discovery-call.md](calls/2026-06-17-joao-discovery-call.md) | **Discovery call log** — summary, assumption corrections, action plan + full transcript |
 | [assets/joao-intake-email-2026-06-17.md](assets/joao-intake-email-2026-06-17.md) | **Intake email (ready to send)** — post-call; concrete asks, Beehiiv-first |
 | [assets/stoic-breakdown.md](assets/stoic-breakdown.md) | **Stoic competitor breakdown** — client-facing; what their machine does + what we copy |
+| [assets/assumption-audit.md](assets/assumption-audit.md) | **Assumption audit** — repo-wide flag list of unverified claims (4 tiers) for review |
 | [site/](site/) | **Website preview build** — consolidated authority hub + Kids + lead-magnet pages; `site/variants/` holds 3 BJJ design directions (Bold Athletic / Gritty Dojo / Modern Sport) + compare hub |
 
 ## Core thesis
