@@ -1,4 +1,4 @@
-# Intake Email to Joao — post-call (2026-06-17)
+# Intake Email to Joao (post-call, 2026-06-17)
 > Ready to send. Tuned to Joao's "objective / concrete" style + what we learned on the call (Beehiiv, Zen Planner, leads = #1).
 > Send from Diego → joaocrus@gmail.com. Replace nothing required except your sign-off. Keep it short on purpose.
 
@@ -29,11 +29,11 @@ You've got ~8,000 people and you're getting no response, so I want to find out *
 **④ Billing (Zen Planner).**
 - Add me as a read-only user if you can, or just send a screenshot of your current active counts: how many kids / adults / private-only.
 
-**⑤ Google Analytics — let's set it up under YOUR Google account.**
+**⑤ Google Analytics: let's set it up under YOUR Google account.**
 - Better that this lives in your own Google account so you always own the data. It's about 10 minutes: create the free GA4 property, then add me as a user so I can read it. I'm happy to hop on and walk you through it, or send simple steps. Your call.
 
 **⑥ Twilio (texting).**
-- You mentioned setting up Twilio before to text people — is that still active, and how far did it get (a number set up, any carrier registration)? If it's already in place, we can likely use it and skip a couple weeks of setup. Just tell me what's there and I'll take it from your answer.
+- You mentioned setting up Twilio before to text people. Is that still active, and how far did it get (a number set up, any carrier registration)? If it's already in place, we can likely use it and skip a couple weeks of setup. Just tell me what's there and I'll take it from your answer.
 
 **Two numbers (whenever you get a minute):**
 1. Your current rates: kids, adults, family, privates, drop-in.
