@@ -120,7 +120,9 @@ Note the Beehiiv list is finally a weapon here: a *dated cohort launch* and a *n
 - [ ] Monthly revenue split ($7K total — how much is privates vs memberships? Note: 42 × ~$50/wk + privates ≈ $11K/mo ≠ reported $7K — Zen Planner export settles it)
 - [ ] **Start date** for Mon/Wed 6:40 schedule — ⚡ schedule is ALREADY LIVE on the site (re-audit 07-22), so likely in effect; confirm official date for the cohort framing
 - [ ] **Austin:** ~~facility/times~~ ✅ Castle Hill Fitness, kids 8–12 Tue/Thu 5–6pm (site). Still need: **terms with Castle Hill + can we market to their members** (signage/newsletter/front desk) + adult-class plan ("to be decided" on site → interest list in the meantime)
-- [ ] 🆕 **Meta Pixel gone from the site** (was confirmed in June) — is the agency still running ads? If yes, spend is now unmeasured; if no, the agency relationship changed. Ask.
+- [x] ~~Meta Pixel gone~~ ❌ **CORRECTED same day: pixel present** (ID 592714768141415 via PixelYourSite plugin — Joao-owned, validator-confirmed). Remaining ask = ad-ACCOUNT ownership only (intake 4.10).
+- [ ] 🆕 **Jetpack Stats exists** (stats.wp.com on site) — ask Joao for the Jetpack/WP.com stats dashboard: months of traffic data may already exist, no GA4 wait needed for a baseline.
+- [ ] 🆕 **WP Booking Calendar plugin installed** (loads on homepage) — is a booking flow live? Where do bookings go? (Affects the Cal.com choice in doc 11.)
 - [ ] **Gi economics:** his cost per gi
 - [ ] **Guarantee comfort:** yes/no on 6-Weeks refund-plus-keep-the-gi
 - [ ] **Direct-mail budget:** frame as ONE-TIME ~$2K test approval (it's 4 months of his $500/mo comfort number — keep it separate from the monthly budget)

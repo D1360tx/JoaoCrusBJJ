@@ -20,8 +20,10 @@
    | Adults | DS | **Mon & Wed 6:40–7:40pm** ✅ live · Tue & Thu 11:30–12:30 · Sat 11–12 |
    | Adults | Austin | **"(To be decided)"** |
    → Pattern: DS consolidated onto Mon/Wed evenings; Joao is in Austin Tue/Thu. **Austin launches KIDS-first; adults TBD.**
-3. **⚠️ Meta Pixel REMOVED:** no fbq / connect.facebook.net / GTM on the homepage (June audit had pixel confirmed). If the agency is still running ads, spend is now unmeasured/untargeted — ask Joao what happened.
-4. **Still NO GA4/gtag** (as of this fetch; he committed to installing it this week).
+3. ~~Meta Pixel REMOVED~~ ❌ **CORRECTION (same day): Pixel IS present — ID `592714768141415`, loaded via the PixelYourSite Free 11.2.1 WP plugin** (fbq code sits inside WP-Optimize minified bundles + noscript fallback, which the first grep missed; Diego's Meta Pixel Validator confirms PageView + ViewContent + Microdata firing). 🔑 Implication: **the pixel is Joao-owned (his WordPress plugin), not agency-injected** — ad-account ownership (intake 4.10) is the only remaining ownership question.
+4. **Still NO GA4/gtag** (as of this fetch; he committed to installing it this week). 🆕 BUT: **Jetpack Stats IS installed** (`stats.wp.com`) — traffic data likely already exists in his WordPress.com/Jetpack dashboard; pull it for a baseline before GA4 starts collecting.
+4b. 🆕 **WP Booking Calendar plugin v11.4.3 installed and loading on the homepage** — never seen in the June audit. Unknown: is a booking flow live anywhere, and does it notify/store anything? Ask Joao. (If working, it changes the Cal.com plan in 11 §2.)
+4c. Other stack: **Rank Math SEO** + **WP-Optimize** (caching/minify) + Jetpack.
 5. **Kids page unchanged: "Little Champions: Ages 4–7"** — still contradicts the approved age-3 claim; zero age-3 mentions site-wide. (Pre-postcard blocker, see assets/postcard-concepts.md.)
 6. New homepage hero: **"Brazilian Jiu-Jitsu That Changes Lives. Not Just Belts."** + checkmark list (Kids & Adults · Beginner Friendly · Dripping Springs · Austin · First Class Free · Safe & Welcoming). Form CTA: "Claim Your Free Intro Class!!"
 7. Typos persist and new ones added: "8 to 12 **yer** olds," "**bundary** setting," "essentials positions," "11:30 **and to** 12:30pm."
