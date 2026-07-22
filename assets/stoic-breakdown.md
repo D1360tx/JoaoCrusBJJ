@@ -1,7 +1,7 @@
 # What Stoic Jiu-Jitsu Is Doing — and What We Take From It
 ### A plain breakdown for Joao
 > Stoic Jiu-Jitsu (Dripping Springs) is the **most marketing-armed** school locally — we can't confirm growth numbers, but their setup is the most built-out. They're not better at jiu-jitsu; they have a better **marketing machine**. Here's exactly what that machine is, and what we copy.
-> Source: our competitive research (file `12`) + a live verification sweep of every DS-area school (2026-06-17). Confirmed items are marked ✅; a few are inferred from how their site is built — flagged where so.
+> Source: our competitive research (file `12`) + a live verification sweep of every DS-area school (2026-06-17). Updated 2026-07-22 with what we've learned since (your agency results, the age-3 green light). Confirmed items are marked ✅; a few are inferred from how their site is built — flagged where so.
 
 > ⚠️ **Heads-up flagged during this sweep:** the closest competitor isn't Stoic — it's **Gracie Barra Dripping Springs (261 Frog Pond Ln), literally on your street.** Full Gracie Barra brand, a 4th-degree black belt, a teen program, and the same free-trial offer. Worth watching as much as Stoic.
 > 🔑 **Also verified (2026-06-17):** Stoic's owners (**Marcus & Laci Douthitt**) **also own JJ Machado Austin** (purchased Oct 2022). So Stoic and JJM Austin are *one operation* — see `local-competitors-breakdown.md`.
@@ -49,6 +49,11 @@ I checked every BJJ school in the Dripping Springs area (2026-06-17). **Every si
 → **What we actually take:** put the free class on its **own conversion page**, **capture the lead instantly** (text + email), and **differentiate on what the offer can't** — the **hook** (age-3 / survival framing) and the **coach** (your pedigree). The free class is the ante; the hook and the follow-up are how you win the hand.
 > Pricing: none of the local schools publish pricing (you included) — so that's neutral, not an edge.
 
+### 5b. You already tested their playbook — with your own money ⚡ *(added 2026-07-22)*
+Here's the proof the free-trial-ads machine alone isn't enough: **you already paid for it.** Your agency ran Facebook ads to a free class, called every lead, set appointments — and the appointments didn't show. That's essentially the same play Stoic's platform runs. The machine (dedicated page, instant capture, follow-up) is necessary — but the **offer inside it is a commodity**, and your own results prove commodity leads don't convert.
+→ **So we go one step further than Stoic:** alongside the free class, a **named paid intro** (2 weeks + free gi + a parent debrief with you) that filters for parents who actually show up — priced around one week of membership, so it's an easy yes for serious families and a natural "no" for tire-kickers. Nobody can price-compare a named program, and a parent who paid $49 shows up.
+→ And the headline nobody can copy: **"from age 3"** — now confirmed and approved. Every other school's machine starts at 4.
+
 ---
 
 ## Side-by-side (verified 2026-06-17)
@@ -67,12 +72,13 @@ I checked every BJJ school in the Dripping Springs area (2026-06-17). **Every si
 
 ---
 
-## What we copy (the action list)
+## What we copy (the action list) — *updated 2026-07-22*
 1. **Build the dedicated page** — authority up front + one clear offer + reviews visible. (In progress.)
-2. **Install Google Analytics** so we can see traffic sources and what converts. (This week.)
+2. **Google Analytics** — you're setting up GA4 this week (shout if you want to do it together); then we can finally *see* what converts, like their platform does for them.
 3. **Instant lead follow-up** — text + email the second the form is submitted (the machine they have, that you don't).
-4. **Give the teen class its own name + page + offer** when you bring it back.
-5. **Lean into the coach, not the gym** — your pedigree and the age-3 angle are your unfair advantages; put them front and center.
-6. **Win on the hook + follow-up, not the offer.** Everyone has the free trial — package yours on its own page, capture instantly, and lead with age-3 + your pedigree. The offer is just the ante.
+4. **Add the paid intro rung** — the named 2-week Kickstart + free gi (see 5b). Free class stays as the low-friction option; the *advertised* offer is the named one.
+5. **Lead with "from age 3"** — approved, and no other school's machine can copy it.
+6. **Give the teen class its own name + page + offer** when you bring it back. *(Same packaging trick for the new 6:40 adult time: launch it as a named program with a start date, not a schedule note.)*
+7. **Lean into the coach, not the gym** — your pedigree and your price point tell the same story: the premium expert option. They sell a facility; you sell the man who wrote the book. Don't apologize for the rate — justify it visibly.
 
-> Bottom line: Stoic didn't out-coach you — they out-*structured* you. That's fixable, and the things you have that they can't buy are exactly the ones that win parents.
+> Bottom line: Stoic didn't out-coach you — they out-*structured* you. You've now also proven (with your own ad budget) that structure alone isn't enough: the offer has to filter for parents who show up. That's fixable, and the things you have that they can't buy — age-3, the pedigree, the reviews — are exactly the ones that win parents.
