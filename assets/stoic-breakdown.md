@@ -45,8 +45,12 @@ I checked every BJJ school in the Dripping Springs area (2026-06-17). **Every si
 | **JJ Machado Austin** (Bell Springs Rd) | Free week trial | their website is currently **DOWN (404)** |
 | Austin-metro (GB Austin, VOW, Simple Man, Impact…) | Free trial class | all identical |
 
-→ **The correction (you were right):** you don't need to "invent an offer" — you already have the same free class everyone has. **Stoic doesn't win on the offer; it wins on how it PACKAGES and CAPTURES it:** a dedicated page whose only job is that one signup, an instant capture on submit *(inferred from their platform type, not directly observed)*, and a small bonus stacked on top.
-→ **What we actually take:** put the free class on its **own conversion page**, **capture the lead instantly** (text + email), and **differentiate on what the offer can't** — the **hook** (age-3 / survival framing) and the **coach** (your pedigree). The free class is the ante; the hook and the follow-up are how you win the hand.
+→ **What this means:** matching everyone's free trial doesn't differentiate you — and doubling down on it won't either. The free class stays (it's the ante; dropping it just adds friction), but **it can't be the thing we market.** When every school runs the same $0 offer, leads treat all five schools as interchangeable and commit to none — that's exactly the no-show pattern your own ad campaigns produced.
+→ **So we need a BETTER offer, not a louder version of the same one.** Three layers, in order:
+  1. **The offer itself** — a named paid intro (the Kickstart: 2 weeks + free gi + parent debrief with you). Un-comparable, filters for parents who show up, and priced around one week of membership.
+  2. **The hook** — age-3 and the survival framing: reasons to pick YOU that no $0 offer can copy.
+  3. **The machine** — dedicated page + instant text/email capture (the part Stoic has and you don't).
+  Stoic wins today on layer 3 alone. We take layer 3 from them and beat them on 1 and 2.
 > Pricing: none of the local schools publish pricing (you included) — so that's neutral, not an edge.
 
 ### 5b. You already tested their playbook — with your own money ⚡ *(added 2026-07-22)*
