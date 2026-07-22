@@ -19,7 +19,7 @@ Stoic runs a martial-arts marketing platform (a "97 Display" style system) that 
 - What we use: one simple offer, repeated everywhere, with a dedicated page whose only job is to capture the lead.
 
 ## 2. Their website is built to convert and run ads
-- The site structure (offer page, schedule page, a page per program, auto-generated local SEO pages) is the signature of a managed martial-arts marketing platform. That part is inferred from their URL structure.
+- The whole site is a managed martial-arts marketing platform: offer page, schedule page, a page per program, auto-generated local SEO pages. The vendor is 97 Display, credited in their own footer (details in 2b).
 - Platforms like that are built to point paid Facebook and Google traffic at the offer page. So they are probably running ads into it. Not yet confirmed in the Meta Ad Library; that check is still pending.
 - What we use: a page structured to convert, with tracking on it, that we can send traffic to later. Step one on your side is analytics, so we can see what's working. You're setting up GA4 this week.
 
@@ -36,7 +36,7 @@ Their pitch, in their words: "high-converting websites, automated SMS/email foll
 
 Two things to know:
 
-1. **We believe Stoic runs on 97 Display or something very similar.** Their site's structure matches 97 Display's signature layout (the dedicated offer page, the schedule page, the per-program pages, the auto-generated local SEO pages). We haven't seen an invoice, so treat the specific vendor as our best read, not a confirmed fact. The machine itself is visible either way.
+1. **Stoic runs on 97 Display. Confirmed.** Their site footer says it outright: "Jiu Jitsu Websites Developed by 97Display Websites," linked to 97display.com. Their site also loads assets from 97 Display's servers. No guessing needed.
 
 2. **They don't publish pricing.** It's a monthly subscription plus ad spend, and you'd rent it: if you stop paying, the site, the automations, and the lead system go away. That's the main reason we're building your version on your own accounts instead (your WordPress, your Twilio, your number, your list). Same capabilities, you own all of it, and the running cost stays low.
 
