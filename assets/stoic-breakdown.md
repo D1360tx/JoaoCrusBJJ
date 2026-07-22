@@ -14,8 +14,8 @@ Stoic runs a martial-arts marketing platform (a "97 Display" style system) that 
 ---
 
 ## 1. Their offer and funnel
-- One offer, everywhere. And it's sharper than a plain "free class." From their offer page (stoicjiujitsu.com/Home/Offer/, checked 7/22): **"5 classes of kids martial arts, originally $50.00, for only $0"** with a certified instructor, no contract, limited time. Same free trial as everyone else, but they put a number on it (5 classes) and a dollar value on it ($50). It reads like a deal instead of a giveaway.
-- They have a dedicated offer page (`/Home/Offer/`) that exists for one job: capture that signup. It's separate from the main site.
+- One offer, everywhere: **a free trial class with a certified instructor. No risk, no commitment, limited time only** (stoicjiujitsu.com/Home/Offer/, checked 7/22).
+- The offer lives on a dedicated page that exists for one job: capture that signup. It's separate from the main site, and their platform can swap the offer from a dashboard without touching the page.
 - What we use: one simple offer, repeated everywhere, with a dedicated page whose only job is to capture the lead.
 
 ## 2. Their website is built to convert and run ads
@@ -41,7 +41,7 @@ I checked every BJJ school in the Dripping Springs area. Every single one offers
 |---|---|---|
 | **Joao Crus** (120 Frog Pond Ln) | First class free | site, IG, Yelp |
 | **Gracie Barra DS** (261 Frog Pond Ln, your street) | Free trial class | via contact form |
-| **Stoic** (391 Sportsplex) | 5 free classes, "$50 value, $0" | dedicated offer page |
+| **Stoic** (391 Sportsplex) | Free trial class | dedicated offer page, limited-time framing |
 | **JJ Machado Austin** (Bell Springs Rd) | Free week | website currently down |
 | Austin metro (GB Austin, VOW, Simple Man, Impact...) | Free trial class | all the same |
 
@@ -66,7 +66,7 @@ Your agency ran Facebook ads to a free class, called every lead, and set appoint
 |---|---|---|---|
 | Location | Sportsplex | **261 Frog Pond Ln (your street)** | 120 Frog Pond Ln |
 | Marketing system | Yes: funnel + SEO + ads-ready | brand-template site | fragmented, ~1 web lead/mo |
-| Trial offer | 5 classes, "$50 value" framing | free trial via form | free class, homepage form |
+| Trial offer | free class, dedicated page | free trial via form | free class, homepage form |
 | Analytics | likely (platform) | likely (GB template) | GA4 coming this week |
 | Teen program | 13-16, own page | 13+, own page | teens train, no named program or page |
 | Kids start age | 4 | 4 | **3** |
