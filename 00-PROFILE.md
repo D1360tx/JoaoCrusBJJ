@@ -21,7 +21,8 @@
 
 ## Current Tech Stack (confirmed 2026-06-17 call)
 - **Billing / member management:** Zen Planner.
-- **Email / ESP:** **Beehiiv** — ~8,060 contacts (+ separate old-leads list + ~100 newer leads). Sends weekly kids/parenting content; **getting near-zero response.** ← This overturns our earlier "no ESP" assumption; the list exists, it's just not converting (broad, unsegmented, no message-match).
+- **Email / ESP:** **Beehiiv** — 🔴 **CORRECTED 2026-07-22 (Joao's email): ~800 subscribers, NOT 8,060** (the call transcript's "8,060" was wrong by 10×). Sends weekly kids/parenting content; **near-zero response.** Small enough to hand-segment; a quality asset (past leads + parents), not a scale asset.
+- **Rates (2026-07-22 email):** kids AND adults **$49–59/WEEK** (≈$212–256/mo — already top-of-local-market premium); family 2+ members $49/wk; privates $95/class ($3,800/40); drop-in $25; 12-mo agreements, 60-day notice. → Member LTV on a 12-mo agreement ≈ **$2,500–3,000**.
 - **Website:** WordPress + Divi (self-built).
 - **Analytics:** No Google Analytics yet (agreed to add GA4).
 - **Ads:** FB agency runs ads on their own platform; Joao has access to it.

@@ -100,7 +100,7 @@ Unique **QR + dedicated tracking phone number per card** (Twilio tracking number
 |---|---|---|
 | 1 | Lock offers + pricing with Joao (call today) | ★ items below |
 | 2 | Landing page/section per offer + tracking numbers + QR codes | Offers locked |
-| 3 | **6:40 cohort launch** — announce to Beehiiv list (8K contacts!), GBP post, IG, signage | Start date set |
+| 3 | **6:40 cohort launch** — announce to Beehiiv list (⚡ corrected: ~800 contacts, not 8K — quality list of past leads/parents, hand-segmentable), GBP post, IG, signage | Start date set |
 | 4 | **Kids Kickstart + Buddy Passes** to existing families | Gi/bonus economics OK'd |
 | 5 | **Direct-mail test:** DS kids card, ~1,900 homes × 3 drops | Budget OK'd, card printed |
 | 6 | **Austin founding-member launch** — facility-internal first, then Lamar-corridor mail | Facility details known |
@@ -116,18 +116,19 @@ Note the Beehiiv list is finally a weapon here: a *dated cohort launch* and a *n
 **✅ RESOLVED by intake:** age-3 advertising = YES (postcard headline unblocked) · counts = 30 kids/12 adults · privates $95/class ($3,800/40), 5/wk now → wants 10/wk · drop-in $25 · 12-mo agreements exist · baseline ~$100K/12mo · budget $500/mo · retention claim 10/10 · agency = $400 spend + $500 retainer + $100/signup, appointments "never happened."
 
 **Still to get:**
-- [ ] 🔴 **Actual rates** — his answer repeated the counts (30/12); family "$49/wk" hints pricing is WEEKLY. Ask: "one kid = $__/wk or /mo? one adult?"
-- [ ] Monthly revenue split ($7K total — how much is privates vs memberships?)
+- [x] ~~Actual rates~~ ✅ **RESOLVED by 07-22 email: kids AND adults $49–59/WEEK** (≈$212–256/mo, already premium). → **LTV on a 12-mo agreement ≈ $2,500–3,000: a free gi, the $100/signup agency fee, even the whole $2K mail test are each justified by ~ONE new member.**
+- [ ] Monthly revenue split ($7K total — how much is privates vs memberships? Note: 42 × ~$50/wk + privates ≈ $11K/mo ≠ reported $7K — Zen Planner export settles it)
 - [ ] **Start date** for Mon/Wed 6:40 schedule → cohort launch date
 - [ ] **Austin details:** facility name, terms, member-marketing access, class times, start date
 - [ ] **Gi economics:** his cost per gi
 - [ ] **Guarantee comfort:** yes/no on 6-Weeks refund-plus-keep-the-gi
 - [ ] **Direct-mail budget:** frame as ONE-TIME ~$2K test approval (it's 4 months of his $500/mo comfort number — keep it separate from the monthly budget)
 - [ ] **Buddy passes:** OK to arm existing families?
-- [ ] 🆕 **His Twilio build:** what exists, A2P registered? (He's building it himself — coordinate before we build 11's SMS layer)
+- [ ] 🆕 **His Twilio build:** ⚡ 07-22 email — **not actually built** (stalled at signup; personal email rejected, needs school-domain email, restarting this week). No A2P → clock hasn't started. **Unblock him: stand up info@joaocrusbjj.com (needs DNS/hosting access, intake 2.8).**
 - [ ] 🆕 **His voice-agent project:** scope it so we don't collide (11 §9 had this in OUR backlog)
 - [ ] 🆕 **Line B reversal check:** now says REGULAR schools, not martial-arts schools — reconfirm
-- [ ] 🆕 **Agency decision:** ~$900+/mo for no-show appointments — pause, renegotiate, or ride until our funnel is live?
+- [ ] 🆕 **Agency decision:** ⚡ corrected — the $500 was a one-time SETUP fee; ongoing = **$400/mo + $100/signup**. Cheap enough to ride in parallel; compare cost-per-join once our funnel is live.
+- [ ] 📤 **Send the Stoic breakdown** (`assets/stoic-breakdown.md`) — promised in June, he still hasn't received it.
 
 ### 7b. New lever ranking (post-intake)
 1. **Privates 5→10/wk = +~$2,000/mo at existing $95 rate** — his stated want, zero marketing cost, highest margin. Pull privates CTA forward everywhere.

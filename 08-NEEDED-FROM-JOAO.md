@@ -44,6 +44,17 @@
 ### ⏳ Deferred by Joao
 Beehiiv access ("later") · GA/GSC ("checking") · FB/IG Business Manager ("?????" — needs a walkthrough) · Skool ("what do you want to know?") · Primal Flow ("later — too much on the plate") · Meta ad-account ownership check ("okay" — schedule it)
 
+### ⚡ 2026-07-22 (later) — EMAIL CORRECTIONS from Joao
+| Item | Correction |
+|---|---|
+| 🔴 Beehiiv size | **800 subscribers, NOT 8,060** — 10× correction to the discovery-call figure. Adding Diego as subscriber + sending sample emails today. |
+| ✅ 1.1 RATES (finally) | **Kids AND adults $49–59/WEEK** (≈$212–256/mo) — pricing is weekly and already premium. Family $49/wk for 2+ members. → LTV on 12-mo agreement ≈ $2,500–3,000. *(Mild inconsistency: 42 students × ~$50/wk + privates ≈ $11K/mo vs reported $7K — Zen Planner export will settle it.)* |
+| 3.14 Agency fees | "$500 retainer" was actually a **one-time SETUP fee** — ongoing cost = $400/mo spend + $100/signup (not ~$900/mo). Weakens the pause-the-agency case; run parallel + compare. |
+| 3.12 Twilio | **Not built** — stalled at account signup (personal email rejected; needs a school-domain email; restarting this week). No A2P yet → the 1–2 wk clock hasn't started. **We can unblock: stand up a school-domain email (needs 2.8 DNS/hosting, or Google Workspace).** |
+| 4.4 GA | He'll set up GA4 himself this week. |
+| 4.3 FB/IG | Deferred until "we have a strategy for marketing and ads." |
+| 📤 Owed to Joao | **He never received the Stoic breakdown** (`assets/stoic-breakdown.md`, ready since June) — SEND IT. |
+
 ---
 
 ## 1. PRICING & REVENUE (finalizes §4 of doc 07)
