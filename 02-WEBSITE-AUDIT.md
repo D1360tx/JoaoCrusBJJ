@@ -5,6 +5,32 @@
 
 ---
 
+## ⚡ RE-AUDIT DELTA — 2026-07-22 (live fetch: home, kids, schedule, adults)
+
+**Joao has updated the site since June.** Changes vs. the audit below:
+
+1. **🔑 Austin location LIVE on site: "1112 N Lamar Blvd, Austin, TX 78703 — Inside Castle Hill Fitness"** — the facility question answers itself. Castle Hill = premium downtown Austin gym (affluent adult members). Homepage checkmarks now include "✔ Austin"; schedule page title = "BJJ Class Schedule for Austin and Dripping Springs."
+2. **New schedule published (supersedes the June table):**
+   | Class | Location | Days / time |
+   |---|---|---|
+   | Kids 4–7 | DS | Mon & Wed 5:00–5:45pm |
+   | Homeschoolers | DS | Tue & Thu 10:00–10:45am |
+   | Kids 8–12 | **Austin** | **Tue & Thu 5:00–6:00pm** |
+   | Kids 8–12 | DS | **Mon & Wed 5:50–6:35pm** (was Tue/Thu) |
+   | Adults | DS | **Mon & Wed 6:40–7:40pm** ✅ live · Tue & Thu 11:30–12:30 · Sat 11–12 |
+   | Adults | Austin | **"(To be decided)"** |
+   → Pattern: DS consolidated onto Mon/Wed evenings; Joao is in Austin Tue/Thu. **Austin launches KIDS-first; adults TBD.**
+3. **⚠️ Meta Pixel REMOVED:** no fbq / connect.facebook.net / GTM on the homepage (June audit had pixel confirmed). If the agency is still running ads, spend is now unmeasured/untargeted — ask Joao what happened.
+4. **Still NO GA4/gtag** (as of this fetch; he committed to installing it this week).
+5. **Kids page unchanged: "Little Champions: Ages 4–7"** — still contradicts the approved age-3 claim; zero age-3 mentions site-wide. (Pre-postcard blocker, see assets/postcard-concepts.md.)
+6. New homepage hero: **"Brazilian Jiu-Jitsu That Changes Lives. Not Just Belts."** + checkmark list (Kids & Adults · Beginner Friendly · Dripping Springs · Austin · First Class Free · Safe & Welcoming). Form CTA: "Claim Your Free Intro Class!!"
+7. Typos persist and new ones added: "8 to 12 **yer** olds," "**bundary** setting," "essentials positions," "11:30 **and to** 12:30pm."
+8. Tech otherwise unchanged: WPForms (home), Chatway site-wide; phone 512-644-4560 (the 833 number wasn't detected on the fetched pages — verify if removed).
+
+---
+
+---
+
 ## Pages scraped
 Home · Classes Schedule · Kids Program · Adults Program · 6 Weeks of Confidence · Summer Camp · Team Building · Coaches · Testimonials · Got Questions (FAQ) · Books & Podcast · Blog
 

@@ -41,39 +41,42 @@ Full-bleed photo: real kids class (the 15–17 kid room — abundance, not posed
 
 ---
 
-## CARD 2 — ADULTS / AUSTIN-LAMAR CORRIDOR
-**Routes:** around the new Lamar facility (pull once address confirmed)
-> ⚠️ Hook below is written for the DS 6:40 schedule; **swap in real Austin class times** once known. If facility has members, run the internal offer FIRST — this card is for the surrounding neighborhoods.
+## CARD 2 — KIDS 8–12 / AUSTIN (CASTLE HILL AREA)
+> ⚡ **REWRITTEN 2026-07-22 after site re-audit:** Austin launches **KIDS 8–12 (Tue/Thu 5–6pm) inside Castle Hill Fitness, 1112 N Lamar Blvd** — adults are "(to be decided)." Card pivoted kids-first; adults become an interest-list capture line.
+> **Sequence: Castle Hill INTERNAL first** (signage, member newsletter, front desk — their members are affluent adults, many with kids; zero cost, warm audience), **then** this card to surrounding family routes (Clarksville, Old West Austin, Tarrytown — pull EDDM routes around 78703).
 
 ### FRONT
-Photo: adults drilling, real room.
+Photo: real kids 8–12 class.
 
-> **"I can never make it to class after work."**
-> **So we built the class around your commute.**
+> **Ages 8–12 are when confidence is won or lost.**
+> **Now teaching in your neighborhood.**
 >
-> *(small)* Joao Crus BJJ · Now on Lamar · Austin
+> *(small)* Joao Crus BJJ · Inside Castle Hill Fitness · 1112 N Lamar
 
 ### BACK
-> **New location. New founding group. [X] spots.**
+> **New Austin location. Founding group forming now.**
 >
-> Brazilian Jiu-Jitsu for adults who want to get on the mats without competing with traffic — taught by a Carlson Gracie & De La Riva–lineage black belt with 25 years on the mat.
+> **Junior Warriors (8–12)** — Brazilian Jiu-Jitsu that builds resilience, focus, and real confidence, taught by a Carlson Gracie & De La Riva–lineage black belt, author, and 25-year kids specialist (500+ families).
 >
-> Most schools teach you to win. **We teach you to regulate.** Come in stressed, leave grounded. No experience, no fitness required.
+> Most schools teach kids to win. **We teach them to regulate** — pressure-tested confidence, boundaries, and calm that show up at school and at home.
 >
 > ---
-> **FOUNDING MEMBER OFFER**
-> ✦ First 20 members lock the founding rate — for good (12-mo commitment)
+> **FOUNDING FAMILY OFFER**
+> ✦ First [15] families lock the founding rate — for good (12-mo agreement)
 > ✦ Free gi with enrollment
-> ✦ Bring a partner: you both get [value-add]
+> ✦ Buddy bonus: enroll with a friend, both get [value-add]
 >
 > **[QR CODE]** → Austin landing page
 > **Text or call [TRACKING # — Austin card]**
-> [Facility name + address] · Tue & Thu [TIMES] · Starts [DATE]
+> Inside Castle Hill Fitness · 1112 N Lamar Blvd · Tue & Thu 5–6pm · Starts [DATE]
+>
+> *(footer line)* **Adults:** classes coming to Austin soon — scan the QR to get first pick of spots.
 
 ---
 
 ## VERSION FOR DS ADULTS (optional 3rd card / later drop)
-Same structure as Card 2 with the local hook:
+The commuter hook lives HERE now (DS is where the 6:40 class runs — already live on the site):
+> **"I can never make it to class after work." So we moved the class.**
 > **The 6:40 Class.** Kids done at 5:45. You're on the mat at 6:40. New adult program starts [DATE] — 10 spots, everyone starts together.
 
 ---
@@ -82,7 +85,7 @@ Same structure as Card 2 with the local hook:
 | Card | QR → URL | Phone |
 |---|---|---|
 | Kids/DS | joaocrusbjj.com/kids-offer (or subdomain) + UTM | Twilio tracking # 1 |
-| Austin | /austin + UTM | Twilio tracking # 2 |
+| Kids/Austin | /austin + UTM (page must include the adults interest-list capture) | Twilio tracking # 2 |
 
 Missed-call text-back ON for both numbers (11 §5.3) — postcard calls will come in while he's teaching.
 

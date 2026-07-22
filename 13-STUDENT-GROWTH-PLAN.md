@@ -10,7 +10,7 @@
 | Fact | Detail | Status |
 |---|---|---|
 | **Adult schedule change** | Moving to **Mon & Wed 6:40–7:40pm** (after kids' 5:00–5:45 class). Old 6:10 start lost commuters; 6:40 gives them +30 min | ⏳ start date needed |
-| **New Austin location** | On **Lamar**, inside an existing facility; Joao there **Tue & Thu** (believed) | ⏳ facility name/terms/times needed |
+| **New Austin location** | ✅ **RESOLVED by site re-audit (2026-07-22): 1112 N Lamar Blvd — inside CASTLE HILL FITNESS.** Live schedule: **KIDS 8–12 Tue/Thu 5–6pm; adults "(to be decided)"** — Austin launches kids-first, not adults | ⏳ terms w/ Castle Hill + member-marketing access still needed |
 | **Agency history** | Multiple marketers pitched "90 leads/month," full-service (run ads + call leads + book) with **pay-only-on-signup** — none produced results | Secondhand from Joao |
 
 ---
@@ -118,8 +118,9 @@ Note the Beehiiv list is finally a weapon here: a *dated cohort launch* and a *n
 **Still to get:**
 - [x] ~~Actual rates~~ ✅ **RESOLVED by 07-22 email: kids AND adults $49–59/WEEK** (≈$212–256/mo, already premium). → **LTV on a 12-mo agreement ≈ $2,500–3,000: a free gi, the $100/signup agency fee, even the whole $2K mail test are each justified by ~ONE new member.**
 - [ ] Monthly revenue split ($7K total — how much is privates vs memberships? Note: 42 × ~$50/wk + privates ≈ $11K/mo ≠ reported $7K — Zen Planner export settles it)
-- [ ] **Start date** for Mon/Wed 6:40 schedule → cohort launch date
-- [ ] **Austin details:** facility name, terms, member-marketing access, class times, start date
+- [ ] **Start date** for Mon/Wed 6:40 schedule — ⚡ schedule is ALREADY LIVE on the site (re-audit 07-22), so likely in effect; confirm official date for the cohort framing
+- [ ] **Austin:** ~~facility/times~~ ✅ Castle Hill Fitness, kids 8–12 Tue/Thu 5–6pm (site). Still need: **terms with Castle Hill + can we market to their members** (signage/newsletter/front desk) + adult-class plan ("to be decided" on site → interest list in the meantime)
+- [ ] 🆕 **Meta Pixel gone from the site** (was confirmed in June) — is the agency still running ads? If yes, spend is now unmeasured; if no, the agency relationship changed. Ask.
 - [ ] **Gi economics:** his cost per gi
 - [ ] **Guarantee comfort:** yes/no on 6-Weeks refund-plus-keep-the-gi
 - [ ] **Direct-mail budget:** frame as ONE-TIME ~$2K test approval (it's 4 months of his $500/mo comfort number — keep it separate from the monthly budget)
