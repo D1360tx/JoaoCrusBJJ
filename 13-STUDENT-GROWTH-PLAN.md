@@ -116,9 +116,9 @@ Note the Beehiiv list is finally a weapon here: a *dated cohort launch* and a *n
 **✅ RESOLVED by intake:** age-3 advertising = YES (postcard headline unblocked) · counts = 30 kids/12 adults · privates $95/class ($3,800/40), 5/wk now → wants 10/wk · drop-in $25 · 12-mo agreements exist · baseline ~$100K/12mo · budget $500/mo · retention claim 10/10 · agency = $400 spend + $500 retainer + $100/signup, appointments "never happened."
 
 **Still to get:**
-- [x] ~~Actual rates~~ ✅ **RESOLVED by 07-22 email: kids AND adults $49–59/WEEK** (≈$212–256/mo, already premium). → **LTV on a 12-mo agreement ≈ $2,500–3,000: a free gi, the $100/signup agency fee, even the whole $2K mail test are each justified by ~ONE new member.**
-- [ ] Monthly revenue split ($7K total — how much is privates vs memberships? Note: 42 × ~$50/wk + privates ≈ $11K/mo ≠ reported $7K — Zen Planner export settles it)
-- [ ] **Start date** for Mon/Wed 6:40 schedule — ⚡ schedule is ALREADY LIVE on the site (re-audit 07-22), so likely in effect; confirm official date for the cohort framing
+- [~] Rates: email said **$49–59/wk**; strategy call (same day) said **$69/wk standard + $99 registration + ~$120 uniform**. Likely rack rate vs family rate — ⚠️ confirm the price card before finalizing offers. LTV on 12-mo agreement ≈ $2,500–3,600 either way: gi bonus / mail test each justified by ~ONE member.
+- [ ] Monthly revenue split ($7K total — how much is privates vs memberships? Zen Planner export settles it AND the rate card)
+- [x] ~~Start date~~ ✅ **RESOLVED (07-22 strategy call): new schedule incl. 6:40 adults starts AUGUST 17** → cohort launch date locked; back-to-school campaign anchors to it
 - [ ] **Austin:** ~~facility/times~~ ✅ Castle Hill Fitness, kids 8–12 Tue/Thu 5–6pm (site). Still need: **terms with Castle Hill + can we market to their members** (signage/newsletter/front desk) + adult-class plan ("to be decided" on site → interest list in the meantime)
 - [x] ~~Meta Pixel gone~~ ❌ **CORRECTED same day: pixel present** (ID 592714768141415 via PixelYourSite plugin — Joao-owned, validator-confirmed). Remaining ask = ad-ACCOUNT ownership only (intake 4.10).
 - [ ] 🆕 **Jetpack Stats exists** (stats.wp.com on site) — ask Joao for the Jetpack/WP.com stats dashboard: months of traffic data may already exist, no GA4 wait needed for a baseline.
@@ -144,5 +144,18 @@ Note the Beehiiv list is finally a weapon here: a *dated cohort launch* and a *n
 
 ---
 
+## 8. ⚡ POST-CALL UPDATE (2026-07-22 strategy call — full log: `calls/2026-07-22-joao-strategy-call.md`)
+
+**Decisions made:** launch date **Aug 17** · **paid/deposit trials adopted** (deposit credits toward membership — Joao agreed with the filter-for-commitment logic) · Diego builds pages/tracking/offers/VSL.
+
+**Plan adjustments:**
+1. **Campaign theme = BACK TO SCHOOL** (not generic cohort) — kids angle + the 6:40 adult cohort share the same seasonal window.
+2. **Offer #2 upgraded:** the 4-week deposit-credit intro (deposit becomes membership credit) came out of the call — cleaner risk-reversal than a pure paid trial; draft both and let data decide.
+3. **Gi economics correction:** real uniform ≈ **$120**, so "free gi" in a $49–69 trial is underwater — trial offers use a **low-cost trial uniform** (Joao sourcing) with upgrade-at-enrollment, or gi-included-at-enrollment framing.
+4. **Paid social is IN (~$35/day)** for back-to-school — supersedes the "organic-first, no paid ads in v1" rule (11 §1). Our own campaign, our own tracking, separate from the agency's.
+5. **Lead magnet: Joao's children's storybooks** (shy kids / distracted kids; Amazon) — event handout + trial gift + landing-page incentive. Slots into the free-guide lead-magnet plan; his own initiative, build around it.
+6. **New build list with deadline:** toddler/adults/teams/privates pages + GA4 + pixel events + VSL + email/SMS sequences + ad plan, all live before **Aug 17** (~3.5 weeks).
+
 ## CHANGE LOG
 - 2026-07-22 — Doc created ahead of growth call; offers A–E, 6:40 cohort relaunch, EDDM 3-touch plan, Austin question list.
+- 2026-07-22 (later) — Post-call update §8: Aug 17 locked, paid-trial decision, back-to-school theme, $120 gi correction, paid social in, storybook lead magnet.
