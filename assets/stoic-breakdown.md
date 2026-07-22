@@ -23,6 +23,25 @@ Stoic runs a martial-arts marketing platform (a "97 Display" style system) that 
 - Platforms like that are built to point paid Facebook and Google traffic at the offer page. So they are probably running ads into it. Not yet confirmed in the Meta Ad Library; that check is still pending.
 - What we use: a page structured to convert, with tracking on it, that we can send traffic to later. Step one on your side is analytics, so we can see what's working. You're setting up GA4 this week.
 
+## 2b. What 97 Display is (the company behind this kind of setup)
+97 Display (97display.com) is a marketing company that builds this exact machine for martial arts schools, gyms, and dance studios. They've been doing it for 15+ years. From their own site, checked 7/22, the package is:
+
+- A website built to convert visitors into leads
+- Automated SMS and email follow-up the moment a lead comes in
+- Local SEO (the auto-generated area pages we found on Stoic's site)
+- Ad campaigns pointed at the offer page
+- A CRM to track every lead, plus review management
+
+Their pitch, in their words: "high-converting websites, automated SMS/email follow-ups, local SEO, and ads to attract, nurture, and convert more students into active enrollments."
+
+Two things to know:
+
+1. **We believe Stoic runs on 97 Display or something very similar.** Their site's structure matches 97 Display's signature layout (the dedicated offer page, the schedule page, the per-program pages, the auto-generated local SEO pages). We haven't seen an invoice, so treat the specific vendor as our best read, not a confirmed fact. The machine itself is visible either way.
+
+2. **They don't publish pricing.** It's a monthly subscription plus ad spend, and you'd rent it: if you stop paying, the site, the automations, and the lead system go away. That's the main reason we're building your version on your own accounts instead (your WordPress, your Twilio, your number, your list). Same capabilities, you own all of it, and the running cost stays low.
+
+So when you see Stoic's clean funnel, that's not a marketing genius at work. It's a subscription. The playbook is public, and we're building you the owned version of it.
+
 ## 3. How they package the teen class
 - They split programs by age: Little Kids (4-7), Big Kids (8-12), Teens (13-16), Adults. Each one gets its own page.
 - A teen program with its own name and page is findable and feels made for teens. Teens folded into kids or adult classes are invisible online. Gracie Barra DS does the same thing (Teens 13+).
