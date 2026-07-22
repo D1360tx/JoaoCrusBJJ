@@ -82,3 +82,31 @@ Here's the proof the free-trial-ads machine alone isn't enough: **you already pa
 7. **Lean into the coach, not the gym** — your pedigree and your price point tell the same story: the premium expert option. They sell a facility; you sell the man who wrote the book. Don't apologize for the rate — justify it visibly.
 
 > Bottom line: Stoic didn't out-coach you — they out-*structured* you. You've now also proven (with your own ad budget) that structure alone isn't enough: the offer has to filter for parents who show up. That's fixable, and the things you have that they can't buy — age-3, the pedigree, the reviews — are exactly the ones that win parents.
+
+---
+
+## 📧 COVER NOTE (internal — send with the doc, don't include this section)
+> Send procedure: paste everything ABOVE this section into a Google Doc (tables need formatting), share with joaocrus@gmail.com, drop the link into [LINK] below, send from Diego's email. Drafted 2026-07-22.
+
+**Subject:** The Stoic breakdown you asked for
+
+Hey Joao,
+
+Here's the breakdown of what Stoic is doing: [LINK]
+
+The short version:
+
+1. **Their advantage is structure, not coaching.** They run a marketing platform that gives them a dedicated offer page, instant lead capture, and automatic follow-up. Nothing they do requires being better at jiu-jitsu.
+
+2. **You already proved the weak spot in their playbook — with your own ad budget.** The free-trial-plus-Facebook-ads machine is exactly what your agency ran for you: leads came in, appointments got set, nobody showed. Everyone in town runs that same free trial. The offer is the commodity, not the machine.
+
+3. **So we copy their structure and beat their offer.** Dedicated page, instant text + email follow-up, and a named paid intro (2 weeks + free gi + a parent debrief with you) that filters for parents who actually show up — plus the headline nobody can copy: kids from age 3.
+
+The last section of the doc is the action list — most of it is already in motion. One heads-up inside: the closest competitor isn't actually Stoic, it's Gracie Barra on your street. It's in the doc.
+
+Two things I still need from you to keep moving: the **start date for the new Mon/Wed 6:40 adult class**, and the **Austin details** (facility name, class times, whether we can market to their members).
+
+Talk soon,
+Diego
+
+> *Sending notes: the two asks at the end are the only remaining blockers (cohort launch date + Austin postcard) — kept in the note so they don't get lost in doc-skimming. GA4 deliberately not mentioned (he already committed; it's in the doc's action list). If no reply in 2–3 days, nudge by text.*
