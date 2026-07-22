@@ -1,10 +1,11 @@
 # What Stoic Jiu-Jitsu Is Doing, and What We Take From It
-### A plain breakdown for Joao
-> Stoic (Dripping Springs) has the most built-out marketing setup of any school in the area. They are not better at jiu-jitsu. They have a better marketing machine. This doc shows what that machine is and what we use from it.
-> Source: our competitive research (file `12`) plus a live check of every DS-area school on 2026-06-17, re-verified 2026-07-22. Confirmed items are marked. A few things are inferred from how their site is built, and those are flagged.
 
-> Heads-up: the closest competitor is not Stoic. It's **Gracie Barra Dripping Springs at 261 Frog Pond Ln, on your street.** Full Gracie Barra brand, a 4th-degree black belt, a teen program, and the same free trial. Watch them as closely as Stoic.
-> Also verified: Stoic's owners, **Marcus and Laci Douthitt, also own JJ Machado Austin** (they bought it in October 2022). Stoic and JJM are one operation. Details in `local-competitors-breakdown.md`.
+Stoic has the most built-out marketing setup of any school in the area. They are not better at jiu-jitsu. They have a better marketing machine. This shows what that machine is and what we use from it. Everything here comes from checking their site and every other DS-area school directly (last checked 7/22).
+
+Two things before the breakdown:
+
+1. **The closest competitor is not Stoic. It's Gracie Barra Dripping Springs at 261 Frog Pond Ln, on your street.** Full Gracie Barra brand, a 4th-degree black belt, a teen program, and the same free trial. Watch them as closely as Stoic.
+2. **Stoic's owners, Marcus and Laci Douthitt, also own JJ Machado Austin** (they bought it in October 2022). So Stoic and JJM are one operation, not two separate competitors.
 
 ---
 
@@ -111,6 +112,7 @@ Bottom line: Stoic didn't out-coach you. They out-structured you. And your own a
 
 ## 📧 COVER NOTE (internal. Send with the doc, don't include this section)
 > Send procedure: paste everything ABOVE this section into a Google Doc (tables need formatting), share with joaocrus@gmail.com, drop the link into [LINK] below, send from Diego's email.
+> Internal sourcing (not for the client copy): competitive research in `12-AD-INTEL-SWEEP-2026-06.md`; per-school verification in `local-competitors-breakdown.md`; DS-area sweep 2026-06-17, re-verified 2026-07-22; 97 Display confirmed via Stoic's footer credit; Stoic's live offer browser-verified by Diego (raw HTML shows a stale "5 classes/$50" template default their JS overwrites).
 
 **Subject:** The Stoic breakdown you asked for
 
