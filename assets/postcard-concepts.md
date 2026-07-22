@@ -20,7 +20,7 @@ Full-bleed photo: real kids class (the 15–17 kid room — abundance, not posed
 ### BACK
 > **Big feelings learn brave moves here.**
 >
-> 25 years teaching kids emotional regulation, confidence, and boundaries through Brazilian Jiu-Jitsu — from the coach who literally wrote the book on it (*Grapple with Emotions*).
+> **Little Champions (3–7)** · **Junior Warriors (8–12)** — 25 years teaching kids emotional regulation, confidence, and boundaries through Brazilian Jiu-Jitsu, from the coach who literally wrote the book on it (*Grapple with Emotions*).
 >
 > ★★★★★ **4.8 on Google · 98 reviews · 500+ families**
 >
@@ -35,7 +35,9 @@ Full-bleed photo: real kids class (the 15–17 kid room — abundance, not posed
 > **Text or call [TRACKING # — kids card]**
 > 120 Frog Pond Lane · Offer ends [DATE / "first 15 families this month"]
 
-**Notes:** headline = the age-3 monopoly (pending 6.9 sign-off — fallback headline if no: "The kids-BJJ specialist of Dripping Springs since 2003"). Deadline must be real. Drops 2 and 3 keep the same layout, rotate the opening line (drop 2: "Still thinking about it? So is your 3-year-old." / drop 3: "Last call for this month's Kickstart group").
+**Notes:** headline = the age-3 monopoly (✅ approved 2026-07-22). Deadline must be real. Drops 2 and 3 keep the same layout, rotate the opening line (drop 2: "Still thinking about it? So is your 3-year-old." / drop 3: "Last call for this month's Kickstart group").
+- **Use his existing program names** — Little Champions / Junior Warriors are live on joaocrusbjj.com/kids-program/. Postcard → site congruence: parent sees the same names when they look him up.
+- ⚠️ **PRE-DROP BLOCKER: his live site says Little Champions "4–7."** A postcard claiming "we start at 3" while his own site says 4–7 is a credibility/conversion leak. **Joao must edit "4–7" → "3–7"** on /kids-program/ (a one-word Divi edit he can do himself) **before drop 1 mails.** Check the homepage and any other age-range mentions too.
 
 ---
 
@@ -85,6 +87,7 @@ Same structure as Card 2 with the local hook:
 Missed-call text-back ON for both numbers (11 §5.3) — postcard calls will come in while he's teaching.
 
 ## PRODUCTION CHECKLIST
+- [ ] 🔴 **Joao updates live site "4–7" → "3–7"** on /kids-program/ (+ anywhere else the age range appears) — BEFORE drop 1
 - [ ] Verify current EDDM retail rate + size rules (6.5×9" jumbo)
 - [ ] Print quote (e.g., local printer vs. online gang printers) — target ≤$0.15/pc at 5–6K qty
 - [ ] Pull carrier routes in the USPS EDDM mapping tool; record household counts per route
