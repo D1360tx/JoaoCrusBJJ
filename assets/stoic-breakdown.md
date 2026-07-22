@@ -14,7 +14,7 @@ Stoic runs a **martial-arts marketing platform (a "97 Display"-style system)** t
 ---
 
 ## 1. Their offer & funnel
-- **One clear offer, everywhere: a FREE TRIAL CLASS** ("$0, with a certified instructor, no contract, limited time"). Some listings say a free *week*.
+- **One clear offer, everywhere — and it's sharper than a bare "free class."** Verified on their offer page (2026-07-22): **"5 classes of kids martial arts — originally $50.00 — for only $0"** with a certified instructor, no contract, limited time. Notice the move: they *quantify* the free trial (5 classes) and *anchor a dollar value* ($50) on it. Same free offer as everyone else, packaged to feel like a deal.
 - They have a **dedicated "Web Offer" landing page** (`/Home/Offer/`) that exists only to capture that free-trial signup — separate from the main site.
 - → **What we take:** one simple, repeated offer + a dedicated page whose only job is to capture the lead. (This is the "new page" we discussed — yours leads with your authority *and* a single clear offer.)
 

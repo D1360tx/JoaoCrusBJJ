@@ -11,7 +11,7 @@
 | URL | What it is | Stack | State |
 |---|---|---|---|
 | https://joaocrusbjj.com | Main academy site | WordPress + Divi 4.27.6 | **Live / primary** |
-| https://blackbeltparenting.net | Podcast home | WordPress + Divi | Dated (2019), `noindex` — invisible to Google |
+| https://blackbeltparenting.net | Podcast home | WordPress + Divi | Dated (2019). ⚡ 2026-07-22: **`noindex` REMOVED — now indexable** (was invisible to Google in June) |
 | https://justjiuit.com | DVD / curriculum store | WordPress + WooCommerce | Stale (2017/2020), live w/ cart + member area |
 | (in this repo) `site/` | Consolidated preview hub + 3 design variants | Static HTML | **Draft (ours)** |
 | — | *No other live domains found* | | |
@@ -24,11 +24,13 @@
 ---
 
 ## 🎓 Skool communities (3) — profile: https://www.skool.com/@joao-crus-6684
-| URL | Name | Audience | Price | Members |
+| URL | Name | Audience | Price | Members (06-09 → **07-22**) |
 |---|---|---|---|---|
-| https://www.skool.com/joao-crus-brazilain-jiu-jitsu-8055 | The BJJ Coach Blueprint | Coaches (B2B) | $99/mo | 3 |
-| https://www.skool.com/boundary-guard-7425 | Boundary Guard | Adults (B2C) | Free→paid | 6 |
-| https://www.skool.com/the-children-bjj-blueprint-9044 | The Children BJJ Blueprint | Kids coaches (B2B) | Free→$27/$97 | 9 |
+| https://www.skool.com/joao-crus-brazilain-jiu-jitsu-8055 | The BJJ Coach Blueprint | Coaches (B2B) | $99/mo | 3 → **2** |
+| https://www.skool.com/boundary-guard-7425 | Boundary Guard | Adults (B2C) | Free→paid | 6 → **5** |
+| https://www.skool.com/the-children-bjj-blueprint-9044 | The Children BJJ Blueprint | Kids coaches (B2B) | Free→$27/$97 | 9 → **13** ✅ growing |
+
+> 2026-07-22 re-verify: both paid communities shrank by 1; the FREE Children Blueprint grew 9→13 — the only one with momentum. Public pages fetched successfully this time (no login wall for counts/pricing).
 
 ---
 

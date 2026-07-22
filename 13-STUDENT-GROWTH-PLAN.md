@@ -123,6 +123,8 @@ Note the Beehiiv list is finally a weapon here: a *dated cohort launch* and a *n
 - [x] ~~Meta Pixel gone~~ ❌ **CORRECTED same day: pixel present** (ID 592714768141415 via PixelYourSite plugin — Joao-owned, validator-confirmed). Remaining ask = ad-ACCOUNT ownership only (intake 4.10).
 - [ ] 🆕 **Jetpack Stats exists** (stats.wp.com on site) — ask Joao for the Jetpack/WP.com stats dashboard: months of traffic data may already exist, no GA4 wait needed for a baseline.
 - [ ] 🆕 **WP Booking Calendar plugin installed** (loads on homepage) — is a booking flow live? Where do bookings go? (Affects the Cal.com choice in doc 11.)
+- [ ] 🆕 **Castle Hill doesn't list Joao anywhere** (verified 07-22: zero "jiu jitsu"/"Crus" on castlehillfitness.com classes page or site search) — ask Joao/CH for a listing on their classes page + member newsletter mention. Free, high-intent placement.
+- ℹ️ Competitive note for offer framing: **Stoic's trial is "5 classes, $50 value, $0"** (verified) — they already quantify+anchor the free offer. Our Kickstart competes against THAT, not a bare "free class": lead with what $0 can't buy (gi to keep, parent debrief with the author, age-3).
 - [ ] **Gi economics:** his cost per gi
 - [ ] **Guarantee comfort:** yes/no on 6-Weeks refund-plus-keep-the-gi
 - [ ] **Direct-mail budget:** frame as ONE-TIME ~$2K test approval (it's 4 months of his $500/mo comfort number — keep it separate from the monthly budget)
