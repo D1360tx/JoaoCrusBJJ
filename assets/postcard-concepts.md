@@ -1,7 +1,7 @@
 # Postcard Concepts — EDDM Direct Mail Test
 ### Two offer-matched cards: Kids/Dripping Springs + Adults/Austin-Lamar
 > Created 2026-07-22. Companion to `13-STUDENT-GROWTH-PLAN.md` §4. Copy drafts for Joao to react to — NOT final.
-> ⚠️ Blockers before print: real prices (intake 1.1) · age-3 sign-off (6.9) · 6:40 start date · Austin details · tracking numbers provisioned (11 §5.3) · verify EDDM rates.
+> ⚠️ Blockers before print: real prices (intake 1.1 — STILL open; his 07-22 answer repeated counts) · ~~age-3 sign-off (6.9)~~ ✅ **APPROVED 2026-07-22 — headline is a GO** · 6:40 start date · Austin details · tracking numbers provisioned (11 §5.3) · verify EDDM rates.
 > Design direction: dark + Joao's blue/yellow (his stated preference) · real class photos, NOT AI graphics (he disliked those) · 6.5×9" jumbo (bigger card = more mailbox presence, same EDDM postage class — verify).
 
 ---

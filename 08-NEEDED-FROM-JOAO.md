@@ -7,6 +7,45 @@
 
 ---
 
+## ⚡ 2026-07-22 — JOAO'S INTAKE RESPONSE (shared checklist returned)
+> Consolidated here rather than editing every row below. Anything not listed = still open.
+
+### ✅ Answered
+| Item | Answer |
+|---|---|
+| 1.4 Student counts | **30 kids / 12 adults** (matches first-party class observations) |
+| 1.2 Privates | **$3,800 / 40 classes = $95/class.** Teaches **5/wk, wants 10/wk** (→ +~$2K/mo at current rate) |
+| 1.3 Drop-in | **$25** |
+| 1.5 Monthly revenue | **~$7,000/mo** (split by line not given) |
+| 1.6 Grandfathered rates | None |
+| 1.7 Contracts | **12-month agreement, 60-day termination notice** (07's proposed structure already exists) |
+| 1.8 Baseline | **~$100,000 trailing 12 months** ← the rev-share baseline number; still want records to document it |
+| 1.9 Budget | **$500/mo** software + ads |
+| 3.1/3.1b Leads | Tracked nowhere but inbox; form submissions → **joaocrus@gmail.com** (confirmed) |
+| 3.9/3.14 Agency cost | **$400/mo spend + $500/mo retainer + $100 per signup** (~$900+/mo total) |
+| 3.10 Ad leads | Go to **his email**; no CRM |
+| 3.13 Agency follow-up | They **call leads to set appointments**; comms via Slack/email |
+| 3.15 Reporting | Only "leads that set appointments — **but the appointments never happened**" ← confirms doc 12 lead-quality diagnosis |
+| 3.12/4.11 Twilio | 🆕 **Joao is building it HIMSELF** (still active). ⚠️ Coordinate before building 11's SMS layer; check A2P status |
+| 4.2 GBP | 🆕 **Two profiles — Dripping Springs AND Austin** (Austin GBP already exists for the new location) |
+| 6.1 Coverage | **Only Joao** can run intros/answer leads |
+| 6.2 Capacity | Kids AND adults both have room to grow |
+| 6.6 Retention | Claims **10/10 kids** still training after a year (vs 66.4% industry median — marketing weapon if true) |
+| 6.7 Missed calls | Joao calls back; 🆕 **he's building a voice agent himself** (overlaps 11 §9 backlog — coordinate) |
+| 6.9 Age-3 | ✅ **Official policy + OK to advertise "from age 3"** — postcard headline UNBLOCKED |
+
+### ⚠️ Ambiguous / contradicts earlier — clarify by text
+| Item | Issue |
+|---|---|
+| 1.1 Rates | "Kids rate: **30** / Adults rate: **12**" = same numbers as student counts — he answered counts twice, **rates still unknown.** Family "$**49/week** for 2+ members" suggests pricing may be WEEKLY. → Ask: "For one kid, what's the price per week or month? One adult?" |
+| 6.8 Line B | 🔄 **REVERSAL:** now says "**regular schools** that want to teach BJJ in their location" — June answer was martial-arts schools. Matches 07's after-school white-space flag. Re-confirm. |
+| 1.5 split | $7,000 given as total; memberships vs privates vs camps split still needed |
+
+### ⏳ Deferred by Joao
+Beehiiv access ("later") · GA/GSC ("checking") · FB/IG Business Manager ("?????" — needs a walkthrough) · Skool ("what do you want to know?") · Primal Flow ("later — too much on the plate") · Meta ad-account ownership check ("okay" — schedule it)
+
+---
+
 ## 1. PRICING & REVENUE (finalizes §4 of doc 07)
 
 | # | Item | Why we need it | Status |

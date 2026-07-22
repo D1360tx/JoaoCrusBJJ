@@ -111,15 +111,30 @@ Note the Beehiiv list is finally a weapon here: a *dated cohort launch* and a *n
 ---
 
 ## 7. ★ MUST-GETS ON TODAY'S CALL
+> ⚡ Updated 2026-07-22 after Joao returned the intake checklist (full answers: 08 top section).
 
-- [ ] **Current pricing — every tier** (kids/adults/family/privates). Blocks all offer math. (Intake 1.1, still open)
-- [ ] **Start date** for Mon/Wed 6:40 schedule → becomes the cohort launch date
+**✅ RESOLVED by intake:** age-3 advertising = YES (postcard headline unblocked) · counts = 30 kids/12 adults · privates $95/class ($3,800/40), 5/wk now → wants 10/wk · drop-in $25 · 12-mo agreements exist · baseline ~$100K/12mo · budget $500/mo · retention claim 10/10 · agency = $400 spend + $500 retainer + $100/signup, appointments "never happened."
+
+**Still to get:**
+- [ ] 🔴 **Actual rates** — his answer repeated the counts (30/12); family "$49/wk" hints pricing is WEEKLY. Ask: "one kid = $__/wk or /mo? one adult?"
+- [ ] Monthly revenue split ($7K total — how much is privates vs memberships?)
+- [ ] **Start date** for Mon/Wed 6:40 schedule → cohort launch date
 - [ ] **Austin details:** facility name, terms, member-marketing access, class times, start date
-- [ ] **Gi economics:** his cost per gi (bonus viability) 
-- [ ] **Guarantee comfort:** yes/no on the 6-Weeks refund-plus-keep-the-gi guarantee
-- [ ] **Age-3 advertising sign-off** (closes intake 6.9 — headline claim on the kids postcard)
-- [ ] **Direct-mail budget:** ~$1,500–2,000 for a 3-drop measured test — OK?
+- [ ] **Gi economics:** his cost per gi
+- [ ] **Guarantee comfort:** yes/no on 6-Weeks refund-plus-keep-the-gi
+- [ ] **Direct-mail budget:** frame as ONE-TIME ~$2K test approval (it's 4 months of his $500/mo comfort number — keep it separate from the monthly budget)
 - [ ] **Buddy passes:** OK to arm existing families?
+- [ ] 🆕 **His Twilio build:** what exists, A2P registered? (He's building it himself — coordinate before we build 11's SMS layer)
+- [ ] 🆕 **His voice-agent project:** scope it so we don't collide (11 §9 had this in OUR backlog)
+- [ ] 🆕 **Line B reversal check:** now says REGULAR schools, not martial-arts schools — reconfirm
+- [ ] 🆕 **Agency decision:** ~$900+/mo for no-show appointments — pause, renegotiate, or ride until our funnel is live?
+
+### 7b. New lever ranking (post-intake)
+1. **Privates 5→10/wk = +~$2,000/mo at existing $95 rate** — his stated want, zero marketing cost, highest margin. Pull privates CTA forward everywhere.
+2. **6:40 cohort relaunch** (adults, 12 current, room to grow).
+3. **Kids Kickstart + buddy passes** (30 kids, claimed 10/10 retention = referral goldmine).
+4. **Direct-mail test** (age-3 headline now approved).
+5. **Agency:** hold the ~$900/mo question until 1–4 are live, then compare cost-per-join.
 
 ---
 
