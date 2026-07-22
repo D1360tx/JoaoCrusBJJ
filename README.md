@@ -25,6 +25,7 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [10-AUTOMATION-STACK.md](10-AUTOMATION-STACK.md) | Automation architecture: SaaS options vs. lean custom stack (Option D, recommended) + comp-model factor + baseline mechanics + decision gates |
 | [11-ORCHESTRATION-REPO-SPEC.md](11-ORCHESTRATION-REPO-SPEC.md) | **Build spec for the custom stack: schema, sequence engine, compliance, 4-week sprint plan** |
 | [12-AD-INTEL-SWEEP-2026-06.md](12-AD-INTEL-SWEEP-2026-06.md) | First competitive ad-intel sweep: competitor offers/funnels, agency shortlist, ad-pattern playbook (Ad Library itself needs a 20-min browser pass — §7) |
+| [13-STUDENT-GROWTH-PLAN.md](13-STUDENT-GROWTH-PLAN.md) | **Growth plan (2026-07): offer options (Kickstart/buddy/guarantee/founding), "6:40 Class" cohort relaunch, EDDM 3-touch direct-mail test, Austin/Lamar question list** |
 | [assets/joao-shared-checklist.md](assets/joao-shared-checklist.md) | Clean client-facing checklist — paste into Google Doc and share with Joao |
 | [assets/url-inventory.md](assets/url-inventory.md) | **Master URL inventory** — every web property, channel, listing, phone/email Joao has (~20 front doors) |
 | [assets/joao-call-talking-points.md](assets/joao-call-talking-points.md) | **Call script** — lead-the-call talking points (reframed from the intake email) with ★ must-get items |
@@ -34,6 +35,8 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [assets/stoic-breakdown.md](assets/stoic-breakdown.md) | **Stoic competitor breakdown** — client-facing; what their machine does + what we copy |
 | [assets/assumption-audit.md](assets/assumption-audit.md) | **Assumption audit** — repo-wide flag list of unverified claims (4 tiers) for review |
 | [assets/local-competitors-breakdown.md](assets/local-competitors-breakdown.md) | **Local competitor breakdowns** — Gracie Barra DS + JJ Machado (+ peripheral), source-tagged; companion to the Stoic breakdown |
+| [assets/joao-growth-call-onepager.md](assets/joao-growth-call-onepager.md) | **Growth-call one-pager (2026-07-22)** — three moves + ★ must-gets + objection handling |
+| [assets/postcard-concepts.md](assets/postcard-concepts.md) | **Postcard copy drafts** — Kids/DS (age-3 hook) + Adults/Austin-Lamar cards, tracking + production checklist |
 | [site/](site/) | **Website preview build** — consolidated authority hub + Kids + lead-magnet pages; `site/variants/` holds 3 BJJ design directions (Bold Athletic / Gritty Dojo / Modern Sport) + compare hub |
 
 ## Core thesis
@@ -60,6 +63,8 @@ Elite raw material, fragmented presentation. Consolidate 8+ scattered surfaces i
 - **2026-06-16** — Sharpened the **ESP-confirmation** question across intake (08 §3.3) + both outreach versions (09, assets/): reframed from "any unused account lying around" to an explicit **verify-don't-assume** check, now naming ActiveCampaign, Mailchimp, Constant Contact, ConvertKit, Klaviyo, HubSpot, Flodesk (+ agency/builder-bundled ESPs). Rationale: the audit's "no ESP" finding is website-only and does NOT confirm a standalone/agency account doesn't exist — Joao must answer directly before we assume he has nothing.
 - **2026-06-17** — GBP confirmed (4.8★/98 reviews) → talking points/profile/site updated; built 3 BJJ design variants + compare hub; added subdomain-rebuild pitch to call script; saved URL inventory + call talking-points/one-pager.
 - **2026-06-17** — 🔴 **DISCOVERY CALL with Joao** ([`calls/2026-06-17-joao-discovery-call.md`](calls/2026-06-17-joao-discovery-call.md)). Big corrections: **priority #1 = NEW LEADS** (not show-ups); **he HAS an ESP — Beehiiv, ~8,060 contacts, near-zero response** (overturns "no ESP"); **billing = Zen Planner**; **no GA yet**; ~1 website lead/month; agency leads sit on a platform he can access; prefers **adding to existing homepage** over a separate site; **likes dark + blue/yellow**, disliked the AI graphics; wants **concrete/objective** recommendations. Action plan: Diego to send intake email + Stoic breakdown, set up GA4, revise design to dark/blue-yellow, schedule next call before Sat. ⚠️ This reframes 11 §1's "organic-first, no ads" and the ESP plan — Beehiiv rescue + lead-gen now central.
+
+- **2026-07-22** — 🆕 NEW FACTS (07-21 conversation): **adult schedule moving to Mon/Wed 6:40–7:40pm** (commuters couldn't make 6:10); **new Austin location on Lamar** (inside a facility, Tue/Thu, details TBD); multiple "90 leads/month" pay-on-signup agencies pitched Joao, none delivered → diagnosis: commodity free-class offer, not lead volume. **Growth plan drafted (13):** "6:40 Class" cohort relaunch, Kickstart paid trial + free gi, buddy passes, 6-Weeks guarantee option, Austin founding-member offer, EDDM 3-touch direct-mail test (~1,900 homes ×3, QR + tracking numbers). Call one-pager + postcard drafts in assets/. Fixed kids.html "4 or 5" → "4" (last Tier-1 audit item).
 
 ## Next decisions (from Joao)
 1. Priority goal first: privates, group students, or digital/coach products?
