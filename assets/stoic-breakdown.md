@@ -14,7 +14,7 @@ Stoic runs a martial-arts marketing platform (a "97 Display" style system) that 
 ---
 
 ## 1. Their offer and funnel
-- One offer, everywhere. And it's sharper than a plain "free class." Verified on their offer page: **"5 classes of kids martial arts, originally $50.00, for only $0"** with a certified instructor, no contract, limited time. Notice what they did. Same free trial as everyone else, but they put a number on it (5 classes) and a dollar value on it ($50). It reads like a deal instead of a giveaway.
+- One offer, everywhere. And it's sharper than a plain "free class." From their offer page (stoicjiujitsu.com/Home/Offer/, checked 7/22): **"5 classes of kids martial arts, originally $50.00, for only $0"** with a certified instructor, no contract, limited time. Same free trial as everyone else, but they put a number on it (5 classes) and a dollar value on it ($50). It reads like a deal instead of a giveaway.
 - They have a dedicated offer page (`/Home/Offer/`) that exists for one job: capture that signup. It's separate from the main site.
 - What we use: one simple offer, repeated everywhere, with a dedicated page whose only job is to capture the lead.
 
@@ -23,11 +23,11 @@ Stoic runs a martial-arts marketing platform (a "97 Display" style system) that 
 - Platforms like that are built to point paid Facebook and Google traffic at the offer page. So they are probably running ads into it. Not yet confirmed in the Meta Ad Library; that check is still pending.
 - What we use: a page structured to convert, with tracking on it, that we can send traffic to later. Step one on your side is analytics, so we can see what's working. You're setting up GA4 this week.
 
-## 3. How they got the teen class (you asked)
-- They package programs by age: Little Kids (4-7), Big Kids (8-12), Teens (13-16), Adults. Each one gets its own page.
-- That's the whole trick. A teen with their own named program and page is findable and feels made for them. Teens lumped into "kids" or "adults" are invisible.
-- What we use: when you bring the teen class back, give it its own name, its own page, and its own offer.
-- Note: Gracie Barra DS also runs a teen program (13+). Two schools near you have teens and you currently don't. More reason to bring it back, packaged right.
+## 3. How they package the teen class
+- They split programs by age: Little Kids (4-7), Big Kids (8-12), Teens (13-16), Adults. Each one gets its own page.
+- A teen program with its own name and page is findable and feels made for teens. Teens folded into kids or adult classes are invisible online. Gracie Barra DS does the same thing (Teens 13+).
+- You have teen students. What you don't have is the packaging: no named teen program, no page, nothing on the schedule a parent searching "teen martial arts" can find.
+- What we do: name it, give it a page, give it an offer.
 
 ## 4. Their positioning leans on the facility
 - They market amenities hard: recovery room, sauna, cold plunge, Normatec boots. They're on ClassPass. (Per our competitor research, file 12.)
@@ -68,12 +68,12 @@ Your agency ran Facebook ads to a free class, called every lead, and set appoint
 | Marketing system | Yes: funnel + SEO + ads-ready | brand-template site | fragmented, ~1 web lead/mo |
 | Trial offer | 5 classes, "$50 value" framing | free trial via form | free class, homepage form |
 | Analytics | likely (platform) | likely (GB template) | GA4 coming this week |
-| Teen program | 13-16 | 13+ | none (revive later) |
+| Teen program | 13-16, own page | 13+, own page | teens train, no named program or page |
 | Kids start age | 4 | 4 | **3** |
 | Authority angle | facility and amenities | Gracie Barra brand | **Carlson Gracie / De La Riva, author, podcast, 25 yrs** |
 | Reviews | strong | some | **4.8 stars, 98 reviews** |
 
-Read: the trial offer and the teen program are matched by your neighbors. Your durable edges are age 3, your pedigree and body of work, and your review count. We win there and fix the follow-up machine.
+Read: the trial offer is matched by your neighbors, and they out-package you on teens. Your durable edges are age 3, your pedigree and body of work, and your review count. We win there and fix the follow-up machine.
 
 ---
 
@@ -83,7 +83,7 @@ Read: the trial offer and the teen program are matched by your neighbors. Your d
 3. **Instant lead follow-up.** Text and email the second the form is submitted. The machine they have and you don't.
 4. **Add the Kickstart.** The named 2-week paid intro with the free gi. The free class stays as the easy option, but the Kickstart is what we advertise.
 5. **Lead with "from age 3."** Approved, and nobody else can say it.
-6. **Teen class later, packaged right.** Own name, own page, own offer. Same trick for the new 6:40 adult time: launch it as a named program with a start date, not a schedule note.
+6. **Package the teen class.** It exists, but a parent searching for it can't find it. Own name, own page, own offer. Same move for the new 6:40 adult time: launch it as a named program with a start date, not a schedule note.
 7. **Sell the coach, not the gym.** Your pedigree and your price point tell the same story: the premium expert option. Don't hide the rate. Justify it visibly.
 
 Bottom line: Stoic didn't out-coach you. They out-structured you. And your own ad spend already proved that structure with a commodity offer isn't enough either. The fix is structure plus a better offer, and the things you have that they can't buy (age 3, the pedigree, the reviews) are exactly what wins parents.

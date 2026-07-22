@@ -66,7 +66,7 @@
 | **JJ Machado Austin** | Free **week** (by appt) | all ages `[UNVERIFIED min]` | No (site down) | **Same owners as Stoic**; Machado lineage; legacy brand |
 | **Meta MMA** `[loc UNVERIFIED]` | `[UNVERIFIED]` | 4 (BJJ) | No | MMA/Muay-Thai-first; runs Spark Membership |
 
-**Consistent takeaways (verified):** (1) **everyone offers a free trial/week** — table stakes; (2) **nobody local publishes pricing**; (3) **kids start at 4 everywhere except Joao (3)** — his age-3 edge holds even after checking Meta MMA; (4) **teens** exist at Stoic (13–16) and GB (13–15), not currently Joao; (5) **Stoic + JJM Austin are one ownership group** — the local field is effectively **2 operations + Joao**, not 4.
+**Consistent takeaways (verified):** (1) **everyone offers a free trial/week** — table stakes; (2) **nobody local publishes pricing**; (3) **kids start at 4 everywhere except Joao (3)** — his age-3 edge holds even after checking Meta MMA; (4) **teens**: Stoic (13–16) and GB (13–15) each run a NAMED teen program with its own page. ⚡ Correction 2026-07-22 (Diego): **Joao HAS teen students** — the June "lost the teen class" note is outdated; his gap is packaging (no named program/page/schedule slot), not existence; (5) **Stoic + JJM Austin are one ownership group** — the local field is effectively **2 operations + Joao**, not 4.
 
 ---
 
