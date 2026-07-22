@@ -68,7 +68,7 @@ I checked every BJJ school in the Dripping Springs area. Every single one offers
 So the free class doesn't differentiate anyone. When five schools run the same $0 offer, a parent treats them as interchangeable and commits to none of them. Keep the free class (dropping it just adds friction), but it can't be the thing we advertise.
 
 What we do instead, three layers:
-1. **A better offer.** A named paid intro: the Kickstart. Two weeks of classes, a gi they keep, and a short parent conversation with you. Priced around one week of membership. A parent who pays $49 shows up. And nobody can price-compare a named program.
+1. **A better offer.** A named paid intro, which we agreed on: a parent who pays shows up, and nobody can price-compare a named program. Two structures to draft: a 2-week paid trial with a starter uniform included, and a 4-week intro where the deposit becomes credit toward membership if they continue. Plus a short parent conversation with you built into both.
 2. **A hook nobody can copy.** Kids from age 3. Every other school starts at 4. Plus your pedigree and the book.
 3. **The machine.** A dedicated page and an instant text + email reply the moment the form is submitted. This is the part Stoic has and you don't.
 
@@ -99,11 +99,11 @@ Read: the trial offer is matched by your neighbors, and they out-package you on 
 
 ## The action list
 1. **Build the dedicated page.** Authority up front, one clear offer, reviews visible. In progress.
-2. **Google Analytics.** You're setting up GA4 this week. Say the word if you want to do it together. Then we can finally see what converts.
+2. **Analytics and tracking.** I'm setting up GA4 and the pixel events (page visits, clicks, leads) under your accounts. Then we can finally see what converts, like their platform does for them.
 3. **Instant lead follow-up.** Text and email the second the form is submitted. The machine they have and you don't.
-4. **Add the Kickstart.** The named 2-week paid intro with the free gi. The free class stays as the easy option, but the Kickstart is what we advertise.
+4. **Launch the paid intro.** The named trial we agreed on (starter uniform included; real gi comes with enrollment). The free class stays as the easy option, but the paid intro is what we advertise.
 5. **Lead with "from age 3."** Approved, and nobody else can say it.
-6. **Package the teen class.** It exists, but a parent searching for it can't find it. Own name, own page, own offer. Same move for the new 6:40 adult time: launch it as a named program with a start date, not a schedule note.
+6. **Package the teen class.** It exists, but a parent searching for it can't find it. Own name, own page, own offer. Same move for the new 6:40 adult class: we launch it as a named program starting August 17, not a schedule note.
 7. **Sell the coach, not the gym.** Your pedigree and your price point tell the same story: the premium expert option. Don't hide the rate. Justify it visibly.
 
 Bottom line: Stoic didn't out-coach you. They out-structured you. And your own ad spend already proved that structure with a commodity offer isn't enough either. The fix is structure plus a better offer, and the things you have that they can't buy (age 3, the pedigree, the reviews) are exactly what wins parents.
@@ -126,11 +126,11 @@ Short version:
 
 2. You already tested the weak part of their playbook with your own ad budget. The free-trial-plus-Facebook-ads machine is what your agency ran: leads came in, appointments got set, nobody showed. Every school in town runs that same free trial. The offer is the commodity, not the machine.
 
-3. So we copy their structure and beat their offer. Dedicated page, instant text and email follow-up, and a named paid intro (2 weeks + free gi + a parent conversation with you) that filters for parents who actually show up. Plus the headline nobody can copy: kids from age 3.
+3. So we copy their structure and beat their offer. Dedicated page, instant text and email follow-up, and the paid intro we agreed on today, which filters for parents who actually show up. Plus the headline nobody can copy: kids from age 3.
 
 The last section of the doc is the action list. Most of it is already in motion. One heads-up inside: the closest competitor isn't actually Stoic, it's Gracie Barra on your street. It's in the doc.
 
-Two things I still need from you to keep moving: the start date for the new Mon/Wed 6:40 adult class, and the Castle Hill details (what the arrangement is, and whether we can put anything in front of their members).
+Two things I still need from you to keep moving: a quick confirmation on the price card ($69/week standard, and the $49-59 is the family rate?), and the Castle Hill details (what the arrangement is, and whether we can put anything in front of their members).
 
 Talk soon,
 Diego
