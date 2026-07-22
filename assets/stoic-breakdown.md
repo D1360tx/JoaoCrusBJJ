@@ -43,11 +43,11 @@ Two things to know:
 
 So when you see Stoic's clean funnel, that's not a marketing genius at work. It's a subscription. The playbook is public, and we're building you the owned version of it.
 
-## 3. How they package the teen class
-- They split programs by age: Little Kids (4-7), Big Kids (8-12), Teens (13-16), Adults. Each one gets its own page.
-- A teen program with its own name and page is findable and feels made for teens. Teens folded into kids or adult classes are invisible online. Gracie Barra DS does the same thing (Teens 13+).
-- You have teen students. What you don't have is the packaging: no named teen program, no page, nothing on the schedule a parent searching "teen martial arts" can find.
-- What we do: name it, give it a page, give it an offer.
+## 3. How they package programs, and where you stand
+- Stoic splits programs by age and gives **each one its own page**: Little Kids (4-7), Big Kids (8-12), Teens (13-16), Adults. Gracie Barra DS does the same (Teens 13+).
+- You already do the naming part well: Little Champions (4-7) and Junior Warriors (8-12) are real named programs, and they live on your kids page. The difference is structural: both share one page, while Stoic's setup gives every program a dedicated page. One page per program means each one can rank in search on its own ("kids martial arts dripping springs," "teen martial arts dripping springs") and each can be an ad destination.
+- The real gap is teens. You have teen students, but there's no named teen program anywhere: not on the kids page, not on the schedule, nothing a parent searching "teen martial arts" can find. Stoic and GB both show up for that search. You don't.
+- What we do: give Little Champions and Junior Warriors their own pages, and name the teen program and build its page and schedule slot.
 
 ## 4. Their positioning leans on the facility
 - They market amenities hard: recovery room, sauna, cold plunge, Normatec boots. They're on ClassPass. (Per our competitor research, file 12.)
