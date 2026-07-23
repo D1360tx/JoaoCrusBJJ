@@ -123,6 +123,19 @@
     .final h2{color:#fff;max-width:900px;margin:0 auto}
     .final p{max-width:600px;margin:24px auto;color:#c8c8c0;font-size:1.05rem}
     .final .actions{justify-content:center}
+    .lead-form{max-width:760px;margin:44px auto 0;padding:32px;background:#fff;color:var(--text);border:4px solid var(--yellow);box-shadow:8px 8px 0 var(--yellow);text-align:left}
+    .lead-form-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:24px}
+    .lead-form-head h3{font-family:"Anton";font-size:2rem;font-weight:400;text-transform:uppercase;margin:0}
+    .lead-form-head p{max-width:330px;margin:0;color:var(--muted);font-size:.9rem}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .field{display:flex;flex-direction:column;gap:7px}
+    .field label{font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--black)}
+    .field input,.field select{width:100%;min-height:52px;border:3px solid var(--black);border-radius:0;background:#fff;color:var(--black);padding:11px 13px;font:600 1rem/1.2 "Space Grotesk",Arial,sans-serif}
+    .field input::placeholder{color:#85837c;font-weight:400}
+    .field input:focus,.field select:focus{outline:4px solid rgba(25,79,195,.25);outline-offset:1px;border-color:var(--blue)}
+    .form-submit{width:100%;margin-top:20px}
+    .form-note{margin:12px 0 0!important;color:var(--muted)!important;font-size:.78rem!important;text-align:center}
+    .form-status{margin:14px 0 0!important;padding:10px 12px;border:2px solid var(--black);background:#fff5c4;color:var(--black)!important;font-size:.85rem!important;text-align:center}
     .motto{margin-top:56px;font-family:"Anton";font-size:clamp(1.7rem,4vw,3.5rem);text-transform:uppercase;line-height:1;color:var(--yellow)}
     .motto span{color:#fff;border-bottom:5px solid var(--yellow)}
     .footer{background:#070707;color:#aaa;padding:24px 0;font-size:.8rem}
@@ -154,7 +167,9 @@
       .compare,blockquote{padding:28px}
       .schedule-card{grid-template-columns:1fr}.schedule-card>div{border-right:0;border-bottom:3px solid var(--black)}.schedule-card>div:last-child{border-bottom:0}.schedule-card .place{grid-column:auto;border-top:0}
       .coach{grid-template-columns:1fr}.coach img{max-width:240px}
-      .mobile-cta{display:flex;position:fixed;z-index:25;bottom:0;left:0;right:0;background:var(--black);padding:10px 14px;gap:10px;border-top:3px solid var(--yellow)}
+      .lead-form{padding:24px 18px}.lead-form-head{display:block}.lead-form-head p{margin-top:8px}.form-grid{grid-template-columns:1fr}
+      .mobile-cta{display:flex;position:fixed;z-index:25;bottom:0;left:0;right:0;background:var(--black);padding:10px 14px;gap:10px;border-top:3px solid var(--yellow);transition:transform .2s ease}
+      body.form-in-view .mobile-cta{transform:translateY(100%)}
       .mobile-cta .button{flex:1;min-height:48px;font-size:.72rem;box-shadow:none}
       .ribbon{display:none}
     }
@@ -245,11 +260,43 @@
       </div>
     </section>
     <section class="final" id="trial">
-      <div class="wrap"><span class="kicker yellow">Strong starts do not have to be big</span><h2>LET THEIR FIRST WIN<br><span class="yellow">START HERE.</span></h2><p>Call, text, or email with your child's age. We will recommend the right class and confirm the current toddler-trial details.</p><div class="actions"><a class="button" href="tel:+15126444560">Call/text:&nbsp;512&#8209;644&#8209;4560</a><a class="button black" href="mailto:joaocrus@gmail.com?subject=Toddler%20class%20request">Email the academy</a></div><div class="motto"><span>Strong starts here.</span> Skills for life.</div></div>
+      <div class="wrap"><span class="kicker yellow">Strong starts do not have to be big</span><h2>LET THEIR FIRST WIN<br><span class="yellow">START HERE.</span></h2><p>Call, text, or email with your child's age. We will recommend the right class and confirm the current toddler-trial details.</p><div class="actions"><a class="button" href="tel:+15126444560">Call/text:&nbsp;512&#8209;644&#8209;4560</a><a class="button black" href="mailto:joaocrus@gmail.com?subject=Toddler%20class%20request">Email the academy</a></div>
+        <form class="lead-form" id="toddler-interest-form" action="#" method="post" data-form-purpose="toddler-class-interest">
+          <input type="hidden" name="source" value="toddlers-campaign-group">
+          <div class="lead-form-head"><div><span class="kicker blue">Takes about 30 seconds</span><h3>Tell us about your child</h3></div><p>Share the best way to reach you. We will help you choose the right first class.</p></div>
+          <div class="form-grid">
+            <div class="field"><label for="parent-name">Parent's name</label><input id="parent-name" name="parent_name" type="text" autocomplete="name" placeholder="Your name" required></div>
+            <div class="field"><label for="contact-info">Best contact info</label><input id="contact-info" name="contact_info" type="text" placeholder="Phone or email" aria-describedby="contact-help" required></div>
+            <div class="field"><label for="child-name">Child's name</label><input id="child-name" name="child_name" type="text" autocomplete="off" placeholder="Child's first name" required></div>
+            <div class="field"><label for="child-age">Child's age</label><select id="child-age" name="child_age" required><option value="" selected disabled>Select age</option><option value="3">3 years old</option><option value="4">4 years old</option><option value="5">5 years old</option><option value="6">6 years old</option><option value="7">7 years old</option></select></div>
+          </div>
+          <span id="contact-help" hidden>Enter either a phone number or an email address.</span>
+          <button class="button form-submit" type="submit">Help me plan their first class →</button>
+          <p class="form-note">No spam. Your information will only be used to follow up about classes.</p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+        </form>
+        <div class="motto"><span>Strong starts here.</span> Skills for life.</div></div>
     </section>
   </main>
   <footer class="footer"><div class="wrap"><span>© 2026 Joao Crus Brazilian Jiu-Jitsu</span><span>Dripping Springs · Austin</span></div></footer>
   <div class="mobile-cta"><a class="button" href="tel:+15126444560">Call/text</a><a class="button black" href="#trial">First class</a></div>
   <div class="ribbon">Preview F · Campaign with group hero</div>
+  <script>
+    (function(){
+      var form=document.getElementById("toddler-interest-form");
+      var status=document.getElementById("form-status");
+      form.addEventListener("submit",function(event){
+        event.preventDefault();
+        if(!form.checkValidity()){form.reportValidity();return;}
+        status.hidden=false;
+        status.textContent="Preview form — fields are ready. Connect the form endpoint before publishing.";
+      });
+      if("IntersectionObserver" in window){
+        new IntersectionObserver(function(entries){
+          document.body.classList.toggle("form-in-view",entries[0].isIntersecting);
+        },{threshold:.08}).observe(form);
+      }
+    })();
+  </script>
 </body>
 </html>
