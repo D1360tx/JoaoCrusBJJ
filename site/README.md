@@ -17,6 +17,8 @@ Open `index.html` in any browser (double-click it). No server or build needed.
 | `index.html` | **Homepage hub** — hero, method, programs (the 3 lines), pedigree story, books & podcast, reviews, lead-magnet teaser, free-class CTA |
 | `kids.html` | **Program deep-dive** — Little Champions (3–7) & Junior Warriors (8–12), age-3 differentiator, schedule, outcomes |
 | `free-guide.html` | **Lead-magnet landing page** — "5 Phrases That Calm a Frustrated Kid," email capture (demonstrates the funnel) |
+| `toddlers.html` | **Toddler page, VERSION A** — matches the current joaocrusbjj.com look (light, blue headings, Divi-style) for Joao to rebuild in Divi |
+| `toddlers-brand.html` | **Toddler page, VERSION B** — the new flyer branding (stamped condensed caps, gold-yellow, royal blue, brush strokes, "Strong starts here. Skills for life.") |
 | `assets/styles.css` | Shared design system |
 | `assets/app.js` | Scroll reveals, mobile nav, form preview |
 
