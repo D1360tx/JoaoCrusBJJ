@@ -188,19 +188,105 @@
   </div>
 </section>
 
-<!-- SCHEDULE -->
-<section class="alt">
+<!-- SCHEDULE (weekly calendar w/ filters + print) -->
+<section class="alt" id="schedule">
   <div class="wrap">
-    <h2>Schedule</h2>
-    <p>Toddlers train in our <strong>Little Champions</strong> classes (ages 3-7), Dripping Springs:</p>
-    <table>
-      <tr><th>Day</th><th>Time</th></tr>
-      <tr><td>Monday and Wednesday</td><td>5:00 to 5:45pm</td></tr>
-      <tr><td>Saturday</td><td>10:00 to 10:45am</td></tr>
-    </table>
-    <p class="sub">120 Frog Pond Lane, Dripping Springs, TX 78620</p>
+    <h2>Weekly Schedule</h2>
+    <p>Toddlers train in our <strong>Little Champions</strong> classes (ages 3-7), highlighted below. New schedule starts August 17.</p>
+
+    <div class="cal-controls">
+      <div class="cal-filters">
+        <span class="cal-lab">Class type:</span>
+        <button class="cal-btn active" data-type="all">All</button>
+        <button class="cal-btn" data-type="kids">Kids</button>
+        <button class="cal-btn" data-type="adults">Adults</button>
+        <span class="cal-lab" style="margin-left:18px">Location:</span>
+        <button class="cal-btn active" data-loc="all">All</button>
+        <button class="cal-btn" data-loc="ds">Dripping Springs</button>
+        <button class="cal-btn" data-loc="austin">Austin</button>
+      </div>
+      <button class="cal-print" onclick="window.print()">🖨 Print</button>
+    </div>
+
+    <div class="cal-scroll"><div class="cal" id="cal"></div></div>
+    <p class="sub" style="margin-top:14px">Dripping Springs: 120 Frog Pond Lane &nbsp;·&nbsp; Austin: 1112 N Lamar Blvd, inside Castle Hill Fitness</p>
   </div>
 </section>
+
+<style>
+  .cal-controls{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin:18px 0}
+  .cal-filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .cal-lab{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .cal-btn{font-family:inherit;font-size:.88rem;font-weight:700;padding:7px 15px;border:1px solid var(--line);border-radius:99px;background:#fff;color:var(--text);cursor:pointer}
+  .cal-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+  .cal-print{font-family:inherit;font-weight:700;font-size:.88rem;padding:7px 16px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer;color:var(--text)}
+  .cal-print:hover,.cal-btn:hover{border-color:var(--blue)}
+  .cal-scroll{overflow-x:auto}
+  .cal{display:grid;grid-template-columns:repeat(7,minmax(128px,1fr));gap:0;min-width:900px;border:1px solid var(--line);background:var(--line)}
+  .cal .dayhead{background:#7a7f87;color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-align:center;padding:12px 6px}
+  .cal .daycol{background:#fff;display:flex;flex-direction:column;gap:1px;min-height:120px}
+  .cal .slot{padding:12px 12px 14px;border-bottom:1px solid var(--line);font-size:.85rem;line-height:1.45}
+  .cal .slot .t{color:var(--muted);font-weight:600}
+  .cal .slot .n{font-weight:700;color:#222}
+  .cal .slot .l{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);margin-top:3px}
+  .cal .slot.hl{background:#FFFBE0;border-left:4px solid var(--yellow)}
+  .cal .slot.hl .n::after{content:" ★";color:#c9a800}
+  .cal .empty{color:#c2c6cc;text-align:center;font-size:.8rem;padding:20px 6px}
+  @media print{
+    body *{visibility:hidden}
+    #schedule, #schedule *{visibility:visible}
+    #schedule{position:absolute;top:0;left:0;width:100%}
+    .cal-controls{display:none}
+    .cal{min-width:0}
+    .cal-scroll{overflow:visible}
+  }
+</style>
+<script>
+(function(){
+  var DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+  var CLASSES=[
+    {d:0,t:"5:00 - 5:45 PM",n:"Little Champions (Ages 3-7)",type:"kids",loc:"ds",hl:true},
+    {d:0,t:"5:50 - 6:35 PM",n:"Junior Warriors (Ages 8-12)",type:"kids",loc:"ds"},
+    {d:0,t:"6:40 - 7:40 PM",n:"Adults",type:"adults",loc:"ds"},
+    {d:1,t:"10:00 - 10:45 AM",n:"Homeschool Kids (4-12)",type:"kids",loc:"ds"},
+    {d:1,t:"11:30 AM - 12:30 PM",n:"Adults",type:"adults",loc:"ds"},
+    {d:1,t:"5:00 - 6:00 PM",n:"Kids (Ages 8-12)",type:"kids",loc:"austin"},
+    {d:2,t:"5:00 - 5:45 PM",n:"Little Champions (Ages 3-7)",type:"kids",loc:"ds",hl:true},
+    {d:2,t:"5:50 - 6:35 PM",n:"Junior Warriors (Ages 8-12)",type:"kids",loc:"ds"},
+    {d:2,t:"6:40 - 7:40 PM",n:"Adults",type:"adults",loc:"ds"},
+    {d:3,t:"10:00 - 10:45 AM",n:"Homeschool Kids (4-12)",type:"kids",loc:"ds"},
+    {d:3,t:"11:30 AM - 12:30 PM",n:"Adults",type:"adults",loc:"ds"},
+    {d:3,t:"5:00 - 6:00 PM",n:"Kids (Ages 8-12)",type:"kids",loc:"austin"},
+    {d:5,t:"11:00 AM - 12:00 PM",n:"Adults / Self Defense",type:"adults",loc:"ds"}
+  ];
+  var LOC={ds:"Dripping Springs",austin:"Austin"};
+  var fType="all",fLoc="all",cal=document.getElementById("cal");
+  function render(){
+    var h="";
+    DAYS.forEach(function(day){h+='<div class="dayhead">'+day+'</div>';});
+    DAYS.forEach(function(_,i){
+      var items=CLASSES.filter(function(c){return c.d===i&&(fType==="all"||c.type===fType)&&(fLoc==="all"||c.loc===fLoc);});
+      h+='<div class="daycol">';
+      if(!items.length){h+='<div class="empty">'+(i>=4&&i!==5?"—":"—")+'</div>';}
+      items.forEach(function(c){
+        h+='<div class="slot'+(c.hl?" hl":"")+'"><span class="t">'+c.t+'</span><br><span class="n">'+c.n+'</span><br><span class="l">'+LOC[c.loc]+'</span></div>';
+      });
+      h+='</div>';
+    });
+    cal.innerHTML=h;
+  }
+  document.querySelectorAll(".cal-btn").forEach(function(b){
+    b.addEventListener("click",function(){
+      var grp=b.dataset.type?"type":"loc";
+      document.querySelectorAll(".cal-btn[data-"+grp+"]").forEach(function(x){x.classList.remove("active");});
+      b.classList.add("active");
+      if(b.dataset.type)fType=b.dataset.type; else fLoc=b.dataset.loc;
+      render();
+    });
+  });
+  render();
+})();
+</script>
 
 <!-- COACH -->
 <section>

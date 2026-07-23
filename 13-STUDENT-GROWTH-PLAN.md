@@ -155,6 +155,7 @@ Note the Beehiiv list is finally a weapon here: a *dated cohort launch* and a *n
 4. **Paid social is IN (~$35/day)** for back-to-school — supersedes the "organic-first, no paid ads in v1" rule (11 §1). Our own campaign, our own tracking, separate from the agency's.
 5. **Lead magnet: Joao's children's storybooks** (shy kids / distracted kids; Amazon) — event handout + trial gift + landing-page incentive. Slots into the free-guide lead-magnet plan; his own initiative, build around it.
 6. **New build list with deadline:** toddler/adults/teams/privates pages + GA4 + pixel events + VSL + email/SMS sequences + ad plan, all live before **Aug 17** (~3.5 weeks).
+7. **Schedule component (built 07-23, v1 in both toddler pages):** weekly Mon-Sun calendar grid with class-type filter (All/Kids/Adults), location filter (DS/Austin), toddler-class highlight, and print button (print CSS isolates the calendar). Pattern copied from Stoic's 97-Display schedule widget. **Full-site version planned:** one shared component + one schedule data source powering every page, so times are edited in one place. ⚠️ Data note: the new published schedule shows NO Saturday kids class (old schedule had Sat 10:00) — confirm with Joao before he publishes.
 
 ## CHANGE LOG
 - 2026-07-22 — Doc created ahead of growth call; offers A–E, 6:40 cohort relaunch, EDDM 3-touch plan, Austin question list.
