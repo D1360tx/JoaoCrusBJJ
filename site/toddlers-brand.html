@@ -285,16 +285,17 @@
     padding:8px 18px;border:2px solid var(--black);background:var(--black);color:var(--yellow);cursor:pointer;
     clip-path:polygon(3% 8%, 100% 0%, 97% 92%, 0% 100%)}
   .cal-scroll{overflow-x:auto}
-  .cal{display:grid;grid-template-columns:repeat(7,minmax(128px,1fr));gap:0;min-width:900px;border:3px solid var(--black);background:var(--paper-2)}
+  .cal{display:grid;grid-template-columns:repeat(7,minmax(128px,1fr));gap:0;min-width:900px;border:3px solid var(--black);background:#fff}
   .cal .dayhead{background:var(--black);color:var(--yellow);font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:12px 6px}
-  .cal .daycol{background:#fff;display:flex;flex-direction:column;gap:1px;min-height:120px}
-  .cal .slot{padding:12px 12px 14px;border-bottom:2px solid var(--paper-2);font-size:.85rem;line-height:1.45}
+  /* row-major grid: cells in the same row share height, so bottoms align */
+  .cal .slot,.cal .blank{border-bottom:2px solid var(--paper-2);border-right:2px solid var(--paper-2);background:#fff}
+  .cal .slot{padding:12px 12px 14px;font-size:.85rem;line-height:1.45;display:flex;flex-direction:column}
   .cal .slot .t{color:var(--muted);font-weight:700}
   .cal .slot .n{font-weight:800;color:var(--black)}
-  .cal .slot .l{display:inline-block;font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);margin-top:3px}
+  .cal .slot .l{font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);margin-top:auto;padding-top:6px}
   .cal .slot.hl{background:#FFF6D6;border-left:5px solid var(--yellow)}
   .cal .slot.hl .n::after{content:" ★";color:var(--yellow)}
-  .cal .empty{color:#c6c4bc;text-align:center;font-size:.8rem;padding:20px 6px}
+  .cal .blank{display:flex;align-items:center;justify-content:center;color:#c6c4bc;font-size:.8rem;min-height:56px}
   @media print{
     body *{visibility:hidden}
     #schedule, #schedule *{visibility:visible}
@@ -327,15 +328,18 @@
   function render(){
     var h="";
     DAYS.forEach(function(day){h+='<div class="dayhead">'+day+'</div>';});
-    DAYS.forEach(function(_,i){
-      var items=CLASSES.filter(function(c){return c.d===i&&(fType==="all"||c.type===fType)&&(fLoc==="all"||c.loc===fLoc);});
-      h+='<div class="daycol">';
-      if(!items.length){h+='<div class="empty">—</div>';}
-      items.forEach(function(c){
-        h+='<div class="slot'+(c.hl?" hl":"")+'"><span class="t">'+c.t+'</span><br><span class="n">'+c.n+'</span><br><span class="l">'+LOC[c.loc]+'</span></div>';
-      });
-      h+='</div>';
+    // build per-day lists, then emit ROW BY ROW so cells in a row share height
+    var byDay=DAYS.map(function(_,i){
+      return CLASSES.filter(function(c){return c.d===i&&(fType==="all"||c.type===fType)&&(fLoc==="all"||c.loc===fLoc);});
     });
+    var rows=Math.max.apply(null,byDay.map(function(a){return a.length;}).concat([1]));
+    for(var r=0;r<rows;r++){
+      byDay.forEach(function(items){
+        var c=items[r];
+        if(c){h+='<div class="slot'+(c.hl?" hl":"")+'"><span class="t">'+c.t+'</span><span class="n">'+c.n+'</span><span class="l">'+LOC[c.loc]+'</span></div>';}
+        else{h+='<div class="blank">'+(r===0&&!items.length?"—":"")+'</div>';}
+      });
+    }
     cal.innerHTML=h;
   }
   document.querySelectorAll(".cal-btn").forEach(function(b){
