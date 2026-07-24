@@ -89,7 +89,7 @@
 | 🔴 2     | Select launch offer: paid Kickstart versus 4-week deposit-credit intro; deposit amount, duration, capacity, refund/credit rules   | Joao + Diego | Landing pages, ads, scripts, payment flow         |
 | 🔴 3     | Confirm trial-uniform cost and whether the offer includes a low-cost trial uniform, enrollment gi, or no uniform bonus            | Joao         | Offer profitability and copy                      |
 | 🔴 4     | Confirm booking system: existing WP Booking Calendar, Zen Planner booking, or Cal.com                                             | Joao + Diego | CTA and automation wiring                         |
-| 🔴 5     | Choose production visual direction. Working recommendation: premium dark blue/yellow system, with toddler content adapted into it | Joao + Diego | Production components and page rollout            |
+| ✅ 5     | **Resolved 2026-07-23:** Joao approved the `toddlers-campaign-group.html` black/yellow/blue direction and requested the full site in this style | Joao + Diego | Unblocked—full-site buildout in progress           |
 | 🔴 6     | Confirm hosting/registrar/DNS access and create a school-domain email                                                             | Joao + Diego | Email authentication, Twilio signup               |
 | 🔴 7     | Obtain Beehiiv access and verify list size, consent, segments, and deliverability                                                 | Joao         | Broadcasts, lead magnet, nurture                  |
 | 🔴 8     | Confirm Castle Hill terms and permission to market to members via site listing, signage, front desk, and newsletter               | Joao         | Austin launch                                     |
@@ -108,8 +108,9 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 
 ### Working production direction
 
-- 🟡 Use the **premium dark, authority-first design** as the shared system.
-- 🟡 Keep the strongest toddler copy, FAQ, schedule, and age-3 positioning; adapt them into the selected shared design rather than launching two unrelated visual systems.
+- ✅ Use the approved **`toddlers-campaign-group.html` black/yellow/blue campaign design** as the shared production visual system.
+- ✅ Keep the strongest toddler copy, FAQ, schedule, and age-3 positioning inside that shared system rather than launching unrelated visual systems.
+- ✅ Preserve prior concepts for comparison; build the cohesive full-site version in a new `site/campaign/` directory with shared components.
 - 🟡 Build one shared schedule data source/component so every page displays the same current times.
 - 🟡 Maintain a single primary conversion goal per campaign page, plus text/call as the fallback.
 
@@ -232,4 +233,5 @@ When a statement in those sources conflicts with this file, follow this file's c
 
 ## Change log
 
+- **2026-07-23** — Joao approved the campaign-group visual direction after an in-person review and requested the rest of the site be built in that style. Production visual direction is no longer blocking.
 - **2026-07-23** — Initial authoritative decision record created from the repository-wide strategy, documentation, website, and implementation review.
