@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Classes for Ages 3–4 in Dripping Springs | Joao Crus BJJ</title>
-  <meta name="description" content="High-energy toddler jiu-jitsu classes for ages 3–4 in Dripping Springs. Play, movement, listening, confidence, and safe boundaries in a class built for little learners.">
+  <title>Little Champions Jiu-Jitsu for Ages 3–7 | Joao Crus BJJ</title>
+  <meta name="description" content="Little Champions jiu-jitsu classes for ages 3–7 in Dripping Springs. View the full weekly schedule for Dripping Springs and Austin, then plan a first class.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/class-calendar.css">
+  <script src="assets/class-calendar.js" defer></script>
   <style>
     :root{
       --black:#101010;
@@ -101,12 +103,6 @@
     blockquote p{font-size:clamp(1.15rem,2vw,1.45rem);font-weight:600;margin:20px 0}
     blockquote footer{color:var(--yellow);font-weight:800;text-transform:uppercase}
     .schedule{background:#f4f0e6;border-block:4px solid var(--black)}
-    .schedule-card{display:grid;grid-template-columns:1fr 1fr 1.2fr;border:4px solid var(--black);box-shadow:var(--shadow);background:#fff}
-    .schedule-card>div{padding:34px;border-right:3px solid var(--black)}
-    .schedule-card>div:last-child{border-right:0;background:var(--black);color:#fff}
-    .dayname{font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:var(--blue)}
-    .clock{font-family:"Anton";font-size:2.55rem;line-height:1;color:var(--black);margin:10px 0}
-    .schedule-card .place b{color:var(--yellow);font-family:"Anton";font-size:1.55rem;font-weight:400}
     .coach{display:grid;grid-template-columns:250px 1fr;gap:44px;align-items:center}
     .coach img{width:100%;aspect-ratio:.9/1;object-fit:cover;object-position:top;border:4px solid var(--black);box-shadow:8px 8px 0 var(--blue)}
     .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
@@ -150,9 +146,6 @@
       .timeline{grid-template-columns:1fr 1fr}
       .beat:nth-child(2){border-right:0}.beat:nth-child(-n+2){border-bottom:3px solid var(--black)}
       .comparison{grid-template-columns:1fr}
-      .schedule-card{grid-template-columns:1fr 1fr}
-      .schedule-card .place{grid-column:1/-1;border-top:3px solid var(--black)}
-      .schedule-card>div:nth-child(2){border-right:0}
     }
     @media(max-width:620px){
       body{padding-bottom:72px}
@@ -165,11 +158,10 @@
       .sticker{width:102px;height:102px;right:-4px;top:-18px}.sticker b{font-size:2rem}
       .timeline{grid-template-columns:1fr}.beat{border-right:0;border-bottom:3px solid var(--black)}.beat:last-child{border-bottom:0}
       .compare,blockquote{padding:28px}
-      .schedule-card{grid-template-columns:1fr}.schedule-card>div{border-right:0;border-bottom:3px solid var(--black)}.schedule-card>div:last-child{border-bottom:0}.schedule-card .place{grid-column:auto;border-top:0}
       .coach{grid-template-columns:1fr}.coach img{max-width:240px}
       .lead-form{padding:24px 18px}.lead-form-head{display:block}.lead-form-head p{margin-top:8px}.form-grid{grid-template-columns:1fr}
       .mobile-cta{display:flex;position:fixed;z-index:25;bottom:0;left:0;right:0;background:var(--black);padding:10px 14px;gap:10px;border-top:3px solid var(--yellow);transition:transform .2s ease}
-      body.form-in-view .mobile-cta{transform:translateY(100%)}
+      body.form-in-view .mobile-cta,body.schedule-in-view .mobile-cta{transform:translateY(100%)}
       .mobile-cta .button{flex:1;min-height:48px;font-size:.72rem;box-shadow:none}
       .ribbon{display:none}
     }
@@ -177,7 +169,7 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to main content</a>
-  <div class="bar"><div class="wrap"><span>Classes for ages 3–4 · Dripping Springs</span><a href="tel:+15126444560">Call/text:&nbsp;512&#8209;644&#8209;4560</a></div></div>
+  <div class="bar"><div class="wrap"><span>Little Champions · Ages 3–7 · Dripping Springs</span><a href="tel:+151****4560">Call/text:&nbsp;512&#8209;644&#8209;4560</a></div></div>
   <header class="nav"><div class="wrap">
     <a class="brand" href="index.html"><span class="brandmark" aria-hidden="true">JC</span><span><strong>JOAO CRUS BJJ</strong><small>Brazilian Jiu-Jitsu · Est. 2003</small></span></a>
     <nav class="navlinks" aria-label="Primary"><a href="#benefits">Benefits</a><a href="#class">Class flow</a><a href="#times">Times</a><a class="button" href="#trial">Plan a first class</a></nav>
@@ -232,13 +224,24 @@
         <blockquote><div class="stars">★★★★★</div><p>“I was very hesitant to join with my 3.5-year-old. I wasn't sure he could follow instructions with much bigger kids. Joao's school is such a welcoming space that we were both convinced from day one. Happy son, happy mom.”</p><footer>— Ania Kozak</footer></blockquote>
       </div>
     </section>
-    <section class="schedule" id="times">
+    <section class="schedule jc-schedule-section" id="times">
       <div class="wrap">
-        <div class="section-head"><div><span class="kicker blue">Little Champions · Ages 3–7</span><h2>WEEKLY<br><span class="blue">START TIMES.</span></h2></div><p>Choose a Dripping Springs Little Champions class. We will confirm the current trial details and help you prepare for the first visit.</p></div>
-        <div class="schedule-card">
-          <div><span class="dayname">Monday</span><div class="clock">5:00–5:45 PM</div><b>Little Champions</b></div>
-          <div><span class="dayname">Wednesday</span><div class="clock">5:00–5:45 PM</div><b>Little Champions</b></div>
-          <div class="place"><b>Dripping Springs</b><p>120 Frog Pond Lane, Suite 200<br>Dripping Springs, TX 78620</p><a href="https://maps.google.com/?q=120+Frog+Pond+Lane+Suite+200+Dripping+Springs+TX+78620" target="_blank" rel="noopener noreferrer">Open directions →</a></div>
+        <div class="section-head"><div><span class="kicker blue">Little Champions · Ages 3–7</span><h2>WEEKLY<br><span class="blue">SCHEDULE.</span></h2></div><p>The calendar defaults to Little Champions for this page. Choose another program or location to view every class, then print the schedule you see.</p></div>
+        <div class="jc-calendar" data-default-program="little" data-default-location="all">
+          <noscript>Please enable JavaScript to view and filter the weekly class calendar.</noscript>
+        </div>
+        <div class="jc-location-grid" role="group" aria-label="Academy locations">
+          <article class="jc-location-card">
+            <h3>Dripping Springs</h3>
+            <p>120 Frog Pond Lane, Suite 200<br>Dripping Springs, TX 78620</p>
+            <a href="https://maps.google.com/?q=120+Frog+Pond+Lane+Suite+200+Dripping+Springs+TX+78620" target="_blank" rel="noopener noreferrer">Open directions →</a>
+          </article>
+          <article class="jc-location-card">
+            <h3>Austin</h3>
+            <p>1112 N. Lamar Blvd<br>Austin, TX 78703</p>
+            <p class="jc-location-note">Inside Castle Hill Fitness</p>
+            <a href="https://maps.google.com/?q=1112+N+Lamar+Blvd+Austin+TX+78703" target="_blank" rel="noopener noreferrer">Open directions →</a>
+          </article>
         </div>
       </div>
     </section>
@@ -295,6 +298,9 @@
         new IntersectionObserver(function(entries){
           document.body.classList.toggle("form-in-view",entries[0].isIntersecting);
         },{threshold:.08}).observe(form);
+        new IntersectionObserver(function(entries){
+          document.body.classList.toggle("schedule-in-view",entries[0].isIntersecting);
+        },{threshold:.08}).observe(document.getElementById("times"));
       }
     })();
   </script>
