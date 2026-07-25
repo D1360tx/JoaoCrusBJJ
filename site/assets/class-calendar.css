@@ -1,0 +1,120 @@
+/* Shared Joao Crus weekly class calendar.
+   Page-specific behavior is set with data-default-program and data-default-location. */
+.jc-calendar{
+  --jc-black:var(--black,#101010);
+  --jc-yellow:var(--yellow,#ffca05);
+  --jc-blue:var(--blue,#1558d6);
+  --jc-paper:var(--paper-2,#e7e1d4);
+  margin-top:28px;
+}
+.jc-calendar-controls{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:18px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+.jc-calendar-filter-groups{display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap}
+.jc-calendar-filter{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.jc-calendar-label{
+  width:100%;
+  color:var(--jc-blue);
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.jc-calendar-button,.jc-calendar-print{
+  appearance:none;
+  border:2px solid var(--jc-black);
+  border-radius:0;
+  padding:9px 14px;
+  background:#fff;
+  color:var(--jc-black);
+  cursor:pointer;
+  font:400 .78rem/1 "Anton",Impact,sans-serif;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+}
+.jc-calendar-button:hover{background:#f3eee2}
+.jc-calendar-button[aria-pressed="true"]{background:var(--jc-yellow)}
+.jc-calendar-button:focus-visible,.jc-calendar-print:focus-visible,.jc-calendar-scroll:focus-visible{
+  outline:3px solid var(--jc-blue);
+  outline-offset:3px;
+}
+.jc-calendar-print{background:var(--jc-black);color:var(--jc-yellow);padding:11px 18px}
+.jc-calendar-summary{margin:0 0 10px;font-size:.86rem;font-weight:800;color:#4f4d48}
+.jc-calendar-scroll{overflow-x:auto;padding:0 0 8px;scrollbar-color:var(--jc-yellow) var(--jc-black)}
+.jc-calendar-grid{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(128px,1fr));
+  min-width:900px;
+  border:3px solid var(--jc-black);
+  background:#fff;
+}
+.jc-calendar-day{
+  padding:12px 6px;
+  background:var(--jc-black);
+  color:var(--jc-yellow);
+  font:400 .8rem/1 "Anton",Impact,sans-serif;
+  letter-spacing:.14em;
+  text-align:center;
+  text-transform:uppercase;
+}
+.jc-calendar-slot,.jc-calendar-blank{
+  min-height:76px;
+  border-right:2px solid var(--jc-paper);
+  border-bottom:2px solid var(--jc-paper);
+  background:#fff;
+}
+.jc-calendar-slot{display:flex;flex-direction:column;padding:12px 12px 14px;font-size:.82rem;line-height:1.4}
+.jc-calendar-time{color:#65635e;font-weight:800}
+.jc-calendar-name{color:var(--jc-black);font-weight:900}
+.jc-calendar-location{margin-top:auto;padding-top:7px;color:var(--jc-blue);font-size:.65rem;font-weight:900;letter-spacing:.065em;text-transform:uppercase}
+.jc-calendar-slot.is-featured{border-left:5px solid var(--jc-yellow);background:#fff7d8}
+.jc-calendar-slot.is-featured .jc-calendar-name::after{content:" ★";color:#dca900}
+.jc-calendar-blank{display:flex;align-items:center;justify-content:center;color:#bbb7ad}
+.jc-calendar-hint{margin:7px 0 0;color:#68655e;font-size:.76rem;font-weight:700}
+.jc-location-grid{
+  --jc-black:var(--black,#101010);
+  --jc-yellow:var(--yellow,#ffca05);
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:26px
+}
+.jc-location-card{
+  min-height:260px;
+  padding:38px;
+  border:2px solid #646464;
+  background:var(--jc-black);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.jc-location-card h3{margin:0 0 12px;color:var(--jc-yellow);font:400 clamp(1.8rem,3vw,2.65rem)/1 "Anton",Impact,sans-serif}
+.jc-location-card p{margin:0;color:#fff;font-size:clamp(1rem,1.6vw,1.25rem);line-height:1.55}
+.jc-location-card .jc-location-note{margin-top:4px;color:#c9c9c9;font-size:.88rem}
+.jc-location-card a{margin-top:auto;padding-top:28px;color:#fff;font-size:1rem;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.jc-location-card a:hover{color:var(--jc-yellow)}
+@media(max-width:720px){
+  .jc-calendar-controls,.jc-calendar-filter-groups{align-items:stretch}
+  .jc-calendar-filter-groups{gap:14px}
+  .jc-calendar-filter{width:100%}
+  .jc-calendar-button{flex:1 1 auto}
+  .jc-calendar-print{width:100%}
+  .jc-calendar-hint{display:block}
+  .jc-location-grid{grid-template-columns:1fr}
+  .jc-location-card{min-height:230px;padding:30px 24px}
+}
+@media print{
+  body.jc-printing *{visibility:hidden!important}
+  body.jc-printing .jc-schedule-section,
+  body.jc-printing .jc-schedule-section *{visibility:visible!important}
+  body.jc-printing .jc-schedule-section{position:absolute;inset:0 auto auto 0;width:100%;border:0!important;background:#fff!important}
+  body.jc-printing .jc-calendar-controls,
+  body.jc-printing .jc-calendar-hint{display:none!important}
+  body.jc-printing .jc-calendar-scroll{overflow:visible}
+  body.jc-printing .jc-calendar-grid{min-width:0}
+  body.jc-printing .jc-calendar-day{color:#000;background:#ddd}
+  body.jc-printing .jc-location-card{min-height:180px}
+}
