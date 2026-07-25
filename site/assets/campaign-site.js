@@ -10,6 +10,37 @@
         t.textContent = o ? "Close" : "Menu";
       };
     }
+    var programMenus = document.querySelectorAll("[data-programs-menu]");
+    document.addEventListener("click", function (event) {
+      programMenus.forEach(function (menu) {
+        if (!menu.contains(event.target)) menu.removeAttribute("open");
+      });
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape") return;
+      programMenus.forEach(function (menu) {
+        if (menu.open) {
+          menu.removeAttribute("open");
+          menu.querySelector("summary").focus();
+        }
+      });
+      b.classList.remove("nav-open");
+      if (t) {
+        t.setAttribute("aria-expanded", "false");
+        t.textContent = "Menu";
+      }
+    });
+    if (n) {
+      n.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          b.classList.remove("nav-open");
+          if (t) {
+            t.setAttribute("aria-expanded", "false");
+            t.textContent = "Menu";
+          }
+        });
+      });
+    }
     document.querySelectorAll(".faqbtn").forEach(function (q) {
       q.onclick = function () {
         var a = document.getElementById(q.getAttribute("aria-controls")),

@@ -111,6 +111,8 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - ✅ Use the approved **`toddlers-campaign-group.html` black/yellow/blue campaign design** as the shared production visual system.
 - ✅ Keep the strongest toddler copy, FAQ, schedule, and age-3 positioning inside that shared system rather than launching unrelated visual systems.
 - ✅ Preserve prior concepts for comparison; build the cohesive full-site version in a new `site/campaign/` directory with shared components.
+- ✅ The shared site header will use a **Programs dropdown** that links directly to the age-specific Little Champions 3–7, Youth 8–12, and Teen 13–17 pages. Age-group landing pages retain the same global header and add a smaller contextual anchor bar below it for in-page navigation.
+- 🟡 Home, Programs, Schedule, and Locations will test distinct page-specific AI hero concepts in the review build. These remain labeled concepts until final photography is approved.
 - 🟡 Build one shared schedule data source/component so every page displays the same current times.
 - 🟡 Maintain a single primary conversion goal per campaign page, plus text/call as the fallback.
 
@@ -233,5 +235,6 @@ When a statement in those sources conflicts with this file, follow this file's c
 
 ## Change log
 
+- **2026-07-25** — Diego approved integrating the Toddler, Youth, and Teen landing pages into the campaign-site navigation. The clean header pattern is one global site header plus a contextual anchor bar on long program pages. Distinct AI hero concepts are approved for Home, Programs, Schedule, and Locations as review ideas.
 - **2026-07-23** — Joao approved the campaign-group visual direction after an in-person review and requested the rest of the site be built in that style. Production visual direction is no longer blocking.
 - **2026-07-23** — Initial authoritative decision record created from the repository-wide strategy, documentation, website, and implementation review.
