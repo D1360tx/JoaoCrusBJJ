@@ -22,6 +22,7 @@ Open `index.html` in any browser (double-click it). No server or build needed.
 | `toddlers.html` | **Toddler page, VERSION A** — matches the current joaocrusbjj.com look (light, blue headings, Divi-style) for Joao to rebuild in Divi |
 | `toddlers-brand.html` | **Toddler page, VERSION B** — the new flyer branding (stamped condensed caps, gold-yellow, royal blue, brush strokes, "Strong starts here. Skills for life.") |
 | `campaign-brand-guide.html` | **Visual campaign brand guide** — colors, typography, components, photography, voice, accessibility, and page-alignment checklist |
+| `youth-campaign-ages-8-12.html` | **Junior Warriors campaign page** — ages 8–12 program positioning, class method, verified two-location schedule, parent proof, FAQ, and connect-ready preview form |
 | `assets/campaign-brand-tokens.css` | **Namespaced starter CSS** — approved tokens, typography, layout, buttons, cards, fields, and responsive primitives for incremental adoption |
 | `assets/styles.css` | Shared design system |
 | `assets/app.js` | Scroll reveals, mobile nav, form preview |
