@@ -30,8 +30,8 @@
       --paper-2:var(--page-cream);
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth;overflow-x:hidden}
-    body{margin:0;overflow-x:hidden}
+    html{scroll-behavior:smooth;overflow-x:clip}
+    body.jc-theme{margin:0;overflow-x:clip}
     a{color:inherit}
     button,input,select,textarea{font:inherit}
     .skip{position:absolute;left:-9999px;top:8px;z-index:200;background:var(--page-yellow);color:var(--page-black);padding:10px 14px;font-weight:800}
@@ -61,8 +61,8 @@
     .hero-art{position:relative;z-index:2}
     .hero-frame{overflow:hidden;border:4px solid #fff;box-shadow:10px 10px 0 var(--page-yellow)}
     .hero-frame img{width:100%;aspect-ratio:1.36/1;object-fit:cover;object-position:52% center}
-    .hero-sticker{position:absolute;z-index:3;top:-38px;right:-16px;width:126px;height:126px;border:4px solid var(--page-black);border-radius:50%;background:var(--page-blue);color:#fff;box-shadow:4px 4px 0 var(--page-yellow);display:grid;place-items:center;text-align:center;transform:rotate(8deg);font-size:.68rem;font-weight:800;text-transform:uppercase;line-height:1.05}
-    .hero-sticker b{display:block;color:var(--page-yellow);font-family:"Anton",Impact,sans-serif;font-size:2rem;font-weight:400}
+    .hero-sticker{position:absolute;z-index:3;top:-55px;right:-12px;width:110px;height:110px;border:4px solid var(--page-black);border-radius:50%;background:var(--page-blue);color:#fff;box-shadow:4px 4px 0 var(--page-yellow);display:grid;place-items:center;text-align:center;transform:rotate(8deg);font-size:.62rem;font-weight:800;text-transform:uppercase;line-height:1.05}
+    .hero-sticker b{display:block;color:var(--page-yellow);font-family:"Anton",Impact,sans-serif;font-size:1.8rem;font-weight:400}
     .hero-note{position:absolute;z-index:3;right:-8px;bottom:-24px;background:var(--page-yellow);color:var(--page-black);border:3px solid var(--page-black);box-shadow:5px 5px 0 var(--page-blue);padding:10px 14px;font-weight:800;text-transform:uppercase;transform:rotate(-2deg)}
     .proof-strip{background:var(--page-white);border-bottom:4px solid var(--page-black)}
     .proof-grid{display:grid;grid-template-columns:repeat(3,1fr)}
@@ -167,8 +167,7 @@
     .mobile-cta{display:none}
     @media(max-width:920px){
       .menu-button{display:block}
-      .nav-links{display:none;position:fixed;inset:122px 0 0;background:var(--page-black);padding:28px;flex-direction:column;align-items:stretch;z-index:79}
-      .nav-open{overflow:hidden}
+      .nav-links{display:none;position:absolute;inset:100% 0 auto;background:var(--page-black);padding:28px;max-height:calc(100vh - 78px);overflow-y:auto;flex-direction:column;align-items:stretch;z-index:79;border-bottom:4px solid var(--page-yellow)}
       .nav-open .nav-links{display:flex}
       .hero-grid,.age-grid,.pressure-grid,.contact-grid{grid-template-columns:1fr}
       .hero-grid{padding-top:60px}
@@ -186,11 +185,11 @@
       body{padding-bottom:72px}
       .utility .jc-wrap{justify-content:center}.utility span{display:none}
       .nav-inner{min-height:68px}.brand small{display:none}
-      .nav-links{inset:111px 0 0}
+      .nav-links{max-height:calc(100vh - 68px)}
       .hero-grid{min-height:0;padding:54px 0 80px}
       .hero-copy h1{font-size:clamp(3.75rem,18vw,5rem)}
       .hero-actions .jc-btn{width:100%}
-      .hero-sticker{width:100px;height:100px;right:-3px;top:-22px}.hero-sticker b{font-size:1.6rem}
+      .hero-sticker{width:94px;height:94px;right:-3px;top:-48px}.hero-sticker b{font-size:1.5rem}
       .hero-note{right:-2px;bottom:-20px;font-size:.72rem}
       .proof-grid{grid-template-columns:1fr}
       .proof-item{min-height:98px;border-right:0;border-bottom:3px solid var(--page-black)}.proof-item:last-child{border-bottom:0}
@@ -234,7 +233,7 @@
         </div>
         <div class="hero-art">
           <div class="hero-sticker"><span><b>8-12</b>Junior Warriors</span></div>
-          <div class="hero-frame"><img src="assets/youth-junior-warriors-training.webp" width="1233" height="817" alt="A young Joao Crus BJJ student practicing a grappling technique with a partner" fetchpriority="high"></div>
+          <div class="hero-frame"><img src="assets/youth-junior-warriors-ai-hero.webp" width="1280" height="720" alt="Youth Brazilian Jiu-Jitsu students practicing a controlled partner drill while their coach supervises" fetchpriority="high"></div>
           <div class="hero-note">Beginners belong here.</div>
         </div>
       </div>
