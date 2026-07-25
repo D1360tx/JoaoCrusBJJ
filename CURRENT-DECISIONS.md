@@ -1,0 +1,237 @@
+<!-- markdownlint-disable MD013 -->
+
+# Joao Crus BJJ — Current Decisions
+
+> **Authoritative status as of 2026-07-23**
+> This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
+
+## Status legend
+
+| Status              | Meaning                                                                      |
+| ------------------- | ---------------------------------------------------------------------------- |
+| ✅ Confirmed        | Explicitly confirmed by Joao or independently verified                       |
+| 🟡 Working decision | Current direction; implementation may proceed, but details remain adjustable |
+| 🔴 Open / blocking  | Must be resolved before dependent work is published or launched              |
+| ⛔ Superseded       | Older direction that must not guide new work                                 |
+
+---
+
+## 1. Current objectives and priorities
+
+1. ✅ **Generate new qualified leads and convert them into students.** New leads—not merely appointment show-up—is the primary growth problem.
+2. ✅ **Increase private lessons from 5 to 10 per week.** Current private rate is $95/class; this is the fastest, highest-margin near-term lever.
+3. ✅ **Relaunch adult group training around the Mon/Wed 6:40 p.m. class.** Treat it as a date-bound cohort rather than advertising a small existing class.
+4. ✅ **Grow kids enrollment using the age-3 differentiator, referrals/buddy passes, local campaigns, and a stronger trial offer.**
+5. 🟡 **Develop the schools/curriculum line after the immediate local-student launch.** Whether this targets regular schools or martial-arts schools still requires reconfirmation.
+6. 🟡 Preserve the broader **one hub / three lines** concept as the working brand architecture, pending final sign-off and naming.
+
+---
+
+## 2. Confirmed business facts
+
+### Enrollment, pricing, and operations
+
+- ✅ Current enrollment reported: **30 kids / 12 adults**.
+- ✅ Private lessons: **$3,800 per 40 classes = $95/class**; currently about 5/week, desired 10/week.
+- ✅ Drop-in rate: **$25**.
+- ✅ Memberships use **12-month agreements with 60-day termination notice**.
+- ✅ Reported business baseline: approximately **$100,000 trailing 12 months**; records/Zen Planner export are still required to document the baseline.
+- ✅ Billing and member management use **Zen Planner**.
+- ✅ Current website inquiries go to **[joaocrus@gmail.com](mailto:joaocrus@gmail.com)** and are not managed in a dedicated CRM.
+- ✅ Beehiiv exists with approximately **800 subscribers**, correcting the earlier 8,060 figure. Access and consent/list-quality review remain pending.
+
+### Locations and schedule
+
+- ✅ Dripping Springs location: **120 Frog Pond Lane, Suite 200, Dripping Springs, TX 78620**.
+- ✅ Austin location: **1112 N Lamar Blvd, inside Castle Hill Fitness**.
+- ✅ Dripping Springs published schedule includes Mon/Wed kids classes and adults at **6:40–7:40 p.m.**
+- ✅ Austin published kids schedule: ages 8–12, Tue/Thu **5:00–6:00 p.m.**
+- 🔴 Austin adult schedule remains undecided; use an interest list until confirmed.
+- 🔴 Confirm whether the former Saturday kids class has been discontinued before publishing the shared full-site schedule.
+
+### Positioning and proof
+
+- ✅ Joao officially accepts children from **age 3** and approved advertising this fact.
+- ✅ Competitive research found no other local school advertising an under-4 starting age; phrase external copy carefully as **“no other local school we found advertises classes from age 3”** unless the stronger exclusivity claim is reverified at launch.
+- ✅ Google Business Profile was verified at **4.8 stars / 98 reviews** as of 2026-06-17; refresh before publishing hard counts.
+- 🟡 “500+ families” is a first-party cumulative claim. If Joao reconfirms it, use **“500+ families served since 2003,”** not language implying current enrollment or only Dripping Springs families.
+
+---
+
+## 3. Launch and campaign decisions
+
+- ✅ **Launch anchor: August 17, 2026.** The new schedule and 6:40 adult cohort are tied to this date.
+- ✅ Campaign theme: **Back to School**.
+- ✅ Move away from a fully free-only trial toward a **paid/deposit trial** that filters for commitment.
+- ✅ Preferred offer logic: a trial deposit becomes a **credit toward annual membership** when the student continues.
+- ✅ Paid social is approved at approximately **$35/day** for the Back-to-School campaign.
+- ✅ Paid social will use our own pages and tracking and run alongside the existing agency.
+- ✅ Social cadence preference: approximately **one useful instructional post per week**; content should drive to offers rather than function as a free school.
+- ✅ Joao's children's storybooks (shy/distracted-kid themes) are working lead-magnet and trial-gift assets.
+- 🟡 Buddy passes and family/father-son structures are approved directions but need final mechanics.
+
+### Superseded directions
+
+- ⛔ **“Organic-first; no paid ads in v1” is superseded.** Paid social is now in scope.
+- ⛔ **“No ESP / build an email list from zero” is superseded.** Beehiiv exists; the task is access, cleanup, segmentation, and integration.
+- ⛔ **“Twilio already exists or may have reusable A2P registration” is superseded.** Twilio was stalled at signup and A2P has not started.
+- ⛔ The agency's $500 fee was **one-time setup**, not an ongoing monthly retainer. Working ongoing cost is **$400/month ad spend + $100 per signup**.
+- ⛔ “Age 3 pending confirmation” is superseded. The policy and advertising permission are confirmed.
+- ⛔ “No gym-management software” is superseded. Zen Planner is in use.
+
+---
+
+## 4. Open decisions that block implementation
+
+| Priority | Decision required                                                                                                                 | Owner        | Blocks                                            |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------ | ------------------------------------------------- |
+| 🔴 1     | Confirm full rate card: when $69/week applies versus $49–59/week; family rates; $99 registration; kids/adults differences         | Joao         | Offer math, pricing copy, checkout                |
+| 🔴 2     | Select launch offer: paid Kickstart versus 4-week deposit-credit intro; deposit amount, duration, capacity, refund/credit rules   | Joao + Diego | Landing pages, ads, scripts, payment flow         |
+| 🔴 3     | Confirm trial-uniform cost and whether the offer includes a low-cost trial uniform, enrollment gi, or no uniform bonus            | Joao         | Offer profitability and copy                      |
+| 🔴 4     | Confirm booking system: existing WP Booking Calendar, Zen Planner booking, or Cal.com                                             | Joao + Diego | CTA and automation wiring                         |
+| ✅ 5     | **Resolved 2026-07-23:** Joao approved the `toddlers-campaign-group.html` black/yellow/blue direction and requested the full site in this style | Joao + Diego | Unblocked—full-site buildout in progress           |
+| 🔴 6     | Confirm hosting/registrar/DNS access and create a school-domain email                                                             | Joao + Diego | Email authentication, Twilio signup               |
+| 🔴 7     | Obtain Beehiiv access and verify list size, consent, segments, and deliverability                                                 | Joao         | Broadcasts, lead magnet, nurture                  |
+| 🔴 8     | Confirm Castle Hill terms and permission to market to members via site listing, signage, front desk, and newsletter               | Joao         | Austin launch                                     |
+| 🔴 9     | Confirm Meta ad-account ownership and agency campaign/follow-up boundaries                                                        | Joao + Diego | Pixel ownership, attribution, duplicate messaging |
+| 🟡 10    | Decide whether the 6-week guarantee/refund concept will be used                                                                   | Joao         | Secondary offer copy                              |
+| 🟡 11    | Confirm buddy-pass mechanics and limits                                                                                           | Joao         | Referral campaign                                 |
+| 🟡 12    | Reconfirm whether the schools/curriculum line targets regular schools or martial-arts academies                                   | Joao         | Line-B product strategy                           |
+
+### Pricing rule
+
+Until item 1 is resolved, **do not publish membership prices, LTV claims, savings claims, or a paid-trial price.** Use a clearly marked placeholder or omit pricing entirely.
+
+---
+
+## 5. Website and funnel scope
+
+### Working production direction
+
+- ✅ Use the approved **`toddlers-campaign-group.html` black/yellow/blue campaign design** as the shared production visual system.
+- ✅ Keep the strongest toddler copy, FAQ, schedule, and age-3 positioning inside that shared system rather than launching unrelated visual systems.
+- ✅ Preserve prior concepts for comparison; build the cohesive full-site version in a new `site/campaign/` directory with shared components.
+- 🟡 Build one shared schedule data source/component so every page displays the same current times.
+- 🟡 Maintain a single primary conversion goal per campaign page, plus text/call as the fallback.
+
+### Required launch pages
+
+1. Homepage hub
+2. Kids program
+3. Toddlers / age 3
+4. Adults / 6:40 cohort
+5. Private coaching
+6. Teams / corporate offering
+7. Austin location or Austin-specific campaign page
+8. Lead-magnet landing page
+9. Booking/offer confirmation and thank-you states
+10. Privacy policy and terms/communications consent pages
+
+### Required production wiring
+
+- Real booking destination—no `href="#"` conversion buttons.
+- Real form backend and lead storage.
+- Beehiiv lead-magnet delivery and welcome/nurture automation.
+- GA4 plus Meta Pixel event tracking for page views, CTA clicks, form starts, form submissions, bookings, and payments where applicable.
+- UTMs and source attribution preserved through lead capture.
+- Mobile click-to-call/text and real map links.
+- Email/SMS consent language, privacy policy, unsubscribe handling, and suppression records.
+- Canonicals, Open Graph/social images, LocalBusiness/location schema, FAQ schema where appropriate, sitemap, robots rules, and noindex for drafts/variants.
+- Owned, optimized local images rather than production hot-links to WordPress media.
+
+### Content priorities
+
+- Lead the kids/toddler journey with the verified age-3 differentiator.
+- Promote private coaching as a primary offer, not a minor peer card.
+- Show both locations clearly without implying an Austin adult schedule that does not yet exist.
+- Add schedule, coaches, linked Google reviews, FAQs, directions, books/podcast links, and a secondary lead-magnet path.
+- Do not publish the preview ribbon, draft variant hub, or duplicate toddler versions.
+
+---
+
+## 6. Automation and platform decisions
+
+### Confirmed current state
+
+- ✅ Zen Planner is the existing billing/member system; do not replace it blindly.
+- ✅ Beehiiv is the existing ESP; evaluate and integrate before introducing another ESP.
+- ✅ Meta Pixel is present via PixelYourSite; GA4 was not yet verified as live in the July 22 audit.
+- ✅ Jetpack Stats exists and may provide historical traffic baseline data.
+- ✅ A WordPress Booking Calendar plugin is installed; its actual booking flow is still unknown.
+- ✅ Twilio is not operational; A2P registration has not started.
+
+### Implementation sequence
+
+1. Resolve offer, rate card, booking, and design decisions.
+2. Create school-domain email and establish authenticated sending.
+3. Connect real forms, booking, Beehiiv, GA4, Meta events, and source attribution.
+4. Start Twilio/A2P only after ownership, number strategy, consent, and agency-overlap decisions are documented.
+5. Launch email-first if A2P approval is not complete; do not delay the entire campaign solely for SMS.
+6. Keep Zen Planner for existing billing/membership until migration requirements are proven.
+
+### Phase 2—not required for the first conversion launch
+
+- Full custom CRM/admin pipeline
+- Stripe subscription migration
+- Revenue-versus-baseline dashboard
+- Historical-lead win-back automation
+- Voice AI / AI receptionist
+- Advanced multi-location or multi-tenant platform work
+
+---
+
+## 7. Ownership and immediate action list
+
+### Diego
+
+- [ ] Present 2–3 finalized offer options after rate-card clarification.
+- [ ] Produce the toddler, adults, teams, privates, and location pages in the selected design.
+- [ ] Wire GA4, Meta events, form/booking attribution, and email nurture.
+- [ ] Draft the VSL and Back-to-School paid-social plan.
+- [ ] Send Joao the written recap and Stoic/platform breakdown.
+- [ ] Create an implementation checklist once booking/hosting access is confirmed.
+
+### Joao
+
+- [ ] Confirm the full rate card and registration/uniform rules.
+- [ ] Select the paid/deposit trial structure.
+- [ ] Confirm low-cost trial-uniform economics.
+- [ ] Confirm the shared schedule, including Saturday and Austin adults.
+- [ ] Provide Beehiiv, Zen Planner export/read-only, WordPress/hosting/DNS, Jetpack, booking, and Meta access as appropriate.
+- [ ] Confirm Castle Hill marketing terms and request a Castle Hill website/classes listing.
+- [ ] Approve the visual direction, buddy-pass mechanics, and guarantee position.
+
+---
+
+## 8. Decision hygiene
+
+1. Update this file **first** whenever Joao or Diego makes a new decision.
+2. Add the decision date, owner, and affected sections.
+3. Update or add correction banners to older documents in the same commit when practical.
+4. Do not silently convert assumptions into facts. Use the status legend.
+5. Reverify volatile public claims—review counts, competitor offers, schedules, pricing, and platform behavior—before publishing.
+6. Maintain one canonical schedule and one canonical rate card.
+
+---
+
+## 9. Source trail
+
+Current conclusions were reconciled from:
+
+- `README.md` — chronological project log, especially 2026-06-17 and 2026-07-22/23 entries
+- `calls/2026-07-22-joao-strategy-call.md`
+- `13-STUDENT-GROWTH-PLAN.md` §§7–8
+- `08-NEEDED-FROM-JOAO.md` — July 22 intake and email corrections
+- `assets/assumption-audit.md`
+- `02-WEBSITE-AUDIT.md`
+- `site/README.md`
+- Live website and repository review performed 2026-07-23
+
+When a statement in those sources conflicts with this file, follow this file's current status and then correct the stale source.
+
+---
+
+## Change log
+
+- **2026-07-23** — Joao approved the campaign-group visual direction after an in-person review and requested the rest of the site be built in that style. Production visual direction is no longer blocking.
+- **2026-07-23** — Initial authoritative decision record created from the repository-wide strategy, documentation, website, and implementation review.
