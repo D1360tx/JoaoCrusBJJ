@@ -235,6 +235,7 @@ When a statement in those sources conflicts with this file, follow this file's c
 
 ## Change log
 
+- **2026-07-25** — Diego set the Teen interest-section hierarchy: “Help choose the time that can actually work.” and its intro span the full section above the two-column content; the three-step availability/review block sits left of the form, and the form sits on the right at desktop widths.
 - **2026-07-25** — Diego approved integrating the Toddler, Youth, and Teen landing pages into the campaign-site navigation. The clean header pattern is one global site header plus a contextual anchor bar on long program pages. Distinct AI hero concepts are approved for Home, Programs, Schedule, and Locations as review ideas.
 - **2026-07-23** — Joao approved the campaign-group visual direction after an in-person review and requested the rest of the site be built in that style. Production visual direction is no longer blocking.
 - **2026-07-23** — Initial authoritative decision record created from the repository-wide strategy, documentation, website, and implementation review.

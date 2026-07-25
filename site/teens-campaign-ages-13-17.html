@@ -153,7 +153,9 @@
     details[open] summary::after{content:"−"}
     details p{max-width:850px;margin:0;padding:0 20px 25px;color:#5e5a53}
     .join{background:var(--page-blue);color:#fff}
-    .join-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:45px;align-items:start}
+    .join-head{max-width:980px;margin-bottom:42px}
+    .join-head p{max-width:780px;margin:23px 0 0;color:#e2e9ff;font-size:1rem;line-height:1.75}
+    .join-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:45px;align-items:start}
     .join .section-kicker{color:var(--page-yellow)}
     .join h2{margin:0;font-size:clamp(3.4rem,6vw,6.8rem);line-height:.9}
     .join-copy p{max-width:500px;color:#e2e9ff;font-size:1rem;line-height:1.75}
@@ -236,7 +238,7 @@
       .footer-grid{align-items:flex-start;flex-direction:column}
       .mobile-cta{position:fixed;z-index:34;left:0;right:0;bottom:0;display:block;padding:10px 14px;background:var(--page-yellow);border-top:3px solid var(--page-black);transition:transform .18s ease}
       .mobile-cta a{display:block;padding:12px;background:var(--page-black);color:#fff;text-align:center;text-decoration:none;font-weight:900;text-transform:uppercase}
-      .form-in-view .mobile-cta,.schedule-in-view .mobile-cta{transform:translateY(100%);transition:none}
+      .join-in-view .mobile-cta,.schedule-in-view .mobile-cta{transform:translateY(100%);transition:none}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.mobile-cta{transition:none}}
   </style>
@@ -424,12 +426,15 @@
     </section>
 
     <section class="section join" id="join">
-      <div class="wrap join-grid">
-        <div class="join-copy">
+      <div class="wrap">
+        <div class="join-head">
           <span class="section-kicker">Teen cohort interest list</span>
           <h2>Help choose the time that can actually work.</h2>
           <p>Tell us the student's age, preferred location, and realistic availability. That gives Joao a concrete picture of the first cohort before a schedule is announced.</p>
-          <div class="next-steps" aria-label="What happens after joining the interest list">
+        </div>
+        <div class="join-grid">
+          <div class="join-copy">
+            <div class="next-steps" aria-label="What happens after joining the interest list">
             <div class="next-step"><strong>1 / Share real availability</strong><span>Choose the location and time windows your family could consistently make.</span></div>
             <div class="next-step"><strong>2 / Joao reviews demand</strong><span>A class opens only when the first peer group and coaching time are workable.</span></div>
             <div class="next-step"><strong>3 / Review before deciding</strong><span>You get the confirmed day and next step before any enrollment decision.</span></div>
@@ -451,6 +456,7 @@
           <button class="button" type="submit">Join the teen interest list</button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
+        </div>
       </div>
     </section>
   </main>
@@ -482,7 +488,7 @@
       });
 
       if('IntersectionObserver' in window){
-        var observed=[{element:form,className:'form-in-view'},{element:document.querySelector('#schedule'),className:'schedule-in-view'}];
+        var observed=[{element:document.querySelector('#join'),className:'join-in-view'},{element:document.querySelector('#schedule'),className:'schedule-in-view'}];
         observed.forEach(function(item){
           new IntersectionObserver(function(entries){
             entries.forEach(function(entry){body.classList.toggle(item.className,entry.isIntersecting);});
