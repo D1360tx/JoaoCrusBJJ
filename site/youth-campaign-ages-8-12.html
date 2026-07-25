@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Youth BJJ Ages 8-12 in Austin &amp; Dripping Springs | Joao Crus BJJ</title>
+  <meta name="description" content="Junior Warriors BJJ for ages 8-12 in Austin and Dripping Springs. Real technique, purposeful pressure, resilience, leadership, and earned confidence.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta property="og:title" content="Junior Warriors BJJ Ages 8-12 | Joao Crus BJJ">
+  <meta property="og:description" content="Train hard. Think deeper. Rise stronger. Youth BJJ in Austin and Dripping Springs.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="assets/campaign-brand-tokens.css">
+  <style>
+    :root{
+      --page-black:#101010;
+      --page-white:#fffdf8;
+      --page-yellow:#f5c400;
+      --page-blue:#194fc3;
+      --page-green:#2f9b58;
+      --page-text:#202020;
+      --page-muted:#65645f;
+      --page-cream:#f4f0e6;
+      --page-pale-yellow:#fff5c4;
+      --page-pale-green:#e8f5ed;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{margin:0;overflow-x:hidden}
+    a{color:inherit}
+    button,input,select,textarea{font:inherit}
+    .skip{position:absolute;left:-9999px;top:8px;z-index:200;background:var(--page-yellow);color:var(--page-black);padding:10px 14px;font-weight:800}
+    .skip:focus{left:8px}
+    .utility{background:var(--page-yellow);color:var(--page-black);border-bottom:3px solid var(--page-black);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .utility .jc-wrap{min-height:40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .utility a{text-underline-offset:3px}
+    .site-header{position:sticky;top:0;z-index:80;background:var(--page-black);color:#fff;border-bottom:4px solid var(--page-yellow)}
+    .nav-inner{min-height:78px;display:flex;align-items:center;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;margin-right:auto;text-decoration:none;flex:0 0 auto}
+    .brand-mark{width:44px;height:44px;display:grid;place-items:center;border:3px solid #fff;border-radius:50%;background:conic-gradient(var(--page-yellow) 0 33%,var(--page-blue) 0 66%,var(--page-green) 0);color:var(--page-black);font-family:"Anton",Impact,sans-serif;font-size:1.15rem;text-shadow:0 1px #fff}
+    .brand strong{display:block;font-family:"Anton",Impact,sans-serif;font-size:1.08rem;letter-spacing:.04em}
+    .brand small{display:block;color:#d5d5d0;font-size:.58rem;text-transform:uppercase;letter-spacing:.12em}
+    .nav-links{display:flex;align-items:center;gap:20px;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+    .nav-links a{text-decoration:none}
+    .nav-links a:hover{color:var(--page-yellow)}
+    .nav-links .nav-cta{background:var(--page-yellow);color:var(--page-black);border:2px solid var(--page-yellow);padding:11px 14px}
+    .menu-button{display:none;background:transparent;color:var(--page-yellow);border:2px solid var(--page-yellow);min-height:44px;padding:8px 11px;font-weight:800;text-transform:uppercase}
+    .hero{position:relative;background:var(--page-black);color:#fff;border-bottom:6px solid var(--page-yellow);overflow:hidden}
+    .hero::after{content:"";position:absolute;z-index:1;left:-2%;right:-2%;bottom:-2px;height:27px;background:var(--page-yellow);clip-path:polygon(0 30%,8% 0,18% 48%,29% 14%,40% 68%,53% 10%,65% 52%,77% 18%,89% 62%,100% 24%,100% 100%,0 100%)}
+    .hero-grid{min-height:650px;display:grid;grid-template-columns:.95fr 1.05fr;gap:52px;align-items:center;padding:72px 0 96px}
+    .hero-copy{position:relative;z-index:2}
+    .hero-copy h1{font-size:clamp(4rem,8.2vw,7.8rem)}
+    .hero-copy p{max-width:55ch;color:#deddd8;font-size:1.1rem;margin:26px 0}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+    .hero .jc-btn--dark{border-color:#fff}
+    .hero-art{position:relative;z-index:2}
+    .hero-frame{overflow:hidden;border:4px solid #fff;box-shadow:10px 10px 0 var(--page-yellow)}
+    .hero-frame img{width:100%;aspect-ratio:1.36/1;object-fit:cover;object-position:52% center}
+    .hero-sticker{position:absolute;z-index:3;top:-38px;right:-16px;width:126px;height:126px;border:4px solid var(--page-black);border-radius:50%;background:var(--page-blue);color:#fff;box-shadow:4px 4px 0 var(--page-yellow);display:grid;place-items:center;text-align:center;transform:rotate(8deg);font-size:.68rem;font-weight:800;text-transform:uppercase;line-height:1.05}
+    .hero-sticker b{display:block;color:var(--page-yellow);font-family:"Anton",Impact,sans-serif;font-size:2rem;font-weight:400}
+    .hero-note{position:absolute;z-index:3;right:-8px;bottom:-24px;background:var(--page-yellow);color:var(--page-black);border:3px solid var(--page-black);box-shadow:5px 5px 0 var(--page-blue);padding:10px 14px;font-weight:800;text-transform:uppercase;transform:rotate(-2deg)}
+    .proof-strip{background:var(--page-white);border-bottom:4px solid var(--page-black)}
+    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+    .proof-item{min-height:126px;padding:24px;text-align:center;border-right:3px solid var(--page-black);display:grid;place-items:center}
+    .proof-item:last-child{border:0}
+    .proof-item strong{display:block;font-family:"Anton",Impact,sans-serif;font-size:2rem;line-height:1;text-transform:uppercase}
+    .proof-item span{display:block;margin-top:8px;color:var(--page-muted);font-size:.73rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .section-copy{max-width:72ch;margin:26px 0 0;color:var(--page-muted);font-size:1.07rem}
+    .yellow-field{background:var(--page-yellow);color:var(--page-black)}
+    .yellow-field .jc-kicker,.yellow-field .section-copy{color:var(--page-black)}
+    .age-grid{display:grid;grid-template-columns:.9fr 1.1fr;border:4px solid var(--page-black);box-shadow:8px 8px 0 var(--page-black)}
+    .age-intro{background:#fff;padding:42px}
+    .age-intro p{color:var(--page-muted);font-size:1.05rem}
+    .age-list{background:var(--page-black);color:#fff;padding:42px}
+    .age-list ul{list-style:none;padding:0;margin:20px 0 0}
+    .age-list li{padding:12px 0;border-bottom:1px solid #777;font-weight:700}
+    .age-list li::before{content:"→";margin-right:11px;color:var(--page-yellow);font-weight:900}
+    .practice-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+    .practice-card{min-height:248px;border:3px solid var(--page-black);background:#fff;box-shadow:6px 6px 0 var(--page-black);padding:26px}
+    .practice-card:nth-child(1),.practice-card:nth-child(2),.practice-card:nth-child(3){grid-column:span 2}
+    .practice-card:nth-child(4),.practice-card:nth-child(5){grid-column:span 3}
+    .practice-card:nth-child(2){background:var(--page-pale-yellow)}
+    .practice-card:nth-child(4){background:var(--page-pale-green)}
+    .practice-card:nth-child(5){background:var(--page-black);color:#fff;box-shadow:6px 6px 0 var(--page-blue)}
+    .card-num{display:block;float:right;margin-left:10px;color:var(--page-blue);font-family:"Anton",Impact,sans-serif;font-size:3rem;line-height:1}
+    .practice-card:nth-child(5) .card-num{color:var(--page-yellow)}
+    .practice-card p{margin:12px 0 0;color:var(--page-muted)}
+    .practice-card:nth-child(5) p{color:#ddd}
+    .pressure{background:var(--page-blue);color:#fff}
+    .pressure .jc-kicker,.authority .jc-kicker,.first-class .jc-kicker{color:#fff}
+    .pressure .section-copy{color:#e0e8ff}
+    .pressure-grid{display:grid;grid-template-columns:1.05fr .95fr;border:4px solid var(--page-black);box-shadow:8px 8px 0 var(--page-yellow)}
+    .pressure-image{background:var(--page-black);overflow:hidden}
+    .pressure-image img{width:100%;height:100%;min-height:500px;object-fit:cover}
+    .pressure-copy{background:#fff;color:var(--page-black);padding:42px}
+    .pressure-copy p{color:var(--page-muted)}
+    .lesson-list{list-style:none;padding:0;margin:24px 0 0}
+    .lesson-list li{padding:12px 0;border-bottom:1px solid var(--page-line,#d9d6cc)}
+    .lesson-list b{display:block;color:var(--page-blue)}
+    .outcomes{background:var(--page-black);color:#fff}
+    .outcomes .section-copy{color:#ddd}
+    .outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .outcome{border:3px solid var(--page-yellow);padding:28px;min-height:205px;background:#171717;box-shadow:6px 6px 0 var(--page-blue)}
+    .outcome h3{color:var(--page-yellow)}
+    .outcome p{margin:12px 0 0;color:#ddd}
+    .class-flow{background:var(--page-cream)}
+    .flow-grid{display:grid;grid-template-columns:repeat(5,1fr);border:4px solid var(--page-black);box-shadow:8px 8px 0 var(--page-blue)}
+    .flow-step{min-height:230px;padding:24px;border-right:3px solid var(--page-black);background:#fff}
+    .flow-step:nth-child(even){background:var(--page-pale-yellow)}
+    .flow-step:last-child{border:0;background:var(--page-yellow)}
+    .flow-step time{display:block;color:var(--page-blue);font-family:"Anton",Impact,sans-serif;font-size:3rem;line-height:1;margin-bottom:28px}
+    .flow-step p{color:var(--page-muted)}
+    .flow-step:last-child p{color:var(--page-black)}
+    .schedule{background:var(--page-yellow)}
+    .schedule .jc-kicker,.schedule .section-copy{color:var(--page-black)}
+    .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .location-card{background:#fff;border:4px solid var(--page-black);box-shadow:8px 8px 0 var(--page-black);padding:34px}
+    .location-card:last-child{background:var(--page-black);color:#fff;box-shadow:8px 8px 0 var(--page-blue)}
+    .location-label{display:inline-block;background:var(--page-blue);color:#fff;padding:6px 9px;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .location-card:last-child .location-label{background:var(--page-yellow);color:var(--page-black)}
+    .schedule-row{margin:26px 0 0;padding:18px 0;border-top:2px solid currentColor;border-bottom:2px solid currentColor}
+    .schedule-row strong{display:block;font-family:"Anton",Impact,sans-serif;font-size:2rem;text-transform:uppercase;line-height:1}
+    .schedule-row span{display:block;margin-top:10px;font-weight:700}
+    .location-card address{margin-top:20px;font-style:normal;color:var(--page-muted)}
+    .location-card:last-child address{color:#ddd}
+    .schedule-note{margin:28px 0 0;font-size:.82rem;font-weight:700}
+    .proof{background:var(--page-white)}
+    .quote-grid{display:grid;grid-template-columns:.8fr 1.2fr;border:4px solid var(--page-black);box-shadow:8px 8px 0 var(--page-yellow)}
+    .quote-label{background:var(--page-blue);color:#fff;padding:40px;display:flex;flex-direction:column;justify-content:space-between}
+    .quote-label .stars{color:var(--page-yellow);font-size:1.5rem;letter-spacing:.12em}
+    .quote-copy{background:#fff;padding:42px}
+    .quote-copy blockquote{margin:0;font-size:clamp(1.12rem,2vw,1.42rem);font-weight:600;line-height:1.5}
+    .quote-copy cite{display:block;margin-top:24px;color:var(--page-blue);font-style:normal;font-weight:800;text-transform:uppercase}
+    .authority{background:var(--page-blue);color:#fff}
+    .authority .section-copy{color:#e0e8ff}
+    .authority-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .authority-card{background:#fff;color:var(--page-black);border:4px solid var(--page-black);box-shadow:8px 8px 0 var(--page-yellow);padding:36px}
+    .authority-card:last-child{background:var(--page-black);color:#fff;box-shadow:8px 8px 0 var(--page-yellow)}
+    .authority-card p{color:var(--page-muted)}
+    .authority-card:last-child p{color:#ddd}
+    .authority-card ul{list-style:none;padding:0;margin:20px 0 0}
+    .authority-card li{padding:10px 0;border-bottom:1px solid currentColor;font-weight:700}
+    .authority-card li::before{content:"✓";color:var(--page-blue);margin-right:10px;font-weight:900}
+    .authority-card:last-child li::before{color:var(--page-yellow)}
+    .faq{background:var(--page-yellow)}
+    .faq .jc-kicker,.faq .section-copy{color:var(--page-black)}
+    .faq-list{display:grid;gap:12px;max-width:960px}
+    .faq-list details{background:#fff;border:3px solid var(--page-black);box-shadow:5px 5px 0 var(--page-black)}
+    .faq-list summary{cursor:pointer;padding:20px 22px;font-weight:800;text-transform:uppercase;list-style:none;display:flex;justify-content:space-between;gap:20px}
+    .faq-list summary::-webkit-details-marker{display:none}
+    .faq-list summary::after{content:"+";color:var(--page-blue);font-family:"Anton",Impact,sans-serif;font-size:1.8rem;line-height:.7}
+    .faq-list details[open] summary::after{content:"−"}
+    .faq-answer{padding:0 22px 22px;color:var(--page-muted);max-width:74ch}
+    .first-class{background:var(--page-blue);color:#fff}
+    .first-class .section-copy{color:#e0e8ff}
+    .contact-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:30px;align-items:start}
+    .contact-paths{background:var(--page-black);border:3px solid #fff;box-shadow:8px 8px 0 var(--page-yellow);padding:32px}
+    .contact-paths p{color:#ddd}
+    .contact-link{display:block;margin-top:16px;padding:14px;border:2px solid var(--page-yellow);color:#fff;font-weight:800;text-decoration:none}
+    .form-card{background:#fff;color:var(--page-black);border:4px solid var(--page-black);box-shadow:8px 8px 0 var(--page-yellow);padding:32px}
+    .fields{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+    .form-card .jc-field.full{grid-column:1/-1}
+    .form-card select{appearance:none;background:#fff}
+    .form-card .jc-btn{width:100%;margin-top:20px}
+    .privacy-note,.form-status{font-size:.76rem;color:var(--page-muted);margin:14px 0 0}
+    .form-status{min-height:1.4em;font-weight:800;color:var(--page-blue)}
+    .site-footer{background:#070707;color:#aaa;border-top:6px solid var(--page-yellow);padding:50px 0 90px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+    .site-footer h3{color:var(--page-yellow);font-size:1.25rem}
+    .site-footer a{display:block;color:#ddd;text-decoration:none;margin:8px 0}
+    .footer-bottom{margin-top:34px;padding-top:18px;border-top:1px solid #444;font-size:.78rem}
+    .preview-ribbon{position:fixed;right:-55px;top:165px;z-index:70;width:230px;padding:9px;background:var(--page-yellow);color:var(--page-black);border:2px solid var(--page-black);text-align:center;font-size:.68rem;font-weight:800;text-transform:uppercase;transform:rotate(45deg)}
+    .mobile-cta{display:none}
+    @media(max-width:920px){
+      .menu-button{display:block}
+      .nav-links{display:none;position:fixed;inset:122px 0 0;background:var(--page-black);padding:28px;flex-direction:column;align-items:stretch;z-index:79}
+      .nav-open{overflow:hidden}
+      .nav-open .nav-links{display:flex}
+      .hero-grid,.age-grid,.pressure-grid,.contact-grid{grid-template-columns:1fr}
+      .hero-grid{padding-top:60px}
+      .hero-art{margin-top:20px}
+      .practice-grid{grid-template-columns:1fr 1fr}
+      .practice-card:nth-child(n){grid-column:auto}
+      .outcome-grid{grid-template-columns:1fr 1fr}
+      .flow-grid{grid-template-columns:repeat(2,1fr)}
+      .flow-step{border-bottom:3px solid var(--page-black)}
+      .flow-step:nth-child(even){border-right:0}
+      .flow-step:last-child{grid-column:1/-1;border-bottom:0}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:620px){
+      body{padding-bottom:72px}
+      .utility .jc-wrap{justify-content:center}.utility span{display:none}
+      .nav-inner{min-height:68px}.brand small{display:none}
+      .nav-links{inset:111px 0 0}
+      .hero-grid{min-height:0;padding:54px 0 80px}
+      .hero-copy h1{font-size:clamp(3.75rem,18vw,5rem)}
+      .hero-actions .jc-btn{width:100%}
+      .hero-sticker{width:100px;height:100px;right:-3px;top:-22px}.hero-sticker b{font-size:1.6rem}
+      .hero-note{right:-2px;bottom:-20px;font-size:.72rem}
+      .proof-grid{grid-template-columns:1fr}
+      .proof-item{min-height:98px;border-right:0;border-bottom:3px solid var(--page-black)}.proof-item:last-child{border-bottom:0}
+      .age-intro,.age-list,.pressure-copy{padding:28px}
+      .practice-grid,.outcome-grid,.location-grid,.authority-grid,.quote-grid,.fields,.footer-grid{grid-template-columns:1fr}
+      .practice-card{min-height:0}
+      .pressure-image img{min-height:300px}
+      .flow-grid{grid-template-columns:1fr}
+      .flow-step,.flow-step:nth-child(even),.flow-step:last-child{grid-column:auto;border-right:0;border-bottom:3px solid var(--page-black);min-height:0}
+      .flow-step:last-child{border-bottom:0}
+      .quote-label,.quote-copy,.location-card,.authority-card,.contact-paths,.form-card{padding:27px}
+      .form-card .jc-field.full{grid-column:auto}
+      .preview-ribbon{display:none}
+      .mobile-cta{position:fixed;display:flex;left:0;right:0;bottom:0;z-index:90;background:var(--page-yellow);border-top:3px solid var(--page-black);padding:9px;gap:8px;transition:transform .18s ease}
+      .mobile-cta a{flex:1;background:var(--page-black);color:#fff;text-align:center;padding:12px 8px;text-decoration:none;font-size:.7rem;font-weight:800;text-transform:uppercase}
+      .mobile-cta a:last-child{background:var(--page-blue)}
+      .form-in-view .mobile-cta{transform:translateY(100%)}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mobile-cta{transition:none}}
+  </style>
+</head>
+<body class="jc-theme">
+  <a class="skip" href="#main">Skip to youth program content</a>
+  <div class="utility"><div class="jc-wrap"><span>Junior Warriors · Ages 8-12 · Two locations</span><a href="tel:+15126444560">Call or text: 512-644-4560</a></div></div>
+  <header class="site-header">
+    <div class="jc-wrap nav-inner">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">JC</span><span><strong>JOAO CRUS BJJ</strong><small>Strong starts here · Est. 2003</small></span></a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="youth-nav">Menu</button>
+      <nav class="nav-links" id="youth-nav" aria-label="Youth page navigation"><a href="#program">Program</a><a href="#class">The class</a><a href="#schedule">Schedule</a><a href="#faq">FAQ</a><a class="nav-cta" href="#first-class">Plan a class</a></nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="jc-wrap hero-grid">
+        <div class="hero-copy">
+          <span class="jc-kicker jc-accent-yellow">Junior Warriors · Ages 8-12</span>
+          <h1 class="jc-h1">TRAIN HARD.<br>THINK DEEPER.<br><span class="jc-accent-yellow">RISE STRONGER.</span></h1>
+          <p>Real Brazilian Jiu-Jitsu technique meets intentional character development for the years when school pressure, peer dynamics, and self-doubt get louder.</p>
+          <div class="hero-actions"><a class="jc-btn" href="#first-class">Plan a youth class →</a><a class="jc-btn jc-btn--dark" href="#schedule">See two locations →</a></div>
+        </div>
+        <div class="hero-art">
+          <div class="hero-sticker"><span><b>8-12</b>Junior Warriors</span></div>
+          <div class="hero-frame"><img src="assets/youth-junior-warriors-training.webp" width="1233" height="817" alt="A young Joao Crus BJJ student practicing a grappling technique with a partner" fetchpriority="high"></div>
+          <div class="hero-note">Beginners belong here.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Program facts"><div class="jc-wrap proof-grid"><div class="proof-item"><div><strong>25+ YEARS</strong><span>Teaching this age group</span></div></div><div class="proof-item"><div><strong>REAL TECHNIQUE</strong><span>Progress they can practice</span></div></div><div class="proof-item"><div><strong>2 LOCATIONS</strong><span>Austin + Dripping Springs</span></div></div></div></section>
+
+    <section class="jc-section yellow-field" id="program">
+      <div class="jc-wrap">
+        <div class="jc-section-head"><span class="jc-kicker">Why ages 8-12 need their own program</span><h2 class="jc-h2">THE MIDDLE YEARS<br>CHANGE <span class="jc-accent-blue">FAST.</span></h2><p class="section-copy">At this age, kids need more than another activity that fills an hour. They need a place to practice effort, pressure, partnership, and responsibility before those moments show up somewhere harder.</p></div>
+        <div class="age-grid"><article class="age-intro"><h3 class="jc-h3">Pressure with a purpose</h3><p>Junior Warriors gives challenge a job. Students learn real positions, escapes, and problem-solving while practicing what to do when a plan fails, a partner pushes back, or frustration arrives.</p><p><strong>The goal is not to make every moment easy. The goal is to help them meet hard moments with more skill.</strong></p></article><article class="age-list"><h3 class="jc-h3">Built for who they are now</h3><ul><li>More technique and deeper problem-solving</li><li>More responsibility for partner safety</li><li>More chances to reset after mistakes</li><li>More practice using strength with control</li><li>More opportunities to lead by example</li></ul></article></div>
+      </div>
+    </section>
+
+    <section class="jc-section" aria-labelledby="practice-title">
+      <div class="jc-wrap">
+        <div class="jc-section-head"><span class="jc-kicker jc-accent-blue">What youth practice</span><h2 class="jc-h2" id="practice-title">EVERY ROUND<br>HAS A <span class="jc-accent-blue">LESSON.</span></h2><p class="section-copy">Technique is the vehicle. The deeper practice is learning to think, adjust, communicate, and keep going when the first answer does not work.</p></div>
+        <div class="practice-grid">
+          <article class="practice-card"><span class="card-num">01</span><h3 class="jc-h3">Learn what works</h3><p>Build a repeatable foundation through positions, escapes, movement, and controlled practice.</p></article>
+          <article class="practice-card"><span class="card-num">02</span><h3 class="jc-h3">Solve under pressure</h3><p>Notice what changed, choose a response, and adjust instead of freezing.</p></article>
+          <article class="practice-card"><span class="card-num">03</span><h3 class="jc-h3">Reset after mistakes</h3><p>Learn that getting stuck is information, not the end of the round.</p></article>
+          <article class="practice-card"><span class="card-num">04</span><h3 class="jc-h3">Use strength well</h3><p>Protect partners, hold boundaries, and practice control without aggression.</p></article>
+          <article class="practice-card"><span class="card-num">05</span><h3 class="jc-h3">Lead by example</h3><p>Older and more experienced students help newer teammates learn the room.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="jc-section pressure" aria-labelledby="pressure-title">
+      <div class="jc-wrap">
+        <div class="jc-section-head"><span class="jc-kicker jc-accent-yellow">The method</span><h2 class="jc-h2" id="pressure-title">WE DO NOT REMOVE<br>THE <span class="jc-accent-yellow">CHALLENGE.</span></h2><p class="section-copy">We make challenge teachable. Students work with partners, test technique, meet resistance, and learn how to respond without losing control of themselves.</p></div>
+        <div class="pressure-grid"><div class="pressure-image"><img src="assets/youth-junior-warriors-group.webp" width="797" height="433" alt="Junior Warriors students sitting together on the academy mats"></div><article class="pressure-copy"><span class="jc-kicker jc-accent-blue">What the mat can practice</span><h3 class="jc-h3">A better response is a skill.</h3><p>Class creates small, supervised moments where students can notice pressure and try a more useful response.</p><ul class="lesson-list"><li><b>When a technique fails</b>Pause, find the next choice, and adjust.</li><li><b>When frustration rises</b>Reset posture, breathing, and attention.</li><li><b>When a partner improves</b>Respond with effort and sportsmanship.</li><li><b>When someone is new</b>Help them learn the room with respect.</li></ul></article></div>
+      </div>
+    </section>
+
+    <section class="jc-section outcomes" aria-labelledby="outcomes-title">
+      <div class="jc-wrap">
+        <div class="jc-section-head"><span class="jc-kicker jc-accent-yellow">More than moves</span><h2 class="jc-h2" id="outcomes-title">JIU-JITSU IS HOW<br>WE PRACTICE IT.</h2><p class="section-copy">These are the habits Junior Warriors has room to work on, one class and one partner at a time.</p></div>
+        <div class="outcome-grid"><article class="outcome"><h3 class="jc-h3">Calm under pressure</h3><p>Stay engaged long enough to think and choose.</p></article><article class="outcome"><h3 class="jc-h3">Earned confidence</h3><p>Trust built from real effort, not empty praise.</p></article><article class="outcome"><h3 class="jc-h3">Clear boundaries</h3><p>Use voice, posture, and control without aggression.</p></article><article class="outcome"><h3 class="jc-h3">Focus and follow-through</h3><p>Listen for detail, practice the sequence, and finish the round.</p></article><article class="outcome"><h3 class="jc-h3">Sportsmanship</h3><p>Compete with effort while protecting the partnership.</p></article><article class="outcome"><h3 class="jc-h3">Belonging</h3><p>Build friendships through challenge and mutual respect.</p></article></div>
+      </div>
+    </section>
+
+    <section class="jc-section class-flow" id="class" aria-labelledby="class-title">
+      <div class="jc-wrap">
+        <div class="jc-section-head"><span class="jc-kicker jc-accent-blue">What class feels like</span><h2 class="jc-h2" id="class-title">STRUCTURE THEY CAN<br><span class="jc-accent-blue">GROW INSIDE.</span></h2><p class="section-copy">The exact class length varies by location, but the learning rhythm stays clear. Students know what they are working on and what comes next.</p></div>
+        <div class="flow-grid"><article class="flow-step"><time>01</time><h3 class="jc-h3">Connect + warm up</h3><p>Enter the room, move, and bring attention to the mat.</p></article><article class="flow-step"><time>02</time><h3 class="jc-h3">Learn one idea</h3><p>Coach breaks a position or technique into usable steps.</p></article><article class="flow-step"><time>03</time><h3 class="jc-h3">Practice together</h3><p>Partners repeat the skill with control and useful feedback.</p></article><article class="flow-step"><time>04</time><h3 class="jc-h3">Add decisions</h3><p>Resistance or movement asks the student to choose and adjust.</p></article><article class="flow-step"><time>05</time><h3 class="jc-h3">Reset + review</h3><p>Leave with one lesson to remember and another chance to return.</p></article></div>
+      </div>
+    </section>
+
+    <section class="jc-section schedule" id="schedule" aria-labelledby="schedule-title">
+      <div class="jc-wrap">
+        <div class="jc-section-head"><span class="jc-kicker">Two locations</span><h2 class="jc-h2" id="schedule-title">FIND THE ROOM<br>THAT <span class="jc-accent-blue">FITS.</span></h2><p class="section-copy">Junior Warriors is available in Dripping Springs and Austin. Choose the schedule closest to your week, then contact the team to plan a first visit.</p></div>
+        <div class="location-grid"><article class="location-card"><span class="location-label">Dripping Springs</span><h3 class="jc-h3" style="margin-top:22px">Junior Warriors 8-12</h3><div class="schedule-row"><strong>Monday + Wednesday</strong><span>5:50-6:35 p.m.</span></div><address>120 Frog Pond Lane, Suite 200<br>Dripping Springs, TX 78620</address><a class="jc-btn" href="#first-class" style="margin-top:24px">Plan a DS class →</a></article><article class="location-card"><span class="location-label">Austin · Castle Hill Fitness</span><h3 class="jc-h3" style="margin-top:22px;color:var(--page-yellow)">Junior Warriors 8-12</h3><div class="schedule-row"><strong>Tuesday + Thursday</strong><span>5:00-6:00 p.m.</span></div><address>1112 N Lamar Blvd<br>Austin, TX</address><a class="jc-btn jc-btn--blue" href="#first-class" style="margin-top:24px">Plan an Austin class →</a></article></div>
+        <p class="schedule-note">Published schedule shown for review. Reconfirm the shared schedule before production launch.</p>
+      </div>
+    </section>
+
+    <section class="jc-section proof" aria-labelledby="proof-title">
+      <div class="jc-wrap">
+        <div class="jc-section-head"><span class="jc-kicker jc-accent-blue">Parent perspective</span><h2 class="jc-h2" id="proof-title">PROGRESS YOU CAN<br><span class="jc-accent-blue">SEE CARRYING OVER.</span></h2></div>
+        <div class="quote-grid"><div class="quote-label"><span class="jc-kicker">Verified parent review</span><div><div class="stars" aria-label="Five stars">★★★★★</div><h3 class="jc-h3" style="margin-top:18px">Confidence. Discipline. Character.</h3></div></div><div class="quote-copy"><blockquote>“I enrolled both of my children into Joao Crus’s Brazilian Jiu-Jitsu class a couple of months ago, and I’m so glad I did. The instructors are absolutely fantastic and down to earth. Not only are they teaching our kids the art of Jiu-Jitsu, but they’re also helping build confidence, discipline, and character along the way. We couldn’t be happier with the progress we’ve seen, and we hope to keep our kids enrolled for many years to come. Highly recommended!”</blockquote><cite>John Baron</cite></div></div>
+      </div>
+    </section>
+
+    <section class="jc-section authority" aria-labelledby="authority-title">
+      <div class="jc-wrap">
+        <div class="jc-section-head"><span class="jc-kicker jc-accent-yellow">Why Joao Crus BJJ</span><h2 class="jc-h2" id="authority-title">THE COACH IS<br>PART OF THE <span class="jc-accent-yellow">METHOD.</span></h2><p class="section-copy">Junior Warriors is shaped by more than a list of techniques. It reflects decades of teaching kids how to practice pressure, partnership, and progress safely.</p></div>
+        <div class="authority-grid"><article class="authority-card"><h3 class="jc-h3">25+ years with this age</h3><p>Joao has spent decades teaching children and building a method that connects real Brazilian Jiu-Jitsu with emotional awareness and responsible challenge.</p><ul><li>Academy established in 2003</li><li>Carlson Gracie and De La Riva lineage</li><li>Author and kids-development educator</li></ul></article><article class="authority-card"><h3 class="jc-h3" style="color:var(--page-yellow)">Strong, not aggressive</h3><p>The goal is not to turn every child into the loudest person in the room. It is to help them use skill, voice, effort, and control with more intention.</p><ul><li>Real technique</li><li>Partner responsibility</li><li>Resilience through practice</li></ul></article></div>
+      </div>
+    </section>
+
+    <section class="jc-section faq" id="faq" aria-labelledby="faq-title">
+      <div class="jc-wrap">
+        <div class="jc-section-head"><span class="jc-kicker">Parent questions</span><h2 class="jc-h2" id="faq-title">WHAT PARENTS<br>ASK <span class="jc-accent-blue">FIRST.</span></h2><p class="section-copy">A first class should feel clear before your child ever steps onto the mat.</p></div>
+        <div class="faq-list"><details><summary>Does my child need martial arts experience?</summary><div class="faq-answer">No prior experience is needed. Willingness to learn and steady attendance matter more than arriving athletic, fearless, or already knowing the rules.</div></details><details><summary>How is Junior Warriors different from the younger program?</summary><div class="faq-answer">Junior Warriors adds deeper technique, more problem-solving, greater responsibility for partner safety, and more opportunities to lead by example. It is built for ages 8-12 rather than simply placing older kids into the youngest class.</div></details><details><summary>Does my child have to compete?</summary><div class="faq-answer">Competition is not the promise of this page. The core program focuses on technique, controlled practice, resilience, and sportsmanship. Ask the coaching team about competition options if your child is interested.</div></details><details><summary>Which location should we choose?</summary><div class="faq-answer">Choose the schedule that works for your family. Dripping Springs currently meets Monday and Wednesday. Austin currently meets Tuesday and Thursday inside Castle Hill Fitness.</div></details><details><summary>How do we plan a first class?</summary><div class="faq-answer">Use the form below or call or text 512-644-4560. The team can confirm the current schedule and help you choose the right first visit.</div></details></div>
+      </div>
+    </section>
+
+    <section class="jc-section first-class" id="first-class" aria-labelledby="first-class-title">
+      <div class="jc-wrap">
+        <div class="jc-section-head"><span class="jc-kicker jc-accent-yellow">The first step</span><h2 class="jc-h2" id="first-class-title">LET THEM TRY<br>THE <span class="jc-accent-yellow">ROOM.</span></h2><p class="section-copy">No big speech is required. Plan a visit, meet the coaching team, and let your child experience how the class works.</p></div>
+        <div class="contact-grid"><aside class="contact-paths"><h3 class="jc-h3" style="color:var(--page-yellow)">Prefer direct contact?</h3><p>Call, text, or email the academy. Ask about Junior Warriors and tell us which location fits your week.</p><a class="contact-link" href="tel:+15126444560">Call 512-644-4560</a><a class="contact-link" href="sms:+15126444560">Text 512-644-4560</a><a class="contact-link" href="mailto:joaocrus@gmail.com?subject=Junior%20Warriors%20Ages%208-12">Email the academy</a></aside><form class="form-card" id="youth-first-class-form" novalidate><h3 class="jc-h3">Plan a youth class</h3><div class="fields" style="margin-top:24px"><div class="jc-field"><label for="parent-name">Parent or guardian name</label><input id="parent-name" name="parent_name" type="text" autocomplete="name" required></div><div class="jc-field"><label for="contact-method">Phone or email</label><input id="contact-method" name="contact_method" type="text" required></div><div class="jc-field"><label for="student-age">Student age</label><select id="student-age" name="student_age" required><option value="">Choose age</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></div><div class="jc-field"><label for="preferred-location">Preferred location</label><select id="preferred-location" name="preferred_location" required><option value="">Choose location</option><option>Dripping Springs</option><option>Austin</option><option>Help me choose</option></select></div><div class="jc-field full"><label for="parent-note">Anything you want the coach to know?</label><textarea id="parent-note" name="parent_note" rows="4"></textarea></div></div><button class="jc-btn" type="submit">Plan the first visit →</button><p class="privacy-note">Preview form only. Lead delivery must be connected before production launch.</p><p class="form-status" id="form-status" role="status" aria-live="polite"></p></form></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="jc-wrap"><div class="footer-grid"><div><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">JC</span><span><strong>JOAO CRUS BJJ</strong><small>Skills for life · Est. 2003</small></span></a><p>Brazilian Jiu-Jitsu taught with real technique, responsible challenge, and human connection.</p></div><div><h3 class="jc-h3">Youth program</h3><a href="#program">Why ages 8-12</a><a href="#class">The class</a><a href="#schedule">Two locations</a><a href="#faq">Parent questions</a></div><div><h3 class="jc-h3">Connect</h3><a href="tel:+15126444560">512-644-4560</a><a href="mailto:joaocrus@gmail.com">joaocrus@gmail.com</a><a href="#first-class">Plan a class</a><a href="campaign-brand-guide.html">Campaign brand guide</a></div></div><div class="footer-bottom">Joao Crus Brazilian Jiu-Jitsu · Youth campaign preview</div></div></footer>
+  <div class="preview-ribbon">Youth page · Preview draft</div>
+  <div class="mobile-cta"><a href="tel:+15126444560">Call / text</a><a href="#first-class">Plan a class</a></div>
+
+  <script>
+    (() => {
+      const menuButton = document.querySelector('.menu-button');
+      const navLinks = document.querySelectorAll('.nav-links a');
+      const form = document.querySelector('#youth-first-class-form');
+      const status = document.querySelector('#form-status');
+
+      menuButton.addEventListener('click', () => {
+        const open = document.body.classList.toggle('nav-open');
+        menuButton.setAttribute('aria-expanded', String(open));
+      });
+
+      navLinks.forEach((link) => link.addEventListener('click', () => {
+        document.body.classList.remove('nav-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      }));
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!form.checkValidity()) {
+          status.textContent = 'Please complete the required fields so the team knows how to respond.';
+          form.reportValidity();
+          return;
+        }
+        status.textContent = 'Preview only. Lead delivery is not connected yet. Call or text 512-644-4560 to plan the visit now.';
+      });
+
+      const observer = new IntersectionObserver(([entry]) => {
+        document.body.classList.toggle('form-in-view', entry.isIntersecting);
+      }, { threshold: 0.08 });
+      observer.observe(form);
+    })();
+  </script>
+</body>
+</html>
