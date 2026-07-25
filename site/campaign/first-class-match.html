@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find Your Child's First-Class Match | Joao Crus BJJ</title>
+  <meta name="description" content="Answer a few quick questions and get a personalized first-class recommendation for your child at Joao Crus Brazilian Jiu-Jitsu.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/campaign-brand-tokens.css">
+  <link rel="stylesheet" href="../assets/child-first-class-quiz.css">
+  <script src="../assets/child-first-class-quiz.js" defer></script>
+</head>
+<body class="jc-theme quiz-page">
+  <a class="skip-link" href="#quiz-main">Skip to quiz</a>
+  <div class="preview-ribbon">Interactive quiz preview</div>
+
+  <header class="quiz-header">
+    <a class="quiz-brand" href="index.html" aria-label="Joao Crus BJJ home">
+      <span class="brand-mark" aria-hidden="true">JC</span>
+      <span class="brand-copy"><strong>JOAO CRUS BJJ</strong><small>Skills for life · Est. 2003</small></span>
+    </a>
+    <a class="header-help" href="tel:+15126444560">Questions? <strong>512&#8209;644&#8209;4560</strong></a>
+  </header>
+
+  <main id="quiz-main" class="quiz-main">
+    <article class="quiz-card" id="quiz-app" data-endpoint="">
+      <header class="quiz-progress" id="quiz-progress" hidden>
+        <div class="progress-copy">
+          <button class="text-back" id="progress-back" type="button" aria-label="Go to previous question">← Back</button>
+          <span id="progress-label">Question 1 of 8</span>
+        </div>
+        <progress class="sr-only" id="progress-native" max="8" value="1">Question 1 of 8</progress>
+        <div class="progress-track" id="progress-track" aria-hidden="true"></div>
+      </header>
+
+      <section class="quiz-screen intro-screen is-active" data-screen="intro" aria-labelledby="intro-title">
+        <div class="intro-grid">
+          <div class="intro-copy">
+            <span class="quiz-kicker">A better first step starts here</span>
+            <h1 id="intro-title">FIND YOUR CHILD'S<br><span>FIRST-CLASS MATCH.</span></h1>
+            <p class="intro-lead">Every child enters the room differently. Tell us what helps yours feel comfortable, challenged, and ready to learn.</p>
+            <ul class="intro-points">
+              <li><strong>About 2 minutes</strong><span>Simple questions, no perfect answers</span></li>
+              <li><strong>A personalized starting approach</strong><span>Built around age, goals, temperament, and experience</span></li>
+              <li><strong>The right program and location</strong><span>Dripping Springs or Austin</span></li>
+            </ul>
+            <button class="quiz-button intro-button" id="start-quiz" type="button">Find Their First-Class Match <span aria-hidden="true">→</span></button>
+            <p class="privacy-nudge">No payment. No enrollment commitment.</p>
+          </div>
+          <aside class="intro-art" aria-hidden="true">
+            <span class="art-sticker">No perfect<br>kid required</span>
+            <div class="art-card art-card-one"><b>01</b><span>THE RIGHT<br>PROGRAM</span></div>
+            <div class="art-card art-card-two"><b>02</b><span>THE RIGHT<br>PACE</span></div>
+            <div class="art-card art-card-three"><b>03</b><span>THE RIGHT<br>FIRST WIN</span></div>
+          </aside>
+        </div>
+      </section>
+
+      <form id="match-form" class="match-form" novalidate>
+        <button class="sr-only" type="submit">Continue quiz</button>
+        <section class="quiz-screen" data-screen="1" hidden>
+          <fieldset>
+            <legend>How old is your child?<small>We use age to recommend the right program.</small></legend>
+            <div class="option-grid age-grid" data-answer-group="age">
+              <label class="quiz-option age-option"><input type="radio" name="age" value="3"><span class="option-body"><strong>3</strong></span></label>
+              <label class="quiz-option age-option"><input type="radio" name="age" value="4"><span class="option-body"><strong>4</strong></span></label>
+              <label class="quiz-option age-option"><input type="radio" name="age" value="5"><span class="option-body"><strong>5</strong></span></label>
+              <label class="quiz-option age-option"><input type="radio" name="age" value="6"><span class="option-body"><strong>6</strong></span></label>
+              <label class="quiz-option age-option"><input type="radio" name="age" value="7"><span class="option-body"><strong>7</strong></span></label>
+              <label class="quiz-option age-option"><input type="radio" name="age" value="8"><span class="option-body"><strong>8</strong></span></label>
+              <label class="quiz-option age-option"><input type="radio" name="age" value="9"><span class="option-body"><strong>9</strong></span></label>
+              <label class="quiz-option age-option"><input type="radio" name="age" value="10"><span class="option-body"><strong>10</strong></span></label>
+              <label class="quiz-option age-option"><input type="radio" name="age" value="11"><span class="option-body"><strong>11</strong></span></label>
+              <label class="quiz-option age-option"><input type="radio" name="age" value="12"><span class="option-body"><strong>12</strong></span></label>
+
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="quiz-screen" data-screen="2" hidden>
+          <fieldset>
+            <legend>What would you most like them to build?<small>Choose up to two.</small></legend>
+            <div class="option-grid" data-answer-group="goals" data-max="2">
+              <label class="quiz-option"><input type="checkbox" name="goals" value="confidence"><span class="option-body"><span class="option-icon" aria-hidden="true">✦</span><strong>Confidence</strong><small>Speak up and try hard things</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="checkbox" name="goals" value="focus"><span class="option-body"><span class="option-icon" aria-hidden="true">◎</span><strong>Focus</strong><small>Listen, follow steps, and stay present</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="checkbox" name="goals" value="emotional-control"><span class="option-body"><span class="option-icon" aria-hidden="true">◇</span><strong>Emotional control</strong><small>Work through frustration safely</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="checkbox" name="goals" value="boundaries"><span class="option-body"><span class="option-icon" aria-hidden="true">□</span><strong>Safe boundaries</strong><small>Use their voice, tap, and respect others</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="checkbox" name="goals" value="activity"><span class="option-body"><span class="option-icon" aria-hidden="true">↗</span><strong>Healthy activity</strong><small>Move with purpose and body control</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="checkbox" name="goals" value="real-skill"><span class="option-body"><span class="option-icon" aria-hidden="true">★</span><strong>Real Jiu-Jitsu skill</strong><small>Learn useful technique step by step</small><i aria-hidden="true">✓</i></span></label>
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="quiz-screen" data-screen="3" hidden>
+          <fieldset>
+            <legend>How do they usually enter a new activity?<small>There is no wrong starting point.</small></legend>
+            <div class="option-grid single-column" data-answer-group="environment">
+              <label class="quiz-option"><input type="radio" name="environment" value="jumps-in"><span class="option-body"><span class="option-icon" aria-hidden="true">↗</span><strong>They jump right in</strong><small>New rooms and new people usually feel exciting</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="radio" name="environment" value="watches-first"><span class="option-body"><span class="option-icon" aria-hidden="true">◉</span><strong>They watch before joining</strong><small>A little time helps them understand what is happening</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="radio" name="environment" value="stays-close"><span class="option-body"><span class="option-icon" aria-hidden="true">⌂</span><strong>They stay close to me at first</strong><small>Connection helps them feel secure enough to try</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="radio" name="environment" value="depends"><span class="option-body"><span class="option-icon" aria-hidden="true">≈</span><strong>It depends on the day</strong><small>Their comfort level can change with the setting</small><i aria-hidden="true">✓</i></span></label>
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="quiz-screen" data-screen="4" hidden>
+          <fieldset>
+            <legend>How do they feel about close-contact play?<small>Think wrestling, roughhousing, or partner games.</small></legend>
+            <div class="option-grid single-column" data-answer-group="contact">
+              <label class="quiz-option"><input type="radio" name="contact" value="loves-it"><span class="option-body"><span class="option-icon" aria-hidden="true">★</span><strong>They love it</strong><small>They naturally enjoy active partner play</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="radio" name="contact" value="warms-up"><span class="option-body"><span class="option-icon" aria-hidden="true">◔</span><strong>They warm up with trust</strong><small>Comfort grows once they know the person and rules</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="radio" name="contact" value="unsure"><span class="option-body"><span class="option-icon" aria-hidden="true">?</span><strong>They are not sure yet</strong><small>We would want their first experience to feel gradual</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="radio" name="contact" value="avoids-it"><span class="option-body"><span class="option-icon" aria-hidden="true">○</span><strong>They usually avoid it</strong><small>Space, choice, and clear boundaries matter first</small><i aria-hidden="true">✓</i></span></label>
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="quiz-screen" data-screen="5" hidden>
+          <fieldset>
+            <legend>What kind of coaching helps them open up?<small>Choose up to two.</small></legend>
+            <div class="option-grid" data-answer-group="coaching" data-max="2">
+              <label class="quiz-option"><input type="checkbox" name="coaching" value="patient"><span class="option-body"><span class="option-icon" aria-hidden="true">○</span><strong>Patient and encouraging</strong><small>Time, reassurance, and steady invitations</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="checkbox" name="coaching" value="clear"><span class="option-body"><span class="option-icon" aria-hidden="true">1·2·3</span><strong>Clear and structured</strong><small>Simple rules and one step at a time</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="checkbox" name="coaching" value="playful"><span class="option-body"><span class="option-icon" aria-hidden="true">✦</span><strong>Playful and relatable</strong><small>Games, humor, and an easy connection</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="checkbox" name="coaching" value="challenging"><span class="option-body"><span class="option-icon" aria-hidden="true">↗</span><strong>Focused and challenging</strong><small>Direct feedback and a goal to reach</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="checkbox" name="coaching" value="listener"><span class="option-body"><span class="option-icon" aria-hidden="true">“ ”</span><strong>A strong listener</strong><small>Questions first, then the next step</small><i aria-hidden="true">✓</i></span></label>
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="quiz-screen" data-screen="6" hidden>
+          <fieldset>
+            <legend>What experience do they already have?<small>Choose the closest fit.</small></legend>
+            <div class="option-grid single-column" data-answer-group="experience">
+              <label class="quiz-option"><input type="radio" name="experience" value="new"><span class="option-body"><span class="option-icon" aria-hidden="true">01</span><strong>Completely new</strong><small>This would be their first organized activity or martial art</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="radio" name="experience" value="team-sports"><span class="option-body"><span class="option-icon" aria-hidden="true">02</span><strong>Team sports or group classes</strong><small>They know how to participate with a coach and peers</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="radio" name="experience" value="martial-arts"><span class="option-body"><span class="option-icon" aria-hidden="true">03</span><strong>Some martial arts</strong><small>They have trained before but are newer to Jiu-Jitsu</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option"><input type="radio" name="experience" value="bjj"><span class="option-body"><span class="option-icon" aria-hidden="true">04</span><strong>Brazilian Jiu-Jitsu experience</strong><small>They have already spent time learning on the mat</small><i aria-hidden="true">✓</i></span></label>
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="quiz-screen" data-screen="7" hidden>
+          <fieldset>
+            <legend>Which academy location fits your family best?<small>You can change this later.</small></legend>
+            <div class="option-grid location-grid" data-answer-group="location">
+              <label class="quiz-option location-option"><input type="radio" name="location" value="dripping-springs"><span class="option-body"><span class="location-pin" aria-hidden="true">DS</span><strong>Dripping Springs</strong><small>Little Champions and Youth programs</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option location-option" id="austin-location-option"><input type="radio" name="location" value="austin"><span class="option-body"><span class="location-pin" aria-hidden="true">ATX</span><strong>Austin</strong><small id="austin-location-note">Youth ages 8-12 at Castle Hill Fitness</small><i aria-hidden="true">✓</i></span></label>
+              <label class="quiz-option location-option full-option"><input type="radio" name="location" value="help"><span class="option-body"><span class="location-pin" aria-hidden="true">?</span><strong>Help me choose</strong><small>Recommend the best class and location fit</small><i aria-hidden="true">✓</i></span></label>
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="quiz-screen details-screen" data-screen="8" hidden>
+          <fieldset>
+            <legend>Who are we building this first-class match for?<small>We will personalize the result on the next screen.</small></legend>
+            <div class="details-grid">
+              <div class="jc-field"><label for="child-name">Child's first name</label><input id="child-name" name="child_name" type="text" autocomplete="off" required></div>
+              <div class="jc-field"><label for="parent-name">Your first name</label><input id="parent-name" name="parent_name" type="text" autocomplete="given-name" required></div>
+              <div class="jc-field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required></div>
+              <div class="jc-field"><label for="phone">Phone, optional</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(512)&nbsp;555&#8209;0123"></div>
+            </div>
+            <label class="consent-row"><input id="contact-consent" name="contact_consent" type="checkbox" required><span>I am a parent or guardian and agree that Joao Crus BJJ may contact me about appropriate class options. This preview does not send or store my information.</span></label>
+            <p class="connection-note"><strong>Preview note:</strong> The quiz logic works now. A secure lead endpoint, privacy links, and any required SMS consent must be connected before publication.</p>
+          </fieldset>
+        </section>
+      </form>
+
+      <section class="quiz-screen result-screen" data-screen="result" hidden aria-labelledby="result-title">
+        <span class="quiz-kicker">Your first-class match</span>
+        <h2 id="result-title"><span id="result-child">Your child</span>'s best starting point is<br><strong id="result-path">THE SUPPORTED START.</strong></h2>
+        <p class="result-intro" id="result-intro"></p>
+        <div class="result-grid">
+          <article class="result-program"><span>Recommended program</span><strong id="result-program">Little Champions</strong><small id="result-program-note">Ages 3-7</small></article>
+          <article class="result-location"><span>Best location fit</span><strong id="result-location">Dripping Springs</strong><small>Final class time confirmed with the academy</small></article>
+        </div>
+        <div class="result-reasons">
+          <h3>What we would prioritize in the first class</h3>
+          <ul id="result-reasons"></ul>
+        </div>
+        <div class="result-actions">
+          <a class="quiz-button" id="result-cta" href="little-champions.html">See the Recommended Program <span aria-hidden="true">→</span></a>
+          <a class="secondary-action" href="tel:+15126444560">Call&nbsp;or&nbsp;text:&nbsp;512&#8209;644&#8209;4560</a>
+        </div>
+        <p class="result-status" id="result-status" role="status"></p>
+        <button class="restart-button" id="restart-quiz" type="button">Start over</button>
+      </section>
+
+      <footer class="quiz-controls" id="quiz-controls" hidden>
+        <p class="step-message" id="step-message" role="status" aria-live="polite"></p>
+        <button class="quiz-button" id="continue-button" type="button" disabled>Continue <span aria-hidden="true">→</span></button>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="page-footer">
+    <span>Joao Crus Brazilian Jiu-Jitsu</span>
+    <span>Dripping Springs · Austin</span>
+  </footer>
+</body>
+</html>
