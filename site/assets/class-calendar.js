@@ -6,6 +6,7 @@
   var PROGRAMS=[
     {id:"little",label:"Little Champions 3–7"},
     {id:"youth",label:"Youth 8–12"},
+    {id:"teen",label:"Teen 13–17"},
     {id:"adults",label:"Adults"},
     {id:"all",label:"All classes"}
   ];
@@ -81,6 +82,19 @@
       var filtered=CLASSES.filter(function(item){
         return matchesProgram(item,selectedProgram)&&(selectedLocation==="all"||item.location===selectedLocation);
       });
+      var locationText=selectedLocation==="all"?"all locations":LOCATIONS[selectedLocation];
+      if(!filtered.length){
+        var isTeenLaunch=selectedProgram==="teen";
+        var title=isTeenLaunch?"Teen schedule forming now.":"No classes published for this filter.";
+        var copy=isTeenLaunch?"Join the interest list below to help choose the first class time.":"Try another program or location.";
+        grid.setAttribute("role","status");
+        grid.setAttribute("aria-label",isTeenLaunch?"Teen schedule status":"Filtered schedule status");
+        grid.innerHTML='<div class="jc-calendar-empty"><strong>'+title+'</strong><span>'+copy+'</span></div>';
+        summary.textContent="Showing "+programLabel(selectedProgram)+" at "+locationText+(isTeenLaunch?" · schedule forming":" · 0 classes");
+        return;
+      }
+      grid.setAttribute("role","table");
+      grid.setAttribute("aria-label","Weekly class schedule");
       var byDay=DAYS.map(function(_,day){return filtered.filter(function(item){return item.day===day;});});
       var rows=Math.max.apply(null,byDay.map(function(items){return items.length;}).concat([1]));
       var html="";
@@ -98,7 +112,6 @@
         });
       }
       grid.innerHTML=html;
-      var locationText=selectedLocation==="all"?"all locations":LOCATIONS[selectedLocation];
       summary.textContent="Showing "+programLabel(selectedProgram)+" at "+locationText+" · "+filtered.length+" class"+(filtered.length===1?"":"es");
     }
 
