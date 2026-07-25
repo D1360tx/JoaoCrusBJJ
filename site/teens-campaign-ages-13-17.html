@@ -135,7 +135,10 @@
     .video-proof p{margin:15px 0 24px;font-weight:600}
     .video-proof a{font-weight:900;text-transform:uppercase;text-underline-offset:5px}
     .authority-grid{display:grid;grid-template-columns:.86fr 1.14fr;gap:55px;align-items:start}
-    .authority-badge{padding:42px;background:var(--page-blue);color:#fff;border:3px solid var(--page-black);box-shadow:10px 10px 0 var(--page-yellow)}
+    .authority-portrait{margin:0;border:3px solid var(--page-black);background:#fff;box-shadow:10px 10px 0 var(--page-yellow);overflow:hidden}
+    .authority-portrait img{width:100%;aspect-ratio:4/4.45;object-fit:cover;object-position:center top}
+    .authority-portrait figcaption{padding:13px 16px;background:var(--page-black);color:#fff;font-size:.76rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+    .authority-badge{margin-top:20px;padding:42px;background:var(--page-blue);color:#fff;border:3px solid var(--page-black);box-shadow:10px 10px 0 var(--page-yellow)}
     .authority-badge strong{display:block;color:var(--page-yellow);font:400 clamp(4.7rem,8vw,7.4rem)/.85 "Anton",Impact,sans-serif}
     .authority-badge span{display:block;margin-top:17px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
     .authority-copy h2{margin:0;font-size:clamp(3rem,5vw,5.1rem);line-height:.94}
@@ -192,6 +195,7 @@
       .proof-item{border-right:0;border-bottom:3px solid var(--page-black)}
       .proof-item:last-child{border-bottom:0}
       .authority-grid{gap:34px}
+      .authority-visual{max-width:480px}
       .authority-badge{max-width:480px}
     }
     @media(max-width:760px){
@@ -389,7 +393,10 @@
 
     <section class="section">
       <div class="wrap authority-grid">
-        <aside class="authority-badge"><strong>25+</strong><span>Years of coaching experience</span></aside>
+        <div class="authority-visual">
+          <figure class="authority-portrait"><img src="assets/joao-crus-coach-headshot.webp" width="608" height="674" alt="Joao Crus, head instructor and academy owner, wearing his Brazilian Jiu-Jitsu gi" loading="lazy"><figcaption>Joao Crus · Head instructor and academy owner</figcaption></figure>
+          <aside class="authority-badge"><strong>25+</strong><span>Years of coaching experience</span></aside>
+        </div>
         <div class="authority-copy">
           <span class="section-kicker">Experience before hype</span>
           <h2>Joao has built teen groups before.</h2>

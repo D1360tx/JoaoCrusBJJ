@@ -127,6 +127,12 @@
     .quote-copy cite{display:block;margin-top:24px;color:var(--page-blue);font-style:normal;font-weight:800;text-transform:uppercase}
     .authority{background:var(--page-blue);color:#fff}
     .authority .section-copy{color:#e0e8ff}
+    .authority-profile{display:grid;grid-template-columns:minmax(280px,.7fr) 1.3fr;margin-bottom:24px;border:4px solid var(--page-black);background:var(--page-black);box-shadow:8px 8px 0 var(--page-yellow);overflow:hidden}
+    .authority-profile img{width:100%;height:100%;min-height:360px;object-fit:cover;object-position:center top;background:#fff}
+    .authority-profile-copy{align-self:center;padding:38px}
+    .authority-profile-copy .jc-kicker{color:var(--page-yellow)}
+    .authority-profile-copy h3{margin:14px 0 0;color:#fff;font-size:clamp(2.5rem,4vw,4.4rem)}
+    .authority-profile-copy p{max-width:52ch;margin:18px 0 0;color:#ddd;line-height:1.7}
     .authority-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
     .authority-card{background:#fff;color:var(--page-black);border:4px solid var(--page-black);box-shadow:8px 8px 0 var(--page-yellow);padding:36px}
     .authority-card:last-child{background:var(--page-black);color:#fff;box-shadow:8px 8px 0 var(--page-yellow)}
@@ -195,6 +201,9 @@
       .proof-item{min-height:98px;border-right:0;border-bottom:3px solid var(--page-black)}.proof-item:last-child{border-bottom:0}
       .age-intro,.age-list,.pressure-copy{padding:28px}
       .practice-grid,.outcome-grid,.authority-grid,.quote-grid,.fields,.footer-grid{grid-template-columns:1fr}
+      .authority-profile{grid-template-columns:1fr}
+      .authority-profile img{min-height:0;aspect-ratio:5/4;object-position:center 18%}
+      .authority-profile-copy{padding:27px}
       .practice-card{min-height:0}
       .pressure-image img{min-height:300px}
       .flow-grid{grid-template-columns:1fr}
@@ -314,6 +323,10 @@
     <section class="jc-section authority" aria-labelledby="authority-title">
       <div class="jc-wrap">
         <div class="jc-section-head"><span class="jc-kicker jc-accent-yellow">Why Joao Crus BJJ</span><h2 class="jc-h2" id="authority-title">THE COACH IS<br>PART OF THE <span class="jc-accent-yellow">METHOD.</span></h2><p class="section-copy">Junior Warriors is shaped by more than a list of techniques. It reflects decades of teaching kids how to practice pressure, partnership, and progress safely.</p></div>
+        <div class="authority-profile">
+          <img src="assets/joao-crus-coach-headshot.webp" width="608" height="674" alt="Joao Crus, head instructor and academy owner, wearing his Brazilian Jiu-Jitsu gi" loading="lazy">
+          <div class="authority-profile-copy"><span class="jc-kicker">Meet the coach</span><h3 class="jc-h3">Joao Crus</h3><p>Black belt, academy founder, and the coach behind the Junior Warriors method. Joao brings more than 25 years of experience teaching children how to train with skill, responsibility, and control.</p></div>
+        </div>
         <div class="authority-grid"><article class="authority-card"><h3 class="jc-h3">25+ years with this age</h3><p>Joao has spent decades teaching children and building a method that connects real Brazilian Jiu-Jitsu with emotional awareness and responsible challenge.</p><ul><li>Academy established in 2003</li><li>Carlson Gracie and De La Riva lineage</li><li>Author and kids-development educator</li></ul></article><article class="authority-card"><h3 class="jc-h3" style="color:var(--page-yellow)">Strong, not aggressive</h3><p>The goal is not to turn every child into the loudest person in the room. It is to help them use skill, voice, effort, and control with more intention.</p><ul><li>Real technique</li><li>Partner responsibility</li><li>Resilience through practice</li></ul></article></div>
       </div>
     </section>
