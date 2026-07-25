@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Little Champions Jiu-Jitsu for Ages 3–7 | Joao Crus BJJ</title>
+  <meta name="description" content="Little Champions jiu-jitsu classes for ages 3–7 in Dripping Springs. View the full weekly schedule for Dripping Springs and Austin, then plan a first class.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/class-calendar.css">
+  <script src="assets/class-calendar.js" defer></script>
+  <style>
+    :root{
+      --black:#101010;
+      --white:#fffdf8;
+      --yellow:#f5c400;
+      --blue:#194fc3;
+      --green:#2f9b58;
+      --red:#df493f;
+      --text:#202020;
+      --muted:#65645f;
+      --line:#d9d6cc;
+      --shadow:8px 8px 0 var(--black);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{margin:0;background:var(--white);color:var(--text);font-family:"Space Grotesk",Arial,sans-serif;line-height:1.55;overflow-x:hidden}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit}
+    :focus-visible{outline:4px solid var(--blue);outline-offset:4px}
+    .skip{position:absolute;left:-999px;top:8px;background:#fff;padding:10px;z-index:100}
+    .skip:focus{left:8px}
+    .wrap{width:min(1160px,calc(100% - 40px));margin-inline:auto}
+    .display,h1,h2{font-family:"Anton",Impact,sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:.012em;line-height:.9;margin:0}
+    h1{font-size:clamp(4rem,10vw,9rem)}
+    h2{font-size:clamp(2.8rem,6vw,5.5rem)}
+    h3{line-height:1.15;margin:0 0 8px}
+    p{margin-top:0}
+    .yellow{color:var(--yellow)}.blue{color:var(--blue)}.green{color:var(--green)}
+    .kicker{font-size:.76rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:12px 24px;border:3px solid var(--black);background:var(--yellow);color:var(--black);font-weight:800;text-transform:uppercase;letter-spacing:.045em;text-decoration:none;box-shadow:5px 5px 0 var(--black);transition:.16s transform,.16s box-shadow}
+    .button:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--black)}
+    .button.black{background:var(--black);color:#fff;box-shadow:5px 5px 0 var(--yellow)}
+    .bar{background:var(--black);color:#fff}
+    .bar .wrap{min-height:42px;display:flex;justify-content:space-between;align-items:center;gap:18px;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+    .bar a{color:var(--yellow);text-decoration:none}
+    .nav{border-bottom:3px solid var(--black);background:var(--white)}
+    .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:76px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .brandmark{width:42px;height:42px;border:3px solid var(--black);border-radius:50%;display:grid;place-items:center;font-family:"Anton";font-size:1.15rem;background:conic-gradient(var(--yellow) 0 33%,var(--blue) 0 66%,var(--green) 0)}
+    .brand strong{font-family:"Anton";font-size:1.15rem;letter-spacing:.035em}
+    .brand small{display:block;font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+    .navlinks{display:flex;gap:22px;align-items:center;font-size:.83rem;font-weight:700;text-transform:uppercase}
+    .navlinks a{text-decoration:none}
+    .hero{position:relative;padding:54px 0 74px;background:linear-gradient(#fffdf8,#f5f2e9)}
+    .hero::after{content:"";position:absolute;left:-2%;right:-2%;bottom:-14px;height:30px;background:var(--black);clip-path:polygon(0 32%,8% 0,18% 50%,28% 18%,41% 70%,53% 12%,65% 55%,77% 20%,89% 66%,100% 25%,100% 100%,0 100%)}
+    .hero-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:34px;align-items:end}
+    .poster-copy{position:relative;z-index:2}
+    .poster-copy h1 .small{display:block;font-size:.44em;color:var(--black)}
+    .poster-copy h1 .age{display:block;color:var(--yellow);text-shadow:4px 4px 0 var(--black);margin:.03em 0}
+    .brush{display:inline-block;background:var(--black);color:#fff;padding:9px 18px;margin:18px 0;transform:rotate(-1deg);clip-path:polygon(1% 12%,100% 0,98% 90%,2% 100%)}
+    .brush strong{color:var(--yellow)}
+    .hero-lead{font-size:1.08rem;max-width:47ch;font-weight:600}
+    .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+    .hero-art{position:relative;min-width:0}
+    .hero-art .frame{position:relative;border:4px solid var(--black);box-shadow:var(--shadow);overflow:hidden;background:#ddd}
+    .hero-art img{width:100%;aspect-ratio:1.36/1;object-fit:cover}
+    .sticker{position:absolute;z-index:3;right:-12px;top:-25px;width:126px;height:126px;border-radius:50%;border:4px solid var(--black);background:var(--blue);color:#fff;display:grid;place-items:center;text-align:center;transform:rotate(8deg);font-weight:800;text-transform:uppercase;font-size:.74rem;line-height:1.1;box-shadow:4px 4px 0 var(--black)}
+    .sticker b{display:block;font-family:"Anton";font-size:2.4rem;color:var(--yellow);font-weight:400}
+    .scribble{position:absolute;right:6%;bottom:-32px;background:var(--yellow);border:3px solid var(--black);padding:8px 14px;font-weight:800;transform:rotate(-2deg)}
+    section{padding:88px 0}
+    .section-head{display:grid;grid-template-columns:.75fr 1.25fr;gap:40px;align-items:end;margin-bottom:42px}
+    .section-head p{max-width:56ch;margin:0;color:var(--muted);font-size:1.05rem}
+    .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .benefit{border:3px solid var(--black);padding:26px;background:#fff;box-shadow:6px 6px 0 var(--black)}
+    .benefit:nth-child(2){background:#fff5c4}.benefit:nth-child(3){background:#e8f5ed}
+    .num{font-family:"Anton";font-size:3.2rem;line-height:1;color:var(--blue);float:right;margin-left:12px}
+    .benefit h3{font-family:"Anton";font-size:1.6rem;font-weight:400;text-transform:uppercase}
+    .benefit p{color:var(--muted);margin-bottom:0}
+    .why-three{background:#f4f0e6;border-bottom:4px solid var(--black)}
+    .why-grid{max-width:1040px}
+    .why-grid h2{font-size:clamp(3.2rem,6.5vw,6rem)}
+    .why-copy{font-size:1.08rem;max-width:72ch;margin-top:34px}
+    .why-copy p{margin-bottom:14px}
+    .why-copy strong{font-weight:800}
+    .learning-detail{margin-top:64px;padding-top:54px;border-top:4px solid var(--black)}
+    .learning-title{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:30px}
+    .learning-title h3{font-family:"Anton";font-size:clamp(2.8rem,5vw,4.8rem);font-weight:400;text-transform:uppercase;line-height:.92;margin:0}
+    .learning-title p{max-width:40ch;color:var(--muted);margin:0}
+    .learning-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 42px}
+    .learning-item{position:relative;padding:14px 0 14px 34px;border-bottom:1px solid var(--line);font-size:1rem}
+    .learning-item::before{content:"★";position:absolute;left:0;top:13px;color:var(--yellow);font-size:1.15rem}
+    .learning-item strong{font-weight:800}
+    .rhythm{background:var(--blue);color:#fff;border-block:4px solid var(--black)}
+    .rhythm h2{color:#fff}
+    .rhythm .section-head p{color:#d8e4ff}
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);border:3px solid var(--black);box-shadow:8px 8px 0 var(--yellow)}
+    .beat{min-height:220px;padding:24px;background:#fff;color:var(--text);border-right:3px solid var(--black)}
+    .beat:last-child{border-right:0}
+    .beat:nth-child(even){background:#fff5c4}
+    .beat .time{font-family:"Anton";font-size:2.6rem;color:var(--blue);line-height:1}
+    .beat h3{font-size:1rem;text-transform:uppercase;margin-top:18px}
+    .beat p{color:var(--muted);font-size:.9rem}
+    .class-assurance{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+    .assurance{border:3px solid var(--black);background:var(--black);color:#fff;padding:20px 22px;box-shadow:5px 5px 0 var(--yellow)}
+    .assurance strong{display:block;color:var(--yellow);font-family:"Anton";font-size:1.4rem;font-weight:400;text-transform:uppercase;letter-spacing:.02em}
+    .assurance p{margin:4px 0 0;color:#e8edff}
+    .comparison{display:grid;grid-template-columns:1fr 1fr;border:4px solid var(--black);box-shadow:var(--shadow)}
+    .readiness-head{display:block;max-width:1040px}
+    .readiness-head p{max-width:72ch;margin-top:30px;font-size:1.08rem}
+    .compare{padding:42px}
+    .compare:first-child{background:#f1eee5}.compare:last-child{background:var(--yellow)}
+    .compare h3{font-family:"Anton";font-size:2rem;font-weight:400;text-transform:uppercase}
+    .compare ul{list-style:none;padding:0;margin:22px 0 0}
+    .compare li{padding:9px 0;border-bottom:1px solid rgba(16,16,16,.18);font-weight:600}
+    .compare li::before{content:"→";margin-right:10px;font-weight:800}
+    .quote-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:0;border:4px solid var(--black);box-shadow:var(--shadow)}
+    .quote-wrap img{width:100%;height:100%;object-fit:cover;min-height:430px}
+    blockquote{margin:0;background:var(--black);color:#fff;padding:52px;display:flex;flex-direction:column;justify-content:center}
+    blockquote .stars{color:var(--yellow);letter-spacing:.18em}
+    blockquote p{font-size:clamp(1.15rem,2vw,1.45rem);font-weight:600;margin:20px 0}
+    blockquote footer{color:var(--yellow);font-weight:800;text-transform:uppercase}
+    .schedule{background:#f4f0e6;border-block:4px solid var(--black)}
+    .coach{display:grid;grid-template-columns:250px 1fr;gap:44px;align-items:center}
+    .coach img{width:100%;aspect-ratio:.9/1;object-fit:cover;object-position:top;border:4px solid var(--black);box-shadow:8px 8px 0 var(--blue)}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+    .tag{border:2px solid var(--black);padding:7px 10px;font-size:.74rem;font-weight:800;text-transform:uppercase;background:#fff}
+    .faq{background:var(--yellow);border-block:4px solid var(--black)}
+    .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:52px}
+    details{border:3px solid var(--black);background:#fff;margin-bottom:12px;padding:0 18px;box-shadow:4px 4px 0 var(--black)}
+    summary{cursor:pointer;list-style:none;padding:18px 2px;font-weight:800}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";float:right;font-family:"Anton";font-size:1.4rem}
+    details[open] summary::after{content:"–"}
+    details p{color:var(--muted);padding:0 2px 18px;margin:0}
+    .final{background:var(--black);color:#fff;text-align:center;padding:92px 0 110px;position:relative}
+    .final h2{color:#fff;max-width:900px;margin:0 auto}
+    .final p{max-width:600px;margin:24px auto;color:#c8c8c0;font-size:1.05rem}
+    .final .actions{justify-content:center}
+    .lead-form{max-width:760px;margin:44px auto 0;padding:32px;background:#fff;color:var(--text);border:4px solid var(--yellow);box-shadow:8px 8px 0 var(--yellow);text-align:left}
+    .lead-form-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:24px}
+    .lead-form-head h3{font-family:"Anton";font-size:2rem;font-weight:400;text-transform:uppercase;margin:0}
+    .lead-form-head p{max-width:330px;margin:0;color:var(--muted);font-size:.9rem}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .field{display:flex;flex-direction:column;gap:7px}
+    .field label{font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--black)}
+    .field input,.field select{width:100%;min-height:52px;border:3px solid var(--black);border-radius:0;background:#fff;color:var(--black);padding:11px 13px;font:600 1rem/1.2 "Space Grotesk",Arial,sans-serif}
+    .field input::placeholder{color:#85837c;font-weight:400}
+    .field input:focus,.field select:focus{outline:4px solid rgba(25,79,195,.25);outline-offset:1px;border-color:var(--blue)}
+    .form-submit{width:100%;margin-top:20px}
+    .form-note{margin:12px 0 0!important;color:var(--muted)!important;font-size:.78rem!important;text-align:center}
+    .form-status{margin:14px 0 0!important;padding:10px 12px;border:2px solid var(--black);background:#fff5c4;color:var(--black)!important;font-size:.85rem!important;text-align:center}
+    .motto{margin-top:56px;font-family:"Anton";font-size:clamp(1.7rem,4vw,3.5rem);text-transform:uppercase;line-height:1;color:var(--yellow)}
+    .motto span{color:#fff;border-bottom:5px solid var(--yellow)}
+    .footer{background:#070707;color:#aaa;padding:24px 0;font-size:.8rem}
+    .footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .mobile-cta{display:none}
+    .ribbon{position:fixed;left:16px;bottom:16px;z-index:30;background:var(--yellow);border:2px solid var(--black);box-shadow:3px 3px 0 var(--black);padding:7px 12px;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
+    @media(max-width:920px){
+      .navlinks a:not(.button){display:none}
+      .hero-grid,.section-head,.quote-wrap,.faq-grid{grid-template-columns:1fr}
+      .hero-grid{gap:54px}
+      .benefits{grid-template-columns:1fr}
+      .learning-title{display:block}.learning-title p{margin-top:14px}.learning-grid{grid-template-columns:1fr}
+      .timeline{grid-template-columns:1fr 1fr}
+      .beat:nth-child(2){border-right:0}.beat:nth-child(-n+2){border-bottom:3px solid var(--black)}
+      .comparison{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      body{padding-bottom:72px}
+      .wrap{width:calc(100% - 28px)}
+      .bar .wrap{justify-content:center}.bar span{display:none}
+      .nav .wrap{min-height:64px}.navlinks .button{font-size:.7rem;min-height:42px;padding:8px 12px;box-shadow:3px 3px 0 var(--black)}
+      h1{font-size:4.15rem}.poster-copy h1 .small{font-size:.42em}
+      section{padding:68px 0}
+      .hero{padding-top:44px}
+      .sticker{width:102px;height:102px;right:-4px;top:-18px}.sticker b{font-size:2rem}
+      .timeline{grid-template-columns:1fr}.beat{border-right:0;border-bottom:3px solid var(--black)}.beat:last-child{border-bottom:0}
+      .class-assurance{grid-template-columns:1fr}
+      .compare,blockquote{padding:28px}
+      .coach{grid-template-columns:1fr}.coach img{max-width:240px}
+      .lead-form{padding:24px 18px}.lead-form-head{display:block}.lead-form-head p{margin-top:8px}.form-grid{grid-template-columns:1fr}
+      .mobile-cta{display:flex;position:fixed;z-index:25;bottom:0;left:0;right:0;background:var(--black);padding:10px 14px;gap:10px;border-top:3px solid var(--yellow);transition:transform .2s ease}
+      body.form-in-view .mobile-cta,body.schedule-in-view .mobile-cta{transform:translateY(100%)}
+      .mobile-cta .button{flex:1;min-height:48px;font-size:.72rem;box-shadow:none}
+      .ribbon{display:none}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+  <div class="bar"><div class="wrap"><span>Little Champions · Ages 3–7 · Dripping Springs</span><a href="tel:+151****4560">Call/text:&nbsp;512&#8209;644&#8209;4560</a></div></div>
+  <header class="nav"><div class="wrap">
+    <a class="brand" href="index.html"><span class="brandmark" aria-hidden="true">JC</span><span><strong>JOAO CRUS BJJ</strong><small>Brazilian Jiu-Jitsu · Est. 2003</small></span></a>
+    <nav class="navlinks" aria-label="Primary"><a href="#benefits">Benefits</a><a href="#class">Class flow</a><a href="#times">Times</a><a class="button" href="#trial">Plan a first class</a></nav>
+  </div></header>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="poster-copy">
+          <span class="kicker blue">Built for little learners</span>
+          <h1><span class="small">Classes for</span><span class="age">3–7</span><span class="small">year olds</span></h1>
+          <div class="brush">📍 <strong>Dripping Springs</strong></div>
+          <p class="hero-lead">Playful jiu-jitsu that helps young children practice listening, body control, confidence, and friendship without expecting them to act six years old.</p>
+          <div class="actions"><a class="button" href="#trial">Plan their first class →</a><a class="button black" href="#class">See the 45-minute flow</a></div>
+        </div>
+        <div class="hero-art">
+          <div class="sticker"><span><b>AGE 3</b>ready to start</span></div>
+          <div class="frame"><img src="assets/toddler-hero-group.webp" width="1280" height="853" alt="Six young students in white jiu-jitsu uniforms smiling together beneath the Joao Crus Brazilian Jiu-Jitsu logo" fetchpriority="high"></div>
+          <div class="scribble">Parents stay &amp; watch</div>
+        </div>
+      </div>
+    </section>
+    <section class="why-three" id="why-three">
+      <div class="wrap why-grid">
+        <div><span class="kicker blue">Built differently for age three</span><h2>MOST SCHOOLS START AT 4.<br>WE START AT <span class="yellow">3</span> ON PURPOSE.</h2></div>
+        <div class="why-copy">
+          <p>Most schools begin accepting children at age 4. We start at age 3, and there is a reason.</p>
+          <p>Teaching a 3-year-old is a different skill than teaching a 6-year-old. It takes short activities, constant movement, clear simple words, and a coach who knows how to turn “listen and wait your turn” into a game. Our method is Montessori-informed and built over 25 years of working with the youngest kids on the mat.</p>
+          <p>At 3, your child is already forming habits around frustration, sharing, listening, and trying hard things. That's exactly what our classes work on. <strong>Jiu-jitsu is how we do it. Confidence is what they keep.</strong></p>
+        </div>
+      </div>
+    </section>
+    <section id="benefits">
+      <div class="wrap">
+        <div class="section-head"><div><span class="kicker blue">What grows here</span><h2>SMALL WINS.<br><span class="blue">BIG SKILLS.</span></h2></div><p>We use movement and simple games to practice the abilities parents want to see beyond the mat. Progress looks like trying again, waiting one more turn, naming a feeling, or finding the courage to join.</p></div>
+        <div class="benefits">
+          <article class="benefit"><span class="num">01</span><h3>Confidence</h3><p>Not a participation trophy. A real memory of facing something new and discovering, “I can do this.”</p></article>
+          <article class="benefit"><span class="num">02</span><h3>Focus &amp; discipline</h3><p>Listen for one instruction, move with purpose, stop safely, and practice the rhythm again.</p></article>
+          <article class="benefit"><span class="num">03</span><h3>Social skills</h3><p>Share space, take turns, set a safe boundary, respect a partner, and become part of the group.</p></article>
+        </div>
+        <div class="learning-detail">
+          <div class="learning-title"><h3>WHAT YOUR TODDLER <span class="blue">LEARNS.</span></h3><p>Real skills they can practice on the mat and carry into preschool, sports, and home.</p></div>
+          <div class="learning-grid">
+            <div class="learning-item"><strong>Listening and following directions.</strong> Coach gives one instruction at a time. Kids practice hearing it and doing it.</div>
+            <div class="learning-item"><strong>Taking turns and waiting.</strong> Built into every game. It transfers straight to preschool and home.</div>
+            <div class="learning-item"><strong>Naming big feelings.</strong> Frustrated, scared, excited. We give them the words while they feel it.</div>
+            <div class="learning-item"><strong>Body control.</strong> Balance, falling safely, and moving with purpose. It is the physical foundation for every sport later.</div>
+            <div class="learning-item"><strong>Safe boundaries.</strong> How to say “stop,” and how to respect it when someone else says it.</div>
+            <div class="learning-item"><strong>Earned confidence.</strong> Small wins, every class. Not trophies. Real “I did it” moments.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="rhythm" id="class">
+      <div class="wrap">
+        <div class="section-head"><div><span class="kicker yellow">What a class looks like</span><h2>A CLASS WITH<br><span class="yellow">TODDLER RHYTHM.</span></h2></div><p>Classes are 45 minutes, built from short bursts: a game, a skill, a game, a skill. Nobody stands in line waiting. Short explanations, active practice, and clear transitions keep the class achievable.</p></div>
+        <div class="timeline">
+          <article class="beat"><div class="time">00–08</div><h3>Arrive &amp; move</h3><p>Warm up through a simple game while children settle into the room.</p></article>
+          <article class="beat"><div class="time">08–18</div><h3>Learn one thing</h3><p>A single movement or boundary skill demonstrated in clear language.</p></article>
+          <article class="beat"><div class="time">18–35</div><h3>Practice through play</h3><p>Repeat the skill inside games that keep bodies and attention moving.</p></article>
+          <article class="beat"><div class="time">35–45</div><h3>Finish proud</h3><p>Regroup, celebrate effort, and leave with a win worth talking about.</p></article>
+        </div>
+        <div class="class-assurance">
+          <div class="assurance"><strong>Parents stay and watch.</strong><p>Your child can see you, and you can see exactly what they're learning.</p></div>
+          <div class="assurance"><strong>First time on a mat?</strong><p>That's normal. Almost every toddler who starts with us has never done a sport before.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="readiness">
+      <div class="wrap">
+        <div class="section-head readiness-head"><div><span class="kicker blue">No “perfect kid” required</span><h2>THEY DON'T HAVE TO<br>BE READY-MADE.</h2></div><p>The program is for children who are still learning the basics of being in a group. Those are not reasons to wait. They are the reasons to begin carefully.</p></div>
+        <div class="comparison"><div class="compare"><h3>Not expected on day one</h3><ul><li>Perfect listening</li><li>Knowing how to sit still</li><li>Being fearless or outgoing</li><li>Any martial arts experience</li></ul></div><div class="compare"><h3>What we help grow</h3><ul><li>Trying after frustration</li><li>Following one clear direction</li><li>Safe body control</li><li>Confidence around new people</li></ul></div></div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap quote-wrap">
+        <img src="https://i0.wp.com/joaocrusbjj.com/wp-content/uploads/2026/03/Kids-BJJ-Gathering.png" width="797" height="433" alt="Young students gathered together during class">
+        <blockquote><div class="stars">★★★★★</div><p>“I was very hesitant to join with my 3.5-year-old. I wasn't sure he could follow instructions with much bigger kids. Joao's school is such a welcoming space that we were both convinced from day one. Happy son, happy mom.”</p><footer>Ania Kozak</footer></blockquote>
+      </div>
+    </section>
+    <section class="schedule jc-schedule-section" id="times">
+      <div class="wrap">
+        <div class="section-head"><div><span class="kicker blue">Little Champions · Ages 3–7</span><h2>WEEKLY<br><span class="blue">SCHEDULE.</span></h2></div><p>The calendar defaults to Little Champions for this page. Choose another program or location to view every class, then print the schedule you see.</p></div>
+        <div class="jc-calendar" data-default-program="little" data-default-location="all">
+          <noscript>Please enable JavaScript to view and filter the weekly class calendar.</noscript>
+        </div>
+        <div class="jc-location-grid" role="group" aria-label="Academy locations">
+          <article class="jc-location-card">
+            <h3>Dripping Springs</h3>
+            <p>120 Frog Pond Lane, Suite 200<br>Dripping Springs, TX 78620</p>
+            <a href="https://maps.google.com/?q=120+Frog+Pond+Lane+Suite+200+Dripping+Springs+TX+78620" target="_blank" rel="noopener noreferrer">Open directions →</a>
+          </article>
+          <article class="jc-location-card">
+            <h3>Austin</h3>
+            <p>1112 N. Lamar Blvd<br>Austin, TX 78703</p>
+            <p class="jc-location-note">Inside Castle Hill Fitness</p>
+            <a href="https://maps.google.com/?q=1112+N+Lamar+Blvd+Austin+TX+78703" target="_blank" rel="noopener noreferrer">Open directions →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap coach">
+        <img src="https://i0.wp.com/joaocrusbjj.com/wp-content/uploads/2026/01/JOAO-CRUS-HEAD-SHOT.jpg" width="608" height="674" alt="Coach Joao Crus">
+        <div><span class="kicker blue">The coach behind the class</span><h2>25 YEARS OF<br><span class="blue">TEACHING PEOPLE.</span></h2><p>Joao Crus founded the academy in 2003 and teaches Brazilian Jiu-Jitsu as more than technique. His approach connects movement with emotional regulation, focus, boundaries, and the confidence to stay present when something feels difficult.</p><div class="tags"><span class="tag">Black belt instructor</span><span class="tag">Author of Grapple with Emotions</span><span class="tag">Academy founded 2003</span></div></div>
+      </div>
+    </section>
+    <section class="faq">
+      <div class="wrap faq-grid">
+        <div><span class="kicker blue">Parent questions</span><h2>ASK THE<br>REAL STUFF.</h2><p>Three-year-olds are three-year-olds. You do not need to pretend otherwise before reaching out.</p></div>
+        <div>
+          <details open><summary>Is my child really old enough?</summary><p>The class is intentionally built around short activities, games, movement, and repetition. We start at age 3 because the format meets children where they are.</p></details>
+          <details><summary>What if they are shy or won't join immediately?</summary><p>That is okay. A first visit can include watching, warming up slowly, and joining one piece at a time. We are looking for a safe first step, not a performance.</p></details>
+          <details><summary>Do parents stay?</summary><p>Yes. Parents watch from the side, so your child can see you and you can see how the class is taught.</p></details>
+          <details><summary>What should they wear?</summary><p>Comfortable clothes they can move in are fine for the first visit. We will explain uniform options if you decide to continue.</p></details>
+        </div>
+      </div>
+    </section>
+    <section class="final" id="trial">
+      <div class="wrap"><span class="kicker yellow">Strong starts do not have to be big</span><h2>LET THEIR FIRST WIN<br><span class="yellow">START HERE.</span></h2><p>Call, text, or email with your child's age. We will recommend the right class and confirm the current toddler-trial details.</p><div class="actions"><a class="button" href="tel:+15126444560">Call/text:&nbsp;512&#8209;644&#8209;4560</a><a class="button black" href="mailto:joaocrus@gmail.com?subject=Toddler%20class%20request">Email the academy</a></div>
+        <form class="lead-form" id="toddler-interest-form" action="#" method="post" data-form-purpose="toddler-class-interest">
+          <input type="hidden" name="source" value="toddlers-campaign-learning">
+          <div class="lead-form-head"><div><span class="kicker blue">Takes about 30 seconds</span><h3>Tell us about your child</h3></div><p>Share the best way to reach you. We will help you choose the right first class.</p></div>
+          <div class="form-grid">
+            <div class="field"><label for="parent-name">Parent's name</label><input id="parent-name" name="parent_name" type="text" autocomplete="name" placeholder="Your name" required></div>
+            <div class="field"><label for="contact-info">Best contact info</label><input id="contact-info" name="contact_info" type="text" placeholder="Phone or email" aria-describedby="contact-help" required></div>
+            <div class="field"><label for="child-name">Child's name</label><input id="child-name" name="child_name" type="text" autocomplete="off" placeholder="Child's first name" required></div>
+            <div class="field"><label for="child-age">Child's age</label><select id="child-age" name="child_age" required><option value="" selected disabled>Select age</option><option value="3">3 years old</option><option value="4">4 years old</option><option value="5">5 years old</option><option value="6">6 years old</option><option value="7">7 years old</option></select></div>
+          </div>
+          <span id="contact-help" hidden>Enter either a phone number or an email address.</span>
+          <button class="button form-submit" type="submit">Help me plan their first class →</button>
+          <p class="form-note">No spam. Your information will only be used to follow up about classes.</p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+        </form>
+        <div class="motto"><span>Strong starts here.</span> Skills for life.</div></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap"><span>© 2026 Joao Crus Brazilian Jiu-Jitsu</span><span>Dripping Springs · Austin</span></div></footer>
+  <div class="mobile-cta"><a class="button" href="tel:+15126444560">Call/text</a><a class="button black" href="#trial">First class</a></div>
+  <div class="ribbon">Preview G · Learning detail iteration</div>
+  <script>
+    (function(){
+      var form=document.getElementById("toddler-interest-form");
+      var status=document.getElementById("form-status");
+      form.addEventListener("submit",function(event){
+        event.preventDefault();
+        if(!form.checkValidity()){form.reportValidity();return;}
+        status.hidden=false;
+        status.textContent="Preview form. Fields are ready. Connect the form endpoint before publishing.";
+      });
+      if("IntersectionObserver" in window){
+        new IntersectionObserver(function(entries){
+          document.body.classList.toggle("form-in-view",entries[0].isIntersecting);
+        },{threshold:.08}).observe(form);
+        new IntersectionObserver(function(entries){
+          document.body.classList.toggle("schedule-in-view",entries[0].isIntersecting);
+        },{threshold:.08}).observe(document.getElementById("times"));
+      }
+    })();
+  </script>
+</body>
+</html>
