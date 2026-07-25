@@ -5,7 +5,7 @@
   var LOCATIONS={ds:"Dripping Springs",austin:"Austin"};
   var PROGRAMS=[
     {id:"little",label:"Little Champions 3–7"},
-    {id:"youth",label:"Youth 7–12"},
+    {id:"youth",label:"Youth 8–12"},
     {id:"adults",label:"Adults"},
     {id:"all",label:"All classes"}
   ];

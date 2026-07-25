@@ -10,6 +10,8 @@
   <meta property="og:description" content="Train hard. Think deeper. Rise stronger. Youth BJJ in Austin and Dripping Springs.">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="assets/campaign-brand-tokens.css">
+  <link rel="stylesheet" href="assets/class-calendar.css">
+  <script src="assets/class-calendar.js" defer></script>
   <style>
     :root{
       --page-black:#101010;
@@ -22,6 +24,10 @@
       --page-cream:#f4f0e6;
       --page-pale-yellow:#fff5c4;
       --page-pale-green:#e8f5ed;
+      --black:var(--page-black);
+      --yellow:var(--page-yellow);
+      --blue:var(--page-blue);
+      --paper-2:var(--page-cream);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth;overflow-x:hidden}
@@ -112,17 +118,6 @@
     .flow-step:last-child p{color:var(--page-black)}
     .schedule{background:var(--page-yellow)}
     .schedule .jc-kicker,.schedule .section-copy{color:var(--page-black)}
-    .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-    .location-card{background:#fff;border:4px solid var(--page-black);box-shadow:8px 8px 0 var(--page-black);padding:34px}
-    .location-card:last-child{background:var(--page-black);color:#fff;box-shadow:8px 8px 0 var(--page-blue)}
-    .location-label{display:inline-block;background:var(--page-blue);color:#fff;padding:6px 9px;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
-    .location-card:last-child .location-label{background:var(--page-yellow);color:var(--page-black)}
-    .schedule-row{margin:26px 0 0;padding:18px 0;border-top:2px solid currentColor;border-bottom:2px solid currentColor}
-    .schedule-row strong{display:block;font-family:"Anton",Impact,sans-serif;font-size:2rem;text-transform:uppercase;line-height:1}
-    .schedule-row span{display:block;margin-top:10px;font-weight:700}
-    .location-card address{margin-top:20px;font-style:normal;color:var(--page-muted)}
-    .location-card:last-child address{color:#ddd}
-    .schedule-note{margin:28px 0 0;font-size:.82rem;font-weight:700}
     .proof{background:var(--page-white)}
     .quote-grid{display:grid;grid-template-columns:.8fr 1.2fr;border:4px solid var(--page-black);box-shadow:8px 8px 0 var(--page-yellow)}
     .quote-label{background:var(--page-blue);color:#fff;padding:40px;display:flex;flex-direction:column;justify-content:space-between}
@@ -200,19 +195,19 @@
       .proof-grid{grid-template-columns:1fr}
       .proof-item{min-height:98px;border-right:0;border-bottom:3px solid var(--page-black)}.proof-item:last-child{border-bottom:0}
       .age-intro,.age-list,.pressure-copy{padding:28px}
-      .practice-grid,.outcome-grid,.location-grid,.authority-grid,.quote-grid,.fields,.footer-grid{grid-template-columns:1fr}
+      .practice-grid,.outcome-grid,.authority-grid,.quote-grid,.fields,.footer-grid{grid-template-columns:1fr}
       .practice-card{min-height:0}
       .pressure-image img{min-height:300px}
       .flow-grid{grid-template-columns:1fr}
       .flow-step,.flow-step:nth-child(even),.flow-step:last-child{grid-column:auto;border-right:0;border-bottom:3px solid var(--page-black);min-height:0}
       .flow-step:last-child{border-bottom:0}
-      .quote-label,.quote-copy,.location-card,.authority-card,.contact-paths,.form-card{padding:27px}
+      .quote-label,.quote-copy,.authority-card,.contact-paths,.form-card{padding:27px}
       .form-card .jc-field.full{grid-column:auto}
       .preview-ribbon{display:none}
       .mobile-cta{position:fixed;display:flex;left:0;right:0;bottom:0;z-index:90;background:var(--page-yellow);border-top:3px solid var(--page-black);padding:9px;gap:8px;transition:transform .18s ease}
       .mobile-cta a{flex:1;background:var(--page-black);color:#fff;text-align:center;padding:12px 8px;text-decoration:none;font-size:.7rem;font-weight:800;text-transform:uppercase}
       .mobile-cta a:last-child{background:var(--page-blue)}
-      .form-in-view .mobile-cta{transform:translateY(100%)}
+      .form-in-view .mobile-cta,.schedule-in-view .mobile-cta{transform:translateY(100%);transition:none}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mobile-cta{transition:none}}
   </style>
@@ -288,11 +283,25 @@
       </div>
     </section>
 
-    <section class="jc-section schedule" id="schedule" aria-labelledby="schedule-title">
+    <section class="jc-section schedule jc-schedule-section" id="schedule" aria-labelledby="schedule-title">
       <div class="jc-wrap">
-        <div class="jc-section-head"><span class="jc-kicker">Two locations</span><h2 class="jc-h2" id="schedule-title">FIND THE ROOM<br>THAT <span class="jc-accent-blue">FITS.</span></h2><p class="section-copy">Junior Warriors is available in Dripping Springs and Austin. Choose the schedule closest to your week, then contact the team to plan a first visit.</p></div>
-        <div class="location-grid"><article class="location-card"><span class="location-label">Dripping Springs</span><h3 class="jc-h3" style="margin-top:22px">Junior Warriors 8-12</h3><div class="schedule-row"><strong>Monday + Wednesday</strong><span>5:50-6:35 p.m.</span></div><address>120 Frog Pond Lane, Suite 200<br>Dripping Springs, TX 78620</address><a class="jc-btn" href="#first-class" style="margin-top:24px">Plan a DS class →</a></article><article class="location-card"><span class="location-label">Austin · Castle Hill Fitness</span><h3 class="jc-h3" style="margin-top:22px;color:var(--page-yellow)">Junior Warriors 8-12</h3><div class="schedule-row"><strong>Tuesday + Thursday</strong><span>5:00-6:00 p.m.</span></div><address>1112 N Lamar Blvd<br>Austin, TX</address><a class="jc-btn jc-btn--blue" href="#first-class" style="margin-top:24px">Plan an Austin class →</a></article></div>
-        <p class="schedule-note">Published schedule shown for review. Reconfirm the shared schedule before production launch.</p>
+        <div class="jc-section-head"><span class="jc-kicker">Junior Warriors · Ages 8-12</span><h2 class="jc-h2" id="schedule-title">WEEKLY<br><span class="jc-accent-blue">SCHEDULE.</span></h2><p class="section-copy">The calendar defaults to Youth 8-12 for this page. Choose another program or location to view every class, then print the schedule you see.</p></div>
+        <div class="jc-calendar" data-default-program="youth" data-default-location="all">
+          <noscript>Please enable JavaScript to view and filter the weekly class calendar.</noscript>
+        </div>
+        <div class="jc-location-grid" role="group" aria-label="Academy locations">
+          <article class="jc-location-card">
+            <h3>Dripping Springs</h3>
+            <p>120 Frog Pond Lane, Suite 200<br>Dripping Springs, TX 78620</p>
+            <a href="https://maps.google.com/?q=120+Frog+Pond+Lane+Suite+200+Dripping+Springs+TX+78620" target="_blank" rel="noopener noreferrer">Open directions →</a>
+          </article>
+          <article class="jc-location-card">
+            <h3>Austin</h3>
+            <p>1112 N. Lamar Blvd<br>Austin, TX 78703</p>
+            <p class="jc-location-note">Inside Castle Hill Fitness</p>
+            <a href="https://maps.google.com/?q=1112+N+Lamar+Blvd+Austin+TX+78703" target="_blank" rel="noopener noreferrer">Open directions →</a>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -334,6 +343,7 @@
       const menuButton = document.querySelector('.menu-button');
       const navLinks = document.querySelectorAll('.nav-links a');
       const form = document.querySelector('#youth-first-class-form');
+      const schedule = document.querySelector('#schedule');
       const status = document.querySelector('#form-status');
 
       menuButton.addEventListener('click', () => {
@@ -360,6 +370,11 @@
         document.body.classList.toggle('form-in-view', entry.isIntersecting);
       }, { threshold: 0.08 });
       observer.observe(form);
+
+      const scheduleObserver = new IntersectionObserver(([entry]) => {
+        document.body.classList.toggle('schedule-in-view', entry.isIntersecting);
+      }, { threshold: 0.03 });
+      scheduleObserver.observe(schedule);
     })();
   </script>
 </body>
