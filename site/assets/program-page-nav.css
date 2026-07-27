@@ -245,14 +245,17 @@ section[id] { scroll-margin-top: 142px; }
 .programs-menu summary {
   color: #101010;
 }
-.program-brand-mark {
-  width: 44px;
-  height: 44px;
+.program-brand-mark,
+.brand-logo {
+  width: 52px;
+  height: 52px;
+  display: block;
+  flex: 0 0 52px;
+  object-fit: contain;
   padding: 0;
-  border: 3px solid #101010;
-  border-radius: 50%;
-  background: conic-gradient(#ffca05 0 33%, #1675e5 0 66%, #2f9b58 0);
-  font-size: 1.15rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   transform: none;
 }
 .program-brand-copy span {
