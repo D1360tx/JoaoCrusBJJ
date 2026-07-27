@@ -1009,6 +1009,7 @@ body.nav-open {
   }
   .method-portrait {
     width: min(100%, 660px);
+    margin: 0 auto;
   }
 }
 @media (max-width: 650px) {
