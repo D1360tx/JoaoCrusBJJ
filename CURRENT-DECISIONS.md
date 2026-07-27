@@ -108,6 +108,10 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 
 ### Working production direction
 
+- ✅ The new campaign build is the future production website. It will be hosted as a **custom site, not WordPress**. The current WordPress site remains live only during review and migration.
+- ✅ The approved review baseline is the commit-pinned campaign build at commit `3e9cba1` (`site/campaign/index.html`). Preserve this artifact while later implementation branches add production wiring.
+- 🟡 Deploy the approved build to a temporary first-party review hostname before replacing the main site. Working recommendation: **`preview.joaocrusbjj.com`**, then migrate the approved custom build to **`joaocrusbjj.com`**. The temporary hostname is still subject to DNS/hosting confirmation.
+- ✅ Keep temporary review deployments `noindex, nofollow`; use access control when hosting supports it. Do not treat RawGitHack as the production analytics origin.
 - ✅ Use the approved **`toddlers-campaign-group.html` black/yellow/blue campaign design** as the shared production visual system.
 - ✅ Keep the strongest toddler copy, FAQ, schedule, and age-3 positioning inside that shared system rather than launching unrelated visual systems.
 - ✅ Preserve prior concepts for comparison; build the cohesive full-site version in a new `site/campaign/` directory with shared components.
@@ -157,9 +161,12 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 
 - ✅ Zen Planner is the existing billing/member system; do not replace it blindly.
 - ✅ Beehiiv is the existing ESP; evaluate and integrate before introducing another ESP.
-- ✅ Meta Pixel is present via PixelYourSite; GA4 was not yet verified as live in the July 22 audit.
+- ✅ Meta Pixel is present on the legacy WordPress site via PixelYourSite. Audit it only to prevent duplicate events during coexistence or cutover; PixelYourSite is **not** part of the future custom-site stack.
+- ✅ A dedicated Google Analytics 4 property and web stream now exist for the custom site. Property ID: `547238162`; stream ID: `15334887785`; measurement ID: `G-EW2F2YKR3Y`.
+- ✅ Google Tag Manager container `GTM-596MGPMD` is the tracking control layer for the custom site. The base Google tag exists in the GTM workspace but the container remains unpublished until hostname rules, consent, implementation, and Preview/Tag Assistant QA are complete.
+- 🟡 During review, use GTM Preview/Tag Assistant or a first-party preview hostname. Do not send ordinary production analytics from the public RawGitHack URL. Production tracking should allow the approved first-party preview hostname and `joaocrusbjj.com`, while excluding RawGitHack and local development.
 - ✅ Jetpack Stats exists and may provide historical traffic baseline data.
-- ✅ A WordPress Booking Calendar plugin is installed; its actual booking flow is still unknown.
+- ✅ A WordPress Booking Calendar plugin exists only on the legacy site; the future custom site's real booking destination remains an open decision.
 - ✅ Twilio is not operational; A2P registration has not started.
 
 ### Implementation sequence
@@ -235,6 +242,7 @@ When a statement in those sources conflicts with this file, follow this file's c
 
 ## Change log
 
+- **2026-07-27** — Diego confirmed that the campaign build will become a fully custom, non-WordPress website. It will first run on a temporary first-party subdomain for review, then replace the main `joaocrusbjj.com` site after approval. GTM/GA4 belong to this custom-site rollout, not the legacy WordPress implementation.
 - **2026-07-27** — Diego supplied the official circular Joao Crus Brazilian Jiu-Jitsu logo for production use. Use the transparent processed logo in current-site navigation and branded footers, and derive the favicon set from the same artwork; retire placeholder “JC” marks on current pages.
 - **2026-07-27** — Diego chose the lighter Toddler-page shell as the closer model for the full site. Global navigation and hero sections should use warm white/cream surfaces with black typography, yellow/blue accents, framed imagery, and hard borders/shadows rather than dominant black hero fields. Black remains appropriate for the slim utility strip, buttons, and intentional contrast sections.
 - **2026-07-25** — Diego set the Teen interest-section hierarchy: “Help choose the time that can actually work.” and its intro span the full section above the two-column content; the three-step availability/review block sits left of the form, and the form sits on the right at desktop widths.
