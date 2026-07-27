@@ -235,6 +235,7 @@ When a statement in those sources conflicts with this file, follow this file's c
 
 ## Change log
 
+- **2026-07-27** — Diego approved exploring a Carlson Gracie lineage story on Home and About using Joao’s December 2005 seminar archive. The framing should add credibility through direct historical proof and translate pressure-tested tradition into Joao’s responsible “warrior in a garden” teaching approach. Keep “final seminar,” exact belt chronology, source ownership, and personal recollections pending Joao’s confirmation before production.
 - **2026-07-27** — Diego supplied the official circular Joao Crus Brazilian Jiu-Jitsu logo for production use. Use the transparent processed logo in current-site navigation and branded footers, and derive the favicon set from the same artwork; retire placeholder “JC” marks on current pages.
 - **2026-07-27** — Diego chose the lighter Toddler-page shell as the closer model for the full site. Global navigation and hero sections should use warm white/cream surfaces with black typography, yellow/blue accents, framed imagery, and hard borders/shadows rather than dominant black hero fields. Black remains appropriate for the slim utility strip, buttons, and intentional contrast sections.
 - **2026-07-25** — Diego set the Teen interest-section hierarchy: “Help choose the time that can actually work.” and its intro span the full section above the two-column content; the three-step availability/review block sits left of the form, and the form sits on the right at desktop widths.
