@@ -44,8 +44,20 @@
       setNav(false);
     });
     if (n) {
-      n.querySelectorAll("a").forEach(function (link) {
-        link.addEventListener("click", function () {
+      n.querySelectorAll("a").forEach(function (x) {
+        x.addEventListener("click", function (event) {
+          var samePageTarget = x.hash && x.pathname === window.location.pathname
+            ? document.querySelector(x.hash)
+            : null;
+          if (samePageTarget) {
+            event.preventDefault();
+            setNav(false);
+            window.history.pushState(null, "", x.hash);
+            window.requestAnimationFrame(function () {
+              samePageTarget.scrollIntoView({ block: "start" });
+            });
+            return;
+          }
           setNav(false);
         });
       });
