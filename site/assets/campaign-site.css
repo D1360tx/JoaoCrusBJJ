@@ -879,6 +879,10 @@ body.nav-open {
   }
 }
 
+h1, h2 {
+  text-wrap: balance;
+}
+
 /* Home Method section: one anchored story instead of detached text/list columns. */
 .method-heading {
   max-width: 980px;
@@ -890,8 +894,11 @@ body.nav-open {
 .method-heading h2 {
   margin: 0;
 }
-.method-heading h2 span {
+.method-heading h2 > .yellow {
   display: block;
+}
+.method-keep {
+  white-space: nowrap;
 }
 .method-stage {
   display: grid;
