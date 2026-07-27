@@ -1379,6 +1379,18 @@ h1, h2 {
   align-items: end;
   margin-bottom: 38px;
 }
+.variant-label {
+  display: inline-flex;
+  margin-bottom: 18px;
+  padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
 .team-intro .head {
   margin-bottom: 0;
 }
@@ -1427,9 +1439,10 @@ h1, h2 {
 }
 .team-card h3 {
   margin: 0 0 9px;
-  font-size: clamp(1.28rem, 1.7vw, 1.7rem);
+  font-size: clamp(1.2rem, 1.35vw, 1.48rem);
   line-height: .98;
-  text-wrap: balance;
+  text-wrap: nowrap;
+  white-space: nowrap;
 }
 .team-card p {
   margin: 0;
