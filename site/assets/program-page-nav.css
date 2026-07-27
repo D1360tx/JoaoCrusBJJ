@@ -233,3 +233,74 @@ section[id] { scroll-margin-top: 142px; }
 @media (prefers-reduced-motion: reduce) {
   .programs-menu summary::after { transition: none; }
 }
+
+/* Light academy shell iteration: shared by all long-form program pages. */
+.program-global-header {
+  background: #fffdf8;
+  color: #101010;
+  border-bottom: 3px solid #101010;
+}
+.program-global-brand,
+.program-global-links > a,
+.programs-menu summary {
+  color: #101010;
+}
+.program-brand-mark {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 3px solid #101010;
+  border-radius: 50%;
+  background: conic-gradient(#ffca05 0 33%, #1675e5 0 66%, #2f9b58 0);
+  font-size: 1.15rem;
+  transform: none;
+}
+.program-brand-copy span {
+  color: #65645f;
+}
+.program-global-links > a:hover,
+.program-global-links > a:focus-visible,
+.programs-menu summary:hover,
+.programs-menu summary:focus-visible,
+.programs-menu summary[aria-current="page"] {
+  color: #194fc3;
+}
+.program-nav-cta {
+  border-color: #101010;
+  box-shadow: 4px 4px 0 #101010;
+}
+.programs-menu summary::after {
+  color: #194fc3;
+}
+.programs-panel {
+  background: #fffdf8;
+  border-color: #101010;
+  box-shadow: 7px 7px 0 #ffca05;
+}
+.programs-panel a {
+  color: #101010;
+  border-bottom-color: #d8d3c8;
+}
+.program-menu-button {
+  border-color: #101010;
+  color: #101010;
+}
+.program-context {
+  background: #f4efe5;
+  border-top: 0;
+}
+.program-context-title {
+  color: #194fc3;
+}
+@media (max-width: 900px) {
+  .program-global-links {
+    background: #fffdf8;
+    border-bottom-color: #101010;
+  }
+  .program-context-title {
+    background: #f4efe5;
+  }
+  .program-hero-in-view .mobile-cta {
+    transform: translateY(100%);
+  }
+}

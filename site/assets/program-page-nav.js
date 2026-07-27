@@ -40,5 +40,14 @@
       });
       closePrimaryNav();
     });
+
+    var hero = document.querySelector(".hero");
+    var mobileCta = document.querySelector(".mobile-cta");
+    if (hero && mobileCta && "IntersectionObserver" in window) {
+      body.classList.add("program-hero-in-view");
+      new IntersectionObserver(function (entries) {
+        body.classList.toggle("program-hero-in-view", entries[0].isIntersecting);
+      }, { threshold: 0.08 }).observe(hero);
+    }
   });
 })();
