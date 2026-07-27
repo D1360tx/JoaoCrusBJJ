@@ -1475,9 +1475,12 @@ h1, h2 {
   .team-card-copy {
     padding: 16px 14px 18px;
   }
-  .team-card h3 {
+  .team-card--lead h3 {
     font-size: clamp(1.2rem, 5.8vw, 1.55rem);
     white-space: nowrap;
+  }
+  .team-card:not(.team-card--lead) h3 {
+    font-size: clamp(.96rem, 3.8vw, 1.08rem);
   }
   .team-card p {
     font-size: .82rem;
@@ -1487,7 +1490,7 @@ h1, h2 {
   .team-card--lead {
     grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
   }
-  .team-card h3 {
+  .team-card--lead h3 {
     font-size: 1.14rem;
   }
 }
