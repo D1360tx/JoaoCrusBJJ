@@ -63,6 +63,21 @@
       });
     }
 
+    function alignHashTarget() {
+      if (!window.location.hash) return;
+      var target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      if (target) target.scrollIntoView({ block: "start", behavior: "instant" });
+    }
+
+    if (window.location.hash) {
+      window.addEventListener("load", alignHashTarget, { once: true });
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () {
+          window.requestAnimationFrame(alignHashTarget);
+        });
+      }
+    }
+
     var bookingDialog = document.createElement("dialog");
     bookingDialog.className = "booking-dialog";
     bookingDialog.setAttribute("aria-labelledby", "booking-title");
