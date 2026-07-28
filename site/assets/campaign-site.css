@@ -609,6 +609,9 @@ h3 {
   object-fit: contain;
   background: var(--c);
 }
+.book h3 {
+  margin-top: 18px;
+}
 @media (max-width: 900px) {
   .nav {
     display: none;
