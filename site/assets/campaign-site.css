@@ -1219,6 +1219,18 @@ h1, h2 {
 .lineage-section--about {
   background: #f4efe5;
 }
+.lineage-section--about .head {
+  display: block;
+}
+.lineage-section--about .head h2 {
+  max-width: 980px;
+}
+.lineage-section--about .lineage-deck {
+  max-width: 760px;
+  margin: 18px 0 0;
+  padding-left: 17px;
+  border-left: 5px solid var(--u);
+}
 .lineage-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
@@ -1328,6 +1340,45 @@ h1, h2 {
 .lineage-description p {
   margin: 12px 0 0;
 }
+.lineage-sources {
+  margin-top: 18px;
+  padding-top: 17px;
+  border-top: 1px solid #d9d2c5;
+}
+.lineage-sources > strong {
+  display: block;
+  margin-bottom: 11px;
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.lineage-source-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.lineage-source-grid a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 11px 12px;
+  color: var(--b);
+  background: #f4efe5;
+  border: 1px solid #cfc7b8;
+  font-weight: 800;
+  line-height: 1.3;
+}
+.lineage-source-grid a:hover {
+  border-color: var(--u);
+  color: #194fc3;
+}
+.lineage-source-grid span {
+  flex: 0 0 auto;
+  color: #194fc3;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
 @media (max-width: 900px) {
   .lineage-layout {
     grid-template-columns: 1fr;
@@ -1346,6 +1397,9 @@ h1, h2 {
   }
   .lineage-thread {
     margin-top: 30px;
+  }
+  .lineage-source-grid {
+    grid-template-columns: 1fr;
   }
 }
 @media (prefers-reduced-motion: reduce) {
