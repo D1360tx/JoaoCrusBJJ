@@ -75,6 +75,19 @@
 .jc-calendar-slot.is-featured{border-left:5px solid var(--jc-yellow);background:#fff7d8}
 .jc-calendar-slot.is-featured .jc-calendar-name::after{content:" ★";color:#dca900}
 .jc-calendar-blank{display:flex;align-items:center;justify-content:center;color:#bbb7ad}
+.jc-calendar-grid[role="status"]{min-width:0;grid-template-columns:1fr}
+.jc-calendar-empty{
+  grid-column:1/-1;
+  min-height:250px;
+  padding:46px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  background:linear-gradient(135deg,#fff 0 68%,var(--jc-yellow) 68% 100%);
+}
+.jc-calendar-empty strong{max-width:620px;color:var(--jc-black);font:400 clamp(2rem,4vw,4.2rem)/1 "Anton",Impact,sans-serif;text-transform:uppercase}
+.jc-calendar-empty span{max-width:560px;margin-top:15px;color:#54514b;font-size:.95rem;font-weight:800}
 .jc-calendar-hint{margin:7px 0 0;color:#68655e;font-size:.76rem;font-weight:700}
 .jc-location-grid{
   --jc-black:var(--black,#101010);
@@ -102,6 +115,7 @@
   .jc-calendar-filter{width:100%}
   .jc-calendar-button{flex:1 1 auto}
   .jc-calendar-print{width:100%}
+  .jc-calendar-empty{min-height:220px;padding:34px 24px}
   .jc-calendar-hint{display:block}
   .jc-location-grid{grid-template-columns:1fr}
   .jc-location-card{min-height:230px;padding:30px 24px}

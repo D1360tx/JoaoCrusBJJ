@@ -1,0 +1,383 @@
+/* Parent guide cluster - narrowly scoped additions
+   Depends on campaign-site.css already loaded.
+   Updated: 2026-07-29 */
+
+/* ------------------------------------------------------------------ */
+/* Breadcrumb / cluster navigation                                     */
+/* ------------------------------------------------------------------ */
+.pg-nav {
+  background: var(--b);
+  border-bottom: 3px solid var(--y);
+  padding: 10px 0;
+}
+.pg-nav .wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+}
+.pg-nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.pg-nav a:hover,
+.pg-nav a[aria-current="page"] {
+  color: var(--y);
+}
+.pg-nav .sep {
+  color: #555;
+  font-size: 0.7rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Controlled display-heading wraps                                    */
+/* ------------------------------------------------------------------ */
+.pg-hero-title {
+  font-size: clamp(2.55rem, 4vw, 3.6rem);
+}
+.pg-hero-title > span,
+.pg-age-title > span {
+  display: block;
+  white-space: nowrap;
+}
+.pg-age-title {
+  font-size: clamp(2.35rem, 5vw, 4rem);
+}
+
+/* ------------------------------------------------------------------ */
+/* Direct answer block (40-80 word answer at top of page)              */
+/* ------------------------------------------------------------------ */
+.pg-answer {
+  background: var(--y);
+  border: 3px solid var(--b);
+  border-left: 8px solid var(--b);
+  padding: 24px 28px;
+  margin: 28px 0 36px;
+  box-shadow: 6px 6px 0 var(--u);
+}
+.pg-answer p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  font-weight: 600;
+  color: var(--b);
+}
+
+/* ------------------------------------------------------------------ */
+/* Attribution / metadata row                                          */
+/* ------------------------------------------------------------------ */
+.pg-meta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #555;
+  margin-bottom: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  align-items: center;
+}
+.pg-meta .pipe {
+  color: #bbb;
+}
+.darksec .pg-meta {
+  color: #aaa;
+}
+
+/* ------------------------------------------------------------------ */
+/* Article body prose                                                  */
+/* ------------------------------------------------------------------ */
+.prose {
+  max-width: 760px;
+  font-size: 1.02rem;
+  line-height: 1.72;
+}
+.prose h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+  margin-top: 48px;
+}
+.prose h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+  margin-top: 32px;
+}
+.prose p {
+  margin: 0 0 18px;
+}
+.prose ul,
+.prose ol {
+  padding-left: 22px;
+  margin: 0 0 18px;
+}
+.prose li {
+  margin-bottom: 8px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Source citations                                                    */
+/* ------------------------------------------------------------------ */
+.pg-cite {
+  border-top: 2px solid #ddd;
+  padding-top: 18px;
+  margin-top: 36px;
+}
+.pg-cite h3 {
+  font-size: 0.9rem;
+  font-family: Inter, Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 12px;
+}
+.pg-cite ol {
+  padding-left: 20px;
+  margin: 0;
+}
+.pg-cite li {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #444;
+}
+.pg-cite a {
+  color: var(--u);
+  word-break: break-all;
+}
+
+/* ------------------------------------------------------------------ */
+/* Cluster cards (hub links to supporting resources)                   */
+/* ------------------------------------------------------------------ */
+.pg-cluster {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.pg-cluster-card {
+  background: #fff;
+  border: 3px solid var(--b);
+  padding: 22px 24px;
+  box-shadow: 5px 5px 0 var(--b);
+  text-decoration: none;
+  color: var(--b);
+  display: block;
+}
+.pg-cluster-card:hover {
+  box-shadow: 5px 5px 0 var(--u);
+  border-color: var(--u);
+}
+.pg-cluster-card .tag {
+  color: var(--u);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: block;
+  margin-bottom: 6px;
+}
+.pg-cluster-card h3 {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin: 0 0 8px;
+  line-height: 1.1;
+}
+.pg-cluster-card p {
+  font-size: 0.85rem;
+  margin: 0;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------------ */
+/* Comparison table                                                    */
+/* ------------------------------------------------------------------ */
+.pg-table-wrap {
+  overflow-x: auto;
+  margin: 24px 0;
+}
+.pg-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 580px;
+  font-size: 0.9rem;
+  border: 3px solid var(--b);
+}
+.pg-table th {
+  background: var(--b);
+  color: var(--y);
+  font-family: Anton, Impact, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1rem;
+  padding: 14px 16px;
+  text-align: left;
+  border-right: 2px solid #333;
+}
+.pg-table th:last-child {
+  border-right: 0;
+}
+.pg-table td {
+  padding: 13px 16px;
+  border-bottom: 2px solid var(--b);
+  border-right: 2px solid #ccc;
+  vertical-align: top;
+  line-height: 1.5;
+}
+.pg-table td:last-child {
+  border-right: 0;
+}
+.pg-table tr:last-child td {
+  border-bottom: 0;
+}
+.pg-table tr:nth-child(even) td {
+  background: #f7f3ea;
+}
+.pg-table .pg-row-head {
+  font-weight: 800;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: #f0ebe0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Checklist                                                           */
+/* ------------------------------------------------------------------ */
+.pg-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+.pg-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+.pg-checklist li:last-child {
+  border-bottom: 0;
+}
+.pg-checklist input[type="checkbox"] {
+  margin: 0;
+  margin-top: 3px;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--u);
+}
+.pg-checklist .item-label {
+  font-weight: 700;
+  display: block;
+}
+.pg-checklist .item-detail {
+  font-size: 0.85rem;
+  color: #555;
+  display: block;
+  margin-top: 2px;
+}
+.pg-checklist-group {
+  background: #fff;
+  border: 3px solid var(--b);
+  padding: 24px 28px;
+  box-shadow: 5px 5px 0 var(--b);
+  margin-bottom: 20px;
+}
+.pg-checklist-group h3 {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  margin: 0 0 16px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Disclaimer / evidence note                                          */
+/* ------------------------------------------------------------------ */
+.pg-note {
+  background: #f0ebe0;
+  border-left: 6px solid var(--u);
+  padding: 14px 18px;
+  font-size: 0.82rem;
+  color: #333;
+  margin: 18px 0;
+  line-height: 1.6;
+}
+.pg-note p {
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                          */
+/* ------------------------------------------------------------------ */
+@media (max-width: 650px) {
+  .pg-cluster {
+    grid-template-columns: 1fr;
+  }
+  .pg-answer {
+    padding: 18px 18px;
+  }
+  .pg-checklist-group {
+    padding: 18px 18px;
+  }
+  .prose h2 {
+    margin-top: 32px;
+  }
+  .pg-table {
+    min-width: 0;
+    border: 0;
+  }
+  .pg-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .pg-table tbody,
+  .pg-table tr,
+  .pg-table th,
+  .pg-table td {
+    display: block;
+    width: 100%;
+  }
+  .pg-table tr {
+    border: 3px solid var(--b);
+    margin-bottom: 18px;
+    background: #fff;
+  }
+  .pg-table .pg-row-head {
+    background: var(--b);
+    color: var(--y);
+    padding: 12px 14px;
+    border: 0;
+    font-size: 0.9rem;
+  }
+  .pg-table td {
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+  .pg-table td:last-child {
+    border-bottom: 0;
+  }
+  .pg-table td::before {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--u);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pg-table td:nth-child(2)::before { content: "Useful class structure"; }
+  .pg-table td:nth-child(3)::before { content: "What to observe"; }
+  .pg-table td:nth-child(4)::before { content: "Joao Crus BJJ path"; }
+}
