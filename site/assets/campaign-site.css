@@ -1412,6 +1412,9 @@ h1, h2 {
 }
 
 /* About page portrait and coaching-team visibility. */
+.about-herogrid {
+  align-items: center;
+}
 .about-heroimg {
   aspect-ratio: 5 / 4;
   overflow: hidden;
@@ -1425,6 +1428,22 @@ h1, h2 {
 }
 .about-heroimg::after {
   z-index: 2;
+}
+@media (min-width: 901px) {
+  .about-herogrid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(420px, .85fr);
+    gap: clamp(20px, 3vw, 38px);
+  }
+  .about-herogrid .herocopy {
+    padding-right: 0;
+  }
+  .about-herogrid h1 {
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+  }
+  .about-herogrid .about-heroimg {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 .coaching-team {
   scroll-margin-top: 84px;
