@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Campaign Brand Guide | Joao Crus BJJ</title>
+  <meta name="description" content="The visual, content, component, photography, and accessibility system for Joao Crus BJJ campaign-style website pages.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --black:#101010;
+      --white:#fffdf8;
+      --yellow:#f5c400;
+      --blue:#194fc3;
+      --green:#2f9b58;
+      --red:#df493f;
+      --text:#202020;
+      --muted:#65645f;
+      --line:#d9d6cc;
+      --cream:#f4f0e6;
+      --pale-yellow:#fff5c4;
+      --pale-green:#e8f5ed;
+      --shadow:8px 8px 0 var(--black);
+      --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{margin:0;background:var(--white);color:var(--text);font-family:"Space Grotesk",Arial,sans-serif;line-height:1.55;overflow-x:hidden}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit}
+    button,input{font:inherit}
+    :focus-visible{outline:4px solid var(--blue);outline-offset:4px}
+    .skip{position:absolute;left:-9999px;top:8px;background:var(--yellow);color:var(--black);padding:10px;z-index:200}
+    .skip:focus{left:8px}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+    .display,h1,h2,h3{font-family:"Anton",Impact,sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:.012em;line-height:.92;margin:0}
+    h1{font-size:clamp(4rem,9vw,8rem)}
+    h2{font-size:clamp(2.8rem,6vw,5.4rem)}
+    h3{font-size:1.65rem;line-height:1.05}
+    p{margin-top:0}
+    code{font-size:.92em;background:var(--cream);border:1px solid var(--line);padding:2px 5px}
+    .yellow{color:var(--yellow)}
+    .blue{color:var(--blue)}
+    .green{color:var(--green)}
+    .kicker{display:block;margin-bottom:12px;font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    .section{padding:88px 0;border-bottom:4px solid var(--black)}
+    .section-head{max-width:1030px;margin-bottom:42px}
+    .section-head p{max-width:72ch;margin:28px 0 0;color:var(--muted);font-size:1.06rem}
+    .topbar{background:var(--yellow);border-bottom:3px solid var(--black);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .topbar .wrap{min-height:40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .topbar a{text-underline-offset:3px}
+    .nav{position:sticky;top:0;z-index:50;background:var(--black);color:#fff;border-bottom:4px solid var(--yellow)}
+    .nav .wrap{min-height:78px;display:flex;align-items:center;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;flex:0 0 auto}
+    .brandmark{width:44px;height:44px;display:grid;place-items:center;border:3px solid #fff;border-radius:50%;background:conic-gradient(var(--yellow) 0 33%,var(--blue) 0 66%,var(--green) 0);color:var(--black);font-family:"Anton";font-size:1.15rem;text-shadow:0 1px #fff}
+    .brand strong{display:block;font-family:"Anton";font-size:1.05rem;letter-spacing:.04em}
+    .brand small{display:block;color:#ccc;font-size:.58rem;text-transform:uppercase;letter-spacing:.12em}
+    .navlinks{display:flex;align-items:center;gap:18px;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+    .navlinks a{text-decoration:none}
+    .navlinks a:hover{color:var(--yellow)}
+    .hero{position:relative;background:var(--black);color:#fff;border-bottom:6px solid var(--yellow);overflow:hidden}
+    .hero::after{content:"";position:absolute;left:-2%;right:-2%;bottom:-2px;height:26px;background:var(--yellow);clip-path:polygon(0 30%,8% 0,18% 48%,29% 14%,40% 68%,53% 10%,65% 52%,77% 18%,89% 62%,100% 24%,100% 100%,0 100%)}
+    .hero-grid{min-height:640px;display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:center;padding:70px 0 90px}
+    .hero-copy{position:relative;z-index:2}
+    .hero-copy p{max-width:54ch;color:#deddd8;font-size:1.12rem;margin:26px 0}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{display:inline-block;border:2px solid currentColor;background:#fff;color:var(--black);padding:7px 10px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em}
+    .tag.yellow-tag{background:var(--yellow)}
+    .tag.blue-tag{background:var(--blue);color:#fff;border-color:#fff}
+    .hero-art{position:relative}
+    .hero-art .frame{border:4px solid #fff;box-shadow:10px 10px 0 var(--yellow);overflow:hidden}
+    .hero-art img{width:100%;aspect-ratio:1.36/1;object-fit:cover}
+    .hero-note{position:absolute;right:-8px;bottom:-26px;background:var(--yellow);color:var(--black);border:3px solid var(--black);box-shadow:5px 5px 0 var(--blue);padding:10px 14px;font-weight:800;text-transform:uppercase;transform:rotate(-2deg)}
+    .hero-sticker{position:absolute;z-index:2;right:-18px;top:-34px;width:126px;height:126px;border:4px solid var(--black);border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;text-align:center;transform:rotate(8deg);font-size:.7rem;font-weight:800;text-transform:uppercase;line-height:1.05;box-shadow:4px 4px 0 var(--yellow)}
+    .hero-sticker b{display:block;color:var(--yellow);font-family:"Anton";font-size:2.1rem;font-weight:400}
+    .principles{background:var(--cream)}
+    .principle-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .principle{background:#fff;border:3px solid var(--black);box-shadow:6px 6px 0 var(--black);padding:25px}
+    .principle:nth-child(2){background:var(--pale-yellow)}
+    .principle:nth-child(3){background:var(--pale-green)}
+    .principle:nth-child(4){background:var(--black);color:#fff;box-shadow:6px 6px 0 var(--blue)}
+    .principle .num{display:block;color:var(--blue);font-family:"Anton";font-size:2.7rem;line-height:1;margin-bottom:26px}
+    .principle:nth-child(4) .num{color:var(--yellow)}
+    .principle p{margin:10px 0 0;color:var(--muted)}
+    .principle:nth-child(4) p{color:#d7d7d2}
+    .foundation{background:var(--yellow)}
+    .foundation .section-head p,.voice .section-head p{color:var(--black)}
+    .foundation .kicker,.voice .kicker{color:var(--black)}
+    .foundation-grid{display:grid;grid-template-columns:1fr 1fr;border:4px solid var(--black);box-shadow:var(--shadow)}
+    .foundation-card{padding:40px;background:#fff}
+    .foundation-card:last-child{background:var(--black);color:#fff}
+    .foundation-card p{color:var(--muted)}
+    .foundation-card:last-child p{color:#ddd}
+    .foundation-card ul{list-style:none;padding:0;margin:20px 0 0}
+    .foundation-card li{padding:10px 0;border-bottom:1px solid currentColor;font-weight:600}
+    .foundation-card li::before{content:"→";margin-right:10px;color:var(--blue);font-weight:800}
+    .foundation-card:last-child li::before{color:var(--yellow)}
+    .colors{background:var(--white)}
+    .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .swatch{border:3px solid var(--black);box-shadow:6px 6px 0 var(--black);background:#fff}
+    .swatch-color{height:145px;border-bottom:3px solid var(--black);padding:16px;display:flex;align-items:flex-end;justify-content:flex-end}
+    .swatch-color span{background:rgba(255,255,255,.9);border:2px solid var(--black);padding:5px 8px;color:var(--black);font-size:.68rem;font-weight:800;text-transform:uppercase}
+    .swatch-copy{padding:20px}
+    .swatch-copy p{margin:6px 0 0;color:var(--muted);font-size:.9rem}
+    .contrast{margin-top:36px;border:4px solid var(--black);background:var(--black);color:#fff;box-shadow:8px 8px 0 var(--yellow);padding:28px}
+    .contrast-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+    .contrast-chip{min-height:120px;padding:16px;border:2px solid currentColor;display:flex;flex-direction:column;justify-content:space-between;font-weight:800}
+    .contrast-chip span{font-size:.72rem;text-transform:uppercase}
+    .contrast-chip.black-white{background:var(--white);color:var(--black)}
+    .contrast-chip.black-yellow{background:var(--yellow);color:var(--black)}
+    .contrast-chip.white-blue{background:var(--blue);color:#fff}
+    .contrast-chip.blue-white{background:var(--white);color:var(--blue)}
+    .type{background:var(--blue);color:#fff}
+    .type .section-head p{color:#dbe5ff}
+    .type-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .type-card{border:3px solid var(--black);background:#fff;color:var(--black);box-shadow:7px 7px 0 var(--yellow);padding:30px;overflow:hidden}
+    .anton-sample{font-family:"Anton",Impact,sans-serif;font-size:clamp(3.2rem,7vw,6.5rem);line-height:.88;text-transform:uppercase;color:var(--black);margin:30px 0}
+    .space-sample{font-size:1.2rem;max-width:42ch;margin:30px 0}
+    .spec-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:.82rem}
+    .spec-list span{border-top:1px solid var(--line);padding-top:8px}
+    .components{background:var(--cream)}
+    .component-block{margin-top:48px;padding-top:48px;border-top:4px solid var(--black)}
+    .component-head{display:grid;grid-template-columns:.65fr 1.35fr;gap:30px;align-items:end;margin-bottom:26px}
+    .component-head p{margin:0;color:var(--muted);max-width:62ch}
+    .button-row{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:12px 24px;border:3px solid var(--black);background:var(--yellow);color:var(--black);font-weight:800;text-transform:uppercase;letter-spacing:.045em;text-decoration:none;box-shadow:5px 5px 0 var(--black);transition:.16s transform,.16s box-shadow}
+    .button:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--black)}
+    .button.dark{background:var(--black);color:#fff;box-shadow:5px 5px 0 var(--yellow)}
+    .button.bluebtn{background:var(--blue);color:#fff;box-shadow:5px 5px 0 var(--yellow)}
+    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{min-height:220px;border:3px solid var(--black);padding:26px;background:#fff;box-shadow:6px 6px 0 var(--black)}
+    .card:nth-child(2){background:var(--pale-yellow)}
+    .card:nth-child(3){background:var(--black);color:#fff;box-shadow:6px 6px 0 var(--blue)}
+    .card .number{display:block;float:right;color:var(--blue);font-family:"Anton";font-size:3rem;line-height:1;margin-left:12px}
+    .card:nth-child(3) .number{color:var(--yellow)}
+    .card p{color:var(--muted);margin-bottom:0}
+    .card:nth-child(3) p{color:#ddd}
+    .form-demo{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:800px;background:#fff;border:4px solid var(--black);box-shadow:8px 8px 0 var(--blue);padding:30px}
+    .field{display:grid;gap:7px}
+    .field.full{grid-column:1/-1}
+    .field label{font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .field input{width:100%;min-height:52px;border:3px solid var(--black);border-radius:0;padding:11px 13px;background:#fff;color:var(--black)}
+    .field input:focus{outline:4px solid rgba(25,79,195,.28);outline-offset:1px;border-color:var(--blue)}
+    .form-demo .button{grid-column:1/-1;width:100%}
+    .rhythm{background:var(--black);color:#fff}
+    .rhythm .section-head p{color:#d6d6d2}
+    .rhythm-strip{display:grid;grid-template-columns:repeat(8,1fr);border:4px solid var(--black);box-shadow:8px 8px 0 var(--blue)}
+    .rhythm-strip div{min-height:155px;padding:16px;border-right:3px solid var(--black);display:flex;align-items:flex-end;font-family:"Anton";font-size:1.2rem;text-transform:uppercase}
+    .rhythm-strip div:last-child{border:0}
+    .rhythm-strip .calm{background:var(--white);color:var(--black)}
+    .rhythm-strip .cream{background:var(--cream);color:var(--black)}
+    .rhythm-strip .energy{background:var(--yellow);color:var(--black)}
+    .rhythm-strip .authority{background:var(--blue);color:#fff}
+    .rhythm-strip .dark{background:var(--black);color:#fff}
+    .photo{background:var(--white)}
+    .photo-grid{display:grid;grid-template-columns:1.1fr .9fr;border:4px solid var(--black);box-shadow:var(--shadow)}
+    .photo-grid img{width:100%;height:100%;min-height:470px;object-fit:cover}
+    .photo-rules{background:var(--yellow);padding:42px}
+    .photo-rules ul{list-style:none;padding:0;margin:24px 0 0}
+    .photo-rules li{padding:10px 0;border-bottom:1px solid rgba(16,16,16,.28);font-weight:700}
+    .photo-rules li::before{content:"✓";margin-right:10px;color:var(--blue);font-weight:900}
+    .voice{background:var(--yellow)}
+    .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .voice-card{border:4px solid var(--black);background:#fff;box-shadow:7px 7px 0 var(--black);padding:32px}
+    .voice-card.dont{background:var(--black);color:#fff;box-shadow:7px 7px 0 var(--blue)}
+    .voice-card p{color:var(--muted)}
+    .voice-card.dont p{color:#ddd}
+    .voice-card ul{list-style:none;padding:0;margin:20px 0 0}
+    .voice-card li{padding:9px 0;border-bottom:1px solid currentColor;font-weight:600}
+    .voice-card:not(.dont) li::before{content:"Do: ";color:var(--blue);font-weight:800}
+    .voice-card.dont li::before{content:"Avoid: ";color:var(--yellow);font-weight:800}
+    .access{background:var(--cream)}
+    .access-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .access-card{border:3px solid var(--black);background:#fff;box-shadow:6px 6px 0 var(--black);padding:26px}
+    .access-card h3{color:var(--blue)}
+    .access-card ul{margin:16px 0 0;padding-left:20px}
+    .access-card li{margin:8px 0}
+    .build{background:var(--blue);color:#fff}
+    .build .section-head p{color:#dbe5ff}
+    .build-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:26px;align-items:start}
+    .checklist{background:#fff;color:var(--black);border:4px solid var(--black);box-shadow:8px 8px 0 var(--yellow);padding:30px}
+    .checklist label{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);font-weight:600}
+    .checklist input{width:20px;height:20px;accent-color:var(--blue);flex:0 0 auto}
+    .source-card{background:var(--black);border:3px solid #fff;box-shadow:8px 8px 0 var(--yellow);padding:30px}
+    .source-card p{color:#ddd}
+    .source-card code{display:block;background:#222;border-color:#555;color:var(--yellow);padding:12px;overflow-wrap:anywhere;margin:16px 0}
+    .footer{background:#070707;color:#aaa;padding:32px 0;border-top:6px solid var(--yellow)}
+    .footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    @media(max-width:920px){
+      .navlinks{display:none}
+      .hero-grid,.foundation-grid,.type-grid,.photo-grid,.build-grid{grid-template-columns:1fr}
+      .hero-grid{padding-top:60px}
+      .principle-grid{grid-template-columns:1fr 1fr}
+      .swatches,.card-grid{grid-template-columns:1fr 1fr}
+      .contrast-grid{grid-template-columns:1fr 1fr}
+      .hero-art{margin-top:18px}
+      .component-head{grid-template-columns:1fr}
+      .rhythm-strip{grid-template-columns:repeat(4,1fr)}
+      .rhythm-strip div:nth-child(4){border-right:0}
+    }
+    @media(max-width:620px){
+      .wrap{width:calc(100% - 28px)}
+      .topbar .wrap{justify-content:center}.topbar span{display:none}
+      .nav .wrap{min-height:68px}.brand small{display:none}
+      .section{padding:68px 0}
+      .hero-grid{min-height:0;padding:54px 0 78px}
+      .hero-art{margin-top:28px}
+      .hero-sticker{width:102px;height:102px;right:-4px;top:-20px}.hero-sticker b{font-size:1.75rem}
+      .principle-grid,.swatches,.type-grid,.card-grid,.voice-grid,.access-grid,.form-demo{grid-template-columns:1fr}
+      .contrast-grid{grid-template-columns:1fr}
+      .foundation-card,.photo-rules{padding:28px}
+      .form-demo{padding:23px 18px}.field.full,.form-demo .button{grid-column:auto}
+      .rhythm-strip{grid-template-columns:1fr 1fr}.rhythm-strip div:nth-child(even){border-right:0}
+      .rhythm-strip div{min-height:118px;border-bottom:3px solid var(--black)}
+      .photo-grid img{min-height:300px}
+      .button-row .button{width:100%}
+      .spec-list{grid-template-columns:1fr}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to brand guide content</a>
+  <div class="topbar"><div class="wrap"><span>Campaign brand system · Working guide v1</span><a href="toddlers-campaign-purposeful-play.html">View the source page</a></div></div>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top"><span class="brandmark" aria-hidden="true">JC</span><span><strong>JOAO CRUS BJJ</strong><small>Campaign brand guide</small></span></a>
+      <nav class="navlinks" aria-label="Brand guide sections"><a href="#foundation">Foundation</a><a href="#color">Color</a><a href="#type">Type</a><a href="#components">Components</a><a href="#photo">Imagery</a><a href="#voice">Voice</a><a href="#build">Build</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="kicker yellow">One system for every page</span>
+          <h1>STRONG STARTS.<br><span class="yellow">CLEAR RULES.</span></h1>
+          <p>This guide turns the approved Purposeful Play page into a reusable visual and messaging system for the rest of the Joao Crus BJJ website.</p>
+          <div class="hero-meta"><span class="tag yellow-tag">Athletic</span><span class="tag blue-tag">Human</span><span class="tag">Direct</span><span class="tag">Parent-aware</span></div>
+        </div>
+        <div class="hero-art">
+          <div class="hero-sticker"><span><b>SYSTEM 01</b>campaign direction</span></div>
+          <div class="frame"><img src="assets/toddler-purposeful-play-hero.webp" width="1280" height="853" alt="Six young Joao Crus BJJ students smiling together beneath the academy logo" fetchpriority="high"></div>
+          <div class="hero-note">Real people. Real progress.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section principles">
+      <div class="wrap">
+        <div class="section-head"><span class="kicker blue">Brand principles</span><h2>BOLD ENOUGH TO MOVE.<br><span class="blue">WARM ENOUGH TO TRUST.</span></h2></div>
+        <div class="principle-grid">
+          <article class="principle"><span class="num">01</span><h3>Strong, not aggressive</h3><p>Athletic force without fight-poster intimidation.</p></article>
+          <article class="principle"><span class="num">02</span><h3>Human, not generic</h3><p>Real students, real teaching, real locations, and specific proof.</p></article>
+          <article class="principle"><span class="num">03</span><h3>Playful, not childish</h3><p>Energy and movement held inside disciplined typography and geometry.</p></article>
+          <article class="principle"><span class="num">04</span><h3>Proof before promise</h3><p>Observable activities and verified facts before big claims.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section foundation" id="foundation">
+      <div class="wrap">
+        <div class="section-head"><span class="kicker blue">Foundation</span><h2>WHAT THE BRAND<br>SHOULD <span class="blue">FEEL LIKE.</span></h2><p>A strong campaign poster brought to life. The system balances athletic energy with Joao's experience, emotional intelligence, and beginner-friendly teaching.</p></div>
+        <div class="foundation-grid">
+          <article class="foundation-card"><h3>Always communicate</h3><ul><li>Confidence earned through practice</li><li>Calm and control under pressure</li><li>Safe boundaries and respect</li><li>Belonging for beginners and families</li><li>25+ years of teaching authority</li></ul></article>
+          <article class="foundation-card"><h3>Never drift into</h3><ul><li>Generic MMA aggression</li><li>Luxury bronze and crimson styling</li><li>Soft daycare or preschool clichés</li><li>Rounded SaaS cards and glass effects</li><li>Unverified promises or medical claims</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section colors" id="color">
+      <div class="wrap">
+        <div class="section-head"><span class="kicker blue">Color system</span><h2>FOUR COLORS LEAD.<br><span class="blue">THE REST SUPPORT.</span></h2><p>Black, warm white, yellow, and blue carry the identity. Green supports positive moments. Red is reserved for rare functional emphasis.</p></div>
+        <div class="swatches">
+          <article class="swatch"><div class="swatch-color" style="background:#101010"><span>#101010</span></div><div class="swatch-copy"><h3>Campaign Black</h3><p>Navigation, type, borders, dark fields, and hard shadows.</p></div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#fffdf8"><span>#FFFDF8</span></div><div class="swatch-copy"><h3>Warm White</h3><p>Primary canvas and calm content sections.</p></div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#f5c400"><span>#F5C400</span></div><div class="swatch-copy"><h3>Champion Yellow</h3><p>Primary CTAs, campaign fields, and energetic highlights.</p></div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#194fc3"><span>#194FC3</span></div><div class="swatch-copy"><h3>Academy Blue</h3><p>Authority, secondary emphasis, and focus states.</p></div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#2f9b58"><span>#2F9B58</span></div><div class="swatch-copy"><h3>Growth Green</h3><p>Supporting positive accents and occasional category cues.</p></div></article>
+          <article class="swatch"><div class="swatch-color" style="background:#df493f"><span>#DF493F</span></div><div class="swatch-copy"><h3>Action Red</h3><p>Rare urgency or status emphasis. Never a default page field.</p></div></article>
+        </div>
+        <aside class="contrast"><span class="kicker yellow">Approved high-contrast pairs</span><h3>BODY COPY MUST PASS AA.</h3><div class="contrast-grid"><div class="contrast-chip black-white"><b>Black / Warm White</b><span>18.72:1 · AAA</span></div><div class="contrast-chip black-yellow"><b>Black / Yellow</b><span>11.58:1 · AAA</span></div><div class="contrast-chip white-blue"><b>White / Blue</b><span>7.01:1 · AAA</span></div><div class="contrast-chip blue-white"><b>Blue / Warm White</b><span>7.01:1 · AAA</span></div></div></aside>
+      </div>
+    </section>
+
+    <section class="section type" id="type">
+      <div class="wrap">
+        <div class="section-head"><span class="kicker yellow">Typography</span><h2>POSTER HEADLINES.<br><span class="yellow">HUMAN EXPLANATIONS.</span></h2><p>Anton creates force and rhythm. Space Grotesk carries clarity, warmth, and interface detail.</p></div>
+        <div class="type-grid">
+          <article class="type-card"><span class="kicker blue">Display · Anton</span><div class="anton-sample">STAY PRESENT.<br><span class="blue">TRY AGAIN.</span></div><div class="spec-list"><span>Uppercase by default</span><span>Weight 400</span><span>Line height .90 to .96</span><span>Short, intentional lines</span></div></article>
+          <article class="type-card"><span class="kicker blue">Body · Space Grotesk</span><p class="space-sample"><strong>Clear enough for a schedule. Warm enough for a parent.</strong><br><br>Use Space Grotesk for body copy, navigation, buttons, forms, FAQs, captions, and citations.</p><div class="spec-list"><span>Weights 400 to 800</span><span>Line height 1.5 to 1.6</span><span>16px body baseline</span><span>Never all-caps paragraphs</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section components" id="components">
+      <div class="wrap">
+        <div class="section-head"><span class="kicker blue">Component language</span><h2>THICK LINES.<br><span class="blue">HARD SHADOWS.</span></h2><p>Square geometry, tactile depth, and disciplined color make the pages feel like one system even when the content changes.</p></div>
+
+        <div class="component-block">
+          <div class="component-head"><h3>Buttons</h3><p>Use verb-led labels, a 3px border, and a zero-blur shadow. Keep one obvious primary action.</p></div>
+          <div class="button-row"><a class="button" href="#build">Plan a first class &rarr;</a><a class="button dark" href="#build">Explore programs &rarr;</a><a class="button bluebtn" href="#build">See the schedule &rarr;</a></div>
+        </div>
+
+        <div class="component-block">
+          <div class="component-head"><h3>Cards</h3><p>One idea per card. Keep titles short, supporting copy specific, and color variation controlled.</p></div>
+          <div class="card-grid"><article class="card"><span class="number">01</span><h3>Earned confidence</h3><p>A real memory of trying something difficult and discovering, "I can do this."</p></article><article class="card"><span class="number">02</span><h3>Body control</h3><p>Balance, safe movement, and the ability to stop with purpose.</p></article><article class="card"><span class="number">03</span><h3>Stay present</h3><p>Learn to keep thinking and listening when pressure rises.</p></article></div>
+        </div>
+
+        <div class="component-block">
+          <div class="component-head"><h3>Form fields</h3><p>Visible labels, square fields, strong focus states, and honest submission behavior.</p></div>
+          <form class="form-demo" action="#" aria-label="Brand guide form example"><div class="field"><label for="guide-name">Parent or student name</label><input id="guide-name" type="text" placeholder="Your name"></div><div class="field"><label for="guide-contact">Best contact</label><input id="guide-contact" type="text" placeholder="Phone or email"></div><div class="field full"><label for="guide-goal">What are you looking for?</label><input id="guide-goal" type="text" placeholder="Tell us what would make a great first class"></div><button class="button" type="button">Plan the next step &rarr;</button></form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rhythm" id="layout">
+      <div class="wrap">
+        <div class="section-head"><span class="kicker yellow">Page rhythm</span><h2>CALM. ENERGY.<br><span class="yellow">PROOF. ACTION.</span></h2><p>Do not put every section on yellow or black. Alternate visual intensity so the page remains scannable and the CTA still feels important.</p></div>
+        <div class="rhythm-strip" aria-label="Recommended page color rhythm"><div class="calm">Hero</div><div class="cream">Explain</div><div class="energy">Campaign idea</div><div class="calm">Detail</div><div class="authority">Process</div><div class="calm">Proof</div><div class="energy">FAQ</div><div class="dark">Final CTA</div></div>
+      </div>
+    </section>
+
+    <section class="section photo" id="photo">
+      <div class="wrap">
+        <div class="section-head"><span class="kicker blue">Photography</span><h2>SHOW THE ACADEMY.<br><span class="blue">NOT A SIMULATION.</span></h2><p>Real community proof is part of the brand, not decoration. Photography should show teaching, belonging, movement, and emotional safety.</p></div>
+        <div class="photo-grid"><img src="assets/toddler-purposeful-play-hero.webp" width="1280" height="853" loading="lazy" alt="Six young Joao Crus BJJ students smiling together after class"><div class="photo-rules"><h3>Production rules</h3><ul><li>Use real Joao Crus BJJ people and spaces</li><li>Keep faces and academy identity inside the crop</li><li>Show connection, movement, and teaching</li><li>Preserve natural skin tone and gi color</li><li>Optimize owned assets to WebP</li><li>Verify desktop and 390px mobile crops</li></ul></div></div>
+      </div>
+    </section>
+
+    <section class="section voice" id="voice">
+      <div class="wrap">
+        <div class="section-head"><span class="kicker blue">Voice and messaging</span><h2>SPECIFIC BEATS<br><span class="blue">SPECTACULAR.</span></h2><p>Joao's authority is strongest when the copy explains what happens, why it matters, and how a first step works.</p></div>
+        <div class="voice-grid"><article class="voice-card"><h3>Write this way</h3><p>Direct, experienced, reassuring, parent-aware, and grounded in observable practice.</p><ul><li>"Small challenges give them room to try again."</li><li>"Parents stay and watch."</li><li>"Plan a first class."</li><li>"Research on preschool movement programs suggests..."</li></ul></article><article class="voice-card dont"><h3>Avoid this drift</h3><p>Generic hype, combat-first promises, medical overreach, or details that have not been confirmed.</p><ul><li>"Unleash your child's inner warrior."</li><li>"The number one academy for everyone."</li><li>"BJJ is medically proven at age three."</li><li>"Learn more" when a specific CTA is available.</li></ul></article></div>
+      </div>
+    </section>
+
+    <section class="section access" id="accessibility">
+      <div class="wrap">
+        <div class="section-head"><span class="kicker blue">Accessibility</span><h2>ENERGY WITHOUT<br><span class="blue">EXCLUSION.</span></h2><p>The campaign look depends on contrast and structure. Accessibility strengthens the design rather than softening it.</p></div>
+        <div class="access-grid"><article class="access-card"><h3>Visual and interaction</h3><ul><li>Normal text must meet WCAG AA contrast</li><li>Focus rings must remain clearly visible</li><li>Tap targets should be at least 44px by 44px</li><li>Information cannot exist only on hover</li><li>Reduced-motion preferences must be respected</li></ul></article><article class="access-card"><h3>Structure and content</h3><ul><li>Use one H1 and preserve heading order</li><li>Include a skip link and semantic landmarks</li><li>Use visible labels on every form field</li><li>Write meaningful alt text for informative images</li><li>Keep sticky CTAs away from forms and schedule controls</li></ul></article></div>
+      </div>
+    </section>
+
+    <section class="section build" id="build">
+      <div class="wrap">
+        <div class="section-head"><span class="kicker yellow">Implementation gate</span><h2>BEFORE A PAGE<br><span class="yellow">JOINS THE SYSTEM.</span></h2><p>Use this checklist during design, build, and review. The full written guide contains component anatomy, page patterns, copy rules, and governance.</p></div>
+        <div class="build-grid">
+          <aside class="source-card"><h3>Source of truth</h3><p>The visual system was extracted from the approved Purposeful Play toddler page.</p><code>site/toddlers-campaign-purposeful-play.html</code><p>The implementation guide and namespaced starter CSS live at:</p><code>docs/CAMPAIGN-BRAND-GUIDE.md</code><code>site/assets/campaign-brand-tokens.css</code><a class="button" href="toddlers-campaign-purposeful-play.html">Open source page &rarr;</a></aside>
+          <div class="checklist"><h3>Page alignment checklist</h3><label><input type="checkbox">Anton and Space Grotesk are loaded with fallbacks</label><label><input type="checkbox">Core color tokens match the guide</label><label><input type="checkbox">Borders and shadows use the campaign geometry</label><label><input type="checkbox">One primary CTA is visually obvious</label><label><input type="checkbox">Real imagery is optimized and cropped correctly</label><label><input type="checkbox">Claims, schedule, offer, and location details are verified</label><label><input type="checkbox">Focus, contrast, labels, and heading order pass</label><label><input type="checkbox">Desktop and 390px mobile have been reviewed</label><label><input type="checkbox">No overflow, broken links, or console errors remain</label></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap"><span>Joao Crus BJJ · Campaign Brand System</span><span>Strong starts here. Skills for life.</span></div></footer>
+</body>
+</html>

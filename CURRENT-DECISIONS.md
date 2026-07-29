@@ -2,7 +2,7 @@
 
 # Joao Crus BJJ — Current Decisions
 
-> **Authoritative status as of 2026-07-23**
+> **Authoritative status as of 2026-07-29**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
 ## Status legend
@@ -27,6 +27,17 @@
 
 ---
 
+## Parent Guide AI-search cluster (2026-07-29)
+
+- ✅ The canonical Parent Guide is a public, indexable resource hub at `/parent-guide/`, supported by five focused answer pages covering starting age, tapping, ages 3-7 class structure, choosing a program by age, and first-class preparation.
+- ✅ Each resource uses a concise direct-answer block, visible publication context, internal links, claim-safe language, and Article schema. Visible FAQ content may also use FAQPage schema when the structured data exactly matches the page.
+- ✅ Research claims must cite the underlying source and remain within the evidence tier. Preschool movement research may support cautious language about attention, motor development, and self-regulation, but must not be presented as proof of BJJ-specific outcomes at age 3.
+- ✅ The cluster may explain tapping as a shared stop signal and training habit. It must not claim that tapping eliminates injury risk or guarantees behavior outside class.
+- ✅ Review and staging HTML remains `noindex,nofollow`. The production build may index only manifest-approved canonical pages.
+- ✅ Do not publish invented schedules, equipment rules, trial terms, first-person quotations, or claims that Joao personally reviewed editorial copy unless verified.
+
+---
+
 ## 2. Confirmed business facts
 
 ### Enrollment, pricing, and operations
@@ -46,7 +57,8 @@
 - ✅ Austin location: **1112 N Lamar Blvd, inside Castle Hill Fitness**.
 - ✅ Dripping Springs published schedule includes Mon/Wed kids classes and adults at **6:40–7:40 p.m.**
 - ✅ Austin published kids schedule: ages 8–12, Tue/Thu **5:00–6:00 p.m.**
-- 🔴 Austin adult schedule remains undecided; use an interest list until confirmed.
+- ✅ Austin publishes **adult private instruction by appointment** with flexible scheduling and beginner-friendly positioning.
+- 🔴 Austin recurring **adult group** schedule remains undecided; use an interest list until confirmed and do not add private appointments to the weekly calendar.
 - 🔴 Confirm whether the former Saturday kids class has been discontinued before publishing the shared full-site schedule.
 
 ### Positioning and proof
@@ -89,7 +101,7 @@
 | 🔴 2     | Select launch offer: paid Kickstart versus 4-week deposit-credit intro; deposit amount, duration, capacity, refund/credit rules   | Joao + Diego | Landing pages, ads, scripts, payment flow         |
 | 🔴 3     | Confirm trial-uniform cost and whether the offer includes a low-cost trial uniform, enrollment gi, or no uniform bonus            | Joao         | Offer profitability and copy                      |
 | 🔴 4     | Confirm booking system: existing WP Booking Calendar, Zen Planner booking, or Cal.com                                             | Joao + Diego | CTA and automation wiring                         |
-| 🔴 5     | Choose production visual direction. Working recommendation: premium dark blue/yellow system, with toddler content adapted into it | Joao + Diego | Production components and page rollout            |
+| ✅ 5     | **Resolved 2026-07-23:** Joao approved the `toddlers-campaign-group.html` black/yellow/blue direction and requested the full site in this style | Joao + Diego | Unblocked—full-site buildout in progress           |
 | 🔴 6     | Confirm hosting/registrar/DNS access and create a school-domain email                                                             | Joao + Diego | Email authentication, Twilio signup               |
 | 🔴 7     | Obtain Beehiiv access and verify list size, consent, segments, and deliverability                                                 | Joao         | Broadcasts, lead magnet, nurture                  |
 | 🔴 8     | Confirm Castle Hill terms and permission to market to members via site listing, signage, front desk, and newsletter               | Joao         | Austin launch                                     |
@@ -108,8 +120,11 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 
 ### Working production direction
 
-- 🟡 Use the **premium dark, authority-first design** as the shared system.
-- 🟡 Keep the strongest toddler copy, FAQ, schedule, and age-3 positioning; adapt them into the selected shared design rather than launching two unrelated visual systems.
+- ✅ Use the approved **`toddlers-campaign-group.html` black/yellow/blue campaign design** as the shared production visual system.
+- ✅ Keep the strongest toddler copy, FAQ, schedule, and age-3 positioning inside that shared system rather than launching unrelated visual systems.
+- ✅ Preserve prior concepts for comparison; build the cohesive full-site version in a new `site/campaign/` directory with shared components.
+- ✅ The shared site header will use a **Programs dropdown** that links directly to the age-specific Little Champions 3–7, Youth 8–12, and Teen 13–17 pages. Age-group landing pages retain the same global header and add a smaller contextual anchor bar below it for in-page navigation.
+- 🟡 Home, Programs, Schedule, and Locations will test distinct page-specific AI hero concepts in the review build. These remain labeled concepts until final photography is approved.
 - 🟡 Build one shared schedule data source/component so every page displays the same current times.
 - 🟡 Maintain a single primary conversion goal per campaign page, plus text/call as the fallback.
 
@@ -137,12 +152,13 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - Email/SMS consent language, privacy policy, unsubscribe handling, and suppression records.
 - Canonicals, Open Graph/social images, LocalBusiness/location schema, FAQ schema where appropriate, sitemap, robots rules, and noindex for drafts/variants.
 - Owned, optimized local images rather than production hot-links to WordPress media.
+- ✅ Treat traditional SEO and AI-search discoverability as launch foundations, not post-launch add-ons. Preserve valuable WordPress URLs and content, maintain a redirect inventory, assign one search intent per canonical page, publish accurate entity/schema data, keep staging noindex, and make Joao's firsthand expertise and source-backed teaching content easy for answer engines to extract and cite.
 
 ### Content priorities
 
 - Lead the kids/toddler journey with the verified age-3 differentiator.
 - Promote private coaching as a primary offer, not a minor peer card.
-- Show both locations clearly without implying an Austin adult schedule that does not yet exist.
+- Show both locations clearly. Austin may promote confirmed adult private instruction by appointment, but must not imply a recurring adult group schedule that does not yet exist.
 - Add schedule, coaches, linked Google reviews, FAQs, directions, books/podcast links, and a secondary lead-magnet path.
 - Do not publish the preview ribbon, draft variant hub, or duplicate toddler versions.
 
@@ -195,7 +211,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - [ ] Confirm the full rate card and registration/uniform rules.
 - [ ] Select the paid/deposit trial structure.
 - [ ] Confirm low-cost trial-uniform economics.
-- [ ] Confirm the shared schedule, including Saturday and Austin adults.
+- [ ] Confirm the shared schedule, including Saturday and any future Austin adult group class. Adult private instruction remains appointment based.
 - [ ] Provide Beehiiv, Zen Planner export/read-only, WordPress/hosting/DNS, Jetpack, booking, and Meta access as appropriate.
 - [ ] Confirm Castle Hill marketing terms and request a Castle Hill website/classes listing.
 - [ ] Approve the visual direction, buddy-pass mechanics, and guarantee position.
@@ -232,4 +248,19 @@ When a statement in those sources conflicts with this file, follow this file's c
 
 ## Change log
 
+- **2026-07-28** — Diego prioritized SEO and AI-search visibility for the custom-site launch. Build metadata, canonicals, structured entities, sitemap/robots rules, migration redirects, local-search signals, answer-ready content, and AI crawler access from the start. `llms.txt` may supplement discovery but must not replace indexable HTML, internal links, citations, or traditional SEO.
+
+- **2026-07-27** — Joao's first-party Austin landing page confirms two Austin paths: Kids BJJ ages 8–12 on Tue/Thu from 5:00–6:00 p.m., plus adult private instruction by appointment with flexible scheduling. This does not confirm a recurring Austin adult group class. Keep the shared calendar unchanged until group times exist; document full address, directions, inquiry details, and remaining operational questions in `docs/AUSTIN-LANDING-PAGE-SOURCE-2026-07-27.md`.
+- **2026-07-27** — Graduate the coaching team into one dedicated extended-bio hub rather than five thin profile pages. Keep the compact team cards on About, add explicit `Meet [first name]` links to stable profile anchors, and route every global `Coaches` link to the new hub. Each profile should combine role, verified credentials, teaching focus, personal path, and a next-step CTA while preserving one shared academy story.
+- **2026-07-27** — Keep the About lineage deck visually attached beneath “A Lineage You Can See in the Teaching” instead of floating as a detached right-column statement. In every archival-video disclosure on Home and About, link all five verified original Joao-channel YouTube clips so visitors can inspect the source footage directly.
+- **2026-07-27** — Make the coaching team a first-class trust destination without creating a redundant page: move the image-led team section directly below the About hero, add a global `Coaches` navigation link that deep-links to it, and add the same destination to every campaign footer. About remains the compact people-and-philosophy hub. Preserve Joao’s full source portrait in the hero with a portrait-aware frame rather than cropping it into a landscape box.
+- **2026-07-27** — Treat “Plan a First Class” as a high-intent action: open a click-triggered, focused request layer instead of sending ready visitors to program exploration. Use a full-viewport sheet on mobile and a centered modal on desktop, while preserving the full contact page as the no-JavaScript fallback. Keep “Explore Programs” as the separate secondary path for visitors still researching. Mobile navigation must use the live header/viewport height, remain scrollable, respect safe areas, and suppress the sticky CTA while open.
+- **2026-07-27** — Diego set two site-wide copy and typography rules: avoid single-word orphan lines in display headings at supported widths, and remove em dashes from body copy. Dash-like accents remain acceptable in small eyebrow labels.
+- **2026-07-27** — Diego requested a denser, more intentional Home “Method” section: remove the detached paragraph above Joao’s portrait and replace the undersized checklist with substantial teaching-principle blocks that visibly fill the composition. Anchor Joao’s identity to the portrait rather than leaving surrounding text floating.
+- **2026-07-27** — Diego approved exploring a Carlson Gracie lineage story on Home and About using Joao’s December 2005 seminar archive. The framing should add credibility through direct historical proof and translate pressure-tested tradition into Joao’s responsible “warrior in a garden” teaching approach. Keep “final seminar,” exact belt chronology, source ownership, and personal recollections pending Joao’s confirmation before production.
+- **2026-07-27** — Diego supplied the official circular Joao Crus Brazilian Jiu-Jitsu logo for production use. Use the transparent processed logo in current-site navigation and branded footers, and derive the favicon set from the same artwork; retire placeholder “JC” marks on current pages.
+- **2026-07-27** — Diego chose the lighter Toddler-page shell as the closer model for the full site. Global navigation and hero sections should use warm white/cream surfaces with black typography, yellow/blue accents, framed imagery, and hard borders/shadows rather than dominant black hero fields. Black remains appropriate for the slim utility strip, buttons, and intentional contrast sections.
+- **2026-07-25** — Diego set the Teen interest-section hierarchy: “Help choose the time that can actually work.” and its intro span the full section above the two-column content; the three-step availability/review block sits left of the form, and the form sits on the right at desktop widths.
+- **2026-07-25** — Diego approved integrating the Toddler, Youth, and Teen landing pages into the campaign-site navigation. The clean header pattern is one global site header plus a contextual anchor bar on long program pages. Distinct AI hero concepts are approved for Home, Programs, Schedule, and Locations as review ideas.
+- **2026-07-23** — Joao approved the campaign-group visual direction after an in-person review and requested the rest of the site be built in that style. Production visual direction is no longer blocking.
 - **2026-07-23** — Initial authoritative decision record created from the repository-wide strategy, documentation, website, and implementation review.

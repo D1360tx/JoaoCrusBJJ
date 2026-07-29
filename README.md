@@ -40,6 +40,7 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [assets/postcard-concepts.md](assets/postcard-concepts.md) | **Postcard copy drafts** — Kids/DS (age-3 hook) + Adults/Austin-Lamar cards, tracking + production checklist |
 | [assets/toddler-page-copy.md](assets/toddler-page-copy.md) | **Toddler page copy (client-facing, publish-ready)** — age-3 page for Joao to build in Divi; includes SEO settings + publishing checklist |
 | [assets/ads-podcast/](assets/ads-podcast/) | **Ads and podcast copy workspace**: source stories, hooks, scripts, recording plans, message match, and creative iteration logs |
+| [docs/CAMPAIGN-BRAND-GUIDE.md](docs/CAMPAIGN-BRAND-GUIDE.md) | **Approved campaign brand system**: visual principles, tokens, components, photography, voice, accessibility, responsive rules, and implementation checklist |
 | [site/](site/) | **Website preview build** — consolidated authority hub + Kids + lead-magnet pages; `site/variants/` holds 3 BJJ design directions (Bold Athletic / Gritty Dojo / Modern Sport) + compare hub |
 
 ## Core thesis
