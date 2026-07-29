@@ -122,16 +122,87 @@ def people(site: dict) -> dict[str, dict]:
     }
 
 
+def article_entity(site: dict, page: dict) -> dict | None:
+    """Build an Article entity from page['article'] metadata if present."""
+    art = page.get("article")
+    if not art:
+        return None
+    base = site["base_url"].rstrip("/")
+    canonical = absolute(base, page["path"])
+    image = absolute(base, page["image"])
+    author_name = art.get("author", site["organization_name"])
+    author_type = art.get("authorType", "Organization")
+    if author_type == "Person":
+        author = {
+            "@type": "Person",
+            "@id": f"{base}/coaches/#joao-crus",
+            "name": author_name,
+        }
+    else:
+        author = {
+            "@type": "Organization",
+            "@id": f"{base}/#organization",
+            "name": author_name,
+        }
+    entity: dict = {
+        "@type": "Article",
+        "@id": f"{canonical}#article",
+        "headline": art.get("headline", page["title"]),
+        "url": canonical,
+        "isPartOf": {"@id": f"{base}/#website"},
+        "publisher": {"@id": f"{base}/#organization"},
+        "author": author,
+        "image": {"@type": "ImageObject", "url": image},
+        "inLanguage": "en-US",
+    }
+    if art.get("datePublished"):
+        entity["datePublished"] = art["datePublished"]
+    if art.get("dateModified"):
+        entity["dateModified"] = art["dateModified"]
+    return entity
+
+
+def faqpage_entity(site: dict, page: dict) -> dict | None:
+    """Build a FAQPage entity from page['faqs'] if present and non-empty."""
+    faqs = page.get("faqs")
+    if not faqs:
+        return None
+    base = site["base_url"].rstrip("/")
+    canonical = absolute(base, page["path"])
+    return {
+        "@type": "FAQPage",
+        "@id": f"{canonical}#faqpage",
+        "url": canonical,
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": faq["question"],
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq["answer"],
+                },
+            }
+            for faq in faqs
+        ],
+    }
+
+
 def schema_graph(site: dict, page: dict) -> list[dict]:
     if not page["schema"]:
         return []
     base = site["base_url"].rstrip("/")
     canonical = absolute(base, page["path"])
     image = absolute(base, page["image"])
+    flags = set(page["schema"])
+
     graph: list[dict] = [organization(site), website(site)]
+
+    # Determine WebPage @type: use Article as @type when article flag present
+    # but still include a WebPage entity for full-graph completeness
+    webpage_type = "WebPage"
     graph.append(
         {
-            "@type": "WebPage",
+            "@type": webpage_type,
             "@id": f"{canonical}#webpage",
             "url": canonical,
             "name": page["title"],
@@ -142,7 +213,19 @@ def schema_graph(site: dict, page: dict) -> list[dict]:
             "inLanguage": "en-US",
         }
     )
-    flags = set(page["schema"])
+
+    # Article entity
+    if "article" in flags:
+        art = article_entity(site, page)
+        if art:
+            graph.append(art)
+
+    # FAQPage entity
+    if "faqpage" in flags:
+        faq = faqpage_entity(site, page)
+        if faq:
+            graph.append(faq)
+
     locations = location_entities(site)
     if "locations" in flags:
         graph.extend([locations["dripping-springs"], locations["austin"]])

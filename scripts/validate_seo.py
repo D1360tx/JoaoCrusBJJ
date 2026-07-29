@@ -17,6 +17,14 @@ DATA = json.loads((CAMPAIGN / "seo-pages.json").read_text(encoding="utf-8"))
 BASE = DATA["site"]["base_url"].rstrip("/")
 ERRORS: list[str] = []
 CHECKS = 0
+PARENT_GUIDE_FILES = {
+    "guide.html",
+    "age-start-bjj.html",
+    "tapping-children.html",
+    "bjj-class-ages-3-7.html",
+    "choose-kids-bjj-program.html",
+    "first-class-checklist.html",
+}
 
 
 def check(ok: bool, message: str) -> None:
@@ -33,6 +41,14 @@ def attr(source: str, pattern: str) -> str | None:
 
 def canonical(page: dict) -> str:
     return urljoin(BASE + "/", page["path"].lstrip("/"))
+
+
+def visible_text(source: str) -> str:
+    """Return whitespace-normalized visible-ish text for copy/schema checks."""
+    source = re.sub(r"<(script|style)\b.*?</\1>", " ", source, flags=re.S | re.I)
+    source = re.sub(r"<sup\b.*?</sup>", "", source, flags=re.S | re.I)
+    source = re.sub(r"<[^>]+>", " ", source)
+    return " ".join(html.unescape(source).split())
 
 
 def validate_page(page: dict) -> None:
@@ -73,10 +89,44 @@ def validate_page(page: dict) -> None:
                     check(page_entities[0].get("url") == canonical(page), f"{page['file']}: WebPage URL mismatch")
                 forbidden = {"Review", "AggregateRating"}
                 check(not any(x.get("@type") in forbidden for x in graph), f"{page['file']}: self-serving review schema found")
+                if "article" in page["schema"]:
+                    articles = [x for x in graph if x.get("@type") == "Article"]
+                    check(len(articles) == 1, f"{page['file']}: expected one Article entity")
+                    if articles:
+                        article = articles[0]
+                        check(article.get("url") == canonical(page), f"{page['file']}: Article URL mismatch")
+                        check(article.get("headline") == page["article"]["headline"], f"{page['file']}: Article headline mismatch")
+                        check(article.get("datePublished") == page["article"]["datePublished"], f"{page['file']}: Article datePublished mismatch")
+                        check(article.get("dateModified") == page["article"]["dateModified"], f"{page['file']}: Article dateModified mismatch")
+                        check(article.get("author", {}).get("name") == page["article"]["author"], f"{page['file']}: Article author mismatch")
+                        check(article.get("author", {}).get("@type") == page["article"].get("authorType", "Organization"), f"{page['file']}: Article author type mismatch")
+                if "faqpage" in page["schema"]:
+                    faqpages = [x for x in graph if x.get("@type") == "FAQPage"]
+                    check(len(faqpages) == 1, f"{page['file']}: expected one FAQPage entity")
+                    if faqpages:
+                        actual_faqs = [
+                            {
+                                "question": item.get("name"),
+                                "answer": item.get("acceptedAnswer", {}).get("text"),
+                            }
+                            for item in faqpages[0].get("mainEntity", [])
+                        ]
+                        check(actual_faqs == page.get("faqs", []), f"{page['file']}: FAQPage content differs from manifest")
+                        text = visible_text(source)
+                        for faq in page.get("faqs", []):
+                            check(faq["question"] in text, f"{page['file']}: FAQ question not visible: {faq['question']}")
+                            check(faq["answer"] in text, f"{page['file']}: FAQ answer not visible: {faq['question']}")
             except json.JSONDecodeError as exc:
                 ERRORS.append(f"{page['file']}: invalid JSON-LD: {exc}")
     else:
         check(not scripts, f"{page['file']}: noindex utility/variant page should not contain schema")
+    if page["file"] in PARENT_GUIDE_FILES:
+        check("—" not in source, f"{page['file']}: body-copy em dash found")
+        answer_match = re.search(r'<div class="pg-answer">\s*<p>(.*?)</p>', source, re.S | re.I)
+        check(bool(answer_match), f"{page['file']}: direct answer block missing")
+        if answer_match:
+            words = re.findall(r"\b[\w’'-]+\b", visible_text(answer_match.group(1)))
+            check(40 <= len(words) <= 80, f"{page['file']}: direct answer has {len(words)} words, expected 40-80")
 
 
 def validate_manifest() -> None:
@@ -108,7 +158,20 @@ def validate_support_files() -> None:
     check(f"Sitemap: {BASE}/sitemap.xml" in robots, "robots.txt: sitemap declaration missing")
     for bot in ("ChatGPT-User", "GPTBot", "OAI-SearchBot", "PerplexityBot", "ClaudeBot", "Bingbot"):
         check(f"User-agent: {bot}" in robots, f"robots.txt: {bot} policy missing")
-    for path in ("/", "/training-programs/", "/classes-schedule/", "/locations/", "/coaches/", "/about/"):
+    for path in (
+        "/",
+        "/training-programs/",
+        "/classes-schedule/",
+        "/locations/",
+        "/coaches/",
+        "/about/",
+        "/parent-guide/",
+        "/parent-guide/what-age-start-bjj/",
+        "/parent-guide/what-tapping-teaches-children/",
+        "/parent-guide/what-happens-bjj-class-ages-3-7/",
+        "/parent-guide/how-to-choose-kids-bjj-program/",
+        "/parent-guide/first-bjj-class-checklist/",
+    ):
         check(canonical({"path": path}) in llms, f"llms.txt: priority URL missing: {path}")
 
 

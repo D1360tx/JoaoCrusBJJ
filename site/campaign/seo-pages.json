@@ -15,7 +15,10 @@
       "description": "Brazilian Jiu-Jitsu classes in Dripping Springs and Austin for children from age 3, teens, adults, private students, and teams.",
       "image": "/assets/campaign-images/home-ai-concept.webp",
       "indexable": true,
-      "schema": ["home", "locations"]
+      "schema": [
+        "home",
+        "locations"
+      ]
     },
     {
       "file": "programs.html",
@@ -24,7 +27,9 @@
       "description": "Explore Brazilian Jiu-Jitsu programs for children, teens, adults, private students, and teams in Dripping Springs and Austin.",
       "image": "/assets/campaign-images/programs-ai-concept.webp",
       "indexable": true,
-      "schema": ["webpage"]
+      "schema": [
+        "webpage"
+      ]
     },
     {
       "file": "kids.html",
@@ -33,7 +38,9 @@
       "description": "Explore age-appropriate kids Brazilian Jiu-Jitsu classes focused on confidence, body control, safe boundaries, and steady progress.",
       "image": "/assets/campaign-images/kids-training.webp",
       "indexable": true,
-      "schema": ["webpage"]
+      "schema": [
+        "webpage"
+      ]
     },
     {
       "file": "little-champions.html",
@@ -42,7 +49,9 @@
       "description": "Playful Brazilian Jiu-Jitsu classes for ages 3-7 in Dripping Springs, using short activities and age-appropriate instruction.",
       "image": "/assets/campaign-images/kids-training.webp",
       "indexable": true,
-      "schema": ["webpage"]
+      "schema": [
+        "webpage"
+      ]
     },
     {
       "file": "youth.html",
@@ -51,7 +60,9 @@
       "description": "Youth Brazilian Jiu-Jitsu classes for ages 8-12 in Dripping Springs and Austin, with practical skill and confidence-building instruction.",
       "image": "/assets/campaign-images/kids-gathering.webp",
       "indexable": true,
-      "schema": ["webpage"]
+      "schema": [
+        "webpage"
+      ]
     },
     {
       "file": "adults.html",
@@ -60,7 +71,10 @@
       "description": "Beginner-friendly adult Brazilian Jiu-Jitsu classes in Dripping Springs with technical coaching, practical skill, and structured progress.",
       "image": "/assets/campaign-images/corporate.webp",
       "indexable": true,
-      "schema": ["webpage", "dripping-springs"]
+      "schema": [
+        "webpage",
+        "dripping-springs"
+      ]
     },
     {
       "file": "private-coaching.html",
@@ -69,7 +83,10 @@
       "description": "Private Brazilian Jiu-Jitsu coaching with Joao Crus for focused technical development, individual goals, and flexible instruction.",
       "image": "/assets/campaign-images/joao-crus.webp",
       "indexable": true,
-      "schema": ["webpage", "joao"]
+      "schema": [
+        "webpage",
+        "joao"
+      ]
     },
     {
       "file": "teams.html",
@@ -78,7 +95,9 @@
       "description": "Practical Brazilian Jiu-Jitsu team-building experiences designed around communication, composure, trust, and working under pressure.",
       "image": "/assets/campaign-images/corporate.webp",
       "indexable": true,
-      "schema": ["webpage"]
+      "schema": [
+        "webpage"
+      ]
     },
     {
       "file": "schedule.html",
@@ -87,7 +106,10 @@
       "description": "View the current Joao Crus BJJ class schedule for children, youth, teens, and adults in Dripping Springs and Austin.",
       "image": "/assets/campaign-images/schedule-ai-concept.webp",
       "indexable": true,
-      "schema": ["webpage", "locations"]
+      "schema": [
+        "webpage",
+        "locations"
+      ]
     },
     {
       "file": "locations.html",
@@ -96,7 +118,10 @@
       "description": "Find Joao Crus BJJ in Dripping Springs and Austin, with addresses, directions, available programs, and current class schedules.",
       "image": "/assets/campaign-images/locations-ai-concept.webp",
       "indexable": true,
-      "schema": ["webpage", "locations"]
+      "schema": [
+        "webpage",
+        "locations"
+      ]
     },
     {
       "file": "austin.html",
@@ -105,7 +130,10 @@
       "description": "Kids Brazilian Jiu-Jitsu ages 8-12 in central Austin, plus beginner-friendly adult private instruction by appointment.",
       "image": "/assets/campaign-images/kids-gathering.webp",
       "indexable": true,
-      "schema": ["webpage", "austin"]
+      "schema": [
+        "webpage",
+        "austin"
+      ]
     },
     {
       "file": "about.html",
@@ -114,7 +142,10 @@
       "description": "Learn about Joao Crus, his Carlson Gracie and De La Riva lineage, his teaching philosophy, and the academy he founded in 2003.",
       "image": "/assets/campaign-images/joao-crus.webp",
       "indexable": true,
-      "schema": ["webpage", "joao"]
+      "schema": [
+        "webpage",
+        "joao"
+      ]
     },
     {
       "file": "coaches.html",
@@ -123,16 +154,205 @@
       "description": "Meet the Joao Crus BJJ coaching team serving Dripping Springs and Austin, including their experience and teaching perspectives.",
       "image": "/assets/campaign-images/coaches-ai/joao-crus-ai-headshot.webp",
       "indexable": true,
-      "schema": ["webpage", "coaches"]
+      "schema": [
+        "webpage",
+        "coaches"
+      ]
     },
     {
       "file": "guide.html",
       "path": "/parent-guide/",
-      "title": "Parent Guide to a Child's First BJJ Class | Joao Crus BJJ",
-      "description": "A practical parent guide to preparing for a child's first Brazilian Jiu-Jitsu class, including what to expect and how to begin.",
+      "title": "Parent Guide to Kids BJJ | Joao Crus BJJ",
+      "description": "A complete parent guide to children's Brazilian Jiu-Jitsu: what age to start, what happens in class, how to choose a program, and what to bring.",
       "image": "/assets/campaign-images/kids-training.webp",
       "indexable": true,
-      "schema": ["webpage"]
+      "schema": [
+        "article",
+        "faqpage"
+      ],
+      "article": {
+        "headline": "Parent Guide to Kids Brazilian Jiu-Jitsu",
+        "datePublished": "2026-07-29",
+        "dateModified": "2026-07-29",
+        "author": "Joao Crus BJJ",
+        "authorType": "Organization"
+      },
+      "faqs": [
+        {
+          "question": "What age can children start Brazilian Jiu-Jitsu?",
+          "answer": "Joao Crus BJJ accepts children from age 3. Classes at that age focus on movement games, listening, partner cooperation, and body control rather than competitive sparring or adult technique."
+        },
+        {
+          "question": "Do children need experience before starting?",
+          "answer": "No experience is needed. Beginners at every age are expected and welcomed."
+        },
+        {
+          "question": "Can parents stay and watch?",
+          "answer": "Yes. Parents may stay and watch every class."
+        },
+        {
+          "question": "What should a child wear to the first class?",
+          "answer": "Comfortable athletic clothes work for a first visit. A gi (uniform) is not required for the initial class."
+        },
+        {
+          "question": "What if my child is shy or reluctant?",
+          "answer": "Shy or reluctant children are common at the first class. The class structure is designed for short, low-pressure bursts. Most children settle once they see peers doing the same activities. Parents may stay visible throughout."
+        },
+        {
+          "question": "What does tapping mean?",
+          "answer": "A tap is a signal that communicates stop. Partners are trained to respond immediately. Children learn to both communicate their own limit and respect their partner's limit. Read What Tapping Teaches a Young Child for a full explanation."
+        }
+      ]
+    },
+    {
+      "file": "age-start-bjj.html",
+      "path": "/parent-guide/what-age-start-bjj/",
+      "title": "What Age Can Children Start Brazilian Jiu-Jitsu? | Joao Crus BJJ",
+      "description": "Age readiness for children's Brazilian Jiu-Jitsu, from age 3 through teens, with research context and Joao Crus's 25-year teaching perspective.",
+      "image": "/assets/campaign-images/kids-training.webp",
+      "indexable": true,
+      "schema": [
+        "article",
+        "faqpage"
+      ],
+      "article": {
+        "headline": "What Age Can Children Start Brazilian Jiu-Jitsu?",
+        "datePublished": "2026-07-29",
+        "dateModified": "2026-07-29",
+        "author": "Joao Crus BJJ",
+        "authorType": "Organization"
+      },
+      "faqs": [
+        {
+          "question": "Can a 3-year-old start Brazilian Jiu-Jitsu?",
+          "answer": "Joao Crus BJJ accepts children from age 3. Classes for young learners use games, short movement activities, and simple partner work rather than applying adult expectations to small children."
+        },
+        {
+          "question": "Is age 3 too young for martial arts?",
+          "answer": "Research on preschool movement programs suggests that regular, cognitively engaging physical activity may support aspects of attention, executive function, and motor competence in children ages 3 to 6. Whether BJJ is appropriate at age 3 depends on how the program is structured and the child's readiness, not age alone. A program that runs short activities, uses simple language, and adapts to the children in the room is different from a program that applies adult expectations to small bodies."
+        },
+        {
+          "question": "What is the best age to start BJJ?",
+          "answer": "There is no single best age. The right starting point depends on the child's readiness and whether the class is designed for that developmental stage. A first-class visit gives parents and coaches better information than age alone."
+        }
+      ]
+    },
+    {
+      "file": "tapping-children.html",
+      "path": "/parent-guide/what-tapping-teaches-children/",
+      "title": "What Tapping Teaches a Young Child | Joao Crus BJJ",
+      "description": "How tapping works in Brazilian Jiu-Jitsu and how the shared stop signal helps children practice clear boundaries, partner awareness, and respectful resets.",
+      "image": "/assets/campaign-images/kids-training.webp",
+      "indexable": true,
+      "schema": [
+        "article",
+        "faqpage"
+      ],
+      "article": {
+        "headline": "What Tapping Teaches a Young Child",
+        "datePublished": "2026-07-29",
+        "dateModified": "2026-07-29",
+        "author": "Joao Crus BJJ",
+        "authorType": "Organization"
+      },
+      "faqs": [
+        {
+          "question": "What does tapping mean in Brazilian Jiu-Jitsu?",
+          "answer": "A tap communicates stop. The student receiving the signal should stop the action and release. Children practice using the signal clearly and responding when a partner uses it."
+        },
+        {
+          "question": "Does tapping make BJJ risk-free?",
+          "answer": "No. No physical activity is free of risk. Tapping is a shared safety convention, not a guarantee. Coaching, supervision, age-appropriate activities, partner matching, and prompt responses all matter."
+        },
+        {
+          "question": "Does tapping teach a child to quit?",
+          "answer": "No. A tap ends one exchange so the students can reset. Recognizing a limit and communicating it clearly is part of responsible practice, not evidence that a child has failed."
+        }
+      ]
+    },
+    {
+      "file": "bjj-class-ages-3-7.html",
+      "path": "/parent-guide/what-happens-bjj-class-ages-3-7/",
+      "title": "What Happens in a BJJ Class for Ages 3-7? | Joao Crus BJJ",
+      "description": "A practical walkthrough of Brazilian Jiu-Jitsu classes for ages 3-7, including short activities, movement games, listening, partner work, and parent visibility.",
+      "image": "/assets/toddler-hero-group.webp",
+      "indexable": true,
+      "schema": [
+        "article",
+        "faqpage"
+      ],
+      "article": {
+        "headline": "What Happens in a BJJ Class for Ages 3-7?",
+        "datePublished": "2026-07-29",
+        "dateModified": "2026-07-29",
+        "author": "Joao Crus BJJ",
+        "authorType": "Organization"
+      },
+      "faqs": [
+        {
+          "question": "How long is a BJJ class for ages 3-7?",
+          "answer": "The Little Champions class at Joao Crus BJJ is approximately 45 minutes. The time is divided into short activities so young children can move, listen, practice, and reset."
+        },
+        {
+          "question": "Can parents watch?",
+          "answer": "Parents stay and watch the Little Champions class. That visibility helps families understand the teaching and lets a new child know a familiar adult is nearby."
+        },
+        {
+          "question": "What if my child watches instead of joining?",
+          "answer": "Watching can be part of learning a new room. A first class is useful even when a child joins only part of the activity. Parents can ask the coach what readiness looked like and what next step would be appropriate."
+        }
+      ]
+    },
+    {
+      "file": "choose-kids-bjj-program.html",
+      "path": "/parent-guide/how-to-choose-kids-bjj-program/",
+      "title": "How to Choose a Kids BJJ Program by Age | Joao Crus BJJ",
+      "description": "Compare Brazilian Jiu-Jitsu programs for ages 3-7, 8-12, and 13-17, then use practical questions to evaluate developmental fit, coaching, and supervision.",
+      "image": "/assets/campaign-images/kids-training.webp",
+      "indexable": true,
+      "schema": [
+        "article",
+        "faqpage"
+      ],
+      "article": {
+        "headline": "How to Choose a Kids BJJ Program by Age",
+        "datePublished": "2026-07-29",
+        "dateModified": "2026-07-29",
+        "author": "Joao Crus BJJ",
+        "authorType": "Organization"
+      },
+      "faqs": [
+        {
+          "question": "What should I look for in a kids BJJ program?",
+          "answer": "Look for age-separated instruction, coaches experienced with that age, a visible class structure, thoughtful partner matching, clear contact rules, and honest communication with parents."
+        },
+        {
+          "question": "Is a kids BJJ class different from an adult class?",
+          "answer": "It should be. Children need language, pacing, activities, supervision, and expectations designed for their developmental stage. Shrinking an adult class is not the same as building a children’s program."
+        },
+        {
+          "question": "What age groups does Joao Crus BJJ offer?",
+          "answer": "The academy’s children’s paths are Little Champions for ages 3-7, Youth for ages 8-12, and Teens for ages 13-17. Use the linked program pages for current details."
+        }
+      ]
+    },
+    {
+      "file": "first-class-checklist.html",
+      "path": "/parent-guide/first-bjj-class-checklist/",
+      "title": "First BJJ Class Checklist for Parents | Joao Crus BJJ",
+      "description": "A practical first Brazilian Jiu-Jitsu class checklist for parents, covering clothing, arrival, hygiene, questions, observation, and the ride home.",
+      "image": "/assets/campaign-images/kids-training.webp",
+      "indexable": true,
+      "schema": [
+        "article"
+      ],
+      "article": {
+        "headline": "First BJJ Class Checklist for Parents",
+        "datePublished": "2026-07-29",
+        "dateModified": "2026-07-29",
+        "author": "Joao Crus BJJ",
+        "authorType": "Organization"
+      }
     },
     {
       "file": "contact.html",
@@ -141,7 +361,10 @@
       "description": "Contact Joao Crus BJJ to ask a question or plan a first class in Dripping Springs or Austin. Beginners are welcome.",
       "image": "/assets/campaign-images/kids-gathering.webp",
       "indexable": true,
-      "schema": ["webpage", "locations"]
+      "schema": [
+        "webpage",
+        "locations"
+      ]
     },
     {
       "file": "privacy.html",
@@ -150,7 +373,9 @@
       "description": "Read the Joao Crus BJJ website privacy policy.",
       "image": "/assets/joao-crus-bjj-logo.png",
       "indexable": false,
-      "schema": ["webpage"]
+      "schema": [
+        "webpage"
+      ]
     },
     {
       "file": "terms.html",
@@ -159,7 +384,9 @@
       "description": "Read the Joao Crus BJJ website terms.",
       "image": "/assets/joao-crus-bjj-logo.png",
       "indexable": false,
-      "schema": ["webpage"]
+      "schema": [
+        "webpage"
+      ]
     },
     {
       "file": "thank-you.html",

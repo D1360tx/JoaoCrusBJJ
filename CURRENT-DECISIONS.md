@@ -2,7 +2,7 @@
 
 # Joao Crus BJJ — Current Decisions
 
-> **Authoritative status as of 2026-07-23**
+> **Authoritative status as of 2026-07-29**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
 ## Status legend
@@ -24,6 +24,17 @@
 4. ✅ **Grow kids enrollment using the age-3 differentiator, referrals/buddy passes, local campaigns, and a stronger trial offer.**
 5. 🟡 **Develop the schools/curriculum line after the immediate local-student launch.** Whether this targets regular schools or martial-arts schools still requires reconfirmation.
 6. 🟡 Preserve the broader **one hub / three lines** concept as the working brand architecture, pending final sign-off and naming.
+
+---
+
+## Parent Guide AI-search cluster (2026-07-29)
+
+- ✅ The canonical Parent Guide is a public, indexable resource hub at `/parent-guide/`, supported by five focused answer pages covering starting age, tapping, ages 3-7 class structure, choosing a program by age, and first-class preparation.
+- ✅ Each resource uses a concise direct-answer block, visible publication context, internal links, claim-safe language, and Article schema. Visible FAQ content may also use FAQPage schema when the structured data exactly matches the page.
+- ✅ Research claims must cite the underlying source and remain within the evidence tier. Preschool movement research may support cautious language about attention, motor development, and self-regulation, but must not be presented as proof of BJJ-specific outcomes at age 3.
+- ✅ The cluster may explain tapping as a shared stop signal and training habit. It must not claim that tapping eliminates injury risk or guarantees behavior outside class.
+- ✅ Review and staging HTML remains `noindex,nofollow`. The production build may index only manifest-approved canonical pages.
+- ✅ Do not publish invented schedules, equipment rules, trial terms, first-person quotations, or claims that Joao personally reviewed editorial copy unless verified.
 
 ---
 
