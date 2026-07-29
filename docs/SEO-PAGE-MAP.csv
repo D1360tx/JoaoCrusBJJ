@@ -1,0 +1,24 @@
+page,canonical_url,primary_search_intent,working_primary_query,secondary_topics,index_policy,status
+Home,https://joaocrusbjj.com/,Find the academy and choose a program,Brazilian Jiu-Jitsu Dripping Springs,"BJJ Austin; kids BJJ; adult BJJ",INDEX,Metadata ready
+Programs,https://joaocrusbjj.com/training-programs/,Compare available programs,Brazilian Jiu-Jitsu programs,"kids; teens; adults; private lessons; teams",INDEX,Metadata ready
+Kids hub,https://joaocrusbjj.com/kids-program/,Choose the right kids age group,Kids Brazilian Jiu-Jitsu,"BJJ for children; confidence; boundaries",INDEX,Metadata ready
+Little Champions,https://joaocrusbjj.com/little-champions/,Evaluate BJJ for ages 3-7,BJJ for 3 year olds,"preschool martial arts; toddler BJJ; ages 3-7",INDEX,Metadata ready
+Youth,https://joaocrusbjj.com/youth-bjj/,Evaluate BJJ for ages 8-12,Youth Brazilian Jiu-Jitsu,"kids BJJ Austin; kids BJJ Dripping Springs",INDEX,Metadata ready
+Teen,PENDING /teen-bjj/,Join or express interest in teen classes,Teen Brazilian Jiu-Jitsu,"teen martial arts; ages 13-17",INDEX WHEN BUILT,Canonical campaign page gap
+Adults,https://joaocrusbjj.com/adults-program/,Find beginner-friendly adult classes,Adult Brazilian Jiu-Jitsu Dripping Springs,"beginner BJJ; adult martial arts",INDEX,Metadata ready
+Private coaching,https://joaocrusbjj.com/private-bjj-lessons/,Book individual instruction,Private Brazilian Jiu-Jitsu lessons,"private BJJ coach; Joao Crus private lessons",INDEX,Metadata ready
+Teams,https://joaocrusbjj.com/team-building/,Evaluate team-building instruction,BJJ team building,"corporate team building Austin; communication under pressure",INDEX,Metadata ready
+Schedule,https://joaocrusbjj.com/classes-schedule/,Find current recurring class times,BJJ class schedule,"Dripping Springs schedule; Austin youth BJJ schedule",INDEX,Metadata ready
+Locations,https://joaocrusbjj.com/locations/,Choose an academy location,Joao Crus BJJ locations,"BJJ Dripping Springs; BJJ Austin",INDEX,Metadata ready
+Austin,https://joaocrusbjj.com/austin-brazilian-jiu-jitsu/,Find Austin programs and directions,Kids BJJ Austin,"youth BJJ Austin; private BJJ Austin",INDEX,Metadata ready
+About,https://joaocrusbjj.com/about/,Evaluate Joao's experience and teaching,Joao Crus,"Carlson Gracie lineage; De La Riva lineage; BJJ author",INDEX,Metadata ready
+Coaches,https://joaocrusbjj.com/coaches/,Evaluate the coaching team,Joao Crus BJJ coaches,"BJJ instructors Dripping Springs; BJJ coaches Austin",INDEX,Metadata ready
+Parent guide,https://joaocrusbjj.com/parent-guide/,Prepare for a child's first class,What to expect at a child's first BJJ class,"first BJJ class; kids BJJ readiness",INDEX,Metadata ready; expand content
+Contact,https://joaocrusbjj.com/contact/,Ask a question or request a first class,Contact Joao Crus BJJ,"first class request; academy phone",INDEX,Metadata ready
+Books and podcast,https://joaocrusbjj.com/books-and-podcast/,Explore Joao's published authority,Joao Crus books,"BJJ parenting books; BJJ podcast",PRESERVE,Missing from custom build
+Testimonials,https://joaocrusbjj.com/testimonials/,Evaluate firsthand experiences,Joao Crus BJJ reviews,"parent experiences; student stories",PRESERVE,Missing from custom build
+Blog,https://joaocrusbjj.com/blog/,Learn from Joao's educational content,Brazilian Jiu-Jitsu parenting articles,"confidence; emotions; anxiety; boundaries",PRESERVE,Missing from custom build
+Privacy,https://joaocrusbjj.com/privacy-policy/,Read privacy terms,Joao Crus BJJ privacy policy,,NOINDEX UNTIL FINAL,Legal draft
+Terms,https://joaocrusbjj.com/terms/,Read website terms,Joao Crus BJJ terms,,NOINDEX UNTIL FINAL,Legal draft
+Thank you,https://joaocrusbjj.com/thank-you/,Confirm a form action,,,NOINDEX,Utility page
+AI coach comparison,https://joaocrusbjj.com/about-ai-coaches/,Private visual review,,,NOINDEX,Must not deploy publicly
