@@ -141,6 +141,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - Email/SMS consent language, privacy policy, unsubscribe handling, and suppression records.
 - Canonicals, Open Graph/social images, LocalBusiness/location schema, FAQ schema where appropriate, sitemap, robots rules, and noindex for drafts/variants.
 - Owned, optimized local images rather than production hot-links to WordPress media.
+- ✅ Treat traditional SEO and AI-search discoverability as launch foundations, not post-launch add-ons. Preserve valuable WordPress URLs and content, maintain a redirect inventory, assign one search intent per canonical page, publish accurate entity/schema data, keep staging noindex, and make Joao's firsthand expertise and source-backed teaching content easy for answer engines to extract and cite.
 
 ### Content priorities
 
@@ -235,6 +236,8 @@ When a statement in those sources conflicts with this file, follow this file's c
 ---
 
 ## Change log
+
+- **2026-07-28** — Diego prioritized SEO and AI-search visibility for the custom-site launch. Build metadata, canonicals, structured entities, sitemap/robots rules, migration redirects, local-search signals, answer-ready content, and AI crawler access from the start. `llms.txt` may supplement discovery but must not replace indexable HTML, internal links, citations, or traditional SEO.
 
 - **2026-07-27** — Joao's first-party Austin landing page confirms two Austin paths: Kids BJJ ages 8–12 on Tue/Thu from 5:00–6:00 p.m., plus adult private instruction by appointment with flexible scheduling. This does not confirm a recurring Austin adult group class. Keep the shared calendar unchanged until group times exist; document full address, directions, inquiry details, and remaining operational questions in `docs/AUSTIN-LANDING-PAGE-SOURCE-2026-07-27.md`.
 - **2026-07-27** — Graduate the coaching team into one dedicated extended-bio hub rather than five thin profile pages. Keep the compact team cards on About, add explicit `Meet [first name]` links to stable profile anchors, and route every global `Coaches` link to the new hub. Each profile should combine role, verified credentials, teaching focus, personal path, and a next-step CTA while preserving one shared academy story.

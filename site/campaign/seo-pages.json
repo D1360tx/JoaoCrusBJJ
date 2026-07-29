@@ -1,0 +1,183 @@
+{
+  "site": {
+    "base_url": "https://joaocrusbjj.com",
+    "name": "Joao Crus BJJ",
+    "organization_name": "Joao Crus Brazilian Jiu-Jitsu",
+    "phone": "+1-512-644-4560",
+    "founded": "2003",
+    "default_image": "/assets/campaign-images/home-ai-concept.webp"
+  },
+  "pages": [
+    {
+      "file": "index.html",
+      "path": "/",
+      "title": "Brazilian Jiu-Jitsu in Dripping Springs & Austin | Joao Crus",
+      "description": "Brazilian Jiu-Jitsu classes in Dripping Springs and Austin for children from age 3, teens, adults, private students, and teams.",
+      "image": "/assets/campaign-images/home-ai-concept.webp",
+      "indexable": true,
+      "schema": ["home", "locations"]
+    },
+    {
+      "file": "programs.html",
+      "path": "/training-programs/",
+      "title": "Brazilian Jiu-Jitsu Programs | Joao Crus BJJ",
+      "description": "Explore Brazilian Jiu-Jitsu programs for children, teens, adults, private students, and teams in Dripping Springs and Austin.",
+      "image": "/assets/campaign-images/programs-ai-concept.webp",
+      "indexable": true,
+      "schema": ["webpage"]
+    },
+    {
+      "file": "kids.html",
+      "path": "/kids-program/",
+      "title": "Kids Brazilian Jiu-Jitsu in Dripping Springs & Austin",
+      "description": "Explore age-appropriate kids Brazilian Jiu-Jitsu classes focused on confidence, body control, safe boundaries, and steady progress.",
+      "image": "/assets/campaign-images/kids-training.webp",
+      "indexable": true,
+      "schema": ["webpage"]
+    },
+    {
+      "file": "little-champions.html",
+      "path": "/little-champions/",
+      "title": "Brazilian Jiu-Jitsu for Kids Ages 3-7 | Joao Crus BJJ",
+      "description": "Playful Brazilian Jiu-Jitsu classes for ages 3-7 in Dripping Springs, using short activities and age-appropriate instruction.",
+      "image": "/assets/campaign-images/kids-training.webp",
+      "indexable": true,
+      "schema": ["webpage"]
+    },
+    {
+      "file": "youth.html",
+      "path": "/youth-bjj/",
+      "title": "Youth Brazilian Jiu-Jitsu Ages 8-12 | Joao Crus BJJ",
+      "description": "Youth Brazilian Jiu-Jitsu classes for ages 8-12 in Dripping Springs and Austin, with practical skill and confidence-building instruction.",
+      "image": "/assets/campaign-images/kids-gathering.webp",
+      "indexable": true,
+      "schema": ["webpage"]
+    },
+    {
+      "file": "adults.html",
+      "path": "/adults-program/",
+      "title": "Adult Brazilian Jiu-Jitsu in Dripping Springs, TX",
+      "description": "Beginner-friendly adult Brazilian Jiu-Jitsu classes in Dripping Springs with technical coaching, practical skill, and structured progress.",
+      "image": "/assets/campaign-images/corporate.webp",
+      "indexable": true,
+      "schema": ["webpage", "dripping-springs"]
+    },
+    {
+      "file": "private-coaching.html",
+      "path": "/private-bjj-lessons/",
+      "title": "Private Brazilian Jiu-Jitsu Lessons with Joao Crus",
+      "description": "Private Brazilian Jiu-Jitsu coaching with Joao Crus for focused technical development, individual goals, and flexible instruction.",
+      "image": "/assets/campaign-images/joao-crus.webp",
+      "indexable": true,
+      "schema": ["webpage", "joao"]
+    },
+    {
+      "file": "teams.html",
+      "path": "/team-building/",
+      "title": "Brazilian Jiu-Jitsu Team Building | Joao Crus BJJ",
+      "description": "Practical Brazilian Jiu-Jitsu team-building experiences designed around communication, composure, trust, and working under pressure.",
+      "image": "/assets/campaign-images/corporate.webp",
+      "indexable": true,
+      "schema": ["webpage"]
+    },
+    {
+      "file": "schedule.html",
+      "path": "/classes-schedule/",
+      "title": "Brazilian Jiu-Jitsu Class Schedule | Austin & Dripping Springs",
+      "description": "View the current Joao Crus BJJ class schedule for children, youth, teens, and adults in Dripping Springs and Austin.",
+      "image": "/assets/campaign-images/schedule-ai-concept.webp",
+      "indexable": true,
+      "schema": ["webpage", "locations"]
+    },
+    {
+      "file": "locations.html",
+      "path": "/locations/",
+      "title": "Joao Crus BJJ Locations | Dripping Springs & Austin",
+      "description": "Find Joao Crus BJJ in Dripping Springs and Austin, with addresses, directions, available programs, and current class schedules.",
+      "image": "/assets/campaign-images/locations-ai-concept.webp",
+      "indexable": true,
+      "schema": ["webpage", "locations"]
+    },
+    {
+      "file": "austin.html",
+      "path": "/austin-brazilian-jiu-jitsu/",
+      "title": "Kids Brazilian Jiu-Jitsu in Austin, TX | Joao Crus BJJ",
+      "description": "Kids Brazilian Jiu-Jitsu ages 8-12 in central Austin, plus beginner-friendly adult private instruction by appointment.",
+      "image": "/assets/campaign-images/kids-gathering.webp",
+      "indexable": true,
+      "schema": ["webpage", "austin"]
+    },
+    {
+      "file": "about.html",
+      "path": "/about/",
+      "title": "About Joao Crus BJJ | Teaching, Lineage & Academy",
+      "description": "Learn about Joao Crus, his Carlson Gracie and De La Riva lineage, his teaching philosophy, and the academy he founded in 2003.",
+      "image": "/assets/campaign-images/joao-crus.webp",
+      "indexable": true,
+      "schema": ["webpage", "joao"]
+    },
+    {
+      "file": "coaches.html",
+      "path": "/coaches/",
+      "title": "Brazilian Jiu-Jitsu Coaches | Joao Crus BJJ",
+      "description": "Meet the Joao Crus BJJ coaching team serving Dripping Springs and Austin, including their experience and teaching perspectives.",
+      "image": "/assets/campaign-images/coaches-ai/joao-crus-ai-headshot.webp",
+      "indexable": true,
+      "schema": ["webpage", "coaches"]
+    },
+    {
+      "file": "guide.html",
+      "path": "/parent-guide/",
+      "title": "Parent Guide to a Child's First BJJ Class | Joao Crus BJJ",
+      "description": "A practical parent guide to preparing for a child's first Brazilian Jiu-Jitsu class, including what to expect and how to begin.",
+      "image": "/assets/campaign-images/kids-training.webp",
+      "indexable": true,
+      "schema": ["webpage"]
+    },
+    {
+      "file": "contact.html",
+      "path": "/contact/",
+      "title": "Contact Joao Crus BJJ | Plan a First Class",
+      "description": "Contact Joao Crus BJJ to ask a question or plan a first class in Dripping Springs or Austin. Beginners are welcome.",
+      "image": "/assets/campaign-images/kids-gathering.webp",
+      "indexable": true,
+      "schema": ["webpage", "locations"]
+    },
+    {
+      "file": "privacy.html",
+      "path": "/privacy-policy/",
+      "title": "Privacy Policy | Joao Crus BJJ",
+      "description": "Read the Joao Crus BJJ website privacy policy.",
+      "image": "/assets/joao-crus-bjj-logo.png",
+      "indexable": false,
+      "schema": ["webpage"]
+    },
+    {
+      "file": "terms.html",
+      "path": "/terms/",
+      "title": "Website Terms | Joao Crus BJJ",
+      "description": "Read the Joao Crus BJJ website terms.",
+      "image": "/assets/joao-crus-bjj-logo.png",
+      "indexable": false,
+      "schema": ["webpage"]
+    },
+    {
+      "file": "thank-you.html",
+      "path": "/thank-you/",
+      "title": "Thank You | Joao Crus BJJ",
+      "description": "Your request has been received by Joao Crus BJJ.",
+      "image": "/assets/joao-crus-bjj-logo.png",
+      "indexable": false,
+      "schema": []
+    },
+    {
+      "file": "about-ai-coaches.html",
+      "path": "/about-ai-coaches/",
+      "title": "AI Coach Portrait Comparison | Joao Crus BJJ",
+      "description": "Private design comparison for Joao Crus BJJ coach portraits.",
+      "image": "/assets/campaign-images/joao-crus.webp",
+      "indexable": false,
+      "schema": []
+    }
+  ]
+}
