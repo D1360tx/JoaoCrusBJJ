@@ -124,6 +124,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - ✅ Keep the strongest toddler copy, FAQ, schedule, and age-3 positioning inside that shared system rather than launching unrelated visual systems.
 - ✅ Preserve prior concepts for comparison; build the cohesive full-site version in a new `site/campaign/` directory with shared components.
 - ✅ The shared site header will use a **Programs dropdown** that links directly to the age-specific Little Champions 3–7, Youth 8–12, and Teen 13–17 pages. Age-group landing pages retain the same global header and add a smaller contextual anchor bar below it for in-page navigation.
+- ✅ **Approved coach portraits (2026-07-29):** use the approved AI coach portraits in the About team grid and throughout the canonical Coaches hub. Keep Joao's real academy portrait in the About hero. Remove comparison-preview labeling because the coach portraits are approved for production.
 - 🟡 Home, Programs, Schedule, and Locations will test distinct page-specific AI hero concepts in the review build. These remain labeled concepts until final photography is approved.
 - 🟡 Build one shared schedule data source/component so every page displays the same current times.
 - 🟡 Maintain a single primary conversion goal per campaign page, plus text/call as the fallback.
