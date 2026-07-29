@@ -1,0 +1,50 @@
+source_url,source_sitemap,proposed_action,proposed_destination,status,notes
+https://joaocrusbjj.com/,page,PRESERVE,https://joaocrusbjj.com/,READY,Homepage remains homepage
+https://joaocrusbjj.com/austin-brazilian-jiu-jitsu/,page,PRESERVE,https://joaocrusbjj.com/austin-brazilian-jiu-jitsu/,READY,Canonical Austin location page
+https://joaocrusbjj.com/classes-schedule/,page,PRESERVE,https://joaocrusbjj.com/classes-schedule/,READY,Canonical schedule page
+https://joaocrusbjj.com/books-and-podcast/,page,PRESERVE,,CONTENT-GAP,Authority asset should not be discarded; new build needs this page
+https://joaocrusbjj.com/got-questions/,page,301,https://joaocrusbjj.com/contact/,PROPOSED,Confirm whether unique FAQ content should be moved first
+https://joaocrusbjj.com/team-building/,page,PRESERVE,https://joaocrusbjj.com/team-building/,READY,Canonical teams page
+https://joaocrusbjj.com/kids-program/,page,PRESERVE,https://joaocrusbjj.com/kids-program/,READY,Canonical kids hub
+https://joaocrusbjj.com/6-weeks-of-confidence/,page,REVIEW,,BLOCKED,Offer and guarantee are not finalized
+https://joaocrusbjj.com/adults-program/,page,PRESERVE,https://joaocrusbjj.com/adults-program/,READY,Canonical adult program page
+https://joaocrusbjj.com/testimonials/,page,PRESERVE,,CONTENT-GAP,Valuable trust page; migrate verified testimonials before cutover
+https://joaocrusbjj.com/coaches/,page,PRESERVE,https://joaocrusbjj.com/coaches/,READY,Canonical coaching hub
+https://joaocrusbjj.com/training-programs/,page,PRESERVE,https://joaocrusbjj.com/training-programs/,READY,Canonical program directory
+https://joaocrusbjj.com/bjj-messenger/,page,REVIEW,,BLOCKED,Confirm whether this product remains part of the authority hub
+https://joaocrusbjj.com/boundary-guard/,page,REVIEW,,BLOCKED,Separate business line; preserve until architecture is approved
+https://joaocrusbjj.com/kids-bjj-blueprint-landing/,page,REVIEW,,BLOCKED,Lead-magnet path and form destination require confirmation
+https://joaocrusbjj.com/privacy-policy/,page,PRESERVE,https://joaocrusbjj.com/privacy-policy/,BLOCKED,New legal copy must be finalized before indexation
+https://joaocrusbjj.com/terms/,page,PRESERVE,https://joaocrusbjj.com/terms/,BLOCKED,New legal copy must be finalized before indexation
+https://joaocrusbjj.com/contact-form/,page,301,https://joaocrusbjj.com/contact/,PROPOSED,Legacy form page
+https://joaocrusbjj.com/contact/,page,PRESERVE,https://joaocrusbjj.com/contact/,READY,Canonical contact page
+https://joaocrusbjj.com/free-class/,page,REVIEW,,BLOCKED,Trial structure is not final
+https://joaocrusbjj.com/wp-booking-calendar-time-appointments/,page,REVIEW,,BLOCKED,Legacy booking endpoint; confirm active links and booking migration
+https://joaocrusbjj.com/wp-booking-calendar-contact/,page,REVIEW,,BLOCKED,Legacy booking endpoint; confirm active links and booking migration
+https://joaocrusbjj.com/wp-booking-calendar-time-slots/,page,REVIEW,,BLOCKED,Legacy booking endpoint; confirm active links and booking migration
+https://joaocrusbjj.com/wp-booking-calendar-full-day/,page,REVIEW,,BLOCKED,Legacy booking endpoint; confirm active links and booking migration
+https://joaocrusbjj.com/in-house-tournament/,page,PRESERVE,,CONTENT-GAP,Event history may carry links and local authority
+https://joaocrusbjj.com/1381-2/,page,301,https://joaocrusbjj.com/,PROPOSED,Inspect content and backlinks before approval
+https://joaocrusbjj.com/wp-booking-calendar/,page,REVIEW,,BLOCKED,Legacy booking endpoint; do not remove until replacement is live
+https://joaocrusbjj.com/jcbjj-waiver/,page,PRESERVE,,CONTENT-GAP,Operational document may still be used by members
+https://joaocrusbjj.com/wpbc-bfb-preview/,page,410,,PROPOSED,App preview URL; verify no external links before removal
+https://joaocrusbjj.com/the-complete-bjj-coach/,page,PRESERVE,,CONTENT-GAP,Joao authority or product asset
+https://joaocrusbjj.com/the-children-bjj-blueprint/,page,PRESERVE,,CONTENT-GAP,Joao authority or product asset
+https://joaocrusbjj.com/summer-camp/,page,PRESERVE,,CONTENT-GAP,Seasonal local search asset; archive or update intentionally
+https://joaocrusbjj.com/wpbc-booking-received/,page,REVIEW,,BLOCKED,Legacy booking confirmation URL
+https://joaocrusbjj.com/brazilian-jiu-jitsu-teaches-children-to-manage-emotions/,page,REVIEW,,DUPLICATE-CHECK,Potential duplicate of article URL; consolidate with strongest canonical
+https://joaocrusbjj.com/how-bjj-helps-special-needs-children-regulate-process-thrive/,page,PRESERVE,,CONTENT-GAP,High-sensitivity article; migrate with careful sourcing and language
+https://joaocrusbjj.com/home-page-2/,page,301,https://joaocrusbjj.com/,PROPOSED,Legacy duplicate homepage
+https://joaocrusbjj.com/shop/,page,REVIEW,,BLOCKED,Confirm whether ecommerce remains in scope
+https://joaocrusbjj.com/blog/,post,PRESERVE,https://joaocrusbjj.com/blog/,CONTENT-GAP,Blog index must remain if articles are migrated
+https://joaocrusbjj.com/7-ways-bjj-builds-confidence/,post,PRESERVE,https://joaocrusbjj.com/7-ways-bjj-builds-confidence/,CONTENT-GAP,Migrate and improve firsthand support
+https://joaocrusbjj.com/the-paradox-of-vulnerability-on-the-mats-what-brazilian-jiu-jitsu-teaches-us-about-real-strength/,post,PRESERVE,https://joaocrusbjj.com/the-paradox-of-vulnerability-on-the-mats-what-brazilian-jiu-jitsu-teaches-us-about-real-strength/,CONTENT-GAP,Migrate article and author attribution
+https://joaocrusbjj.com/how-brazilian-jiu-jitsu-teaches-children-to-manage-their-emotions/,post,PRESERVE,https://joaocrusbjj.com/how-brazilian-jiu-jitsu-teaches-children-to-manage-their-emotions/,CONTENT-GAP,Migrate with claim-safe sourcing
+https://joaocrusbjj.com/how-brazilian-jiu-jitsu-helps-children-manage-anxiety-a-different-approach-to-martial-arts/,post,PRESERVE,https://joaocrusbjj.com/how-brazilian-jiu-jitsu-helps-children-manage-anxiety-a-different-approach-to-martial-arts/,CONTENT-GAP,Migrate with careful mental-health language and sources
+https://joaocrusbjj.com/category/uncategorized/,category,301,https://joaocrusbjj.com/blog/,PROPOSED,Do not preserve an empty uncategorized archive
+https://joaocrusbjj.com/product/ceremonial-grade-matcha/,product,410,,OWNER-CONFIRM,Appears unrelated to BJJ and likely template content
+https://joaocrusbjj.com/product/fair-trade-matcha-powder/,product,410,,OWNER-CONFIRM,Appears unrelated to BJJ and likely template content
+https://joaocrusbjj.com/product/organic-matcha-green-tea/,product,410,,OWNER-CONFIRM,Appears unrelated to BJJ and likely template content
+https://joaocrusbjj.com/product-category/tea/,product-category,410,,OWNER-CONFIRM,Appears unrelated to BJJ and likely template content
+https://joaocrusbjj.com/product-category/organic/,product-category,410,,OWNER-CONFIRM,Appears unrelated to BJJ and likely template content
+https://joaocrusbjj.com/product-category/powder/,product-category,410,,OWNER-CONFIRM,Appears unrelated to BJJ and likely template content
