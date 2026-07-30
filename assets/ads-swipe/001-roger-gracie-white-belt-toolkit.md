@@ -1,9 +1,13 @@
 # 001 Roger Gracie TV | White Belt Toolkit
 
-**Captured:** 2026-07-27  
-**Source:** Instagram Story paid ad from verified `@rogergracie`  
-**Landing page:** [Roger Gracie's White Belt Toolkit](https://rogergracietv.com/pages/roger-gracies-white-belt-toolkit)  
-**Ad asset:** [`images/001-roger-gracie-white-belt-toolkit-instagram-story.png`](images/001-roger-gracie-white-belt-toolkit-instagram-story.png)  
+**Captured:** 2026-07-27 and 2026-07-30<br>
+**Source:** Instagram Story paid ad and square feed video from verified `@rogergracie`<br>
+**Square video post:** [Instagram DOnGX--gA0t](https://www.instagram.com/p/DOnGX--gA0t/)<br>
+**Landing page:** [Roger Gracie's White Belt Toolkit](https://rogergracietv.com/pages/roger-gracies-white-belt-toolkit)<br>
+**Story asset:** [`images/001-roger-gracie-white-belt-toolkit-instagram-story.png`](images/001-roger-gracie-white-belt-toolkit-instagram-story.png)<br>
+**Square video:** [`video/001-roger-gracie-white-belt-toolkit-square.mp4`](video/001-roger-gracie-white-belt-toolkit-square.mp4)<br>
+**Square contact sheet:** [`images/001-roger-gracie-white-belt-toolkit-square-contact-sheet.jpg`](images/001-roger-gracie-white-belt-toolkit-square-contact-sheet.jpg)<br>
+**Square-video capture:** [`raw/roger-gracie-white-belt-toolkit/2026-07-30/square-video-ad.md`](raw/roger-gracie-white-belt-toolkit/2026-07-30/square-video-ad.md)<br>
 **Status:** Captured and analyzed
 
 ## Snapshot
@@ -47,6 +51,58 @@ Instagram also displays the verified `rogergracie` account and “Followed by ma
 - **Offer compression:** Product, price, bonus, and CTA are understandable in seconds.
 - **Identity cue:** “White Belt” lets the viewer self-select immediately.
 - **Pattern interrupt:** “JIU-JITSU IS EASY” creates tension with the beginner's expectation that it is confusing or difficult.
+
+## Square video variant
+
+### On-screen sequence
+
+The 14.8-second square feed video compresses the offer into four beats:
+
+1. **Product and price:** “The White Belt Toolkit” and “Just $49.99!”
+2. **Problem-stage promise:** “The ultimate survival guide for beginners.”
+3. **Authority mechanism:** “Progress faster with Roger as your mentor.”
+4. **Offer stack:** “Free Nogi Essentials course worth $49.99!”
+
+Roger's **“JIU-JITSU IS EASY”** shirt remains visible in the opening product card. Coaching and technique footage carry the rest of the video. There is no intelligible sales narration and no explicit in-video CTA in the captured source.
+
+### Why it works
+
+- **The offer is understood immediately.** Product identity and price appear before any explanation.
+- **Authority is demonstrated.** Roger is shown teaching and physically demonstrating, not merely used as a portrait.
+- **The benefit language is stage-specific.** “Survival guide for beginners” addresses the immediate white-belt experience.
+- **The mechanism is personal.** The product is framed as Roger mentoring the buyer.
+- **The bonus closes the sequence.** Ending on an equal-stated-value bonus maximizes perceived value.
+- **It works without sound.** Every essential sales point is visible as text.
+
+### Story versus square video
+
+| Element | Vertical Story | Square video |
+|---|---|---|
+| Primary job | Fast offer recognition and click | Offer recognition plus authority demonstration |
+| Movement | Static | Coaching and technique footage |
+| Copy density | Product, price, bonus, CTA | Product, price, two benefits, bonus |
+| Explicit CTA | “Claim this offer” sticker | None inside the source video |
+| Authority | Portrait and verified account | Portrait plus real instructional footage |
+| Best placement role | Story/Reels direct response | Feed prospecting or retargeting |
+
+### Weaknesses
+
+- Without the surrounding ad CTA, the video does not tell the viewer what to do next.
+- “Progress faster” is broad and unsupported inside the 15-second creative.
+- The video does not show lesson count, curriculum specificity, or a student result.
+- The creative depends heavily on Roger's recognition and reputation.
+
+### Direct Joao application
+
+The useful pattern is a short, silent-readable sequence built from real class footage:
+
+1. **Audience:** “BJJ built for ages 3–5.”
+2. **Method:** “45 minutes. Short activities. Clear purpose.”
+3. **Authority:** “A Montessori-informed method shaped by 25+ years of coaching.”
+4. **Emotional outcome:** “Jiu-jitsu is how we do it. Confidence is what they keep.”
+5. **CTA:** “Find their first class.”
+
+Do not add an unconfirmed price, free trial, or savings claim. For Joao, the differentiator should be the age-specific teaching method and real academy experience rather than a discounted bonus stack.
 
 ## Landing-page flow
 
@@ -151,5 +207,8 @@ The useful lesson is the offer architecture, not the exact product or price.
 - [Live landing page](https://rogergracietv.com/pages/roger-gracies-white-belt-toolkit)
 - [`raw/roger-gracie-white-belt-toolkit/2026-07-27/landing-page.md`](raw/roger-gracie-white-belt-toolkit/2026-07-27/landing-page.md)
 - [`images/001-roger-gracie-white-belt-toolkit-instagram-story.png`](images/001-roger-gracie-white-belt-toolkit-instagram-story.png)
+- [`video/001-roger-gracie-white-belt-toolkit-square.mp4`](video/001-roger-gracie-white-belt-toolkit-square.mp4)
+- [`images/001-roger-gracie-white-belt-toolkit-square-contact-sheet.jpg`](images/001-roger-gracie-white-belt-toolkit-square-contact-sheet.jpg)
+- [`raw/roger-gracie-white-belt-toolkit/2026-07-30/square-video-ad.md`](raw/roger-gracie-white-belt-toolkit/2026-07-30/square-video-ad.md)
 
-All observations are a snapshot from 2026-07-27. Pricing and page structure may change.
+Observations reflect captures from 2026-07-27 and 2026-07-30. Pricing and page structure may change.
