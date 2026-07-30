@@ -1,12 +1,15 @@
 # 002 HPU Coaching | White-to-Blue-Belt 90-Day System
 
 **Captured:** 2026-07-30  
-**Source:** Instagram Reel from verified `@hpucoaching`, supplied as a paid-ad reference  
+**Source:** Instagram Reel and static feed ad from verified `@hpucoaching`<br>
 **Post:** [Instagram DaxGyo0sQGM](https://www.instagram.com/p/DaxGyo0sQGM/)  
 **Landing page:** [HPU Coaching](https://yourbjjgame.com/hpu-coaching)  
 **Video:** [`video/002-hpu-coaching-white-to-blue-belt.mp4`](video/002-hpu-coaching-white-to-blue-belt.mp4)  
 **Contact sheet:** [`images/002-hpu-coaching-contact-sheet.jpg`](images/002-hpu-coaching-contact-sheet.jpg)  
+**Static ad:** [`images/002-hpu-coaching-static-ad.jpg`](images/002-hpu-coaching-static-ad.jpg)<br>
+**Expanded caption:** [`images/002-hpu-coaching-static-ad-caption.jpg`](images/002-hpu-coaching-static-ad-caption.jpg)<br>
 **Timed transcript:** [`raw/hpu-coaching/2026-07-30/video-transcript.srt`](raw/hpu-coaching/2026-07-30/video-transcript.srt)  
+**Static-ad transcription:** [`raw/hpu-coaching/2026-07-30/static-ad-caption.md`](raw/hpu-coaching/2026-07-30/static-ad-caption.md)<br>
 **Raw page capture:** [`raw/hpu-coaching/2026-07-30/landing-page.md`](raw/hpu-coaching/2026-07-30/landing-page.md)  
 **Status:** Captured and analyzed
 
@@ -14,7 +17,7 @@
 
 ## Executive read
 
-This is a strong value-first advertorial funnel. The Reel gives away a complete strategic framework before asking for anything. The landing page then sells the same idea at greater resolution: faster progress comes from an ordered system, not more disconnected techniques.
+This is a strong two-angle advertorial funnel. The Reel gives away a complete strategic framework before asking for anything. The static ad leads with a six-month student result and direct-response proof. The landing page then sells the same idea at greater resolution: faster progress comes from an ordered system, not more disconnected techniques.
 
 The strongest feature is not the aggressive copy. It is the continuity of the mechanism:
 
@@ -81,6 +84,64 @@ The memorable governing line is:
 - No polished commercial voiceover or artificial lifestyle montage
 
 It feels like useful native BJJ content first and an advertisement second.
+
+## Static creative variant
+
+### Headline and hierarchy
+
+> FROM WHITE BELT TO<br>
+> **BLUE BELT IN RECORD TIME**
+
+The second line occupies a diagonal blue bar and receives the strongest contrast. The ad then layers three types of proof beneath it:
+
+1. Josh pictured actively grappling
+2. A student post titled “White to Blue in 6 months”
+3. Visible engagement on the embedded post
+
+The Instagram-native “Learn more” bar makes the next step explicit, which fixes the CTA gap in the public Reel.
+
+### Caption structure
+
+1. **Specific result:** White to blue belt in six months
+2. **Objection:** “That's just luck right?”
+3. **Rebuttal:** “Wrong.”
+4. **Mechanism:** A structured process that turns chaos into clarity
+5. **Founder proof:** Ranking, ADCC Trials, and rapid black-belt progression
+6. **Scale proof:** Claimed use by more than 1,000 students
+7. **Enemy:** Generic advice to “just keep showing up”
+8. **Risk reversal:** 100% money-back guarantee
+9. **CTA:** Click to learn more
+
+### Why this version is persuasive
+
+- It leads with a customer transformation instead of the founder's result.
+- The embedded post looks like native community evidence rather than a polished testimonial card.
+- The copy answers the obvious “outlier or luck” objection immediately.
+- The mechanism stays simple: structured training replaces chaos and slow progress.
+- The image, caption, and landing page all reinforce speed through structure.
+
+### Static-ad credibility risks
+
+- “In record time” and “just 6 months” are exceptional-result claims. They need qualification and substantiation.
+- “Number 9th ranking” is grammatically incorrect.
+- “Over 1000+” repeats the same qualifier twice.
+- “Won ADCC trials twice” and the ranking claim are not sourced inside the ad.
+- The caption says the only risk is another year of slow progress, but the landing-page guarantee has participation conditions.
+- The full testimonial body is too small to read in-feed. It functions as a proof visual, while only the title and result are realistically scannable.
+- The claim says the structured process caused the student's belt speed, but the ad does not isolate other factors such as training frequency, coach standards, competition background, or academy promotion criteria.
+
+### Reel versus static creative
+
+| Attribute | Educational Reel | Static proof ad |
+|---|---|---|
+| Primary hook | “Here is what I would do” | “Blue belt in record time” |
+| Proof mode | Josh's teaching and live examples | Student result and social engagement |
+| Viewer value | Immediate strategic lesson | Fast transformation and curiosity |
+| Mechanism detail | High | Low |
+| CTA clarity | Weak in public post | Strong “Learn more” |
+| Best audience | Cold, problem-aware viewers | Warm or retargeted, outcome-aware viewers |
+
+The pair is more useful than either ad alone. The Reel earns attention and demonstrates expertise. The static version converts the mechanism into a direct outcome and proof claim.
 
 ## Landing-page message architecture
 
@@ -156,16 +217,16 @@ The page reframes a content library as an ordered roadmap with progress tracking
 
 ## Ad-to-page message match
 
-| Element | Reel | Landing page | Match |
-|---|---|---|---|
-| Audience | White belts seeking blue | White and blue belts | Strong |
-| Pain | Slow, random development | Getting smashed and collecting disconnected moves | Strong |
-| Mechanism | Ordered positional progression | Three-phase 90-day system | Excellent |
-| Authority | Josh teaching and rolling | Josh's progression and competition history | Strong |
-| Promise | Get close to blue belt faster | Transform the buyer's game in 90 days | Strong |
-| CTA bridge | No explicit offer in public Reel | Paid monthly coaching | Weak |
+| Element | Reel | Static ad | Landing page | Match |
+|---|---|---|---|---|
+| Audience | White belts seeking blue | White belts seeking faster promotion | White and blue belts | Strong |
+| Pain | Slow, random development | Slow progress | Getting smashed and collecting disconnected moves | Strong |
+| Mechanism | Ordered positional progression | Structure turns chaos into clarity | Three-phase 90-day system | Excellent |
+| Authority | Josh teaching and rolling | Founder credentials plus student result | Josh's progression and competition history | Strong |
+| Promise | Get close to blue belt faster | White to blue in record time | Transform the buyer's game in 90 days | Strong but aggressive |
+| CTA bridge | No explicit offer in public Reel | “Learn more” | Paid monthly coaching | Static ad is strong |
 
-The thematic transition is excellent, but the public Reel does not explain why the next logical step is HPU Coaching. The paid-ad version may supply that bridge through Meta's CTA and primary text.
+The thematic transition is excellent. The public Reel does not explain why the next logical step is HPU Coaching, while the static ad supplies the missing direct-response bridge through its result claim, caption, and “Learn more” CTA.
 
 ## What works
 
