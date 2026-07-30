@@ -176,15 +176,15 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - ✅ Jetpack Stats exists and may provide historical traffic baseline data.
 - ✅ A WordPress Booking Calendar plugin is installed; its actual booking flow is still unknown.
 - ✅ Twilio is not operational; A2P registration has not started.
-- 🟡 **Lead infrastructure recommendation (updated 2026-07-29):** compare HighLevel against Zen Planner Engage before procurement. Retain Beehiiv for explicitly opted-in newsletter subscribers and Zen Planner Studio for existing members/billing. Choose Engage if it passes the custom-form, consent, attribution, workflow, two-way messaging, member-conversion, API/export, A2P, and total-cost tests and its native member integration justifies the premium; otherwise use HighLevel as the prospect CRM and automation system. Avoid Make/n8n in the launch-critical path unless direct API/workflow integration proves insufficient. Final platform approval and account ownership are pending.
-- ⛔ Before creating either CRM, identify whether the advertising agency already operates a HighLevel subaccount or another lead platform for Joao and secure the contacts, consent evidence, conversations, campaigns, ownership, and transition terms.
+- ✅ **Lead infrastructure selected (2026-07-29):** use HighLevel as the prospect CRM, pipeline, booking, email/SMS automation, consent/attribution ledger, and staff follow-up system; retain Beehiiv for explicitly opted-in newsletter subscribers and Zen Planner Studio for enrolled members/billing. Native Vercel forms will post through a server-side endpoint to HighLevel and Beehiiv as appropriate. Avoid Make/n8n in the launch-critical path unless direct API/workflow integration proves insufficient.
+- ✅ The new HighLevel implementation is intentionally independent of the advertising agency. Agency CRM access, ownership, and historical-lead export are not launch prerequisites. Any later paid-campaign cutover or historical import is a separate transition with explicit source/consent mapping.
 
 ### Implementation sequence
 
 1. Resolve offer, rate card, booking, and design decisions.
 2. Create school-domain email and establish authenticated sending.
 3. Connect real forms, booking, Beehiiv, GA4, Meta events, and source attribution.
-4. Start Twilio/A2P only after ownership, number strategy, consent, and agency-overlap decisions are documented.
+4. Start HighLevel phone/A2P setup only after account ownership, number strategy, consent, and use cases are documented.
 5. Launch email-first if A2P approval is not complete; do not delay the entire campaign solely for SMS.
 6. Keep Zen Planner for existing billing/membership until migration requirements are proven.
 

@@ -27,18 +27,16 @@ Update this document whenever a launch dependency is completed or a platform dec
 
 ## 3. CRM and lead operations
 
-- [ ] 🟡 Approve the selected prospect CRM after the HighLevel versus Zen Planner Engage procurement gate; retain Beehiiv and Zen Planner Studio unless a separate migration is approved.
-- [ ] ⛔ Review the existing Zen Planner account and compare Zen Planner Engage against HighLevel before purchasing either platform.
-- [ ] ⬜ Test Zen Planner Engage custom-form/API ingestion, consent and attribution fields, workflows, two-way messaging, appointment/no-show handling, Beehiiv sync, prospect-to-member conversion, exports, A2P support, and total usage charges.
-- [ ] ⛔ Identify whether the advertising agency already uses HighLevel or another CRM for Joao; document account ownership, lead export, consent records, conversations, campaigns, and transition terms before creating a parallel system.
+- [x] ✅ Architecture approved: HighLevel for prospects/automation, Beehiiv for newsletters, and Zen Planner for enrolled members/billing.
+- [ ] ⛔ Create a dedicated HighLevel account that is independent of the advertising agency.
+- [ ] ⬜ Treat any agency CRM and historical-lead import as a separate, optional transition project; do not block the owned website/CRM launch on agency access.
 - [ ] ⬜ Confirm CRM account ownership, billing owner, administrators, and export rights.
 - [ ] ⬜ Configure contact fields, tags, deduplication, locations, and program interests.
 - [ ] ⬜ Configure the prospect pipeline and staff ownership rules.
 - [ ] ⬜ Define staff speed-to-lead SLA, notifications, escalation, and daily task workflow.
 - [ ] ⬜ Define enrolled-student handoff into Zen Planner.
-- [ ] ⛔ Audit the current agency's lead forms, CRM/dialer, ownership terms, response SLA, call logs, consent records, and export/API access.
-- [ ] ⬜ Define agency lead routing and deduplication so the same person is not contacted by two uncoordinated workflows.
-- [ ] ⬜ Import historical leads only after mapping source and consent status; never assume old leads have current SMS permission.
+- [ ] ⬜ When agency campaigns are intentionally moved, define the cutover date and route new paid leads to HighLevel; avoid running two follow-up systems on the same new leads.
+- [ ] ⬜ If historical agency leads are later imported, map source and consent status; never assume old leads have current SMS permission.
 - [ ] ⬜ Create backup/export and automation-error review procedures.
 
 See `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md`.

@@ -1,6 +1,6 @@
 # Lead Infrastructure Recommendation
 
-**Status:** Shortlisted architecture, pending Zen Planner Engage comparison and Diego/Joao approval
+**Status:** HighLevel + Beehiiv + Zen Planner selected by Diego on 2026-07-29; account ownership and implementation remain pending
 
 **Reviewed:** 2026-07-29
 
@@ -8,34 +8,33 @@
 
 Use a deliberately small hybrid stack:
 
-1. **HighLevel Starter as the preferred prospect CRM and automation system if Zen Planner Engage fails the procurement test below.**
+1. **HighLevel Starter as the prospect CRM and automation system of record.**
 2. **Beehiiv as the newsletter publishing channel.**
 3. **Zen Planner as the existing member and billing system.** Do not replace it without a separate migration decision.
-4. **Native Vercel forms through a server-side endpoint** that upserts the selected CRM and records consent and attribution.
-5. **No Make or n8n in the critical path at launch.** Use a direct Beehiiv API subscription step or a selected-CRM workflow webhook. Add an integration platform only when a real cross-system workflow cannot be handled reliably inside this stack.
+4. **Native Vercel forms through a server-side endpoint** that upserts HighLevel and records consent and attribution.
+5. **No Make or n8n in the critical path at launch.** Use a direct Beehiiv API subscription step or a HighLevel workflow webhook. Add an integration platform only when a real cross-system workflow cannot be handled reliably inside this stack.
 
-Before importing or redirecting paid-ad leads, identify the current agency's lead destination, ownership terms, consent records, call logs, and export/API options. The new CRM should receive every first-party and paid lead without silently breaking the agency's active follow-up process.
+The new stack is intentionally independent of the current advertising agency. Agency CRM access is not a launch prerequisite. Keep any agency-managed paid-lead flow separate until Diego deliberately redirects or retires it. Import historical agency leads only if useful and only after source and consent status are mapped.
 
 This gives the academy one lead record, one prospect pipeline, email and SMS workflows, booking, and a scalable newsletter without building a custom CRM.
 
-## Procurement gate: compare Zen Planner Engage before buying HighLevel
+## Decision: HighLevel selected over Zen Planner Engage
 
-Joao already uses Zen Planner, and Zen Planner now sells **Engage** as a CRM and marketing extension. Its current official pages list lead forms, appointment scheduling, lead tracking, automated workflows, more than 100 fitness campaigns, and two-way text and email. The pricing page currently lists Engage at **$249/month for Zen Planner customers**, with additional usage charges potentially applying.
+Zen Planner Engage was evaluated because Joao already uses Zen Planner. Its current official pages list lead forms, appointment scheduling, lead tracking, automated workflows, more than 100 fitness campaigns, and two-way text and email. The pricing page currently lists Engage at **$249/month for Zen Planner customers**, with additional usage charges potentially applying.
 
-Engage is the only near-term alternative that could be operationally better than HighLevel because it may keep the prospect-to-member lifecycle in the same vendor ecosystem. It is more expensive than HighLevel Starter, and its public documentation does not establish that its API, custom-site ingestion, workflow depth, consent model, reporting, and data export are as flexible as required.
+Diego selected HighLevel because it provides the required custom-form/API path, CRM pipeline, workflows, booking, email/SMS, consent fields, attribution fields, and staff operations at a lower platform price with a better-documented API. Zen Planner remains the enrolled-member and billing system, so there is no membership migration.
 
-Do not purchase either platform until a Zen Planner account review or demo proves whether Engage can:
+Selection does not mean those requirements work automatically. Implementation must prove that the Vercel endpoint and HighLevel configuration:
 
 1. ingest the custom Vercel forms without replacing the approved website experience;
 2. preserve consent evidence, original attribution, UTMs, click IDs, and disclosure versions;
 3. support the required lead stages, staff tasks, appointment reminders, no-show recovery, and two-way conversations;
 4. synchronize explicit newsletter subscriptions and suppressions with Beehiiv;
-5. convert a prospect into an existing Zen Planner member record without duplication;
-6. expose reliable API/webhook, export, error logging, and account-ownership controls;
-7. complete A2P registration and disclose all message, phone, email, and campaign usage charges;
-8. coexist with or replace the current advertising agency's lead platform without splitting contacts, consent evidence, conversations, or follow-up ownership.
+5. hand enrolled prospects to Zen Planner without duplicate prospect records;
+6. provide reliable API/webhook, export, error logging, and account-ownership controls;
+7. complete A2P registration and disclose all message, phone, email, and campaign usage charges.
 
-**Decision rule:** choose Zen Planner Engage if it passes those tests and the value of native member integration justifies the higher monthly cost. Otherwise choose HighLevel Starter.
+Zen Planner Engage remains a documented alternative, not an active procurement gate.
 
 ## Why HighLevel
 
@@ -52,7 +51,7 @@ HighLevel is the best operational fit for a local academy because its core platf
 
 The official Starter plan is currently listed at **$97/month** with three subaccounts, unlimited contacts, unlimited users, and usage-based charges for email, SMS, and phone activity. Verify pricing again before purchase.
 
-If selected, HighLevel should own operational facts such as lead status, program interest, location, free-class booking, staff follow-up, consent, and source attribution.
+HighLevel should own operational facts such as lead status, program interest, location, free-class booking, staff follow-up, consent, and source attribution.
 
 ## Why Beehiiv stays
 
@@ -60,9 +59,9 @@ Beehiiv is well suited to publishing and growing Joao's newsletter. Its official
 
 Beehiiv should **not** be the academy CRM. It has no equivalent opportunity pipeline, staff tasking, free-class follow-up, or two-way SMS operations.
 
-Only contacts who explicitly choose the newsletter should be synchronized to Beehiiv. The selected CRM remains the canonical contact record and consent ledger.
+Only contacts who explicitly choose the newsletter should be synchronized to Beehiiv. HighLevel remains the canonical prospect record and consent ledger.
 
-Newsletter unsubscribe and suppression changes must synchronize back to the selected CRM. CRM do-not-contact changes must also prevent future Beehiiv sends. This can be event-driven with a scheduled reconciliation as a safety net.
+Newsletter unsubscribe and suppression changes must synchronize back to HighLevel. HighLevel do-not-contact changes must also prevent future Beehiiv sends. This can be event-driven with a scheduled reconciliation as a safety net.
 
 ## Why not the other primary options
 
@@ -72,7 +71,7 @@ Newsletter unsubscribe and suppression changes must synchronize back to the sele
 | **Sendlane** | Do not start a new implementation | Ecommerce-oriented, and its site states that Sendlane has been acquired by Privy. This introduces unnecessary product-transition risk. |
 | **ActiveCampaign** | Strong runner-up | Excellent email automation and a capable CRM, but the academy would still assemble more separate pieces for scheduling, conversations, and local-business SMS operations. |
 | **HubSpot** | Not efficient for this use case | Powerful CRM, but advanced marketing automation and scaling marketing-contact costs are more than the academy currently needs. |
-| **Zen Planner Engage** | Evaluate before procurement | The strongest no-migration alternative because Joao already uses Zen Planner. Higher monthly cost than HighLevel, with API, custom-form, workflow, consent, export, and usage details still to verify in the account or demo. |
+| **Zen Planner Engage** | Not selected | The strongest no-migration alternative because Joao already uses Zen Planner, but it has a higher monthly platform price and its public documentation does not establish a better custom-form/API path for this build. Reconsider only if native Zen Planner integration later becomes materially more valuable. |
 | **Gymdesk or Kicksite** | Only if replacing Zen Planner | Both advertise member management, billing, attendance, lead management, email/SMS, and automations. They could provide a lower-cost consolidated operating platform, but their public feature sets do not establish workflow/funnel parity with HighLevel or Engage. Either choice requires a member, payment, attendance, waiver, and historical-data migration. Do not migrate only to avoid one CRM connection. |
 | **Spark Membership** | Demo only if considering a Zen Planner replacement | The strongest martial-arts-specific all-in-one migration candidate reviewed: CRM, trials, booking, billing, funnels, and email/SMS automation. Public pricing is unavailable, so total cost, API/custom-form support, exports, payment migration, and contractual terms require a vendor demo before comparison. |
 | **PushPress Core + Grow** | Not for the current launch | Can combine gym operations with lead pipelines and email/SMS automation, but it requires migrating Zen Planner and Grow is currently listed starting at $329/month before messaging and other possible costs. |
@@ -84,7 +83,7 @@ Do not use either as the database or system of record.
 
 Use an integration layer later only for workflows such as:
 
-- selected-CRM-to-Beehiiv synchronization that cannot be handled directly;
+- HighLevel-to-Beehiiv synchronization that cannot be handled directly;
 - enrollment handoff to Zen Planner if a reliable API path exists;
 - cross-platform error queues and reconciliation;
 - data warehouse or reporting exports.
@@ -93,7 +92,7 @@ If needed, **n8n Cloud** is the preferred long-term technical option because it 
 
 ## Data model
 
-The selected CRM should store one contact per parent or adult lead, deduplicated by normalized email and E.164 phone number.
+HighLevel should store one contact per parent or adult lead, deduplicated by normalized email and E.164 phone number.
 
 Required fields:
 
@@ -134,7 +133,7 @@ Contacts may qualify for more than one journey. Define priority, exit, and frequ
 
 ### Newsletter signup
 
-- Upsert the selected CRM contact and newsletter consent.
+- Upsert the HighLevel contact and newsletter consent.
 - Subscribe to Beehiiv with source and UTM data.
 - Send Beehiiv welcome email.
 - Do not enroll in SMS without separate SMS consent.
@@ -169,7 +168,7 @@ The polished Vercel forms should remain native to the site. Submit them to a ser
 2. blocks obvious spam with a honeypot, rate limits, and Cloudflare Turnstile or equivalent;
 3. normalizes email and phone values;
 4. captures UTMs, referrer, landing page, timestamp, and disclosure version;
-5. upserts the selected CRM contact;
+5. upserts the HighLevel contact;
 6. creates the correct opportunity, tags, and workflow trigger;
 7. subscribes an explicitly opted-in newsletter contact to Beehiiv;
 8. records success/failure without logging unnecessary PII;

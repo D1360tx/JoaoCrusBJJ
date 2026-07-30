@@ -2,7 +2,7 @@
 ### What software runs the email/SMS automation (and the membership backend it feeds off)
 > Created 2026-06-10. Companion to 08 (intake) — final pick depends on intake answers 2.1 (how billing works today), 2.2 (any existing gym software), and budget sign-off (5.4).
 > ⚠️ Pricing below is ballpark from general knowledge — **verify current pricing on vendor sites before presenting numbers to Joao.**
-> ⚠️ **SUPERSEDED 2026-07-29:** This document preserves the June decision trail but is not the current procurement recommendation. Joao's confirmed use of Zen Planner and Beehiiv, the production Vercel site, and current vendor offerings changed the decision. Use `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md` and `docs/GO-LIVE-CHECKLIST.md`. The active gate is Zen Planner Engage versus HighLevel; a custom CRM is deferred.
+> ⚠️ **SUPERSEDED 2026-07-29:** This document preserves the June decision trail but is not the current procurement recommendation. Joao's confirmed use of Zen Planner and Beehiiv, the production Vercel site, and current vendor offerings changed the decision. Use `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md` and `docs/GO-LIVE-CHECKLIST.md`. Diego selected a dedicated HighLevel implementation with Beehiiv and Zen Planner; a custom CRM and Zen Planner Engage are not the launch path.
 
 ---
 
