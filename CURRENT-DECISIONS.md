@@ -48,7 +48,7 @@
 - ✅ Memberships use **12-month agreements with 60-day termination notice**.
 - ✅ Reported business baseline: approximately **$100,000 trailing 12 months**; records/Zen Planner export are still required to document the baseline.
 - ✅ Billing and member management use **Zen Planner**.
-- ✅ Current website inquiries go to **[joaocrus@gmail.com](mailto:joaocrus@gmail.com)** and are not managed in a dedicated CRM.
+- ✅ Current website inquiries go to **[joaocruzbjj@gmail.com](mailto:joaocruzbjj@gmail.com)** and are not managed in a dedicated CRM.
 - ✅ Beehiiv exists with approximately **800 subscribers**, correcting the earlier 8,060 figure. Access and consent/list-quality review remain pending.
 
 ### Locations and schedule
