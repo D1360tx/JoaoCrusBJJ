@@ -105,19 +105,25 @@
       lastBookingTrigger = null;
 
     function contextualBookingDefaults() {
-      var page = location.pathname.split("/").pop();
+      var page = location.pathname.replace(/\/+$/, "").split("/").pop() || "index";
       var programs = {
+        "little-champions": "Little Champions 3–7",
         "little-champions.html": "Little Champions 3–7",
         "toddlers-campaign-purposeful-play.html": "Little Champions 3–7",
+        "youth-bjj": "Youth 8–12",
         "youth.html": "Youth 8–12",
         "youth-campaign-ages-8-12.html": "Youth 8–12",
+        "teens-preview": "Teens 13–17",
         "teens-campaign-ages-13-17.html": "Teens 13–17",
+        "adults-program": "Adults",
         "adults.html": "Adults",
+        "private-bjj-lessons": "Private Coaching",
         "private-coaching.html": "Private Coaching",
+        "team-building": "Team / Corporate",
         "teams.html": "Team / Corporate",
       };
       bookingProgram.value = programs[page] || "";
-      bookingLocation.value = page === "austin.html" ? "Austin" : "";
+      bookingLocation.value = page === "austin-brazilian-jiu-jitsu" || page === "austin.html" ? "Austin" : "";
     }
 
     function openBooking(trigger) {
@@ -139,7 +145,7 @@
       if (bookingDialog.open) bookingDialog.close();
     }
 
-    document.querySelectorAll('a[href$="contact.html"]').forEach(function (link) {
+    document.querySelectorAll('a[href$="contact.html"], a[href$="/contact/"]').forEach(function (link) {
       if (!/(plan|first class|request|ask about)/i.test(link.textContent)) return;
       link.setAttribute("aria-haspopup", "dialog");
       link.addEventListener("click", function (event) {
