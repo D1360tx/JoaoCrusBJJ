@@ -26,6 +26,7 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [11-ORCHESTRATION-REPO-SPEC.md](11-ORCHESTRATION-REPO-SPEC.md) | **Build spec for the custom stack: schema, sequence engine, compliance, 4-week sprint plan** |
 | [12-AD-INTEL-SWEEP-2026-06.md](12-AD-INTEL-SWEEP-2026-06.md) | First competitive ad-intel sweep: competitor offers/funnels, agency shortlist, ad-pattern playbook (Ad Library itself needs a 20-min browser pass — §7) |
 | [13-STUDENT-GROWTH-PLAN.md](13-STUDENT-GROWTH-PLAN.md) | **Growth plan (2026-07): offer options (Kickstart/buddy/guarantee/founding), "6:40 Class" cohort relaunch, EDDM 3-touch direct-mail test, Austin/Lamar question list** |
+| [14-YOUTUBE-GROWTH-SYSTEM.md](14-YOUTUBE-GROWTH-SYSTEM.md) | **YouTube growth and AI-assisted content operating system:** channel architecture, recurring series, production workflow, CTA map, measurement, pilot, automation safeguards |
 | [assets/joao-shared-checklist.md](assets/joao-shared-checklist.md) | Clean client-facing checklist — paste into Google Doc and share with Joao |
 | [assets/url-inventory.md](assets/url-inventory.md) | **Master URL inventory** — every web property, channel, listing, phone/email Joao has (~20 front doors) |
 | [assets/joao-call-talking-points.md](assets/joao-call-talking-points.md) | **Call script** — lead-the-call talking points (reframed from the intake email) with ★ must-get items |
