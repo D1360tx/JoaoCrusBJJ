@@ -22,6 +22,7 @@ Use [`_entry-template.md`](_entry-template.md) for future entries. Historical sn
 | ID | Brand / offer | Format | Audience | Core offer | Best pattern to study | Entry |
 |---:|---|---|---|---|---|---|
 | 001 | Roger Gracie TV, White Belt Toolkit | Instagram Story ad to long-form sales page | Beginner adult BJJ students | $49.99 lifetime course plus a stated $49.99 no-gi bonus | Stage-specific product, simple one-time price, equal-value bonus, authority-led proof | [Analysis](001-roger-gracie-white-belt-toolkit.md) |
+| 002 | HPU Coaching, White-to-Blue-Belt 90-Day System | Value-first Instagram Reel to long-form subscription page | Frustrated white and blue belts | $44/month standard or $125/month premium coaching | Teach the mechanism first, then sell the same ordered system at greater depth | [Analysis](002-hpu-coaching-white-to-blue-belt.md) |
 
 ## Working taxonomy
 
