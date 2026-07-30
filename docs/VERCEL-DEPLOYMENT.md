@@ -52,6 +52,8 @@ RawGitHack is no longer needed for routine review after the Git integration is v
 
 ## Real-domain cutover gate
 
+Track the complete launch gate in `docs/GO-LIVE-CHECKLIST.md`. The proposed CRM, form, email, SMS, and newsletter architecture is documented in `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md`.
+
 Before attaching `joaocrusbjj.com`:
 
 - confirm registrar and DNS ownership;
