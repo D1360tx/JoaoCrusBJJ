@@ -18,6 +18,20 @@ SOURCE = ROOT / "site" / "campaign"
 ASSETS = ROOT / "site" / "assets"
 DIST = ROOT / "dist"
 MANIFEST = SOURCE / "seo-pages.json"
+GTM_CONTAINER_ID = "GTM-596MGPMD"
+
+GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
+    new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    }})(window,document,'script','dataLayer','{GTM_CONTAINER_ID}');</script>
+    <!-- End Google Tag Manager -->"""
+
+GTM_BODY_SNIPPET = f"""<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={GTM_CONTAINER_ID}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->"""
 
 # This superseded comparison page remains available in Git history and
 # RawGitHack previews but is intentionally excluded from production hosting.
@@ -41,6 +55,26 @@ def add_base_element(html: str) -> str:
     return re.sub(
         r"(<head(?:\s[^>]*)?>)",
         r'\1\n    <base href="/">',
+        html,
+        count=1,
+        flags=re.IGNORECASE,
+    )
+
+
+def add_google_tag_manager(html: str) -> str:
+    """Install the owned GTM container once per generated HTML document."""
+    if GTM_CONTAINER_ID in html:
+        return html
+    html = re.sub(
+        r"(<head(?:\s[^>]*)?>)",
+        rf"\1\n    {GTM_HEAD_SNIPPET}",
+        html,
+        count=1,
+        flags=re.IGNORECASE,
+    )
+    return re.sub(
+        r"(<body(?:\s[^>]*)?>)",
+        rf"\1\n    {GTM_BODY_SNIPPET}",
         html,
         count=1,
         flags=re.IGNORECASE,
@@ -86,6 +120,7 @@ def main() -> None:
         source_path = SOURCE / page["file"]
         html = source_path.read_text(encoding="utf-8")
         html = add_base_element(html)
+        html = add_google_tag_manager(html)
         html = rewrite_internal_html_links(html, routes)
         target = output_path(page["path"])
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -94,6 +129,7 @@ def main() -> None:
     for page in EXTRA_PAGES:
         html = page["source"].read_text(encoding="utf-8")
         html = add_base_element(html)
+        html = add_google_tag_manager(html)
         html = rewrite_internal_html_links(html, routes)
         target = output_path(page["path"])
         target.parent.mkdir(parents=True, exist_ok=True)
