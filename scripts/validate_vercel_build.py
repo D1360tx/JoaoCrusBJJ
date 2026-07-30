@@ -15,6 +15,7 @@ DIST = ROOT / "dist"
 DATA = json.loads((SOURCE / "seo-pages.json").read_text(encoding="utf-8"))
 EXCLUDED = {"about-ai-coaches.html"}
 EXTRA_ROUTES = {"/teens-preview/"}
+GTM_CONTAINER_ID = "GTM-596MGPMD"
 ERRORS: list[str] = []
 CHECKS = 0
 
@@ -46,6 +47,9 @@ def main() -> None:
             continue
         html = target.read_text(encoding="utf-8")
         check('<base href="/">' in html, f"{page['path']}: missing root base element")
+        check(html.count(GTM_CONTAINER_ID) == 2, f"{page['path']}: GTM must appear once in the head and once in the noscript fallback")
+        check("googletagmanager.com/gtm.js?id='+i+dl" in html, f"{page['path']}: missing GTM head loader")
+        check(f"googletagmanager.com/ns.html?id={GTM_CONTAINER_ID}" in html, f"{page['path']}: missing GTM noscript fallback")
         check(f'<link rel="canonical" href="https://joaocrusbjj.com{page["path"]}">' in html, f"{page['path']}: canonical does not match manifest")
 
         for match in re.finditer(r'\b(?:href|src|action)=["\']([^"\']+)["\']', html, re.IGNORECASE):
@@ -66,6 +70,7 @@ def main() -> None:
         if target.is_file():
             html = target.read_text(encoding="utf-8")
             check('<base href="/">' in html, f"{route}: missing root base element")
+            check(html.count(GTM_CONTAINER_ID) == 2, f"{route}: GTM must appear once in the head and once in the noscript fallback")
             check('name="robots" content="noindex,nofollow"' in html, f"{route}: preview page must remain noindex")
             for match in re.finditer(r'\b(?:href|action)=["\']([^"\']+)["\']', html, re.IGNORECASE):
                 check(not urlsplit(match.group(1)).path.endswith(".html"), f"{route}: legacy HTML link remains: {match.group(1)}")
