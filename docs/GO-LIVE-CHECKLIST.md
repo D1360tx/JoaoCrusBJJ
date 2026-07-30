@@ -27,9 +27,10 @@ Update this document whenever a launch dependency is completed or a platform dec
 
 ## 3. CRM and lead operations
 
-- [ ] 🟡 Approve or revise the recommended HighLevel + Beehiiv + Zen Planner architecture.
+- [ ] 🟡 Approve the selected prospect CRM after the HighLevel versus Zen Planner Engage procurement gate; retain Beehiiv and Zen Planner Studio unless a separate migration is approved.
 - [ ] ⛔ Review the existing Zen Planner account and compare Zen Planner Engage against HighLevel before purchasing either platform.
 - [ ] ⬜ Test Zen Planner Engage custom-form/API ingestion, consent and attribution fields, workflows, two-way messaging, appointment/no-show handling, Beehiiv sync, prospect-to-member conversion, exports, A2P support, and total usage charges.
+- [ ] ⛔ Identify whether the advertising agency already uses HighLevel or another CRM for Joao; document account ownership, lead export, consent records, conversations, campaigns, and transition terms before creating a parallel system.
 - [ ] ⬜ Confirm CRM account ownership, billing owner, administrators, and export rights.
 - [ ] ⬜ Configure contact fields, tags, deduplication, locations, and program interests.
 - [ ] ⬜ Configure the prospect pipeline and staff ownership rules.
