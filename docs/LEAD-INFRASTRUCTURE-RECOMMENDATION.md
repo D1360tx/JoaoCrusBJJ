@@ -32,7 +32,8 @@ Do not purchase either platform until a Zen Planner account review or demo prove
 4. synchronize explicit newsletter subscriptions and suppressions with Beehiiv;
 5. convert a prospect into an existing Zen Planner member record without duplication;
 6. expose reliable API/webhook, export, error logging, and account-ownership controls;
-7. complete A2P registration and disclose all message, phone, email, and campaign usage charges.
+7. complete A2P registration and disclose all message, phone, email, and campaign usage charges;
+8. coexist with or replace the current advertising agency's lead platform without splitting contacts, consent evidence, conversations, or follow-up ownership.
 
 **Decision rule:** choose Zen Planner Engage if it passes those tests and the value of native member integration justifies the higher monthly cost. Otherwise choose HighLevel Starter.
 
@@ -72,8 +73,9 @@ Newsletter unsubscribe and suppression changes must synchronize back to the sele
 | **ActiveCampaign** | Strong runner-up | Excellent email automation and a capable CRM, but the academy would still assemble more separate pieces for scheduling, conversations, and local-business SMS operations. |
 | **HubSpot** | Not efficient for this use case | Powerful CRM, but advanced marketing automation and scaling marketing-contact costs are more than the academy currently needs. |
 | **Zen Planner Engage** | Evaluate before procurement | The strongest no-migration alternative because Joao already uses Zen Planner. Higher monthly cost than HighLevel, with API, custom-form, workflow, consent, export, and usage details still to verify in the account or demo. |
-| **Gymdesk or Kicksite** | Only if replacing Zen Planner | Both advertise member management, billing, attendance, lead management, email/SMS, and automations. They could consolidate the stack, but require a member, payment, attendance, waiver, and historical-data migration. Do not migrate only to avoid one CRM connection. |
-| **Spark Membership or PushPress** | Not for the current launch | Broad all-in-one capabilities, but no clear advantage over the lower-risk choices. PushPress Grow alone is currently listed at $329/month. |
+| **Gymdesk or Kicksite** | Only if replacing Zen Planner | Both advertise member management, billing, attendance, lead management, email/SMS, and automations. They could provide a lower-cost consolidated operating platform, but their public feature sets do not establish workflow/funnel parity with HighLevel or Engage. Either choice requires a member, payment, attendance, waiver, and historical-data migration. Do not migrate only to avoid one CRM connection. |
+| **Spark Membership** | Demo only if considering a Zen Planner replacement | The strongest martial-arts-specific all-in-one migration candidate reviewed: CRM, trials, booking, billing, funnels, and email/SMS automation. Public pricing is unavailable, so total cost, API/custom-form support, exports, payment migration, and contractual terms require a vendor demo before comparison. |
+| **PushPress Core + Grow** | Not for the current launch | Can combine gym operations with lead pipelines and email/SMS automation, but it requires migrating Zen Planner and Grow is currently listed starting at $329/month before messaging and other possible costs. |
 | **Custom Supabase/Postgres CRM** | Defer | Maximum control but unnecessary engineering, maintenance, security, consent, messaging, and admin-interface work. Add a reporting mirror later only if proven necessary. |
 
 ## Role of Make or n8n
