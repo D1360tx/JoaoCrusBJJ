@@ -43,7 +43,7 @@ See `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md`.
 ## 4. Forms and lead delivery
 
 - [ ] ⛔ Build the server-side Vercel form endpoint; keep API credentials off the client.
-- [ ] ⛔ Wire newsletter, lead magnet, first-class, and general inquiry forms.
+- [ ] ⛔ Wire newsletter, lead magnet, free-class, and general inquiry forms.
 - [ ] ⬜ Add server validation, honeypot, rate limiting, and bot protection.
 - [ ] ⬜ Normalize and deduplicate email and phone values.
 - [ ] ⬜ Preserve original source, landing page, referrer, UTMs, and ad click identifiers.
@@ -81,6 +81,7 @@ See `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md`.
 
 - [ ] ⛔ Finalize Privacy Policy and Terms with real service providers and data uses.
 - [ ] ⛔ Approve email, newsletter, and SMS disclosure language.
+- [ ] ⬜ Verify every commercial email has accurate sender identity, a working unsubscribe path, and the required physical postal address.
 - [ ] ⬜ Document retention, deletion, export, and do-not-contact procedures.
 - [ ] ⬜ Minimize child data; collect guardian details and age bands rather than unnecessary sensitive information.
 - [ ] ⬜ Verify consent records can be retrieved for any contact.
