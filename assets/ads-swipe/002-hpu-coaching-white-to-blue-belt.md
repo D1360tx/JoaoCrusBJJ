@@ -1,15 +1,19 @@
 # 002 HPU Coaching | White-to-Blue-Belt 90-Day System
 
 **Captured:** 2026-07-30  
-**Source:** Instagram Reel and static feed ad from verified `@hpucoaching`<br>
+**Source:** Two Instagram Reels and a static feed ad from verified `@hpucoaching`<br>
 **Post:** [Instagram DaxGyo0sQGM](https://www.instagram.com/p/DaxGyo0sQGM/)  
+**White-belt map post:** [Instagram DbW96wTM4Ef](https://www.instagram.com/p/DbW96wTM4Ef/)<br>
 **Landing page:** [HPU Coaching](https://yourbjjgame.com/hpu-coaching)  
 **Video:** [`video/002-hpu-coaching-white-to-blue-belt.mp4`](video/002-hpu-coaching-white-to-blue-belt.mp4)  
 **Contact sheet:** [`images/002-hpu-coaching-contact-sheet.jpg`](images/002-hpu-coaching-contact-sheet.jpg)  
 **Static ad:** [`images/002-hpu-coaching-static-ad.jpg`](images/002-hpu-coaching-static-ad.jpg)<br>
 **Expanded caption:** [`images/002-hpu-coaching-static-ad-caption.jpg`](images/002-hpu-coaching-static-ad-caption.jpg)<br>
+**White-belt map video:** [`video/002-hpu-coaching-white-belt-map.mp4`](video/002-hpu-coaching-white-belt-map.mp4)<br>
+**White-belt map contact sheet:** [`images/002-hpu-coaching-white-belt-map-contact-sheet.jpg`](images/002-hpu-coaching-white-belt-map-contact-sheet.jpg)<br>
 **Timed transcript:** [`raw/hpu-coaching/2026-07-30/video-transcript.srt`](raw/hpu-coaching/2026-07-30/video-transcript.srt)  
 **Static-ad transcription:** [`raw/hpu-coaching/2026-07-30/static-ad-caption.md`](raw/hpu-coaching/2026-07-30/static-ad-caption.md)<br>
+**White-belt map capture:** [`raw/hpu-coaching/2026-07-30/white-belt-map-ad.md`](raw/hpu-coaching/2026-07-30/white-belt-map-ad.md)<br>
 **Raw page capture:** [`raw/hpu-coaching/2026-07-30/landing-page.md`](raw/hpu-coaching/2026-07-30/landing-page.md)  
 **Status:** Captured and analyzed
 
@@ -142,6 +146,74 @@ The Instagram-native “Learn more” bar makes the next step explicit, which fi
 | Best audience | Cold, problem-aware viewers | Warm or retargeted, outcome-aware viewers |
 
 The pair is more useful than either ad alone. The Reel earns attention and demonstrates expertise. The static version converts the mechanism into a direct outcome and proof claim.
+
+## White-belt map video variant
+
+### Core hook
+
+> “If you're new to Jiu-Jitsu and you feel like you have no idea what you're doing, it's not a new problem. It's just that nobody tells white belts what to work on first.”
+
+This hook removes shame before introducing the offer. The viewer is not bad at BJJ. The viewer lacks an ordered starting point.
+
+### Problem-to-mechanism sequence
+
+1. Most gyms teach a technique of the day and then send beginners into live rolling.
+2. The beginner gets smashed, taps constantly, and interprets confusion as personal failure.
+3. HPU reframes the problem as a missing map.
+4. Three or four recurring positions allegedly account for 80% of early rolls.
+5. Training those positions in sequence creates survival, escape, positional wins, and offense.
+6. A one-week student story turns the mechanism into immediate proof.
+
+The close is concise and memorable:
+
+> **“Stop guessing. Get the map.”**
+
+### Visual construction
+
+- 64.8 seconds, roughly half the length of the earlier educational Reel
+- Live class and rolling footage throughout
+- Voiceover instead of studio talking-head delivery
+- Josh appears coaching and grappling inside the environment
+- Uppercase burned-in captions
+- Vertical crops, mirrored strips, and rapid B-roll changes maintain movement
+- No price or product name inside the source video
+
+### Micro-testimonial
+
+The video describes a white belt named Adam who, after the first Phase One drilling session, allegedly escaped the mount of a same-weight purple belt repeatedly. The quoted emotional result is his “biggest confidence boost” since starting.
+
+This is stronger than an abstract “get better faster” claim because it provides:
+
+- A named beginner
+- A specific timeframe
+- A specific position
+- A harder training partner
+- An emotional consequence
+
+It remains an exceptional anecdote and should not be treated as a typical guaranteed outcome.
+
+### How it differs from the first Reel
+
+| Attribute | White-to-blue framework Reel | White-belt map Reel |
+|---|---|---|
+| Length | 124.7 seconds | 64.8 seconds |
+| Opening desire | Reach blue belt faster | Stop feeling lost and getting smashed |
+| Emotional entry | Ambition | Frustration and self-doubt |
+| Delivery | Studio teaching plus B-roll | Voiceover over live training footage |
+| Mechanism | Escape → offense → pin → submit | Map the few recurring positions in sequence |
+| Proof | Josh's logic | One-week student anecdote |
+| Close | Near-blue-belt conclusion | “Stop guessing. Get the map.” |
+
+The first Reel sells strategic sophistication. This Reel sells relief, clarity, and a starting point. The second is likely the more accessible cold-audience creative.
+
+### Caption test pattern
+
+The caption body is nearly identical to the static proof ad's caption. HPU changed only the opening and close:
+
+- Static ad: six-month promotion result → “Click the link to learn more”
+- Map Reel: getting-smashed pain hook → “Join HPU - Your Game today”
+
+This is a useful paid-testing pattern: keep the mechanism and authority body stable while testing distinct hooks and creative proof.
 
 ## Landing-page message architecture
 
