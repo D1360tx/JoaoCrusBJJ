@@ -1,7 +1,7 @@
 # Google Ads Keyword Playbook
 
 **Project:** Joao Crus BJJ
-**Status:** Draft for implementation after offer, tracking, and account ownership are approved
+**Status:** Saved for future use. Google Ads is deferred from the current launch and should not be activated until Diego explicitly reopens the channel.
 **Source reviewed:** Jackson Blackledge's [Google Ads keyword research thread](https://x.com/blvckledge/status/2082761484556497402), published July 30, 2026
 
 ## Executive recommendation
@@ -288,7 +288,9 @@ Report weekly by campaign and separate brand from non-brand:
 
 The optimization goal is not the cheapest lead. It is the lowest sustainable cost per enrolled, retained student or profitable private client.
 
-## Immediate next actions
+## Future activation checklist
+
+Do not treat these as current-launch tasks. Use this checklist only after Diego explicitly reactivates Google Ads.
 
 - [ ] Confirm whether Joao owns an existing Google Ads account or create an academy-owned account.
 - [ ] Confirm whether the current agency is bidding on Joao's brand terms. This does not block the owned account setup.
