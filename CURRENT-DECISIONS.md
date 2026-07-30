@@ -78,6 +78,7 @@
 - ✅ Preferred offer logic: a trial deposit becomes a **credit toward annual membership** when the student continues.
 - ✅ Paid social is approved at approximately **$35/day** for the Back-to-School campaign.
 - ✅ Paid social will use our own pages and tracking and run alongside the existing agency.
+- 🟡 **Google Search pilot is proposed, not yet budget-approved.** Start with transactional/commercial local intent, exact and phrase match, program-specific landing pages, and HighLevel quality feedback. Do not begin with broad match or Performance Max. See `docs/GOOGLE-ADS-KEYWORD-PLAYBOOK-2026-07-30.md`.
 - ✅ Social cadence preference: approximately **one useful instructional post per week**; content should drive to offers rather than function as a free school.
 - ✅ Joao's children's storybooks (shy/distracted-kid themes) are working lead-magnet and trial-gift assets.
 - 🟡 Buddy passes and family/father-son structures are approved directions but need final mechanics.
