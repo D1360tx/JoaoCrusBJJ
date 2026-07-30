@@ -56,7 +56,10 @@ See `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md`.
 
 ## 5. Email and newsletter
 
-- [ ] ⛔ Configure and verify school-domain sending identities.
+- [ ] ⛔ Obtain Joao's approval and create Google Workspace for `joaocrusbjj.com`.
+- [ ] ⛔ Create `joao@joaocrusbjj.com` as the primary mailbox and decide whether `info@joaocrusbjj.com` is an alias or separate inbox.
+- [ ] ⬜ Confirm who owns/pays for Workspace, who has administrator access, and who receives lead alerts; the existing Gmail may receive internal notifications during transition.
+- [ ] ⛔ Configure and verify HighLevel's dedicated sending subdomain and customer-facing From/Reply-To identities.
 - [ ] ⛔ Publish SPF, DKIM, and DMARC records for each sending platform.
 - [ ] ⬜ Confirm monitored From and Reply-To addresses.
 - [ ] ⬜ Configure shared unsubscribe, bounce, complaint, and suppression policy.
@@ -71,12 +74,14 @@ See `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md`.
 
 ## 6. SMS
 
-- [ ] ⛔ Confirm SMS sender/number ownership and agency overlap.
+- [ ] ⛔ Approve an academy-owned local number for HighLevel automated texts and two-way lead conversations.
 - [ ] ⬜ Register business, brand, campaign, and use case for A2P 10DLC.
 - [ ] ⬜ Approve separate, unchecked SMS-consent language.
 - [ ] ⬜ Configure STOP, HELP, suppression, quiet hours, and staff escalation.
 - [ ] ⬜ Test confirmation, reminder, no-show, and manual-reply handling.
 - [ ] ⬜ Launch email-first if A2P approval remains pending.
+
+See `docs/JOAO-LEAD-STACK-MEETING-2026-07-30.md` for the short email and in-person discussion checklist.
 
 ## 7. Privacy, consent, and legal
 

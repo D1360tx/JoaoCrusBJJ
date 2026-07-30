@@ -182,7 +182,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 ### Implementation sequence
 
 1. Resolve offer, rate card, booking, and design decisions.
-2. Create school-domain email and establish authenticated sending.
+2. Obtain Joao's approval and create Google Workspace for `joaocrusbjj.com`; use `joao@joaocrusbjj.com` as the proposed primary mailbox and decide whether `info@joaocrusbjj.com` is an alias or separate inbox. Authenticate the HighLevel sending domain.
 3. Connect real forms, booking, Beehiiv, GA4, Meta events, and source attribution.
 4. Start HighLevel phone/A2P setup only after account ownership, number strategy, consent, and use cases are documented.
 5. Launch email-first if A2P approval is not complete; do not delay the entire campaign solely for SMS.
