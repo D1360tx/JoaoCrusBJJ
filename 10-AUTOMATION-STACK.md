@@ -2,6 +2,7 @@
 ### What software runs the email/SMS automation (and the membership backend it feeds off)
 > Created 2026-06-10. Companion to 08 (intake) — final pick depends on intake answers 2.1 (how billing works today), 2.2 (any existing gym software), and budget sign-off (5.4).
 > ⚠️ Pricing below is ballpark from general knowledge — **verify current pricing on vendor sites before presenting numbers to Joao.**
+> ⚠️ **SUPERSEDED 2026-07-29:** This document preserves the June decision trail but is not the current procurement recommendation. Joao's confirmed use of Zen Planner and Beehiiv, the production Vercel site, and current vendor offerings changed the decision. Use `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md` and `docs/GO-LIVE-CHECKLIST.md`. The active gate is Zen Planner Engage versus HighLevel; a custom CRM is deferred.
 
 ---
 
@@ -88,7 +89,7 @@ Context: our compensation is currently trade (group classes) with a planned move
 
 ## 4. RECOMMENDATION & DECISION LOGIC (revised)
 
-**DECIDED 2026-06-11: Option D (lean custom), sprint is a GO.** Stripe Billing first, hard speed gate retained.
+**HISTORICAL DECISION 2026-06-11, SUPERSEDED 2026-07-29:** Option D (lean custom) was approved before the current Zen Planner/Beehiiv/Vercel state was confirmed. It is no longer the launch architecture.
 
 Context on the GHL question: we're separately launching trybookedout.com (likely GHL-based), so a GHL symbiosis exists on our side — but that would be OUR sub-account economics, and Joao-on-our-GHL entangles client infrastructure with our other venture. Custom keeps Joao's stack independently owned and exportable. One discovery item still open before final lock: **Joao's agency may already have him on GHL or similar without him realizing it (intake 3.11), and he has mentioned a custom Twilio texting setup (intake 3.12)** — understanding his existing backend comes first; we inherit anything useful (especially an A2P-registered Twilio account).
 
@@ -113,4 +114,5 @@ Decision gates (in order):
 - [ ] On intake answers → lock architecture + document monthly cost here
 
 ## CHANGE LOG
+- 2026-07-29 — Marked the June custom-stack decision superseded. Current procurement gate moved to `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md`.
 - 2026-06-10 — Doc created; architecture open pending intake + agency-license decision.

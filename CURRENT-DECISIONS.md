@@ -176,7 +176,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - ✅ Jetpack Stats exists and may provide historical traffic baseline data.
 - ✅ A WordPress Booking Calendar plugin is installed; its actual booking flow is still unknown.
 - ✅ Twilio is not operational; A2P registration has not started.
-- 🟡 **Lead infrastructure recommendation (2026-07-29):** evaluate HighLevel as the prospect CRM, pipeline, booking, email/SMS automation, and staff follow-up system of record; retain Beehiiv for explicitly opted-in newsletter subscribers and Zen Planner for existing members/billing. Avoid Make/n8n in the launch-critical path unless direct API/workflow integration proves insufficient. Final platform approval and account ownership are pending.
+- 🟡 **Lead infrastructure recommendation (updated 2026-07-29):** compare HighLevel against Zen Planner Engage before procurement. Retain Beehiiv for explicitly opted-in newsletter subscribers and Zen Planner Studio for existing members/billing. Choose Engage if it passes the custom-form, consent, attribution, workflow, two-way messaging, member-conversion, API/export, A2P, and total-cost tests and its native member integration justifies the premium; otherwise use HighLevel as the prospect CRM and automation system. Avoid Make/n8n in the launch-critical path unless direct API/workflow integration proves insufficient. Final platform approval and account ownership are pending.
 
 ### Implementation sequence
 

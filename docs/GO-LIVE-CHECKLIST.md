@@ -28,6 +28,8 @@ Update this document whenever a launch dependency is completed or a platform dec
 ## 3. CRM and lead operations
 
 - [ ] 🟡 Approve or revise the recommended HighLevel + Beehiiv + Zen Planner architecture.
+- [ ] ⛔ Review the existing Zen Planner account and compare Zen Planner Engage against HighLevel before purchasing either platform.
+- [ ] ⬜ Test Zen Planner Engage custom-form/API ingestion, consent and attribution fields, workflows, two-way messaging, appointment/no-show handling, Beehiiv sync, prospect-to-member conversion, exports, A2P support, and total usage charges.
 - [ ] ⬜ Confirm CRM account ownership, billing owner, administrators, and export rights.
 - [ ] ⬜ Configure contact fields, tags, deduplication, locations, and program interests.
 - [ ] ⬜ Configure the prospect pipeline and staff ownership rules.
