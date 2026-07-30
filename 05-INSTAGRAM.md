@@ -41,3 +41,9 @@ Caption states **"25+ years. 500+ families."** — first concrete scale number f
 - [ ] Real follower authenticity + reach/impressions (Insights)
 - [ ] Story highlights structure
 - [ ] What "Primal Flow Practice" is
+
+---
+
+## Growth-system follow-up
+
+The audit above remains the historical baseline. The proposed account positioning, Joao-specific AI modules, content architecture, conversion map, Insights measurement framework, and 60-day pilot now live in [`15-INSTAGRAM-GROWTH-SYSTEM.md`](15-INSTAGRAM-GROWTH-SYSTEM.md).

@@ -3,6 +3,7 @@
 **Status:** Working strategic plan; implementation and publishing cadence require Joao approval<br>
 **Last updated:** 2026-07-30<br>
 **Primary channel:** [Joaocrusbjjatx / @jcbjj25](https://youtube.com/@jcbjj25)<br>
+**Companion Instagram plan:** [`15-INSTAGRAM-GROWTH-SYSTEM.md`](15-INSTAGRAM-GROWTH-SYSTEM.md)<br>
 **Source inspiration:** [Ernesto Lopez X post](https://x.com/ErnestoSOFTWARE/status/2082842381083099389) and linked article, “How I use Claude to make $200,000/mo”
 
 > The model to borrow is not faceless AI content. It is an AI-assisted operating system that turns Joao's real expertise, teaching, stories, and class footage into consistent, measurable content with less manual coordination.
