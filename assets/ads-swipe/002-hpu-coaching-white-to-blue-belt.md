@@ -1,9 +1,10 @@
 # 002 HPU Coaching | White-to-Blue-Belt 90-Day System
 
 **Captured:** 2026-07-30  
-**Source:** Two Instagram Reels and a static feed ad from verified `@hpucoaching`<br>
+**Source:** Three Instagram Reels and a static feed ad from verified `@hpucoaching`<br>
 **Post:** [Instagram DaxGyo0sQGM](https://www.instagram.com/p/DaxGyo0sQGM/)  
 **White-belt map post:** [Instagram DbW96wTM4Ef](https://www.instagram.com/p/DbW96wTM4Ef/)<br>
+**Connections post:** [Instagram DZXHoAvMMtV](https://www.instagram.com/p/DZXHoAvMMtV/)<br>
 **Landing page:** [HPU Coaching](https://yourbjjgame.com/hpu-coaching)  
 **Video:** [`video/002-hpu-coaching-white-to-blue-belt.mp4`](video/002-hpu-coaching-white-to-blue-belt.mp4)  
 **Contact sheet:** [`images/002-hpu-coaching-contact-sheet.jpg`](images/002-hpu-coaching-contact-sheet.jpg)  
@@ -11,9 +12,12 @@
 **Expanded caption:** [`images/002-hpu-coaching-static-ad-caption.jpg`](images/002-hpu-coaching-static-ad-caption.jpg)<br>
 **White-belt map video:** [`video/002-hpu-coaching-white-belt-map.mp4`](video/002-hpu-coaching-white-belt-map.mp4)<br>
 **White-belt map contact sheet:** [`images/002-hpu-coaching-white-belt-map-contact-sheet.jpg`](images/002-hpu-coaching-white-belt-map-contact-sheet.jpg)<br>
+**Connections video:** [`video/002-hpu-coaching-connections-not-collections.mp4`](video/002-hpu-coaching-connections-not-collections.mp4)<br>
+**Connections contact sheet:** [`images/002-hpu-coaching-connections-not-collections-contact-sheet.jpg`](images/002-hpu-coaching-connections-not-collections-contact-sheet.jpg)<br>
 **Timed transcript:** [`raw/hpu-coaching/2026-07-30/video-transcript.srt`](raw/hpu-coaching/2026-07-30/video-transcript.srt)  
 **Static-ad transcription:** [`raw/hpu-coaching/2026-07-30/static-ad-caption.md`](raw/hpu-coaching/2026-07-30/static-ad-caption.md)<br>
 **White-belt map capture:** [`raw/hpu-coaching/2026-07-30/white-belt-map-ad.md`](raw/hpu-coaching/2026-07-30/white-belt-map-ad.md)<br>
+**Connections capture:** [`raw/hpu-coaching/2026-07-30/connections-not-collections-ad.md`](raw/hpu-coaching/2026-07-30/connections-not-collections-ad.md)<br>
 **Raw page capture:** [`raw/hpu-coaching/2026-07-30/landing-page.md`](raw/hpu-coaching/2026-07-30/landing-page.md)  
 **Status:** Captured and analyzed
 
@@ -214,6 +218,82 @@ The caption body is nearly identical to the static proof ad's caption. HPU chang
 - Map Reel: getting-smashed pain hook → “Join HPU - Your Game today”
 
 This is a useful paid-testing pattern: keep the mechanism and authority body stable while testing distinct hooks and creative proof.
+
+## Connections, not collections video variant
+
+### Core idea
+
+> “Most white belts are just collecting moves.”
+
+The Reel describes a familiar beginner experience:
+
+- Monday: learn a sweep
+- Wednesday: learn a guard pass
+- Friday: learn a submission
+- Live round: none of it connects
+
+The student recognizes each technique but does not know the trigger, preceding position, reaction, transition, or next action. The result is guessing, failed attempts, scrambles, and survival mode.
+
+The diagnosis is the strongest line in the creative:
+
+> **“It's not a technique problem. It's a context problem.”**
+
+The public caption compresses the same idea into a memorable contrast:
+
+> **“Start making connections instead of collections of random moves.”**
+
+### Why it works
+
+1. **It names an invisible problem.** Beginners often assume they need more techniques. HPU explains why more content has not fixed live performance.
+2. **It uses a concrete metaphor.** A giant mental folder of disconnected moves is easy to picture and remember.
+3. **It mirrors the buyer's week.** Monday, Wednesday, and Friday create immediate recognition.
+4. **It changes the category of the solution.** The buyer no longer shops for another move. The buyer wants context and a system.
+5. **It demonstrates thought leadership without a hard pitch.** The Reel teaches a point of view rather than listing product features.
+
+### Visual construction
+
+- 40.4 seconds, the shortest HPU Reel captured so far
+- Josh speaks directly to camera in the studio
+- Live grappling B-roll illustrates techniques, reactions, and scrambles
+- Uppercase burned-in captions with pink keyword emphasis
+- Color and monochrome cuts create visual resets
+- No product name, price, testimonial, or explicit CTA in the source Reel
+
+### Strategic weakness
+
+The diagnosis is excellent, but the source Reel stops before showing the bridge from “context problem” to HPU's specific system. As an organic thought-leadership post, that restraint works. As a direct-response ad, it depends on Meta's primary text and CTA to complete the transition.
+
+### Creative portfolio comparison
+
+| Creative | Entry emotion | Core mechanism | Proof | Closing function |
+|---|---|---|---|---|
+| White-to-blue framework | Ambition | Ordered positional progression | Josh's expertise | Strategic conclusion |
+| Static six-month result | Desire and social proof | Structure accelerates progress | Student promotion | “Learn more” |
+| White-belt map | Frustration and self-doubt | Few recurring positions form a map | One-week anecdote | “Stop guessing. Get the map.” |
+| Connections, not collections | Confusion | Techniques need context and transitions | Buyer self-recognition | Category diagnosis |
+
+This fourth creative adds a category-education angle. It is less about speed or exceptional results and more about explaining why the buyer's current learning model fails.
+
+### Direct Joao application
+
+This maps closely to Joao's approved **“Every Game Has a Job”** idea.
+
+For toddler and kids campaigns, the parallel is:
+
+> A good young-child class is not a collection of games. Each game should connect to a developmental purpose.
+
+Examples:
+
+- Crawl, roll, and balance → body awareness and coordination
+- Watch, listen, and move → responding to cues
+- Partner, pause, and take turns → boundaries and cooperation
+- Try, reset, and try again → persistence after frustration
+
+A claim-safe Joao category statement could be:
+
+> **“Not random games. Purposeful play, with a reason behind every activity.”**
+
+For adults and private coaching, the same insight supports a **Private Game Roadmap** offer: not more isolated techniques, but the context, priorities, and connections that make the student's existing game usable.
 
 ## Landing-page message architecture
 
