@@ -2,7 +2,7 @@
 
 # Joao Crus BJJ — Current Decisions
 
-> **Authoritative status as of 2026-07-29**
+> **Authoritative status as of 2026-07-31**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
 ## Status legend
@@ -55,11 +55,12 @@
 
 - ✅ Dripping Springs location: **120 Frog Pond Lane, Suite 200, Dripping Springs, TX 78620**.
 - ✅ Austin location: **1112 N Lamar Blvd, inside Castle Hill Fitness**.
-- ✅ Dripping Springs published schedule includes Mon/Wed kids classes and adults at **6:40–7:40 p.m.**
-- ✅ Austin published kids schedule: ages 8–12, Tue/Thu **5:00–6:00 p.m.**
+- ✅ Dripping Springs Little Champions, ages 3–7: Mon/Wed **5:00–5:45 p.m.**
+- ✅ Dripping Springs Youth, ages 8–12: Mon/Wed **5:50–6:35 p.m.**
+- ✅ Dripping Springs adults: Mon/Wed **6:40–7:40 p.m.** and Sat **11:00 a.m.–12:00 p.m.**
+- ✅ Austin Youth, ages 8–12: Tue/Thu **5:00–5:45 p.m.**
 - ✅ Austin publishes **adult private instruction by appointment** with flexible scheduling and beginner-friendly positioning.
 - 🔴 Austin recurring **adult group** schedule remains undecided; use an interest list until confirmed and do not add private appointments to the weekly calendar.
-- 🔴 Confirm whether the former Saturday kids class has been discontinued before publishing the shared full-site schedule.
 
 ### Positioning and proof
 
@@ -127,8 +128,9 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - ✅ The shared site header will use a **Programs dropdown** that links directly to the age-specific Little Champions 3–7, Youth 8–12, and Teen 13–17 pages. Age-group landing pages retain the same global header and add a smaller contextual anchor bar below it for in-page navigation.
 - ✅ **Approved coach portraits (2026-07-29):** use the approved AI coach portraits in the About team grid and throughout the canonical Coaches hub. Keep Joao's real academy portrait in the About hero. Remove comparison-preview labeling because the coach portraits are approved for production.
 - ✅ **Canonical hosted review site (2026-07-29):** use one Git-connected Vercel project, `joao-crus-bjj`, with `main` as the stable production branch and pull-request preview deployments for review. Keep the `*.vercel.app` deployment blocked from indexing until forms, legal, tracking, DNS, and real-domain cutover checks are complete.
-- 🟡 Home, Programs, Schedule, and Locations will test distinct page-specific AI hero concepts in the review build. These remain labeled concepts until final photography is approved.
-- 🟡 Build one shared schedule data source/component so every page displays the same current times.
+- ✅ **Homepage hero photography (2026-07-31):** use Joao's approved real academy group photo in the homepage hero. Preserve the original source, use the optimized 8:5 derivatives, keep every person visible, and remove the former AI-concept label.
+- 🟡 Programs, Schedule, and Locations will test distinct page-specific AI hero concepts in the review build. These remain labeled concepts until final photography is approved.
+- ✅ Maintain one shared schedule data source/component so every page displays the same confirmed times.
 - 🟡 Maintain a single primary conversion goal per campaign page, plus text/call as the fallback.
 
 ### Required launch pages
