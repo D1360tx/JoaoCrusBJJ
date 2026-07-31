@@ -55,3 +55,9 @@ Now **5 websites/stores** + 3 Skool + 2 YouTube + podcast + Amazon + IG:
 6. Spotify podcast · Amazon (2 books) · Instagram
 
 > The kids-curriculum product alone now lives in 3 places: DVD store, Children BJJ Blueprint (Skool), BJJ Coach Blueprint (Skool). Consolidation/clear ladder is a real need.
+
+---
+
+## Growth-system follow-up
+
+The audit above remains the historical baseline. The proposed channel architecture, recurring content series, AI-assisted production workflow, measurement plan, and pilot now live in [`14-YOUTUBE-GROWTH-SYSTEM.md`](14-YOUTUBE-GROWTH-SYSTEM.md).
