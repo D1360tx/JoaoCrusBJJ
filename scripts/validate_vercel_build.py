@@ -40,6 +40,28 @@ def main() -> None:
     check((DIST / "robots.txt").read_text(encoding="utf-8") == "User-agent: *\nDisallow: /\n", "staging robots.txt must disallow all crawling")
     check(not (DIST / "about-ai-coaches").exists(), "superseded AI comparison route was deployed")
 
+    calendar_source = (ROOT / "site" / "assets" / "class-calendar.js").read_text(encoding="utf-8")
+    calendar_records = re.findall(
+        r'\{\s*day:\s*(\d+),\s*time:\s*"([^"]+)",\s*name:\s*"([^"]+)".*?location:\s*"([^"]+)",\s*\}',
+        calendar_source,
+        re.DOTALL,
+    )
+    expected_calendar_records = [
+        ("0", "5:00–5:45 PM", "Little Champions (Ages 3–7)", "ds"),
+        ("0", "5:50–6:35 PM", "Junior Warriors (Ages 8–12)", "ds"),
+        ("0", "6:40–7:40 PM", "Adults", "ds"),
+        ("1", "5:00–5:45 PM", "Kids (Ages 8–12)", "austin"),
+        ("2", "5:00–5:45 PM", "Little Champions (Ages 3–7)", "ds"),
+        ("2", "5:50–6:35 PM", "Junior Warriors (Ages 8–12)", "ds"),
+        ("2", "6:40–7:40 PM", "Adults", "ds"),
+        ("3", "5:00–5:45 PM", "Kids (Ages 8–12)", "austin"),
+        ("5", "11:00 AM–12:00 PM", "Adults", "ds"),
+    ]
+    check(
+        calendar_records == expected_calendar_records,
+        "shared calendar data does not match Joao's confirmed 2026-07-31 schedule",
+    )
+
     for page in pages:
         target = route_file(page["path"])
         check(target.is_file(), f"missing route artifact: {page['path']}")
