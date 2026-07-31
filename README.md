@@ -26,6 +26,9 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [11-ORCHESTRATION-REPO-SPEC.md](11-ORCHESTRATION-REPO-SPEC.md) | **Build spec for the custom stack: schema, sequence engine, compliance, 4-week sprint plan** |
 | [12-AD-INTEL-SWEEP-2026-06.md](12-AD-INTEL-SWEEP-2026-06.md) | First competitive ad-intel sweep: competitor offers/funnels, agency shortlist, ad-pattern playbook (Ad Library itself needs a 20-min browser pass — §7) |
 | [13-STUDENT-GROWTH-PLAN.md](13-STUDENT-GROWTH-PLAN.md) | **Growth plan (2026-07): offer options (Kickstart/buddy/guarantee/founding), "6:40 Class" cohort relaunch, EDDM 3-touch direct-mail test, Austin/Lamar question list** |
+| [14-YOUTUBE-GROWTH-SYSTEM.md](14-YOUTUBE-GROWTH-SYSTEM.md) | **YouTube growth and AI-assisted content operating system:** channel architecture, recurring series, production workflow, CTA map, measurement, pilot, automation safeguards |
+| [15-INSTAGRAM-GROWTH-SYSTEM.md](15-INSTAGRAM-GROWTH-SYSTEM.md) | **Instagram growth and AI-assisted content operating system:** account positioning, evidence-tagged prompt modules, Reels/repurposing workflow, CTA map, Insights measurement, and 60-day pilot |
+| [16-GYM-MANAGEMENT-SOFTWARE-COMPARISON.md](16-GYM-MANAGEMENT-SOFTWARE-COMPARISON.md) | **Zen Planner vs Wodify vs Kmura:** BJJ workflows, pricing/TCO, payment economics, platform risk, Joao-specific recommendation, migration gates, and live demo script |
 | [assets/joao-shared-checklist.md](assets/joao-shared-checklist.md) | Clean client-facing checklist — paste into Google Doc and share with Joao |
 | [assets/url-inventory.md](assets/url-inventory.md) | **Master URL inventory** — every web property, channel, listing, phone/email Joao has (~20 front doors) |
 | [assets/joao-call-talking-points.md](assets/joao-call-talking-points.md) | **Call script** — lead-the-call talking points (reframed from the intake email) with ★ must-get items |
@@ -40,6 +43,7 @@ position Joao as a renowned BJJ authority with a cohesive brand and a real value
 | [assets/postcard-concepts.md](assets/postcard-concepts.md) | **Postcard copy drafts** — Kids/DS (age-3 hook) + Adults/Austin-Lamar cards, tracking + production checklist |
 | [assets/toddler-page-copy.md](assets/toddler-page-copy.md) | **Toddler page copy (client-facing, publish-ready)** — age-3 page for Joao to build in Divi; includes SEO settings + publishing checklist |
 | [assets/ads-podcast/](assets/ads-podcast/) | **Ads and podcast copy workspace**: source stories, hooks, scripts, recording plans, message match, and creative iteration logs |
+| [assets/ads-swipe/README.md](assets/ads-swipe/README.md) | **Ads swipe file** — archived creative, landing-page captures, offer breakdowns, message-match analysis, and Joao-specific test ideas |
 | [docs/CAMPAIGN-BRAND-GUIDE.md](docs/CAMPAIGN-BRAND-GUIDE.md) | **Approved campaign brand system**: visual principles, tokens, components, photography, voice, accessibility, responsive rules, and implementation checklist |
 | [site/](site/) | **Website preview build** — consolidated authority hub + Kids + lead-magnet pages; `site/variants/` holds 3 BJJ design directions (Bold Athletic / Gritty Dojo / Modern Sport) + compare hub |
 
