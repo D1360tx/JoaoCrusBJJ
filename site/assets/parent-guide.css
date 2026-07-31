@@ -36,8 +36,8 @@
 /* ------------------------------------------------------------------ */
 /* Controlled display-heading wraps                                    */
 /* ------------------------------------------------------------------ */
-.pg-hero-title {
-  font-size: clamp(2.55rem, 4vw, 3.6rem);
+h1.pg-hero-title {
+  font-size: clamp(2.55rem, 3.4vw, 3rem);
 }
 .pg-hero-title > span,
 .pg-age-title > span {

@@ -10,8 +10,8 @@ from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "assets" / "source-images" / "joao-academy-group-original-2026-07-31.jpg"
 OUTPUT_DIR = ROOT / "site" / "assets" / "campaign-images"
-CROP = (0, 100, 1280, 900)
-SIZES = ((1280, 800, ""), (640, 400, "-640"))
+CROP = (0, 0, 1280, 960)
+SIZES = ((1280, 960, ""), (640, 480, "-640"))
 
 
 def prepare() -> Image.Image:
@@ -52,7 +52,7 @@ def main() -> None:
             subsampling="4:2:0",
         )
 
-    print("Prepared homepage hero at 1280x800 and 640x400 in WebP and JPEG")
+    print("Prepared homepage hero at 1280x960 and 640x480 in WebP and JPEG")
 
 
 if __name__ == "__main__":
