@@ -156,6 +156,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 ### Confirmed current state
 
 - ✅ Zen Planner is the existing billing/member system; do not replace it blindly.
+- ✅ A 2026-07-31 comparison of Zen Planner, Wodify, and Kmura is documented in [`16-GYM-MANAGEMENT-SOFTWARE-COMPARISON.md`](16-GYM-MANAGEMENT-SOFTWARE-COMPARISON.md); keep Zen through the launch and require a reversible pilot before any migration.
 - ✅ Beehiiv is the existing ESP; evaluate and integrate before introducing another ESP.
 - ✅ Meta Pixel is present via PixelYourSite; GA4 was not yet verified as live in the July 22 audit.
 - ✅ Jetpack Stats exists and may provide historical traffic baseline data.
