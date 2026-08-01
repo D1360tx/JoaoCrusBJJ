@@ -89,8 +89,10 @@
       '<div class="fields">' +
       '<div class="field"><label for="booking-name">Your name</label><input id="booking-name" name="name" type="text" autocomplete="name" required></div>' +
       '<div class="field"><label for="booking-phone">Mobile number</label><input id="booking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>' +
+      '<div class="field"><label for="booking-email">Email</label><input id="booking-email" name="email" type="email" autocomplete="email" required></div>' +
       '<div class="field"><label for="booking-program">Who wants to train?</label><select id="booking-program" name="program" required><option value="">Choose a program</option><option>Little Champions 3–7</option><option>Youth 8–12</option><option>Teens 13–17</option><option>Adults</option><option>Private Coaching</option><option>Team / Corporate</option><option>Not sure yet</option></select></div>' +
       '<div class="field"><label for="booking-location">Preferred location</label><select id="booking-location" name="location" required><option value="">Choose a location</option><option>Dripping Springs</option><option>Austin</option><option>Not sure yet</option></select></div>' +
+      '<div class="field website-field" aria-hidden="true"><label for="booking-website">Leave this blank</label><input id="booking-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>' +
       '<div class="field full check booking-consent"><input id="booking-consent" name="consent" type="checkbox" required><label for="booking-consent">Joao Crus BJJ may call or text me about this request.</label></div>' +
       '<div class="field full"><button class="btn booking-submit" type="submit">Request my first class →</button><p class="booking-assurance">Takes about 30 seconds. We will only use your information to help with this request.</p><p class="status" tabindex="-1" aria-live="polite"></p></div>' +
       '</div></form>' +
@@ -165,12 +167,38 @@
     bookingDialog.addEventListener("cancel", function () {
       b.classList.remove("booking-open");
     });
-    bookingForm.addEventListener("submit", function (event) {
+    function submitLeadForm(form, event) {
       event.preventDefault();
-      var status = bookingForm.querySelector(".status");
-      status.textContent =
-        "Preview complete: this request form is ready to connect after Joao confirms the booking system. For now, call or text 512-644-4560.";
-      status.focus();
+      var status = form.querySelector(".status"),
+        submit = form.querySelector('[type="submit"]'),
+        data = Object.fromEntries(new FormData(form).entries());
+      data.consent = Boolean(form.querySelector('[name="consent"]:checked'));
+      data.page = window.location.href;
+      status.textContent = "Sending your request…";
+      submit.disabled = true;
+      fetch("/api/contact.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then(function (response) {
+          return response.json().then(function (body) {
+            if (!response.ok) throw new Error(body.error || "Unable to send your request.");
+            return body;
+          });
+        })
+        .then(function () {
+          window.location.href = "/thank-you/";
+        })
+        .catch(function (error) {
+          status.textContent = error.message + " You can also call or text 512-644-4560.";
+          status.focus();
+          submit.disabled = false;
+        });
+    }
+
+    bookingForm.addEventListener("submit", function (event) {
+      submitLeadForm(bookingForm, event);
     });
 
     document.querySelectorAll(".faqbtn").forEach(function (q) {
@@ -184,11 +212,7 @@
     });
     document.querySelectorAll("[data-form]").forEach(function (f) {
       f.onsubmit = function (e) {
-        e.preventDefault();
-        var s = f.querySelector(".status");
-        s.textContent =
-          "Preview complete: this form is ready to connect after Joao confirms the booking system. For now, call or text 512-644-4560.";
-        s.focus();
+        submitLeadForm(f, e);
       };
     });
     var z = document.querySelectorAll("[data-zone],.jc-calendar"),

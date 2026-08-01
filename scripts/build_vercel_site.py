@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Build the canonical Joao Crus BJJ static site for Vercel.
+"""Build the canonical Joao Crus BJJ static site.
 
 Source pages stay flat for commit-pinned RawGitHack review. The Vercel artifact
 uses the canonical paths declared in seo-pages.json and rewrites internal HTML
-links to those paths without changing the source review files.
+links to those paths without changing the source review files. Pass
+``--production`` to add the Bluehost PHP form endpoint and indexable robots file.
 """
 
 from __future__ import annotations
 
 import json
+import argparse
 import re
 import shutil
 from pathlib import Path
@@ -18,6 +20,7 @@ SOURCE = ROOT / "site" / "campaign"
 ASSETS = ROOT / "site" / "assets"
 DIST = ROOT / "dist"
 MANIFEST = SOURCE / "seo-pages.json"
+BLUEHOST_DEPLOY = ROOT / "deploy" / "bluehost"
 GTM_CONTAINER_ID = "GTM-596MGPMD"
 
 GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
@@ -105,6 +108,13 @@ def output_path(public_path: str) -> Path:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--production",
+        action="store_true",
+        help="Build the indexable Bluehost artifact with the PHP contact endpoint.",
+    )
+    args = parser.parse_args()
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     pages = [page for page in data["pages"] if page["file"] not in EXCLUDED_PAGES]
     routes = {page["file"]: page["path"] for page in pages}
@@ -138,12 +148,13 @@ def main() -> None:
     for support_file in ("llms.txt", "sitemap.xml"):
         shutil.copy2(SOURCE / support_file, DIST / support_file)
 
-    # Until the real domain cutover, both the robots file and Vercel's
-    # X-Robots-Tag header keep the vercel.app site out of search indexes.
-    (DIST / "robots.txt").write_text(
-        "User-agent: *\nDisallow: /\n",
-        encoding="utf-8",
-    )
+    if args.production:
+        shutil.copytree(BLUEHOST_DEPLOY, DIST, dirs_exist_ok=True)
+        robots = "User-agent: *\nAllow: /\n\nSitemap: https://joaocrusbjj.com/sitemap.xml\n"
+    else:
+        # Preview builds must stay out of search indexes.
+        robots = "User-agent: *\nDisallow: /\n"
+    (DIST / "robots.txt").write_text(robots, encoding="utf-8")
 
     print(
         f"Built {len(pages)} canonical pages, {len(EXTRA_PAGES)} noindex preview page, and {sum(1 for p in (DIST / 'assets').rglob('*') if p.is_file())} assets into {DIST}"
