@@ -167,6 +167,27 @@
     bookingDialog.addEventListener("cancel", function () {
       b.classList.remove("booking-open");
     });
+    function postLead(data, retried) {
+      return fetch("/api/contact.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      }).then(function (response) {
+        if (response.status === 409 && !retried) {
+          return response.text().then(function (text) {
+            var cookieMatch = text.match(/document\.cookie\s*=\s*["']([^"']+)["']/i);
+            if (!cookieMatch) throw new Error("Unable to verify this request.");
+            document.cookie = cookieMatch[1] + "; Path=/; Max-Age=3600; SameSite=Lax; Secure";
+            return postLead(data, true);
+          });
+        }
+        return response.json().then(function (body) {
+          if (!response.ok) throw new Error(body.error || "Unable to send your request.");
+          return body;
+        });
+      });
+    }
+
     function submitLeadForm(form, event) {
       event.preventDefault();
       var status = form.querySelector(".status"),
@@ -176,17 +197,7 @@
       data.page = window.location.href;
       status.textContent = "Sending your request…";
       submit.disabled = true;
-      fetch("/api/contact.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
-        .then(function (response) {
-          return response.json().then(function (body) {
-            if (!response.ok) throw new Error(body.error || "Unable to send your request.");
-            return body;
-          });
-        })
+      postLead(data, false)
         .then(function () {
           window.location.href = "/thank-you/";
         })
