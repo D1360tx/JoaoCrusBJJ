@@ -34,7 +34,12 @@ def route_file(path: str) -> Path:
 def main() -> None:
     pages = [page for page in DATA["pages"] if page["file"] not in EXCLUDED]
     routes = {page["path"] for page in pages} | EXTRA_ROUTES
+    vercel_config = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
 
+    check(
+        "node --test tests/attribution.test.js" in vercel_config.get("buildCommand", ""),
+        "Vercel build must execute attribution behavior tests",
+    )
     check(DIST.is_dir(), "dist directory is missing")
     check((DIST / "assets").is_dir(), "dist/assets is missing")
     check((DIST / "robots.txt").read_text(encoding="utf-8") == "User-agent: *\nDisallow: /\n", "staging robots.txt must disallow all crawling")
@@ -97,6 +102,9 @@ def main() -> None:
     check('data-form-id="home_guide"' in home_source, "homepage guide form needs a stable analytics ID")
     check('data-lead-type="guide"' in home_source, "homepage guide form must not count as a class lead")
     check('data-success-url="/parent-guide/"' in home_source, "homepage guide request must deliver the public guide")
+    privacy_source = (SOURCE / "privacy.html").read_text(encoding="utf-8")
+    check("Google Analytics 4" in privacy_source, "privacy policy must disclose GA4")
+    check("your browser for up to 90 days" in privacy_source, "privacy policy must disclose attribution retention")
 
     for page in pages:
         target = route_file(page["path"])
@@ -110,6 +118,9 @@ def main() -> None:
         check(f"googletagmanager.com/ns.html?id={GTM_CONTAINER_ID}" in html, f"{page['path']}: missing GTM noscript fallback")
         check("get('qa')==='1'" in html, f"{page['path']}: missing explicit QA traffic marker")
         check("'traffic_type':'internal'" in html, f"{page['path']}: QA traffic must be marked internal")
+        check("'page_location':safe.href" in html, f"{page['path']}: GA4 page location must use the allowlisted URL")
+        check("'page_referrer':r" in html, f"{page['path']}: GA4 page referrer must use the origin-only value")
+        check("history.replaceState" in html, f"{page['path']}: unsafe query parameters must be removed before GTM loads")
         check("assets/attribution.js" in html, f"{page['path']}: durable attribution script is missing")
         check(
             html.find("assets/attribution.js") < html.find("assets/campaign-site.js"),

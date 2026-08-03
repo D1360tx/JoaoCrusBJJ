@@ -25,7 +25,13 @@ GTM_CONTAINER_ID = "GTM-596MGPMD"
 
 GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){{w[l]=w[l]||[];
-    try{{if(new URLSearchParams(w.location.search).get('qa')==='1'){{
+    try{{var u=new URL(w.location.href),safe=new URL(u.origin+u.pathname);
+    {json.dumps(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'qa'])}.forEach(function(k){{
+    if(u.searchParams.has(k))safe.searchParams.set(k,u.searchParams.get(k).slice(0,160));}});
+    if(u.pathname+u.search!==safe.pathname+safe.search)w.history.replaceState(w.history.state,'',safe.pathname+safe.search);
+    var r='';if(d.referrer){{var ru=new URL(d.referrer);r=ru.origin+'/';}}
+    w[l].push({{'page_location':safe.href,'page_referrer':r}});
+    if(safe.searchParams.get('qa')==='1'){{
     w[l].push({{'traffic_type':'internal','debug_mode':true}});
     }}}}catch(e){{}}
     w[l].push({{'gtm.start':new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],

@@ -103,6 +103,24 @@ test("expires attribution after 90 days and starts a new record", () => {
   assert.equal(result.last_touch.landing_page, "/little-champions/");
 });
 
+test("does not extend an original first touch beyond its own 90-day window", () => {
+  const local = new MemoryStorage();
+  attribution.capture(
+    context("https://joaocrusbjj.com/?utm_source=facebook&utm_medium=paid_social", "", local),
+    START,
+  );
+  attribution.capture(
+    context("https://joaocrusbjj.com/?utm_source=newsletter&utm_medium=email", "", local),
+    START + 89 * DAY,
+  );
+  const result = attribution.capture(
+    context("https://joaocrusbjj.com/contact/", "", local),
+    START + 91 * DAY,
+  );
+  assert.equal(result.first_touch.utm_source, "newsletter");
+  assert.equal(result.last_touch.utm_source, "newsletter");
+});
+
 test("migrates the previous session-only attribution record", () => {
   const local = new MemoryStorage();
   const session = new MemoryStorage({
@@ -182,4 +200,42 @@ test("continues without persistence when browser storage is denied", () => {
   const result = attribution.capture(denied, START);
   assert.equal(result.first_touch.utm_source, "newsletter");
   assert.equal(result.last_touch.utm_medium, "email");
+});
+
+test("uses session persistence when localStorage alone is denied", () => {
+  const session = new MemoryStorage();
+  function deniedLocal(url) {
+    const base = context(url, "", null, session);
+    Object.defineProperty(base, "localStorage", { get() { throw new Error("denied"); } });
+    return base;
+  }
+  attribution.capture(
+    deniedLocal("https://joaocrusbjj.com/?utm_source=instagram&utm_medium=paid_social"),
+    START,
+  );
+  const result = attribution.capture(
+    deniedLocal("https://joaocrusbjj.com/contact/"),
+    START + DAY,
+  );
+  assert.equal(result.first_touch.utm_source, "instagram");
+  assert.equal(result.last_touch.utm_medium, "paid_social");
+});
+
+test("uses local persistence when sessionStorage alone is denied", () => {
+  const local = new MemoryStorage();
+  function deniedSession(url) {
+    const base = context(url, "", local, null);
+    Object.defineProperty(base, "sessionStorage", { get() { throw new Error("denied"); } });
+    return base;
+  }
+  attribution.capture(
+    deniedSession("https://joaocrusbjj.com/?utm_source=google&utm_medium=cpc"),
+    START,
+  );
+  const result = attribution.capture(
+    deniedSession("https://joaocrusbjj.com/adults-program/"),
+    START + DAY,
+  );
+  assert.equal(result.first_touch.utm_source, "google");
+  assert.equal(result.last_touch.utm_medium, "cpc");
 });

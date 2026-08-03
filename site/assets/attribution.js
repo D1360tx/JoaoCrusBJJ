@@ -91,6 +91,16 @@
     return legacy ? sanitizeTouch(legacy) : null;
   }
 
+  function touchExpiry(touch) {
+    var captured = Date.parse(touch && touch.captured_at);
+    return Number.isFinite(captured) ? captured + TTL_MS : 0;
+  }
+
+  function isFreshTouch(touch, fallbackExpiry, now) {
+    var expiry = touchExpiry(touch) || Number(fallbackExpiry) || 0;
+    return expiry > now;
+  }
+
   function flatten(record) {
     var firstTouch = sanitizeTouch(record.first_touch);
     var lastTouch = sanitizeTouch(record.last_touch);
@@ -112,30 +122,36 @@
     var sessionStore = null;
     try {
       localStore = context.localStorage;
+    } catch (error) {
+      // localStorage may be denied while sessionStorage remains available.
+    }
+    try {
       sessionStore = context.sessionStorage;
     } catch (error) {
-      // Storage access may be denied by browser privacy controls.
+      // sessionStorage may be denied independently by privacy controls.
     }
     var record = readJson(localStore, STORAGE_KEY);
-    var validRecord = record && Number(record.expires_at) > now;
-    var expiredRecord = record && !validRecord;
 
-    if (!validRecord) {
-      var migrated = expiredRecord ? null : legacyTouch(sessionStore);
+    if (!record) {
+      var migrated = legacyTouch(sessionStore);
+      if (migrated && !migrated.captured_at) migrated.captured_at = current.captured_at;
       var initial = migrated && Object.keys(migrated).length ? migrated : current;
       record = {
         version: 2,
         first_touch: initial,
         last_touch: isAttributedTouch(current) ? current : initial,
-        expires_at: now + TTL_MS,
       };
-    } else if (isAttributedTouch(current)) {
-      record.last_touch = current;
-      record.expires_at = now + TTL_MS;
+    } else {
+      var firstFresh = isFreshTouch(record.first_touch, record.expires_at, now);
+      var lastFresh = isFreshTouch(record.last_touch, record.expires_at, now);
+      if (!firstFresh) record.first_touch = lastFresh ? record.last_touch : current;
+      if (!lastFresh) record.last_touch = record.first_touch;
+      if (isAttributedTouch(current)) record.last_touch = current;
     }
 
     record.first_touch = sanitizeTouch(record.first_touch);
     record.last_touch = sanitizeTouch(record.last_touch);
+    record.expires_at = Math.max(touchExpiry(record.first_touch), touchExpiry(record.last_touch));
     writeJson(localStore, STORAGE_KEY, record);
     writeJson(sessionStore, LEGACY_KEY, record.last_touch);
     return flatten(record);
