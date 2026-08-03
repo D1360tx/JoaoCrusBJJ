@@ -45,7 +45,7 @@ Do not use `utm_medium=qa`; it intentionally does not match a standard GA4 chann
 - Direct return visits do not erase the latest attributable campaign or external referral.
 - Lead submissions include both touches plus supported ad click IDs: `gclid`, `fbclid`, `wbraid`, `gbraid`, and `msclkid`.
 - Only landing paths and referrer hostnames are stored. Names, emails, phone numbers, messages, and arbitrary referrer URLs are never sent to GA4 attribution fields.
-- Before GTM loads, the page URL is reduced to the page path plus approved campaign/click-ID parameters, and the GA4 referrer value is reduced to the referring origin. Unknown query parameters and referrer paths are not forwarded to GA4.
+- Before GTM loads, the page URL is reduced to the page path plus approved campaign/click-ID parameters, and the GA4 referrer value is reduced to the referring origin. Unknown query parameters and referrer paths are not forwarded to GA4. GTM preview parameters (`gtm_debug`, `gtm_auth`, `gtm_preview`, and `gtm_cookies_win`) are also allowed so Tag Assistant can validate unpublished container versions.
 - Browser privacy controls, deleted storage, ad blockers, and stripped referrers can still result in Direct or `(not set)` traffic.
 
 ## External booking and CRM launch gate

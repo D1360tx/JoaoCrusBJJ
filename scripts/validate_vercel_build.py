@@ -121,6 +121,7 @@ def main() -> None:
         check("'page_location':safe.href" in html, f"{page['path']}: GA4 page location must use the allowlisted URL")
         check("'page_referrer':r" in html, f"{page['path']}: GA4 page referrer must use the origin-only value")
         check("history.replaceState" in html, f"{page['path']}: unsafe query parameters must be removed before GTM loads")
+        check('"gtm_debug"' in html, f"{page['path']}: Tag Assistant preview parameters must survive URL sanitization")
         check("assets/attribution.js" in html, f"{page['path']}: durable attribution script is missing")
         check(
             html.find("assets/attribution.js") < html.find("assets/campaign-site.js"),
