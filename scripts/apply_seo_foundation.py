@@ -278,7 +278,9 @@ def apply_page(site: dict, page: dict, mode: str) -> None:
         count=1,
         flags=re.S,
     )
-    robots = "index,follow,max-image-preview:large" if mode == "production" and page["indexable"] else "noindex,nofollow"
+    robots = page.get("robots")
+    if robots is None:
+        robots = "index,follow,max-image-preview:large" if mode == "production" and page["indexable"] else "noindex,nofollow"
     source = re.sub(
         r"<meta\s+name=\"robots\"\s+content=\".*?\">",
         f'<meta name="robots" content="{robots}">',

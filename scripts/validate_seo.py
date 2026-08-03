@@ -69,7 +69,8 @@ def validate_page(page: dict) -> None:
     check(canon == canonical(page), f"{page['file']}: canonical mismatch")
     check(og_url == canonical(page), f"{page['file']}: og:url mismatch")
     check(bool(og_image and og_image.startswith(BASE + "/")), f"{page['file']}: absolute og:image missing")
-    check(robots == "noindex,nofollow", f"{page['file']}: review source must remain noindex")
+    expected_robots = page.get("robots", "noindex,nofollow")
+    check(robots == expected_robots, f"{page['file']}: review source robots mismatch")
     check(len(re.findall(r"<h1\b", source, re.I)) == 1, f"{page['file']}: expected exactly one H1")
     check(source.count('name="twitter:card"') == 1, f"{page['file']}: Twitter Card missing or duplicated")
     check(source.count('property="og:title"') == 1, f"{page['file']}: og:title missing or duplicated")
@@ -145,6 +146,10 @@ def validate_manifest() -> None:
         if canonical_override is not None:
             check(not page["indexable"], f"{page['file']}: canonical override is only allowed on noindex pages")
             check(canonical_override.startswith("/"), f"{page['file']}: canonical override must be root-relative")
+        custom_robots = page.get("robots")
+        if custom_robots is not None:
+            check(not page["indexable"], f"{page['file']}: custom robots is only allowed on noindex pages")
+            check(custom_robots in {"noindex,follow", "noindex,nofollow"}, f"{page['file']}: unsupported custom robots value")
     html_files = {p.name for p in CAMPAIGN.glob("*.html")}
     check(set(files) == html_files, f"manifest: coverage differs, missing={sorted(html_files-set(files))}, extra={sorted(set(files)-html_files)}")
 

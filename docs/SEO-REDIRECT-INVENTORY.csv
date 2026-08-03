@@ -3,7 +3,7 @@ https://joaocrusbjj.com/,page,PRESERVE,https://joaocrusbjj.com/,READY,Homepage r
 https://joaocrusbjj.com/austin-brazilian-jiu-jitsu/,page,PRESERVE,https://joaocrusbjj.com/austin-brazilian-jiu-jitsu/,READY,Canonical Austin location page
 https://joaocrusbjj.com/classes-schedule/,page,PRESERVE,https://joaocrusbjj.com/classes-schedule/,READY,Canonical schedule page
 https://joaocrusbjj.com/books-and-podcast/,page,PRESERVE,,CONTENT-GAP,Authority asset should not be discarded; new build needs this page
-https://joaocrusbjj.com/got-questions/,page,301,https://joaocrusbjj.com/contact/,PROPOSED,Confirm whether unique FAQ content should be moved first
+https://joaocrusbjj.com/got-questions/,page,301,https://joaocrusbjj.com/contact/,READY,Approved 2026-08-03; legacy FAQ sitelink now routes to current contact and first-class page
 https://joaocrusbjj.com/team-building/,page,PRESERVE,https://joaocrusbjj.com/team-building/,READY,Canonical teams page
 https://joaocrusbjj.com/kids-program/,page,PRESERVE,https://joaocrusbjj.com/kids-program/,READY,Canonical kids hub
 https://joaocrusbjj.com/6-weeks-of-confidence/,page,REVIEW,,BLOCKED,Offer and guarantee are not finalized
@@ -30,11 +30,11 @@ https://joaocrusbjj.com/jcbjj-waiver/,page,PRESERVE,,CONTENT-GAP,Operational doc
 https://joaocrusbjj.com/wpbc-bfb-preview/,page,410,,PROPOSED,App preview URL; verify no external links before removal
 https://joaocrusbjj.com/the-complete-bjj-coach/,page,PRESERVE,,CONTENT-GAP,Joao authority or product asset
 https://joaocrusbjj.com/the-children-bjj-blueprint/,page,PRESERVE,,CONTENT-GAP,Joao authority or product asset
-https://joaocrusbjj.com/summer-camp/,page,PRESERVE,,CONTENT-GAP,Seasonal local search asset; archive or update intentionally
+https://joaocrusbjj.com/summer-camp/,page,NOINDEX,https://joaocrusbjj.com/summer-camp/,READY,Approved 2026-08-03; seasonal holding page links to year-round kids programs and stays out of sitemap
 https://joaocrusbjj.com/wpbc-booking-received/,page,REVIEW,,BLOCKED,Legacy booking confirmation URL
 https://joaocrusbjj.com/brazilian-jiu-jitsu-teaches-children-to-manage-emotions/,page,REVIEW,,DUPLICATE-CHECK,Potential duplicate of article URL; consolidate with strongest canonical
 https://joaocrusbjj.com/how-bjj-helps-special-needs-children-regulate-process-thrive/,page,PRESERVE,,CONTENT-GAP,High-sensitivity article; migrate with careful sourcing and language
-https://joaocrusbjj.com/home-page-2/,page,301,https://joaocrusbjj.com/,PROPOSED,Legacy duplicate homepage
+https://joaocrusbjj.com/home-page-2/,page,301,https://joaocrusbjj.com/,READY,Approved 2026-08-03; legacy duplicate homepage sitelink
 https://joaocrusbjj.com/shop/,page,REVIEW,,BLOCKED,Confirm whether ecommerce remains in scope
 https://joaocrusbjj.com/blog/,post,PRESERVE,https://joaocrusbjj.com/blog/,CONTENT-GAP,Blog index must remain if articles are migrated
 https://joaocrusbjj.com/7-ways-bjj-builds-confidence/,post,PRESERVE,https://joaocrusbjj.com/7-ways-bjj-builds-confidence/,CONTENT-GAP,Migrate and improve firsthand support
