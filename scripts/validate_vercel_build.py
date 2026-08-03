@@ -62,6 +62,35 @@ def main() -> None:
         "shared calendar data does not match Joao's confirmed 2026-07-31 schedule",
     )
 
+    analytics_source = (ROOT / "site" / "assets" / "campaign-site.js").read_text(encoding="utf-8")
+    for event_name in (
+        "lead_submit_success",
+        "guide_request_success",
+        "lead_submit_error",
+        "booking_start",
+        "click_to_call",
+        "click_to_email",
+        "get_directions",
+    ):
+        check(f'pushAnalytics("{event_name}"' in analytics_source, f"missing analytics event contract: {event_name}")
+    check("parameters.eventCallback = redirectAfterSuccess" in analytics_source, "lead success event must use a GTM eventCallback before navigation")
+    check("parameters.eventTimeout = 1500" in analytics_source, "lead success event must use a bounded eventTimeout")
+    check("data.attribution = attribution" in analytics_source, "lead payload must preserve non-PII session attribution")
+    analytics_parameters = re.search(
+        r"function leadAnalyticsParameters\(form, data\) \{(?P<body>.*?)\n    \}",
+        analytics_source,
+        re.DOTALL,
+    )
+    check(analytics_parameters is not None, "lead analytics parameter builder is missing")
+    if analytics_parameters is not None:
+        unsafe = re.search(r"data\.(?:name|email|phone|age|message)\b", analytics_parameters.group("body"))
+        check(unsafe is None, "PII field referenced by lead analytics parameter builder")
+
+    home_source = (SOURCE / "index.html").read_text(encoding="utf-8")
+    check('data-form-id="home_guide"' in home_source, "homepage guide form needs a stable analytics ID")
+    check('data-lead-type="guide"' in home_source, "homepage guide form must not count as a class lead")
+    check('data-success-url="/parent-guide/"' in home_source, "homepage guide request must deliver the public guide")
+
     for page in pages:
         target = route_file(page["path"])
         check(target.is_file(), f"missing route artifact: {page['path']}")
