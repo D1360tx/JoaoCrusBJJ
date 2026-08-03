@@ -24,8 +24,11 @@ BLUEHOST_DEPLOY = ROOT / "deploy" / "bluehost"
 GTM_CONTAINER_ID = "GTM-596MGPMD"
 
 GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
-    new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
+    <script>(function(w,d,s,l,i){{w[l]=w[l]||[];
+    try{{if(new URLSearchParams(w.location.search).get('qa')==='1'){{
+    w[l].push({{'traffic_type':'internal','debug_mode':true}});
+    }}}}catch(e){{}}
+    w[l].push({{'gtm.start':new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     }})(window,document,'script','dataLayer','{GTM_CONTAINER_ID}');</script>
@@ -58,6 +61,19 @@ def add_base_element(html: str) -> str:
     return re.sub(
         r"(<head(?:\s[^>]*)?>)",
         r'\1\n    <base href="/">',
+        html,
+        count=1,
+        flags=re.IGNORECASE,
+    )
+
+
+def add_attribution_script(html: str) -> str:
+    """Load attribution capture before the shared campaign behavior."""
+    if "assets/attribution.js" in html:
+        return html
+    return re.sub(
+        r'(<script\s+src=["\']\.\./assets/campaign-site\.js["\']\s+defer></script>)',
+        r'<script src="../assets/attribution.js" defer></script>\n    \1',
         html,
         count=1,
         flags=re.IGNORECASE,
@@ -130,6 +146,7 @@ def main() -> None:
         source_path = SOURCE / page["file"]
         html = source_path.read_text(encoding="utf-8")
         html = add_base_element(html)
+        html = add_attribution_script(html)
         html = add_google_tag_manager(html)
         html = rewrite_internal_html_links(html, routes)
         target = output_path(page["path"])
@@ -139,6 +156,7 @@ def main() -> None:
     for page in EXTRA_PAGES:
         html = page["source"].read_text(encoding="utf-8")
         html = add_base_element(html)
+        html = add_attribution_script(html)
         html = add_google_tag_manager(html)
         html = rewrite_internal_html_links(html, routes)
         target = output_path(page["path"])

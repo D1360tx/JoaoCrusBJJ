@@ -2,7 +2,7 @@
 
 # Joao Crus BJJ — Current Decisions
 
-> **Authoritative status as of 2026-07-31**
+> **Authoritative status as of 2026-08-03**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
 ## Status legend
@@ -154,6 +154,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - Beehiiv lead-magnet delivery and welcome/nurture automation.
 - GA4 plus Meta Pixel event tracking for page views, CTA clicks, form starts, form submissions, bookings, and payments where applicable.
 - UTMs and source attribution preserved through lead capture.
+- 🟡 **Attribution standard approved (2026-08-03):** retain first touch and last non-direct touch for 90 days, preserve supported ad click IDs with accepted leads, use GA4-recognized UTM mediums, and mark explicit `qa=1` sessions as internal/debug traffic. Keep the GA4 Internal Traffic filter in Testing mode until live transport is verified.
 - Mobile click-to-call/text and real map links.
 - Email/SMS consent language, privacy policy, unsubscribe handling, and suppression records.
 - Canonicals, Open Graph/social images, LocalBusiness/location schema, FAQ schema where appropriate, sitemap, robots rules, and noindex for drafts/variants.
@@ -178,7 +179,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - ✅ Zen Planner is the existing billing/member system; do not replace it blindly.
 - ✅ A 2026-07-31 comparison of Zen Planner, Wodify, and Kmura is documented in [`16-GYM-MANAGEMENT-SOFTWARE-COMPARISON.md`](16-GYM-MANAGEMENT-SOFTWARE-COMPARISON.md); keep Zen through the launch and require a reversible pilot before any migration.
 - ✅ Beehiiv is the existing ESP; evaluate and integrate before introducing another ESP.
-- ✅ Meta Pixel is present via PixelYourSite; GA4 was not yet verified as live in the July 22 audit.
+- ✅ Meta Pixel was present on the prior WordPress site via PixelYourSite. The replacement site now sends GA4 page views and lead-funnel events through owned container `GTM-596MGPMD`; Meta Pixel ownership and replacement-site implementation remain a separate launch gate.
 - ✅ Jetpack Stats exists and may provide historical traffic baseline data.
 - ✅ A WordPress Booking Calendar plugin is installed; its actual booking flow is still unknown.
 - ✅ Twilio is not operational; A2P registration has not started.

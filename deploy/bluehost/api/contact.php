@@ -94,10 +94,21 @@ if ($isGuide) {
 }
 
 $attributionInput = is_array($data['attribution'] ?? null) ? $data['attribution'] : [];
-$attribution = [];
-foreach (['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'landing_page', 'referrer_host'] as $key) {
-    $attribution[$key] = clean_value($attributionInput[$key] ?? '', 160);
-}
+$attributionKeys = [
+    'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id',
+    'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid',
+    'landing_page', 'referrer_host', 'captured_at',
+];
+$cleanTouch = static function ($input) use ($attributionKeys): array {
+    $input = is_array($input) ? $input : [];
+    $touch = [];
+    foreach ($attributionKeys as $key) {
+        $touch[$key] = clean_value($input[$key] ?? '', $key === 'landing_page' ? 240 : 160);
+    }
+    return $touch;
+};
+$firstTouch = $cleanTouch($attributionInput['first_touch'] ?? $attributionInput);
+$lastTouch = $cleanTouch($attributionInput['last_touch'] ?? $attributionInput);
 
 $rows = [
     'Lead type' => $lead['lead_type'],
@@ -110,9 +121,11 @@ $rows = [
     'Message' => $lead['message'] !== '' ? $lead['message'] : 'None provided',
     'Submitted from' => $lead['page'] !== '' ? $lead['page'] : 'Unknown page',
 ];
-foreach ($attribution as $key => $value) {
-    if ($value !== '') {
-        $rows['Attribution ' . str_replace('_', ' ', $key)] = $value;
+foreach (['First touch' => $firstTouch, 'Last touch' => $lastTouch] as $touchLabel => $touch) {
+    foreach ($touch as $key => $value) {
+        if ($value !== '') {
+            $rows[$touchLabel . ' ' . str_replace('_', ' ', $key)] = $value;
+        }
     }
 }
 

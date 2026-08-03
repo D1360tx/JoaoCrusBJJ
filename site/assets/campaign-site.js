@@ -57,27 +57,7 @@
       };
     }
 
-    function captureAttribution() {
-      var keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
-      var stored = {};
-      try {
-        stored = JSON.parse(window.sessionStorage.getItem("joao_attribution") || "{}") || {};
-        var query = new URLSearchParams(window.location.search);
-        keys.forEach(function (key) {
-          if (query.get(key)) stored[key] = query.get(key).slice(0, 160);
-        });
-        if (!stored.landing_page) stored.landing_page = window.location.pathname;
-        if (!stored.referrer_host && document.referrer) {
-          stored.referrer_host = new URL(document.referrer).hostname.slice(0, 160);
-        }
-        window.sessionStorage.setItem("joao_attribution", JSON.stringify(stored));
-      } catch (error) {
-        return {};
-      }
-      return stored;
-    }
-
-    var attribution = captureAttribution();
+    var attribution = window.joaoAttribution || {};
 
     function updateNavOffset() {
       if (!n || !h || !b.classList.contains("nav-open")) return;
@@ -286,7 +266,7 @@
         submit = form.querySelector('[type="submit"]'),
         data = Object.fromEntries(new FormData(form).entries());
       data.consent = Boolean(form.querySelector('[name="consent"]:checked'));
-      data.page = window.location.href;
+      data.page = window.location.pathname;
       data.lead_type = leadType(form, data);
       data.attribution = attribution;
       status.textContent = "Sending your request…";
