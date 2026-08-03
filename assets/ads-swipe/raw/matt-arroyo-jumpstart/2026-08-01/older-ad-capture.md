@@ -1,14 +1,14 @@
 # Matt Arroyo Jumpstart Blueprint | Older-Adult Ad Capture
 
-**Captured:** 2026-08-01 07:44 CDT  
-**Instagram post:** https://www.instagram.com/reel/DWXQYkmAH9B/  
-**Published:** 2026-03-26 according to Instagram metadata  
-**Advertiser:** Verified `@mattarroyomma`  
-**Duration:** 105.71 seconds  
-**Source media:** 720×1280 H.264/AAC  
-**Archived media:** [`../../../video/003-matt-arroyo-jumpstart-older-ad.mp4`](../../../video/003-matt-arroyo-jumpstart-older-ad.mp4), 540×960 H.264/AAC  
-**Contact sheet:** [`../../../images/003-matt-arroyo-jumpstart-older-ad-dense-contact-sheet.jpg`](../../../images/003-matt-arroyo-jumpstart-older-ad-dense-contact-sheet.jpg)  
-**Final frame:** [`../../../images/003-matt-arroyo-jumpstart-older-ad-end-card.jpg`](../../../images/003-matt-arroyo-jumpstart-older-ad-end-card.jpg)  
+**Captured:** 2026-08-01 07:44 CDT<br>
+**Instagram post:** https://www.instagram.com/reel/DWXQYkmAH9B/<br>
+**Published:** 2026-03-26 according to Instagram metadata<br>
+**Advertiser:** Verified `@mattarroyomma`<br>
+**Duration:** 105.71 seconds<br>
+**Source media:** 720×1280 H.264/AAC<br>
+**Archived media:** [`../../../video/003-matt-arroyo-jumpstart-older-ad.mp4`](../../../video/003-matt-arroyo-jumpstart-older-ad.mp4), 540×960 H.264/AAC<br>
+**Contact sheet:** [`../../../images/003-matt-arroyo-jumpstart-older-ad-dense-contact-sheet.jpg`](../../../images/003-matt-arroyo-jumpstart-older-ad-dense-contact-sheet.jpg)<br>
+**Final frame:** [`../../../images/003-matt-arroyo-jumpstart-older-ad-end-card.jpg`](../../../images/003-matt-arroyo-jumpstart-older-ad-end-card.jpg)<br>
 **Machine SRT:** [`older-ad-video-transcript.srt`](older-ad-video-transcript.srt)
 
 > Raw research capture. Claims belong to the advertiser and have not been independently verified. The public post engagement and caption were observed directly. The transcript is machine-generated and was checked against the audio and burned-in captions for the lines used in this analysis.

@@ -1,7 +1,7 @@
 # Matt Arroyo Jiu Jitsu Jumpstart Blueprint | Landing-Page Recapture
 
-**Captured:** 2026-08-01 07:44 CDT  
-**Exact supplied URL:** `https://jumpstart.mattarroyo.com/home-2897-2943-1177-2520-7504-8534?...`  
+**Captured:** 2026-08-01 07:44 CDT<br>
+**Exact supplied URL:** `https://jumpstart.mattarroyo.com/home-2897-2943-1177-2520-7504-8534?...`<br>
 **Resolved title:** The Jiu Jitsu Jumpstart Blueprint - Matt Arroyo
 
 > Research snapshot. Pricing, claims, curriculum, and urgency belong to the advertiser and may change.
