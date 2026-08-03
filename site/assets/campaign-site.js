@@ -57,7 +57,9 @@
       };
     }
 
-    var attribution = window.joaoAttribution || {};
+    function currentAttribution() {
+      return window.joaoAttribution || {};
+    }
 
     function updateNavOffset() {
       if (!n || !h || !b.classList.contains("nav-open")) return;
@@ -268,7 +270,7 @@
       data.consent = Boolean(form.querySelector('[name="consent"]:checked'));
       data.page = window.location.pathname;
       data.lead_type = leadType(form, data);
-      data.attribution = attribution;
+      data.attribution = currentAttribution();
       status.textContent = "Sending your request…";
       submit.disabled = true;
       postLead(data, false)

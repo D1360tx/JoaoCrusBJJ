@@ -48,6 +48,27 @@
     }
   }
 
+  function analyticsStorageGranted(context) {
+    return Boolean(
+      context &&
+      context.joaoConsentState &&
+      context.joaoConsentState.analytics_storage === "granted"
+    );
+  }
+
+  function clear(context) {
+    [
+      ["localStorage", STORAGE_KEY],
+      ["sessionStorage", LEGACY_KEY],
+    ].forEach(function (entry) {
+      try {
+        context[entry[0]].removeItem(entry[1]);
+      } catch (error) {
+        // Revocation must not interrupt navigation when storage is unavailable.
+      }
+    });
+  }
+
   function sanitizeTouch(input) {
     var touch = {};
     TOUCH_KEYS.forEach(function (key) {
@@ -120,15 +141,17 @@
     var current = currentTouch(context, now);
     var localStore = null;
     var sessionStore = null;
-    try {
-      localStore = context.localStorage;
-    } catch (error) {
-      // localStorage may be denied while sessionStorage remains available.
-    }
-    try {
-      sessionStore = context.sessionStorage;
-    } catch (error) {
-      // sessionStorage may be denied independently by privacy controls.
+    if (analyticsStorageGranted(context)) {
+      try {
+        localStore = context.localStorage;
+      } catch (error) {
+        // localStorage may be denied while sessionStorage remains available.
+      }
+      try {
+        sessionStore = context.sessionStorage;
+      } catch (error) {
+        // sessionStorage may be denied independently by privacy controls.
+      }
     }
     var record = readJson(localStore, STORAGE_KEY);
 
@@ -161,6 +184,7 @@
     CAMPAIGN_KEYS: CAMPAIGN_KEYS.slice(),
     STORAGE_KEY: STORAGE_KEY,
     WINDOW_DAYS: WINDOW_DAYS,
+    clear: clear,
     capture: capture,
   };
 });

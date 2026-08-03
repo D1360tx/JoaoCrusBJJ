@@ -12,9 +12,12 @@ class MemoryStorage {
   setItem(key, value) {
     this.values[key] = String(value);
   }
+  removeItem(key) {
+    delete this.values[key];
+  }
 }
 
-function context(url, referrer = "", localStorage = new MemoryStorage(), sessionStorage = new MemoryStorage()) {
+function context(url, referrer = "", localStorage = new MemoryStorage(), sessionStorage = new MemoryStorage(), consent = "granted") {
   const parsed = new URL(url);
   return {
     document: { referrer },
@@ -26,6 +29,7 @@ function context(url, referrer = "", localStorage = new MemoryStorage(), session
     },
     localStorage,
     sessionStorage,
+    joaoConsentState: { analytics_storage: consent },
   };
 }
 
@@ -196,10 +200,64 @@ test("continues without persistence when browser storage is denied", () => {
     get sessionStorage() {
       throw new Error("denied");
     },
+    joaoConsentState: { analytics_storage: "granted" },
   };
   const result = attribution.capture(denied, START);
   assert.equal(result.first_touch.utm_source, "newsletter");
   assert.equal(result.last_touch.utm_medium, "email");
+});
+
+test("does not read or persist browser storage before analytics consent", () => {
+  const stored = {
+    version: 2,
+    first_touch: { utm_source: "stored", captured_at: new Date(START).toISOString() },
+    last_touch: { utm_source: "stored", captured_at: new Date(START).toISOString() },
+  };
+  const local = new MemoryStorage({ [attribution.STORAGE_KEY]: JSON.stringify(stored) });
+  const session = new MemoryStorage();
+  const result = attribution.capture(
+    context(
+      "https://joaocrusbjj.com/?utm_source=current&utm_medium=paid_social",
+      "",
+      local,
+      session,
+      "denied",
+    ),
+    START + DAY,
+  );
+  assert.equal(result.first_touch.utm_source, "current");
+  assert.equal(JSON.parse(local.getItem(attribution.STORAGE_KEY)).first_touch.utm_source, "stored");
+  assert.equal(session.getItem("joao_attribution"), null);
+});
+
+test("never touches storage properties while analytics consent is denied", () => {
+  const parsed = new URL("https://joaocrusbjj.com/?utm_source=current");
+  const denied = {
+    document: { referrer: "" },
+    location: {
+      href: parsed.href,
+      hostname: parsed.hostname,
+      pathname: parsed.pathname,
+      search: parsed.search,
+    },
+    get localStorage() {
+      throw new Error("localStorage must not be read");
+    },
+    get sessionStorage() {
+      throw new Error("sessionStorage must not be read");
+    },
+    joaoConsentState: { analytics_storage: "denied" },
+  };
+  const result = attribution.capture(denied, START);
+  assert.equal(result.first_touch.utm_source, "current");
+});
+
+test("clears durable attribution when analytics consent is withdrawn", () => {
+  const local = new MemoryStorage({ [attribution.STORAGE_KEY]: "stored" });
+  const session = new MemoryStorage({ joao_attribution: "stored" });
+  attribution.clear(context("https://joaocrusbjj.com/", "", local, session, "denied"));
+  assert.equal(local.getItem(attribution.STORAGE_KEY), null);
+  assert.equal(session.getItem("joao_attribution"), null);
 });
 
 test("uses session persistence when localStorage alone is denied", () => {

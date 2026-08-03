@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -32,6 +33,13 @@ def route_file(path: str) -> Path:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--production",
+        action="store_true",
+        help="Validate the indexable Bluehost production artifact.",
+    )
+    args = parser.parse_args()
     pages = [page for page in DATA["pages"] if page["file"] not in EXCLUDED]
     routes = {page["path"] for page in pages} | EXTRA_ROUTES
     vercel_config = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
@@ -42,8 +50,21 @@ def main() -> None:
     )
     check(DIST.is_dir(), "dist directory is missing")
     check((DIST / "assets").is_dir(), "dist/assets is missing")
-    check((DIST / "robots.txt").read_text(encoding="utf-8") == "User-agent: *\nDisallow: /\n", "staging robots.txt must disallow all crawling")
+    expected_robots = (
+        "User-agent: *\nAllow: /\n\nSitemap: https://joaocrusbjj.com/sitemap.xml\n"
+        if args.production
+        else "User-agent: *\nDisallow: /\n"
+    )
+    build_label = "production" if args.production else "staging"
+    check(
+        (DIST / "robots.txt").read_text(encoding="utf-8") == expected_robots,
+        f"{build_label} robots.txt does not match the required policy",
+    )
     check(not (DIST / "about-ai-coaches").exists(), "superseded AI comparison route was deployed")
+    if args.production:
+        check((DIST / "api" / "contact.php").is_file(), "production contact endpoint is missing")
+    else:
+        check(not (DIST / "api" / "contact.php").exists(), "PHP contact endpoint must not ship in the staging artifact")
 
     calendar_source = (ROOT / "site" / "assets" / "class-calendar.js").read_text(encoding="utf-8")
     calendar_records = re.findall(
@@ -68,6 +89,7 @@ def main() -> None:
     )
 
     analytics_source = (ROOT / "site" / "assets" / "campaign-site.js").read_text(encoding="utf-8")
+    consent_source = (ROOT / "site" / "assets" / "consent-controls.js").read_text(encoding="utf-8")
     attribution_source = (ROOT / "site" / "assets" / "attribution.js").read_text(encoding="utf-8")
     for event_name in (
         "lead_submit_success",
@@ -81,10 +103,16 @@ def main() -> None:
         check(f'pushAnalytics("{event_name}"' in analytics_source, f"missing analytics event contract: {event_name}")
     check("parameters.eventCallback = redirectAfterSuccess" in analytics_source, "lead success event must use a GTM eventCallback before navigation")
     check("parameters.eventTimeout = 1500" in analytics_source, "lead success event must use a bounded eventTimeout")
-    check("data.attribution = attribution" in analytics_source, "lead payload must preserve non-PII attribution")
+    check("data.attribution = currentAttribution()" in analytics_source, "lead payload must use current consent-aware non-PII attribution")
     check("data.page = window.location.pathname" in analytics_source, "lead payload must not copy query parameters into the submission page")
     check("window.joaoAttribution || {}" in analytics_source, "lead forms must use the durable attribution module")
+    check('var CONSENT_KEY = "joao_consent_v1"' in consent_source, "consent UI must use the shared consent preference key")
+    check('window.gtag("consent", "update"' in consent_source, "consent UI must update Google Consent Mode")
+    check("navigator.globalPrivacyControl === true" in consent_source, "consent UI must honor Global Privacy Control")
+    check("JoaoAttribution.clear(window)" in consent_source, "consent withdrawal must clear durable attribution")
+    check("consentInvoker.focus()" in consent_source, "consent UI must restore focus to the invoking preference control")
     check('var WINDOW_DAYS = 90' in attribution_source, "attribution must retain a 90-day first-party window")
+    check("analyticsStorageGranted(context)" in attribution_source, "attribution persistence must be gated by analytics consent")
     check('first_touch' in attribution_source and 'last_touch' in attribution_source, "attribution must preserve first and last touch")
     for click_id in ("gclid", "fbclid", "wbraid", "gbraid", "msclkid"):
         check(f'"{click_id}"' in attribution_source, f"attribution must capture {click_id}")
@@ -116,16 +144,25 @@ def main() -> None:
         check(html.count(GTM_CONTAINER_ID) == 2, f"{page['path']}: GTM must appear once in the head and once in the noscript fallback")
         check("googletagmanager.com/gtm.js?id='+i+dl" in html, f"{page['path']}: missing GTM head loader")
         check(f"googletagmanager.com/ns.html?id={GTM_CONTAINER_ID}" in html, f"{page['path']}: missing GTM noscript fallback")
+        check("w.gtag('consent','default'" in html, f"{page['path']}: Consent Mode default is missing")
+        check(html.find("w.gtag('consent','default'") < html.find("'gtm.start'"), f"{page['path']}: consent default must execute before GTM")
+        for denied_type in ("ad_storage", "ad_user_data", "ad_personalization"):
+            check(f"'{denied_type}':'denied'" in html, f"{page['path']}: {denied_type} must default to denied")
+        check("globalPrivacyControl" in html, f"{page['path']}: GTM bootstrap must honor Global Privacy Control")
         check("get('qa')==='1'" in html, f"{page['path']}: missing explicit QA traffic marker")
         check("'traffic_type':'internal'" in html, f"{page['path']}: QA traffic must be marked internal")
         check("'page_location':safe.href" in html, f"{page['path']}: GA4 page location must use the allowlisted URL")
         check("'page_referrer':r" in html, f"{page['path']}: GA4 page referrer must use the origin-only value")
+        check("w.gtag('set',{'page_location':safe.href,'page_referrer':r})" in html, f"{page['path']}: sanitized GA4 page fields must be applied through gtag set")
+        check(html.find("w.gtag('set',{'page_location':safe.href") < html.find("'gtm.start'"), f"{page['path']}: sanitized GA4 page fields must be set before GTM")
         check("history.replaceState" in html, f"{page['path']}: unsafe query parameters must be removed before GTM loads")
         check('"gtm_debug"' in html, f"{page['path']}: Tag Assistant preview parameters must survive URL sanitization")
         check("assets/attribution.js" in html, f"{page['path']}: durable attribution script is missing")
+        check("assets/consent-controls.js" in html, f"{page['path']}: consent control script is missing")
+        check("assets/consent-controls.css" in html, f"{page['path']}: consent control styles are missing")
         check(
-            html.find("assets/attribution.js") < html.find("assets/campaign-site.js"),
-            f"{page['path']}: attribution must load before lead-form behavior",
+            html.find("assets/attribution.js") < html.find("assets/consent-controls.js") < html.find("assets/campaign-site.js"),
+            f"{page['path']}: attribution and consent controls must load before lead-form behavior",
         )
         check(f'<link rel="canonical" href="https://joaocrusbjj.com{page["path"]}">' in html, f"{page['path']}: canonical does not match manifest")
         if page.get("robots"):
@@ -150,6 +187,13 @@ def main() -> None:
             html = target.read_text(encoding="utf-8")
             check('<base href="/">' in html, f"{route}: missing root base element")
             check(html.count(GTM_CONTAINER_ID) == 2, f"{route}: GTM must appear once in the head and once in the noscript fallback")
+            check("w.gtag('consent','default'" in html, f"{route}: Consent Mode default is missing")
+            check(html.find("w.gtag('consent','default'") < html.find("'gtm.start'"), f"{route}: consent default must execute before GTM")
+            check("w.gtag('set',{'page_location':safe.href,'page_referrer':r})" in html, f"{route}: sanitized GA4 page fields must be applied through gtag set")
+            check("assets/attribution.js" in html, f"{route}: durable attribution script is missing")
+            check("assets/consent-controls.js" in html, f"{route}: consent control script is missing")
+            check("assets/consent-controls.css" in html, f"{route}: consent control styles are missing")
+            check(html.find("assets/attribution.js") < html.find("assets/consent-controls.js"), f"{route}: attribution must load before consent controls")
             check("'traffic_type':'internal'" in html, f"{route}: QA traffic must be marked internal")
             check('name="robots" content="noindex,nofollow"' in html, f"{route}: preview page must remain noindex")
             for match in re.finditer(r'\b(?:href|action)=["\']([^"\']+)["\']', html, re.IGNORECASE):

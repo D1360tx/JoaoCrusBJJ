@@ -154,7 +154,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - Beehiiv lead-magnet delivery and welcome/nurture automation.
 - GA4 plus Meta Pixel event tracking for page views, CTA clicks, form starts, form submissions, bookings, and payments where applicable.
 - UTMs and source attribution preserved through lead capture.
-- 🟡 **Attribution standard approved (2026-08-03):** retain first touch and last non-direct touch for 90 days, preserve supported ad click IDs with accepted leads, use GA4-recognized UTM mediums, and mark explicit `qa=1` sessions as internal/debug traffic. Keep the GA4 Internal Traffic filter in Testing mode until live transport is verified.
+- 🟡 **Attribution standard approved (2026-08-03):** after analytics consent, retain first touch and last non-direct touch for 90 days, preserve supported ad click IDs with accepted leads, use GA4-recognized UTM mediums, and mark explicit `qa=1` sessions as internal/debug traffic. Consent Mode storage defaults remain denied before choice, ad-related consent remains denied, withdrawal clears durable attribution, and Global Privacy Control keeps optional analytics storage off. Keep the GA4 Internal Traffic filter in Testing mode until live transport is verified.
 - Mobile click-to-call/text and real map links.
 - Email/SMS consent language, privacy policy, unsubscribe handling, and suppression records.
 - Canonicals, Open Graph/social images, LocalBusiness/location schema, FAQ schema where appropriate, sitemap, robots rules, and noindex for drafts/variants.

@@ -41,11 +41,16 @@ Do not use `utm_medium=qa`; it intentionally does not match a standard GA4 chann
 
 ## Website attribution behavior
 
+- Google Consent Mode v2 defaults execute before GTM. `analytics_storage`, `ad_storage`, `ad_user_data`, and `ad_personalization` default to `denied`; only `analytics_storage` can be granted through the site preference control.
+- Durable first-party attribution is read and written only after analytics consent. Before consent or after withdrawal, the current non-PII touch remains available in page memory for the active inquiry but is not persisted in `localStorage` or `sessionStorage`.
+- Withdrawing analytics consent clears both the current durable attribution record and the legacy session record. A Global Privacy Control signal keeps optional analytics storage denied.
 - Each retained touch has its own 90-day window. A newer campaign does not extend an older first touch beyond 90 days.
 - Direct return visits do not erase the latest attributable campaign or external referral.
 - Lead submissions include both touches plus supported ad click IDs: `gclid`, `fbclid`, `wbraid`, `gbraid`, and `msclkid`.
 - Only landing paths and referrer hostnames are stored. Names, emails, phone numbers, messages, and arbitrary referrer URLs are never sent to GA4 attribution fields.
+- Every route that loads GTM also loads the shared consent UI, stylesheet, persistent Privacy choices control, and focus restoration behavior.
 - Before GTM loads, the page URL is reduced to the page path plus approved campaign/click-ID parameters, and the GA4 referrer value is reduced to the referring origin. Unknown query parameters and referrer paths are not forwarded to GA4. GTM preview parameters (`gtm_debug`, `gtm_auth`, `gtm_preview`, and `gtm_cookies_win`) are also allowed so Tag Assistant can validate unpublished container versions.
+- The bootstrap applies those sanitized values with `gtag('set', …)` before `gtm.start`; the container's Google tag must not override `page_location` or `page_referrer` with raw browser values.
 - Browser privacy controls, deleted storage, ad blockers, and stripped referrers can still result in Direct or `(not set)` traffic.
 
 ## External booking and CRM launch gate
@@ -61,7 +66,10 @@ Before sending visitors to HighLevel, Zen Planner, Cal.com, or another hosted bo
 ## Release verification
 
 1. Open a fresh browser session with a standard tagged URL and `qa=1`.
-2. Confirm the GA4 collect request includes the intended campaign and internal/debug marker.
-3. Submit a test lead to a non-production or approved test destination.
-4. Confirm first and last touch appear in the accepted lead payload.
-5. After GA4 processing, verify the expected Default Channel Group and check that no unexplained Unassigned session was introduced.
+2. Before making a choice, confirm Consent Mode defaults are denied, no attribution storage keys are created, and the PII test parameter is absent from the browser URL and outgoing GA4 location/referrer fields.
+3. Allow analytics, confirm only `analytics_storage` changes to granted, and verify the attribution record is then persisted.
+4. Reopen Privacy choices, decline analytics, and confirm attribution storage is cleared.
+5. Confirm the GA4 collect request includes the intended campaign and internal/debug marker without raw PII-bearing URL or referrer values.
+6. Submit a test lead to a non-production or approved test destination.
+7. Confirm first and last touch appear in the accepted lead payload.
+8. After GA4 processing, verify the expected Default Channel Group and check that no unexplained Unassigned session was introduced.
