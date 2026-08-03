@@ -102,6 +102,8 @@ def main() -> None:
         check("googletagmanager.com/gtm.js?id='+i+dl" in html, f"{page['path']}: missing GTM head loader")
         check(f"googletagmanager.com/ns.html?id={GTM_CONTAINER_ID}" in html, f"{page['path']}: missing GTM noscript fallback")
         check(f'<link rel="canonical" href="https://joaocrusbjj.com{page["path"]}">' in html, f"{page['path']}: canonical does not match manifest")
+        if page.get("robots"):
+            check(f'name="robots" content="{page["robots"]}"' in html, f"{page['path']}: custom robots directive does not match manifest")
 
         for match in re.finditer(r'\b(?:href|src|action)=["\']([^"\']+)["\']', html, re.IGNORECASE):
             value = match.group(1)

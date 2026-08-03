@@ -2,6 +2,11 @@ DirectoryIndex index.html
 Options -Indexes
 
 RewriteEngine On
+
+# Retire legacy WordPress sitelink URLs with one-hop canonical redirects.
+RewriteRule ^home-page-2/?$ https://joaocrusbjj.com/ [R=301,L]
+RewriteRule ^got-questions/?$ https://joaocrusbjj.com/contact/ [R=301,L]
+
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^www\.joaocrusbjj\.com$ [NC]
 RewriteRule ^ https://joaocrusbjj.com%{REQUEST_URI} [R=301,L]

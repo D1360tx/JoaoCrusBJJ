@@ -163,6 +163,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 ### Content priorities
 
 - Lead the kids/toddler journey with the verified age-3 differentiator.
+- ✅ **Seasonal Summer Camp treatment (2026-08-03, Diego):** the 2026 camp is over. Keep `/summer-camp/` as a short `noindex,follow` seasonal holding page, remove it from navigation and the XML sitemap, and point visitors to the year-round Kids BJJ, Little Champions, and Youth pages. Reuse the URL and restore indexation only if a future camp is confirmed.
 - Promote private coaching as a primary offer, not a minor peer card.
 - Show both locations clearly. Austin may promote confirmed adult private instruction by appointment, but must not imply a recurring adult group schedule that does not yet exist.
 - Add schedule, coaches, linked Google reviews, FAQs, directions, books/podcast links, and a secondary lead-magnet path.
