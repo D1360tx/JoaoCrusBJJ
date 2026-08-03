@@ -22,9 +22,15 @@ DIST = ROOT / "dist"
 MANIFEST = SOURCE / "seo-pages.json"
 BLUEHOST_DEPLOY = ROOT / "deploy" / "bluehost"
 GTM_CONTAINER_ID = "GTM-596MGPMD"
+CONSENT_STORAGE_KEY = "joao_consent_v1"
 
 GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){{w[l]=w[l]||[];
+    var consent='denied',choice='';try{{choice=w.localStorage.getItem('{CONSENT_STORAGE_KEY}')||'';}}catch(e){{}}
+    if(!w.navigator.globalPrivacyControl&&choice==='analytics_granted')consent='granted';
+    w.joaoConsentState={{'analytics_storage':consent,'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'}};
+    w.gtag=w.gtag||function(){{w[l].push(arguments);}};
+    w.gtag('consent','default',{{'analytics_storage':consent,'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':500}});
     try{{var u=new URL(w.location.href),safe=new URL(u.origin+u.pathname);
     {json.dumps(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'qa', 'gtm_debug', 'gtm_auth', 'gtm_preview', 'gtm_cookies_win'])}.forEach(function(k){{
     if(u.searchParams.has(k))safe.searchParams.set(k,u.searchParams.get(k).slice(0,160));}});
