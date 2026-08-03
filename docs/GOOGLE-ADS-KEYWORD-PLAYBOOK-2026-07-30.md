@@ -2,7 +2,7 @@
 
 **Project:** Joao Crus BJJ
 **Status:** Saved for future use. Google Ads is deferred from the current launch and should not be activated until Diego explicitly reopens the channel.
-**Source reviewed:** Jackson Blackledge's [Google Ads keyword research thread](https://x.com/blvckledge/status/2082761484556497402), published July 30, 2026
+**Sources reviewed:** Jackson Blackledge's [keyword-research thread](https://x.com/blvckledge/status/2082761484556497402), published July 30, 2026, and [full Search campaign playbook](https://x.com/blvckledge/status/2084263081983832364), published August 3, 2026
 
 ## Executive recommendation
 
@@ -26,6 +26,10 @@ The Parent Guide should capture informational searches organically. Do not pay f
 - Treat broad match as a later-stage discovery tool.
 - Maintain a strong negative-keyword list.
 - Review actual search terms continuously rather than treating research as a one-time task.
+- Build responsive search ads around five jobs: program-specific value, Joao's brand, the current approved offer, supportable proof, and a clear next step.
+- Use the full set of relevant assets, including sitelinks, callouts, structured snippets, images, location, and calls, after each destination and tracking path is verified.
+- Match branded, program, location, transactional, comparison, and informational intent to the closest honest destination rather than forcing every query to the homepage.
+- Use Keyword Planner forecasts and top-of-page bid estimates to stage budget, not to exclude strategically valuable hyperlocal terms automatically.
 
 ## What to change for Joao
 
@@ -51,6 +55,32 @@ Broad match should wait until the account has:
 ### Do not send all traffic to the homepage
 
 Match every search theme to its closest program/location page. The ad, search term, page headline, CTA, and follow-up should describe the same program.
+
+### Do not copy ecommerce account thresholds literally
+
+The August 3 thread recommends separate product-category campaigns when each can produce one or two conversions per day, exact match for long-tail terms with 1,000-2,000 or more monthly searches, and later bidding changes after specific conversion counts. Those are useful ecommerce operating heuristics, not launch requirements for a local academy.
+
+For Joao:
+
+- consolidate low-volume local intent until spend and conversion data justify more segmentation;
+- keep exact and phrase versions of one intent together initially;
+- retain valuable low-volume terms when one enrollment or recurring private client can justify the cost;
+- treat conversion-count thresholds as evidence checks, not automatic switches;
+- delay paid informational traffic until commercial campaigns and organic Parent Guide content establish what converts;
+- delay AI Max, broad match, and Performance Max until qualified-lead and enrollment feedback is dependable.
+
+## Search intent to landing-page map
+
+| Search intent | Joao destination | Rule |
+| --- | --- | --- |
+| Broad Joao brand | `/` | Use the academy homepage and keep brand reporting separate. |
+| Kids or family BJJ | `/kids-program/` | Match kids language, local proof, schedule, and parent-focused CTA. |
+| Ages 3-7 or toddler martial arts | `/little-champions/` | Lead with the confirmed age-3 program and age-appropriate method. |
+| Adult or beginner BJJ | `/adults-program/` | Use beginner-friendly adult positioning and the confirmed Dripping Springs schedule. |
+| Private lessons | `/private-bjj-lessons/` | Match one-on-one coaching and the correct Dripping Springs/Austin availability. |
+| Austin youth/local intent | `/austin-brazilian-jiu-jitsu/` | Advertise only confirmed Austin programs. |
+| Comparison or choosing a school | A dedicated comparison/decision page only when evidence supports it | Never imitate a third party or invent competitor claims. |
+| Informational parent questions | Relevant Parent Guide article | Keep organic-first until paid informational intent proves economically useful. |
 
 ## Live search-language findings
 
@@ -218,6 +248,11 @@ Do not advertise a free class, deposit, guarantee, membership price, or savings 
 - Add sitelinks for Kids Programs, Little Champions, Private Lessons, Schedule, and Locations where each is relevant.
 - Test callouts such as `Classes Starting at Age 3`, `Established 2003`, `Parents May Stay and Watch`, and `Beginner-Friendly Coaching` only where the destination page supports them.
 - Keep Dripping Springs and Austin location language aligned with the actual program available at each location.
+- Fill the available responsive-search-ad headline and description inventory with distinct, useful messages rather than near-duplicates.
+- Use structured snippets for verified program types or amenities, not unsupported superlatives.
+- Use image assets only when they show the real academy, Joao, coaches, classes, or approved campaign creative and remain legible at Google crops.
+- Use promotion and price assets only after the offer and rate card are approved.
+- Verify every sitelink, image, location, call, promotion, and CTA destination before spend is enabled.
 
 ## Conversion and attribution requirements
 
@@ -265,6 +300,8 @@ Google Ads should not launch until the website can distinguish leads from meanin
 
 Start with Search rather than Performance Max. Search provides the query-level control needed to validate local intent, negative keywords, location quality, and program economics before giving Google a wider automation surface.
 
+The August 3 thread's `Maximize Clicks` with a CPC cap is directionally compatible with this controlled launch. It remains a starting test, not a permanent strategy. Do not move to Target CPA, Target ROAS, AI Max, broad match, or Performance Max merely because a generic conversion-count threshold is reached. Require trustworthy primary conversions, sufficient qualified outcomes, stable economics, and correct offline feedback first.
+
 If the approved budget cannot support every campaign, use Keyword Planner forecasts and business value to stage the rollout rather than spreading a small budget thinly. Kids/age 3-7 and private instruction are the first candidates, followed by the adult cohort and Austin youth.
 
 ## Reporting scorecard
@@ -304,5 +341,7 @@ Do not treat these as current-launch tasks. Use this checklist only after Diego 
 ## References
 
 - [Jackson Blackledge: Google Ads keyword research thread](https://x.com/blvckledge/status/2082761484556497402), July 30, 2026.
+- [Jackson Blackledge: full ecommerce Search campaign playbook](https://x.com/blvckledge/status/2084263081983832364), August 3, 2026.
+- [Echelonn: Google Ads landing-page swipe lead magnet](https://www.echelonn.io/resources/lp-swipe), captured August 3, 2026. The public page is a gated resource and agency-audit funnel, not a directly browsable public swipe library.
 - [Google Ads Help: About keyword matching options](https://support.google.com/google-ads/answer/7478529?hl=en).
 - [Google Ads Help: About advanced location options](https://support.google.com/google-ads/answer/1722038?hl=en).
