@@ -89,6 +89,23 @@ def validate_page(page: dict) -> None:
                 check(len(page_entities) == 1, f"{page['file']}: expected one WebPage entity")
                 if page_entities:
                     check(page_entities[0].get("url") == canonical(page), f"{page['file']}: WebPage URL mismatch")
+                breadcrumbs = [x for x in graph if x.get("@type") == "BreadcrumbList"]
+                if canonical(page) == f"{BASE}/":
+                    check(not breadcrumbs, f"{page['file']}: home page should not emit BreadcrumbList")
+                else:
+                    check(len(breadcrumbs) == 1, f"{page['file']}: expected one BreadcrumbList")
+                    if breadcrumbs:
+                        breadcrumb = breadcrumbs[0]
+                        items = breadcrumb.get("itemListElement", [])
+                        check(len(items) == 2, f"{page['file']}: breadcrumb must have Home and current page")
+                        check([item.get("position") for item in items] == [1, 2], f"{page['file']}: breadcrumb positions invalid")
+                        check(all(item.get("name") for item in items), f"{page['file']}: breadcrumb name missing")
+                        check(all(item.get("item", "").startswith("https://") for item in items), f"{page['file']}: breadcrumb item URL missing")
+                        if len(items) == 2:
+                            check(items[0].get("item") == f"{BASE}/", f"{page['file']}: breadcrumb Home URL mismatch")
+                            check(items[1].get("item") == canonical(page), f"{page['file']}: breadcrumb current-page URL mismatch")
+                        if page_entities:
+                            check(page_entities[0].get("breadcrumb", {}).get("@id") == breadcrumb.get("@id"), f"{page['file']}: WebPage breadcrumb reference mismatch")
                 forbidden = {"Review", "AggregateRating"}
                 check(not any(x.get("@type") in forbidden for x in graph), f"{page['file']}: self-serving review schema found")
                 if "article" in page["schema"]:

@@ -164,7 +164,28 @@ def main() -> None:
             html.find("assets/attribution.js") < html.find("assets/consent-controls.js") < html.find("assets/campaign-site.js"),
             f"{page['path']}: attribution and consent controls must load before lead-form behavior",
         )
-        check(f'<link rel="canonical" href="https://joaocrusbjj.com{page["path"]}">' in html, f"{page['path']}: canonical does not match manifest")
+        canonical_url = f'https://joaocrusbjj.com{page["path"]}'
+        check(f'<link rel="canonical" href="{canonical_url}">' in html, f"{page['path']}: canonical does not match manifest")
+        schema_scripts = re.findall(r'<script\s+type="application/ld\+json">\s*(.*?)\s*</script>', html, re.DOTALL | re.IGNORECASE)
+        if page["schema"]:
+            check(len(schema_scripts) == 1, f"{page['path']}: expected one JSON-LD graph")
+            if schema_scripts:
+                try:
+                    graph = json.loads(schema_scripts[0]).get("@graph", [])
+                    breadcrumbs = [entity for entity in graph if entity.get("@type") == "BreadcrumbList"]
+                    if page["path"] == "/":
+                        check(not breadcrumbs, f"{page['path']}: home page should not emit BreadcrumbList")
+                    else:
+                        check(len(breadcrumbs) == 1, f"{page['path']}: expected one BreadcrumbList")
+                        if breadcrumbs:
+                            items = breadcrumbs[0].get("itemListElement", [])
+                            check([item.get("position") for item in items] == [1, 2], f"{page['path']}: breadcrumb positions invalid")
+                            check(all(item.get("name") and item.get("item") for item in items), f"{page['path']}: breadcrumb ListItem is missing name or item")
+                            if len(items) == 2:
+                                check(items[0].get("item") == "https://joaocrusbjj.com/", f"{page['path']}: breadcrumb Home URL mismatch")
+                                check(items[1].get("item") == canonical_url, f"{page['path']}: breadcrumb current-page URL mismatch")
+                except json.JSONDecodeError as exc:
+                    check(False, f"{page['path']}: invalid JSON-LD: {exc}")
         if page.get("robots"):
             check(f'name="robots" content="{page["robots"]}"' in html, f"{page['path']}: custom robots directive does not match manifest")
 
