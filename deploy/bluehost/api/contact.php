@@ -64,6 +64,7 @@ $attempts[] = $now;
 @file_put_contents($rateFile, json_encode($attempts), LOCK_EX);
 
 $lead = [
+    'lead_type' => clean_value($data['lead_type'] ?? 'class_inquiry', 80),
     'name' => clean_value($data['name'] ?? '', 120),
     'phone' => clean_value($data['phone'] ?? '', 40),
     'email' => strtolower(clean_value($data['email'] ?? '', 160)),
@@ -74,9 +75,11 @@ $lead = [
     'page' => clean_value($data['page'] ?? '', 300),
 ];
 
+$isGuide = $lead['lead_type'] === 'guide';
+
 if (
-    $lead['name'] === '' || $lead['phone'] === '' || $lead['email'] === '' ||
-    $lead['program'] === '' || $lead['location'] === '' || empty($data['consent'])
+    $lead['name'] === '' || $lead['email'] === '' || empty($data['consent']) ||
+    (!$isGuide && ($lead['phone'] === '' || $lead['program'] === '' || $lead['location'] === ''))
 ) {
     respond(400, ['ok' => false, 'error' => 'Please complete all required fields.']);
 }
@@ -84,7 +87,20 @@ if (filter_var($lead['email'], FILTER_VALIDATE_EMAIL) === false) {
     respond(400, ['ok' => false, 'error' => 'Please enter a valid email address.']);
 }
 
+if ($isGuide) {
+    $lead['phone'] = $lead['phone'] !== '' ? $lead['phone'] : 'Not provided';
+    $lead['program'] = 'Parent Guide';
+    $lead['location'] = 'Not applicable';
+}
+
+$attributionInput = is_array($data['attribution'] ?? null) ? $data['attribution'] : [];
+$attribution = [];
+foreach (['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'landing_page', 'referrer_host'] as $key) {
+    $attribution[$key] = clean_value($attributionInput[$key] ?? '', 160);
+}
+
 $rows = [
+    'Lead type' => $lead['lead_type'],
     'Name' => $lead['name'],
     'Phone' => $lead['phone'],
     'Email' => $lead['email'],
@@ -94,10 +110,15 @@ $rows = [
     'Message' => $lead['message'] !== '' ? $lead['message'] : 'None provided',
     'Submitted from' => $lead['page'] !== '' ? $lead['page'] : 'Unknown page',
 ];
+foreach ($attribution as $key => $value) {
+    if ($value !== '') {
+        $rows['Attribution ' . str_replace('_', ' ', $key)] = $value;
+    }
+}
 
 $subjectName = preg_replace('/[^\p{L}\p{N} .\'_-]/u', '', $lead['name']) ?: 'Website visitor';
-$subject = 'New first class request: ' . $subjectName;
-$textLines = ["New Joao Crus BJJ website lead", ''];
+$subject = ($isGuide ? 'New parent guide request: ' : 'New first class request: ') . $subjectName;
+$textLines = [$isGuide ? "New Joao Crus BJJ parent guide request" : "New Joao Crus BJJ website lead", ''];
 foreach ($rows as $label => $value) {
     $textLines[] = $label . ': ' . $value;
 }

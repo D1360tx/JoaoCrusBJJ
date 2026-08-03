@@ -5,6 +5,80 @@
       n = document.querySelector(".nav"),
       h = document.querySelector(".header");
 
+    function analyticsValue(value) {
+      return String(value || "not_set")
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_+|_+$/g, "") || "not_set";
+    }
+
+    function analyticsContext(element) {
+      if (!element) return "unknown";
+      if (element.closest(".booking-dialog")) return "booking_dialog";
+      if (element.closest(".mobile")) return "mobile_sticky";
+      if (element.closest(".footer")) return "footer";
+      if (element.closest(".header, .alert")) return "header";
+      return "page_content";
+    }
+
+    function pushAnalytics(eventName, parameters) {
+      window.dataLayer = window.dataLayer || [];
+      var payload = { event: eventName };
+      Object.keys(parameters || {}).forEach(function (key) {
+        if (parameters[key] !== undefined && parameters[key] !== null && parameters[key] !== "") {
+          payload[key] = parameters[key];
+        }
+      });
+      window.dataLayer.push(payload);
+    }
+
+    function formAnalyticsName(form) {
+      if (form.matches("[data-booking-form]")) return "booking_dialog";
+      if (form.dataset.formId) return analyticsValue(form.dataset.formId);
+      return analyticsValue(location.pathname.replace(/^\/+|\/+$/g, "") || "home") + "_lead_form";
+    }
+
+    function leadType(form, data) {
+      if (form.dataset.leadType) return analyticsValue(form.dataset.leadType);
+      if (/private/i.test(data.program || "")) return "private_coaching";
+      if (/team|corporate/i.test(data.program || "")) return "team_corporate";
+      return "class_inquiry";
+    }
+
+    function leadAnalyticsParameters(form, data) {
+      return {
+        form_name: formAnalyticsName(form),
+        form_context: form.matches("[data-booking-form]") ? "booking_dialog" : "page_form",
+        lead_type: leadType(form, data),
+        lead_program: analyticsValue(data.program),
+        lead_location: analyticsValue(data.location),
+        submission_page: location.pathname,
+      };
+    }
+
+    function captureAttribution() {
+      var keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+      var stored = {};
+      try {
+        stored = JSON.parse(window.sessionStorage.getItem("joao_attribution") || "{}") || {};
+        var query = new URLSearchParams(window.location.search);
+        keys.forEach(function (key) {
+          if (query.get(key)) stored[key] = query.get(key).slice(0, 160);
+        });
+        if (!stored.landing_page) stored.landing_page = window.location.pathname;
+        if (!stored.referrer_host && document.referrer) {
+          stored.referrer_host = new URL(document.referrer).hostname.slice(0, 160);
+        }
+        window.sessionStorage.setItem("joao_attribution", JSON.stringify(stored));
+      } catch (error) {
+        return {};
+      }
+      return stored;
+    }
+
+    var attribution = captureAttribution();
+
     function updateNavOffset() {
       if (!n || !h || !b.classList.contains("nav-open")) return;
       n.style.setProperty("--nav-top", Math.max(0, h.getBoundingClientRect().bottom) + "px");
@@ -130,6 +204,11 @@
 
     function openBooking(trigger) {
       if (typeof bookingDialog.showModal !== "function") {
+        pushAnalytics("booking_start", {
+          form_name: "contact_page",
+          link_context: analyticsContext(trigger),
+          submission_page: location.pathname,
+        });
         window.location.href = trigger && trigger.href ? trigger.href : "contact.html";
         return;
       }
@@ -138,6 +217,13 @@
       contextualBookingDefaults();
       bookingDialog.showModal();
       b.classList.add("booking-open");
+      pushAnalytics("booking_start", {
+        form_name: "booking_dialog",
+        link_context: analyticsContext(trigger),
+        lead_program: analyticsValue(bookingProgram.value),
+        lead_location: analyticsValue(bookingLocation.value),
+        submission_page: location.pathname,
+      });
       requestAnimationFrame(function () {
         bookingDialog.querySelector("#booking-name").focus();
       });
@@ -181,7 +267,13 @@
             return postLead(data, true);
           });
         }
-        return response.json().then(function (body) {
+        return response.text().then(function (text) {
+          var body = {};
+          try {
+            body = text ? JSON.parse(text) : {};
+          } catch (error) {
+            body = {};
+          }
           if (!response.ok) throw new Error(body.error || "Unable to send your request.");
           return body;
         });
@@ -195,13 +287,32 @@
         data = Object.fromEntries(new FormData(form).entries());
       data.consent = Boolean(form.querySelector('[name="consent"]:checked'));
       data.page = window.location.href;
+      data.lead_type = leadType(form, data);
+      data.attribution = attribution;
       status.textContent = "Sending your request…";
       submit.disabled = true;
       postLead(data, false)
         .then(function () {
-          window.location.href = "/thank-you/";
+          var redirected = false;
+          function redirectAfterSuccess() {
+            if (redirected) return;
+            redirected = true;
+            window.location.href = form.dataset.successUrl || "/thank-you/";
+          }
+          var parameters = leadAnalyticsParameters(form, data);
+          parameters.eventCallback = redirectAfterSuccess;
+          parameters.eventTimeout = 1500;
+          if (data.lead_type === "guide") {
+            pushAnalytics("guide_request_success", parameters);
+          } else {
+            pushAnalytics("lead_submit_success", parameters);
+          }
+          window.setTimeout(redirectAfterSuccess, 1700);
         })
         .catch(function (error) {
+          var parameters = leadAnalyticsParameters(form, data);
+          parameters.error_type = "submission_failed";
+          pushAnalytics("lead_submit_error", parameters);
           status.textContent = error.message + " You can also call or text 512-644-4560.";
           status.focus();
           submit.disabled = false;
@@ -225,6 +336,33 @@
       f.onsubmit = function (e) {
         submitLeadForm(f, e);
       };
+    });
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest("a[href]");
+      if (!link) return;
+      var href = link.getAttribute("href") || "";
+      var common = {
+        link_context: analyticsContext(link),
+        link_text: analyticsValue(link.textContent).slice(0, 80),
+        page_path: location.pathname,
+      };
+      if (/^tel:/i.test(href)) {
+        pushAnalytics("click_to_call", common);
+        return;
+      }
+      if (/^mailto:/i.test(href)) {
+        pushAnalytics("click_to_email", common);
+        return;
+      }
+      if (/maps\.google\.com|google\.com\/maps|maps\.app\.goo\.gl/i.test(href)) {
+        common.location_name = /1112|lamar|austin/i.test(href) ? "austin" : "dripping_springs";
+        pushAnalytics("get_directions", common);
+        return;
+      }
+      if (/(?:^|\/)(?:contact\.html|contact\/?)(?:[?#].*)?$/i.test(href) && !bookingDialog.open) {
+        common.form_name = "contact_page";
+        pushAnalytics("booking_start", common);
+      }
     });
     var z = document.querySelectorAll("[data-zone],.jc-calendar"),
       v = new Set();
