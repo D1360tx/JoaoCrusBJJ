@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -32,6 +33,13 @@ def route_file(path: str) -> Path:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--production",
+        action="store_true",
+        help="Validate the indexable Bluehost production artifact.",
+    )
+    args = parser.parse_args()
     pages = [page for page in DATA["pages"] if page["file"] not in EXCLUDED]
     routes = {page["path"] for page in pages} | EXTRA_ROUTES
     vercel_config = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
@@ -42,8 +50,21 @@ def main() -> None:
     )
     check(DIST.is_dir(), "dist directory is missing")
     check((DIST / "assets").is_dir(), "dist/assets is missing")
-    check((DIST / "robots.txt").read_text(encoding="utf-8") == "User-agent: *\nDisallow: /\n", "staging robots.txt must disallow all crawling")
+    expected_robots = (
+        "User-agent: *\nAllow: /\n\nSitemap: https://joaocrusbjj.com/sitemap.xml\n"
+        if args.production
+        else "User-agent: *\nDisallow: /\n"
+    )
+    build_label = "production" if args.production else "staging"
+    check(
+        (DIST / "robots.txt").read_text(encoding="utf-8") == expected_robots,
+        f"{build_label} robots.txt does not match the required policy",
+    )
     check(not (DIST / "about-ai-coaches").exists(), "superseded AI comparison route was deployed")
+    if args.production:
+        check((DIST / "api" / "contact.php").is_file(), "production contact endpoint is missing")
+    else:
+        check(not (DIST / "api" / "contact.php").exists(), "PHP contact endpoint must not ship in the staging artifact")
 
     calendar_source = (ROOT / "site" / "assets" / "class-calendar.js").read_text(encoding="utf-8")
     calendar_records = re.findall(
