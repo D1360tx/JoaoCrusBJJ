@@ -34,7 +34,12 @@ def route_file(path: str) -> Path:
 def main() -> None:
     pages = [page for page in DATA["pages"] if page["file"] not in EXCLUDED]
     routes = {page["path"] for page in pages} | EXTRA_ROUTES
+    vercel_config = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
 
+    check(
+        "node --test tests/attribution.test.js" in vercel_config.get("buildCommand", ""),
+        "Vercel build must execute attribution behavior tests",
+    )
     check(DIST.is_dir(), "dist directory is missing")
     check((DIST / "assets").is_dir(), "dist/assets is missing")
     check((DIST / "robots.txt").read_text(encoding="utf-8") == "User-agent: *\nDisallow: /\n", "staging robots.txt must disallow all crawling")
@@ -63,6 +68,7 @@ def main() -> None:
     )
 
     analytics_source = (ROOT / "site" / "assets" / "campaign-site.js").read_text(encoding="utf-8")
+    attribution_source = (ROOT / "site" / "assets" / "attribution.js").read_text(encoding="utf-8")
     for event_name in (
         "lead_submit_success",
         "guide_request_success",
@@ -75,7 +81,13 @@ def main() -> None:
         check(f'pushAnalytics("{event_name}"' in analytics_source, f"missing analytics event contract: {event_name}")
     check("parameters.eventCallback = redirectAfterSuccess" in analytics_source, "lead success event must use a GTM eventCallback before navigation")
     check("parameters.eventTimeout = 1500" in analytics_source, "lead success event must use a bounded eventTimeout")
-    check("data.attribution = attribution" in analytics_source, "lead payload must preserve non-PII session attribution")
+    check("data.attribution = attribution" in analytics_source, "lead payload must preserve non-PII attribution")
+    check("data.page = window.location.pathname" in analytics_source, "lead payload must not copy query parameters into the submission page")
+    check("window.joaoAttribution || {}" in analytics_source, "lead forms must use the durable attribution module")
+    check('var WINDOW_DAYS = 90' in attribution_source, "attribution must retain a 90-day first-party window")
+    check('first_touch' in attribution_source and 'last_touch' in attribution_source, "attribution must preserve first and last touch")
+    for click_id in ("gclid", "fbclid", "wbraid", "gbraid", "msclkid"):
+        check(f'"{click_id}"' in attribution_source, f"attribution must capture {click_id}")
     analytics_parameters = re.search(
         r"function leadAnalyticsParameters\(form, data\) \{(?P<body>.*?)\n    \}",
         analytics_source,
@@ -90,6 +102,9 @@ def main() -> None:
     check('data-form-id="home_guide"' in home_source, "homepage guide form needs a stable analytics ID")
     check('data-lead-type="guide"' in home_source, "homepage guide form must not count as a class lead")
     check('data-success-url="/parent-guide/"' in home_source, "homepage guide request must deliver the public guide")
+    privacy_source = (SOURCE / "privacy.html").read_text(encoding="utf-8")
+    check("Google Analytics 4" in privacy_source, "privacy policy must disclose GA4")
+    check("your browser for up to 90 days" in privacy_source, "privacy policy must disclose attribution retention")
 
     for page in pages:
         target = route_file(page["path"])
@@ -101,6 +116,17 @@ def main() -> None:
         check(html.count(GTM_CONTAINER_ID) == 2, f"{page['path']}: GTM must appear once in the head and once in the noscript fallback")
         check("googletagmanager.com/gtm.js?id='+i+dl" in html, f"{page['path']}: missing GTM head loader")
         check(f"googletagmanager.com/ns.html?id={GTM_CONTAINER_ID}" in html, f"{page['path']}: missing GTM noscript fallback")
+        check("get('qa')==='1'" in html, f"{page['path']}: missing explicit QA traffic marker")
+        check("'traffic_type':'internal'" in html, f"{page['path']}: QA traffic must be marked internal")
+        check("'page_location':safe.href" in html, f"{page['path']}: GA4 page location must use the allowlisted URL")
+        check("'page_referrer':r" in html, f"{page['path']}: GA4 page referrer must use the origin-only value")
+        check("history.replaceState" in html, f"{page['path']}: unsafe query parameters must be removed before GTM loads")
+        check('"gtm_debug"' in html, f"{page['path']}: Tag Assistant preview parameters must survive URL sanitization")
+        check("assets/attribution.js" in html, f"{page['path']}: durable attribution script is missing")
+        check(
+            html.find("assets/attribution.js") < html.find("assets/campaign-site.js"),
+            f"{page['path']}: attribution must load before lead-form behavior",
+        )
         check(f'<link rel="canonical" href="https://joaocrusbjj.com{page["path"]}">' in html, f"{page['path']}: canonical does not match manifest")
         if page.get("robots"):
             check(f'name="robots" content="{page["robots"]}"' in html, f"{page['path']}: custom robots directive does not match manifest")
@@ -124,6 +150,7 @@ def main() -> None:
             html = target.read_text(encoding="utf-8")
             check('<base href="/">' in html, f"{route}: missing root base element")
             check(html.count(GTM_CONTAINER_ID) == 2, f"{route}: GTM must appear once in the head and once in the noscript fallback")
+            check("'traffic_type':'internal'" in html, f"{route}: QA traffic must be marked internal")
             check('name="robots" content="noindex,nofollow"' in html, f"{route}: preview page must remain noindex")
             for match in re.finditer(r'\b(?:href|action)=["\']([^"\']+)["\']', html, re.IGNORECASE):
                 check(not urlsplit(match.group(1)).path.endswith(".html"), f"{route}: legacy HTML link remains: {match.group(1)}")
