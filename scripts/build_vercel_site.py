@@ -36,6 +36,7 @@ GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
     if(u.searchParams.has(k))safe.searchParams.set(k,u.searchParams.get(k).slice(0,160));}});
     if(u.pathname+u.search!==safe.pathname+safe.search)w.history.replaceState(w.history.state,'',safe.pathname+safe.search);
     var r='';if(d.referrer){{var ru=new URL(d.referrer);r=ru.origin+'/';}}
+    w.gtag('set',{{'page_location':safe.href,'page_referrer':r}});
     w[l].push({{'page_location':safe.href,'page_referrer':r}});
     if(safe.searchParams.get('qa')==='1'){{
     w[l].push({{'traffic_type':'internal','debug_mode':true}});
@@ -80,12 +81,34 @@ def add_base_element(html: str) -> str:
 
 
 def add_attribution_script(html: str) -> str:
-    """Load attribution capture before the shared campaign behavior."""
-    if "assets/attribution.js" in html:
+    """Install consent UI and attribution capture on every generated route."""
+    if "assets/consent-controls.css" not in html:
+        html = re.sub(
+            r"(</head>)",
+            r'    <link rel="stylesheet" href="/assets/consent-controls.css">\n\1',
+            html,
+            count=1,
+            flags=re.IGNORECASE,
+        )
+
+    scripts = []
+    if "assets/attribution.js" not in html:
+        scripts.append('<script src="/assets/attribution.js" defer></script>')
+    if "assets/consent-controls.js" not in html:
+        scripts.append('<script src="/assets/consent-controls.js" defer></script>')
+    if not scripts:
         return html
-    return re.sub(
+
+    insertion = "\n    ".join(scripts)
+    shared_script = re.compile(
         r'(<script\s+src=["\']\.\./assets/campaign-site\.js["\']\s+defer></script>)',
-        r'<script src="../assets/attribution.js" defer></script>\n    \1',
+        re.IGNORECASE,
+    )
+    if shared_script.search(html):
+        return shared_script.sub(f"{insertion}\n    \\1", html, count=1)
+    return re.sub(
+        r"(</body>)",
+        f"    {insertion}\n  \\1",
         html,
         count=1,
         flags=re.IGNORECASE,

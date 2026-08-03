@@ -68,6 +68,7 @@ def main() -> None:
     )
 
     analytics_source = (ROOT / "site" / "assets" / "campaign-site.js").read_text(encoding="utf-8")
+    consent_source = (ROOT / "site" / "assets" / "consent-controls.js").read_text(encoding="utf-8")
     attribution_source = (ROOT / "site" / "assets" / "attribution.js").read_text(encoding="utf-8")
     for event_name in (
         "lead_submit_success",
@@ -84,10 +85,11 @@ def main() -> None:
     check("data.attribution = currentAttribution()" in analytics_source, "lead payload must use current consent-aware non-PII attribution")
     check("data.page = window.location.pathname" in analytics_source, "lead payload must not copy query parameters into the submission page")
     check("window.joaoAttribution || {}" in analytics_source, "lead forms must use the durable attribution module")
-    check('var CONSENT_KEY = "joao_consent_v1"' in analytics_source, "consent UI must use the shared consent preference key")
-    check('window.gtag("consent", "update"' in analytics_source, "consent UI must update Google Consent Mode")
-    check("navigator.globalPrivacyControl === true" in analytics_source, "consent UI must honor Global Privacy Control")
-    check("JoaoAttribution.clear(window)" in analytics_source, "consent withdrawal must clear durable attribution")
+    check('var CONSENT_KEY = "joao_consent_v1"' in consent_source, "consent UI must use the shared consent preference key")
+    check('window.gtag("consent", "update"' in consent_source, "consent UI must update Google Consent Mode")
+    check("navigator.globalPrivacyControl === true" in consent_source, "consent UI must honor Global Privacy Control")
+    check("JoaoAttribution.clear(window)" in consent_source, "consent withdrawal must clear durable attribution")
+    check("consentInvoker.focus()" in consent_source, "consent UI must restore focus to the invoking preference control")
     check('var WINDOW_DAYS = 90' in attribution_source, "attribution must retain a 90-day first-party window")
     check("analyticsStorageGranted(context)" in attribution_source, "attribution persistence must be gated by analytics consent")
     check('first_touch' in attribution_source and 'last_touch' in attribution_source, "attribution must preserve first and last touch")
@@ -130,12 +132,16 @@ def main() -> None:
         check("'traffic_type':'internal'" in html, f"{page['path']}: QA traffic must be marked internal")
         check("'page_location':safe.href" in html, f"{page['path']}: GA4 page location must use the allowlisted URL")
         check("'page_referrer':r" in html, f"{page['path']}: GA4 page referrer must use the origin-only value")
+        check("w.gtag('set',{'page_location':safe.href,'page_referrer':r})" in html, f"{page['path']}: sanitized GA4 page fields must be applied through gtag set")
+        check(html.find("w.gtag('set',{'page_location':safe.href") < html.find("'gtm.start'"), f"{page['path']}: sanitized GA4 page fields must be set before GTM")
         check("history.replaceState" in html, f"{page['path']}: unsafe query parameters must be removed before GTM loads")
         check('"gtm_debug"' in html, f"{page['path']}: Tag Assistant preview parameters must survive URL sanitization")
         check("assets/attribution.js" in html, f"{page['path']}: durable attribution script is missing")
+        check("assets/consent-controls.js" in html, f"{page['path']}: consent control script is missing")
+        check("assets/consent-controls.css" in html, f"{page['path']}: consent control styles are missing")
         check(
-            html.find("assets/attribution.js") < html.find("assets/campaign-site.js"),
-            f"{page['path']}: attribution must load before lead-form behavior",
+            html.find("assets/attribution.js") < html.find("assets/consent-controls.js") < html.find("assets/campaign-site.js"),
+            f"{page['path']}: attribution and consent controls must load before lead-form behavior",
         )
         check(f'<link rel="canonical" href="https://joaocrusbjj.com{page["path"]}">' in html, f"{page['path']}: canonical does not match manifest")
         if page.get("robots"):
@@ -162,6 +168,11 @@ def main() -> None:
             check(html.count(GTM_CONTAINER_ID) == 2, f"{route}: GTM must appear once in the head and once in the noscript fallback")
             check("w.gtag('consent','default'" in html, f"{route}: Consent Mode default is missing")
             check(html.find("w.gtag('consent','default'") < html.find("'gtm.start'"), f"{route}: consent default must execute before GTM")
+            check("w.gtag('set',{'page_location':safe.href,'page_referrer':r})" in html, f"{route}: sanitized GA4 page fields must be applied through gtag set")
+            check("assets/attribution.js" in html, f"{route}: durable attribution script is missing")
+            check("assets/consent-controls.js" in html, f"{route}: consent control script is missing")
+            check("assets/consent-controls.css" in html, f"{route}: consent control styles are missing")
+            check(html.find("assets/attribution.js") < html.find("assets/consent-controls.js"), f"{route}: attribution must load before consent controls")
             check("'traffic_type':'internal'" in html, f"{route}: QA traffic must be marked internal")
             check('name="robots" content="noindex,nofollow"' in html, f"{route}: preview page must remain noindex")
             for match in re.finditer(r'\b(?:href|action)=["\']([^"\']+)["\']', html, re.IGNORECASE):
