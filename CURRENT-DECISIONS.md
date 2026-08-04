@@ -2,7 +2,7 @@
 
 # Joao Crus BJJ — Current Decisions
 
-> **Authoritative status as of 2026-07-31**
+> **Authoritative status as of 2026-08-04**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
 ## Status legend
@@ -38,6 +38,16 @@
 
 ---
 
+## Regional analytics and consent (2026-08-03)
+
+- ✅ Use the least-friction regional model: known visitors outside the EEA, United Kingdom, and Switzerland receive GA4 analytics by default without a first-visit banner and can turn it off from the footer.
+- ✅ Visitors in the EEA, United Kingdom, and Switzerland must explicitly allow analytics. Unknown or failed country detection follows the same strict opt-in path.
+- ✅ Keep `ad_storage`, `ad_user_data`, and `ad_personalization` denied globally. Do not activate remarketing or personalized advertising without a separate decision and updated disclosures.
+- ✅ Honor explicit saved analytics choices across regions. Global Privacy Control keeps advertising-related processing off but does not disable ordinary first-party analytics outside strict regions.
+- ✅ Preserve PII stripping, origin-only referrers, consent-aware attribution storage, a durable Privacy choices control, and strict failure behavior.
+
+---
+
 ## 2. Confirmed business facts
 
 ### Enrollment, pricing, and operations
@@ -48,7 +58,7 @@
 - ✅ Memberships use **12-month agreements with 60-day termination notice**.
 - ✅ Reported business baseline: approximately **$100,000 trailing 12 months**; records/Zen Planner export are still required to document the baseline.
 - ✅ Billing and member management use **Zen Planner**.
-- ✅ Current website inquiries go to **[joaocruzbjj@gmail.com](mailto:joaocruzbjj@gmail.com)** and are not managed in a dedicated CRM.
+- ✅ Current website inquiries are emailed to **[joaocruzbjj@gmail.com](mailto:joaocruzbjj@gmail.com)** and **[diego@icdcventures.com](mailto:diego@icdcventures.com)** for owner delivery plus ICDC monitoring. They are not yet managed in a dedicated CRM.
 - ✅ Beehiiv exists with approximately **800 subscribers**, correcting the earlier 8,060 figure. Access and consent/list-quality review remain pending.
 
 ### Locations and schedule
@@ -130,7 +140,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - ✅ **Canonical hosted review site (2026-07-29):** use one Git-connected Vercel project, `joao-crus-bjj`, with `main` as the stable production branch and pull-request preview deployments for review. Keep the `*.vercel.app` deployment blocked from indexing until forms, legal, tracking, DNS, and real-domain cutover checks are complete.
 - ✅ **Homepage hero photography (2026-07-31):** use Joao's approved real academy group photo in the homepage hero. Preserve the original source, use the optimized 4:3 derivatives, keep every person visible, and remove the former AI-concept label.
 - ✅ **Campaign hero image scale (2026-07-31):** use larger 4:3 desktop hero image panels so they visually span more of the left-side story instead of sitting as short centered 16:9 cards. Preserve each source image's safe focal treatment and retain the established mobile ratios.
-- 🟡 Programs, Schedule, and Locations will test distinct page-specific AI hero concepts in the review build. These remain labeled concepts until final photography is approved.
+- 🟡 Programs, Schedule, and Locations use distinct page-specific AI hero concepts pending final photography. Per Diego's 2026-08-02 direction, the visible “AI concept” hero banners are removed from the Schedule and Locations production pages while replacement imagery is reviewed.
 - ✅ Maintain one shared schedule data source/component so every page displays the same confirmed times.
 - 🟡 Maintain a single primary conversion goal per campaign page, plus text/call as the fallback.
 
@@ -154,6 +164,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - Beehiiv lead-magnet delivery and welcome/nurture automation.
 - GA4 plus Meta Pixel event tracking for page views, CTA clicks, form starts, form submissions, bookings, and payments where applicable.
 - UTMs and source attribution preserved through lead capture.
+- 🟡 **Attribution standard approved (2026-08-03):** after analytics consent, retain first touch and last non-direct touch for 90 days, preserve supported ad click IDs with accepted leads, use GA4-recognized UTM mediums, and mark explicit `qa=1` sessions as internal/debug traffic. Consent Mode storage defaults remain denied before choice, ad-related consent remains denied, withdrawal clears durable attribution, and Global Privacy Control keeps optional analytics storage off. Keep the GA4 Internal Traffic filter in Testing mode until live transport is verified.
 - Mobile click-to-call/text and real map links.
 - Email/SMS consent language, privacy policy, unsubscribe handling, and suppression records.
 - Canonicals, Open Graph/social images, LocalBusiness/location schema, FAQ schema where appropriate, sitemap, robots rules, and noindex for drafts/variants.
@@ -163,6 +174,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 ### Content priorities
 
 - Lead the kids/toddler journey with the verified age-3 differentiator.
+- ✅ **Seasonal Summer Camp treatment (2026-08-03, Diego):** the 2026 camp is over. Keep `/summer-camp/` as a short `noindex,follow` seasonal holding page, remove it from navigation and the XML sitemap, and point visitors to the year-round Kids BJJ, Little Champions, and Youth pages. Reuse the URL and restore indexation only if a future camp is confirmed.
 - Promote private coaching as a primary offer, not a minor peer card.
 - Show both locations clearly. Austin may promote confirmed adult private instruction by appointment, but must not imply a recurring adult group schedule that does not yet exist.
 - Add schedule, coaches, linked Google reviews, FAQs, directions, books/podcast links, and a secondary lead-magnet path.
@@ -177,7 +189,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - ✅ Zen Planner is the existing billing/member system; do not replace it blindly.
 - ✅ A 2026-07-31 comparison of Zen Planner, Wodify, and Kmura is documented in [`16-GYM-MANAGEMENT-SOFTWARE-COMPARISON.md`](16-GYM-MANAGEMENT-SOFTWARE-COMPARISON.md); keep Zen through the launch and require a reversible pilot before any migration.
 - ✅ Beehiiv is the existing ESP; evaluate and integrate before introducing another ESP.
-- ✅ Meta Pixel is present via PixelYourSite; GA4 was not yet verified as live in the July 22 audit.
+- ✅ Meta Pixel was present on the prior WordPress site via PixelYourSite. The replacement site now sends GA4 page views and lead-funnel events through owned container `GTM-596MGPMD`; Meta Pixel ownership and replacement-site implementation remain a separate launch gate.
 - ✅ Jetpack Stats exists and may provide historical traffic baseline data.
 - ✅ A WordPress Booking Calendar plugin is installed; its actual booking flow is still unknown.
 - ✅ Twilio is not operational; A2P registration has not started.

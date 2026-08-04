@@ -31,7 +31,7 @@ Diego
 
 ### 1. What changes
 
-- The current website form only sends an email to `joaocruzbjj@gmail.com`.
+- The current website form sends each accepted lead to `joaocrusbjj@gmail.com` and `diego@icdcventures.com` for owner delivery plus ICDC monitoring.
 - The new form will create a real lead record in HighLevel and can still email Joao an alert.
 - Every inquiry will retain its source, page, campaign information, consent, and follow-up status.
 

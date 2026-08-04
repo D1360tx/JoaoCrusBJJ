@@ -1,7 +1,11 @@
 .DS_Store
 *.tmp
+*.pyc
+__pycache__/
 node_modules/
 .env
 .env.*
 dist/
 .vercel/
+.vercel
+.env*
