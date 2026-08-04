@@ -14,10 +14,13 @@ test("uses standard analytics behavior for known non-strict countries", () => {
   }
 });
 
-test("fails strict when the country is missing or malformed", () => {
-  assert.equal(policy.policyForCountry(""), "unknown");
-  assert.equal(policy.policyForCountry(null), "unknown");
-  assert.equal(policy.policyForCountry("USA"), "unknown");
+test("fails strict when the country is missing, malformed, or not recognized", () => {
+  assert.equal(policy.KNOWN_COUNTRIES.length, 249);
+  assert.equal(new Set(policy.KNOWN_COUNTRIES).size, 249);
+  for (const country of ["", null, "USA", "ZZ", "XX", "EU", "UK"]) {
+    assert.equal(policy.policyForCountry(country), "unknown", String(country));
+    assert.deepEqual(policy.regionResult(country), { country: "", policy: "unknown" });
+  }
 });
 
 test("explicit choices override the regional default", () => {
@@ -26,6 +29,71 @@ test("explicit choices override the regional default", () => {
   assert.equal(policy.analyticsConsent("", "unknown"), "denied");
   assert.equal(policy.analyticsConsent("analytics_denied", "standard"), "denied");
   assert.equal(policy.analyticsConsent("analytics_granted", "opt_in"), "granted");
+});
+
+test("persists consent through a bootstrap-readable fallback when localStorage fails", () => {
+  let cookie = "";
+  const blockedStorage = {
+    getItem() { throw new Error("blocked"); },
+    setItem() { throw new Error("blocked"); },
+  };
+  const document = {
+    get cookie() { return cookie; },
+    set cookie(value) { cookie = value.split(";", 1)[0]; },
+  };
+  const context = {
+    document,
+    localStorage: blockedStorage,
+    sessionStorage: blockedStorage,
+    location: { protocol: "https:" },
+  };
+
+  assert.equal(policy.saveChoice(context, "joao_consent_v1", "analytics_denied"), true);
+  assert.equal(policy.readChoice(context, "joao_consent_v1"), "analytics_denied");
+  assert.equal(cookie, "joao_consent_v1=analytics_denied");
+});
+
+test("a denied value wins if preference stores disagree", () => {
+  const values = new Map();
+  const writableStorage = {
+    getItem(key) { return values.get(key) || ""; },
+    setItem(key, value) { values.set(key, value); },
+  };
+  const blockedStorage = {
+    getItem() { throw new Error("blocked"); },
+    setItem() { throw new Error("blocked"); },
+  };
+  const context = {
+    document: {
+      get cookie() { return "joao_consent_v1=analytics_granted"; },
+      set cookie(value) { throw new Error("blocked"); },
+    },
+    localStorage: writableStorage,
+    sessionStorage: blockedStorage,
+    location: { protocol: "https:" },
+  };
+
+  assert.equal(policy.saveChoice(context, "joao_consent_v1", "analytics_denied"), true);
+  assert.equal(policy.readChoice(context, "joao_consent_v1"), "analytics_denied");
+});
+
+test("reports failure when no bootstrap-readable consent store is writable", () => {
+  const blockedStorage = {
+    getItem() { throw new Error("blocked"); },
+    setItem() { throw new Error("blocked"); },
+  };
+  const context = {
+    document: {
+      get cookie() { return ""; },
+      set cookie(value) { throw new Error("blocked"); },
+    },
+    localStorage: blockedStorage,
+    sessionStorage: blockedStorage,
+    location: { protocol: "https:" },
+  };
+
+  assert.equal(policy.saveChoice(context, "joao_consent_v1", "analytics_denied"), false);
+  assert.equal(policy.readChoice(context, "joao_consent_v1"), "");
 });
 
 test("region lookup returns only normalized country policy data", async () => {
