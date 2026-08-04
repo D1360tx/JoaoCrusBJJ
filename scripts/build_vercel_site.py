@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
-"""Build the canonical Joao Crus BJJ static site for Vercel.
+"""Build the canonical Joao Crus BJJ static site.
 
 Source pages stay flat for commit-pinned RawGitHack review. The Vercel artifact
 uses the canonical paths declared in seo-pages.json and rewrites internal HTML
-links to those paths without changing the source review files.
+links to those paths without changing the source review files. Pass
+``--production`` to add the Bluehost PHP form endpoint and indexable robots file.
 """
 
 from __future__ import annotations
 
 import json
+import argparse
+import hashlib
 import re
 import shutil
 from pathlib import Path
@@ -18,20 +21,54 @@ SOURCE = ROOT / "site" / "campaign"
 ASSETS = ROOT / "site" / "assets"
 DIST = ROOT / "dist"
 MANIFEST = SOURCE / "seo-pages.json"
+BLUEHOST_DEPLOY = ROOT / "deploy" / "bluehost"
 GTM_CONTAINER_ID = "GTM-596MGPMD"
+CONSENT_STORAGE_KEY = "joao_consent_v1"
+
+
+def versioned_asset_url(filename: str) -> str:
+    """Return a content-versioned URL so deployed privacy controls cannot remain stale."""
+    digest = hashlib.sha256((ASSETS / filename).read_bytes()).hexdigest()[:12]
+    return f"/assets/{filename}?v={digest}"
+
+
+CONSENT_POLICY_URL = versioned_asset_url("consent-policy.js")
+CONSENT_STYLE_URL = versioned_asset_url("consent-controls.css")
+ATTRIBUTION_URL = versioned_asset_url("attribution.js")
+CONSENT_CONTROLS_URL = versioned_asset_url("consent-controls.js")
 
 GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
-    new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
+    <script src="{CONSENT_POLICY_URL}"></script>
+    <script>(function(w,d,s,l,i){{w[l]=w[l]||[];
+    var policy=w.JoaoConsentPolicy,choice=policy&&policy.readChoice?policy.readChoice(w,'{CONSENT_STORAGE_KEY}'):'';
+    w.joaoConsentState={{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'}};
+    w.gtag=w.gtag||function(){{w[l].push(arguments);}};
+    w.gtag('consent','default',{{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':2000}});
+    try{{var u=new URL(w.location.href),safe=new URL(u.origin+u.pathname);
+    {json.dumps(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'qa', 'gtm_debug', 'gtm_auth', 'gtm_preview', 'gtm_cookies_win'])}.forEach(function(k){{
+    if(u.searchParams.has(k))safe.searchParams.set(k,u.searchParams.get(k).slice(0,160));}});
+    if(u.pathname+u.search!==safe.pathname+safe.search)w.history.replaceState(w.history.state,'',safe.pathname+safe.search);
+    var r='';if(d.referrer){{var ru=new URL(d.referrer);r=ru.origin+'/';}}
+    w.gtag('set',{{'page_location':safe.href,'page_referrer':r}});
+    w[l].push({{'page_location':safe.href,'page_referrer':r}});
+    if(safe.searchParams.get('qa')==='1'){{w[l].push({{'traffic_type':'internal','debug_mode':true}});}}
+    }}catch(e){{}}
+    function startGtm(){{if(w.joaoGtmStarted)return;w.joaoGtmStarted=true;
+    w[l].push({{'gtm.start':new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}}
+    w.joaoStartGtm=startGtm;
+    var lookup=policy&&policy.detectRegion?policy.detectRegion(w.fetch&&w.fetch.bind(w),1500):Promise.resolve({{country:'',policy:'unknown'}});
+    w.joaoRegionReady=lookup.then(function(region){{
+    region=region||{{country:'',policy:'unknown'}};w.joaoConsentRegion=region;
+    var analytics=policy&&policy.analyticsConsent?policy.analyticsConsent(choice,region.policy):'denied';
+    w.joaoConsentState={{'analytics_storage':analytics,'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'}};
+    w.gtag('consent','update',w.joaoConsentState);
+    try{{w.dispatchEvent(new CustomEvent('joao:regionready',{{detail:region}}));}}catch(e){{}}
+    if(analytics==='granted')startGtm();return region;
+    }}).catch(function(){{w.joaoConsentRegion={{country:'',policy:'unknown'}};return w.joaoConsentRegion;}});
     }})(window,document,'script','dataLayer','{GTM_CONTAINER_ID}');</script>
     <!-- End Google Tag Manager -->"""
-
-GTM_BODY_SNIPPET = f"""<!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={GTM_CONTAINER_ID}"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->"""
 
 # This superseded comparison page remains available in Git history and
 # RawGitHack previews but is intentionally excluded from production hosting.
@@ -61,6 +98,41 @@ def add_base_element(html: str) -> str:
     )
 
 
+def add_attribution_script(html: str) -> str:
+    """Install consent UI and attribution capture on every generated route."""
+    if "assets/consent-controls.css" not in html:
+        html = re.sub(
+            r"(</head>)",
+            f'    <link rel="stylesheet" href="{CONSENT_STYLE_URL}">\n\\1',
+            html,
+            count=1,
+            flags=re.IGNORECASE,
+        )
+
+    scripts = []
+    if "assets/attribution.js" not in html:
+        scripts.append(f'<script src="{ATTRIBUTION_URL}" defer></script>')
+    if "assets/consent-controls.js" not in html:
+        scripts.append(f'<script src="{CONSENT_CONTROLS_URL}" defer></script>')
+    if not scripts:
+        return html
+
+    insertion = "\n    ".join(scripts)
+    shared_script = re.compile(
+        r'(<script\s+src=["\']\.\./assets/campaign-site\.js["\']\s+defer></script>)',
+        re.IGNORECASE,
+    )
+    if shared_script.search(html):
+        return shared_script.sub(f"{insertion}\n    \\1", html, count=1)
+    return re.sub(
+        r"(</body>)",
+        f"    {insertion}\n  \\1",
+        html,
+        count=1,
+        flags=re.IGNORECASE,
+    )
+
+
 def add_google_tag_manager(html: str) -> str:
     """Install the owned GTM container once per generated HTML document."""
     if GTM_CONTAINER_ID in html:
@@ -72,13 +144,7 @@ def add_google_tag_manager(html: str) -> str:
         count=1,
         flags=re.IGNORECASE,
     )
-    return re.sub(
-        r"(<body(?:\s[^>]*)?>)",
-        rf"\1\n    {GTM_BODY_SNIPPET}",
-        html,
-        count=1,
-        flags=re.IGNORECASE,
-    )
+    return html
 
 
 def rewrite_internal_html_links(html: str, routes: dict[str, str]) -> str:
@@ -105,6 +171,13 @@ def output_path(public_path: str) -> Path:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--production",
+        action="store_true",
+        help="Build the indexable Bluehost artifact with the PHP contact endpoint.",
+    )
+    args = parser.parse_args()
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     pages = [page for page in data["pages"] if page["file"] not in EXCLUDED_PAGES]
     routes = {page["file"]: page["path"] for page in pages}
@@ -120,6 +193,7 @@ def main() -> None:
         source_path = SOURCE / page["file"]
         html = source_path.read_text(encoding="utf-8")
         html = add_base_element(html)
+        html = add_attribution_script(html)
         html = add_google_tag_manager(html)
         html = rewrite_internal_html_links(html, routes)
         target = output_path(page["path"])
@@ -129,6 +203,7 @@ def main() -> None:
     for page in EXTRA_PAGES:
         html = page["source"].read_text(encoding="utf-8")
         html = add_base_element(html)
+        html = add_attribution_script(html)
         html = add_google_tag_manager(html)
         html = rewrite_internal_html_links(html, routes)
         target = output_path(page["path"])
@@ -138,12 +213,13 @@ def main() -> None:
     for support_file in ("llms.txt", "sitemap.xml"):
         shutil.copy2(SOURCE / support_file, DIST / support_file)
 
-    # Until the real domain cutover, both the robots file and Vercel's
-    # X-Robots-Tag header keep the vercel.app site out of search indexes.
-    (DIST / "robots.txt").write_text(
-        "User-agent: *\nDisallow: /\n",
-        encoding="utf-8",
-    )
+    if args.production:
+        shutil.copytree(BLUEHOST_DEPLOY, DIST, dirs_exist_ok=True)
+        robots = "User-agent: *\nAllow: /\n\nSitemap: https://joaocrusbjj.com/sitemap.xml\n"
+    else:
+        # Preview builds must stay out of search indexes.
+        robots = "User-agent: *\nDisallow: /\n"
+    (DIST / "robots.txt").write_text(robots, encoding="utf-8")
 
     print(
         f"Built {len(pages)} canonical pages, {len(EXTRA_PAGES)} noindex preview page, and {sum(1 for p in (DIST / 'assets').rglob('*') if p.is_file())} assets into {DIST}"

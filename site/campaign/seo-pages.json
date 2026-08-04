@@ -5,7 +5,7 @@
     "organization_name": "Joao Crus Brazilian Jiu-Jitsu",
     "phone": "+1-512-644-4560",
     "founded": "2003",
-    "default_image": "/assets/campaign-images/home-ai-concept.webp"
+    "default_image": "/assets/campaign-images/home-academy-group-2026-07.webp"
   },
   "pages": [
     {
@@ -13,7 +13,7 @@
       "path": "/",
       "title": "Brazilian Jiu-Jitsu in Dripping Springs & Austin | Joao Crus",
       "description": "Brazilian Jiu-Jitsu classes in Dripping Springs and Austin for children from age 3, teens, adults, private students, and teams.",
-      "image": "/assets/campaign-images/home-ai-concept.webp",
+      "image": "/assets/campaign-images/home-academy-group-2026-07.webp",
       "indexable": true,
       "schema": [
         "home",
@@ -353,6 +353,16 @@
         "author": "Joao Crus BJJ",
         "authorType": "Organization"
       }
+    },
+    {
+      "file": "summer-camp.html",
+      "path": "/summer-camp/",
+      "title": "Summer Camp Has Ended | Joao Crus BJJ",
+      "description": "The 2026 Joao Crus BJJ Summer Camp has ended. Explore year-round Brazilian Jiu-Jitsu classes for children ages 3-12.",
+      "image": "/assets/campaign-images/kids-training.webp",
+      "indexable": false,
+      "robots": "noindex,follow",
+      "schema": []
     },
     {
       "file": "contact.html",

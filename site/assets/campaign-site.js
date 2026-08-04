@@ -5,6 +5,69 @@
       n = document.querySelector(".nav"),
       h = document.querySelector(".header");
 
+    function analyticsValue(value) {
+      return String(value || "not_set")
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_+|_+$/g, "") || "not_set";
+    }
+
+    function analyticsContext(element) {
+      if (!element) return "unknown";
+      if (element.closest(".booking-dialog")) return "booking_dialog";
+      if (element.closest(".mobile")) return "mobile_sticky";
+      if (element.closest(".footer")) return "footer";
+      if (element.closest(".header, .alert")) return "header";
+      return "page_content";
+    }
+
+    function pushAnalytics(eventName, parameters) {
+      if (!window.joaoConsentState || window.joaoConsentState.analytics_storage !== "granted") {
+        if (parameters && typeof parameters.eventCallback === "function") {
+          window.setTimeout(parameters.eventCallback, 0);
+        }
+        return false;
+      }
+      window.dataLayer = window.dataLayer || [];
+      var payload = { event: eventName };
+      Object.keys(parameters || {}).forEach(function (key) {
+        if (parameters[key] !== undefined && parameters[key] !== null && parameters[key] !== "") {
+          payload[key] = parameters[key];
+        }
+      });
+      window.dataLayer.push(payload);
+      return true;
+    }
+
+    function formAnalyticsName(form) {
+      if (form.matches("[data-booking-form]")) return "booking_dialog";
+      if (form.dataset.formId) return analyticsValue(form.dataset.formId);
+      return analyticsValue(location.pathname.replace(/^\/+|\/+$/g, "") || "home") + "_lead_form";
+    }
+
+    function leadType(form, data) {
+      if (form.dataset.leadType) return analyticsValue(form.dataset.leadType);
+      if (/private/i.test(data.program || "")) return "private_coaching";
+      if (/team|corporate/i.test(data.program || "")) return "team_corporate";
+      return "class_inquiry";
+    }
+
+    function leadAnalyticsParameters(form, data) {
+      return {
+        form_name: formAnalyticsName(form),
+        form_context: form.matches("[data-booking-form]") ? "booking_dialog" : "page_form",
+        lead_type: leadType(form, data),
+        lead_program: analyticsValue(data.program),
+        lead_location: analyticsValue(data.location),
+        submission_page: location.pathname,
+      };
+    }
+
+    function currentAttribution() {
+      return window.joaoAttribution || {};
+    }
+
     function updateNavOffset() {
       if (!n || !h || !b.classList.contains("nav-open")) return;
       n.style.setProperty("--nav-top", Math.max(0, h.getBoundingClientRect().bottom) + "px");
@@ -89,8 +152,10 @@
       '<div class="fields">' +
       '<div class="field"><label for="booking-name">Your name</label><input id="booking-name" name="name" type="text" autocomplete="name" required></div>' +
       '<div class="field"><label for="booking-phone">Mobile number</label><input id="booking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>' +
+      '<div class="field"><label for="booking-email">Email</label><input id="booking-email" name="email" type="email" autocomplete="email" required></div>' +
       '<div class="field"><label for="booking-program">Who wants to train?</label><select id="booking-program" name="program" required><option value="">Choose a program</option><option>Little Champions 3–7</option><option>Youth 8–12</option><option>Teens 13–17</option><option>Adults</option><option>Private Coaching</option><option>Team / Corporate</option><option>Not sure yet</option></select></div>' +
       '<div class="field"><label for="booking-location">Preferred location</label><select id="booking-location" name="location" required><option value="">Choose a location</option><option>Dripping Springs</option><option>Austin</option><option>Not sure yet</option></select></div>' +
+      '<div class="field website-field" aria-hidden="true"><label for="booking-website">Leave this blank</label><input id="booking-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>' +
       '<div class="field full check booking-consent"><input id="booking-consent" name="consent" type="checkbox" required><label for="booking-consent">Joao Crus BJJ may call or text me about this request.</label></div>' +
       '<div class="field full"><button class="btn booking-submit" type="submit">Request my first class →</button><p class="booking-assurance">Takes about 30 seconds. We will only use your information to help with this request.</p><p class="status" tabindex="-1" aria-live="polite"></p></div>' +
       '</div></form>' +
@@ -128,6 +193,11 @@
 
     function openBooking(trigger) {
       if (typeof bookingDialog.showModal !== "function") {
+        pushAnalytics("booking_start", {
+          form_name: "contact_page",
+          link_context: analyticsContext(trigger),
+          submission_page: location.pathname,
+        });
         window.location.href = trigger && trigger.href ? trigger.href : "contact.html";
         return;
       }
@@ -136,6 +206,13 @@
       contextualBookingDefaults();
       bookingDialog.showModal();
       b.classList.add("booking-open");
+      pushAnalytics("booking_start", {
+        form_name: "booking_dialog",
+        link_context: analyticsContext(trigger),
+        lead_program: analyticsValue(bookingProgram.value),
+        lead_location: analyticsValue(bookingLocation.value),
+        submission_page: location.pathname,
+      });
       requestAnimationFrame(function () {
         bookingDialog.querySelector("#booking-name").focus();
       });
@@ -165,12 +242,74 @@
     bookingDialog.addEventListener("cancel", function () {
       b.classList.remove("booking-open");
     });
-    bookingForm.addEventListener("submit", function (event) {
+    function postLead(data, retried) {
+      return fetch("/api/contact.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      }).then(function (response) {
+        if (response.status === 409 && !retried) {
+          return response.text().then(function (text) {
+            var cookieMatch = text.match(/document\.cookie\s*=\s*["']([^"']+)["']/i);
+            if (!cookieMatch) throw new Error("Unable to verify this request.");
+            document.cookie = cookieMatch[1] + "; Path=/; Max-Age=3600; SameSite=Lax; Secure";
+            return postLead(data, true);
+          });
+        }
+        return response.text().then(function (text) {
+          var body = {};
+          try {
+            body = text ? JSON.parse(text) : {};
+          } catch (error) {
+            body = {};
+          }
+          if (!response.ok) throw new Error(body.error || "Unable to send your request.");
+          return body;
+        });
+      });
+    }
+
+    function submitLeadForm(form, event) {
       event.preventDefault();
-      var status = bookingForm.querySelector(".status");
-      status.textContent =
-        "Preview complete: this request form is ready to connect after Joao confirms the booking system. For now, call or text 512-644-4560.";
-      status.focus();
+      var status = form.querySelector(".status"),
+        submit = form.querySelector('[type="submit"]'),
+        data = Object.fromEntries(new FormData(form).entries());
+      data.consent = Boolean(form.querySelector('[name="consent"]:checked'));
+      data.page = window.location.pathname;
+      data.lead_type = leadType(form, data);
+      data.attribution = currentAttribution();
+      status.textContent = "Sending your request…";
+      submit.disabled = true;
+      postLead(data, false)
+        .then(function () {
+          var redirected = false;
+          function redirectAfterSuccess() {
+            if (redirected) return;
+            redirected = true;
+            window.location.href = form.dataset.successUrl || "/thank-you/";
+          }
+          var parameters = leadAnalyticsParameters(form, data);
+          parameters.eventCallback = redirectAfterSuccess;
+          parameters.eventTimeout = 1500;
+          if (data.lead_type === "guide") {
+            pushAnalytics("guide_request_success", parameters);
+          } else {
+            pushAnalytics("lead_submit_success", parameters);
+          }
+          window.setTimeout(redirectAfterSuccess, 1700);
+        })
+        .catch(function (error) {
+          var parameters = leadAnalyticsParameters(form, data);
+          parameters.error_type = "submission_failed";
+          pushAnalytics("lead_submit_error", parameters);
+          status.textContent = error.message + " You can also call or text 512-644-4560.";
+          status.focus();
+          submit.disabled = false;
+        });
+    }
+
+    bookingForm.addEventListener("submit", function (event) {
+      submitLeadForm(bookingForm, event);
     });
 
     document.querySelectorAll(".faqbtn").forEach(function (q) {
@@ -184,12 +323,35 @@
     });
     document.querySelectorAll("[data-form]").forEach(function (f) {
       f.onsubmit = function (e) {
-        e.preventDefault();
-        var s = f.querySelector(".status");
-        s.textContent =
-          "Preview complete: this form is ready to connect after Joao confirms the booking system. For now, call or text 512-644-4560.";
-        s.focus();
+        submitLeadForm(f, e);
       };
+    });
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest("a[href]");
+      if (!link) return;
+      var href = link.getAttribute("href") || "";
+      var common = {
+        link_context: analyticsContext(link),
+        link_text: analyticsValue(link.textContent).slice(0, 80),
+        page_path: location.pathname,
+      };
+      if (/^tel:/i.test(href)) {
+        pushAnalytics("click_to_call", common);
+        return;
+      }
+      if (/^mailto:/i.test(href)) {
+        pushAnalytics("click_to_email", common);
+        return;
+      }
+      if (/maps\.google\.com|google\.com\/maps|maps\.app\.goo\.gl/i.test(href)) {
+        common.location_name = /1112|lamar|austin/i.test(href) ? "austin" : "dripping_springs";
+        pushAnalytics("get_directions", common);
+        return;
+      }
+      if (/(?:^|\/)(?:contact\.html|contact\/?)(?:[?#].*)?$/i.test(href) && !bookingDialog.open) {
+        common.form_name = "contact_page";
+        pushAnalytics("booking_start", common);
+      }
     });
     var z = document.querySelectorAll("[data-zone],.jc-calendar"),
       v = new Set();

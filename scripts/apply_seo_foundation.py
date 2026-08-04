@@ -192,6 +192,32 @@ def faqpage_entity(site: dict, page: dict) -> dict | None:
     }
 
 
+def breadcrumb_entity(site: dict, page: dict) -> dict | None:
+    """Build a Google-valid breadcrumb trail for every non-home canonical page."""
+    base = site["base_url"].rstrip("/")
+    canonical = absolute(base, canonical_path(page))
+    if canonical == f"{base}/":
+        return None
+    return {
+        "@type": "BreadcrumbList",
+        "@id": f"{canonical}#breadcrumb",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": f"{base}/",
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": page.get("breadcrumb", page["title"].split(" | ", 1)[0]),
+                "item": canonical,
+            },
+        ],
+    }
+
+
 def schema_graph(site: dict, page: dict) -> list[dict]:
     if not page["schema"]:
         return []
@@ -205,19 +231,23 @@ def schema_graph(site: dict, page: dict) -> list[dict]:
     # Determine WebPage @type: use Article as @type when article flag present
     # but still include a WebPage entity for full-graph completeness
     webpage_type = "WebPage"
-    graph.append(
-        {
-            "@type": webpage_type,
-            "@id": f"{canonical}#webpage",
-            "url": canonical,
-            "name": page["title"],
-            "description": page["description"],
-            "isPartOf": {"@id": f"{base}/#website"},
-            "about": {"@id": f"{base}/#organization"},
-            "primaryImageOfPage": {"@type": "ImageObject", "url": image},
-            "inLanguage": "en-US",
-        }
-    )
+    webpage = {
+        "@type": webpage_type,
+        "@id": f"{canonical}#webpage",
+        "url": canonical,
+        "name": page["title"],
+        "description": page["description"],
+        "isPartOf": {"@id": f"{base}/#website"},
+        "about": {"@id": f"{base}/#organization"},
+        "primaryImageOfPage": {"@type": "ImageObject", "url": image},
+        "inLanguage": "en-US",
+    }
+    breadcrumb = breadcrumb_entity(site, page)
+    if breadcrumb:
+        webpage["breadcrumb"] = {"@id": breadcrumb["@id"]}
+    graph.append(webpage)
+    if breadcrumb:
+        graph.append(breadcrumb)
 
     # Article entity
     if "article" in flags:
@@ -278,7 +308,9 @@ def apply_page(site: dict, page: dict, mode: str) -> None:
         count=1,
         flags=re.S,
     )
-    robots = "index,follow,max-image-preview:large" if mode == "production" and page["indexable"] else "noindex,nofollow"
+    robots = page.get("robots")
+    if robots is None:
+        robots = "index,follow,max-image-preview:large" if mode == "production" and page["indexable"] else "noindex,nofollow"
     source = re.sub(
         r"<meta\s+name=\"robots\"\s+content=\".*?\">",
         f'<meta name="robots" content="{robots}">',
