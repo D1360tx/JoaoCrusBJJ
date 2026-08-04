@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -12,6 +13,7 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "site" / "campaign"
+ASSETS = ROOT / "site" / "assets"
 DIST = ROOT / "dist"
 DATA = json.loads((SOURCE / "seo-pages.json").read_text(encoding="utf-8"))
 EXCLUDED = {"about-ai-coaches.html"}
@@ -94,6 +96,10 @@ def main() -> None:
     consent_style_source = (ROOT / "site" / "assets" / "consent-controls.css").read_text(encoding="utf-8")
     consent_policy_source = (ROOT / "site" / "assets" / "consent-policy.js").read_text(encoding="utf-8")
     attribution_source = (ROOT / "site" / "assets" / "attribution.js").read_text(encoding="utf-8")
+    versioned_assets = {
+        filename: f"/assets/{filename}?v={hashlib.sha256((ASSETS / filename).read_bytes()).hexdigest()[:12]}"
+        for filename in ("consent-policy.js", "consent-controls.css", "attribution.js", "consent-controls.js")
+    }
     for event_name in (
         "lead_submit_success",
         "guide_request_success",
@@ -170,7 +176,7 @@ def main() -> None:
         check("'analytics_storage':'denied'" in html, f"{page['path']}: analytics must fail strict until the region policy resolves")
         for denied_type in ("ad_storage", "ad_user_data", "ad_personalization"):
             check(f"'{denied_type}':'denied'" in html, f"{page['path']}: {denied_type} must default to denied")
-        check('<script src="/assets/consent-policy.js"></script>' in html, f"{page['path']}: regional consent policy must load before GTM")
+        check(f'<script src="{versioned_assets["consent-policy.js"]}"></script>' in html, f"{page['path']}: content-versioned regional consent policy must load before GTM")
         check(html.find("assets/consent-policy.js") < html.find("w.gtag('consent','default'"), f"{page['path']}: regional policy must load before the Consent Mode bootstrap")
         check("policy.detectRegion" in html and "w.joaoRegionReady=lookup.then" in html, f"{page['path']}: GTM must wait for region resolution")
         check("w.joaoStartGtm=startGtm" in html and "if(analytics==='granted')startGtm()" in html, f"{page['path']}: GTM must load only while analytics is granted")
@@ -185,6 +191,8 @@ def main() -> None:
         check("assets/attribution.js" in html, f"{page['path']}: durable attribution script is missing")
         check("assets/consent-controls.js" in html, f"{page['path']}: consent control script is missing")
         check("assets/consent-controls.css" in html, f"{page['path']}: consent control styles are missing")
+        for filename, url in versioned_assets.items():
+            check(url in html, f"{page['path']}: {filename} must use its current content-versioned URL")
         check(
             html.find("assets/attribution.js") < html.find("assets/consent-controls.js") < html.find("assets/campaign-site.js"),
             f"{page['path']}: attribution and consent controls must load before lead-form behavior",
@@ -239,6 +247,8 @@ def main() -> None:
             check("assets/attribution.js" in html, f"{route}: durable attribution script is missing")
             check("assets/consent-controls.js" in html, f"{route}: consent control script is missing")
             check("assets/consent-controls.css" in html, f"{route}: consent control styles are missing")
+            for filename, url in versioned_assets.items():
+                check(url in html, f"{route}: {filename} must use its current content-versioned URL")
             check(html.find("assets/attribution.js") < html.find("assets/consent-controls.js"), f"{route}: attribution must load before consent controls")
             check("'traffic_type':'internal'" in html, f"{route}: QA traffic must be marked internal")
             check('name="robots" content="noindex,nofollow"' in html, f"{route}: preview page must remain noindex")
