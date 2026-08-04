@@ -25,12 +25,12 @@ GTM_CONTAINER_ID = "GTM-596MGPMD"
 CONSENT_STORAGE_KEY = "joao_consent_v1"
 
 GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
+    <script src="/assets/consent-policy.js"></script>
     <script>(function(w,d,s,l,i){{w[l]=w[l]||[];
-    var consent='denied',choice='';try{{choice=w.localStorage.getItem('{CONSENT_STORAGE_KEY}')||'';}}catch(e){{}}
-    if(!w.navigator.globalPrivacyControl&&choice==='analytics_granted')consent='granted';
-    w.joaoConsentState={{'analytics_storage':consent,'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'}};
+    var choice='';try{{choice=w.localStorage.getItem('{CONSENT_STORAGE_KEY}')||'';}}catch(e){{}}
+    w.joaoConsentState={{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'}};
     w.gtag=w.gtag||function(){{w[l].push(arguments);}};
-    w.gtag('consent','default',{{'analytics_storage':consent,'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':500}});
+    w.gtag('consent','default',{{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':2000}});
     try{{var u=new URL(w.location.href),safe=new URL(u.origin+u.pathname);
     {json.dumps(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'qa', 'gtm_debug', 'gtm_auth', 'gtm_preview', 'gtm_cookies_win'])}.forEach(function(k){{
     if(u.searchParams.has(k))safe.searchParams.set(k,u.searchParams.get(k).slice(0,160));}});
@@ -38,19 +38,25 @@ GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
     var r='';if(d.referrer){{var ru=new URL(d.referrer);r=ru.origin+'/';}}
     w.gtag('set',{{'page_location':safe.href,'page_referrer':r}});
     w[l].push({{'page_location':safe.href,'page_referrer':r}});
-    if(safe.searchParams.get('qa')==='1'){{
-    w[l].push({{'traffic_type':'internal','debug_mode':true}});
-    }}}}catch(e){{}}
+    if(safe.searchParams.get('qa')==='1'){{w[l].push({{'traffic_type':'internal','debug_mode':true}});}}
+    }}catch(e){{}}
+    function startGtm(){{if(w.joaoGtmStarted)return;w.joaoGtmStarted=true;
     w[l].push({{'gtm.start':new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}}
+    w.joaoStartGtm=startGtm;
+    var policy=w.JoaoConsentPolicy;
+    var lookup=policy&&policy.detectRegion?policy.detectRegion(w.fetch&&w.fetch.bind(w),1500):Promise.resolve({{country:'',policy:'unknown'}});
+    w.joaoRegionReady=lookup.then(function(region){{
+    region=region||{{country:'',policy:'unknown'}};w.joaoConsentRegion=region;
+    var analytics=policy&&policy.analyticsConsent?policy.analyticsConsent(choice,region.policy):'denied';
+    w.joaoConsentState={{'analytics_storage':analytics,'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'}};
+    w.gtag('consent','update',w.joaoConsentState);
+    try{{w.dispatchEvent(new CustomEvent('joao:regionready',{{detail:region}}));}}catch(e){{}}
+    if(analytics==='granted')startGtm();return region;
+    }}).catch(function(){{w.joaoConsentRegion={{country:'',policy:'unknown'}};return w.joaoConsentRegion;}});
     }})(window,document,'script','dataLayer','{GTM_CONTAINER_ID}');</script>
     <!-- End Google Tag Manager -->"""
-
-GTM_BODY_SNIPPET = f"""<!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={GTM_CONTAINER_ID}"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->"""
 
 # This superseded comparison page remains available in Git history and
 # RawGitHack previews but is intentionally excluded from production hosting.
@@ -126,13 +132,7 @@ def add_google_tag_manager(html: str) -> str:
         count=1,
         flags=re.IGNORECASE,
     )
-    return re.sub(
-        r"(<body(?:\s[^>]*)?>)",
-        rf"\1\n    {GTM_BODY_SNIPPET}",
-        html,
-        count=1,
-        flags=re.IGNORECASE,
-    )
+    return html
 
 
 def rewrite_internal_html_links(html: str, routes: dict[str, str]) -> str:

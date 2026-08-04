@@ -38,6 +38,16 @@
 
 ---
 
+## Regional analytics and consent (2026-08-03)
+
+- ✅ Use the least-friction regional model: known visitors outside the EEA, United Kingdom, and Switzerland receive GA4 analytics by default without a first-visit banner and can turn it off from the footer.
+- ✅ Visitors in the EEA, United Kingdom, and Switzerland must explicitly allow analytics. Unknown or failed country detection follows the same strict opt-in path.
+- ✅ Keep `ad_storage`, `ad_user_data`, and `ad_personalization` denied globally. Do not activate remarketing or personalized advertising without a separate decision and updated disclosures.
+- ✅ Honor explicit saved analytics choices across regions. Global Privacy Control keeps advertising-related processing off but does not disable ordinary first-party analytics outside strict regions.
+- ✅ Preserve PII stripping, origin-only referrers, consent-aware attribution storage, a durable Privacy choices control, and strict failure behavior.
+
+---
+
 ## 2. Confirmed business facts
 
 ### Enrollment, pricing, and operations

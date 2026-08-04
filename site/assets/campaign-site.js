@@ -23,6 +23,12 @@
     }
 
     function pushAnalytics(eventName, parameters) {
+      if (!window.joaoConsentState || window.joaoConsentState.analytics_storage !== "granted") {
+        if (parameters && typeof parameters.eventCallback === "function") {
+          window.setTimeout(parameters.eventCallback, 0);
+        }
+        return false;
+      }
       window.dataLayer = window.dataLayer || [];
       var payload = { event: eventName };
       Object.keys(parameters || {}).forEach(function (key) {
@@ -31,6 +37,7 @@
         }
       });
       window.dataLayer.push(payload);
+      return true;
     }
 
     function formAnalyticsName(form) {

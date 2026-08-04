@@ -90,6 +90,7 @@ def main() -> None:
 
     analytics_source = (ROOT / "site" / "assets" / "campaign-site.js").read_text(encoding="utf-8")
     consent_source = (ROOT / "site" / "assets" / "consent-controls.js").read_text(encoding="utf-8")
+    consent_policy_source = (ROOT / "site" / "assets" / "consent-policy.js").read_text(encoding="utf-8")
     attribution_source = (ROOT / "site" / "assets" / "attribution.js").read_text(encoding="utf-8")
     for event_name in (
         "lead_submit_success",
@@ -101,6 +102,9 @@ def main() -> None:
         "get_directions",
     ):
         check(f'pushAnalytics("{event_name}"' in analytics_source, f"missing analytics event contract: {event_name}")
+    check('window.joaoConsentState.analytics_storage !== "granted"' in analytics_source, "application analytics must not queue while analytics storage is denied")
+    check('window.setTimeout(parameters.eventCallback, 0)' in analytics_source, "blocked lead analytics must preserve immediate navigation callbacks")
+    check('function clearAnalyticsCookies()' in consent_source, "analytics withdrawal must clear first-party Google Analytics cookies")
     check("parameters.eventCallback = redirectAfterSuccess" in analytics_source, "lead success event must use a GTM eventCallback before navigation")
     check("parameters.eventTimeout = 1500" in analytics_source, "lead success event must use a bounded eventTimeout")
     check("data.attribution = currentAttribution()" in analytics_source, "lead payload must use current consent-aware non-PII attribution")
@@ -109,6 +113,11 @@ def main() -> None:
     check('var CONSENT_KEY = "joao_consent_v1"' in consent_source, "consent UI must use the shared consent preference key")
     check('window.gtag("consent", "update"' in consent_source, "consent UI must update Google Consent Mode")
     check("navigator.globalPrivacyControl === true" in consent_source, "consent UI must honor Global Privacy Control")
+    check('var REGION_ENDPOINT = "https://api.country.is/"' in consent_policy_source, "country-level region lookup endpoint is missing")
+    check('"GB", "CH"' in consent_policy_source, "strict-region policy must include the UK and Switzerland")
+    check('"IS", "IT", "LI"' in consent_policy_source and '"NO"' in consent_policy_source, "strict-region policy must include the non-EU EEA states")
+    check('return policy === "standard" ? "granted" : "denied"' in consent_policy_source, "unknown regions must fail strict while known non-strict regions default analytics on")
+    check('payload.ip' not in consent_policy_source, "region policy must not retain the returned IP address")
     check("JoaoAttribution.clear(window)" in consent_source, "consent withdrawal must clear durable attribution")
     check("consentInvoker.focus()" in consent_source, "consent UI must restore focus to the invoking preference control")
     check('var WINDOW_DAYS = 90' in attribution_source, "attribution must retain a 90-day first-party window")
@@ -133,6 +142,8 @@ def main() -> None:
     privacy_source = (SOURCE / "privacy.html").read_text(encoding="utf-8")
     check("Google Analytics 4" in privacy_source, "privacy policy must disclose GA4")
     check("your browser for up to 90 days" in privacy_source, "privacy policy must disclose attribution retention")
+    check("EEA, the United Kingdom, and Switzerland" in privacy_source, "privacy policy must disclose strict-region opt-in behavior")
+    check("country-level region lookup" in privacy_source, "privacy policy must disclose region detection")
 
     for page in pages:
         target = route_file(page["path"])
@@ -141,14 +152,18 @@ def main() -> None:
             continue
         html = target.read_text(encoding="utf-8")
         check('<base href="/">' in html, f"{page['path']}: missing root base element")
-        check(html.count(GTM_CONTAINER_ID) == 2, f"{page['path']}: GTM must appear once in the head and once in the noscript fallback")
+        check(html.count(GTM_CONTAINER_ID) == 1, f"{page['path']}: GTM must appear only in the consent-gated head loader")
         check("googletagmanager.com/gtm.js?id='+i+dl" in html, f"{page['path']}: missing GTM head loader")
-        check(f"googletagmanager.com/ns.html?id={GTM_CONTAINER_ID}" in html, f"{page['path']}: missing GTM noscript fallback")
+        check("googletagmanager.com/ns.html" not in html, f"{page['path']}: ungated GTM noscript fallback must be absent")
         check("w.gtag('consent','default'" in html, f"{page['path']}: Consent Mode default is missing")
         check(html.find("w.gtag('consent','default'") < html.find("'gtm.start'"), f"{page['path']}: consent default must execute before GTM")
+        check("'analytics_storage':'denied'" in html, f"{page['path']}: analytics must fail strict until the region policy resolves")
         for denied_type in ("ad_storage", "ad_user_data", "ad_personalization"):
             check(f"'{denied_type}':'denied'" in html, f"{page['path']}: {denied_type} must default to denied")
-        check("globalPrivacyControl" in html, f"{page['path']}: GTM bootstrap must honor Global Privacy Control")
+        check('<script src="/assets/consent-policy.js"></script>' in html, f"{page['path']}: regional consent policy must load before GTM")
+        check(html.find("assets/consent-policy.js") < html.find("w.gtag('consent','default'"), f"{page['path']}: regional policy must load before the Consent Mode bootstrap")
+        check("policy.detectRegion" in html and "w.joaoRegionReady=lookup.then" in html, f"{page['path']}: GTM must wait for region resolution")
+        check("w.joaoStartGtm=startGtm" in html and "if(analytics==='granted')startGtm()" in html, f"{page['path']}: GTM must load only while analytics is granted")
         check("get('qa')==='1'" in html, f"{page['path']}: missing explicit QA traffic marker")
         check("'traffic_type':'internal'" in html, f"{page['path']}: QA traffic must be marked internal")
         check("'page_location':safe.href" in html, f"{page['path']}: GA4 page location must use the allowlisted URL")
@@ -207,7 +222,7 @@ def main() -> None:
         if target.is_file():
             html = target.read_text(encoding="utf-8")
             check('<base href="/">' in html, f"{route}: missing root base element")
-            check(html.count(GTM_CONTAINER_ID) == 2, f"{route}: GTM must appear once in the head and once in the noscript fallback")
+            check(html.count(GTM_CONTAINER_ID) == 1, f"{route}: GTM must appear only in the consent-gated head loader")
             check("w.gtag('consent','default'" in html, f"{route}: Consent Mode default is missing")
             check(html.find("w.gtag('consent','default'") < html.find("'gtm.start'"), f"{route}: consent default must execute before GTM")
             check("w.gtag('set',{'page_location':safe.href,'page_referrer':r})" in html, f"{route}: sanitized GA4 page fields must be applied through gtag set")
