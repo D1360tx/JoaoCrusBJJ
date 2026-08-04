@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import argparse
+import hashlib
 import re
 import shutil
 from pathlib import Path
@@ -24,8 +25,20 @@ BLUEHOST_DEPLOY = ROOT / "deploy" / "bluehost"
 GTM_CONTAINER_ID = "GTM-596MGPMD"
 CONSENT_STORAGE_KEY = "joao_consent_v1"
 
+
+def versioned_asset_url(filename: str) -> str:
+    """Return a content-versioned URL so deployed privacy controls cannot remain stale."""
+    digest = hashlib.sha256((ASSETS / filename).read_bytes()).hexdigest()[:12]
+    return f"/assets/{filename}?v={digest}"
+
+
+CONSENT_POLICY_URL = versioned_asset_url("consent-policy.js")
+CONSENT_STYLE_URL = versioned_asset_url("consent-controls.css")
+ATTRIBUTION_URL = versioned_asset_url("attribution.js")
+CONSENT_CONTROLS_URL = versioned_asset_url("consent-controls.js")
+
 GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
-    <script src="/assets/consent-policy.js"></script>
+    <script src="{CONSENT_POLICY_URL}"></script>
     <script>(function(w,d,s,l,i){{w[l]=w[l]||[];
     var policy=w.JoaoConsentPolicy,choice=policy&&policy.readChoice?policy.readChoice(w,'{CONSENT_STORAGE_KEY}'):'';
     w.joaoConsentState={{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'}};
@@ -90,7 +103,7 @@ def add_attribution_script(html: str) -> str:
     if "assets/consent-controls.css" not in html:
         html = re.sub(
             r"(</head>)",
-            r'    <link rel="stylesheet" href="/assets/consent-controls.css">\n\1',
+            f'    <link rel="stylesheet" href="{CONSENT_STYLE_URL}">\n\\1',
             html,
             count=1,
             flags=re.IGNORECASE,
@@ -98,9 +111,9 @@ def add_attribution_script(html: str) -> str:
 
     scripts = []
     if "assets/attribution.js" not in html:
-        scripts.append('<script src="/assets/attribution.js" defer></script>')
+        scripts.append(f'<script src="{ATTRIBUTION_URL}" defer></script>')
     if "assets/consent-controls.js" not in html:
-        scripts.append('<script src="/assets/consent-controls.js" defer></script>')
+        scripts.append(f'<script src="{CONSENT_CONTROLS_URL}" defer></script>')
     if not scripts:
         return html
 
