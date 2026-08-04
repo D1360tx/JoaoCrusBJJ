@@ -53,6 +53,30 @@ test("persists consent through a bootstrap-readable fallback when localStorage f
   assert.equal(cookie, "joao_consent_v1=analytics_denied");
 });
 
+test("a denied value wins if preference stores disagree", () => {
+  const values = new Map();
+  const writableStorage = {
+    getItem(key) { return values.get(key) || ""; },
+    setItem(key, value) { values.set(key, value); },
+  };
+  const blockedStorage = {
+    getItem() { throw new Error("blocked"); },
+    setItem() { throw new Error("blocked"); },
+  };
+  const context = {
+    document: {
+      get cookie() { return "joao_consent_v1=analytics_granted"; },
+      set cookie(value) { throw new Error("blocked"); },
+    },
+    localStorage: writableStorage,
+    sessionStorage: blockedStorage,
+    location: { protocol: "https:" },
+  };
+
+  assert.equal(policy.saveChoice(context, "joao_consent_v1", "analytics_denied"), true);
+  assert.equal(policy.readChoice(context, "joao_consent_v1"), "analytics_denied");
+});
+
 test("reports failure when no bootstrap-readable consent store is writable", () => {
   const blockedStorage = {
     getItem() { throw new Error("blocked"); },

@@ -68,17 +68,19 @@
   function readChoice(context, key) {
     context = context || {};
     var cookieChoice = readChoiceCookie(context.document, key);
-    if (cookieChoice) return cookieChoice;
+    var foundGranted = cookieChoice === "analytics_granted";
+    if (cookieChoice === "analytics_denied") return cookieChoice;
     var storageNames = ["localStorage", "sessionStorage"];
     for (var index = 0; index < storageNames.length; index += 1) {
       try {
         var choice = validChoice(context[storageNames[index]].getItem(key));
-        if (choice) return choice;
+        if (choice === "analytics_denied") return choice;
+        if (choice === "analytics_granted") foundGranted = true;
       } catch (error) {
         // Continue to the next bootstrap-readable preference store.
       }
     }
-    return "";
+    return foundGranted ? "analytics_granted" : "";
   }
 
   function saveChoice(context, key, choice) {
@@ -105,7 +107,7 @@
     } catch (error) {
       // A denied choice never triggers a reload unless another store persisted it.
     }
-    return persisted;
+    return persisted && readChoice(context, key) === choice;
   }
 
   function regionResult(country) {
