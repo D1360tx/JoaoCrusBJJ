@@ -1,0 +1,131 @@
+1
+00:00:00,000 --> 00:00:03,120
+If I had to start from zero tomorrow and bring in new customers fast,
+
+2
+00:00:03,120 --> 00:00:05,520
+here's exactly what I would build from top to bottom.
+
+3
+00:00:05,520 --> 00:00:08,080
+I would start with an ad, open ChatGPT or Claude,
+
+4
+00:00:08,080 --> 00:00:10,320
+paste in what you sell and who you sell it to.
+
+5
+00:00:10,320 --> 00:00:12,640
+Ask it to write you 10 different hooks for a meta ad,
+
+6
+00:00:12,640 --> 00:00:15,680
+pick the best 3, and then jump into Higgsfield.ai
+
+7
+00:00:15,680 --> 00:00:17,040
+and have it generate the visual.
+
+8
+00:00:17,040 --> 00:00:19,120
+30 minutes and you got a real ad ready to run.
+
+9
+00:00:19,120 --> 00:00:21,760
+You run the ad to one landing page, not your homepage.
+
+10
+00:00:21,760 --> 00:00:23,920
+One page, one offer, one call to action.
+
+11
+00:00:23,920 --> 00:00:26,320
+Headline that stops the scroll, a few lines of value,
+
+12
+00:00:26,320 --> 00:00:29,120
+an email or a phone field, and a button, and that's it.
+
+13
+00:00:29,120 --> 00:00:31,680
+You can build it in high level, a company we partnered with,
+
+14
+00:00:31,680 --> 00:00:32,640
+in less than 20 minutes.
+
+15
+00:00:32,640 --> 00:00:35,600
+The second someone enters their email, they drop into your CRM,
+
+16
+00:00:35,600 --> 00:00:37,680
+automatically tagged from where they came from.
+
+17
+00:00:37,680 --> 00:00:40,080
+Now the part that most people skip, the follow up.
+
+18
+00:00:40,080 --> 00:00:41,920
+The moment that form field is filled,
+
+19
+00:00:41,920 --> 00:00:44,080
+a sequence gets kicked off automatically.
+
+20
+00:00:44,080 --> 00:00:46,720
+Email or SMS, spaced over 5 to 7 days.
+
+21
+00:00:46,720 --> 00:00:49,360
+First message thanks them and delivers what you promise,
+
+22
+00:00:49,360 --> 00:00:50,960
+then a story, then social proof,
+
+23
+00:00:50,960 --> 00:00:54,000
+then objection you know that they have, then the offer.
+
+24
+00:00:54,000 --> 00:00:55,200
+They don't have to think about you,
+
+25
+00:00:55,280 --> 00:00:57,520
+you're showing up in their inbox and text,
+
+26
+00:00:57,520 --> 00:00:59,120
+exactly at the right time.
+
+27
+00:00:59,120 --> 00:01:00,800
+The last message has a calendar link,
+
+28
+00:01:00,800 --> 00:01:02,480
+or a buy button right inside it.
+
+29
+00:01:02,480 --> 00:01:04,400
+They tap, they book, or they buy.
+
+30
+00:01:04,400 --> 00:01:05,440
+AI does the creative work.
+
+31
+00:01:05,440 --> 00:01:06,960
+The system runs a customer journey.
+
+32
+00:01:06,960 --> 00:01:08,720
+You spend your time on strategy.
+
+33
+00:01:08,720 --> 00:01:09,440
+That's the play.
