@@ -2,7 +2,7 @@
 
 # Joao Crus BJJ — Current Decisions
 
-> **Authoritative status as of 2026-08-03**
+> **Authoritative status as of 2026-08-04**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
 ## Status legend
@@ -58,7 +58,7 @@
 - ✅ Memberships use **12-month agreements with 60-day termination notice**.
 - ✅ Reported business baseline: approximately **$100,000 trailing 12 months**; records/Zen Planner export are still required to document the baseline.
 - ✅ Billing and member management use **Zen Planner**.
-- ✅ Current website inquiries go to **[joaocruzbjj@gmail.com](mailto:joaocruzbjj@gmail.com)** and are not managed in a dedicated CRM.
+- ✅ Current website inquiries are emailed to **[joaocruzbjj@gmail.com](mailto:joaocruzbjj@gmail.com)** and **[diego@icdcventures.com](mailto:diego@icdcventures.com)** for owner delivery plus ICDC monitoring. They are not yet managed in a dedicated CRM.
 - ✅ Beehiiv exists with approximately **800 subscribers**, correcting the earlier 8,060 figure. Access and consent/list-quality review remain pending.
 
 ### Locations and schedule

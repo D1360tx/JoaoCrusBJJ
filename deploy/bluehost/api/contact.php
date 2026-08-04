@@ -5,7 +5,10 @@ header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
 header('Cache-Control: no-store');
 
-const CONTACT_TO = 'joaocrusbjj@gmail.com';
+const CONTACT_RECIPIENTS = [
+    'joaocrusbjj@gmail.com',
+    'diego@icdcventures.com',
+];
 const CONTACT_FROM = 'website@joaocrusbjj.com';
 
 function respond(int $status, array $body): never
@@ -147,7 +150,7 @@ $headers = [
     'X-Mailer: JoaoCrusBJJ-Website',
 ];
 
-$sent = mail(CONTACT_TO, $subject, $body, implode("\r\n", $headers));
+$sent = mail(implode(', ', CONTACT_RECIPIENTS), $subject, $body, implode("\r\n", $headers));
 if (!$sent) {
     error_log('Joao Crus BJJ contact form mail() failed for ' . $lead['email']);
     respond(502, ['ok' => false, 'error' => 'We could not send your request. Please call or text 512-644-4560.']);

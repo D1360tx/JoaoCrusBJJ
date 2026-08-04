@@ -64,7 +64,11 @@ def main() -> None:
     )
     check(not (DIST / "about-ai-coaches").exists(), "superseded AI comparison route was deployed")
     if args.production:
-        check((DIST / "api" / "contact.php").is_file(), "production contact endpoint is missing")
+        contact_endpoint = DIST / "api" / "contact.php"
+        check(contact_endpoint.is_file(), "production contact endpoint is missing")
+        contact_source = contact_endpoint.read_text(encoding="utf-8") if contact_endpoint.is_file() else ""
+        for recipient in ("joaocrusbjj@gmail.com", "diego@icdcventures.com"):
+            check(recipient in contact_source, f"production contact endpoint is missing recipient {recipient}")
     else:
         check(not (DIST / "api" / "contact.php").exists(), "PHP contact endpoint must not ship in the staging artifact")
 
