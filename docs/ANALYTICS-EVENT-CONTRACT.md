@@ -25,7 +25,8 @@
 - The thank-you page is not a conversion trigger. Direct visits and refreshes must not create leads.
 - The Parent Guide request remains separate from class inquiries so it does not inflate lead counts.
 - Success events use GTM `eventCallback` with a bounded timeout before navigation.
-- First-touch UTMs, landing path, and referrer host are preserved in session storage and delivered only to the lead endpoint for staff attribution.
+- Application-owned analytics events are discarded while `analytics_storage` is not granted; they are never queued for replay after a later opt-in. Lead-success navigation callbacks still run immediately when analytics is blocked.
+- First- and last-touch campaign parameters, landing paths, and referrer hosts use consent-gated local storage with a 90-day window plus a legacy session-storage migration path. They are delivered only to the lead endpoint for staff attribution.
 - `click_to_call` records intent, not a connected or qualified call. If Google Ads is reopened, configure call reporting and use an agreed duration threshold for the primary call conversion.
 
 ## Publication gates
