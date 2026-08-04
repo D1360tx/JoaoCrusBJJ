@@ -91,6 +91,7 @@ def main() -> None:
     analytics_source = (ROOT / "site" / "assets" / "campaign-site.js").read_text(encoding="utf-8")
     build_source = (ROOT / "scripts" / "build_vercel_site.py").read_text(encoding="utf-8")
     consent_source = (ROOT / "site" / "assets" / "consent-controls.js").read_text(encoding="utf-8")
+    consent_style_source = (ROOT / "site" / "assets" / "consent-controls.css").read_text(encoding="utf-8")
     consent_policy_source = (ROOT / "site" / "assets" / "consent-policy.js").read_text(encoding="utf-8")
     attribution_source = (ROOT / "site" / "assets" / "attribution.js").read_text(encoding="utf-8")
     for event_name in (
@@ -114,6 +115,10 @@ def main() -> None:
     check('var CONSENT_KEY = "joao_consent_v1"' in consent_source, "consent UI must use the shared consent preference key")
     check('window.gtag("consent", "update"' in consent_source, "consent UI must update Google Consent Mode")
     check("navigator.globalPrivacyControl === true" in consent_source, "consent UI must honor Global Privacy Control")
+    check('class="consent-allow"' in consent_source and "consentAllow.hidden" not in consent_source, "Allow analytics must remain visible when GPC is present")
+    check('aria-label="Close privacy choices"' in consent_source, "consent dialog needs a labeled close control")
+    check("sessionStorage.setItem(DISMISS_KEY, \"1\")" in consent_source and "!consentWasDismissed()" in consent_source, "closing must dismiss the strict-region prompt for the current session without granting analytics")
+    check(".consent-close" in consent_style_source and ".consent-actions .consent-allow" in consent_style_source, "consent allow and close controls need dedicated scoped styles")
     check('var REGION_ENDPOINT = "https://api.country.is/"' in consent_policy_source, "country-level region lookup endpoint is missing")
     check('"GB", "CH"' in consent_policy_source, "strict-region policy must include the UK and Switzerland")
     check('"IS", "IT", "LI"' in consent_policy_source and '"NO"' in consent_policy_source, "strict-region policy must include the non-EU EEA states")
