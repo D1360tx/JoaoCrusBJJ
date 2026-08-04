@@ -1,6 +1,7 @@
 (function () {
   document.addEventListener("DOMContentLoaded", function () {
     var CONSENT_KEY = "joao_consent_v1";
+    var DISMISS_KEY = "joao_consent_dismissed_v1";
     var hasGpc = navigator.globalPrivacyControl === true;
     var consentChoice = "";
     var consentInvoker = null;
@@ -16,6 +17,14 @@
         consentChoice = localStorage.getItem(CONSENT_KEY) || "";
       } catch (error) {
         // Consent controls continue to work for this page when storage is unavailable.
+      }
+    }
+
+    function consentWasDismissed() {
+      try {
+        return sessionStorage.getItem(DISMISS_KEY) === "1";
+      } catch (error) {
+        return false;
       }
     }
 
@@ -84,15 +93,17 @@
       consentBanner.setAttribute("role", "dialog");
       consentBanner.setAttribute("aria-labelledby", "consent-title");
       consentBanner.innerHTML =
-        '<div class="consent-copy"><strong id="consent-title">Analytics choice</strong>' +
+        '<button class="consent-close" type="button" aria-label="Close privacy choices"><span aria-hidden="true">×</span></button>' +
+        '<div class="consent-copy"><strong id="consent-title">Privacy choices</strong>' +
         '<p>Optional analytics help us understand site use and campaign performance. You can continue without analytics and change this choice later.</p>' +
         '<p class="consent-gpc" hidden>Your browser is sending a Global Privacy Control signal. Advertising-related storage and personalization remain off.</p>' +
         '<a href="/privacy-policy/">Read the privacy policy</a></div>' +
-        '<div class="consent-actions"><button class="btn consent-allow" type="button">Allow analytics</button>' +
+        '<div class="consent-actions"><button class="consent-allow" type="button">Allow analytics</button>' +
         '<button class="consent-decline" type="button">Continue without analytics</button></div>';
       document.body.appendChild(consentBanner);
 
       var consentAllow = consentBanner.querySelector(".consent-allow");
+      var consentClose = consentBanner.querySelector(".consent-close");
       var consentDecline = consentBanner.querySelector(".consent-decline");
       var consentGpc = consentBanner.querySelector(".consent-gpc");
       if (hasGpc) consentGpc.hidden = false;
@@ -104,6 +115,22 @@
         consentBanner.hidden = false;
         document.body.classList.add("consent-open");
         (consentValue(consentChoice) === "granted" ? consentDecline : consentAllow).focus();
+      }
+
+      function hideConsentChoices() {
+        consentBanner.hidden = true;
+        document.body.classList.remove("consent-open");
+        if (consentInvoker && document.contains(consentInvoker)) consentInvoker.focus();
+        consentInvoker = null;
+      }
+
+      function closeConsentChoices() {
+        hideConsentChoices();
+        try {
+          sessionStorage.setItem(DISMISS_KEY, "1");
+        } catch (error) {
+          // Closing still works for this page when session storage is unavailable.
+        }
       }
 
       function saveConsent(choice) {
@@ -122,10 +149,12 @@
           }
         }
         applyConsent(consentChoice);
-        consentBanner.hidden = true;
-        document.body.classList.remove("consent-open");
-        if (consentInvoker && document.contains(consentInvoker)) consentInvoker.focus();
-        consentInvoker = null;
+        try {
+          sessionStorage.removeItem(DISMISS_KEY);
+        } catch (error) {
+          // The explicit choice is already stored by the consent policy.
+        }
+        hideConsentChoices();
         if (shouldReloadWithoutTags && consentPersisted) window.location.reload();
       }
 
@@ -134,6 +163,13 @@
       });
       consentDecline.addEventListener("click", function () {
         saveConsent("analytics_denied");
+      });
+      consentClose.addEventListener("click", closeConsentChoices);
+      consentBanner.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeConsentChoices();
+        }
       });
 
       var preferenceHosts = document.querySelectorAll(".bottom");
@@ -148,7 +184,9 @@
       });
 
       applyConsent(consentChoice);
-      if (!consentChoice && region.policy !== "standard") showConsentChoices();
+      if (!consentChoice && region.policy !== "standard" && !consentWasDismissed()) {
+        showConsentChoices();
+      }
     }).catch(function () {
       // A failed or missing region lookup must never silently enable analytics.
       window.joaoConsentRegion = { country: "", policy: "unknown" };
