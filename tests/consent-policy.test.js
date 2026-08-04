@@ -14,10 +14,13 @@ test("uses standard analytics behavior for known non-strict countries", () => {
   }
 });
 
-test("fails strict when the country is missing or malformed", () => {
-  assert.equal(policy.policyForCountry(""), "unknown");
-  assert.equal(policy.policyForCountry(null), "unknown");
-  assert.equal(policy.policyForCountry("USA"), "unknown");
+test("fails strict when the country is missing, malformed, or not recognized", () => {
+  assert.equal(policy.KNOWN_COUNTRIES.length, 249);
+  assert.equal(new Set(policy.KNOWN_COUNTRIES).size, 249);
+  for (const country of ["", null, "USA", "ZZ", "XX", "EU", "UK"]) {
+    assert.equal(policy.policyForCountry(country), "unknown", String(country));
+    assert.deepEqual(policy.regionResult(country), { country: "", policy: "unknown" });
+  }
 });
 
 test("explicit choices override the regional default", () => {

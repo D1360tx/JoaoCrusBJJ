@@ -47,7 +47,7 @@ Do not use `utm_medium=qa`; it intentionally does not match a standard GA4 chann
 - Country detection uses `https://api.country.is/` with credentials omitted, no referrer, and no cache. The site retains only the two-letter country code in page memory and does not persist the returned IP address or precise location.
 - `ad_storage`, `ad_user_data`, and `ad_personalization` remain denied in every region. Global Privacy Control therefore cannot enable advertising-related storage or personalization and does not force ordinary first-party analytics off.
 - Durable first-party attribution is read and written only while analytics storage is granted. While denied, the current non-PII touch remains available in page memory for the active inquiry but is not persisted in `localStorage` or `sessionStorage`.
-- Turning analytics off clears both the current durable attribution record, the legacy session record, and accessible first-party Google Analytics cookies. Application-owned events are discarded while analytics is denied so they cannot be replayed after a later opt-in.
+- Turning analytics off clears both the current durable attribution record, the legacy session record, and accessible first-party Google Analytics cookies. If tags had already loaded, the page reloads into a tag-free denied state. Application-owned events are discarded while analytics is denied so they cannot be replayed after a later opt-in.
 - Each retained touch has its own 90-day window. A newer campaign does not extend an older first touch beyond 90 days.
 - Direct return visits do not erase the latest attributable campaign or external referral.
 - Lead submissions include both touches plus supported ad click IDs: `gclid`, `fbclid`, `wbraid`, `gbraid`, and `msclkid`.

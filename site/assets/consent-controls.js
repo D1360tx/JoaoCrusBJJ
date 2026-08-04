@@ -103,6 +103,8 @@
       }
 
       function saveConsent(choice) {
+        var shouldReloadWithoutTags = choice === "analytics_denied" &&
+          window.joaoGtmStarted === true;
         consentChoice = choice;
         try {
           localStorage.setItem(CONSENT_KEY, consentChoice);
@@ -114,6 +116,7 @@
         document.body.classList.remove("consent-open");
         if (consentInvoker && document.contains(consentInvoker)) consentInvoker.focus();
         consentInvoker = null;
+        if (shouldReloadWithoutTags) window.location.reload();
       }
 
       consentAllow.addEventListener("click", function () {
