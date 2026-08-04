@@ -9,10 +9,14 @@
       window.joaoConsentRegion || { country: "", policy: "unknown" }
     );
 
-    try {
-      consentChoice = localStorage.getItem(CONSENT_KEY) || "";
-    } catch (error) {
-      // Consent controls continue to work for this page when storage is unavailable.
+    if (policy && typeof policy.readChoice === "function") {
+      consentChoice = policy.readChoice(window, CONSENT_KEY);
+    } else {
+      try {
+        consentChoice = localStorage.getItem(CONSENT_KEY) || "";
+      } catch (error) {
+        // Consent controls continue to work for this page when storage is unavailable.
+      }
     }
 
     regionReady.then(function (region) {
@@ -106,17 +110,23 @@
         var shouldReloadWithoutTags = choice === "analytics_denied" &&
           window.joaoGtmStarted === true;
         consentChoice = choice;
-        try {
-          localStorage.setItem(CONSENT_KEY, consentChoice);
-        } catch (error) {
-          // The choice still applies to the current page when storage is unavailable.
+        var consentPersisted = false;
+        if (policy && typeof policy.saveChoice === "function") {
+          consentPersisted = policy.saveChoice(window, CONSENT_KEY, consentChoice);
+        } else {
+          try {
+            localStorage.setItem(CONSENT_KEY, consentChoice);
+            consentPersisted = localStorage.getItem(CONSENT_KEY) === consentChoice;
+          } catch (error) {
+            // The choice still applies to the current page when storage is unavailable.
+          }
         }
         applyConsent(consentChoice);
         consentBanner.hidden = true;
         document.body.classList.remove("consent-open");
         if (consentInvoker && document.contains(consentInvoker)) consentInvoker.focus();
         consentInvoker = null;
-        if (shouldReloadWithoutTags) window.location.reload();
+        if (shouldReloadWithoutTags && consentPersisted) window.location.reload();
       }
 
       consentAllow.addEventListener("click", function () {

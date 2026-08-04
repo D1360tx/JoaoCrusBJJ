@@ -89,6 +89,7 @@ def main() -> None:
     )
 
     analytics_source = (ROOT / "site" / "assets" / "campaign-site.js").read_text(encoding="utf-8")
+    build_source = (ROOT / "scripts" / "build_vercel_site.py").read_text(encoding="utf-8")
     consent_source = (ROOT / "site" / "assets" / "consent-controls.js").read_text(encoding="utf-8")
     consent_policy_source = (ROOT / "site" / "assets" / "consent-policy.js").read_text(encoding="utf-8")
     attribution_source = (ROOT / "site" / "assets" / "attribution.js").read_text(encoding="utf-8")
@@ -120,7 +121,9 @@ def main() -> None:
     check("KNOWN_COUNTRIES.indexOf(normalized) >= 0" in consent_policy_source, "two-letter country responses must be validated against the ISO country allowlist")
     check('payload.ip' not in consent_policy_source, "region policy must not retain the returned IP address")
     check("JoaoAttribution.clear(window)" in consent_source, "consent withdrawal must clear durable attribution")
-    check("window.joaoGtmStarted === true" in consent_source and "window.location.reload()" in consent_source, "withdrawing from loaded analytics must reload into a tag-free document")
+    check("policy.saveChoice(window, CONSENT_KEY, consentChoice)" in consent_source, "consent changes must use a bootstrap-readable preference fallback")
+    check("shouldReloadWithoutTags && consentPersisted" in consent_source and "window.location.reload()" in consent_source, "withdrawal must reload into a tag-free document only after the denial persists")
+    check("policy&&policy.readChoice?policy.readChoice(w" in build_source, "the GTM bootstrap must read the shared fallback-aware consent preference")
     check("consentInvoker.focus()" in consent_source, "consent UI must restore focus to the invoking preference control")
     check('var WINDOW_DAYS = 90' in attribution_source, "attribution must retain a 90-day first-party window")
     check("analyticsStorageGranted(context)" in attribution_source, "attribution persistence must be gated by analytics consent")

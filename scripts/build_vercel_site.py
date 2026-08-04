@@ -27,7 +27,7 @@ CONSENT_STORAGE_KEY = "joao_consent_v1"
 GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
     <script src="/assets/consent-policy.js"></script>
     <script>(function(w,d,s,l,i){{w[l]=w[l]||[];
-    var choice='';try{{choice=w.localStorage.getItem('{CONSENT_STORAGE_KEY}')||'';}}catch(e){{}}
+    var policy=w.JoaoConsentPolicy,choice=policy&&policy.readChoice?policy.readChoice(w,'{CONSENT_STORAGE_KEY}'):'';
     w.joaoConsentState={{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'}};
     w.gtag=w.gtag||function(){{w[l].push(arguments);}};
     w.gtag('consent','default',{{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':2000}});
@@ -45,7 +45,6 @@ GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}}
     w.joaoStartGtm=startGtm;
-    var policy=w.JoaoConsentPolicy;
     var lookup=policy&&policy.detectRegion?policy.detectRegion(w.fetch&&w.fetch.bind(w),1500):Promise.resolve({{country:'',policy:'unknown'}});
     w.joaoRegionReady=lookup.then(function(region){{
     region=region||{{country:'',policy:'unknown'}};w.joaoConsentRegion=region;

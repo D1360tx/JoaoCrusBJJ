@@ -45,6 +45,69 @@
     return policy === "standard" ? "granted" : "denied";
   }
 
+  function validChoice(choice) {
+    return choice === "analytics_granted" || choice === "analytics_denied" ? choice : "";
+  }
+
+  function readChoiceCookie(documentObject, key) {
+    if (!documentObject || typeof documentObject.cookie !== "string") return "";
+    var encodedKey = encodeURIComponent(key) + "=";
+    var cookies = documentObject.cookie.split(";");
+    for (var index = 0; index < cookies.length; index += 1) {
+      var cookie = cookies[index].trim();
+      if (cookie.indexOf(encodedKey) !== 0) continue;
+      try {
+        return validChoice(decodeURIComponent(cookie.slice(encodedKey.length)));
+      } catch (error) {
+        return "";
+      }
+    }
+    return "";
+  }
+
+  function readChoice(context, key) {
+    context = context || {};
+    var cookieChoice = readChoiceCookie(context.document, key);
+    if (cookieChoice) return cookieChoice;
+    var storageNames = ["localStorage", "sessionStorage"];
+    for (var index = 0; index < storageNames.length; index += 1) {
+      try {
+        var choice = validChoice(context[storageNames[index]].getItem(key));
+        if (choice) return choice;
+      } catch (error) {
+        // Continue to the next bootstrap-readable preference store.
+      }
+    }
+    return "";
+  }
+
+  function saveChoice(context, key, choice) {
+    context = context || {};
+    choice = validChoice(choice);
+    if (!choice) return false;
+    var persisted = false;
+    var storageNames = ["localStorage", "sessionStorage"];
+    for (var index = 0; index < storageNames.length; index += 1) {
+      try {
+        var storage = context[storageNames[index]];
+        storage.setItem(key, choice);
+        if (storage.getItem(key) === choice) persisted = true;
+      } catch (error) {
+        // Consent remains usable through another first-party preference store.
+      }
+    }
+    try {
+      var documentObject = context.document;
+      var secure = context.location && context.location.protocol === "https:" ? "; Secure" : "";
+      documentObject.cookie = encodeURIComponent(key) + "=" + encodeURIComponent(choice) +
+        "; Max-Age=31536000; Path=/; SameSite=Lax" + secure;
+      if (readChoiceCookie(documentObject, key) === choice) persisted = true;
+    } catch (error) {
+      // A denied choice never triggers a reload unless another store persisted it.
+    }
+    return persisted;
+  }
+
   function regionResult(country) {
     var normalized = normalizeCountry(country);
     return {
@@ -93,6 +156,8 @@
     analyticsConsent: analyticsConsent,
     detectRegion: detectRegion,
     policyForCountry: policyForCountry,
+    readChoice: readChoice,
     regionResult: regionResult,
+    saveChoice: saveChoice,
   };
 });
