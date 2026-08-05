@@ -23,7 +23,9 @@
     }
 
     function pushAnalytics(eventName, parameters) {
-      if (!window.joaoConsentState || window.joaoConsentState.analytics_storage !== "granted") {
+      if (!window.joaoConsentState ||
+          (window.joaoConsentState.analytics_storage !== "granted" &&
+           window.joaoConsentState.ad_storage !== "granted")) {
         if (parameters && typeof parameters.eventCallback === "function") {
           window.setTimeout(parameters.eventCallback, 0);
         }
@@ -332,7 +334,6 @@
       var href = link.getAttribute("href") || "";
       var common = {
         link_context: analyticsContext(link),
-        link_text: analyticsValue(link.textContent).slice(0, 80),
         page_path: location.pathname,
       };
       if (/^tel:/i.test(href)) {

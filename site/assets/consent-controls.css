@@ -20,7 +20,7 @@
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 22px;
   align-items: center;
-  width: min(calc(100% - 40px), 760px);
+  width: min(calc(100% - 40px), 860px);
   margin-left: auto;
   padding: 22px;
   border: 3px solid var(--b, #111);
@@ -51,12 +51,42 @@
   font-size: 0.82rem;
   font-weight: 700;
 }
+.consent-categories {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+}
+.consent-categories label {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 9px;
+  align-items: start;
+  padding: 9px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+}
+.consent-categories input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--b, #111);
+}
+.consent-categories b,
+.consent-categories small {
+  display: block;
+}
+.consent-categories small {
+  margin-top: 2px;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
 .consent-actions {
   display: grid;
   gap: 8px;
   min-width: 180px;
   margin-top: 28px;
 }
+.consent-actions .consent-save,
 .consent-actions .consent-allow,
 .consent-decline {
   min-height: 44px;
@@ -66,6 +96,7 @@
   text-align: center;
   cursor: pointer;
 }
+.consent-actions .consent-save,
 .consent-actions .consent-allow {
   border: 3px solid var(--b, #111);
   background: var(--y, #ffd43b);
@@ -92,6 +123,7 @@
   cursor: pointer;
 }
 .consent-actions button:focus-visible,
+.consent-categories input:focus-visible,
 .consent-close:focus-visible,
 .consent-preferences:focus-visible {
   outline: 3px solid var(--y, #ffd43b);
@@ -109,7 +141,7 @@
     box-shadow: 5px 5px 0 var(--y, #ffd43b);
   }
   .consent-actions {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     min-width: 0;
     margin-top: 0;
   }

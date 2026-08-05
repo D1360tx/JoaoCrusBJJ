@@ -31,6 +31,14 @@
     return String(value || "").trim().slice(0, maxLength || 160);
   }
 
+  function sanitizeCampaignValue(value) {
+    var raw = String(value || "").trim();
+    if (!raw || raw.length > 160 || /[\u0000-\u001f\u007f]/.test(raw)) return "";
+    if (/[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(raw)) return "";
+    if (/(?:\+?\d[\s().-]*){7,}/.test(raw)) return "";
+    return raw;
+  }
+
   function readJson(storage, key) {
     try {
       var parsed = JSON.parse(storage.getItem(key) || "null");
@@ -48,31 +56,33 @@
     }
   }
 
-  function analyticsStorageGranted(context) {
+  function measurementStorageGranted(context) {
     return Boolean(
       context &&
       context.joaoConsentState &&
-      context.joaoConsentState.analytics_storage === "granted"
+      (context.joaoConsentState.analytics_storage === "granted" ||
+        context.joaoConsentState.ad_storage === "granted")
     );
   }
 
   function clear(context) {
-    [
-      ["localStorage", STORAGE_KEY],
-      ["sessionStorage", LEGACY_KEY],
-    ].forEach(function (entry) {
-      try {
-        context[entry[0]].removeItem(entry[1]);
-      } catch (error) {
-        // Revocation must not interrupt navigation when storage is unavailable.
-      }
+    ["localStorage", "sessionStorage"].forEach(function (storageName) {
+      [STORAGE_KEY, LEGACY_KEY].forEach(function (key) {
+        try {
+          context[storageName].removeItem(key);
+        } catch (error) {
+          // Revocation must not interrupt navigation when storage is unavailable.
+        }
+      });
     });
   }
 
   function sanitizeTouch(input) {
     var touch = {};
     TOUCH_KEYS.forEach(function (key) {
-      var value = clean(input && input[key], key === "landing_page" ? 240 : 160);
+      var value = CAMPAIGN_KEYS.indexOf(key) >= 0
+        ? sanitizeCampaignValue(input && input[key])
+        : clean(input && input[key], key === "landing_page" ? 240 : 160);
       if (value) touch[key] = value;
     });
     return touch;
@@ -85,7 +95,7 @@
       captured_at: new Date(nowMs).toISOString(),
     };
     CAMPAIGN_KEYS.forEach(function (key) {
-      var value = clean(query.get(key));
+      var value = sanitizeCampaignValue(query.get(key));
       if (value) touch[key] = value;
     });
     try {
@@ -138,20 +148,21 @@
 
   function capture(context, nowMs) {
     var now = Number.isFinite(nowMs) ? nowMs : Date.now();
+    if (!measurementStorageGranted(context)) {
+      return flatten({ first_touch: {}, last_touch: {} });
+    }
     var current = currentTouch(context, now);
     var localStore = null;
     var sessionStore = null;
-    if (analyticsStorageGranted(context)) {
-      try {
-        localStore = context.localStorage;
-      } catch (error) {
-        // localStorage may be denied while sessionStorage remains available.
-      }
-      try {
-        sessionStore = context.sessionStorage;
-      } catch (error) {
-        // sessionStorage may be denied independently by privacy controls.
-      }
+    try {
+      localStore = context.localStorage;
+    } catch (error) {
+      // localStorage may be denied while sessionStorage remains available.
+    }
+    try {
+      sessionStore = context.sessionStorage;
+    } catch (error) {
+      // sessionStorage may be denied independently by privacy controls.
     }
     var record = readJson(localStore, STORAGE_KEY);
 
@@ -186,5 +197,6 @@
     WINDOW_DAYS: WINDOW_DAYS,
     clear: clear,
     capture: capture,
+    sanitizeCampaignValue: sanitizeCampaignValue,
   };
 });
