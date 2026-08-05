@@ -23,7 +23,8 @@ DIST = ROOT / "dist"
 MANIFEST = SOURCE / "seo-pages.json"
 BLUEHOST_DEPLOY = ROOT / "deploy" / "bluehost"
 GTM_CONTAINER_ID = "GTM-596MGPMD"
-CONSENT_STORAGE_KEY = "joao_consent_v1"
+CONSENT_STORAGE_KEY = "joao_consent_v2"
+LEGACY_CONSENT_STORAGE_KEY = "joao_consent_v1"
 
 
 def versioned_asset_url(filename: str) -> str:
@@ -37,22 +38,24 @@ CONSENT_STYLE_URL = versioned_asset_url("consent-controls.css")
 ATTRIBUTION_URL = versioned_asset_url("attribution.js")
 CONSENT_CONTROLS_URL = versioned_asset_url("consent-controls.js")
 
-GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
+GTM_HEAD_SNIPPET = rf"""<!-- Google Tag Manager -->
     <script src="{CONSENT_POLICY_URL}"></script>
     <script>(function(w,d,s,l,i){{w[l]=w[l]||[];
-    var policy=w.JoaoConsentPolicy,choice=policy&&policy.readChoice?policy.readChoice(w,'{CONSENT_STORAGE_KEY}'):'';
+    var policy=w.JoaoConsentPolicy,choice=policy&&policy.readChoice?policy.readChoice(w,'{CONSENT_STORAGE_KEY}','{LEGACY_CONSENT_STORAGE_KEY}'):'';
+    var hasGpc=!!(w.navigator&&w.navigator.globalPrivacyControl===true);
     w.joaoConsentState={{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'}};
     w.gtag=w.gtag||function(){{w[l].push(arguments);}};
     w.gtag('consent','default',{{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':2000}});
-    try{{var u=new URL(w.location.href),safe=new URL(u.origin+u.pathname);
+    function safeCampaignValue(v){{v=String(v||'').trim();if(!v||v.length>160||/[\u0000-\u001f\u007f]/.test(v)||/[a-z0-9.!#$%&'*+\/?=^_`{{|}}~-]+@[a-z0-9.-]+\.[a-z]{{2,}}/i.test(v)||/(?:\+?\d[\s().-]*){{7,}}/.test(v))return '';return v;}}
+    var safe=null;try{{var u=new URL(w.location.href);safe=new URL(u.origin+u.pathname);
     {json.dumps(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'qa', 'gtm_debug', 'gtm_auth', 'gtm_preview', 'gtm_cookies_win'])}.forEach(function(k){{
-    if(u.searchParams.has(k))safe.searchParams.set(k,u.searchParams.get(k).slice(0,160));}});
+    if(u.searchParams.has(k)){{var v=safeCampaignValue(u.searchParams.get(k));if(v)safe.searchParams.set(k,v);}}}});
     if(u.pathname+u.search!==safe.pathname+safe.search)w.history.replaceState(w.history.state,'',safe.pathname+safe.search);
-    var r='';if(d.referrer){{var ru=new URL(d.referrer);r=ru.origin+'/';}}
-    w.gtag('set',{{'page_location':safe.href,'page_referrer':r}});
-    w[l].push({{'page_location':safe.href,'page_referrer':r}});
-    if(safe.searchParams.get('qa')==='1'){{w[l].push({{'traffic_type':'internal','debug_mode':true}});}}
     }}catch(e){{}}
+    var r='';try{{if(d.referrer){{var ru=new URL(d.referrer);r=ru.origin+'/';}}}}catch(e){{}}
+    if(safe){{w.gtag('set',{{'page_location':safe.href,'page_referrer':r}});
+    w[l].push({{'page_location':safe.href,'page_referrer':r}});
+    if(safe.searchParams.get('qa')==='1'){{w[l].push({{'traffic_type':'internal','debug_mode':true}});}}}}
     function startGtm(){{if(w.joaoGtmStarted)return;w.joaoGtmStarted=true;
     w[l].push({{'gtm.start':new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -61,11 +64,11 @@ GTM_HEAD_SNIPPET = f"""<!-- Google Tag Manager -->
     var lookup=policy&&policy.detectRegion?policy.detectRegion(w.fetch&&w.fetch.bind(w),1500):Promise.resolve({{country:'',policy:'unknown'}});
     w.joaoRegionReady=lookup.then(function(region){{
     region=region||{{country:'',policy:'unknown'}};w.joaoConsentRegion=region;
-    var analytics=policy&&policy.analyticsConsent?policy.analyticsConsent(choice,region.policy):'denied';
-    w.joaoConsentState={{'analytics_storage':analytics,'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'}};
-    w.gtag('consent','update',w.joaoConsentState);
+    var state=policy&&policy.consentState?policy.consentState(choice,region.policy,hasGpc):w.joaoConsentState;
+    w.joaoConsentState=state;
+    w.gtag('consent','update',state);
     try{{w.dispatchEvent(new CustomEvent('joao:regionready',{{detail:region}}));}}catch(e){{}}
-    if(analytics==='granted')startGtm();return region;
+    if(state.analytics_storage==='granted'||state.ad_storage==='granted')startGtm();return region;
     }}).catch(function(){{w.joaoConsentRegion={{country:'',policy:'unknown'}};return w.joaoConsentRegion;}});
     }})(window,document,'script','dataLayer','{GTM_CONTAINER_ID}');</script>
     <!-- End Google Tag Manager -->"""
@@ -139,7 +142,7 @@ def add_google_tag_manager(html: str) -> str:
         return html
     html = re.sub(
         r"(<head(?:\s[^>]*)?>)",
-        rf"\1\n    {GTM_HEAD_SNIPPET}",
+        lambda match: f"{match.group(1)}\n    {GTM_HEAD_SNIPPET}",
         html,
         count=1,
         flags=re.IGNORECASE,

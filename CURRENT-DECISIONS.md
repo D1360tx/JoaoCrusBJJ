@@ -40,11 +40,11 @@
 
 ## Regional analytics and consent (2026-08-03)
 
-- ✅ Use the least-friction regional model: known visitors outside the EEA, United Kingdom, and Switzerland receive GA4 analytics by default without a first-visit banner and can turn it off from the footer.
-- ✅ Visitors in the EEA, United Kingdom, and Switzerland must explicitly allow analytics. Unknown or failed country detection follows the same strict opt-in path.
-- ✅ Keep `ad_storage`, `ad_user_data`, and `ad_personalization` denied globally. Do not activate remarketing or personalized advertising without a separate decision and updated disclosures.
-- ✅ Honor explicit saved analytics choices across regions. Global Privacy Control keeps advertising-related processing off but does not disable ordinary first-party analytics outside strict regions.
-- ✅ Preserve PII stripping, origin-only referrers, consent-aware attribution storage, a durable Privacy choices control, and strict failure behavior.
+- ✅ Use the least-friction regional model: known visitors outside the EEA, United Kingdom, and Switzerland receive GA4 analytics, Google Ads, and Meta advertising measurement by default without a first-visit banner and can adjust or turn them off from the footer.
+- ✅ Visitors in the EEA, United Kingdom, and Switzerland must explicitly allow analytics and advertising categories. Unknown or failed country detection follows the same strict opt-in path.
+- ✅ Keep analytics and advertising as separate durable choices. Google Consent Mode v2 controls `analytics_storage`, `ad_storage`, `ad_user_data`, and `ad_personalization`; Meta consent is revoked whenever advertising is off.
+- ✅ Honor explicit saved category choices across regions. Global Privacy Control always keeps advertising storage, user data, and personalization off while allowing ordinary first-party analytics in standard regions unless the visitor also disables analytics.
+- ✅ Preserve PII stripping, origin-only referrers, consent-aware attribution storage, a durable Privacy choices control, strict failure behavior, and safe migration of legacy analytics-only choices without expanding them into advertising consent.
 
 ---
 

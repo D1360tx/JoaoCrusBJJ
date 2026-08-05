@@ -17,7 +17,7 @@ class MemoryStorage {
   }
 }
 
-function context(url, referrer = "", localStorage = new MemoryStorage(), sessionStorage = new MemoryStorage(), consent = "granted") {
+function context(url, referrer = "", localStorage = new MemoryStorage(), sessionStorage = new MemoryStorage(), consent = "granted", adConsent = "denied") {
   const parsed = new URL(url);
   return {
     document: { referrer },
@@ -29,7 +29,7 @@ function context(url, referrer = "", localStorage = new MemoryStorage(), session
     },
     localStorage,
     sessionStorage,
-    joaoConsentState: { analytics_storage: consent },
+    joaoConsentState: { analytics_storage: consent, ad_storage: adConsent },
   };
 }
 
@@ -207,7 +207,7 @@ test("continues without persistence when browser storage is denied", () => {
   assert.equal(result.last_touch.utm_medium, "email");
 });
 
-test("does not read or persist browser storage before analytics consent", () => {
+test("does not read, persist, or return campaign data before optional measurement consent", () => {
   const stored = {
     version: 2,
     first_touch: { utm_source: "stored", captured_at: new Date(START).toISOString() },
@@ -225,12 +225,13 @@ test("does not read or persist browser storage before analytics consent", () => 
     ),
     START + DAY,
   );
-  assert.equal(result.first_touch.utm_source, "current");
+  assert.deepEqual(result.first_touch, {});
+  assert.deepEqual(result.last_touch, {});
   assert.equal(JSON.parse(local.getItem(attribution.STORAGE_KEY)).first_touch.utm_source, "stored");
   assert.equal(session.getItem("joao_attribution"), null);
 });
 
-test("never touches storage properties while analytics consent is denied", () => {
+test("never touches storage properties while all optional measurement is denied", () => {
   const parsed = new URL("https://joaocrusbjj.com/?utm_source=current");
   const denied = {
     document: { referrer: "" },
@@ -249,15 +250,52 @@ test("never touches storage properties while analytics consent is denied", () =>
     joaoConsentState: { analytics_storage: "denied" },
   };
   const result = attribution.capture(denied, START);
-  assert.equal(result.first_touch.utm_source, "current");
+  assert.deepEqual(result.first_touch, {});
+  assert.deepEqual(result.last_touch, {});
 });
 
-test("clears durable attribution when analytics consent is withdrawn", () => {
+test("advertising-only consent permits non-PII campaign attribution persistence", () => {
+  const local = new MemoryStorage();
+  const session = new MemoryStorage();
+  const result = attribution.capture(
+    context(
+      "https://joaocrusbjj.com/?utm_source=facebook&utm_medium=paid_social&fbclid=qa123",
+      "",
+      local,
+      session,
+      "denied",
+      "granted",
+    ),
+    START,
+  );
+  assert.equal(result.first_touch.utm_source, "facebook");
+  assert.equal(result.last_touch.fbclid, "qa123");
+  assert.ok(local.getItem(attribution.STORAGE_KEY));
+});
+
+test("rejects PII-bearing and oversized campaign values", () => {
+  const result = attribution.capture(
+    context(
+      "https://joaocrusbjj.com/?utm_source=facebook&utm_content=parent%40example.com&utm_term=%2B1%20512-555-0199&utm_campaign=" + "x".repeat(161),
+    ),
+    START,
+  );
+  assert.equal(result.utm_source, "facebook");
+  assert.equal(result.utm_content, undefined);
+  assert.equal(result.utm_term, undefined);
+  assert.equal(result.utm_campaign, undefined);
+  assert.equal(attribution.sanitizeCampaignValue("safe-creative-2"), "safe-creative-2");
+});
+
+test("clears durable attribution when all optional measurement consent is withdrawn", () => {
   const local = new MemoryStorage({ [attribution.STORAGE_KEY]: "stored" });
-  const session = new MemoryStorage({ joao_attribution: "stored" });
+  local.setItem("joao_attribution", "legacy-local");
+  const session = new MemoryStorage({ joao_attribution: "stored", [attribution.STORAGE_KEY]: "stored-session" });
   attribution.clear(context("https://joaocrusbjj.com/", "", local, session, "denied"));
   assert.equal(local.getItem(attribution.STORAGE_KEY), null);
+  assert.equal(local.getItem("joao_attribution"), null);
   assert.equal(session.getItem("joao_attribution"), null);
+  assert.equal(session.getItem(attribution.STORAGE_KEY), null);
 });
 
 test("uses session persistence when localStorage alone is denied", () => {
