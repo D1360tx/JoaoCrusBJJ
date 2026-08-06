@@ -21,7 +21,7 @@ Update this document whenever a launch dependency is completed or a platform dec
 - [ ] ⛔ Confirm full rate card, registration fees, uniform rules, and trial/deposit terms.
 - [ ] ⛔ Confirm the canonical schedule and Saturday/Austin details.
 - [ ] ⬜ Replace any remaining concept labels or unapproved media.
-- [ ] ⬜ Finalize the Teen page and replace `/teens-preview/` with its approved canonical route.
+- [x] ✅ Finalize the Teen page at `/teens/` and redirect the former `/teens-preview/` route.
 - [ ] ⬜ Final proofread of every page, CTA, phone number, address, map, and external link.
 - [ ] ⬜ Confirm final Joao approval of coaches, program descriptions, guarantees, and testimonials.
 

@@ -19,7 +19,7 @@ Source pages remain flat in `site/campaign/` for local and commit-pinned review.
 3. adding a root `<base>` element to preserve asset and JavaScript resolution at nested routes;
 4. copying the shared assets unchanged;
 5. excluding the superseded `about-ai-coaches.html` comparison page;
-6. retaining the still-unapproved Teen page at `/teens-preview/` with its existing preview label and `noindex` status;
+6. publishing the approved Teen page at the indexable canonical route `/teens/` without preview or AI-concept labels;
 7. generating a staging `robots.txt` that blocks crawling.
 
 Vercel runs the build and `scripts/validate_vercel_build.py` on every deployment.

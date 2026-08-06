@@ -180,7 +180,7 @@
         "youth-bjj": "Youth 8–12",
         "youth.html": "Youth 8–12",
         "youth-campaign-ages-8-12.html": "Youth 8–12",
-        "teens-preview": "Teens 13–17",
+        teens: "Teens 13–17",
         "teens-campaign-ages-13-17.html": "Teens 13–17",
         "adults-program": "Adults",
         "adults.html": "Adults",
@@ -275,7 +275,11 @@
       event.preventDefault();
       var status = form.querySelector(".status"),
         submit = form.querySelector('[type="submit"]'),
-        data = Object.fromEntries(new FormData(form).entries());
+        formData = new FormData(form),
+        data = Object.fromEntries(formData.entries());
+      if (formData.has("availability")) {
+        data.availability = formData.getAll("availability").join(", ");
+      }
       data.consent = Boolean(form.querySelector('[name="consent"]:checked'));
       data.page = window.location.pathname;
       data.lead_type = leadType(form, data);

@@ -3,9 +3,30 @@ Options -Indexes
 
 RewriteEngine On
 
-# Retire legacy WordPress sitelink URLs with one-hop canonical redirects.
-RewriteRule ^home-page-2/?$ https://joaocrusbjj.com/ [R=301,L]
-RewriteRule ^got-questions/?$ https://joaocrusbjj.com/contact/ [R=301,L]
+# Retire legacy WordPress and superseded campaign URLs with one-hop canonical redirects.
+RewriteRule ^home-page-2/?$ https://joaocrusbjj.com/ [R=301,L,NC]
+RewriteRule ^got-questions/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
+RewriteRule ^teens-preview/?$ https://joaocrusbjj.com/teens/ [R=301,L,NC]
+RewriteRule ^1381-2/?$ https://joaocrusbjj.com/ [R=301,L,NC]
+RewriteRule ^free-class/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
+RewriteRule ^contact-form/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
+RewriteRule ^wp-booking-calendar/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
+RewriteRule ^wp-booking-calendar-contact/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
+RewriteRule ^wp-booking-calendar-time-appointments/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
+RewriteRule ^wp-booking-calendar-time-slots/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
+RewriteRule ^wp-booking-calendar-full-day/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
+RewriteRule ^wpbc-booking-received/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
+RewriteRule ^blog/?$ https://joaocrusbjj.com/parent-guide/ [R=301,L,NC]
+RewriteRule ^category/uncategorized/?$ https://joaocrusbjj.com/parent-guide/ [R=301,L,NC]
+
+# Permanently retire unrelated template and plugin-preview routes with HTTP 410.
+RewriteRule ^wpbc-bfb-preview/?$ - [G,L,NC]
+RewriteRule ^product/ceremonial-grade-matcha/?$ - [G,L,NC]
+RewriteRule ^product/fair-trade-matcha-powder/?$ - [G,L,NC]
+RewriteRule ^product/organic-matcha-green-tea/?$ - [G,L,NC]
+RewriteRule ^product-category/tea/?$ - [G,L,NC]
+RewriteRule ^product-category/organic/?$ - [G,L,NC]
+RewriteRule ^product-category/powder/?$ - [G,L,NC]
 
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^www\.joaocrusbjj\.com$ [NC]

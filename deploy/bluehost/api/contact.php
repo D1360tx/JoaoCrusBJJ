@@ -74,6 +74,8 @@ $lead = [
     'program' => clean_value($data['program'] ?? '', 120),
     'location' => clean_value($data['location'] ?? '', 120),
     'age' => clean_value($data['age'] ?? '', 40),
+    'role' => clean_value($data['role'] ?? '', 80),
+    'availability' => clean_value($data['availability'] ?? '', 240),
     'message' => clean_value($data['message'] ?? '', 2000),
     'page' => clean_value($data['page'] ?? '', 300),
 ];
@@ -121,6 +123,8 @@ $rows = [
     'Program' => $lead['program'],
     'Location' => $lead['location'],
     'Student age' => $lead['age'] !== '' ? $lead['age'] : 'Not provided',
+    'Parent or student' => $lead['role'] !== '' ? $lead['role'] : 'Not provided',
+    'Teen availability' => $lead['availability'] !== '' ? $lead['availability'] : 'Not provided',
     'Message' => $lead['message'] !== '' ? $lead['message'] : 'None provided',
     'Submitted from' => $lead['page'] !== '' ? $lead['page'] : 'Unknown page',
 ];

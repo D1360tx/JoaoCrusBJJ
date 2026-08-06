@@ -76,13 +76,6 @@ GTM_HEAD_SNIPPET = rf"""<!-- Google Tag Manager -->
 # This superseded comparison page remains available in Git history and
 # RawGitHack previews but is intentionally excluded from production hosting.
 EXCLUDED_PAGES = {"about-ai-coaches.html"}
-EXTRA_PAGES = [
-    {
-        "file": "teens-campaign-ages-13-17.html",
-        "path": "/teens-preview/",
-        "source": ROOT / "site" / "teens-campaign-ages-13-17.html",
-    }
-]
 ROUTE_ALIASES = {
     "toddlers-campaign-purposeful-play.html": "/little-champions/",
     "youth-campaign-ages-8-12.html": "/youth-bjj/",
@@ -122,7 +115,7 @@ def add_attribution_script(html: str) -> str:
 
     insertion = "\n    ".join(scripts)
     shared_script = re.compile(
-        r'(<script\s+src=["\']\.\./assets/campaign-site\.js["\']\s+defer></script>)',
+        r'(<script\s+src=["\'](?:(?:\.\./)?assets/campaign-site\.js)["\']\s+defer></script>)',
         re.IGNORECASE,
     )
     if shared_script.search(html):
@@ -184,7 +177,6 @@ def main() -> None:
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     pages = [page for page in data["pages"] if page["file"] not in EXCLUDED_PAGES]
     routes = {page["file"]: page["path"] for page in pages}
-    routes.update({page["file"]: page["path"] for page in EXTRA_PAGES})
     routes.update(ROUTE_ALIASES)
 
     if DIST.exists():
@@ -193,7 +185,7 @@ def main() -> None:
     shutil.copytree(ASSETS, DIST / "assets")
 
     for page in pages:
-        source_path = SOURCE / page["file"]
+        source_path = ROOT / "site" / page["source_file"] if page.get("source_file") else SOURCE / page["file"]
         html = source_path.read_text(encoding="utf-8")
         html = add_base_element(html)
         html = add_attribution_script(html)
@@ -203,15 +195,6 @@ def main() -> None:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(html, encoding="utf-8")
 
-    for page in EXTRA_PAGES:
-        html = page["source"].read_text(encoding="utf-8")
-        html = add_base_element(html)
-        html = add_attribution_script(html)
-        html = add_google_tag_manager(html)
-        html = rewrite_internal_html_links(html, routes)
-        target = output_path(page["path"])
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(html, encoding="utf-8")
 
     for support_file in ("llms.txt", "sitemap.xml"):
         shutil.copy2(SOURCE / support_file, DIST / support_file)
@@ -225,7 +208,7 @@ def main() -> None:
     (DIST / "robots.txt").write_text(robots, encoding="utf-8")
 
     print(
-        f"Built {len(pages)} canonical pages, {len(EXTRA_PAGES)} noindex preview page, and {sum(1 for p in (DIST / 'assets').rglob('*') if p.is_file())} assets into {DIST}"
+        f"Built {len(pages)} canonical pages and {sum(1 for p in (DIST / 'assets').rglob('*') if p.is_file())} assets into {DIST}"
     )
 
 
