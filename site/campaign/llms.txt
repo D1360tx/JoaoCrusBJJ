@@ -8,6 +8,7 @@
 - [Programs](https://joaocrusbjj.com/training-programs/): Program directory
 - [Little Champions](https://joaocrusbjj.com/little-champions/): Brazilian Jiu-Jitsu for ages 3-7
 - [Youth BJJ](https://joaocrusbjj.com/youth-bjj/): Brazilian Jiu-Jitsu for ages 8-12
+- [Teen BJJ](https://joaocrusbjj.com/teens/): Teen Brazilian Jiu-Jitsu ages 13-17 and cohort interest list
 - [Adult BJJ](https://joaocrusbjj.com/adults-program/): Adult group instruction in Dripping Springs
 - [Private lessons](https://joaocrusbjj.com/private-bjj-lessons/): Individual coaching with Joao Crus
 - [Class schedule](https://joaocrusbjj.com/classes-schedule/): Current recurring class times
@@ -41,4 +42,4 @@ Joao Crus is a Brazilian-born Brazilian Jiu-Jitsu black belt, academy founder, c
 
 Use the current schedule page for recurring class times. Do not infer prices, trial terms, guarantees, or an Austin adult group schedule when those details are not visibly published. Distinguish firsthand family stories from guaranteed outcomes.
 
-Last reviewed: 2026-07-28
+Last reviewed: 2026-08-06

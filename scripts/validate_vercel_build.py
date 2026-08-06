@@ -17,7 +17,7 @@ ASSETS = ROOT / "site" / "assets"
 DIST = ROOT / "dist"
 DATA = json.loads((SOURCE / "seo-pages.json").read_text(encoding="utf-8"))
 EXCLUDED = {"about-ai-coaches.html"}
-EXTRA_ROUTES = {"/teens-preview/"}
+
 GTM_CONTAINER_ID = "GTM-596MGPMD"
 ERRORS: list[str] = []
 CHECKS = 0
@@ -43,7 +43,7 @@ def main() -> None:
     )
     args = parser.parse_args()
     pages = [page for page in DATA["pages"] if page["file"] not in EXCLUDED]
-    routes = {page["path"] for page in pages} | EXTRA_ROUTES
+    routes = {page["path"] for page in pages}
     vercel_config = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
 
     check(
@@ -69,8 +69,45 @@ def main() -> None:
         contact_source = contact_endpoint.read_text(encoding="utf-8") if contact_endpoint.is_file() else ""
         for recipient in ("joaocrusbjj@gmail.com", "diego@icdcventures.com"):
             check(recipient in contact_source, f"production contact endpoint is missing recipient {recipient}")
+        check("'role' => clean_value($data['role']" in contact_source, "production endpoint must retain Teen form role")
+        check("'availability' => clean_value($data['availability']" in contact_source, "production endpoint must retain Teen schedule availability")
+        htaccess = (DIST / ".htaccess").read_text(encoding="utf-8")
+        redirect_targets = {
+            "teens-preview": "https://joaocrusbjj.com/teens/",
+            "1381-2": "https://joaocrusbjj.com/",
+            "free-class": "https://joaocrusbjj.com/contact/",
+            "contact-form": "https://joaocrusbjj.com/contact/",
+            "wp-booking-calendar": "https://joaocrusbjj.com/contact/",
+            "wp-booking-calendar-contact": "https://joaocrusbjj.com/contact/",
+            "wp-booking-calendar-time-appointments": "https://joaocrusbjj.com/contact/",
+            "wp-booking-calendar-time-slots": "https://joaocrusbjj.com/contact/",
+            "wp-booking-calendar-full-day": "https://joaocrusbjj.com/contact/",
+            "wpbc-booking-received": "https://joaocrusbjj.com/contact/",
+            "blog": "https://joaocrusbjj.com/parent-guide/",
+            "category/uncategorized": "https://joaocrusbjj.com/parent-guide/",
+        }
+        for source, target in redirect_targets.items():
+            check(
+                f"RewriteRule ^{source}/?$ {target} [R=301,L,NC]" in htaccess,
+                f"production redirect missing or incorrect: /{source}/ -> {target}",
+            )
+        gone_routes = (
+            "wpbc-bfb-preview",
+            "product/ceremonial-grade-matcha",
+            "product/fair-trade-matcha-powder",
+            "product/organic-matcha-green-tea",
+            "product-category/tea",
+            "product-category/organic",
+            "product-category/powder",
+        )
+        for route in gone_routes:
+            check(f"RewriteRule ^{route}/?$ - [G,L,NC]" in htaccess, f"production 410 rule missing: /{route}/")
     else:
         check(not (DIST / "api" / "contact.php").exists(), "PHP contact endpoint must not ship in the staging artifact")
+
+    sitemap = (DIST / "sitemap.xml").read_text(encoding="utf-8")
+    check("https://joaocrusbjj.com/teens/" in sitemap, "sitemap is missing the canonical Teen page")
+    check("teens-preview" not in sitemap, "sitemap still contains the superseded Teen preview route")
 
     calendar_source = (ROOT / "site" / "assets" / "class-calendar.js").read_text(encoding="utf-8")
     calendar_records = re.findall(
@@ -120,6 +157,7 @@ def main() -> None:
     check("parameters.eventCallback = redirectAfterSuccess" in analytics_source, "lead success event must use a GTM eventCallback before navigation")
     check("parameters.eventTimeout = 1500" in analytics_source, "lead success event must use a bounded eventTimeout")
     check("data.attribution = currentAttribution()" in analytics_source, "lead payload must use current consent-aware non-PII attribution")
+    check('formData.getAll("availability").join(", ")' in analytics_source, "Teen schedule availability must retain every selected time window")
     check("data.page = window.location.pathname" in analytics_source, "lead payload must not copy query parameters into the submission page")
     check("window.joaoAttribution || {}" in analytics_source, "lead forms must use the durable attribution module")
     check('var CONSENT_KEY = "joao_consent_v2"' in consent_source and 'var LEGACY_CONSENT_KEY = "joao_consent_v1"' in consent_source, "consent UI must use versioned preferences with safe legacy migration")
@@ -235,6 +273,16 @@ def main() -> None:
                     check(False, f"{page['path']}: invalid JSON-LD: {exc}")
         if page.get("robots"):
             check(f'name="robots" content="{page["robots"]}"' in html, f"{page['path']}: custom robots directive does not match manifest")
+        if page["path"] == "/teens/":
+            check('name="robots" content="index,follow"' in html, "/teens/: canonical page must be indexable")
+            visible_preview_terms = ("launch preview", "campaign preview", "preview form", "preview complete")
+            check(not any(term in html.lower() for term in visible_preview_terms), "/teens/: visible preview wording remains")
+            check("preview-ribbon" not in html, "/teens/: preview ribbon remains")
+            check("ai concept" not in html.lower(), "/teens/: AI concept wording remains")
+            check("teen-cohort-ai-hero" not in html, "/teens/: legacy AI-labeled asset remains")
+            check('data-form-id="teens_interest"' in html, "/teens/: interest form needs a stable analytics ID")
+            check('data-lead-type="teen_interest"' in html, "/teens/: interest form needs a teen-specific lead type")
+            check('name="consent"' in html, "/teens/: interest form needs contact consent")
 
         for match in re.finditer(r'\b(?:href|src|action)=["\']([^"\']+)["\']', html, re.IGNORECASE):
             value = match.group(1)
@@ -248,26 +296,6 @@ def main() -> None:
                 normalized = parsed.path if parsed.path.endswith("/") else parsed.path + "/"
                 check(normalized in routes, f"{page['path']}: unknown internal route {parsed.path}")
 
-    for route in EXTRA_ROUTES:
-        target = route_file(route)
-        check(target.is_file(), f"missing extra preview route artifact: {route}")
-        if target.is_file():
-            html = target.read_text(encoding="utf-8")
-            check('<base href="/">' in html, f"{route}: missing root base element")
-            check(html.count(GTM_CONTAINER_ID) == 1, f"{route}: GTM must appear only in the consent-gated head loader")
-            check("w.gtag('consent','default'" in html, f"{route}: Consent Mode default is missing")
-            check(html.find("w.gtag('consent','default'") < html.find("'gtm.start'"), f"{route}: consent default must execute before GTM")
-            check("w.gtag('set',{'page_location':safe.href,'page_referrer':r})" in html, f"{route}: sanitized GA4 page fields must be applied through gtag set")
-            check("assets/attribution.js" in html, f"{route}: durable attribution script is missing")
-            check("assets/consent-controls.js" in html, f"{route}: consent control script is missing")
-            check("assets/consent-controls.css" in html, f"{route}: consent control styles are missing")
-            for filename, url in versioned_assets.items():
-                check(url in html, f"{route}: {filename} must use its current content-versioned URL")
-            check(html.find("assets/attribution.js") < html.find("assets/consent-controls.js"), f"{route}: attribution must load before consent controls")
-            check("'traffic_type':'internal'" in html, f"{route}: QA traffic must be marked internal")
-            check('name="robots" content="noindex,nofollow"' in html, f"{route}: preview page must remain noindex")
-            for match in re.finditer(r'\b(?:href|action)=["\']([^"\']+)["\']', html, re.IGNORECASE):
-                check(not urlsplit(match.group(1)).path.endswith(".html"), f"{route}: legacy HTML link remains: {match.group(1)}")
 
     source_assets = {path.relative_to(ROOT / "site" / "assets") for path in (ROOT / "site" / "assets").rglob("*") if path.is_file()}
     built_assets = {path.relative_to(DIST / "assets") for path in (DIST / "assets").rglob("*") if path.is_file()}
