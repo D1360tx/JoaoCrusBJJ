@@ -196,6 +196,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - ✅ Twilio is not operational; A2P registration has not started.
 - ✅ **Lead infrastructure selected (2026-07-29):** use HighLevel as the prospect CRM, pipeline, booking, email/SMS automation, consent/attribution ledger, and staff follow-up system; retain Beehiiv for explicitly opted-in newsletter subscribers and Zen Planner Studio for enrolled members/billing. Native Vercel forms will post through a server-side endpoint to HighLevel and Beehiiv as appropriate. Avoid Make/n8n in the launch-critical path unless direct API/workflow integration proves insufficient.
 - ✅ The new HighLevel implementation is intentionally independent of the advertising agency. Agency CRM access, ownership, and historical-lead export are not launch prerequisites. Any later paid-campaign cutover or historical import is a separate transition with explicit source/consent mapping.
+- 🟡 **HighLevel setup reminder:** immediately after the academy-owned account and sub-account are created, run [`docs/HIGHLEVEL-ACCEPTANCE-TEST.md`](docs/HIGHLEVEL-ACCEPTANCE-TEST.md). Do not activate paid-campaign optimization or automated SMS until the launch-critical attribution, CAPI, Google Ads, consent, failure-recovery, Zen Planner handoff, and export tests pass.
 
 ### Implementation sequence
 
@@ -205,6 +206,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 4. Start HighLevel phone/A2P setup only after account ownership, number strategy, consent, and use cases are documented.
 5. Launch email-first if A2P approval is not complete; do not delay the entire campaign solely for SMS.
 6. Keep Zen Planner for existing billing/membership until migration requirements are proven.
+7. Run the HighLevel acceptance test and record evidence before paid-campaign optimization or automated SMS launch.
 
 ### Phase 2—not required for the first conversion launch
 
