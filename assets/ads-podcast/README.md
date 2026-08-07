@@ -37,6 +37,7 @@ Use [`_concept-template.md`](_concept-template.md) to start each new story or ca
 | Concept | Core idea | Formats | Status |
 |---|---|---|---|
 | [Kaiden, the tap, and earned confidence](01-kaiden-tap-story.md) | Control creates safety; safety creates confidence | Podcast, Meta video, short clips, email | Working |
+| [Private coaching for grown men with demanding schedules](02-private-coaching-grown-men.md) | Serious adults need jiu-jitsu adapted to their calendar, body, and long-term game | Meta video, Google Search, short clips, email, landing page | Source / Working |
 
 ## Iteration workflow
 
@@ -59,3 +60,7 @@ Use [`_concept-template.md`](_concept-template.md) to start each new story or ca
 - Starting important life skills early
 - No perfect kid required
 - Real parent stories and real academy footage
+- Jiu-jitsu that fits the life a busy adult has built
+- Pressure, position, timing, and efficiency for the long game
+- Carlson Gracie lineage demonstrated as a living teaching influence
+- Private coaching for returning practitioners and mature professionals
