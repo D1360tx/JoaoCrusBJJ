@@ -38,8 +38,9 @@ Update this document whenever a launch dependency is completed or a platform dec
 - [ ] ⬜ When agency campaigns are intentionally moved, define the cutover date and route new paid leads to HighLevel; avoid running two follow-up systems on the same new leads.
 - [ ] ⬜ If historical agency leads are later imported, map source and consent status; never assume old leads have current SMS permission.
 - [ ] ⬜ Create backup/export and automation-error review procedures.
+- [ ] ⛔ Run `docs/HIGHLEVEL-ACCEPTANCE-TEST.md` immediately after account/sub-account setup and record evidence for every launch-critical test.
 
-See `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md`.
+See `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md` and `docs/HIGHLEVEL-ACCEPTANCE-TEST.md`.
 
 ## 4. Forms and lead delivery
 

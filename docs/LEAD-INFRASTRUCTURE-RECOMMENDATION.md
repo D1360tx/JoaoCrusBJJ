@@ -2,7 +2,7 @@
 
 **Status:** HighLevel + Beehiiv + Zen Planner selected by Diego on 2026-07-29; account ownership and implementation remain pending
 
-**Reviewed:** 2026-07-29
+**Reviewed:** 2026-08-06
 
 ## Recommendation
 
@@ -33,6 +33,8 @@ Selection does not mean those requirements work automatically. Implementation mu
 5. hand enrolled prospects to Zen Planner without duplicate prospect records;
 6. provide reliable API/webhook, export, error logging, and account-ownership controls;
 7. complete A2P registration and disclose all message, phone, email, and campaign usage charges.
+
+Run [`HIGHLEVEL-ACCEPTANCE-TEST.md`](HIGHLEVEL-ACCEPTANCE-TEST.md) immediately after the Joao-owned HighLevel account and sub-account are created. HighLevel is not launch-ready merely because the account exists; attribution, Meta/Google conversion delivery, deduplication, consent enforcement, failure recovery, Zen Planner handoff, and exports must pass the recorded acceptance test.
 
 Zen Planner Engage remains a documented alternative, not an active procurement gate.
 
