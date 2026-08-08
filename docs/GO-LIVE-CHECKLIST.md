@@ -21,7 +21,7 @@ Update this document whenever a launch dependency is completed or a platform dec
 - [ ] ⛔ Confirm full rate card, registration fees, uniform rules, and trial/deposit terms.
 - [ ] ⛔ Confirm the canonical schedule and Saturday/Austin details.
 - [ ] ⬜ Replace any remaining concept labels or unapproved media.
-- [ ] ⬜ Finalize the Teen page and replace `/teens-preview/` with its approved canonical route.
+- [x] ✅ Finalize the Teen page at `/teens/` and redirect the former `/teens-preview/` route.
 - [ ] ⬜ Final proofread of every page, CTA, phone number, address, map, and external link.
 - [ ] ⬜ Confirm final Joao approval of coaches, program descriptions, guarantees, and testimonials.
 
@@ -38,8 +38,9 @@ Update this document whenever a launch dependency is completed or a platform dec
 - [ ] ⬜ When agency campaigns are intentionally moved, define the cutover date and route new paid leads to HighLevel; avoid running two follow-up systems on the same new leads.
 - [ ] ⬜ If historical agency leads are later imported, map source and consent status; never assume old leads have current SMS permission.
 - [ ] ⬜ Create backup/export and automation-error review procedures.
+- [ ] ⛔ Run `docs/HIGHLEVEL-ACCEPTANCE-TEST.md` immediately after account/sub-account setup and record evidence for every launch-critical test.
 
-See `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md`.
+See `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md` and `docs/HIGHLEVEL-ACCEPTANCE-TEST.md`.
 
 ## 4. Forms and lead delivery
 

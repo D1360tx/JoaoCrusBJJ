@@ -140,6 +140,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - ✅ **Canonical hosted review site (2026-07-29):** use one Git-connected Vercel project, `joao-crus-bjj`, with `main` as the stable production branch and pull-request preview deployments for review. Keep the `*.vercel.app` deployment blocked from indexing until forms, legal, tracking, DNS, and real-domain cutover checks are complete.
 - ✅ **Homepage hero photography (2026-07-31):** use Joao's approved real academy group photo in the homepage hero. Preserve the original source, use the optimized 4:3 derivatives, keep every person visible, and remove the former AI-concept label.
 - ✅ **Campaign hero image scale (2026-07-31):** use larger 4:3 desktop hero image panels so they visually span more of the left-side story instead of sitting as short centered 16:9 cards. Preserve each source image's safe focal treatment and retain the established mobile ratios.
+- ✅ **Canonical Teen page (2026-08-06, Diego):** publish the Teen 13–17 program at `/teens/`, remove preview and AI-concept labels, keep the interest-list positioning until a schedule is confirmed, and permanently redirect `/teens-preview/` to the canonical route.
 - 🟡 Programs, Schedule, and Locations use distinct page-specific AI hero concepts pending final photography. Per Diego's 2026-08-02 direction, the visible “AI concept” hero banners are removed from the Schedule and Locations production pages while replacement imagery is reviewed.
 - ✅ Maintain one shared schedule data source/component so every page displays the same confirmed times.
 - 🟡 Maintain a single primary conversion goal per campaign page, plus text/call as the fallback.
@@ -176,6 +177,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - Lead the kids/toddler journey with the verified age-3 differentiator.
 - ✅ **Seasonal Summer Camp treatment (2026-08-03, Diego):** the 2026 camp is over. Keep `/summer-camp/` as a short `noindex,follow` seasonal holding page, remove it from navigation and the XML sitemap, and point visitors to the year-round Kids BJJ, Little Champions, and Youth pages. Reuse the URL and restore indexation only if a future camp is confirmed.
 - Promote private coaching as a primary offer, not a minor peer card.
+- Develop a dedicated private-coaching acquisition lane for mature professionals, executives, returning practitioners, and other adults whose schedule or body no longer fits one-size-fits-all group training. Lead with flexible appointments, individualized game planning, pressure/position/timing/efficiency, and Carlson Gracie lineage as a living teaching influence. Treat “old man jiu-jitsu” as a creative phrase to test, not an automatically approved premium offer name. See `assets/ads-podcast/02-private-coaching-grown-men.md`.
 - Show both locations clearly. Austin may promote confirmed adult private instruction by appointment, but must not imply a recurring adult group schedule that does not yet exist.
 - Add schedule, coaches, linked Google reviews, FAQs, directions, books/podcast links, and a secondary lead-magnet path.
 - Do not publish the preview ribbon, draft variant hub, or duplicate toddler versions.
@@ -195,6 +197,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - ✅ Twilio is not operational; A2P registration has not started.
 - ✅ **Lead infrastructure selected (2026-07-29):** use HighLevel as the prospect CRM, pipeline, booking, email/SMS automation, consent/attribution ledger, and staff follow-up system; retain Beehiiv for explicitly opted-in newsletter subscribers and Zen Planner Studio for enrolled members/billing. Native Vercel forms will post through a server-side endpoint to HighLevel and Beehiiv as appropriate. Avoid Make/n8n in the launch-critical path unless direct API/workflow integration proves insufficient.
 - ✅ The new HighLevel implementation is intentionally independent of the advertising agency. Agency CRM access, ownership, and historical-lead export are not launch prerequisites. Any later paid-campaign cutover or historical import is a separate transition with explicit source/consent mapping.
+- 🟡 **HighLevel setup reminder:** immediately after the academy-owned account and sub-account are created, run [`docs/HIGHLEVEL-ACCEPTANCE-TEST.md`](docs/HIGHLEVEL-ACCEPTANCE-TEST.md). Do not activate paid-campaign optimization or automated SMS until the launch-critical attribution, CAPI, Google Ads, consent, failure-recovery, Zen Planner handoff, and export tests pass.
 
 ### Implementation sequence
 
@@ -204,6 +207,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 4. Start HighLevel phone/A2P setup only after account ownership, number strategy, consent, and use cases are documented.
 5. Launch email-first if A2P approval is not complete; do not delay the entire campaign solely for SMS.
 6. Keep Zen Planner for existing billing/membership until migration requirements are proven.
+7. Run the HighLevel acceptance test and record evidence before paid-campaign optimization or automated SMS launch.
 
 ### Phase 2—not required for the first conversion launch
 
