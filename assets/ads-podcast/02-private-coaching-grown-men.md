@@ -151,6 +151,19 @@ A coaching plan framed around durable technique and continued practice as the st
 
 ## 7. Initial ad copy
 
+### Preferred storytelling structure
+
+For the first paid-video pilot, do not open with a list of private-coaching benefits. Open with the human moment:
+
+1. Chris still loves jiu-jitsu.
+2. His executive calendar makes consistent group training difficult.
+3. The problem is not commitment. The format stopped fitting his life.
+4. Joao's private coaching keeps the training serious while adapting schedule, feedback, and game planning to the individual.
+5. Carlson-influenced pressure, position, timing, and efficiency become the visible mechanism.
+6. The invitation is to build jiu-jitsu for the life and body the viewer has now.
+
+Use Chris anonymously unless he grants explicit permission. The landing page should repeat this same story before expanding into beginner, returner, and experienced-practitioner paths.
+
 ### Ad 1: Calendar
 
 **Primary text**
@@ -198,17 +211,19 @@ Train one-on-one with Joao Crus and build a game that wastes less.
 The private-coaching page should include:
 
 1. A calendar-first hero for busy adults.
-2. One clear private-coaching request CTA.
-3. Flexible scheduling language without promising unrestricted availability.
-4. A “built around your game” explanation.
-5. Pressure, position, timing, and efficiency as the teaching mechanism.
-6. Carlson Gracie and De La Riva lineage shown as a living influence.
-7. Separate paths for beginners, experienced practitioners, and returning students.
-8. Real private-session photography or video.
-9. A concise process: request, conversation, first session, training plan.
-10. Verified adult testimonials, ideally from mature professionals, with permission.
-11. Location clarity for Dripping Springs and Austin private appointments.
-12. Approved offer terms and price only after Joao confirms them.
+2. A short, permissioned or anonymized Chris-style story that makes the scheduling problem human.
+3. One clear private-coaching request CTA immediately after the first story.
+4. Flexible scheduling language without promising unrestricted availability.
+5. A “built around your game” explanation.
+6. Pressure, position, timing, and efficiency as the teaching mechanism.
+7. Carlson Gracie and De La Riva lineage shown as a living influence through one demonstrated principle.
+8. Separate paths for beginners, experienced practitioners, and returning students.
+9. Real private-session photography or video.
+10. A concise process: request, conversation, first session, training plan.
+11. Verified adult testimonials, ideally from mature professionals, with permission.
+12. The verified older-judge story as supporting long-game proof only after fact and permission checks pass.
+13. Location clarity for Dripping Springs and Austin private appointments.
+14. Approved offer terms and price only after Joao confirms them.
 
 ## 9. Recording plan
 

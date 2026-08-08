@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light">
+  <title>ICDC Creative Library</title>
+  <meta name="description" content="A private, searchable creative intelligence library for Joao Crus BJJ and ICDC Ventures projects.">
+  <link rel="stylesheet" href="ad-vault.css">
+</head>
+<body>
+  <a class="skip-link" href="#library">Skip to library</a>
+
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="ICDC Creative Library home">
+      <span class="brand-mark" aria-hidden="true">IC</span>
+      <span>ICDC / Creative Library</span>
+    </a>
+    <div class="library-status" aria-label="Library status">
+      <span>PRIVATE PREVIEW</span>
+      <span aria-hidden="true">·</span>
+      <span id="header-count">9 SWIPES</span>
+      <span aria-hidden="true">·</span>
+      <span>5 PROJECTS</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">CREATIVE INTELLIGENCE · ORGANIZED BY PROJECT</p>
+      <h1 id="page-title">Ads worth<br><span>building from.</span></h1>
+      <p class="hero-copy">Find the hook, offer, proof system, funnel, or format we saved. Then turn the pattern into a stronger idea for the right brand.</p>
+    </section>
+
+    <nav class="project-rail" aria-label="Projects">
+      <button class="project-card is-active" type="button" data-project="joao" aria-pressed="true">
+        <span class="project-index">01</span>
+        <span class="project-name">Joao Crus BJJ</span>
+        <span class="project-count">9 swipes</span>
+      </button>
+      <button class="project-card" type="button" data-project="booked-out" aria-pressed="false">
+        <span class="project-index">02</span>
+        <span class="project-name">Booked Out</span>
+        <span class="project-count">Ready for swipes</span>
+      </button>
+      <button class="project-card" type="button" data-project="chalice" aria-pressed="false">
+        <span class="project-index">03</span>
+        <span class="project-name">Chalice Champagne</span>
+        <span class="project-count">Ready for swipes</span>
+      </button>
+      <button class="project-card" type="button" data-project="timepiece" aria-pressed="false">
+        <span class="project-index">04</span>
+        <span class="project-name">Timepiece Vault</span>
+        <span class="project-count">Ready for swipes</span>
+      </button>
+      <button class="project-card" type="button" data-project="icdc" aria-pressed="false">
+        <span class="project-index">05</span>
+        <span class="project-name">ICDC Ventures</span>
+        <span class="project-count">Ready for swipes</span>
+      </button>
+    </nav>
+
+    <section class="controls" aria-label="Search and filters">
+      <label class="search-field">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+        <span class="sr-only">Search the creative library</span>
+        <input id="search" type="search" autocomplete="off" placeholder="Search brand, hook, offer, angle…">
+        <kbd>/</kbd>
+      </label>
+
+      <div class="quick-views" role="group" aria-label="Quick views">
+        <button class="quick-view is-active" type="button" data-view="newest">Newest</button>
+        <button class="quick-view" type="button" data-view="hooks">Hooks</button>
+        <button class="quick-view" type="button" data-view="offers">Offers</button>
+        <button class="quick-view" type="button" data-view="funnels">Funnels</button>
+        <button class="quick-view" type="button" data-view="favorites">Saved</button>
+      </div>
+
+      <div class="control-actions">
+        <button class="icon-button" id="filter-toggle" type="button" aria-expanded="false" aria-controls="filter-panel">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M7 12h10M10 17h4"></path></svg>
+          Filters
+        </button>
+        <button class="icon-button" id="share-button" type="button">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 12h6M14 8l4 4-4 4M18 12H8a4 4 0 0 0-4 4v2"></path></svg>
+          Share view
+        </button>
+      </div>
+    </section>
+
+    <section class="filter-panel" id="filter-panel" hidden>
+      <label>Format
+        <select id="format-filter">
+          <option value="all">All formats</option>
+          <option value="story-ad">Story ad</option>
+          <option value="video">Video</option>
+          <option value="landing-page">Landing page</option>
+          <option value="lead-magnet">Lead magnet</option>
+        </select>
+      </label>
+      <label>Audience
+        <select id="audience-filter">
+          <option value="all">All audiences</option>
+          <option value="beginner">BJJ beginner</option>
+          <option value="advanced">Advanced student</option>
+          <option value="academy-owner">Academy owner</option>
+          <option value="small-business">Small business</option>
+        </select>
+      </label>
+      <label>Funnel
+        <select id="funnel-filter">
+          <option value="all">All funnels</option>
+          <option value="direct-purchase">Direct purchase</option>
+          <option value="subscription">Subscription</option>
+          <option value="lead-capture">Lead capture</option>
+          <option value="booking">Booking</option>
+        </select>
+      </label>
+      <button id="clear-filters" type="button">Clear all</button>
+    </section>
+
+    <section class="library" id="library" aria-labelledby="results-title">
+      <div class="results-head">
+        <div>
+          <p class="eyebrow" id="results-kicker">JOAO CRUS BJJ</p>
+          <h2 id="results-title"><span id="result-count">9</span> saved creatives</h2>
+        </div>
+        <div class="layout-switch" role="group" aria-label="Layout">
+          <button class="is-active" type="button" data-layout="grid" aria-label="Grid view" aria-pressed="true">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6"></rect><rect x="14" y="4" width="6" height="6"></rect><rect x="4" y="14" width="6" height="6"></rect><rect x="14" y="14" width="6" height="6"></rect></svg>
+          </button>
+          <button type="button" data-layout="list" aria-label="List view" aria-pressed="false">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="creative-grid" id="creative-grid" aria-live="polite"></div>
+
+      <div class="empty-state" id="empty-state" hidden>
+        <span class="empty-index" aria-hidden="true">00</span>
+        <p class="eyebrow">OPEN COLLECTION</p>
+        <h2>No swipes here yet.</h2>
+        <p>This project is ready. Send an ad, landing page, buy box, email, or offer you want saved and analyzed.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>ICDC VENTURES</span>
+    <span>PRIVATE CREATIVE INTELLIGENCE · UPDATED AUGUST 2026</span>
+  </footer>
+
+  <dialog class="creative-dialog" id="creative-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" type="button" aria-label="Close details">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+    </button>
+    <div class="dialog-shell">
+      <div class="dialog-media" id="dialog-media"></div>
+      <article class="dialog-content">
+        <p class="eyebrow" id="dialog-meta"></p>
+        <h2 id="dialog-title"></h2>
+        <p class="dialog-hook" id="dialog-hook"></p>
+        <div class="dialog-section">
+          <span>WHY IT WAS SAVED</span>
+          <p id="dialog-summary"></p>
+        </div>
+        <div class="dialog-section dialog-takeaway">
+          <span>JOAO APPLICATION</span>
+          <p id="dialog-takeaway"></p>
+        </div>
+        <div class="dialog-offer">
+          <span>OFFER</span>
+          <strong id="dialog-offer"></strong>
+        </div>
+        <div class="dialog-tags" id="dialog-tags"></div>
+        <div class="dialog-actions" id="dialog-actions"></div>
+      </article>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="ad-vault.js" defer></script>
+</body>
+</html>
