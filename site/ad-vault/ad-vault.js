@@ -12,6 +12,28 @@
 
   const creatives = [
     {
+      id: "009",
+      project: "joao",
+      brand: "Jun Yuh / Creator College",
+      title: "Storytelling Intensive",
+      captured: "2026-08-07",
+      image: `${ROOT}images/009-jun-yuh-storytelling-contact-sheet.jpg`,
+      alt: "Chronological contact sheet from Jun Yuh's storytelling framework Reel",
+      format: ["video", "landing-page"],
+      audience: "small-business",
+      funnel: "lead-capture",
+      mediaLabel: "Reel + webinar page",
+      hook: "Your story is the part competitors and AI cannot copy.",
+      summary: "Turn one human moment into a recognizable tension, a belief, a demonstrated mechanism, and an invitation instead of publishing replaceable expertise alone.",
+      takeaway: "Build Joao's ads and matching page modules around real moments such as Chris's schedule conflict, Kaiden learning to tap, purposeful play at age three, and one verified Carlson teaching principle. Keep each story tied to one audience and offer.",
+      offer: "Free three-day live storytelling webinar",
+      tags: ["video", "storytelling", "trust", "founder story", "landing page", "lead capture", "content system"],
+      source: "https://www.instagram.com/reel/DbaVrU0sb0K/",
+      landing: "https://creatorcollege.com/c/free-webinar",
+      video: `${ROOT}video/009-jun-yuh-storytelling.mp4`,
+      analysis: `${ROOT}009-jun-yuh-storytelling-framework.md`
+    },
+    {
       id: "008",
       project: "joao",
       brand: "Gym Launch",

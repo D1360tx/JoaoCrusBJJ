@@ -18,6 +18,9 @@ The landing pages establish the campaign promises. This workspace turns those pr
 8. Do not use em dashes in Joao website, ad, or podcast copy.
 9. Do not publish prices, trial terms, guarantees, or hard offer details until approved.
 10. Record what changed between iterations and why.
+11. Use story as evidence and explanation, not decoration: specific moment → recognizable tension → Joao's belief → visible teaching mechanism → invitation.
+12. Keep one story tied to one audience and one offer. Do not turn every page into a general founder biography.
+13. Obtain explicit permission before using a student's or parent's name, age, occupation, image, voice, rank history, or identifiable personal details.
 
 ## Status labels
 
@@ -64,3 +67,5 @@ Use [`_concept-template.md`](_concept-template.md) to start each new story or ca
 - Pressure, position, timing, and efficiency for the long game
 - Carlson Gracie lineage demonstrated as a living teaching influence
 - Private coaching for returning practitioners and mature professionals
+- Real student and parent moments that reveal why Joao teaches the way he does
+- Story-led ads and matching page modules built around one observable coaching belief
