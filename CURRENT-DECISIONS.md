@@ -67,6 +67,7 @@
 - ✅ Austin location: **1112 N Lamar Blvd, inside Castle Hill Fitness**.
 - ✅ Dripping Springs Little Champions, ages 3–7: Mon/Wed **5:00–5:45 p.m.**
 - ✅ Dripping Springs Youth, ages 8–12: Mon/Wed **5:50–6:35 p.m.**
+- ✅ Dripping Springs Homeschool Program, ages 5–8: Tue/Thu **10:30–11:15 a.m.**
 - ✅ Dripping Springs adults: Mon/Wed **6:40–7:40 p.m.** and Sat **11:00 a.m.–12:00 p.m.**
 - ✅ Austin Youth, ages 8–12: Tue/Thu **5:00–5:45 p.m.**
 - ✅ Austin publishes **adult private instruction by appointment** with flexible scheduling and beginner-friendly positioning.

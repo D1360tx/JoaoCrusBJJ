@@ -15,6 +15,7 @@
     { id: "kids", label: "Kids Programs 3–12" },
     { id: "little", label: "Little Champions 3–7" },
     { id: "youth", label: "Youth 8–12" },
+    { id: "homeschool", label: "Homeschool Kids 5–8" },
     { id: "teen", label: "Teen 13–17" },
     { id: "adults", label: "Adults" },
     { id: "all", label: "All classes" },
@@ -42,6 +43,14 @@
       name: "Adults",
       program: "adults",
       groups: ["adults"],
+      location: "ds",
+    },
+    {
+      day: 1,
+      time: "10:30–11:15 AM",
+      name: "Homeschool Program (Ages 5–8)",
+      program: "homeschool",
+      groups: ["homeschool", "kids"],
       location: "ds",
     },
     {
@@ -74,6 +83,14 @@
       name: "Adults",
       program: "adults",
       groups: ["adults"],
+      location: "ds",
+    },
+    {
+      day: 3,
+      time: "10:30–11:15 AM",
+      name: "Homeschool Program (Ages 5–8)",
+      program: "homeschool",
+      groups: ["homeschool", "kids"],
       location: "ds",
     },
     {

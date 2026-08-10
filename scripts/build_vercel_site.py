@@ -160,6 +160,33 @@ def rewrite_internal_html_links(html: str, routes: dict[str, str]) -> str:
     return html
 
 
+def apply_robots_directive(html: str, page: dict, production: bool) -> str:
+    """Keep review artifacts noindex while making approved production routes indexable."""
+    directive = page.get("robots")
+    if directive is None:
+        directive = (
+            "index,follow,max-image-preview:large"
+            if production and page["indexable"]
+            else "noindex,nofollow"
+        )
+    replacement = f'<meta name="robots" content="{directive}">'
+    if re.search(r'<meta\s+name=["\']robots["\'][^>]*>', html, re.IGNORECASE):
+        return re.sub(
+            r'<meta\s+name=["\']robots["\'][^>]*>',
+            replacement,
+            html,
+            count=1,
+            flags=re.IGNORECASE,
+        )
+    return re.sub(
+        r"(<head(?:\s[^>]*)?>)",
+        rf"\1\n    {replacement}",
+        html,
+        count=1,
+        flags=re.IGNORECASE,
+    )
+
+
 def output_path(public_path: str) -> Path:
     if public_path == "/":
         return DIST / "index.html"
@@ -191,6 +218,7 @@ def main() -> None:
         html = add_attribution_script(html)
         html = add_google_tag_manager(html)
         html = rewrite_internal_html_links(html, routes)
+        html = apply_robots_directive(html, page, args.production)
         target = output_path(page["path"])
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(html, encoding="utf-8")
