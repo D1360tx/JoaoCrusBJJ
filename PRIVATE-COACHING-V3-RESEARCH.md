@@ -25,6 +25,16 @@ Supporting older discussions:
 - [Is it worth getting private at white belt?](https://www.reddit.com/r/bjj/comments/1d22rrf/is_it_worth_getting_private_at_white_belt_jiu/) — specific problems outperform vague “teach me anything” requests; follow-up corrections in class increase value.
 - [Are privates really worth it?](https://www.reddit.com/r/bjj/comments/10ez3zp/are_privates_really_worth_it/) — students expect the coach to ask diagnostic questions and want to leave with something concrete to practice.
 
+An extended archive pass added ten independent r/bjj discussions from 2024–2026. The strongest additional signals were:
+
+- Time can matter more than price for adult hobbyists with work and family obligations.
+- Buyers distinguish practical coaching value from celebrity access or credentials alone.
+- Some students remember private-session corrections better than passive instructional content.
+- Returning students want an individualized re-entry point, without medical or rehabilitation claims.
+- Roll footage can help turn a vague concern into a focused first session.
+
+Additional sources: [time-poor beginner](https://www.reddit.com/r/bjj/comments/1eu6egk/went_to_a_free_trial_got_addicted_and_joined_the/), [difficulty justifying the expense](https://www.reddit.com/r/bjj/comments/1ek0apa/benefits_of_private_lessons/), [finding blind spots](https://www.reddit.com/r/bjj/comments/1f28c24/are_private_lessons_worth_it/lk4mvhy/), [instructional versus private](https://www.reddit.com/r/bjj/comments/1fe5tle/instructional_vs_private/lmlefye/), [making the most of a private](https://www.reddit.com/r/bjj/comments/1t3q426/making_the_most_of_private_lessons/), and [reaction-based coaching](https://www.reddit.com/r/bjj/comments/1toauvy/how_to_make_best_use_of_private_11s_with_judoka/).
+
 ## Conversion evidence applied
 
 ### Typeform, 2025 Lead Capture Form Report
@@ -82,6 +92,7 @@ Applied findings:
 - Changed the hero promise to **“Stop guessing. Know what to train next.”**
 - Added a welcome screen with value, effort, and no-purchase expectations before the first question.
 - Rewrote questions using student language: repeated dead ends, disconnected techniques, lack of personalized class feedback, limited mat time, and focused goals.
+- Replaced the self-selected coaching-format question with start timing. Timing is more useful for operational follow-up and lead qualification.
 - Added the strongest objection directly to the page: **“What if I do not know what I need to work on?”**
 - Reframed the process around carryover: bring the pattern, test under resistance, apply before adding more.
 - Added lightweight authority near the first CTA without inventing testimonials.
@@ -101,3 +112,13 @@ Track at minimum:
 - Lead-to-conversation and lead-to-booking rates by recommendation and traffic source
 
 The production decision should come from lead quality and bookings, not quiz completion alone.
+
+## Production launch dependencies
+
+Before connecting the form, confirm with Joao:
+
+- Exact private-coaching location and service area
+- Session duration and what a student should bring
+- A response-time promise the team can consistently meet
+- Whether the result should offer immediate scheduling, a fit call, or staff follow-up
+- The approved calendar, cancellation, rescheduling, privacy, and SMS-consent language

@@ -87,7 +87,7 @@
   });
 
   function recommendationFor(data) {
-    if (data.goal === "competition" || data.friction === "prep") {
+    if (data.goal === "competition" || data.friction === "prep" || data.timing === "deadline") {
       return {
         name: "COMPETITION FOCUS SESSION",
         copy: "A focused starting session to identify the positions and decisions that matter most for your upcoming competition or deadline."
@@ -105,16 +105,10 @@
         copy: "A focused assessment designed to give limited mat time one clear priority you can carry into every available session."
       };
     }
-    if (data.format === "series" || data.goal === "specific-position" || data.friction === "connection") {
+    if (data.goal === "specific-position" || data.friction === "connection" || data.friction === "mistakes") {
       return {
         name: "POSITION FOCUS PATH",
         copy: "A concentrated path around one recurring position, the decisions inside it, and the live-training connections you need next."
-      };
-    }
-    if (data.format === "ongoing") {
-      return {
-        name: "ONGOING GAME DEVELOPMENT",
-        copy: "A longer 1-on-1 coaching path for organizing your game, testing it under resistance, and adjusting it as you progress."
       };
     }
     return {
@@ -136,11 +130,13 @@
       ? `${firstName}, this is the strongest starting point based on what you shared.`
       : "This is the strongest starting point based on what you shared.";
 
-    const summary = ["goal", "experience", "friction", "format"]
+    const summary = ["goal", "experience", "friction", "timing"]
       .map((key) => labels[`${key}:${answers[key]}`])
       .filter(Boolean)
       .join(" · ");
     form.querySelector("[data-result-summary]").textContent = summary;
+    form.elements.namedItem("recommendation").value = recommendation.name;
+    form.elements.namedItem("answer_summary").value = summary;
 
     intro.hidden = true;
     steps.forEach((step) => {

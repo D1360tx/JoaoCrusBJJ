@@ -105,14 +105,14 @@
             <button class="quiz-back" type="button" data-back>BACK</button>
           </section>
 
-          <section class="quiz-step" data-quiz-step="4" aria-labelledby="format-title" hidden>
+          <section class="quiz-step" data-quiz-step="4" aria-labelledby="timing-title" hidden>
             <p class="step-label">QUESTION 4</p>
-            <h2 id="format-title" tabindex="-1">HOW WOULD YOU RATHER START?</h2>
+            <h2 id="timing-title" tabindex="-1">WHEN WOULD YOU WANT TO START?</h2>
             <div class="quiz-options">
-              <button type="button" data-answer="format" data-value="assessment"><span>01</span>One focused assessment and next-step plan</button>
-              <button type="button" data-answer="format" data-value="series"><span>02</span>A short series around one priority</button>
-              <button type="button" data-answer="format" data-value="ongoing"><span>03</span>Ongoing 1-on-1 development</button>
-              <button type="button" data-answer="format" data-value="unsure"><span>04</span>I want Joao's recommendation</button>
+              <button type="button" data-answer="timing" data-value="soon"><span>01</span>As soon as the right time is available</button>
+              <button type="button" data-answer="timing" data-value="month"><span>02</span>Within the next 30 days</button>
+              <button type="button" data-answer="timing" data-value="deadline"><span>03</span>Before a specific date or competition</button>
+              <button type="button" data-answer="timing" data-value="exploring"><span>04</span>I am exploring whether privates fit</button>
             </div>
             <button class="quiz-back" type="button" data-back>BACK</button>
           </section>
@@ -127,9 +127,11 @@
             <input type="hidden" name="goal">
             <input type="hidden" name="experience">
             <input type="hidden" name="friction">
-            <input type="hidden" name="format">
+            <input type="hidden" name="timing">
             <input type="hidden" name="form_source" value="private_game_plan_finder_v3">
             <input type="hidden" name="quiz_version" value="private_game_plan_v3_review">
+            <input type="hidden" name="recommendation">
+            <input type="hidden" name="answer_summary">
             <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="utm_term"><input type="hidden" name="gclid"><input type="hidden" name="fbclid">
             <button class="primary-button quiz-submit" type="submit">SHOW MY RECOMMENDATION</button>
             <p class="privacy-copy"><strong>No purchase required.</strong> Visual preview only. No information is sent or stored. Production will use the approved privacy and contact-consent language.</p>
@@ -185,7 +187,7 @@
         <p class="eyebrow">WHAT THE FIRST STEP LOOKS LIKE</p>
         <h2>DIAGNOSE. COACH. CONNECT.</h2>
         <ol>
-          <li><b>01</b><div><h3>BRING THE PATTERN, NOT THE ANSWER</h3><p>You do not have to diagnose yourself. Bring the position, repeated outcome, or goal you notice.</p></div></li>
+          <li><b>01</b><div><h3>BRING THE PATTERN, NOT THE ANSWER</h3><p>You do not have to diagnose yourself. Bring the position, repeated outcome, goal, or a roll clip if you have one.</p></div></li>
           <li><b>02</b><div><h3>COACH THE DETAIL UNDER&nbsp;RESISTANCE</h3><p>Work through what changes when timing, pressure, and reactions enter the position.</p></div></li>
           <li><b>03</b><div><h3>APPLY IT BEFORE ADDING MORE</h3><p>Take one focused priority into regular training so the private creates carryover instead of a backlog.</p></div></li>
         </ol>
