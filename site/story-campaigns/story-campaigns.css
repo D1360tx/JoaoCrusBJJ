@@ -56,6 +56,7 @@ button{color:inherit}
 .iteration-banner{display:grid;grid-template-columns:minmax(260px,.8fr) minmax(320px,1.2fr) auto;gap:24px;align-items:center;margin-bottom:34px;padding:20px;background:var(--blue);color:#fff;border:3px solid var(--black);box-shadow:6px 6px 0 var(--black)}
 .iteration-banner div{display:grid;line-height:1.1}.iteration-banner span{color:var(--yellow);font-size:.58rem;font-weight:900;letter-spacing:.13em}.iteration-banner strong{margin-top:6px;font-family:"Anton",Impact,sans-serif;font-size:1.5rem;font-weight:400}
 .iteration-banner p{margin:0;color:#e4e9fa;font-size:.78rem}.iteration-banner a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:9px 14px;background:var(--yellow);color:var(--black);border:3px solid var(--black);box-shadow:4px 4px 0 var(--black);font-size:.65rem;font-weight:900;text-decoration:none;white-space:nowrap}
+.iteration-banner .iteration-actions{display:grid;gap:8px}.iteration-banner .iteration-secondary{min-height:38px;background:#fff;font-size:.58rem}
 .visual-review{display:grid;grid-template-columns:minmax(320px,480px) minmax(0,1fr);gap:34px;align-items:start}
 .ad-column{position:sticky;top:210px}
 .review-label{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px;font-size:.66rem;font-weight:800;letter-spacing:.13em}
