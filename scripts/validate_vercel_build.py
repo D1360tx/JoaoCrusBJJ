@@ -119,16 +119,26 @@ def main() -> None:
         ("0", "5:00–5:45 PM", "Little Champions (Ages 3–7)", "ds"),
         ("0", "5:50–6:35 PM", "Junior Warriors (Ages 8–12)", "ds"),
         ("0", "6:40–7:40 PM", "Adults", "ds"),
+        ("1", "10:30–11:15 AM", "Homeschool Program (Ages 5–8)", "ds"),
         ("1", "5:00–5:45 PM", "Kids (Ages 8–12)", "austin"),
         ("2", "5:00–5:45 PM", "Little Champions (Ages 3–7)", "ds"),
         ("2", "5:50–6:35 PM", "Junior Warriors (Ages 8–12)", "ds"),
         ("2", "6:40–7:40 PM", "Adults", "ds"),
+        ("3", "10:30–11:15 AM", "Homeschool Program (Ages 5–8)", "ds"),
         ("3", "5:00–5:45 PM", "Kids (Ages 8–12)", "austin"),
         ("5", "11:00 AM–12:00 PM", "Adults", "ds"),
     ]
     check(
         calendar_records == expected_calendar_records,
-        "shared calendar data does not match Joao's confirmed 2026-07-31 schedule",
+        "shared calendar data does not match Joao's confirmed 2026-08-10 schedule",
+    )
+    check(
+        calendar_source.count('groups: ["homeschool", "kids"]') == 2,
+        "homeschool classes must appear in both Homeschool and Kids filters",
+    )
+    check(
+        '{ id: "homeschool", label: "Homeschool Kids 5–8" }' in calendar_source,
+        "homeschool program filter label is missing or has the wrong age range",
     )
 
     analytics_source = (ROOT / "site" / "assets" / "campaign-site.js").read_text(encoding="utf-8")
@@ -271,10 +281,18 @@ def main() -> None:
                                 check(items[1].get("item") == canonical_url, f"{page['path']}: breadcrumb current-page URL mismatch")
                 except json.JSONDecodeError as exc:
                     check(False, f"{page['path']}: invalid JSON-LD: {exc}")
-        if page.get("robots"):
-            check(f'name="robots" content="{page["robots"]}"' in html, f"{page['path']}: custom robots directive does not match manifest")
+        expected_page_robots = page.get("robots")
+        if expected_page_robots is None:
+            expected_page_robots = (
+                "index,follow,max-image-preview:large"
+                if args.production and page["indexable"]
+                else "noindex,nofollow"
+            )
+        check(
+            f'name="robots" content="{expected_page_robots}"' in html,
+            f"{page['path']}: {build_label} robots directive does not match manifest policy",
+        )
         if page["path"] == "/teens/":
-            check('name="robots" content="index,follow"' in html, "/teens/: canonical page must be indexable")
             visible_preview_terms = ("launch preview", "campaign preview", "preview form", "preview complete")
             check(not any(term in html.lower() for term in visible_preview_terms), "/teens/: visible preview wording remains")
             check("preview-ribbon" not in html, "/teens/: preview ribbon remains")

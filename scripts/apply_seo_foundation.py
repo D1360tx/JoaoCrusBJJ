@@ -295,8 +295,12 @@ def remove_old_head_tags(source: str) -> str:
 
 
 def apply_page(site: dict, page: dict, mode: str) -> None:
-    path = CAMPAIGN / page["file"]
-    source = path.read_text(encoding="utf-8")
+    target = (
+        ROOT / "site" / page["source_file"]
+        if page.get("source_file")
+        else CAMPAIGN / page["file"]
+    )
+    source = target.read_text(encoding="utf-8")
     source = remove_old_head_tags(source)
     title = html.escape(page["title"], quote=False)
     description = html.escape(page["description"], quote=True)
@@ -346,8 +350,12 @@ def apply_page(site: dict, page: dict, mode: str) -> None:
         ])
     lines.append(END)
     block = "\n".join(lines) + "\n"
-    source = source.replace('    <link rel="stylesheet"', block + '    <link rel="stylesheet"', 1)
-    path.write_text(source, encoding="utf-8")
+    stylesheet = re.search(r'(?m)^\s*<link\s+rel=["\']stylesheet["\']', source)
+    if not stylesheet:
+        raise ValueError(f"{target}: no stylesheet link found for SEO foundation insertion")
+    source = source[: stylesheet.start()] + block + source[stylesheet.start() :]
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(source, encoding="utf-8")
 
 
 def write_sitemap(site: dict, pages: list[dict]) -> None:
