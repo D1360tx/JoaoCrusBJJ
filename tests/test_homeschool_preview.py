@@ -82,6 +82,10 @@ class HomeschoolPreviewTests(unittest.TestCase):
             with self.subTest(fact=fact):
                 self.assertIn(fact, self.source)
 
+    def test_unconfirmed_instructor_assignment_is_not_implied(self) -> None:
+        self.assertNotIn("Led by Joao Crus", self.source)
+        self.assertIn("Founded by Joao Crus", self.source)
+
     def test_preview_form_cannot_transmit(self) -> None:
         self.assertEqual(len(self.parser.forms), 1)
         form = self.parser.forms[0]
