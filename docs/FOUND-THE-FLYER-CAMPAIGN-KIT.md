@@ -103,6 +103,19 @@ Use this cut for a reminder ad or the top of a lightweight follow-up page, not a
   - `found-the-flyer-joao-welcome-16x9.mp4`
   - caption file `.vtt`
 
+### Current copy-lab structure
+
+- **Control:** `/found-the-flyer-v2/` uses the flyer-curiosity callback and remains locked during iteration.
+- **Active challenger:** `/found-the-flyer-active/` tests one materially different belief at a time.
+- **Comparison workspace:** `/found-the-flyer-copy-lab/` shows both pages together, supports isolated views, section jumps, and optional synchronized scrolling.
+- Never edit the control while a hypothesis is active. Record the hypothesis, active angle, primary metric, and decision before promoting or replacing either version.
+
+### Active hypothesis 01: pressure becomes practice
+
+**Because** the control spends its strongest attention on the novelty of keeping and scanning the flyer, **we believe** reframing Jiu-Jitsu as a controlled place to practice how you respond under pressure will create more qualified first-class requests from parents and adults. **We will know this is directionally stronger** when reviewers consistently prefer its argument and, after launch-ready tracking exists, it improves valid first-class requests per unique QR session without reducing program/location completeness, booked classes, or attendance.
+
+This is a message-angle comparison, not a statistically valid live A/B test yet. Do not call a winner from internal preference alone or from a small number of QR scans.
+
 ## Landing-page copy map
 
 | Section | Job |
