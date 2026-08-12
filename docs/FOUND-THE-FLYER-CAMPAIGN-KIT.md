@@ -105,16 +105,21 @@ Use this cut for a reminder ad or the top of a lightweight follow-up page, not a
 
 ### Current copy-lab structure
 
-- **Control:** `/found-the-flyer-v2/` uses the flyer-curiosity callback and remains locked during iteration.
-- **Active challenger:** `/found-the-flyer-active/` tests one materially different belief at a time.
+- **Archived original:** `/found-the-flyer-v2/` preserves the flyer-curiosity callback.
+- **Control:** `/found-the-flyer-control/` is the approved pressure-response Iteration 1 and remains locked during the current iteration.
+- **Active challenger:** `/found-the-flyer-active/` tests the next refinement of the approved belief.
 - **Comparison workspace:** `/found-the-flyer-copy-lab/` shows both pages together, supports isolated views, section jumps, and optional synchronized scrolling.
 - Never edit the control while a hypothesis is active. Record the hypothesis, active angle, primary metric, and decision before promoting or replacing either version.
 
-### Active hypothesis 01: pressure becomes practice
+### Approved hypothesis 01: pressure becomes practice
 
 **Because** the control spends its strongest attention on the novelty of keeping and scanning the flyer, **we believe** reframing Jiu-Jitsu as a controlled place to practice how you respond under pressure will create more qualified first-class requests from parents and adults. **We will know this is directionally stronger** when reviewers consistently prefer its argument and, after launch-ready tracking exists, it improves valid first-class requests per unique QR session without reducing program/location completeness, booked classes, or attendance.
 
 This is a message-angle comparison, not a statistically valid live A/B test yet. Do not call a winner from internal preference alone or from a small number of QR scans.
+
+### Active hypothesis 02: life pushes back
+
+**Because** the approved pressure-response angle is strategically stronger but still describes the benefit broadly, **we believe** leading with “Life pushes back. Practice what to do next.” and proving the coached resistance-reset loop will make the promise more concrete and increase qualified first-class requests. The active version must continue using a recommendation-based CTA and explicitly state that submitting the form does not automatically book or charge anything.
 
 ## Landing-page copy map
 
