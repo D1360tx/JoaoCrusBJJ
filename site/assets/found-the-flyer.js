@@ -48,7 +48,7 @@
       });
     }
 
-    var program = document.querySelector("#flyer-program");
+    var program = document.querySelector('[data-form] [name="program"]');
     document.querySelectorAll("[data-program-choice]").forEach(function (link) {
       link.addEventListener("click", function () {
         if (!program) return;
