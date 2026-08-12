@@ -29,7 +29,8 @@
 
 ## Parent Guide AI-search cluster (2026-07-29)
 
-- ✅ The canonical Parent Guide is a public, indexable resource hub at `/parent-guide/`, supported by five focused answer pages covering starting age, tapping, ages 3-7 class structure, choosing a program by age, and first-class preparation.
+- ✅ The canonical Parent Guide is a public, indexable resource hub at `/parent-guide/`, supported by focused answer pages covering starting age, tapping, ages 3-7 class structure, choosing a program by age, first-class preparation, and how children practice life skills in BJJ.
+- ✅ The life-skills article owns informational intent around listening, boundaries, persistence, partner awareness, resetting, and problem-solving. It must support, not replace or cannibalize, the commercial Kids BJJ page.
 - ✅ Each resource uses a concise direct-answer block, visible publication context, internal links, claim-safe language, and Article schema. Visible FAQ content may also use FAQPage schema when the structured data exactly matches the page.
 - ✅ Research claims must cite the underlying source and remain within the evidence tier. Preschool movement research may support cautious language about attention, motor development, and self-regulation, but must not be presented as proof of BJJ-specific outcomes at age 3.
 - ✅ The cluster may explain tapping as a shared stop signal and training habit. It must not claim that tapping eliminates injury risk or guarantees behavior outside class.
