@@ -27,6 +27,7 @@ from typing import Iterable
 ROOT = Path(__file__).resolve().parents[1]
 CAMPAIGN = ROOT / "site" / "campaign"
 DEFAULT_PROPERTY = "sc-domain:joaocrusbjj.com"
+DEFAULT_QUOTA_PROJECT = "woven-nimbus-489418-c3"
 
 ALIASES = {
     "joão": "joao",
@@ -88,6 +89,7 @@ def fetch_api(property_name: str, start: str, end: str, token: str) -> list[dict
     request = urllib.request.Request(endpoint, data=payload, method="POST", headers={
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",
+        "x-goog-user-project": os.environ.get("GSC_QUOTA_PROJECT", DEFAULT_QUOTA_PROJECT),
     })
     with urllib.request.urlopen(request, timeout=45) as response:
         data = json.load(response)
