@@ -1,0 +1,224 @@
+{
+  "responsive": [
+    {
+      "width": 501,
+      "client": 390,
+      "scroll": 501,
+      "overflowers": [
+        {
+          "tag": "A",
+          "cls": "skip",
+          "left": -9999,
+          "right": -9879,
+          "w": 120
+        },
+        {
+          "tag": "DIV",
+          "cls": "field website-field",
+          "left": -9999,
+          "right": -9998,
+          "w": 1
+        },
+        {
+          "tag": "LABEL",
+          "cls": "",
+          "left": -9999,
+          "right": -9998,
+          "w": 1
+        },
+        {
+          "tag": "INPUT",
+          "cls": "",
+          "left": -9999,
+          "right": -9971,
+          "w": 28
+        }
+      ],
+      "broken": [],
+      "tooSmall": [],
+      "robots": "noindex,nofollow",
+      "formFields": 7,
+      "sticky": "flex",
+      "ready": "interactive",
+      "orphans": []
+    },
+    {
+      "width": 768,
+      "client": 753,
+      "scroll": 753,
+      "overflowers": [
+        {
+          "tag": "A",
+          "cls": "skip",
+          "left": -9999,
+          "right": -9879,
+          "w": 120
+        },
+        {
+          "tag": "DIV",
+          "cls": "field website-field",
+          "left": -9999,
+          "right": -9998,
+          "w": 1
+        },
+        {
+          "tag": "LABEL",
+          "cls": "",
+          "left": -9999,
+          "right": -9998,
+          "w": 1
+        },
+        {
+          "tag": "INPUT",
+          "cls": "",
+          "left": -9999,
+          "right": -9971,
+          "w": 28
+        }
+      ],
+      "broken": [],
+      "tooSmall": [],
+      "robots": "noindex,nofollow",
+      "formFields": 7,
+      "sticky": "none",
+      "ready": "complete",
+      "orphans": []
+    },
+    {
+      "width": 1280,
+      "client": 1265,
+      "scroll": 1265,
+      "overflowers": [
+        {
+          "tag": "A",
+          "cls": "skip",
+          "left": -9999,
+          "right": -9879,
+          "w": 120
+        },
+        {
+          "tag": "DIV",
+          "cls": "field website-field",
+          "left": -9999,
+          "right": -9998,
+          "w": 1
+        },
+        {
+          "tag": "LABEL",
+          "cls": "",
+          "left": -9999,
+          "right": -9998,
+          "w": 1
+        },
+        {
+          "tag": "INPUT",
+          "cls": "",
+          "left": -9999,
+          "right": -9971,
+          "w": 28
+        }
+      ],
+      "broken": [],
+      "tooSmall": [],
+      "robots": "noindex,nofollow",
+      "formFields": 7,
+      "sticky": "none",
+      "ready": "complete",
+      "orphans": []
+    },
+    {
+      "width": 1440,
+      "client": 1425,
+      "scroll": 1425,
+      "overflowers": [
+        {
+          "tag": "A",
+          "cls": "skip",
+          "left": -9999,
+          "right": -9879,
+          "w": 120
+        },
+        {
+          "tag": "DIV",
+          "cls": "field website-field",
+          "left": -9999,
+          "right": -9998,
+          "w": 1
+        },
+        {
+          "tag": "LABEL",
+          "cls": "",
+          "left": -9999,
+          "right": -9998,
+          "w": 1
+        },
+        {
+          "tag": "INPUT",
+          "cls": "",
+          "left": -9999,
+          "right": -9971,
+          "w": 28
+        }
+      ],
+      "broken": [],
+      "tooSmall": [],
+      "robots": "noindex,nofollow",
+      "formFields": 7,
+      "sticky": "none",
+      "ready": "complete",
+      "orphans": []
+    },
+    {
+      "width": 1920,
+      "client": 1905,
+      "scroll": 1905,
+      "overflowers": [
+        {
+          "tag": "A",
+          "cls": "skip",
+          "left": -9999,
+          "right": -9879,
+          "w": 120
+        },
+        {
+          "tag": "DIV",
+          "cls": "field website-field",
+          "left": -9999,
+          "right": -9998,
+          "w": 1
+        },
+        {
+          "tag": "LABEL",
+          "cls": "",
+          "left": -9999,
+          "right": -9998,
+          "w": 1
+        },
+        {
+          "tag": "INPUT",
+          "cls": "",
+          "left": -9999,
+          "right": -9971,
+          "w": 28
+        }
+      ],
+      "broken": [],
+      "tooSmall": [],
+      "robots": "noindex,nofollow",
+      "formFields": 7,
+      "sticky": "none",
+      "ready": "complete",
+      "orphans": []
+    }
+  ],
+  "video": {
+    "open": true,
+    "focused": true
+  },
+  "adultPathValue": "Adults",
+  "invalid": {
+    "fired": false,
+    "valid": false,
+    "active": "name"
+  }
+}

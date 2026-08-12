@@ -1,0 +1,334 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;600;700&display=swap");
+
+@page {
+  size: 9in 6in;
+  margin: 0;
+}
+
+:root {
+  --black: #101010;
+  --white: #fffdf8;
+  --yellow: #f5c400;
+  --blue: #194fc3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.keep {
+  white-space: nowrap;
+}
+
+body {
+  background: #d6d6d6;
+  color: var(--black);
+  font-family: "Space Grotesk", Arial, sans-serif;
+  margin: 0;
+}
+
+.print-note {
+  background: var(--yellow);
+  border-bottom: 3px solid var(--black);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.sheet {
+  display: grid;
+  gap: 30px;
+  justify-content: center;
+  padding: 30px;
+}
+
+.postcard {
+  background: var(--white);
+  height: 6in;
+  overflow: hidden;
+  position: relative;
+  width: 9in;
+}
+
+.front {
+  background: var(--black);
+  color: #fff;
+}
+
+.front-photo {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  object-position: center 42%;
+  position: absolute;
+  width: 100%;
+}
+
+.front-overlay {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.95) 0 40%, rgba(0, 0, 0, 0.5) 68%, rgba(0, 0, 0, 0.2));
+  inset: 0;
+  position: absolute;
+}
+
+.brand-row {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  left: 0.35in;
+  position: absolute;
+  top: 0.3in;
+}
+
+.brand-row img {
+  background: var(--yellow);
+  height: 0.68in;
+  object-fit: contain;
+  width: 0.68in;
+}
+
+.brand-row p {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.brand-row strong {
+  display: block;
+  font-family: Anton, Impact, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.brand-row span {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.front-copy {
+  left: 0.38in;
+  max-width: 5.4in;
+  position: absolute;
+  top: 1.5in;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0 0 13px;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  background: var(--yellow);
+  content: "";
+  display: inline-block;
+  height: 5px;
+  margin-right: 8px;
+  vertical-align: middle;
+  width: 30px;
+}
+
+.front h1 {
+  font-family: Anton, Impact, sans-serif;
+  font-size: 78px;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 0.86;
+  margin: 0;
+}
+
+.front mark {
+  background: var(--yellow);
+  color: var(--black);
+  display: inline-block;
+  margin-top: 11px;
+  padding: 3px 14px 7px;
+}
+
+.tease {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 22px 0 0;
+  max-width: 4.4in;
+}
+
+.front-footer {
+  background: var(--yellow);
+  bottom: 0;
+  color: var(--black);
+  font-size: 10px;
+  font-weight: 700;
+  left: 0;
+  letter-spacing: 0.06em;
+  margin: 0;
+  padding: 10px 0.35in;
+  position: absolute;
+  right: 0;
+  text-transform: uppercase;
+}
+
+.back {
+  border: 5px solid var(--black);
+  display: grid;
+  grid-template-columns: 1fr 2.65in;
+}
+
+.back-copy {
+  padding: 0.36in 0.32in 0.46in 0.38in;
+}
+
+.eyebrow.blue::before {
+  background: var(--blue);
+}
+
+.back h2 {
+  font-family: Anton, Impact, sans-serif;
+  font-size: 43px;
+  font-weight: 400;
+  line-height: 0.96;
+  margin: 0;
+  max-width: 5.1in;
+  text-transform: uppercase;
+}
+
+.back .lead {
+  font-size: 13px;
+  line-height: 1.42;
+  margin: 17px 0 12px;
+  max-width: 5in;
+}
+
+.back ul {
+  display: grid;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.back li::before {
+  color: var(--blue);
+  content: "■";
+  margin-right: 8px;
+}
+
+.cta-band {
+  background: var(--yellow);
+  border: 3px solid var(--black);
+  box-shadow: 5px 5px 0 var(--blue);
+  font-family: Anton, Impact, sans-serif;
+  font-size: 20px;
+  line-height: 1.05;
+  margin-top: 16px;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.locations {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 18px;
+}
+
+.locations p {
+  border-left: 4px solid var(--blue);
+  display: flex;
+  flex-direction: column;
+  font-size: 9px;
+  line-height: 1.3;
+  margin: 0;
+  padding-left: 8px;
+}
+
+.locations strong {
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.qr-panel {
+  align-items: center;
+  background: var(--black);
+  border-left: 5px solid var(--yellow);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.24in;
+  text-align: center;
+}
+
+.qr {
+  background: #fff;
+  border: 0.11in solid #fff;
+  height: 2.35in;
+  width: 2.35in;
+}
+
+.scan {
+  color: var(--yellow);
+  font-family: Anton, Impact, sans-serif;
+  font-size: 30px;
+  line-height: 1;
+  margin: 13px 0 4px;
+}
+
+.short-url,
+.phone {
+  font-size: 11px;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.phone {
+  border-top: 1px solid #656565;
+  margin-top: 12px;
+  padding-top: 10px;
+}
+
+.phone strong {
+  color: var(--yellow);
+  font-size: 15px;
+}
+
+.permission-note {
+  bottom: 0.1in;
+  color: #5b5b5b;
+  font-size: 6.5px;
+  left: 0.38in;
+  margin: 0;
+  position: absolute;
+  right: 2.9in;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .print-note {
+    display: none;
+  }
+
+  .sheet {
+    display: block;
+    padding: 0;
+  }
+
+  .postcard {
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .postcard:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+}

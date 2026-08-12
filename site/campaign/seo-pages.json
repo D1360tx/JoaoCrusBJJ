@@ -375,6 +375,16 @@
       "schema": []
     },
     {
+      "file": "found-the-flyer.html",
+      "path": "/found-the-flyer/",
+      "title": "You Kept the Flyer | Joao Crus BJJ",
+      "description": "You kept the flyer. Meet Joao Crus and find a beginner-friendly Brazilian Jiu-Jitsu program in Dripping Springs or Austin.",
+      "image": "/assets/campaign-images/home-academy-group-2026-07.webp",
+      "indexable": false,
+      "robots": "noindex,nofollow",
+      "schema": []
+    },
+    {
       "file": "contact.html",
       "path": "/contact/",
       "title": "Contact Joao Crus BJJ | Plan a First Class",
