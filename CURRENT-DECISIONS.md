@@ -90,6 +90,7 @@
 - ✅ Preferred offer logic: a trial deposit becomes a **credit toward annual membership** when the student continues.
 - ✅ Paid social is approved at approximately **$35/day** for the Back-to-School campaign.
 - ✅ Paid social will use our own pages and tracking and run alongside the existing agency.
+- ✅ **Paid-social creative framework (2026-08-11):** resurface `assets/ads-swipe/010-meta-ad-bibles-creative-portfolio.md` whenever building or approving ads. For Joao's local budget, begin with a structured 6–9 creative wave across three meaningful hook families, short and authority-length formats, plus proof and objection retargeting. Keep one audience, offer, matched page, and conversion event per campaign. Optimize on qualified leads, attendance, enrollment, and private bookings rather than views or library size.
 - ✅ **Google Ads is documented for future use and explicitly deferred from the current launch.** Do not allocate budget or build campaigns until Diego reopens the channel. When activated, start with transactional/commercial local intent, exact and phrase match, program-specific landing pages, and HighLevel quality feedback. Do not begin with broad match or Performance Max. See `docs/GOOGLE-ADS-KEYWORD-PLAYBOOK-2026-07-30.md`.
 - ✅ Social cadence preference: approximately **one useful instructional post per week**; content should drive to offers rather than function as a free school.
 - ✅ Joao's children's storybooks (shy/distracted-kid themes) are working lead-magnet and trial-gift assets.
