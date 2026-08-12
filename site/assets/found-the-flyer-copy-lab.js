@@ -4,6 +4,21 @@
   var syncToggle = document.querySelector("[data-sync-scroll]");
   var syncing = false;
 
+  function variantUrl(name) {
+    var rawReview = window.location.hostname === "raw.githack.com";
+    var file = name === "control" ? "found-the-flyer-v2.html" : "found-the-flyer-active.html";
+    var route = name === "control" ? "/found-the-flyer-v2/" : "/found-the-flyer-active/";
+    return rawReview ? file : route;
+  }
+
+  frames.forEach(function (frame) {
+    frame.src = variantUrl(frame.dataset.frame) + "?lab=" + frame.dataset.frame;
+  });
+
+  document.querySelectorAll("[data-review-link]").forEach(function (link) {
+    link.href = variantUrl(link.dataset.reviewLink);
+  });
+
   function setView(view) {
     comparison.className = "comparison " + view;
     document.querySelectorAll("[data-view]").forEach(function (button) {
