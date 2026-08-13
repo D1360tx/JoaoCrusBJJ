@@ -122,6 +122,10 @@
   width: 100%;
 }
 
+.ff-video-still {
+  cursor: default;
+}
+
 .ff-video-poster img {
   display: block;
   height: 100%;

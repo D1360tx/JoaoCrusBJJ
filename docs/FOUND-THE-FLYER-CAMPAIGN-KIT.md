@@ -103,11 +103,18 @@ Use this cut for a reminder ad or the top of a lightweight follow-up page, not a
   - `found-the-flyer-joao-welcome-16x9.mp4`
   - caption file `.vtt`
 
-### Current copy-lab structure
+### Approved production direction
+
+- **Canonical landing page:** `/found-the-flyer/` uses approved pressure-response Iteration 2.
+- **Approved hero:** “Pressure is part of life. Practice what to do next.”
+- **Locked control:** `/found-the-flyer-control/` preserves the approved Iteration 2 for future comparisons.
+- Until the campaign video is recorded and approved, production uses a noninteractive coaching photograph. It must not display a play button or imply that video playback is available.
+
+### Archived copy-lab structure
 
 - **Archived original:** `/found-the-flyer-v2/` preserves the flyer-curiosity callback.
-- **Control:** `/found-the-flyer-control/` is the approved pressure-response Iteration 1 and remains locked during the current iteration.
-- **Active challenger:** `/found-the-flyer-active/` tests the next refinement of the approved belief.
+- **Control:** `/found-the-flyer-control/` is the approved pressure-response Iteration 2 and remains locked for the next hypothesis.
+- **Active challenger:** `/found-the-flyer-active/` preserves the final pre-promotion challenger for review history.
 - **Comparison workspace:** `/found-the-flyer-copy-lab/` shows both pages together, supports isolated views, section jumps, and optional synchronized scrolling.
 - Never edit the control while a hypothesis is active. Record the hypothesis, active angle, primary metric, and decision before promoting or replacing either version.
 
