@@ -40,8 +40,7 @@
         heading: 'How old is your child?',
         help: 'Age determines the appropriate program before any preference scoring.',
         options: [
-          ['3–4', 'little-3-4', 'Little Champions · Ages 3–7', 'age'],
-          ['5–7', 'little-5-7', 'Little Champions · Ages 3–7', 'age'],
+          ['3–7', 'little', 'Little Champions · Ages 3–7', 'age'],
           ['8–12', 'youth', 'Youth · Ages 8–12', 'age'],
           ['13–17', 'teen', 'Teens · Ages 13–17', 'age']
         ]
@@ -111,10 +110,10 @@
     }
   };
 
-  function optionMarkup(name, option, index) {
+  function optionMarkup(name, option, index, type = 'radio') {
     const [label, value, description, iconName] = option;
     return `<label class="fit-option">
-      <input type="radio" name="${name}" value="${value}" required>
+      <input type="${type}" name="${name}" value="${value}" ${type === 'radio' ? 'required' : ''}>
       <span class="fit-option__icon" aria-hidden="true">${icon(iconName)}</span>
       <span><strong>${label}</strong><small>${description}</small></span>
       <span class="fit-option__check" aria-hidden="true">✓</span>
@@ -124,6 +123,9 @@
   function populateBranch() {
     const audience = form.elements.audience.value;
     const config = configurations[audience];
+    const childCount = root.querySelector('[data-child-count]');
+    childCount.hidden = audience !== 'child';
+    root.querySelectorAll('[name="child_count"]').forEach((input) => { input.required = audience === 'child'; });
     ['stage', 'goal', 'experience', 'location'].forEach((key) => {
       const container = root.querySelector(`[data-dynamic-options="${key}"]`);
       const data = config[key];
@@ -133,8 +135,22 @@
         const help = step.querySelector('[data-question-help]');
         if (help && data.help) help.textContent = data.help;
       }
-      container.innerHTML = data.options.map((option, index) => optionMarkup(key, option, index)).join('');
+      const type = audience === 'child' && key === 'stage' ? 'checkbox' : 'radio';
+      container.dataset.requiredGroup = type === 'checkbox' ? 'stage' : '';
+      container.innerHTML = data.options.map((option, index) => optionMarkup(key, option, index, type)).join('');
     });
+  }
+
+  function syncChildAgeCopy() {
+    if (form.elements.audience.value !== 'child') return;
+    const count = form.elements.child_count.value;
+    const step = root.querySelector('[data-step="2"]');
+    step.querySelector('[data-question-heading]').textContent = count && count !== '1'
+      ? 'What age groups are your children in?'
+      : 'How old is your child?';
+    step.querySelector('[data-question-help]').textContent = count && count !== '1'
+      ? 'Select every age group represented. Each child will be matched to the published program range.'
+      : 'Select the age group that matches your child.';
   }
 
   function showScreen(name) {
@@ -155,11 +171,15 @@
   function stepIsValid() {
     const step = activeStep();
     const required = [...step.querySelectorAll('[required]')];
-    return required.every((input) => {
+    const requiredFieldsValid = required.every((input) => {
       if (input.type === 'radio') return Boolean(step.querySelector(`[name="${input.name}"]:checked`));
       if (input.type === 'checkbox') return input.checked;
       return input.checkValidity();
     });
+    const requiredGroupsValid = [...step.querySelectorAll('[data-required-group]')]
+      .filter((group) => group.dataset.requiredGroup)
+      .every((group) => Boolean(group.querySelector('input:checked')));
+    return requiredFieldsValid && requiredGroupsValid;
   }
 
   function syncControls() {
@@ -195,15 +215,28 @@
 
   function recordStep() {
     const data = new FormData(form);
-    ['audience', 'stage', 'goal', 'experience', 'location'].forEach((key) => {
+    ['audience', 'goal', 'experience', 'location', 'child_count'].forEach((key) => {
       if (data.get(key)) answers[key] = data.get(key);
     });
+    const stages = data.getAll('stage');
+    if (stages.length) answers.stage = answers.audience === 'child' ? stages : stages[0];
   }
 
   function calculateResult() {
     if (answers.audience === 'child') {
-      const stage = answers.stage;
-      if (stage.startsWith('little-')) return {
+      const stages = Array.isArray(answers.stage) ? answers.stage : [answers.stage];
+      if (answers.child_count !== '1') {
+        const names = [...new Set(stages.map((stage) => ({ little: 'Little Champions', youth: 'Youth BJJ', teen: 'Teen Interest Path' })[stage]))];
+        return {
+          title: 'Family Program Plan',
+          summary: `For ${answers.child_count === '4+' ? 'your children' : `${answers.child_count} children`}, the age-appropriate starting paths are ${names.join(', ')}.`,
+          reasons: ['Each child is matched by the program’s published age range', 'One family inquiry can cover every child', 'Location and schedule can be confirmed together'],
+          link: 'programs.html', linkText: 'View all kids programs', image: '../assets/campaign-images/home-academy-group-2026-07.webp',
+          next: 'Review the matched programs together', location: 'Dripping Springs + Austin availability varies by age'
+        };
+      }
+      const stage = stages[0];
+      if (stage === 'little') return {
         title: 'Little Champions',
         summary: 'Based on your child’s age, experience, and goals, the ages 3–7 program is the most appropriate factual starting point.',
         reasons: ['Short, age-appropriate activities', 'Clear instructions and active coaching', 'Practice with movement, listening, and safe boundaries'],
@@ -270,6 +303,7 @@
   form.addEventListener('input', syncControls);
   form.addEventListener('change', (event) => {
     if (event.target.name === 'audience') populateBranch();
+    if (event.target.name === 'child_count') syncChildAgeCopy();
     syncControls();
   });
 

@@ -94,6 +94,16 @@
           <fieldset class="fit-step" data-step="2" hidden>
             <legend data-question-heading>How old is your child?</legend>
             <p class="fit-help" data-question-help>Age determines the appropriate program before any preference scoring.</p>
+            <div class="fit-child-count" data-child-count hidden>
+              <p>How many children are you looking for?</p>
+              <div class="fit-count-options" role="radiogroup" aria-label="Number of children">
+                <label><input type="radio" name="child_count" value="1"><span>1</span></label>
+                <label><input type="radio" name="child_count" value="2"><span>2</span></label>
+                <label><input type="radio" name="child_count" value="3"><span>3</span></label>
+                <label><input type="radio" name="child_count" value="4+"><span>4+</span></label>
+              </div>
+              <p class="fit-child-count__help">Then select every age group represented below.</p>
+            </div>
             <div class="fit-options fit-options--2" data-dynamic-options="stage"></div>
           </fieldset>
 
