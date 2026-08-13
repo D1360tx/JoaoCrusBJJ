@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Find Your Best Jiu-Jitsu Starting Point | Joao Crus BJJ</title>
+  <meta name="description" content="A visual review prototype for the Joao Crus BJJ program fit quiz.">
+  <link rel="icon" href="../assets/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../assets/program-fit-quiz.css">
+  <script src="../assets/program-fit-quiz.js" defer></script>
+</head>
+<body class="fit-page">
+  <a class="skip-link" href="#quiz">Skip to the quiz</a>
+
+  <header class="fit-header">
+    <a class="fit-brand" href="index.html" aria-label="Joao Crus BJJ home">
+      <img src="../assets/joao-crus-bjj-logo.png" width="62" height="62" alt="">
+      <span><strong>Joao Crus BJJ</strong><small>Skills for life · Est. 2003</small></span>
+    </a>
+    <div class="fit-header__proof" aria-label="Program finder details">
+      <span>60-second class match</span>
+      <span>No experience required</span>
+    </div>
+  </header>
+
+  <main id="quiz" class="fit-shell" data-quiz data-endpoint="">
+    <section class="fit-panel fit-panel--intro is-active" data-screen="intro" aria-labelledby="intro-title">
+      <div class="fit-intro__copy">
+        <p class="fit-kicker">Dripping Springs + Austin</p>
+        <h1 id="intro-title">Find the right <span>starting point.</span></h1>
+        <p class="fit-lead">Answer a few quick questions and get a recommended Joao Crus program, location, and next step for you or your child.</p>
+        <button class="fit-primary" type="button" data-start>Find my best starting point <span aria-hidden="true">→</span></button>
+        <ul class="fit-trust" aria-label="Quiz benefits">
+          <li>Clear recommendation</li>
+          <li>No obligation</li>
+          <li>About 60 seconds</li>
+        </ul>
+      </div>
+      <div class="fit-intro__visual">
+        <div class="fit-photo-frame">
+          <img src="../assets/toddler-purposeful-play-hero.webp" width="1280" height="853" alt="Joao Crus coaching young Brazilian Jiu-Jitsu students through an age-appropriate activity">
+          <span class="fit-photo-note">Classes begin at age 3</span>
+        </div>
+        <div class="fit-method-card">
+          <span>01</span>
+          <p><strong>One useful question at a time.</strong> Your answers shape the starting path.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-panel fit-panel--quiz" data-screen="quiz" hidden aria-label="Program fit questions">
+      <div class="fit-rail" aria-hidden="true">
+        <p>Find your path</p>
+        <ol data-rail-steps>
+          <li class="is-current"><span>1</span>Who</li>
+          <li><span>2</span>Age or stage</li>
+          <li><span>3</span>Goal</li>
+          <li><span>4</span>Experience</li>
+          <li><span>5</span>Location</li>
+          <li><span>6</span>Details</li>
+        </ol>
+        <blockquote>“Jiu-jitsu is how we do it. Confidence is what they keep.”</blockquote>
+      </div>
+
+      <form class="fit-form" data-fit-form novalidate>
+        <div class="fit-progress-wrap">
+          <div class="fit-progress-copy">
+            <span data-progress-label>Question 1 of 6</span>
+            <span data-progress-percent>17% complete</span>
+          </div>
+          <progress max="6" value="1" data-progress>1 of 6</progress>
+          <div class="fit-progress-track" aria-hidden="true"><span data-progress-bar></span></div>
+        </div>
+
+        <div class="fit-steps">
+          <fieldset class="fit-step is-active" data-step="1">
+            <legend>Who are you looking for?</legend>
+            <p class="fit-help">We’ll use this to show only the programs that make sense.</p>
+            <div class="fit-options fit-options--2">
+              <label class="fit-option">
+                <input type="radio" name="audience" value="child" required>
+                <span class="fit-option__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="15" r="8"/><path d="M11 41c1-11 6-17 13-17s12 6 13 17M9 28l8 4m22-4-8 4"/></svg></span>
+                <span><strong>My child</strong><small>Ages 3–17</small></span>
+              </label>
+              <label class="fit-option">
+                <input type="radio" name="audience" value="adult" required>
+                <span class="fit-option__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="13" r="8"/><path d="M9 42c1-12 7-19 15-19s14 7 15 19M15 31h18"/></svg></span>
+                <span><strong>Myself</strong><small>Adult group or private coaching</small></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="fit-step" data-step="2" hidden>
+            <legend data-question-heading>How old is your child?</legend>
+            <p class="fit-help" data-question-help>Age determines the appropriate program before any preference scoring.</p>
+            <div class="fit-options fit-options--2" data-dynamic-options="stage"></div>
+          </fieldset>
+
+          <fieldset class="fit-step" data-step="3" hidden>
+            <legend data-question-heading>What would you most like help with?</legend>
+            <p class="fit-help">Choose the answer that feels most important right now.</p>
+            <div class="fit-options fit-options--2" data-dynamic-options="goal"></div>
+          </fieldset>
+
+          <fieldset class="fit-step" data-step="4" hidden>
+            <legend data-question-heading>Which description sounds closest?</legend>
+            <p class="fit-help">There is no wrong starting level.</p>
+            <div class="fit-options fit-options--2" data-dynamic-options="experience"></div>
+          </fieldset>
+
+          <fieldset class="fit-step" data-step="5" hidden>
+            <legend>Which location or format works best?</legend>
+            <p class="fit-help">Current program availability is reflected in these choices.</p>
+            <div class="fit-options" data-dynamic-options="location"></div>
+          </fieldset>
+
+          <fieldset class="fit-step fit-step--contact" data-step="6" hidden>
+            <legend>Your starting-point recommendation is ready.</legend>
+            <p class="fit-help">Enter your details to reveal the preview. This review version does not send or store your information.</p>
+            <div class="fit-contact-grid">
+              <label class="fit-field"><span>First name</span><input type="text" name="first_name" autocomplete="given-name" required placeholder="First name"></label>
+              <label class="fit-field"><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="you@example.com"></label>
+              <label class="fit-field fit-field--wide"><span>Phone <em>Optional</em></span><input type="tel" name="phone" autocomplete="tel" placeholder="(512) 555-0123"></label>
+            </div>
+            <label class="fit-consent">
+              <input type="checkbox" name="email_consent" required>
+              <span>I agree to receive my recommendation and follow-up by email. I can unsubscribe at any time.</span>
+            </label>
+            <p class="fit-privacy">No SMS consent is requested in this preview. See the <a href="privacy.html">Privacy Policy</a>.</p>
+          </fieldset>
+        </div>
+
+        <div class="fit-error" data-error role="alert" aria-live="polite"></div>
+        <div class="fit-actions">
+          <button class="fit-back" type="button" data-back hidden><span aria-hidden="true">←</span> Back</button>
+          <button class="fit-primary fit-primary--continue" type="button" data-next disabled>Continue <span aria-hidden="true">→</span></button>
+          <button class="fit-primary fit-primary--submit" type="submit" data-submit hidden>Show my recommendation <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </section>
+
+    <section class="fit-panel fit-panel--matching" data-screen="matching" hidden aria-live="polite" aria-labelledby="matching-title">
+      <div class="fit-match-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p class="fit-kicker">Building your starting path</p>
+      <h2 id="matching-title">Matching your answers with current programs.</h2>
+      <p>Checking age, experience, goals, and location.</p>
+    </section>
+
+    <section class="fit-panel fit-panel--result" data-screen="result" hidden aria-labelledby="result-title">
+      <div class="fit-result__main">
+        <p class="fit-kicker">Your likely starting point</p>
+        <h2 id="result-title" data-result-title>Little Champions</h2>
+        <p class="fit-result__summary" data-result-summary></p>
+        <div class="fit-reasons">
+          <h3>Why this may fit</h3>
+          <ul data-result-reasons></ul>
+        </div>
+        <div class="fit-preview-notice"><strong>Visual prototype:</strong> your details were not sent or stored. Production routing and availability still need to be connected.</div>
+        <div class="fit-result__actions">
+          <a class="fit-primary" data-result-link href="little-champions.html">View the recommended program <span aria-hidden="true">→</span></a>
+          <button class="fit-secondary" type="button" data-restart>Start over</button>
+        </div>
+      </div>
+      <aside class="fit-result__aside">
+        <img data-result-image src="../assets/toddler-purposeful-play-hero.webp" alt="Joao Crus coaching Brazilian Jiu-Jitsu students">
+        <div class="fit-result__route">
+          <span>Recommended next step</span>
+          <strong data-result-next>Review the class and current schedule</strong>
+          <p data-result-location>Dripping Springs</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="fit-footer">
+    <span>Joao Crus Brazilian Jiu-Jitsu</span>
+    <nav aria-label="Quiz footer"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="tel:+15126444560">Call or text 512-644-4560</a></nav>
+  </footer>
+</body>
+</html>
