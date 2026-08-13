@@ -318,6 +318,22 @@ def main() -> None:
             check('data-lead-type="offline_flyer"' in html, "/practice-under-pressure/: offline flyer lead type is missing")
             check('name="consent"' in html, "/practice-under-pressure/: contact consent is missing")
             check('data-success-url="/thank-you/"' in html, "/practice-under-pressure/: success route is missing")
+            check(
+                html.count('href="/contact/"') >= 4,
+                "/practice-under-pressure/: high-intent first-class CTAs must use the shared booking flow",
+            )
+            check(
+                'href="/practice-under-pressure/#how-it-works"' in html,
+                "/practice-under-pressure/: student-practice CTA must target the relevant same-page section",
+            )
+            check(
+                html.count('href="/practice-under-pressure/#find-class"') >= 3,
+                "/practice-under-pressure/: program-choice CTAs must target the page form",
+            )
+            check(
+                'href="#' not in html,
+                "/practice-under-pressure/: bare fragment links break under the production base URL",
+            )
 
         for match in re.finditer(r'\b(?:href|src|action)=["\']([^"\']+)["\']', html, re.IGNORECASE):
             value = match.group(1)
