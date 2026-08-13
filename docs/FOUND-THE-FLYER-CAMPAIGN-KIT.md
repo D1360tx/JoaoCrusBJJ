@@ -117,9 +117,9 @@ Use this cut for a reminder ad or the top of a lightweight follow-up page, not a
 
 This is a message-angle comparison, not a statistically valid live A/B test yet. Do not call a winner from internal preference alone or from a small number of QR scans.
 
-### Active hypothesis 02: life pushes back
+### Active hypothesis 02: practice what to do next
 
-**Because** the approved pressure-response angle is strategically stronger but still describes the benefit broadly, **we believe** leading with “Life pushes back. Practice what to do next.” and proving the coached resistance-reset loop will make the promise more concrete and increase qualified first-class requests. The active version must continue using a recommendation-based CTA and explicitly state that submitting the form does not automatically book or charge anything.
+**Because** the approved pressure-response angle is strategically stronger but still describes the benefit broadly, **we believe** pairing “Pressure is part of life” with the direct promise “Practice what to do next” and proving the coached resistance-reset loop will make the proposition more concrete and increase qualified first-class requests. The active version must continue using a recommendation-based CTA and explicitly state that submitting the form does not automatically book or charge anything.
 
 ## Landing-page copy map
 
