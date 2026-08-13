@@ -4,6 +4,8 @@ Options -Indexes
 RewriteEngine On
 
 # Retire legacy WordPress and superseded campaign URLs with one-hop canonical redirects.
+# Preserve the original query string so printed QR attribution survives the route change.
+RewriteRule ^found-the-flyer/?$ https://joaocrusbjj.com/practice-under-pressure/ [R=301,L,NC]
 RewriteRule ^home-page-2/?$ https://joaocrusbjj.com/ [R=301,L,NC]
 RewriteRule ^got-questions/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
 RewriteRule ^teens-preview/?$ https://joaocrusbjj.com/teens/ [R=301,L,NC]

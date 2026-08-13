@@ -4,7 +4,7 @@ from qrcode.constants import ERROR_CORRECT_H
 from qrcode.image.svg import SvgPathImage
 
 TARGET = (
-    "https://joaocrusbjj.com/found-the-flyer/"
+    "https://joaocrusbjj.com/practice-under-pressure/"
     "?utm_source=car_flyer&utm_medium=offline&utm_campaign=found_the_flyer"
     "&utm_content=general_v1"
 )

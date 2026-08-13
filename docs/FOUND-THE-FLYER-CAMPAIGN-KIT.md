@@ -3,7 +3,7 @@
 **Status:** internal review, not live
 **Audience:** people who found a Joao Crus BJJ flyer or postcard on a parked car or at a local partner
 **Primary action:** scan the QR code, watch Joao's short welcome, request the right first class
-**Campaign URL:** `https://joaocrusbjj.com/found-the-flyer/`
+**Campaign URL:** `https://joaocrusbjj.com/practice-under-pressure/`
 
 ## Campaign idea
 
@@ -96,7 +96,7 @@ Use this cut for a reminder ad or the top of a lightweight follow-up page, not a
 - End card, 2–3 seconds:
   - **Find your first class**
   - Dripping Springs + Austin
-  - `joaocrusbjj.com/found-the-flyer/`
+  - `joaocrusbjj.com/practice-under-pressure/`
 - Export:
   - `found-the-flyer-joao-welcome-9x16.mp4`
   - `found-the-flyer-joao-welcome-4x5.mp4`
@@ -105,7 +105,7 @@ Use this cut for a reminder ad or the top of a lightweight follow-up page, not a
 
 ### Approved production direction
 
-- **Canonical landing page:** `/found-the-flyer/` uses approved pressure-response Iteration 2.
+- **Canonical landing page:** `/practice-under-pressure/` uses approved pressure-response Iteration 2. `/found-the-flyer/` remains a query-preserving 301 for previously generated or printed QR codes.
 - **Approved hero:** “Pressure is part of life. Practice what to do next.”
 - **Locked control:** `/found-the-flyer-control/` preserves the approved Iteration 2 for future comparisons.
 - Until the campaign video is recorded and approved, production uses a noninteractive coaching photograph. It must not display a play button or imply that video playback is available.
@@ -176,7 +176,7 @@ The HTML proof shows content and layout direction. Before a commercial print run
 ### QR destination
 
 ```text
-https://joaocrusbjj.com/found-the-flyer/?utm_source=car_flyer&utm_medium=offline&utm_campaign=found_the_flyer&utm_content=general_v1
+https://joaocrusbjj.com/practice-under-pressure/?utm_source=car_flyer&utm_medium=offline&utm_campaign=found_the_flyer&utm_content=general_v1
 ```
 
 Use a separate `utm_content` for every physical variation or placement batch:
@@ -236,7 +236,7 @@ Do not judge the campaign on QR scans alone.
 - [ ] Joao approves the campaign premise and exact humor.
 - [ ] Joao records the approved video and permissioned B-roll.
 - [ ] Final video files and captions replace the transparent placeholder.
-- [ ] The page route is published at `/found-the-flyer/` on the owned domain.
+- [ ] The page route is published at `/practice-under-pressure/` on the owned domain, with `/found-the-flyer/` retained as a 301 redirect.
 - [ ] Production form endpoint, HighLevel fields, tag, task, and owner notification are tested.
 - [ ] Privacy and Terms links resolve on the live domain.
 - [ ] GA4/GTM events are verified with consent granted and denied.

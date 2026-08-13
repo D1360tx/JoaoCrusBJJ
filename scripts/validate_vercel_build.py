@@ -73,6 +73,7 @@ def main() -> None:
         check("'availability' => clean_value($data['availability']" in contact_source, "production endpoint must retain Teen schedule availability")
         htaccess = (DIST / ".htaccess").read_text(encoding="utf-8")
         redirect_targets = {
+            "found-the-flyer": "https://joaocrusbjj.com/practice-under-pressure/",
             "teens-preview": "https://joaocrusbjj.com/teens/",
             "1381-2": "https://joaocrusbjj.com/",
             "free-class": "https://joaocrusbjj.com/contact/",
@@ -301,22 +302,22 @@ def main() -> None:
             check('data-form-id="teens_interest"' in html, "/teens/: interest form needs a stable analytics ID")
             check('data-lead-type="teen_interest"' in html, "/teens/: interest form needs a teen-specific lead type")
             check('name="consent"' in html, "/teens/: interest form needs contact consent")
-        if page["path"] == "/found-the-flyer/":
+        if page["path"] == "/practice-under-pressure/":
             check(
                 "PRESSURE IS PART OF LIFE." in html and "PRACTICE WHAT TO DO NEXT." in html,
-                "/found-the-flyer/: approved pressure-response hero is missing",
+                "/practice-under-pressure/: approved pressure-response hero is missing",
             )
-            check("review-ribbon" not in html, "/found-the-flyer/: review ribbon remains")
-            check("data-video-placeholder" not in html, "/found-the-flyer/: unrecorded video control remains")
-            check("ff-play" not in html, "/found-the-flyer/: simulated video play control remains")
-            check("<dialog" not in html, "/found-the-flyer/: review video dialog remains")
+            check("review-ribbon" not in html, "/practice-under-pressure/: review ribbon remains")
+            check("data-video-placeholder" not in html, "/practice-under-pressure/: unrecorded video control remains")
+            check("ff-play" not in html, "/practice-under-pressure/: simulated video play control remains")
+            check("<dialog" not in html, "/practice-under-pressure/: review video dialog remains")
             check(
                 'data-form-id="found_the_flyer_pressure_v2"' in html,
-                "/found-the-flyer/: canonical form needs the stable campaign analytics ID",
+                "/practice-under-pressure/: canonical form needs the stable campaign analytics ID",
             )
-            check('data-lead-type="offline_flyer"' in html, "/found-the-flyer/: offline flyer lead type is missing")
-            check('name="consent"' in html, "/found-the-flyer/: contact consent is missing")
-            check('data-success-url="/thank-you/"' in html, "/found-the-flyer/: success route is missing")
+            check('data-lead-type="offline_flyer"' in html, "/practice-under-pressure/: offline flyer lead type is missing")
+            check('name="consent"' in html, "/practice-under-pressure/: contact consent is missing")
+            check('data-success-url="/thank-you/"' in html, "/practice-under-pressure/: success route is missing")
 
         for match in re.finditer(r'\b(?:href|src|action)=["\']([^"\']+)["\']', html, re.IGNORECASE):
             value = match.group(1)
