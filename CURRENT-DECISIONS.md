@@ -27,9 +27,10 @@
 
 ---
 
-## Found the Flyer offline QR campaign (2026-08-12)
+## Practice Under Pressure offline QR campaign (updated 2026-08-13)
 
-- ✅ The approved canonical landing page is `/found-the-flyer/` using the pressure-response Iteration 2 message: **“Pressure is part of life. Practice what to do next.”**
+- ✅ The approved canonical landing page is `/practice-under-pressure/` using the pressure-response Iteration 2 message: **“Pressure is part of life. Practice what to do next.”**
+- ✅ `/found-the-flyer/` is the former campaign URL and must remain a one-hop, query-preserving 301 redirect to `/practice-under-pressure/` so existing QR codes and attribution parameters continue to work.
 - ✅ Preserve the flyer-curiosity version and prior pressure-response iterations as noindex comparison artifacts. The approved Iteration 2 becomes the locked control for future tests.
 - ✅ The canonical page uses the existing live inquiry handler, explicit call/text consent, shared attribution, and `/thank-you/` success routing. It asks for a recommended first-class starting point and does not imply that the form books or charges anything.
 - 🟡 Until Joao's approved campaign video is recorded, use an honest coaching photograph without a play button or simulated playback. The video script remains a production asset for a later release.
