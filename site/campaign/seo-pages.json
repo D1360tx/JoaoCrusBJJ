@@ -375,6 +375,106 @@
       "schema": []
     },
     {
+      "file": "found-the-flyer-copy-lab.html",
+      "path": "/found-the-flyer-copy-lab/",
+      "title": "Found the Flyer Copy Lab | Joao Crus BJJ",
+      "description": "Internal side-by-side copy comparison for the Found the Flyer campaign.",
+      "image": "/assets/campaign-images/home-academy-group-2026-07.webp",
+      "type": "WebPage",
+      "breadcrumbs": [
+        [
+          "Home",
+          "/"
+        ],
+        [
+          "Found the Flyer Copy Lab",
+          "/found-the-flyer-copy-lab/"
+        ]
+      ],
+      "schema": [],
+      "indexable": false
+    },
+    {
+      "file": "found-the-flyer-control.html",
+      "path": "/found-the-flyer-control/",
+      "title": "Pressure Is Part of Life | Joao Crus BJJ",
+      "description": "Pressure is part of life. Brazilian Jiu-Jitsu gives children and adults a place to practice what to do next.",
+      "image": "/assets/campaign-images/adults-joao-coaching-hero-2026-07.webp",
+      "type": "WebPage",
+      "breadcrumbs": [
+        [
+          "Home",
+          "/"
+        ],
+        [
+          "Found the Flyer Control",
+          "/found-the-flyer-control/"
+        ]
+      ],
+      "schema": [],
+      "indexable": false
+    },
+    {
+      "file": "found-the-flyer-active.html",
+      "path": "/found-the-flyer-active/",
+      "title": "Pressure Is Part of Life | Joao Crus BJJ",
+      "description": "Pressure is part of life. Brazilian Jiu-Jitsu gives children and adults a place to practice what to do next.",
+      "image": "/assets/campaign-images/adults-joao-coaching-hero-2026-07.webp",
+      "type": "WebPage",
+      "breadcrumbs": [
+        [
+          "Home",
+          "/"
+        ],
+        [
+          "Found the Flyer Active",
+          "/found-the-flyer-active/"
+        ]
+      ],
+      "schema": [],
+      "indexable": false
+    },
+    {
+      "file": "found-the-flyer-v2.html",
+      "path": "/found-the-flyer-v2/",
+      "title": "You Kept the Flyer | Joao Crus BJJ",
+      "description": "You kept the flyer. Meet Joao Crus and find a beginner-friendly Brazilian Jiu-Jitsu program in Dripping Springs or Austin.",
+      "image": "/assets/campaign-images/home-academy-group-2026-07.webp",
+      "type": "WebPage",
+      "breadcrumbs": [
+        [
+          "Home",
+          "/"
+        ],
+        [
+          "Found the Flyer V2",
+          "/found-the-flyer-v2/"
+        ]
+      ],
+      "schema": [],
+      "indexable": false
+    },
+    {
+      "file": "found-the-flyer.html",
+      "path": "/found-the-flyer/",
+      "title": "Pressure Is Part of Life | Joao Crus BJJ",
+      "description": "Pressure is part of life. Brazilian Jiu-Jitsu gives children and adults a place to practice what to do next.",
+      "image": "/assets/campaign-images/adults-joao-coaching-hero-2026-07.webp",
+      "indexable": true,
+      "type": "WebPage",
+      "breadcrumbs": [
+        [
+          "Home",
+          "/"
+        ],
+        [
+          "Found the Flyer",
+          "/found-the-flyer/"
+        ]
+      ],
+      "schema": []
+    },
+    {
       "file": "contact.html",
       "path": "/contact/",
       "title": "Contact Joao Crus BJJ | Plan a First Class",

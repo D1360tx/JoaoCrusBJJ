@@ -301,6 +301,22 @@ def main() -> None:
             check('data-form-id="teens_interest"' in html, "/teens/: interest form needs a stable analytics ID")
             check('data-lead-type="teen_interest"' in html, "/teens/: interest form needs a teen-specific lead type")
             check('name="consent"' in html, "/teens/: interest form needs contact consent")
+        if page["path"] == "/found-the-flyer/":
+            check(
+                "PRESSURE IS PART OF LIFE." in html and "PRACTICE WHAT TO DO NEXT." in html,
+                "/found-the-flyer/: approved pressure-response hero is missing",
+            )
+            check("review-ribbon" not in html, "/found-the-flyer/: review ribbon remains")
+            check("data-video-placeholder" not in html, "/found-the-flyer/: unrecorded video control remains")
+            check("ff-play" not in html, "/found-the-flyer/: simulated video play control remains")
+            check("<dialog" not in html, "/found-the-flyer/: review video dialog remains")
+            check(
+                'data-form-id="found_the_flyer_pressure_v2"' in html,
+                "/found-the-flyer/: canonical form needs the stable campaign analytics ID",
+            )
+            check('data-lead-type="offline_flyer"' in html, "/found-the-flyer/: offline flyer lead type is missing")
+            check('name="consent"' in html, "/found-the-flyer/: contact consent is missing")
+            check('data-success-url="/thank-you/"' in html, "/found-the-flyer/: success route is missing")
 
         for match in re.finditer(r'\b(?:href|src|action)=["\']([^"\']+)["\']', html, re.IGNORECASE):
             value = match.group(1)
