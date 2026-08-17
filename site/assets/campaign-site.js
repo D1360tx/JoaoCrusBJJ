@@ -150,7 +150,7 @@
       '<div class="booking-shell">' +
       '<header class="booking-top"><div><span class="booking-kicker">Plan a first class</span><h2 id="booking-title">FIND THE RIGHT <span class="booking-keep">FIRST CLASS.</span></h2></div><button class="booking-close" type="button" aria-label="Close first class request">Close</button></header>' +
       '<p class="booking-intro">Tell us who wants to train. We will text you to match the right program, location, and class time. No payment is required.</p>' +
-      '<form class="booking-form" data-booking-form>' +
+      '<form class="booking-form" data-booking-form data-form-id="booking_popup" data-lead-type="class_inquiry">' +
       '<div class="fields">' +
       '<div class="field"><label for="booking-name">Your name</label><input id="booking-name" name="name" type="text" autocomplete="name" required></div>' +
       '<div class="field"><label for="booking-phone">Mobile number</label><input id="booking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>' +
@@ -244,20 +244,13 @@
     bookingDialog.addEventListener("cancel", function () {
       b.classList.remove("booking-open");
     });
-    function postLead(data, retried) {
-      return fetch("/api/contact.php", {
+    function postLead(data) {
+      return fetch("/api/lead.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify(data),
       }).then(function (response) {
-        if (response.status === 409 && !retried) {
-          return response.text().then(function (text) {
-            var cookieMatch = text.match(/document\.cookie\s*=\s*["']([^"']+)["']/i);
-            if (!cookieMatch) throw new Error("Unable to verify this request.");
-            document.cookie = cookieMatch[1] + "; Path=/; Max-Age=3600; SameSite=Lax; Secure";
-            return postLead(data, true);
-          });
-        }
         return response.text().then(function (text) {
           var body = {};
           try {
@@ -265,7 +258,9 @@
           } catch (error) {
             body = {};
           }
-          if (!response.ok) throw new Error(body.error || "Unable to send your request.");
+          if (!response.ok || body.accepted !== true || body.contact_accepted !== true || body.opportunity_accepted !== true || body.request_id !== data.request_id) {
+            throw new Error(body.error || "Unable to send your request.");
+          }
           return body;
         });
       });
@@ -281,12 +276,17 @@
         data.availability = formData.getAll("availability").join(", ");
       }
       data.consent = Boolean(form.querySelector('[name="consent"]:checked'));
+      data.form_id = form.dataset.formId || "website_form";
+      data.request_id = form.dataset.requestId || (window.crypto && typeof window.crypto.randomUUID === "function"
+        ? window.crypto.randomUUID()
+        : "lead-" + Date.now() + "-" + Math.random().toString(16).slice(2));
+      form.dataset.requestId = data.request_id;
       data.page = window.location.pathname;
       data.lead_type = leadType(form, data);
       data.attribution = currentAttribution();
       status.textContent = "Sending your request…";
       submit.disabled = true;
-      postLead(data, false)
+      postLead(data)
         .then(function () {
           var redirected = false;
           function redirectAfterSuccess() {

@@ -22,7 +22,8 @@ The existing review pages remain separate until approval. Existing program resul
   "phone": "…",
   "audience": "child|adult",
   "child_count": "1|2|3|4+|blank",
-  "age_bands": ["little|youth|teen"],
+  "age_bands": ["little|youth|teen (child only)"],
+  "stage": "new|returning|current|competition (adult only)",
   "goal": "…",
   "experience": "…",
   "preferred_location": "dripping|austin|either|help",
@@ -55,10 +56,11 @@ The existing review pages remain separate until approval. Existing program resul
 4. Load token and account IDs from server-only configuration outside the document root.
 5. Upsert contact with `createNewIfDuplicateAllowed=false`.
 6. Add/update tags without unintentionally overwriting existing contact tags.
-7. Upsert one open opportunity in Prospect Enrollment → New Lead.
-8. Create staff task/notification through the approved account workflow or API.
-9. Store provider trace IDs and return an honest JSON result.
-10. Redirect to `/thank-you/` only after accepted CRM delivery.
+7. Upsert one open opportunity in Prospect Enrollment → New Lead. The isolated v3 payload builder must pass the live acceptance test because generated HighLevel opportunity documentation has not been consistent enough to treat a static build as proof.
+8. Add tags only through the dedicated add-tags endpoint after that endpoint is live-tested. It is disabled by default. Never include `tags` in contact upsert because that can replace existing tags.
+9. Send the legacy internal email alert only after CRM acceptance. Mail failure is best-effort and cannot turn an accepted CRM lead into fake failure or fake success.
+10. Return `{accepted:true, contact_accepted:true, opportunity_accepted:true, request_id}` only after both provider responses contain durable IDs.
+11. Redirect to `/thank-you/` only after that exact accepted response body.
 
 ## Required server configuration
 
@@ -68,7 +70,9 @@ The existing review pages remain separate until approval. Existing program resul
 - `GHL_NEW_LEAD_STAGE_ID`
 - `GHL_OWNER_USER_ID`
 - GHL custom-field IDs/keys from the live account
+- `GHL_CUSTOM_FIELD_MAP_JSON` using the logical-name → `{id,key}` contract in `docs/HIGHLEVEL-BLUEHOST-CONFIG.example.env`
+- `GHL_ENV_FILE` pointing to a populated file outside Bluehost `public_html`
 
 ## QA gate
 
-Use synthetic contacts only. Verify contact upsert, duplicate behavior, complete quiz fields, attribution, consent, opportunity, owner, task, error response, and thank-you routing. Keep all automations disabled during QA.
+Use synthetic contacts only. Verify contact upsert, duplicate behavior, complete quiz fields, attribution, consent, opportunity v3 payload acceptance, owner, task/workflow, malformed-success rejection, retry behavior, and thank-you routing. Keep all automations disabled during QA. No real API calls are part of repository tests.

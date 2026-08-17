@@ -64,13 +64,14 @@ def main() -> None:
     )
     check(not (DIST / "about-ai-coaches").exists(), "superseded AI comparison route was deployed")
     if args.production:
-        contact_endpoint = DIST / "api" / "contact.php"
-        check(contact_endpoint.is_file(), "production contact endpoint is missing")
-        contact_source = contact_endpoint.read_text(encoding="utf-8") if contact_endpoint.is_file() else ""
-        for recipient in ("joaocrusbjj@gmail.com", "diego@icdcventures.com"):
-            check(recipient in contact_source, f"production contact endpoint is missing recipient {recipient}")
-        check("'role' => clean_value($data['role']" in contact_source, "production endpoint must retain Teen form role")
-        check("'availability' => clean_value($data['availability']" in contact_source, "production endpoint must retain Teen schedule availability")
+        lead_endpoint = DIST / "api" / "lead.php"
+        check(lead_endpoint.is_file(), "production HighLevel lead endpoint is missing")
+        lead_source = lead_endpoint.read_text(encoding="utf-8") if lead_endpoint.is_file() else ""
+        check("/contacts/upsert" in lead_source, "production lead endpoint is missing contact upsert")
+        check("/opportunities/upsert" in lead_source, "production lead endpoint is missing opportunity upsert")
+        check("'role' => clean_text($data['role']" in lead_source, "production endpoint must retain Teen form role")
+        check("'availability' => clean_text($data['availability']" in lead_source, "production endpoint must retain Teen schedule availability")
+        check("'message' => clean_text($data['message']" in lead_source, "production endpoint must retain inquiry messages")
         htaccess = (DIST / ".htaccess").read_text(encoding="utf-8")
         redirect_targets = {
             "found-the-flyer": "https://joaocrusbjj.com/practice-under-pressure/",
@@ -105,6 +106,7 @@ def main() -> None:
             check(f"RewriteRule ^{route}/?$ - [G,L,NC]" in htaccess, f"production 410 rule missing: /{route}/")
     else:
         check(not (DIST / "api" / "contact.php").exists(), "PHP contact endpoint must not ship in the staging artifact")
+        check(not (DIST / "api" / "lead.php").exists(), "PHP HighLevel lead endpoint must not ship in the staging artifact")
 
     sitemap = (DIST / "sitemap.xml").read_text(encoding="utf-8")
     check("https://joaocrusbjj.com/teens/" in sitemap, "sitemap is missing the canonical Teen page")
@@ -256,8 +258,14 @@ def main() -> None:
         check("assets/consent-controls.css" in html, f"{page['path']}: consent control styles are missing")
         for filename, url in versioned_assets.items():
             check(url in html, f"{page['path']}: {filename} must use its current content-versioned URL")
+        lead_behavior_positions = [
+            html.find(asset)
+            for asset in ("assets/campaign-site.js", "assets/program-fit-landing.js", "assets/program-fit-quiz.js")
+            if html.find(asset) >= 0
+        ]
         check(
-            html.find("assets/attribution.js") < html.find("assets/consent-controls.js") < html.find("assets/campaign-site.js"),
+            bool(lead_behavior_positions)
+            and html.find("assets/attribution.js") < html.find("assets/consent-controls.js") < min(lead_behavior_positions),
             f"{page['path']}: attribution and consent controls must load before lead-form behavior",
         )
         canonical_url = f'https://joaocrusbjj.com{page["path"]}'
@@ -319,16 +327,16 @@ def main() -> None:
             check('name="consent"' in html, "/practice-under-pressure/: contact consent is missing")
             check('data-success-url="/thank-you/"' in html, "/practice-under-pressure/: success route is missing")
             check(
-                html.count('href="/contact/"') >= 4,
-                "/practice-under-pressure/: high-intent first-class CTAs must use the shared booking flow",
+                'href="/program-finder/quiz/?source=practice-under-pressure" data-quiz-route' in html,
+                "/practice-under-pressure/: primary CTA must route to the Program Finder quiz",
             )
             check(
                 'href="/practice-under-pressure/#how-it-works"' in html,
                 "/practice-under-pressure/: student-practice CTA must target the relevant same-page section",
             )
             check(
-                html.count('href="/practice-under-pressure/#find-class"') >= 3,
-                "/practice-under-pressure/: program-choice CTAs must target the page form",
+                html.count('href="/program-finder/quiz/?source=practice-under-pressure&amp;path=') >= 3,
+                "/practice-under-pressure/: program-choice CTAs must route to the Program Finder quiz",
             )
             check(
                 'href="#' not in html,

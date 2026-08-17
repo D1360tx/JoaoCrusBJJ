@@ -44,13 +44,13 @@ See `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md` and `docs/HIGHLEVEL-ACCEPTANCE-
 
 ## 4. Forms and lead delivery
 
-- [ ] ⛔ Build the server-side Vercel form endpoint; keep API credentials off the client.
+- [ ] 🟡 HighLevel endpoint and frontend routing are code-ready; deploy populated server-only configuration and pass controlled live acceptance before marking complete.
 - [ ] ⛔ Wire newsletter, lead magnet, free-class, and general inquiry forms.
-- [ ] ⬜ Add server validation, honeypot, rate limiting, and bot protection.
-- [ ] ⬜ Normalize and deduplicate email and phone values.
+- [ ] 🟡 Server method/origin/JSON/size/enum/recommendation validation, honeypot, and file-locked rate limiting are implemented but not yet proven on Bluehost.
+- [ ] 🟡 Email and US phone normalization plus duplicate-safe contact upsert are implemented but not yet live-tested.
 - [ ] ⬜ Preserve original source, landing page, referrer, UTMs, and ad click identifiers.
 - [ ] ⬜ Record email/SMS consent timestamps, source pages, and disclosure versions.
-- [ ] ⬜ Build useful success, validation-error, duplicate, and service-failure states.
+- [ ] 🟡 Frontend requires explicit contact + opportunity acceptance before success; verify the live HighLevel response contract and retry behavior.
 - [ ] ⬜ Test every form end to end using controlled test contacts.
 - [ ] ⬜ Verify staff alerts, tasks, pipeline changes, messages, and thank-you pages.
 - [ ] ⬜ Verify no secrets or unnecessary PII appear in client bundles or logs.

@@ -21,7 +21,7 @@
 ## Data rules
 
 - Never send names, email addresses, phone numbers, ages, messages, or other free text to GA4, GTM, Meta, or Google Ads.
-- `generate_lead` fires only after `/api/contact.php` returns success.
+- `generate_lead` fires only after `/api/lead.php` returns explicit contact and opportunity acceptance.
 - The thank-you page is not a conversion trigger. Direct visits and refreshes must not create leads.
 - The Parent Guide request remains separate from class inquiries so it does not inflate lead counts.
 - Success events use GTM `eventCallback` with a bounded timeout before navigation.

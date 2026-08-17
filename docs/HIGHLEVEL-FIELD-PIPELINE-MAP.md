@@ -39,6 +39,10 @@ Set the Joao sub-account to disallow duplicates and check **email first, then ph
 - Recommendation Detail
 - Website Form ID
 - Website Schema Version
+- Stable Request ID
+- Website Message
+- Inquiry Role
+- Inquiry Availability
 
 ### Custom field folder: Attribution
 
@@ -64,15 +68,13 @@ Set the Joao sub-account to disallow duplicates and check **email first, then ph
 
 ## Pipeline: Prospect Enrollment
 
-1. New Lead
+1. New Quiz Lead
 2. Contact Attempted
-3. Free Class Scheduled
-4. Free Class Attended
-5. Trial / Enrollment Offer
-6. Enrolled — Zen Planner Handoff
-7. Long-Term Nurture
-8. Closed / Lost
-9. Do Not Contact
+3. Qualified Conversation
+4. Trial Booked
+5. Trial Attended
+6. Enrolled
+7. Long-Term Nurture / Not Now
 
 No monetary value is assigned until a real approved value model exists. `Purchase` is never inferred from an opportunity stage.
 
@@ -111,3 +113,5 @@ All workflows remain draft or disabled until controlled tests pass. Historical i
 - Required account IDs: location, pipeline, new-lead stage, owner
 
 Never commit or display the token. Store it outside the Bluehost document root and load it server-side.
+
+The deployment contract is `docs/HIGHLEVEL-BLUEHOST-CONFIG.example.env`. Every configured custom field supplies both its live `id` and `key`; the endpoint fails closed when the required consent, idempotency, and inquiry-context mappings are absent. Contact upsert intentionally omits `tags`. Dedicated tag addition is disabled until its live endpoint acceptance is recorded.

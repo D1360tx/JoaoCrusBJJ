@@ -120,6 +120,9 @@ def add_attribution_script(html: str) -> str:
     )
     if shared_script.search(html):
         return shared_script.sub(f"{insertion}\n    \\1", html, count=1)
+    first_deferred_script = re.compile(r'(<script\s+src=["\'][^"\']+["\']\s+defer></script>)', re.IGNORECASE)
+    if first_deferred_script.search(html):
+        return first_deferred_script.sub(f"{insertion}\n    \\1", html, count=1)
     return re.sub(
         r"(</body>)",
         f"    {insertion}\n  \\1",
@@ -209,7 +212,7 @@ def main() -> None:
     parser.add_argument(
         "--production",
         action="store_true",
-        help="Build the indexable Bluehost artifact with the PHP contact endpoint.",
+        help="Build the indexable Bluehost artifact with the PHP HighLevel lead endpoint.",
     )
     args = parser.parse_args()
     if args.production and not (BLUEHOST_DEPLOY / "api" / "lead.php").is_file():

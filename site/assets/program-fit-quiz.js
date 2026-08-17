@@ -298,7 +298,8 @@
     const keys = {
       'Little Champions': 'little_champions',
       'Youth BJJ': 'youth_bjj',
-      'Teen Interest List': 'teen_interest_list',
+      'Teen Interest Path': 'teen_interest_path',
+      'Family Program Plan': 'family_program_plan',
       'Private Coaching': 'private_coaching',
       'Adult Group BJJ': 'adult_group_bjj'
     };
@@ -326,7 +327,10 @@
       phone: String(data.get('phone') || '').trim(),
       audience: answers.audience || '',
       child_count: answers.child_count || '',
-      age_bands: Array.isArray(answers.stage) ? answers.stage : (answers.stage ? [answers.stage] : []),
+      age_bands: answers.audience === 'child'
+        ? (Array.isArray(answers.stage) ? answers.stage : (answers.stage ? [answers.stage] : []))
+        : [],
+      stage: answers.audience === 'adult' ? (answers.stage || '') : '',
       goal: answers.goal || '',
       experience: answers.experience || '',
       preferred_location: answers.location || '',
@@ -354,8 +358,11 @@
         body: JSON.stringify(payload),
         signal: controller.signal
       });
-      if (!response.ok) throw new Error('Lead delivery was not accepted.');
-      return response.json();
+      const body = await response.json().catch(() => ({}));
+      if (!response.ok || body.accepted !== true || body.contact_accepted !== true || body.opportunity_accepted !== true || body.request_id !== payload.request_id) {
+        throw new Error('Lead delivery was not accepted.');
+      }
+      return body;
     } finally {
       window.clearTimeout(timeout);
     }
