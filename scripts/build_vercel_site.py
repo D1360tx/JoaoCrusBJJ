@@ -201,6 +201,10 @@ def main() -> None:
         help="Build the indexable Bluehost artifact with the PHP contact endpoint.",
     )
     args = parser.parse_args()
+    if args.production and not (BLUEHOST_DEPLOY / "api" / "lead.php").is_file():
+        raise SystemExit(
+            "Production build blocked: deploy/bluehost/api/lead.php is required before publishing the Program Finder quiz."
+        )
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     pages = [page for page in data["pages"] if page["file"] not in EXCLUDED_PAGES]
     routes = {page["file"]: page["path"] for page in pages}

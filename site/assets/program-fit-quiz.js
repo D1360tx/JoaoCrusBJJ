@@ -16,6 +16,7 @@
   const error = root.querySelector('[data-error]');
   const endpoint = root.dataset.endpoint || '';
   let currentStep = 1;
+  let requestId = '';
   const answers = {};
 
   const icon = (type) => {
@@ -293,11 +294,78 @@
     root.querySelector('[data-result-location]').textContent = result.location;
   }
 
+  function recommendationKey(result) {
+    const keys = {
+      'Little Champions': 'little_champions',
+      'Youth BJJ': 'youth_bjj',
+      'Teen Interest List': 'teen_interest_list',
+      'Private Coaching': 'private_coaching',
+      'Adult Group BJJ': 'adult_group_bjj'
+    };
+    return keys[result.title] || 'staff_review';
+  }
+
+  function newRequestId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
+    return `quiz-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  }
+
+  function leadPayload(result) {
+    const data = new FormData(form);
+    const attribution = window.joaoAttribution && typeof window.joaoAttribution === 'object'
+      ? window.joaoAttribution
+      : { first_touch: {}, last_touch: {} };
+    if (!requestId) requestId = newRequestId();
+    return {
+      schema_version: 'program_fit_v1',
+      request_id: requestId,
+      form_id: 'program_fit_quiz',
+      lead_type: 'quiz',
+      first_name: String(data.get('first_name') || '').trim(),
+      email: String(data.get('email') || '').trim(),
+      phone: String(data.get('phone') || '').trim(),
+      audience: answers.audience || '',
+      child_count: answers.child_count || '',
+      age_bands: Array.isArray(answers.stage) ? answers.stage : (answers.stage ? [answers.stage] : []),
+      goal: answers.goal || '',
+      experience: answers.experience || '',
+      preferred_location: answers.location || '',
+      recommended_program: recommendationKey(result),
+      email_consent: data.get('email_consent') === 'on',
+      sms_consent: data.get('sms_consent') === 'on',
+      consent_disclosure_version: 'program_fit_v1',
+      page: `${window.location.origin}${window.location.pathname}`,
+      attribution: {
+        first: attribution.first_touch || {},
+        latest: attribution.last_touch || {}
+      },
+      website: String(data.get('website') || '').trim()
+    };
+  }
+
+  async function submitLead(payload) {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 12000);
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+      if (!response.ok) throw new Error('Lead delivery was not accepted.');
+      return response.json();
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
+
   root.querySelector('[data-start]').addEventListener('click', () => {
     showScreen('quiz');
     showStep(1);
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'quiz_start', quiz_name: 'program_fit_preview' });
+    window.dataLayer.push({ event: 'quiz_start', quiz_name: endpoint ? 'program_fit' : 'program_fit_preview' });
   });
 
   form.addEventListener('input', syncControls);
@@ -318,7 +386,7 @@
 
   backButton.addEventListener('click', () => showStep(currentStep - 1, 'back'));
 
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!stepIsValid()) {
       error.textContent = 'Complete the required fields to see the recommendation.';
@@ -327,15 +395,42 @@
     recordStep();
     const result = calculateResult();
     renderResult(result);
-    showScreen('matching');
-    window.setTimeout(() => showScreen('result'), 1050);
+
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: endpoint ? 'lead_submit_attempt' : 'quiz_preview_complete', quiz_name: 'program_fit_preview', recommendation: result.title });
+    if (!endpoint) {
+      showScreen('matching');
+      window.setTimeout(() => showScreen('result'), 1050);
+      window.dataLayer.push({ event: 'quiz_preview_complete', quiz_name: 'program_fit_preview', recommendation: recommendationKey(result) });
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.setAttribute('aria-busy', 'true');
+    const originalText = submitButton.innerHTML;
+    submitButton.textContent = 'Sending securely…';
+    showScreen('matching');
+    window.dataLayer.push({ event: 'lead_submit_attempt', form_id: 'program_fit_quiz', recommendation: recommendationKey(result) });
+
+    try {
+      await submitLead(leadPayload(result));
+      showScreen('result');
+      window.dataLayer.push({ event: 'lead_submit_success', form_id: 'program_fit_quiz', recommendation: recommendationKey(result) });
+    } catch (submitError) {
+      showScreen('quiz');
+      showStep(6);
+      error.textContent = 'We could not securely send your request. Please try again or call 512-644-4560.';
+      window.dataLayer.push({ event: 'lead_submit_error', form_id: 'program_fit_quiz' });
+    } finally {
+      submitButton.disabled = false;
+      submitButton.removeAttribute('aria-busy');
+      submitButton.innerHTML = originalText;
+    }
   });
 
   root.querySelector('[data-restart]').addEventListener('click', () => {
     form.reset();
     Object.keys(answers).forEach((key) => delete answers[key]);
+    requestId = '';
     root.querySelectorAll('[data-dynamic-options]').forEach((container) => { container.innerHTML = ''; });
     showScreen('intro');
     currentStep = 1;

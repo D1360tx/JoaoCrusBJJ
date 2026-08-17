@@ -156,6 +156,14 @@ button, label { -webkit-tap-highlight-color: transparent; }
 .fit-field input { min-height: 56px; width: 100%; border: 3px solid var(--black); border-radius: 0; background: #fff; padding: 12px 14px; color: var(--black); }
 .fit-consent { margin-top: 20px; display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; font-size: .82rem; cursor: pointer; }
 .fit-consent input { width: 22px; height: 22px; margin: 0; accent-color: var(--blue); }
+.fit-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
 .fit-privacy { margin: 12px 0 0; color: var(--muted); font-size: .75rem; }
 .fit-privacy a { color: var(--blue); font-weight: 700; }
 .fit-error { min-height: 24px; margin: 16px 0 0; color: var(--red); font-size: .82rem; font-weight: 800; }
