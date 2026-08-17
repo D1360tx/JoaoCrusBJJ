@@ -21,7 +21,7 @@ Set the Joao sub-account to disallow duplicates and check **email first, then ph
 |---|---|
 | First Name / Last Name / Name | Parent or adult prospect |
 | Email / Phone | Normalized identity and contact channels |
-| Source | `Joao website`, `Facebook Lead Ads`, or other explicit source |
+| Source | Preserve the existing native acquisition source on contact upsert; store website first/latest source in dedicated attribution fields |
 | Assigned To | Staff owner ID |
 | Tags | Routing and operational controls; do not use as the consent ledger |
 
@@ -38,10 +38,12 @@ Set the Joao sub-account to disallow duplicates and check **email first, then ph
 - Recommended Program
 - Recommendation Detail
 - Website Form ID
+- Website Route Source
 - Website Schema Version
 - Stable Request ID
 - Website Message
 - Inquiry Role
+- Teen Age
 - Inquiry Availability
 
 ### Custom field folder: Attribution
@@ -109,9 +111,9 @@ All workflows remain draft or disabled until controlled tests pass. Historical i
 - Opportunity: `POST https://services.leadconnectorhq.com/opportunities/upsert`
 - Scope: `opportunities.write`
 - Authentication: Joao sub-account Private Integration Token
-- Headers: `Authorization: Bearer …`, `Version: v3`, JSON content/accept
+- Headers: `Authorization: Bearer ***`, `Version: v3`, JSON content/accept
 - Required account IDs: location, pipeline, new-lead stage, owner
 
 Never commit or display the token. Store it outside the Bluehost document root and load it server-side.
 
-The deployment contract is `docs/HIGHLEVEL-BLUEHOST-CONFIG.example.env`. Every configured custom field supplies both its live `id` and `key`; the endpoint fails closed when the required consent, idempotency, and inquiry-context mappings are absent. Contact upsert intentionally omits `tags`. Dedicated tag addition is disabled until its live endpoint acceptance is recorded.
+The deployment contract is `docs/HIGHLEVEL-BLUEHOST-CONFIG.example.env`. Every configured custom field supplies both its live `id` and `key`; the endpoint fails closed when required consent, request-correlation, and inquiry-context mappings are absent. Contact upsert intentionally omits both `tags` and the native `source` field. Dedicated tag addition is disabled until its live endpoint acceptance is recorded. A stored request ID supports correlation and retry testing but does not, by itself, prove opportunity idempotency.

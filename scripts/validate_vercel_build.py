@@ -69,9 +69,14 @@ def main() -> None:
         lead_source = lead_endpoint.read_text(encoding="utf-8") if lead_endpoint.is_file() else ""
         check("/contacts/upsert" in lead_source, "production lead endpoint is missing contact upsert")
         check("/opportunities/upsert" in lead_source, "production lead endpoint is missing opportunity upsert")
-        check("'role' => clean_text($data['role']" in lead_source, "production endpoint must retain Teen form role")
-        check("'availability' => clean_text($data['availability']" in lead_source, "production endpoint must retain Teen schedule availability")
+        check("['Parent or guardian', 'Teen student']" in lead_source and "'role' => $role" in lead_source, "production endpoint must validate and retain Teen form role")
+        check("['13', '14', '15', '16', '17']" in lead_source and "'age' => $age" in lead_source, "production endpoint must validate and retain Teen age")
+        check("['after-school', 'evening', 'saturday']" in lead_source and "'availability' => implode(', ', $availabilityValues)" in lead_source, "production endpoint must validate and retain Teen schedule availability")
+        check("'route_source' => $routeSource" in lead_source and "'route_source' => clean_text($lead['route_source']" in lead_source, "production endpoint must validate and retain quiz route source")
         check("'message' => clean_text($data['message']" in lead_source, "production endpoint must retain inquiry messages")
+        contact_builder = lead_source[lead_source.find("function build_contact_payload"):lead_source.find("function build_opportunity_payload")]
+        check("'source'" not in contact_builder, "production contact upsert must not overwrite the native acquisition source")
+        check("env_value('LEAD_RATE_LIMIT_SALT')" in lead_source and "env_value('LEAD_RATE_LIMIT_SALT'," not in lead_source, "production endpoint must require a deployment-specific rate-limit salt")
         htaccess = (DIST / ".htaccess").read_text(encoding="utf-8")
         redirect_targets = {
             "found-the-flyer": "https://joaocrusbjj.com/practice-under-pressure/",

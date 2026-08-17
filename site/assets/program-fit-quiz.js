@@ -15,6 +15,10 @@
   const submitButton = root.querySelector('[data-submit]');
   const error = root.querySelector('[data-error]');
   const endpoint = root.dataset.endpoint || '';
+  const routeParams = new URLSearchParams(window.location.search);
+  const allowedRouteSources = ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure'];
+  const requestedRouteSource = routeParams.get('source');
+  const routeSource = allowedRouteSources.includes(requestedRouteSource) ? requestedRouteSource : '';
   let currentStep = 1;
   let requestId = '';
   const answers = {};
@@ -136,10 +140,26 @@
         const help = step.querySelector('[data-question-help]');
         if (help && data.help) help.textContent = data.help;
       }
-      const type = audience === 'child' && key === 'stage' ? 'checkbox' : 'radio';
+      const type = audience === 'child' && key === 'stage' && form.elements.child_count.value !== '1' ? 'checkbox' : 'radio';
       container.dataset.requiredGroup = type === 'checkbox' ? 'stage' : '';
       container.innerHTML = data.options.map((option, index) => optionMarkup(key, option, index, type)).join('');
     });
+    syncChildAgeInputs();
+  }
+
+  function syncChildAgeInputs() {
+    if (form.elements.audience.value !== 'child') return;
+    const container = root.querySelector('[data-dynamic-options="stage"]');
+    const multiple = Boolean(form.elements.child_count.value) && form.elements.child_count.value !== '1';
+    const inputs = [...container.querySelectorAll('input[name="stage"]')];
+    if (!multiple) {
+      inputs.filter((input) => input.checked).slice(1).forEach((input) => { input.checked = false; });
+    }
+    inputs.forEach((input) => {
+      input.type = multiple ? 'checkbox' : 'radio';
+      input.required = !multiple;
+    });
+    container.dataset.requiredGroup = multiple ? 'stage' : '';
   }
 
   function syncChildAgeCopy() {
@@ -239,12 +259,16 @@
       const stage = stages[0];
       if (stage === 'little') return {
         title: 'Little Champions',
-        summary: 'Based on your child’s age, experience, and goals, the ages 3–7 program is the most appropriate factual starting point.',
-        reasons: ['Short, age-appropriate activities', 'Clear instructions and active coaching', 'Practice with movement, listening, and safe boundaries'],
+        summary: answers.location === 'austin'
+          ? 'Little Champions is the age-appropriate program. The current published ages 3–7 group is in Dripping Springs, not Austin.'
+          : 'Based on your child’s age, experience, and goals, the ages 3–7 program is the most appropriate factual starting point.',
+        reasons: answers.location === 'austin'
+          ? ['Short, age-appropriate activities', 'The current group location is Dripping Springs', 'Staff can discuss whether that location works for your family']
+          : ['Short, age-appropriate activities', 'Clear instructions and active coaching', 'Practice with movement, listening, and safe boundaries'],
         link: 'little-champions.html',
         linkText: 'View Little Champions',
         image: '../assets/toddler-purposeful-play-hero.webp',
-        next: 'Review the class and current schedule',
+        next: answers.location === 'austin' ? 'Review the Dripping Springs schedule before requesting a class' : 'Review the class and current schedule',
         location: 'Dripping Springs · Mon/Wed 5:00–5:45 p.m.'
       };
       if (stage === 'youth') return {
@@ -322,6 +346,7 @@
       request_id: requestId,
       form_id: 'program_fit_quiz',
       lead_type: 'quiz',
+      route_source: routeSource,
       first_name: String(data.get('first_name') || '').trim(),
       email: String(data.get('email') || '').trim(),
       phone: String(data.get('phone') || '').trim(),
@@ -378,7 +403,10 @@
   form.addEventListener('input', syncControls);
   form.addEventListener('change', (event) => {
     if (event.target.name === 'audience') populateBranch();
-    if (event.target.name === 'child_count') syncChildAgeCopy();
+    if (event.target.name === 'child_count') {
+      syncChildAgeCopy();
+      syncChildAgeInputs();
+    }
     syncControls();
   });
 
@@ -444,5 +472,13 @@
     syncControls();
   });
 
+  const requestedPath = routeParams.get('path');
+  if (requestedPath === 'child' || requestedPath === 'adult') {
+    const audienceInput = form.querySelector(`[name="audience"][value="${requestedPath}"]`);
+    if (audienceInput) {
+      audienceInput.checked = true;
+      populateBranch();
+    }
+  }
   syncControls();
 })();

@@ -17,6 +17,7 @@ The existing review pages remain separate until approval. Existing program resul
   "request_id": "UUID generated per submit attempt",
   "form_id": "program_fit_quiz",
   "lead_type": "quiz",
+  "route_source": "validated landing or flyer route source, or blank",
   "first_name": "…",
   "email": "…",
   "phone": "…",
@@ -46,7 +47,7 @@ The existing review pages remain separate until approval. Existing program resul
 - Never send raw PII to GA4 or `dataLayer`; analytics receives only generic event, form ID, audience, and recommendation.
 - Email and SMS permissions are separate. Newsletter consent is separate from both.
 - A successful browser response requires successful HighLevel contact upsert and opportunity upsert. Internal email may be an alert but is not CRM-delivery proof.
-- Generate one stable request ID for idempotency and save it in HighLevel.
+- Generate one stable request ID for correlation and retry testing, save it in HighLevel, and do not treat that field alone as proof of opportunity idempotency.
 
 ## Server sequence
 
@@ -69,6 +70,7 @@ The existing review pages remain separate until approval. Existing program resul
 - `GHL_PIPELINE_ID`
 - `GHL_NEW_LEAD_STAGE_ID`
 - `GHL_OWNER_USER_ID`
+- `LEAD_RATE_LIMIT_SALT` with a deployment-specific random value of at least 32 characters; placeholder values are rejected
 - GHL custom-field IDs/keys from the live account
 - `GHL_CUSTOM_FIELD_MAP_JSON` using the logical-name → `{id,key}` contract in `docs/HIGHLEVEL-BLUEHOST-CONFIG.example.env`
 - `GHL_ENV_FILE` pointing to a populated file outside Bluehost `public_html`

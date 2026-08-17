@@ -17,6 +17,11 @@ test('endpoint enforces method, same-origin, JSON and bounded body controls', ()
   assert.match(php, /website/);
   assert.match(php, /enforce_rate_limit/);
   assert.match(php, /flock\(\$handle, LOCK_EX\)/);
+  assert.match(php, /env_value\('LEAD_RATE_LIMIT_SALT'\)/);
+  assert.doesNotMatch(php, /env_value\('LEAD_RATE_LIMIT_SALT',/);
+  assert.match(php, /strlen\(\$salt\) < 32/);
+  assert.match(php, /str_starts_with\(strtolower\(\$salt\), 'replace'\)/);
+  assert.match(php, /Retry-After/);
 });
 
 test('endpoint normalizes identity and validates quiz recommendation enums', () => {
@@ -27,15 +32,18 @@ test('endpoint normalizes identity and validates quiz recommendation enums', () 
   assert.match(php, /Recommendation does not match the quiz answers/);
   assert.match(php, /\['little', 'youth', 'teen'\]/);
   assert.match(php, /\['child', 'adult'\]/);
+  assert.match(php, /'route_source' => \$routeSource/);
+  assert.match(php, /'practice-under-pressure'\], 'route source'/);
 });
 
-test('contact and opportunity payload contract is idempotent and preserves existing tags', () => {
+test('contact payload is duplicate-safe, preserves existing tags/source, and opportunity fields are present', () => {
   const contactBuilder = php.slice(php.indexOf('function build_contact_payload'), php.indexOf('function build_opportunity_payload'));
   const opportunityBuilder = php.slice(php.indexOf('function build_opportunity_payload'), php.indexOf('function contact_id_from_response'));
   assert.match(contactBuilder, /createNewIfDuplicateAllowed' => false/);
   assert.match(contactBuilder, /assignedTo/);
   assert.match(contactBuilder, /customFields/);
   assert.doesNotMatch(contactBuilder, /'tags'/);
+  assert.doesNotMatch(contactBuilder, /'source'/);
   assert.match(opportunityBuilder, /pipelineId/);
   assert.match(opportunityBuilder, /pipelineStageId/);
   assert.match(opportunityBuilder, /status' => 'open'/);
@@ -71,12 +79,19 @@ test('success is explicit only after durable contact and opportunity acceptance'
   assert.match(php, /'opportunity_accepted' => true/);
 });
 
-test('legacy inquiry context is retained for CRM mapping and the fallback alert', () => {
-  for (const field of ['message', 'role', 'availability']) {
-    assert.match(php, new RegExp(`'${field}' => clean_text\\(\\$data\\['${field}'\\]`));
+test('legacy and Teen inquiry context is validated and retained for CRM mapping and fallback alert', () => {
+  assert.match(php, /'teen_interest'/);
+  assert.match(php, /'Teen Brazilian Jiu-Jitsu Ages 13-17'/);
+  assert.match(php, /'Either location'/);
+  assert.match(php, /\['Parent or guardian', 'Teen student'\]/);
+  assert.match(php, /\['13', '14', '15', '16', '17'\]/);
+  assert.match(php, /\['after-school', 'evening', 'saturday'\]/);
+  for (const field of ['message', 'role', 'age', 'availability']) {
     assert.match(php, new RegExp(`'${field}' => clean_text\\(\\$lead\\['${field}'\\]`));
   }
   assert.match(php, /'Message: ' \. \(\(\$lead\['message'\]/);
   assert.match(php, /'Role: ' \. \(\(\$lead\['role'\]/);
+  assert.match(php, /'Age: ' \. \(\(\$lead\['age'\]/);
   assert.match(php, /'Availability: ' \. \(\(\$lead\['availability'\]/);
+  assert.match(php, /teen_interest_v1/);
 });

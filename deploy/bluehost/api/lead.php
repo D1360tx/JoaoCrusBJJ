@@ -98,7 +98,11 @@ function request_origin(): string
 
 function enforce_rate_limit(string $ip): void
 {
-    $key = hash('sha256', env_value('LEAD_RATE_LIMIT_SALT', 'joao-lead-rate-v1') . '|' . $ip);
+    $salt = env_value('LEAD_RATE_LIMIT_SALT');
+    if (strlen($salt) < 32 || str_starts_with(strtolower($salt), 'replace')) {
+        throw new RuntimeException('Rate limiter is not configured.');
+    }
+    $key = hash('sha256', $salt . '|' . $ip);
     $path = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'joao-lead-' . $key . '.json';
     $handle = @fopen($path, 'c+');
     if ($handle === false || !flock($handle, LOCK_EX)) {
@@ -112,6 +116,7 @@ function enforce_rate_limit(string $ip): void
             ? array_values(array_filter($stored, static fn($timestamp): bool => is_int($timestamp) && $timestamp > $now - RATE_LIMIT_WINDOW_SECONDS))
             : [];
         if (count($attempts) >= RATE_LIMIT_MAX_ATTEMPTS) {
+            header('Retry-After: ' . RATE_LIMIT_WINDOW_SECONDS);
             respond(429, ['accepted' => false, 'error' => 'Too many requests. Please try later or call 512-644-4560.']);
         }
         $attempts[] = $now;
@@ -205,12 +210,17 @@ function normalize_quiz(array $data): array
     $experienceAllowed = $audience === 'adult' ? ['group', 'private', 'hybrid', 'help'] : ['new', 'tried', 'current', 'returning'];
     $locationAllowed = $audience === 'adult' ? ['dripping', 'austin', 'either'] : ['dripping', 'austin', 'help'];
     $stage = $audience === 'adult' ? require_enum(clean_text($data['stage'] ?? ($data['age_bands'][0] ?? ''), 20), $stageAllowed, 'stage') : (string)$ageBands[0];
+    $routeSource = clean_text($data['route_source'] ?? '', 40);
+    if ($routeSource !== '') {
+        require_enum($routeSource, ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure'], 'route source');
+    }
 
     $lead = [
         'request_id' => $requestId,
         'schema_version' => require_enum(clean_text($data['schema_version'] ?? '', 40), ['program_fit_v1'], 'schema version'),
         'form_id' => require_enum(clean_text($data['form_id'] ?? '', 60), ['program_fit_quiz'], 'form'),
         'lead_type' => 'quiz',
+        'route_source' => $routeSource,
         'first_name' => clean_text($data['first_name'] ?? '', 80),
         'last_name' => clean_text($data['last_name'] ?? '', 80),
         'email' => normalize_email($data['email'] ?? ''),
@@ -241,7 +251,7 @@ function normalize_quiz(array $data): array
 
 function normalize_legacy(array $data): array
 {
-    $leadType = require_enum(clean_text($data['lead_type'] ?? 'class_inquiry', 40), ['class_inquiry', 'guide', 'offline_flyer', 'team_inquiry'], 'lead type');
+    $leadType = require_enum(clean_text($data['lead_type'] ?? 'class_inquiry', 40), ['class_inquiry', 'guide', 'offline_flyer', 'team_inquiry', 'teen_interest'], 'lead type');
     $formId = clean_text($data['form_id'] ?? '', 80);
     if ($formId === '' || !preg_match('/^[a-z0-9_-]{2,80}$/', $formId)) {
         throw new InvalidArgumentException('Invalid form.');
@@ -252,13 +262,25 @@ function normalize_legacy(array $data): array
     }
     [$firstName, $lastName] = split_name(clean_text($data['name'] ?? '', 120));
     $isGuide = $leadType === 'guide';
-    $program = $isGuide ? 'Parent Guide' : require_enum(clean_text($data['program'] ?? '', 80), ['Little Champions 3–7', 'Youth 8–12', 'Teens 13–17', 'Adults', 'Private Coaching', 'Team / Corporate', 'Not sure yet'], 'program');
-    $location = $isGuide ? 'Not applicable' : require_enum(clean_text($data['location'] ?? '', 40), ['Dripping Springs', 'Austin', 'Not sure yet'], 'location');
+    $isTeen = $leadType === 'teen_interest';
+    $program = $isGuide ? 'Parent Guide' : require_enum(clean_text($data['program'] ?? '', 80), ['Little Champions 3–7', 'Youth 8–12', 'Teens 13–17', 'Teen Brazilian Jiu-Jitsu Ages 13-17', 'Adults', 'Private Coaching', 'Team / Corporate', 'Not sure yet'], 'program');
+    $location = $isGuide ? 'Not applicable' : require_enum(clean_text($data['location'] ?? '', 40), ['Dripping Springs', 'Austin', 'Either location', 'Not sure yet'], 'location');
+    $role = clean_text($data['role'] ?? '', 120);
+    $age = clean_text($data['age'] ?? '', 10);
+    $availabilityValues = array_values(array_filter(array_map('trim', explode(',', clean_text($data['availability'] ?? '', 500)))));
+    if ($isTeen) {
+        $role = require_enum($role, ['Parent or guardian', 'Teen student'], 'role');
+        $age = require_enum($age, ['13', '14', '15', '16', '17'], 'age');
+        foreach ($availabilityValues as $availabilityValue) {
+            require_enum($availabilityValue, ['after-school', 'evening', 'saturday'], 'availability');
+        }
+    }
     $lead = [
         'request_id' => $requestId,
         'schema_version' => 'website_lead_v1',
         'form_id' => $formId,
         'lead_type' => $leadType,
+        'route_source' => '',
         'first_name' => $firstName,
         'last_name' => $lastName,
         'email' => normalize_email($data['email'] ?? ''),
@@ -268,12 +290,13 @@ function normalize_legacy(array $data): array
         'recommended_program' => $program,
         'email_consent' => ($data['consent'] ?? false) === true,
         'sms_consent' => false,
-        'consent_disclosure_version' => 'website_contact_v1',
+        'consent_disclosure_version' => $isTeen ? 'teen_interest_v1' : 'website_contact_v1',
         'page' => clean_text($data['page'] ?? '', 300),
         'attribution' => is_array($data['attribution'] ?? null) ? $data['attribution'] : [],
         'message' => clean_text($data['message'] ?? '', 1500),
-        'role' => clean_text($data['role'] ?? '', 120),
-        'availability' => clean_text($data['availability'] ?? '', 500),
+        'role' => $role,
+        'age' => $age,
+        'availability' => implode(', ', $availabilityValues),
         'legacy' => true,
     ];
     if ($lead['first_name'] === '' || $lead['email'] === '' || (!$isGuide && $lead['phone'] === '') || !$lead['email_consent']) {
@@ -289,7 +312,7 @@ function custom_field_map(): array
     if (!is_array($map)) {
         throw new RuntimeException('Custom field mapping is not configured.');
     }
-    $requiredFieldMappings = ['request_id', 'form_id', 'schema_version', 'lead_type', 'recommended_program', 'email_consent', 'sms_consent', 'consent_disclosure_version', 'consent_timestamp', 'message', 'role', 'availability'];
+    $requiredFieldMappings = ['request_id', 'form_id', 'schema_version', 'lead_type', 'route_source', 'recommended_program', 'email_consent', 'sms_consent', 'consent_disclosure_version', 'consent_timestamp', 'message', 'role', 'age', 'availability'];
     foreach ($requiredFieldMappings as $required) {
         if (!isset($map[$required]) || !is_array($map[$required])) {
             throw new RuntimeException('Required custom field mapping is missing.');
@@ -312,7 +335,7 @@ function flattened_values(array $lead): array
 {
     $values = [
         'request_id' => $lead['request_id'], 'form_id' => $lead['form_id'], 'schema_version' => $lead['schema_version'],
-        'lead_type' => $lead['lead_type'], 'audience' => $lead['audience'], 'child_count' => $lead['child_count'],
+        'lead_type' => $lead['lead_type'], 'route_source' => clean_text($lead['route_source'] ?? '', 40), 'audience' => $lead['audience'], 'child_count' => $lead['child_count'],
         'age_bands' => implode(',', $lead['age_bands']), 'stage' => $lead['stage'], 'goal' => $lead['goal'],
         'experience' => $lead['experience'], 'preferred_location' => $lead['preferred_location'],
         'recommended_program' => $lead['recommended_program'], 'email_consent' => $lead['email_consent'] ? 'granted' : 'not_granted',
@@ -321,6 +344,7 @@ function flattened_values(array $lead): array
         'submission_page' => $lead['page'],
         'message' => clean_text($lead['message'] ?? '', 1500),
         'role' => clean_text($lead['role'] ?? '', 120),
+        'age' => clean_text($lead['age'] ?? '', 10),
         'availability' => clean_text($lead['availability'] ?? '', 500),
     ];
     $allowedTouchKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'landing_page', 'referrer_host', 'captured_at'];
@@ -396,7 +420,6 @@ function build_contact_payload(array $lead, array $map, array $config): array
         'locationId' => $config['location_id'],
         'firstName' => $lead['first_name'],
         'email' => $lead['email'],
-        'source' => 'Joao website',
         'assignedTo' => $config['owner_id'],
         'createNewIfDuplicateAllowed' => false,
         'customFields' => build_custom_fields($lead, $map),
@@ -450,6 +473,7 @@ function send_legacy_alert(array $lead): void
         . 'Program: ' . $lead['recommended_program'] . "\r\n"
         . 'Location: ' . $lead['preferred_location'] . "\r\n"
         . 'Role: ' . (($lead['role'] ?? '') ?: 'Not provided') . "\r\n"
+        . 'Age: ' . (($lead['age'] ?? '') ?: 'Not provided') . "\r\n"
         . 'Availability: ' . (($lead['availability'] ?? '') ?: 'Not provided') . "\r\n"
         . 'Message: ' . (($lead['message'] ?? '') ?: 'Not provided') . "\r\n";
     $headers = [

@@ -50,7 +50,7 @@ See `docs/LEAD-INFRASTRUCTURE-RECOMMENDATION.md` and `docs/HIGHLEVEL-ACCEPTANCE-
 - [ ] 🟡 Email and US phone normalization plus duplicate-safe contact upsert are implemented but not yet live-tested.
 - [ ] ⬜ Preserve original source, landing page, referrer, UTMs, and ad click identifiers.
 - [ ] ⬜ Record email/SMS consent timestamps, source pages, and disclosure versions.
-- [ ] 🟡 Frontend requires explicit contact + opportunity acceptance before success; verify the live HighLevel response contract and retry behavior.
+- [ ] ⛔ Frontend requires explicit contact + opportunity acceptance before success; verify the live HighLevel opportunity request/response contract and prove retry idempotency before release.
 - [ ] ⬜ Test every form end to end using controlled test contacts.
 - [ ] ⬜ Verify staff alerts, tasks, pipeline changes, messages, and thank-you pages.
 - [ ] ⬜ Verify no secrets or unnecessary PII appear in client bundles or logs.
