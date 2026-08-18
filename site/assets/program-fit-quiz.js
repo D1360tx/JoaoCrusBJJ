@@ -394,12 +394,14 @@
     }
   }
 
-  root.querySelector('[data-start]').addEventListener('click', () => {
+  function startQuiz(entry) {
     showScreen('quiz');
     showStep(1);
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'quiz_start', quiz_name: endpoint ? 'program_fit' : 'program_fit_preview' });
-  });
+    window.dataLayer.push({ event: 'quiz_start', quiz_name: endpoint ? 'program_fit' : 'program_fit_preview', quiz_entry: entry });
+  }
+
+  root.querySelector('[data-start]').addEventListener('click', () => startQuiz('intro'));
 
   form.addEventListener('input', syncControls);
   form.addEventListener('change', (event) => {
@@ -481,5 +483,6 @@
       populateBranch();
     }
   }
-  syncControls();
+  if (routeParams.get('start') === 'quiz') startQuiz('cta');
+  else syncControls();
 })();
