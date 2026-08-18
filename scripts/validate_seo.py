@@ -200,6 +200,7 @@ def validate_support_files() -> None:
         "/coaches/",
         "/about/",
         "/parent-guide/",
+        "/parent-guide/how-bjj-builds-life-skills-kids/",
         "/parent-guide/what-age-start-bjj/",
         "/parent-guide/what-tapping-teaches-children/",
         "/parent-guide/what-happens-bjj-class-ages-3-7/",
