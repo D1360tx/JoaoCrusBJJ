@@ -332,8 +332,12 @@ def main() -> None:
             check('name="consent"' in html, "/practice-under-pressure/: contact consent is missing")
             check('data-success-url="/thank-you/"' in html, "/practice-under-pressure/: success route is missing")
             check(
-                'href="/program-finder/quiz/?source=practice-under-pressure" data-quiz-route' in html,
-                "/practice-under-pressure/: primary CTA must route to the Program Finder quiz",
+                'href="/program-finder/quiz/?source=practice-under-pressure&amp;embed=1" data-quiz-route data-quiz-modal' in html,
+                "/practice-under-pressure/: primary CTA must open the embedded Program Finder quiz",
+            )
+            check(
+                "/assets/program-fit-modal.css" in html and "/assets/program-fit-modal.js" in html,
+                "/practice-under-pressure/: quiz modal assets are missing",
             )
             check(
                 'href="/practice-under-pressure/#how-it-works"' in html,

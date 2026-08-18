@@ -102,6 +102,17 @@ button, label { -webkit-tap-highlight-color: transparent; }
 .fit-method-card > span { color: var(--blue); font-family: Anton, Impact, sans-serif; font-size: 2.1rem; }
 .fit-method-card p { margin: 0; font-size: .86rem; }
 
+.fit-page.fit-embed .skip-link,
+.fit-page.fit-embed .fit-header,
+.fit-page.fit-embed .fit-footer { display: none; }
+.fit-page.fit-embed .fit-shell { width: 100%; min-height: 100dvh; margin: 0; }
+.fit-page.fit-embed .fit-panel { min-height: 100dvh; border: 0; box-shadow: none; }
+.fit-page.fit-embed .fit-intro__copy { padding: clamp(28px, 5vw, 56px); }
+.fit-page.fit-embed .fit-intro__copy h1 { font-size: clamp(3.2rem, 6vw, 5.8rem); }
+.fit-page.fit-embed .fit-lead { margin: 20px 0 24px; }
+.fit-page.fit-embed .fit-trust { margin-top: 22px; }
+.fit-page.fit-embed .fit-intro__visual { min-height: 100dvh; }
+
 .fit-panel--quiz { display: grid; grid-template-columns: 270px 1fr; }
 .fit-rail { padding: 42px 30px; display: flex; flex-direction: column; background: var(--black); color: #fff; }
 .fit-rail > p { margin: 0 0 30px; color: var(--yellow); font-size: .72rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }

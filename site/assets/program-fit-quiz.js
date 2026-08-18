@@ -16,6 +16,7 @@
   const error = root.querySelector('[data-error]');
   const endpoint = root.dataset.endpoint || '';
   const routeParams = new URLSearchParams(window.location.search);
+  if (routeParams.get('embed') === '1') document.body.classList.add('fit-embed');
   const allowedRouteSources = ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure'];
   const requestedRouteSource = routeParams.get('source');
   const routeSource = allowedRouteSources.includes(requestedRouteSource) ? requestedRouteSource : '';

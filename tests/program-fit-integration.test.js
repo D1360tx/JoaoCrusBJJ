@@ -105,11 +105,17 @@ test('builder orders consent and attribution before quiz behavior and emits cano
   assert.match(quiz, /rel="canonical" href="https:\/\/joaocrusbjj\.com\/program-finder\/quiz\/"/);
 });
 
-test('practice-under-pressure routes its primary funnel to quiz and preserves flyer attribution', () => {
+test('practice-under-pressure opens its primary quiz in a modal and preserves flyer attribution', () => {
   const page = read('site/campaign/practice-under-pressure.html');
   const helper = read('site/assets/found-the-flyer.js');
+  const modal = read('site/assets/program-fit-modal.js');
   const homepage = read('site/campaign/index.html');
-  assert.match(page, /href="program-fit-quiz\.html\?source=practice-under-pressure" data-quiz-route/);
+  assert.match(page, /href="program-fit-quiz\.html\?source=practice-under-pressure&amp;embed=1" data-quiz-route data-quiz-modal/);
+  assert.match(page, /program-fit-modal\.css/);
+  assert.match(page, /program-fit-modal\.js/);
+  assert.match(modal, /dialog\.showModal\(\)/);
+  assert.match(modal, /frame\.src = trigger\.href/);
+  assert.match(read('scripts/build_vercel_site.py'), /embed:\{json\.dumps\(\['1'\]\)\}/);
   assert.match(page, /href="\/program-finder\/quiz\/\?source=practice-under-pressure&amp;path=help" data-quiz-route>Find my program/);
   assert.match(helper, /new URLSearchParams\(window\.location\.search\)/);
   assert.match(helper, /if \(!target\.searchParams\.has\(key\)\) target\.searchParams\.set\(key, value\)/);

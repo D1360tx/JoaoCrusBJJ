@@ -50,7 +50,7 @@ GTM_HEAD_SNIPPET = rf"""<!-- Google Tag Manager -->
     var safe=null;try{{var u=new URL(w.location.href);safe=new URL(u.origin+u.pathname);
     {json.dumps(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'qa', 'gtm_debug', 'gtm_auth', 'gtm_preview', 'gtm_cookies_win'])}.forEach(function(k){{
     if(u.searchParams.has(k)){{var v=safeCampaignValue(u.searchParams.get(k));if(v)safe.searchParams.set(k,v);}}}});
-    var routeEnums={{source:{json.dumps(['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure'])},path:{json.dumps(['child', 'adult', 'help', 'undecided'])}}};
+    var routeEnums={{source:{json.dumps(['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure'])},path:{json.dumps(['child', 'adult', 'help', 'undecided'])},embed:{json.dumps(['1'])}}};
     Object.keys(routeEnums).forEach(function(k){{var v=u.searchParams.get(k);if(routeEnums[k].indexOf(v)!==-1)safe.searchParams.set(k,v);}});
     if(u.pathname+u.search!==safe.pathname+safe.search)w.history.replaceState(w.history.state,'',safe.pathname+safe.search);
     }}catch(e){{}}
