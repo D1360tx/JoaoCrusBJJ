@@ -215,6 +215,44 @@
       ]
     },
     {
+      "file": "life-skills-kids-bjj.html",
+      "path": "/parent-guide/how-bjj-builds-life-skills-kids/",
+      "title": "How Kids Practice Life Skills in BJJ | Dripping Springs",
+      "description": "See how kids practice listening, boundaries, persistence, partner awareness, and problem-solving in Brazilian Jiu-Jitsu classes in Dripping Springs.",
+      "image": "/assets/campaign-images/kids-training.webp",
+      "indexable": true,
+      "schema": [
+        "article",
+        "faqpage"
+      ],
+      "breadcrumb": "How Kids Practice Life Skills Through BJJ",
+      "article": {
+        "headline": "How Kids Practice Life Skills Through BJJ in Dripping Springs",
+        "datePublished": "2026-08-18",
+        "dateModified": "2026-08-18",
+        "author": "Joao Crus BJJ",
+        "authorType": "Organization"
+      },
+      "faqs": [
+        {
+          "question": "Does BJJ guarantee confidence or discipline?",
+          "answer": "No. BJJ gives children repeated opportunities to listen, solve problems, work with partners, communicate boundaries, and continue after a difficult attempt. How those experiences affect a particular child varies, so the academy does not guarantee a personality or behavior outcome."
+        },
+        {
+          "question": "What life skills can children practice in BJJ?",
+          "answer": "Children can practice listening to cues, taking turns, partner awareness, clear stop signals, problem-solving, persistence, and resetting after frustration. These are observable class behaviors, not promised outcomes outside the academy."
+        },
+        {
+          "question": "How does tapping relate to boundaries?",
+          "answer": "A tap communicates stop. Students practice using the signal clearly and responding when a partner uses it. Tapping is a shared training convention and does not remove all risk from physical activity."
+        },
+        {
+          "question": "Which kids BJJ class serves Dripping Springs families?",
+          "answer": "Joao Crus BJJ offers age-structured children's programs at 120 Frog Pond Lane, Suite 200, Dripping Springs, TX 78620. Parents can review the Kids BJJ program page and current schedule to find the appropriate age group."
+        }
+      ]
+    },
+    {
       "file": "age-start-bjj.html",
       "path": "/parent-guide/what-age-start-bjj/",
       "title": "What Age Can Children Start Brazilian Jiu-Jitsu? | Joao Crus BJJ",

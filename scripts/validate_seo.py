@@ -19,6 +19,7 @@ ERRORS: list[str] = []
 CHECKS = 0
 PARENT_GUIDE_FILES = {
     "guide.html",
+    "life-skills-kids-bjj.html",
     "age-start-bjj.html",
     "tapping-children.html",
     "bjj-class-ages-3-7.html",
@@ -53,6 +54,10 @@ def visible_text(source: str) -> str:
 
 
 def validate_page(page: dict) -> None:
+    if page.get("source_file"):
+        path = ROOT / "site" / page["source_file"]
+        check(path.exists(), f"{page['file']}: source file missing")
+        return
     path = CAMPAIGN / page["file"]
     check(path.exists(), f"{page['file']}: file missing")
     if not path.exists():
@@ -168,7 +173,8 @@ def validate_manifest() -> None:
             check(not page["indexable"], f"{page['file']}: custom robots is only allowed on noindex pages")
             check(custom_robots in {"noindex,follow", "noindex,nofollow"}, f"{page['file']}: unsupported custom robots value")
     html_files = {p.name for p in CAMPAIGN.glob("*.html")}
-    check(set(files) == html_files, f"manifest: coverage differs, missing={sorted(html_files-set(files))}, extra={sorted(set(files)-html_files)}")
+    expected_campaign_files = {p["file"] for p in pages if not p.get("source_file")}
+    check(expected_campaign_files == html_files, f"manifest: coverage differs, missing={sorted(html_files-expected_campaign_files)}, extra={sorted(expected_campaign_files-html_files)}")
 
 
 def validate_sitemap() -> None:
@@ -194,6 +200,7 @@ def validate_support_files() -> None:
         "/coaches/",
         "/about/",
         "/parent-guide/",
+        "/parent-guide/how-bjj-builds-life-skills-kids/",
         "/parent-guide/what-age-start-bjj/",
         "/parent-guide/what-tapping-teaches-children/",
         "/parent-guide/what-happens-bjj-class-ages-3-7/",

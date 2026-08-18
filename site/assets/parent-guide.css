@@ -49,6 +49,81 @@ h1.pg-hero-title {
 }
 
 /* ------------------------------------------------------------------ */
+/* Life-skills article                                                 */
+/* ------------------------------------------------------------------ */
+.pg-life-title {
+  font-size: clamp(2.35rem, 5vw, 4.35rem);
+  max-width: 940px;
+}
+.pg-life-title > span {
+  display: block;
+  white-space: nowrap;
+}
+.pg-local-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 0 0 42px;
+}
+.pg-local-proof strong,
+.pg-local-proof span {
+  border: 2px solid var(--b);
+  padding: 8px 12px;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.pg-local-proof strong {
+  background: var(--b);
+  color: var(--y);
+}
+.pg-skill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 26px 0 42px;
+}
+.pg-skill-card {
+  border: 3px solid var(--b);
+  padding: 22px;
+  box-shadow: 5px 5px 0 var(--b);
+  background: #fff;
+}
+.pg-skill-card > span {
+  color: var(--u);
+  font-family: Anton, Impact, sans-serif;
+  font-size: 1.4rem;
+}
+.pg-skill-card h3 {
+  margin: 6px 0 10px;
+}
+.pg-skill-card p {
+  margin: 0;
+  font-size: .92rem;
+}
+.pg-article-cta {
+  background: var(--y);
+  border: 4px solid var(--b);
+  box-shadow: 8px 8px 0 var(--u);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: center;
+  margin: 52px 0 16px;
+  padding: 28px;
+}
+.pg-article-cta h2 {
+  font-size: clamp(1.8rem, 3vw, 2.75rem);
+  margin: 5px 0 8px;
+}
+.pg-article-cta p {
+  margin: 0;
+  max-width: 620px;
+}
+
+/* ------------------------------------------------------------------ */
 /* Direct answer block (40-80 word answer at top of page)              */
 /* ------------------------------------------------------------------ */
 .pg-answer {
@@ -313,6 +388,27 @@ h1.pg-hero-title {
 /* Responsive                                                          */
 /* ------------------------------------------------------------------ */
 @media (max-width: 650px) {
+  .pg-life-title {
+    font-size: clamp(2rem, 10vw, 2.75rem);
+  }
+  .pg-skill-grid,
+  .pg-article-cta {
+    grid-template-columns: 1fr;
+  }
+  .pg-skill-card {
+    padding: 18px;
+  }
+  .pg-article-cta {
+    padding: 22px;
+  }
+  .pg-local-proof {
+    align-items: stretch;
+  }
+  .pg-local-proof strong,
+  .pg-local-proof span {
+    flex: 1 1 45%;
+    text-align: center;
+  }
   .pg-cluster {
     grid-template-columns: 1fr;
   }
