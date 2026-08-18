@@ -160,6 +160,17 @@ def rewrite_internal_html_links(html: str, routes: dict[str, str]) -> str:
     return html
 
 
+def qualify_fragment_links(html: str, public_path: str) -> str:
+    """Keep same-page anchors on the current route after the root base is injected."""
+    route = public_path if public_path.endswith("/") else public_path + "/"
+    return re.sub(
+        r'(?P<prefix>\bhref\s*=\s*["\'])(?P<fragment>#[^"\']+)(?P<closing>["\'])',
+        lambda match: f"{match.group('prefix')}{route}{match.group('fragment')}{match.group('closing')}",
+        html,
+        flags=re.IGNORECASE,
+    )
+
+
 def apply_robots_directive(html: str, page: dict, production: bool) -> str:
     """Keep review artifacts noindex while making approved production routes indexable."""
     directive = page.get("robots")
@@ -218,6 +229,7 @@ def main() -> None:
         html = add_attribution_script(html)
         html = add_google_tag_manager(html)
         html = rewrite_internal_html_links(html, routes)
+        html = qualify_fragment_links(html, page["path"])
         html = apply_robots_directive(html, page, args.production)
         target = output_path(page["path"])
         target.parent.mkdir(parents=True, exist_ok=True)
