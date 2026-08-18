@@ -62,6 +62,23 @@
       });
     });
 
+    document.querySelectorAll("[data-quiz-route]").forEach(function (link) {
+      try {
+        var target = new URL(link.href, window.location.href);
+        var current = new URLSearchParams(window.location.search);
+        current.forEach(function (value, key) {
+          if (!target.searchParams.has(key)) target.searchParams.set(key, value);
+        });
+        if (!target.searchParams.has("source")) target.searchParams.set("source", "practice-under-pressure");
+        if (!target.searchParams.has("utm_source")) target.searchParams.set("utm_source", "offline_flyer");
+        if (!target.searchParams.has("utm_medium")) target.searchParams.set("utm_medium", "qr");
+        if (!target.searchParams.has("utm_campaign")) target.searchParams.set("utm_campaign", "practice_under_pressure");
+        link.href = target.pathname + target.search + target.hash;
+      } catch (error) {
+        // Keep the static canonical fallback when URL parsing is unavailable.
+      }
+    });
+
     campaignEvent("campaign_landing_view", {
       campaign_name: "found_the_flyer",
       campaign_medium: "offline_qr",

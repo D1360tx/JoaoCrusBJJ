@@ -149,8 +149,8 @@
     bookingDialog.innerHTML =
       '<div class="booking-shell">' +
       '<header class="booking-top"><div><span class="booking-kicker">Plan a first class</span><h2 id="booking-title">FIND THE RIGHT <span class="booking-keep">FIRST CLASS.</span></h2></div><button class="booking-close" type="button" aria-label="Close first class request">Close</button></header>' +
-      '<p class="booking-intro">Tell us who wants to train. We will text you to match the right program, location, and class time. No payment is required.</p>' +
-      '<form class="booking-form" data-booking-form>' +
+      '<p class="booking-intro">Tell us who wants to train. We will contact you to match the right program, location, and class time. No payment is required.</p>' +
+      '<form class="booking-form" data-booking-form data-form-id="booking_popup" data-lead-type="class_inquiry">' +
       '<div class="fields">' +
       '<div class="field"><label for="booking-name">Your name</label><input id="booking-name" name="name" type="text" autocomplete="name" required></div>' +
       '<div class="field"><label for="booking-phone">Mobile number</label><input id="booking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>' +
@@ -158,7 +158,7 @@
       '<div class="field"><label for="booking-program">Who wants to train?</label><select id="booking-program" name="program" required><option value="">Choose a program</option><option>Little Champions 3–7</option><option>Youth 8–12</option><option>Teens 13–17</option><option>Adults</option><option>Private Coaching</option><option>Team / Corporate</option><option>Not sure yet</option></select></div>' +
       '<div class="field"><label for="booking-location">Preferred location</label><select id="booking-location" name="location" required><option value="">Choose a location</option><option>Dripping Springs</option><option>Austin</option><option>Not sure yet</option></select></div>' +
       '<div class="field website-field" aria-hidden="true"><label for="booking-website">Leave this blank</label><input id="booking-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>' +
-      '<div class="field full check booking-consent"><input id="booking-consent" name="consent" type="checkbox" required><label for="booking-consent">Joao Crus BJJ may call or text me about this request.</label></div>' +
+      '<div class="field full check booking-consent"><input id="booking-consent" name="consent" type="checkbox" required><label for="booking-consent">Joao Crus BJJ may email or call me about this request. Automated texts are not enabled from this form.</label></div>' +
       '<div class="field full"><button class="btn booking-submit" type="submit">Request my first class →</button><p class="booking-assurance">Takes about 30 seconds. We will only use your information to help with this request.</p><p class="status" tabindex="-1" aria-live="polite"></p></div>' +
       '</div></form>' +
       '<div class="booking-direct">Prefer to talk now? <a href="tel:+151****4560">Call or text 512&#8209;644&#8209;4560</a></div>' +
@@ -244,20 +244,16 @@
     bookingDialog.addEventListener("cancel", function () {
       b.classList.remove("booking-open");
     });
-    function postLead(data, retried) {
-      return fetch("/api/contact.php", {
+    function postLead(data) {
+      var controller = new AbortController();
+      var timeout = window.setTimeout(function () { controller.abort(); }, 12000);
+      return fetch("/api/lead.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify(data),
+        signal: controller.signal,
       }).then(function (response) {
-        if (response.status === 409 && !retried) {
-          return response.text().then(function (text) {
-            var cookieMatch = text.match(/document\.cookie\s*=\s*["']([^"']+)["']/i);
-            if (!cookieMatch) throw new Error("Unable to verify this request.");
-            document.cookie = cookieMatch[1] + "; Path=/; Max-Age=3600; SameSite=Lax; Secure";
-            return postLead(data, true);
-          });
-        }
         return response.text().then(function (text) {
           var body = {};
           try {
@@ -265,9 +261,13 @@
           } catch (error) {
             body = {};
           }
-          if (!response.ok) throw new Error(body.error || "Unable to send your request.");
+          if (!response.ok || body.accepted !== true || body.contact_accepted !== true || body.opportunity_accepted !== true || body.request_id !== data.request_id) {
+            throw new Error(body.error || "Unable to send your request.");
+          }
           return body;
         });
+      }).finally(function () {
+        window.clearTimeout(timeout);
       });
     }
 
@@ -281,12 +281,17 @@
         data.availability = formData.getAll("availability").join(", ");
       }
       data.consent = Boolean(form.querySelector('[name="consent"]:checked'));
+      data.form_id = form.dataset.formId || "website_form";
+      data.request_id = form.dataset.requestId || (window.crypto && typeof window.crypto.randomUUID === "function"
+        ? window.crypto.randomUUID()
+        : "lead-" + Date.now() + "-" + Math.random().toString(16).slice(2));
+      form.dataset.requestId = data.request_id;
       data.page = window.location.pathname;
       data.lead_type = leadType(form, data);
       data.attribution = currentAttribution();
       status.textContent = "Sending your request…";
       submit.disabled = true;
-      postLead(data, false)
+      postLead(data)
         .then(function () {
           var redirected = false;
           function redirectAfterSuccess() {

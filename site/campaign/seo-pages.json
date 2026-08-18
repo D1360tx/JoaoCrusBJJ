@@ -513,6 +513,26 @@
       "schema": []
     },
     {
+      "file": "program-fit-landing.html",
+      "path": "/program-finder/",
+      "title": "Find the Right Jiu-Jitsu Program | Joao Crus BJJ",
+      "description": "Explore Joao Crus BJJ programs for children and adults, then use the 60-second program finder to identify your best starting point.",
+      "image": "/assets/toddler-purposeful-play-hero.webp",
+      "type": "WebPage",
+      "indexable": false,
+      "schema": []
+    },
+    {
+      "file": "program-fit-quiz.html",
+      "path": "/program-finder/quiz/",
+      "title": "Find Your Best Jiu-Jitsu Starting Point | Joao Crus BJJ",
+      "description": "Answer six quick questions to find a Joao Crus Brazilian Jiu-Jitsu program, location, and beginner-friendly next step.",
+      "image": "/assets/toddler-purposeful-play-hero.webp",
+      "type": "WebPage",
+      "indexable": false,
+      "schema": []
+    },
+    {
       "file": "contact.html",
       "path": "/contact/",
       "title": "Contact Joao Crus BJJ | Plan a First Class",
