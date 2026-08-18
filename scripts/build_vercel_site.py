@@ -50,6 +50,8 @@ GTM_HEAD_SNIPPET = rf"""<!-- Google Tag Manager -->
     var safe=null;try{{var u=new URL(w.location.href);safe=new URL(u.origin+u.pathname);
     {json.dumps(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'qa', 'gtm_debug', 'gtm_auth', 'gtm_preview', 'gtm_cookies_win'])}.forEach(function(k){{
     if(u.searchParams.has(k)){{var v=safeCampaignValue(u.searchParams.get(k));if(v)safe.searchParams.set(k,v);}}}});
+    var routeEnums={{source:{json.dumps(['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure'])},path:{json.dumps(['child', 'adult', 'help', 'undecided'])}}};
+    Object.keys(routeEnums).forEach(function(k){{var v=u.searchParams.get(k);if(routeEnums[k].indexOf(v)!==-1)safe.searchParams.set(k,v);}});
     if(u.pathname+u.search!==safe.pathname+safe.search)w.history.replaceState(w.history.state,'',safe.pathname+safe.search);
     }}catch(e){{}}
     var r='';try{{if(d.referrer){{var ru=new URL(d.referrer);r=ru.origin+'/';}}}}catch(e){{}}
@@ -120,6 +122,9 @@ def add_attribution_script(html: str) -> str:
     )
     if shared_script.search(html):
         return shared_script.sub(f"{insertion}\n    \\1", html, count=1)
+    first_deferred_script = re.compile(r'(<script\s+src=["\'][^"\']+["\']\s+defer></script>)', re.IGNORECASE)
+    if first_deferred_script.search(html):
+        return first_deferred_script.sub(f"{insertion}\n    \\1", html, count=1)
     return re.sub(
         r"(</body>)",
         f"    {insertion}\n  \\1",
@@ -209,9 +214,13 @@ def main() -> None:
     parser.add_argument(
         "--production",
         action="store_true",
-        help="Build the indexable Bluehost artifact with the PHP contact endpoint.",
+        help="Build the indexable Bluehost artifact with the PHP HighLevel lead endpoint.",
     )
     args = parser.parse_args()
+    if args.production and not (BLUEHOST_DEPLOY / "api" / "lead.php").is_file():
+        raise SystemExit(
+            "Production build blocked: deploy/bluehost/api/lead.php is required before publishing the Program Finder quiz."
+        )
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     pages = [page for page in data["pages"] if page["file"] not in EXCLUDED_PAGES]
     routes = {page["file"]: page["path"] for page in pages}

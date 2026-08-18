@@ -76,8 +76,10 @@ Use a contact created from a real controlled ad click containing `gclid`, `gbrai
 
 ## 6. Pipeline and automation behavior
 
-- [ ] Required Joao stages exist: New Lead, Contact Attempted, Trial Scheduled, Trial Attended, Enrollment Offer, Enrolled, Long-Term Nurture, Closed/Lost, and Do Not Contact.
+- [ ] Verified Joao stages remain intact: New Quiz Lead, Contact Attempted, Qualified Conversation, Trial Booked, Trial Attended, Enrolled, and Long-Term Nurture / Not Now.
 - [ ] A new lead creates or updates one contact and one opportunity without duplicates.
+- [ ] Re-submit the same stable request ID and confirm the v3 `/opportunities/upsert` payload updates the same open opportunity. Record the accepted request/response shape because the endpoint's isolated opportunity builder cannot be certified from static documentation alone.
+- [ ] Confirm contact upsert preserves every pre-existing tag. If dedicated tag addition is enabled, prove it only adds the approved tags.
 - [ ] Staff notification and follow-up task are created immediately.
 - [ ] Trial reminders, no-show recovery, and post-trial follow-up enter and exit at the correct stages.
 - [ ] An enrolled contact exits prospect reminders and is handed off to Zen Planner without a duplicate prospect record.
@@ -86,6 +88,7 @@ Use a contact created from a real controlled ad click containing `gclid`, `gbrai
 
 - [ ] Email-only consent does not authorize SMS.
 - [ ] SMS automation does not run when the SMS checkbox is unchecked.
+- [ ] The Program Finder submits successfully with SMS unchecked and stores `SMS Consent Status = not_granted`.
 - [ ] SMS `STOP` sets channel-specific DND and prevents future automated sends.
 - [ ] Email unsubscribe, hard bounce, and spam complaint suppress future email.
 - [ ] Global DND and channel-level DND behave as documented.
