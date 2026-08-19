@@ -50,6 +50,28 @@ def main() -> None:
         "node --test tests/attribution.test.js" in vercel_config.get("buildCommand", ""),
         "Vercel build must execute attribution behavior tests",
     )
+    check(
+        "tests/program-fit-integration.test.js" in vercel_config.get("buildCommand", ""),
+        "Vercel build must execute Program Fit integration tests",
+    )
+    quiz_source = (ASSETS / "program-fit-quiz.js").read_text(encoding="utf-8")
+    check(
+        "window.joaoConsentState.analytics_storage !== 'granted'" in quiz_source
+        and "window.joaoConsentState.ad_storage !== 'granted'" in quiz_source,
+        "Program Fit analytics must discard events until measurement consent is granted",
+    )
+    check(
+        "if (trackedStepCompletions.has(stepNumber)) return false" in quiz_source
+        and "if (nextCompletionSignature === completionSignature) return false" in quiz_source,
+        "Program Fit analytics must dedupe backtracking and identical submission retries",
+    )
+    check(
+        "if (stepNumber === 1) return answers.audience" in quiz_source
+        and "if (stepNumber === 2) return 'not_collected'" in quiz_source
+        and "child:${answers.child_count}" not in quiz_source
+        and "answers.stage.join" not in quiz_source,
+        "Program Fit analytics must exclude child count and age/program-band answers",
+    )
     check(DIST.is_dir(), "dist directory is missing")
     check((DIST / "assets").is_dir(), "dist/assets is missing")
     expected_robots = (
@@ -159,6 +181,10 @@ def main() -> None:
         filename: f"/assets/{filename}?v={hashlib.sha256((ASSETS / filename).read_bytes()).hexdigest()[:12]}"
         for filename in ("consent-policy.js", "consent-controls.css", "attribution.js", "consent-controls.js")
     }
+    quiz_versioned_url = (
+        f"/assets/program-fit-quiz.js?v="
+        f"{hashlib.sha256((ASSETS / 'program-fit-quiz.js').read_bytes()).hexdigest()[:12]}"
+    )
     for event_name in (
         "lead_submit_success",
         "guide_request_success",
@@ -263,6 +289,8 @@ def main() -> None:
         check("assets/consent-controls.css" in html, f"{page['path']}: consent control styles are missing")
         for filename, url in versioned_assets.items():
             check(url in html, f"{page['path']}: {filename} must use its current content-versioned URL")
+        if "program-fit-quiz.js" in html:
+            check(quiz_versioned_url in html, f"{page['path']}: Program Fit behavior must use its current content-versioned URL")
         lead_behavior_positions = [
             html.find(asset)
             for asset in ("assets/campaign-site.js", "assets/program-fit-landing.js", "assets/program-fit-quiz.js")

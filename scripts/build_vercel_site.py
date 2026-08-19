@@ -37,6 +37,12 @@ CONSENT_POLICY_URL = versioned_asset_url("consent-policy.js")
 CONSENT_STYLE_URL = versioned_asset_url("consent-controls.css")
 ATTRIBUTION_URL = versioned_asset_url("attribution.js")
 CONSENT_CONTROLS_URL = versioned_asset_url("consent-controls.js")
+PROGRAM_FIT_QUIZ_URL = versioned_asset_url("program-fit-quiz.js")
+
+
+def version_program_fit_quiz_script(html: str) -> str:
+    """Prevent browsers and CDNs from retaining stale quiz behavior across releases."""
+    return html.replace("../assets/program-fit-quiz.js", PROGRAM_FIT_QUIZ_URL)
 
 GTM_HEAD_SNIPPET = rf"""<!-- Google Tag Manager -->
     <script src="{CONSENT_POLICY_URL}"></script>
@@ -235,6 +241,7 @@ def main() -> None:
         source_path = ROOT / "site" / page["source_file"] if page.get("source_file") else SOURCE / page["file"]
         html = source_path.read_text(encoding="utf-8")
         html = add_base_element(html)
+        html = version_program_fit_quiz_script(html)
         html = add_attribution_script(html)
         html = add_google_tag_manager(html)
         html = rewrite_internal_html_links(html, routes)
