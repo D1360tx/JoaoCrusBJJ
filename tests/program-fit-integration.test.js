@@ -2,9 +2,57 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 
 const root = path.resolve(__dirname, '..');
 const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
+
+function quizAnalyticsHarness(consent) {
+  const js = read('site/assets/program-fit-quiz.js');
+  const analyticsHelper = js.slice(js.indexOf('function pushQuizEvent'), js.indexOf('const icon'));
+  const listeners = new Map();
+  const window = {
+    joaoConsentState: consent,
+    joaoRegionReady: consent === undefined ? {} : undefined,
+    dataLayer: [],
+    addEventListener(name, handler, options = {}) {
+      const items = listeners.get(name) || [];
+      items.push({ handler, once: options.once === true });
+      listeners.set(name, items);
+    },
+    dispatchTestEvent(name) {
+      const items = [...(listeners.get(name) || [])];
+      listeners.set(name, items.filter((item) => !item.once));
+      items.forEach((item) => item.handler());
+    },
+  };
+  const context = {
+    window,
+    endpoint: '/api/lead.php',
+    routeSource: 'practice-under-pressure',
+  };
+  vm.createContext(context);
+  vm.runInContext(`
+    let completionSignature = '';
+    let quizStartTracked = false;
+    let quizStartPending = false;
+    const answers = {};
+    const trackedStepCompletions = new Set();
+    const questionKeys = ['audience', 'stage', 'goal', 'experience', 'location', 'contact'];
+    const quizName = 'program_fit';
+    ${analyticsHelper}
+    globalThis.quizAnalytics = {
+      answers,
+      pushQuizEvent,
+      safeStepAnswer,
+      trackStepComplete,
+      trackQuizComplete,
+      trackQuizStart,
+      completionSignature: () => completionSignature,
+    };
+  `, context);
+  return context;
+}
 
 test('program finder production routes are separate and noindex', () => {
   const manifest = JSON.parse(read('site/campaign/seo-pages.json'));
@@ -50,8 +98,101 @@ test('quiz payload is retry-stable, channel-aware, and never places PII in analy
   assert.match(js, /latest: attribution\.last_touch/);
   assert.match(js, /new AbortController\(\)/);
   assert.match(js, /12000/);
-  const eventLines = js.split('\n').filter((line) => line.includes('dataLayer.push'));
-  for (const line of eventLines) assert.doesNotMatch(line, /first_name|email|phone/);
+
+  const analyticsHelper = js.slice(js.indexOf('function pushQuizEvent'), js.indexOf('const icon'));
+  assert.ok(analyticsHelper.length > 0, 'analytics helper must be defined before quiz behavior');
+  assert.doesNotMatch(analyticsHelper, /first_name|last_name|email|phone|message|website/);
+});
+
+test('quiz analytics are discarded while measurement consent is denied', () => {
+  const context = quizAnalyticsHarness({ analytics_storage: 'denied', ad_storage: 'denied' });
+  context.quizAnalytics.answers.audience = 'child';
+  context.quizAnalytics.answers.child_count = '4+';
+  context.quizAnalytics.answers.stage = ['little', 'youth'];
+  assert.equal(context.quizAnalytics.trackStepComplete(1), false);
+  assert.equal(context.quizAnalytics.trackStepComplete(2), false);
+  assert.equal(context.quizAnalytics.trackQuizComplete('family_program_plan'), false);
+  assert.deepEqual(context.window.dataLayer, []);
+  assert.equal(context.quizAnalytics.completionSignature(), '');
+});
+
+test('quiz start waits for initial consent resolution without replaying a denied start', () => {
+  const granted = quizAnalyticsHarness(undefined);
+  assert.equal(granted.quizAnalytics.trackQuizStart('cta'), false);
+  assert.equal(granted.quizAnalytics.trackQuizStart('cta'), false);
+  granted.window.joaoConsentState = { analytics_storage: 'granted', ad_storage: 'denied' };
+  granted.window.dispatchTestEvent('joao:consentchange');
+  assert.deepEqual(JSON.parse(JSON.stringify(granted.window.dataLayer)), [{
+    event: 'quiz_start',
+    quiz_name: 'program_fit',
+    form_name: 'program_fit_quiz',
+    lead_type: 'quiz',
+    route_source: 'practice-under-pressure',
+    quiz_entry: 'cta',
+  }]);
+
+  const denied = quizAnalyticsHarness(undefined);
+  denied.quizAnalytics.trackQuizStart('cta');
+  denied.window.joaoConsentState = { analytics_storage: 'denied', ad_storage: 'denied' };
+  denied.window.dispatchTestEvent('joao:consentchange');
+  denied.window.joaoConsentState = { analytics_storage: 'granted', ad_storage: 'granted' };
+  denied.window.dispatchTestEvent('joao:consentchange');
+  assert.deepEqual(denied.window.dataLayer, []);
+});
+
+test('quiz step analytics exclude child count and age bands and dedupe backtracking', () => {
+  const context = quizAnalyticsHarness({ analytics_storage: 'granted', ad_storage: 'denied' });
+  Object.assign(context.quizAnalytics.answers, {
+    audience: 'child',
+    child_count: '4+',
+    stage: ['little', 'youth'],
+    goal: 'confidence',
+    experience: 'new',
+    location: 'dripping',
+  });
+  assert.equal(context.quizAnalytics.trackStepComplete(1), true);
+  assert.equal(context.quizAnalytics.trackStepComplete(1), false);
+  assert.equal(context.quizAnalytics.trackStepComplete(2), true);
+  assert.equal(context.quizAnalytics.trackStepComplete(2), false);
+  const events = JSON.parse(JSON.stringify(context.window.dataLayer));
+  assert.deepEqual(events.map((event) => event.quiz_answer), ['child', 'not_collected']);
+  assert.doesNotMatch(JSON.stringify(events), /4\+|little|youth|child_count|age_bands/);
+});
+
+test('quiz completion ignores identical retries and labels changed-answer revisions', () => {
+  const context = quizAnalyticsHarness({ analytics_storage: 'granted', ad_storage: 'denied' });
+  Object.assign(context.quizAnalytics.answers, {
+    audience: 'adult', stage: 'new', goal: 'fundamentals', experience: 'group', location: 'dripping',
+  });
+  assert.equal(context.quizAnalytics.trackQuizComplete('adult_group_bjj'), true);
+  assert.equal(context.quizAnalytics.trackQuizComplete('adult_group_bjj'), false);
+  context.quizAnalytics.answers.experience = 'private';
+  assert.equal(context.quizAnalytics.trackQuizComplete('private_coaching'), true);
+  const events = JSON.parse(JSON.stringify(context.window.dataLayer));
+  assert.deepEqual(events.map((event) => event.quiz_revision), ['first_completion', 'answers_changed']);
+  assert.deepEqual(events.map((event) => event.recommendation), ['adult_group_bjj', 'private_coaching']);
+});
+
+test('quiz emits a complete non-PII funnel contract with controlled question enums', () => {
+  const js = read('site/assets/program-fit-quiz.js');
+  for (const event of [
+    'quiz_start',
+    'quiz_step_complete',
+    'quiz_back',
+    'quiz_complete',
+    'quiz_result_view',
+    'lead_submit_attempt',
+    'lead_submit_success',
+    'lead_submit_error',
+  ]) {
+    assert.match(js, new RegExp(`pushQuizEvent\\('${event}'`), `${event} must use the shared analytics helper`);
+  }
+  assert.match(js, /const questionKeys = \['audience', 'stage', 'goal', 'experience', 'location', 'contact'\]/);
+  assert.match(js, /quiz_question: questionKeys\[stepNumber - 1\]/);
+  assert.match(js, /quiz_answer: safeStepAnswer\(stepNumber\)/);
+  assert.match(js, /if \(trackedStepCompletions\.has\(stepNumber\)\) return false/);
+  assert.match(js, /if \(nextCompletionSignature === completionSignature\) return false/);
+  assert.match(js, /trackedStepCompletions\.clear\(\)/);
 });
 
 test('teen and family recommendations map to explicit accepted CRM enums', () => {
