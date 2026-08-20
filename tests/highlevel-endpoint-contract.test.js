@@ -47,7 +47,7 @@ test('contact payload is duplicate-safe, preserves existing tags/source, and opp
   assert.match(opportunityBuilder, /pipelineId/);
   assert.match(opportunityBuilder, /pipelineStageId/);
   assert.match(opportunityBuilder, /status' => 'open'/);
-  assert.match(opportunityBuilder, /assignedTo/);
+  assert.doesNotMatch(opportunityBuilder, /assignedTo/);
   assert.match(php, /\/contacts\/upsert/);
   assert.match(php, /\/opportunities\/upsert/);
   assert.match(php, /GHL_ENABLE_TAG_ADD/);
@@ -55,9 +55,13 @@ test('contact payload is duplicate-safe, preserves existing tags/source, and opp
 });
 
 test('provider calls use server-only config, bounded TLS curl, and non-PII logging', () => {
+  assert.match(php, /Authorization:/);
+  assert.match(php, /Version: 2021-07-28/);
   assert.match(php, /GHL_ENV_FILE/);
   assert.match(php, /DOCUMENT_ROOT/);
   assert.match(php, /GHL_CUSTOM_FIELD_MAP_JSON/);
+  assert.match(php, /GHL_ALLOW_CORE_ONLY/);
+  assert.match(php, /CURLOPT_USERAGENT/);
   assert.match(php, /CURLOPT_CONNECTTIMEOUT => 4/);
   assert.match(php, /CURLOPT_TIMEOUT => 10/);
   assert.match(php, /CURLOPT_PROTOCOLS => CURLPROTO_HTTPS/);

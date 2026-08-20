@@ -22,7 +22,7 @@ function respond(int $status, array $body): never
 
 function log_event(string $requestId, string $event, array $safeContext = []): void
 {
-    $allowed = array_intersect_key($safeContext, array_flip(['status', 'operation', 'curl_errno', 'provider_trace']));
+    $allowed = array_intersect_key($safeContext, array_flip(['status', 'operation', 'curl_errno', 'provider_trace', 'exception', 'reason']));
     error_log('lead_api ' . json_encode(['request_id' => $requestId, 'event' => $event] + $allowed, JSON_UNESCAPED_SLASHES));
 }
 
@@ -312,6 +312,9 @@ function custom_field_map(): array
     if (!is_array($map)) {
         throw new RuntimeException('Custom field mapping is not configured.');
     }
+    if ($map === [] && env_value('GHL_ALLOW_CORE_ONLY', 'false') === 'true') {
+        return [];
+    }
     $requiredFieldMappings = ['request_id', 'form_id', 'schema_version', 'lead_type', 'route_source', 'recommended_program', 'email_consent', 'sms_consent', 'consent_disclosure_version', 'consent_timestamp', 'message', 'role', 'age', 'availability'];
     foreach ($requiredFieldMappings as $required) {
         if (!isset($map[$required]) || !is_array($map[$required])) {
@@ -334,21 +337,49 @@ function custom_field_map(): array
 function flattened_values(array $lead): array
 {
     $values = [
-        'request_id' => $lead['request_id'], 'form_id' => $lead['form_id'], 'schema_version' => $lead['schema_version'],
-        'lead_type' => $lead['lead_type'], 'route_source' => clean_text($lead['route_source'] ?? '', 40), 'audience' => $lead['audience'], 'child_count' => $lead['child_count'],
-        'age_bands' => implode(',', $lead['age_bands']), 'stage' => $lead['stage'], 'goal' => $lead['goal'],
-        'experience' => $lead['experience'], 'preferred_location' => $lead['preferred_location'],
-        'recommended_program' => $lead['recommended_program'], 'email_consent' => $lead['email_consent'] ? 'granted' : 'not_granted',
+        'request_id' => $lead['request_id'],
+        'form_id' => $lead['form_id'],
+        'schema_version' => $lead['schema_version'],
+        'lead_type' => $lead['lead_type'],
+        'route_source' => clean_text($lead['route_source'] ?? '', 40),
+        'audience' => $lead['audience'],
+        'child_count' => $lead['child_count'],
+        'age_bands' => implode(',', $lead['age_bands']),
+        'stage' => $lead['stage'],
+        'goal' => $lead['goal'],
+        'primary_goal' => $lead['goal'],
+        'experience' => $lead['experience'],
+        'preferred_location' => $lead['preferred_location'],
+        'recommended_program' => $lead['recommended_program'],
+        'email_consent' => $lead['email_consent'] ? 'granted' : 'not_granted',
         'sms_consent' => $lead['sms_consent'] ? 'granted' : 'not_granted',
-        'consent_disclosure_version' => $lead['consent_disclosure_version'], 'consent_timestamp' => gmdate('c'),
+        'consent_disclosure_version' => $lead['consent_disclosure_version'],
+        'consent_timestamp' => gmdate('c'),
         'submission_page' => $lead['page'],
         'message' => clean_text($lead['message'] ?? '', 1500),
         'role' => clean_text($lead['role'] ?? '', 120),
         'age' => clean_text($lead['age'] ?? '', 10),
         'availability' => clean_text($lead['availability'] ?? '', 500),
+        'first_name' => clean_text($lead['first_name'] ?? '', 80),
+        'last_name' => clean_text($lead['last_name'] ?? '', 80),
+        'email' => clean_text($lead['email'] ?? '', 120),
+        'phone' => clean_text($lead['phone'] ?? '', 40),
+        'company_name' => clean_text($lead['company_name'] ?? '', 120),
+        'address1' => clean_text($lead['address1'] ?? '', 160),
+        'city' => clean_text($lead['city'] ?? '', 120),
+        'country' => clean_text($lead['country'] ?? '', 80),
+        'state' => clean_text($lead['state'] ?? '', 80),
+        'postal_code' => clean_text($lead['postal_code'] ?? '', 20),
+        'website' => clean_text($lead['website'] ?? '', 240),
+        'timezone' => clean_text($lead['timezone'] ?? '', 80),
+        'lead_source_detail' => clean_text($lead['lead_source_detail'] ?? '', 120),
+        'lead_source_original' => clean_text($lead['lead_source_original'] ?? '', 120),
+        'source' => clean_text($lead['source'] ?? '', 80),
+        'type' => clean_text($lead['type'] ?? '', 80),
+        'date_of_birth' => clean_text($lead['date_of_birth'] ?? '', 40),
     ];
     $allowedTouchKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'landing_page', 'referrer_host', 'captured_at'];
-    foreach (['first', 'latest'] as $touchName) {
+    foreach (["first", "latest"] as $touchName) {
         $touch = is_array($lead['attribution'][$touchName] ?? null) ? $lead['attribution'][$touchName] : [];
         foreach ($allowedTouchKeys as $key) {
             $values[$touchName . '_' . $key] = clean_text($touch[$key] ?? '', $key === 'landing_page' ? 240 : 160);
@@ -361,10 +392,15 @@ function build_custom_fields(array $lead, array $map): array
 {
     $values = flattened_values($lead);
     $fields = [];
+    $seenKeys = [];
     foreach ($map as $logical => $definition) {
         if (!array_key_exists($logical, $values) || $values[$logical] === '') {
             continue;
         }
+        if (isset($seenKeys[$definition['key']])) {
+            continue;
+        }
+        $seenKeys[$definition['key']] = true;
         $fields[] = ['id' => $definition['id'], 'key' => $definition['key'], 'fieldValue' => $values[$logical]];
     }
     return $fields;
@@ -385,11 +421,12 @@ function ghl_request(string $method, string $path, array $payload, string $reque
         CURLOPT_POSTFIELDS => json_encode($payload, JSON_UNESCAPED_SLASHES),
         CURLOPT_HTTPHEADER => [
             'Authorization: Bearer ' . $token,
-            'Version: v3',
+            'Version: 2021-07-28',
             'Content-Type: application/json',
             'Accept: application/json',
             'X-Request-ID: ' . $requestId,
         ],
+        CURLOPT_USERAGENT => 'Mozilla/5.0 (compatible; JoaoCrusBJJLeadBridge/1.0; +https://joaocrusbjj.com/)',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_CONNECTTIMEOUT => 4,
         CURLOPT_TIMEOUT => 10,
@@ -420,10 +457,10 @@ function build_contact_payload(array $lead, array $map, array $config): array
         'locationId' => $config['location_id'],
         'firstName' => $lead['first_name'],
         'email' => $lead['email'],
-        'assignedTo' => $config['owner_id'],
         'createNewIfDuplicateAllowed' => false,
         'customFields' => build_custom_fields($lead, $map),
     ];
+    if ($config['owner_id'] !== '') $payload['assignedTo'] = $config['owner_id'];
     if ($lead['last_name'] !== '') $payload['lastName'] = $lead['last_name'];
     if ($lead['phone'] !== '') $payload['phone'] = $lead['phone'];
     return $payload;
@@ -440,7 +477,6 @@ function build_opportunity_payload(array $lead, string $contactId, array $config
         'contactId' => $contactId,
         'name' => 'Website lead - ' . $lead['recommended_program'],
         'status' => 'open',
-        'assignedTo' => $config['owner_id'],
     ];
 }
 
@@ -525,7 +561,7 @@ try {
         'stage_id' => env_value('GHL_NEW_LEAD_STAGE_ID'),
         'owner_id' => env_value('GHL_OWNER_USER_ID'),
     ];
-    if (in_array('', $config, true)) {
+    if ($config['location_id'] === '' || $config['pipeline_id'] === '' || $config['stage_id'] === '') {
         throw new RuntimeException('Provider account IDs are not configured.');
     }
     $map = custom_field_map();
@@ -554,6 +590,9 @@ try {
     respond(400, ['accepted' => false, 'error' => $exception instanceof InvalidArgumentException ? $exception->getMessage() : 'Invalid JSON request.']);
 } catch (Throwable $exception) {
     $requestId = isset($lead['request_id']) ? (string)$lead['request_id'] : 'unavailable';
-    log_event($requestId, 'delivery_failed');
+    log_event($requestId, 'delivery_failed', [
+        'exception' => get_class($exception),
+        'reason' => clean_text($exception->getMessage(), 160),
+    ]);
     respond(502, ['accepted' => false, 'error' => 'We could not securely accept your request. Please try again or call 512-644-4560.']);
 }
