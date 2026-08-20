@@ -16,12 +16,103 @@
   const error = root.querySelector('[data-error]');
   const endpoint = root.dataset.endpoint || '';
   const routeParams = new URLSearchParams(window.location.search);
+  if (routeParams.get('embed') === '1') document.body.classList.add('fit-embed');
   const allowedRouteSources = ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure'];
   const requestedRouteSource = routeParams.get('source');
   const routeSource = allowedRouteSources.includes(requestedRouteSource) ? requestedRouteSource : '';
   let currentStep = 1;
   let requestId = '';
+  let completionSignature = '';
+  let quizStartTracked = false;
+  let quizStartPending = false;
   const answers = {};
+  const trackedStepCompletions = new Set();
+  const questionKeys = ['audience', 'stage', 'goal', 'experience', 'location', 'contact'];
+  const quizName = endpoint ? 'program_fit' : 'program_fit_preview';
+
+  function pushQuizEvent(eventName, parameters = {}) {
+    if (!window.joaoConsentState ||
+        (window.joaoConsentState.analytics_storage !== 'granted' &&
+         window.joaoConsentState.ad_storage !== 'granted')) {
+      return false;
+    }
+    const payload = {
+      event: eventName,
+      quiz_name: quizName,
+      form_name: 'program_fit_quiz',
+      lead_type: 'quiz',
+      route_source: routeSource,
+      ...parameters
+    };
+    Object.keys(payload).forEach((key) => {
+      if (payload[key] === '' || payload[key] === undefined || payload[key] === null) delete payload[key];
+    });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(payload);
+    return true;
+  }
+
+  function safeStepAnswer(stepNumber) {
+    if (stepNumber === 1) return answers.audience;
+    if (stepNumber === 2) return 'not_collected';
+    if (stepNumber === 3) return answers.goal;
+    if (stepNumber === 4) return answers.experience;
+    if (stepNumber === 5) return answers.location;
+    if (stepNumber === 6) return 'completed';
+    return '';
+  }
+
+  function trackStepComplete(stepNumber) {
+    if (trackedStepCompletions.has(stepNumber)) return false;
+    const tracked = pushQuizEvent('quiz_step_complete', {
+      quiz_step: stepNumber,
+      quiz_question: questionKeys[stepNumber - 1],
+      quiz_answer: safeStepAnswer(stepNumber)
+    });
+    if (tracked) trackedStepCompletions.add(stepNumber);
+    return tracked;
+  }
+
+  function currentCompletionSignature(recommendation) {
+    return JSON.stringify([
+      answers.audience || '',
+      answers.child_count || '',
+      Array.isArray(answers.stage) ? answers.stage.slice().sort() : (answers.stage || ''),
+      answers.goal || '',
+      answers.experience || '',
+      answers.location || '',
+      recommendation
+    ]);
+  }
+
+  function trackQuizComplete(recommendation) {
+    const nextCompletionSignature = currentCompletionSignature(recommendation);
+    if (nextCompletionSignature === completionSignature) return false;
+    const tracked = pushQuizEvent('quiz_complete', {
+      recommendation,
+      quiz_revision: completionSignature ? 'answers_changed' : 'first_completion'
+    });
+    if (tracked) completionSignature = nextCompletionSignature;
+    return tracked;
+  }
+
+  function trackQuizStart(entry) {
+    if (quizStartTracked || quizStartPending) return false;
+    const state = window.joaoConsentState || {};
+    const measurementGranted = state.analytics_storage === 'granted' || state.ad_storage === 'granted';
+    if (measurementGranted) {
+      quizStartTracked = pushQuizEvent('quiz_start', { quiz_entry: entry });
+      return quizStartTracked;
+    }
+    const regionResolved = window.joaoConsentRegion && window.joaoConsentRegion.policy !== 'unknown';
+    if (regionResolved || !window.joaoRegionReady) return false;
+    quizStartPending = true;
+    window.addEventListener('joao:consentchange', () => {
+      quizStartPending = false;
+      quizStartTracked = pushQuizEvent('quiz_start', { quiz_entry: entry });
+    }, { once: true });
+    return false;
+  }
 
   const icon = (type) => {
     const icons = {
@@ -393,12 +484,13 @@
     }
   }
 
-  root.querySelector('[data-start]').addEventListener('click', () => {
+  function startQuiz(entry) {
     showScreen('quiz');
     showStep(1);
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'quiz_start', quiz_name: endpoint ? 'program_fit' : 'program_fit_preview' });
-  });
+    trackQuizStart(entry);
+  }
+
+  root.querySelector('[data-start]').addEventListener('click', () => startQuiz('intro'));
 
   form.addEventListener('input', syncControls);
   form.addEventListener('change', (event) => {
@@ -416,10 +508,14 @@
       return;
     }
     recordStep();
+    trackStepComplete(currentStep);
     showStep(currentStep + 1);
   });
 
-  backButton.addEventListener('click', () => showStep(currentStep - 1, 'back'));
+  backButton.addEventListener('click', () => {
+    pushQuizEvent('quiz_back', { quiz_step: currentStep, quiz_destination_step: currentStep - 1 });
+    showStep(currentStep - 1, 'back');
+  });
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -428,14 +524,19 @@
       return;
     }
     recordStep();
+    trackStepComplete(6);
     const result = calculateResult();
     renderResult(result);
+    const recommendation = recommendationKey(result);
 
-    window.dataLayer = window.dataLayer || [];
+    trackQuizComplete(recommendation);
+
     if (!endpoint) {
       showScreen('matching');
-      window.setTimeout(() => showScreen('result'), 1050);
-      window.dataLayer.push({ event: 'quiz_preview_complete', quiz_name: 'program_fit_preview', recommendation: recommendationKey(result) });
+      window.setTimeout(() => {
+        showScreen('result');
+        pushQuizEvent('quiz_result_view', { recommendation });
+      }, 1050);
       return;
     }
 
@@ -444,17 +545,28 @@
     const originalText = submitButton.innerHTML;
     submitButton.textContent = 'Sending securely…';
     showScreen('matching');
-    window.dataLayer.push({ event: 'lead_submit_attempt', form_id: 'program_fit_quiz', recommendation: recommendationKey(result) });
+    pushQuizEvent('lead_submit_attempt', {
+      form_id: 'program_fit_quiz',
+      recommendation,
+      lead_program: recommendation,
+      lead_location: answers.location
+    });
 
     try {
       await submitLead(leadPayload(result));
       showScreen('result');
-      window.dataLayer.push({ event: 'lead_submit_success', form_id: 'program_fit_quiz', recommendation: recommendationKey(result) });
+      pushQuizEvent('lead_submit_success', {
+        form_id: 'program_fit_quiz',
+        recommendation,
+        lead_program: recommendation,
+        lead_location: answers.location
+      });
+      pushQuizEvent('quiz_result_view', { recommendation });
     } catch (submitError) {
       showScreen('quiz');
       showStep(6);
       error.textContent = 'We could not securely send your request. Please try again or call 512-644-4560.';
-      window.dataLayer.push({ event: 'lead_submit_error', form_id: 'program_fit_quiz' });
+      pushQuizEvent('lead_submit_error', { form_id: 'program_fit_quiz' });
     } finally {
       submitButton.disabled = false;
       submitButton.removeAttribute('aria-busy');
@@ -466,7 +578,12 @@
     form.reset();
     Object.keys(answers).forEach((key) => delete answers[key]);
     requestId = '';
+    completionSignature = '';
+    quizStartTracked = false;
+    quizStartPending = false;
+    trackedStepCompletions.clear();
     root.querySelectorAll('[data-dynamic-options]').forEach((container) => { container.innerHTML = ''; });
+    pushQuizEvent('quiz_restart');
     showScreen('intro');
     currentStep = 1;
     syncControls();
@@ -480,5 +597,6 @@
       populateBranch();
     }
   }
-  syncControls();
+  if (routeParams.get('start') === 'quiz') startQuiz('cta');
+  else syncControls();
 })();

@@ -29,7 +29,7 @@
 
 ## Practice Under Pressure offline QR campaign (updated 2026-08-13)
 
-- ✅ The approved canonical landing page is `/practice-under-pressure/` using the pressure-response Iteration 2 message: **“Pressure is part of life. Practice what to do next.”** Its primary conversion route is the Program Finder quiz, with flyer query attribution preserved. The homepage booking popup remains unchanged.
+- ✅ The approved canonical landing page is `/practice-under-pressure/` using the pressure-response Iteration 2 message: **“Pressure is part of life. Practice what to do next.”** Its primary CTA opens the Program Finder directly at Question 1, skipping the quiz intro while preserving flyer attribution. Standalone quiz visits retain the intro. The homepage booking popup remains unchanged.
 - ✅ `/found-the-flyer/` is the former campaign URL and must remain a one-hop, query-preserving 301 redirect to `/practice-under-pressure/` so existing QR codes and attribution parameters continue to work.
 - ✅ Preserve the flyer-curiosity version and prior pressure-response iterations as noindex comparison artifacts. The approved Iteration 2 becomes the locked control for future tests.
 - 🟡 Shared native forms and the Program Finder are code-ready to use the Bluehost `/api/lead.php` HighLevel adapter. Production activation remains blocked on server-only configuration and controlled live acceptance. Success requires explicit contact and opportunity acceptance. Legacy internal email is best-effort only after CRM acceptance, and automated SMS remains held pending A2P.
@@ -39,7 +39,8 @@
 
 ## Parent Guide AI-search cluster (2026-07-29)
 
-- ✅ The canonical Parent Guide is a public, indexable resource hub at `/parent-guide/`, supported by five focused answer pages covering starting age, tapping, ages 3-7 class structure, choosing a program by age, and first-class preparation.
+- ✅ The canonical Parent Guide is a public, indexable resource hub at `/parent-guide/`, supported by focused answer pages covering starting age, tapping, ages 3-7 class structure, choosing a program by age, first-class preparation, and how children practice life skills in BJJ.
+- ✅ The life-skills article owns informational intent around listening, boundaries, persistence, partner awareness, resetting, and problem-solving. It must support, not replace or cannibalize, the commercial Kids BJJ page.
 - ✅ Each resource uses a concise direct-answer block, visible publication context, internal links, claim-safe language, and Article schema. Visible FAQ content may also use FAQPage schema when the structured data exactly matches the page.
 - ✅ Research claims must cite the underlying source and remain within the evidence tier. Preschool movement research may support cautious language about attention, motor development, and self-regulation, but must not be presented as proof of BJJ-specific outcomes at age 3.
 - ✅ The cluster may explain tapping as a shared stop signal and training habit. It must not claim that tapping eliminates injury risk or guarantees behavior outside class.

@@ -37,6 +37,12 @@ CONSENT_POLICY_URL = versioned_asset_url("consent-policy.js")
 CONSENT_STYLE_URL = versioned_asset_url("consent-controls.css")
 ATTRIBUTION_URL = versioned_asset_url("attribution.js")
 CONSENT_CONTROLS_URL = versioned_asset_url("consent-controls.js")
+PROGRAM_FIT_QUIZ_URL = versioned_asset_url("program-fit-quiz.js")
+
+
+def version_program_fit_quiz_script(html: str) -> str:
+    """Prevent browsers and CDNs from retaining stale quiz behavior across releases."""
+    return html.replace("../assets/program-fit-quiz.js", PROGRAM_FIT_QUIZ_URL)
 
 GTM_HEAD_SNIPPET = rf"""<!-- Google Tag Manager -->
     <script src="{CONSENT_POLICY_URL}"></script>
@@ -50,7 +56,7 @@ GTM_HEAD_SNIPPET = rf"""<!-- Google Tag Manager -->
     var safe=null;try{{var u=new URL(w.location.href);safe=new URL(u.origin+u.pathname);
     {json.dumps(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'qa', 'gtm_debug', 'gtm_auth', 'gtm_preview', 'gtm_cookies_win'])}.forEach(function(k){{
     if(u.searchParams.has(k)){{var v=safeCampaignValue(u.searchParams.get(k));if(v)safe.searchParams.set(k,v);}}}});
-    var routeEnums={{source:{json.dumps(['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure'])},path:{json.dumps(['child', 'adult', 'help', 'undecided'])}}};
+    var routeEnums={{source:{json.dumps(['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure'])},path:{json.dumps(['child', 'adult', 'help', 'undecided'])},embed:{json.dumps(['1'])},start:{json.dumps(['quiz'])}}};
     Object.keys(routeEnums).forEach(function(k){{var v=u.searchParams.get(k);if(routeEnums[k].indexOf(v)!==-1)safe.searchParams.set(k,v);}});
     if(u.pathname+u.search!==safe.pathname+safe.search)w.history.replaceState(w.history.state,'',safe.pathname+safe.search);
     }}catch(e){{}}
@@ -235,6 +241,7 @@ def main() -> None:
         source_path = ROOT / "site" / page["source_file"] if page.get("source_file") else SOURCE / page["file"]
         html = source_path.read_text(encoding="utf-8")
         html = add_base_element(html)
+        html = version_program_fit_quiz_script(html)
         html = add_attribution_script(html)
         html = add_google_tag_manager(html)
         html = rewrite_internal_html_links(html, routes)
