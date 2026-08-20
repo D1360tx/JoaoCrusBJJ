@@ -4,29 +4,42 @@ set -euo pipefail
 usage() {
   cat <<'USAGE'
 Usage:
-  ghl_get_stage_ids.sh <GHL_PRIVATE_INTEGRATION_TOKEN> <GHL_LOCATION_ID> <GHL_PIPELINE_ID>
+  ghl_get_stage_ids.sh <GHL_LOCATION_ID> <GHL_PIPELINE_ID>
 
 Outputs:
   - one line per pipeline stage as:  "<stage_name>,<stage_id>"
   - only for the specified pipeline.
 
-Environment variables (optional overrides):
+Environment variables:
+  - GHL_PRIVATE_INTEGRATION_TOKEN: preferred token source. If omitted in an
+    interactive shell, the script prompts silently instead of putting the
+    token in shell history or the process list.
   - GHL_API_VERSION: overrides Version header (default: 2021-07-28)
 USAGE
 }
 
-if [[ ${#} -ne 3 ]]; then
+if [[ ${#} -ne 2 ]]; then
   usage
   exit 1
 fi
 
-TOKEN=$1
-LOCATION_ID=$2
-PIPELINE_ID=$3
+LOCATION_ID=$1
+PIPELINE_ID=$2
+TOKEN=${GHL_PRIVATE_INTEGRATION_TOKEN:-}
 API_VERSION=${GHL_API_VERSION:-"2021-07-28"}
 
-if [[ -z "$TOKEN" || -z "$LOCATION_ID" || -z "$PIPELINE_ID" ]]; then
-  echo "ERROR: token, locationId, and pipelineId are required." >&2
+if [[ -z "$TOKEN" && -t 0 ]]; then
+  read -r -s -p "HighLevel private integration token: " TOKEN
+  echo
+fi
+
+if [[ -z "$TOKEN" ]]; then
+  echo "ERROR: set GHL_PRIVATE_INTEGRATION_TOKEN or run from an interactive shell." >&2
+  exit 1
+fi
+
+if [[ -z "$LOCATION_ID" || -z "$PIPELINE_ID" ]]; then
+  echo "ERROR: locationId and pipelineId are required." >&2
   exit 1
 fi
 

@@ -6,6 +6,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 const php = read('deploy/bluehost/api/lead.php');
+const stageHelper = read('scripts/ghl_get_stage_ids.sh');
 
 test('endpoint enforces method, same-origin, JSON and bounded body controls', () => {
   assert.match(php, /REQUEST_METHOD/);
@@ -98,4 +99,11 @@ test('legacy and Teen inquiry context is validated and retained for CRM mapping 
   assert.match(php, /'Age: ' \. \(\(\$lead\['age'\]/);
   assert.match(php, /'Availability: ' \. \(\(\$lead\['availability'\]/);
   assert.match(php, /teen_interest_v1/);
+});
+
+test('stage discovery helper keeps the private token out of positional arguments', () => {
+  assert.match(stageHelper, /GHL_PRIVATE_INTEGRATION_TOKEN/);
+  assert.match(stageHelper, /read -r -s/);
+  assert.match(stageHelper, /Authorization: Bearer \$\{TOKEN\}/);
+  assert.doesNotMatch(stageHelper, /TOKEN=\$1/);
 });
