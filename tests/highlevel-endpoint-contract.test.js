@@ -6,6 +6,8 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 const php = read('deploy/bluehost/api/lead.php');
+const stageHelper = read('scripts/ghl_get_stage_ids.sh');
+const bluehostHtaccess = read('deploy/bluehost/.htaccess');
 
 test('endpoint enforces method, same-origin, JSON and bounded body controls', () => {
   assert.match(php, /REQUEST_METHOD/);
@@ -47,7 +49,7 @@ test('contact payload is duplicate-safe, preserves existing tags/source, and opp
   assert.match(opportunityBuilder, /pipelineId/);
   assert.match(opportunityBuilder, /pipelineStageId/);
   assert.match(opportunityBuilder, /status' => 'open'/);
-  assert.match(opportunityBuilder, /assignedTo/);
+  assert.doesNotMatch(opportunityBuilder, /assignedTo/);
   assert.match(php, /\/contacts\/upsert/);
   assert.match(php, /\/opportunities\/upsert/);
   assert.match(php, /GHL_ENABLE_TAG_ADD/);
@@ -55,9 +57,17 @@ test('contact payload is duplicate-safe, preserves existing tags/source, and opp
 });
 
 test('provider calls use server-only config, bounded TLS curl, and non-PII logging', () => {
+  assert.match(php, /Authorization:/);
+  assert.match(php, /Version: 2021-07-28/);
   assert.match(php, /GHL_ENV_FILE/);
   assert.match(php, /DOCUMENT_ROOT/);
   assert.match(php, /GHL_CUSTOM_FIELD_MAP_JSON/);
+  assert.match(php, /GHL_ALLOW_CORE_ONLY/);
+  assert.ok(
+    php.indexOf("env_value('GHL_ALLOW_CORE_ONLY'") < php.indexOf("env_value('GHL_CUSTOM_FIELD_MAP_JSON'")
+  );
+  assert.match(bluehostHtaccess, /SetEnv GHL_ENV_FILE \/home1\/joaocrus\/\.joao-secure\/joao-highlevel\.env/);
+  assert.match(php, /CURLOPT_USERAGENT/);
   assert.match(php, /CURLOPT_CONNECTTIMEOUT => 4/);
   assert.match(php, /CURLOPT_TIMEOUT => 10/);
   assert.match(php, /CURLOPT_PROTOCOLS => CURLPROTO_HTTPS/);
@@ -80,6 +90,8 @@ test('success is explicit only after durable contact and opportunity acceptance'
 });
 
 test('legacy and Teen inquiry context is validated and retained for CRM mapping and fallback alert', () => {
+  assert.match(php, /'private_coaching'/);
+  assert.match(php, /'team_corporate'/);
   assert.match(php, /'teen_interest'/);
   assert.match(php, /'Teen Brazilian Jiu-Jitsu Ages 13-17'/);
   assert.match(php, /'Either location'/);
@@ -94,4 +106,11 @@ test('legacy and Teen inquiry context is validated and retained for CRM mapping 
   assert.match(php, /'Age: ' \. \(\(\$lead\['age'\]/);
   assert.match(php, /'Availability: ' \. \(\(\$lead\['availability'\]/);
   assert.match(php, /teen_interest_v1/);
+});
+
+test('stage discovery helper keeps the private token out of positional arguments', () => {
+  assert.match(stageHelper, /GHL_PRIVATE_INTEGRATION_TOKEN/);
+  assert.match(stageHelper, /read -r -s/);
+  assert.match(stageHelper, /Authorization: Bearer \$\{TOKEN\}/);
+  assert.doesNotMatch(stageHelper, /TOKEN=\$1/);
 });

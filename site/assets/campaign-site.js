@@ -246,7 +246,7 @@
     });
     function postLead(data) {
       var controller = new AbortController();
-      var timeout = window.setTimeout(function () { controller.abort(); }, 12000);
+      var timeout = window.setTimeout(function () { controller.abort(); }, 35000);
       return fetch("/api/lead.php", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
