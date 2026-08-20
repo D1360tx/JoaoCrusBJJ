@@ -97,7 +97,7 @@ test('quiz payload is retry-stable, channel-aware, and never places PII in analy
   assert.match(js, /first: attribution\.first_touch/);
   assert.match(js, /latest: attribution\.last_touch/);
   assert.match(js, /new AbortController\(\)/);
-  assert.match(js, /12000/);
+  assert.match(js, /35000/);
 
   const analyticsHelper = js.slice(js.indexOf('function pushQuizEvent'), js.indexOf('const icon'));
   assert.ok(analyticsHelper.length > 0, 'analytics helper must be defined before quiz behavior');
@@ -229,7 +229,7 @@ test('quiz and shared forms require the explicit accepted response contract', ()
   }
   assert.match(shared, /fetch\("\/api\/lead\.php"/);
   assert.match(shared, /new AbortController\(\)/);
-  assert.match(shared, /12000/);
+  assert.match(shared, /35000/);
   assert.match(shared, /data\.request_id = form\.dataset\.requestId/);
   assert.match(shared, /data-booking-form data-form-id="booking_popup" data-lead-type="class_inquiry"/);
   assert.doesNotMatch(shared, /fetch\("\/api\/contact\.php"/);

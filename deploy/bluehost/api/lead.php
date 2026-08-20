@@ -251,7 +251,7 @@ function normalize_quiz(array $data): array
 
 function normalize_legacy(array $data): array
 {
-    $leadType = require_enum(clean_text($data['lead_type'] ?? 'class_inquiry', 40), ['class_inquiry', 'guide', 'offline_flyer', 'team_inquiry', 'teen_interest'], 'lead type');
+    $leadType = require_enum(clean_text($data['lead_type'] ?? 'class_inquiry', 40), ['class_inquiry', 'private_coaching', 'team_corporate', 'guide', 'offline_flyer', 'team_inquiry', 'teen_interest'], 'lead type');
     $formId = clean_text($data['form_id'] ?? '', 80);
     if ($formId === '' || !preg_match('/^[a-z0-9_-]{2,80}$/', $formId)) {
         throw new InvalidArgumentException('Invalid form.');
@@ -307,13 +307,13 @@ function normalize_legacy(array $data): array
 
 function custom_field_map(): array
 {
+    if (env_value('GHL_ALLOW_CORE_ONLY', 'false') === 'true') {
+        return [];
+    }
     $raw = env_value('GHL_CUSTOM_FIELD_MAP_JSON');
     $map = json_decode($raw, true);
     if (!is_array($map)) {
         throw new RuntimeException('Custom field mapping is not configured.');
-    }
-    if ($map === [] && env_value('GHL_ALLOW_CORE_ONLY', 'false') === 'true') {
-        return [];
     }
     $requiredFieldMappings = ['request_id', 'form_id', 'schema_version', 'lead_type', 'route_source', 'recommended_program', 'email_consent', 'sms_consent', 'consent_disclosure_version', 'consent_timestamp', 'message', 'role', 'age', 'availability'];
     foreach ($requiredFieldMappings as $required) {

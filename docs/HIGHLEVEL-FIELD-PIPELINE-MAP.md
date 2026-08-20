@@ -111,8 +111,8 @@ All workflows remain draft or disabled until controlled tests pass. Historical i
 - Opportunity: `POST https://services.leadconnectorhq.com/opportunities/upsert`
 - Scope: `opportunities.write`
 - Authentication: Joao sub-account Private Integration Token
-- Headers: `Authorization: Bearer ***`, `Version: v3`, JSON content/accept
-- Required account IDs: location, pipeline, new-lead stage, owner
+- Headers: `Authorization: Bearer ***`, `Version: 2021-07-28`, JSON content/accept
+- Required account IDs: location, pipeline, and new-lead stage. Owner is optional until a verified HighLevel user ID is selected; a blank owner intentionally leaves the native contact unassigned.
 
 Never commit or display the token. Store it outside the Bluehost document root and load it server-side.
 

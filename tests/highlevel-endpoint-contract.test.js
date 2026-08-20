@@ -7,6 +7,7 @@ const root = path.resolve(__dirname, '..');
 const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 const php = read('deploy/bluehost/api/lead.php');
 const stageHelper = read('scripts/ghl_get_stage_ids.sh');
+const bluehostHtaccess = read('deploy/bluehost/.htaccess');
 
 test('endpoint enforces method, same-origin, JSON and bounded body controls', () => {
   assert.match(php, /REQUEST_METHOD/);
@@ -62,6 +63,10 @@ test('provider calls use server-only config, bounded TLS curl, and non-PII loggi
   assert.match(php, /DOCUMENT_ROOT/);
   assert.match(php, /GHL_CUSTOM_FIELD_MAP_JSON/);
   assert.match(php, /GHL_ALLOW_CORE_ONLY/);
+  assert.ok(
+    php.indexOf("env_value('GHL_ALLOW_CORE_ONLY'") < php.indexOf("env_value('GHL_CUSTOM_FIELD_MAP_JSON'")
+  );
+  assert.match(bluehostHtaccess, /SetEnv GHL_ENV_FILE \/home1\/joaocrus\/\.joao-secure\/joao-highlevel\.env/);
   assert.match(php, /CURLOPT_USERAGENT/);
   assert.match(php, /CURLOPT_CONNECTTIMEOUT => 4/);
   assert.match(php, /CURLOPT_TIMEOUT => 10/);
@@ -85,6 +90,8 @@ test('success is explicit only after durable contact and opportunity acceptance'
 });
 
 test('legacy and Teen inquiry context is validated and retained for CRM mapping and fallback alert', () => {
+  assert.match(php, /'private_coaching'/);
+  assert.match(php, /'team_corporate'/);
   assert.match(php, /'teen_interest'/);
   assert.match(php, /'Teen Brazilian Jiu-Jitsu Ages 13-17'/);
   assert.match(php, /'Either location'/);
