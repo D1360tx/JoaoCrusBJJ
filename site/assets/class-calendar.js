@@ -18,6 +18,7 @@
     { id: "homeschool", label: "Homeschool Kids 5–8" },
     { id: "teen", label: "Teen 13–17" },
     { id: "adults", label: "Adults" },
+    { id: "after60", label: "Jiu-Jitsu After 60" },
     { id: "all", label: "All classes" },
   ];
   var CLASSES = [
@@ -51,6 +52,14 @@
       name: "Homeschool Program (Ages 5–8)",
       program: "homeschool",
       groups: ["homeschool", "kids"],
+      location: "ds",
+    },
+    {
+      day: 1,
+      time: "11:20 AM–12:10 PM",
+      name: "Jiu-Jitsu After 60",
+      program: "after60",
+      groups: ["after60"],
       location: "ds",
     },
     {
@@ -91,6 +100,14 @@
       name: "Homeschool Program (Ages 5–8)",
       program: "homeschool",
       groups: ["homeschool", "kids"],
+      location: "ds",
+    },
+    {
+      day: 3,
+      time: "11:20 AM–12:10 PM",
+      name: "Jiu-Jitsu After 60",
+      program: "after60",
+      groups: ["after60"],
       location: "ds",
     },
     {

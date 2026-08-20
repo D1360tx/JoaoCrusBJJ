@@ -159,7 +159,7 @@
       '<div class="field"><label for="booking-name">Your name</label><input id="booking-name" name="name" type="text" autocomplete="name" required></div>' +
       '<div class="field"><label for="booking-phone">Mobile number</label><input id="booking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>' +
       '<div class="field"><label for="booking-email">Email</label><input id="booking-email" name="email" type="email" autocomplete="email" required></div>' +
-      '<div class="field"><label for="booking-program">Who wants to train?</label><select id="booking-program" name="program" required><option value="">Choose a program</option><option>Little Champions 3–7</option><option>Youth 8–12</option><option>Teens 13–17</option><option>Adults</option><option>Private Coaching</option><option>Team / Corporate</option><option>Not sure yet</option></select></div>' +
+      '<div class="field"><label for="booking-program">Who wants to train?</label><select id="booking-program" name="program" required><option value="">Choose a program</option><option>Little Champions 3–7</option><option>Youth 8–12</option><option>Teens 13–17</option><option>Adults</option><option>Jiu-Jitsu After 60</option><option>Private Coaching</option><option>Team / Corporate</option><option>Not sure yet</option></select></div>' +
       '<div class="field"><label for="booking-location">Preferred location</label><select id="booking-location" name="location" required><option value="">Choose a location</option><option>Dripping Springs</option><option>Austin</option><option>Not sure yet</option></select></div>' +
       '<div class="field website-field" aria-hidden="true"><label for="booking-website">Leave this blank</label><input id="booking-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>' +
       '<div class="field full check booking-consent"><input id="booking-consent" name="consent" type="checkbox" required><label for="booking-consent">Joao Crus BJJ may email or call me about this request. Automated texts are not enabled from this form.</label></div>' +
@@ -188,6 +188,8 @@
         "teens-campaign-ages-13-17.html": "Teens 13–17",
         "adults-program": "Adults",
         "adults.html": "Adults",
+        "jiu-jitsu-after-60": "Jiu-Jitsu After 60",
+        "jiu-jitsu-after-60.html": "Jiu-Jitsu After 60",
         "private-bjj-lessons": "Private Coaching",
         "private-coaching.html": "Private Coaching",
         "team-building": "Team / Corporate",

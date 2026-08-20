@@ -208,7 +208,8 @@ test('single-child age selection uses radios, multi-child uses checkboxes, and p
   const js = read('site/assets/program-fit-quiz.js');
   assert.match(js, /input\.type = multiple \? 'checkbox' : 'radio'/);
   assert.match(js, /input\.required = !multiple/);
-  assert.match(js, /requestedPath === 'child' \|\| requestedPath === 'adult'/);
+  assert.match(js, /requestedPath === 'child' \|\| requestedPath === 'adult' \|\| requestedPath === 'after60'/);
+  assert.match(js, /\[name="stage"\]\[value="after60"\]/);
   assert.doesNotMatch(js, /requestedPath === 'help'/);
 });
 

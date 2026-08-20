@@ -150,11 +150,13 @@ def main() -> None:
         ("0", "5:50–6:35 PM", "Junior Warriors (Ages 8–12)", "ds"),
         ("0", "6:40–7:40 PM", "Adults", "ds"),
         ("1", "10:30–11:15 AM", "Homeschool Program (Ages 5–8)", "ds"),
+        ("1", "11:20 AM–12:10 PM", "Jiu-Jitsu After 60", "ds"),
         ("1", "5:00–5:45 PM", "Kids (Ages 8–12)", "austin"),
         ("2", "5:00–5:45 PM", "Little Champions (Ages 3–7)", "ds"),
         ("2", "5:50–6:35 PM", "Junior Warriors (Ages 8–12)", "ds"),
         ("2", "6:40–7:40 PM", "Adults", "ds"),
         ("3", "10:30–11:15 AM", "Homeschool Program (Ages 5–8)", "ds"),
+        ("3", "11:20 AM–12:10 PM", "Jiu-Jitsu After 60", "ds"),
         ("3", "5:00–5:45 PM", "Kids (Ages 8–12)", "austin"),
         ("5", "11:00 AM–12:00 PM", "Adults", "ds"),
     ]
@@ -169,6 +171,18 @@ def main() -> None:
     check(
         '{ id: "homeschool", label: "Homeschool Kids 5–8" }' in calendar_source,
         "homeschool program filter label is missing or has the wrong age range",
+    )
+    check(
+        calendar_source.count('groups: ["after60"]') == 2,
+        "Jiu-Jitsu After 60 must have exactly two standalone calendar records",
+    )
+    check(
+        '{ id: "after60", label: "Jiu-Jitsu After 60" }' in calendar_source,
+        "Jiu-Jitsu After 60 standalone program filter is missing",
+    )
+    check(
+        'groups: ["adults", "after60"]' not in calendar_source,
+        "Jiu-Jitsu After 60 must not be silently included in the Adults filter",
     )
 
     analytics_source = (ROOT / "site" / "assets" / "campaign-site.js").read_text(encoding="utf-8")

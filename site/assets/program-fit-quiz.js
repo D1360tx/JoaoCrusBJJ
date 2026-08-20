@@ -17,7 +17,7 @@
   const endpoint = root.dataset.endpoint || '';
   const routeParams = new URLSearchParams(window.location.search);
   if (routeParams.get('embed') === '1') document.body.classList.add('fit-embed');
-  const allowedRouteSources = ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure'];
+  const allowedRouteSources = ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'after60-page'];
   const requestedRouteSource = routeParams.get('source');
   const routeSource = allowedRouteSources.includes(requestedRouteSource) ? requestedRouteSource : '';
   let currentStep = 1;
@@ -172,6 +172,7 @@
         heading: 'Which describes your starting stage?',
         help: 'This shapes whether group training or private coaching is the stronger first step.',
         options: [
+          ['I am looking for the After 60 program', 'after60', 'A steady-paced, beginner-friendly group in Dripping Springs', 'confidence'],
           ['Completely new', 'new', 'I want a clear introduction', 'new'],
           ['Returning after time away', 'returning', 'I want to rebuild with direction', 'return'],
           ['Currently training', 'current', 'I want to improve a specific area', 'training'],
@@ -378,6 +379,14 @@
       };
     }
 
+    if (answers.stage === 'after60') return {
+      title: 'Jiu-Jitsu After 60',
+      summary: 'You selected the distinct After 60 program, a beginner-friendly Dripping Springs class with a steady pace and practical technique.',
+      reasons: ['A class specifically for students after 60', 'Two current weekday sessions', 'Technique and confidence developed at a steady pace'],
+      link: 'jiu-jitsu-after-60.html', linkText: 'View Jiu-Jitsu After 60', image: '../assets/campaign-images/adults-black-belt-group-2026-07.webp',
+      next: 'Review the After 60 class and schedule', location: 'Dripping Springs · Tue/Thu 11:20 a.m.–12:10 p.m.'
+    };
+
     const wantsPrivate = ['private', 'hybrid'].includes(answers.experience) || answers.goal === 'specific' || answers.goal === 'schedule' || answers.location === 'austin' || answers.stage === 'competition';
     if (wantsPrivate) return {
       title: 'Private Coaching',
@@ -416,7 +425,8 @@
       'Teen Interest Path': 'teen_interest_path',
       'Family Program Plan': 'family_program_plan',
       'Private Coaching': 'private_coaching',
-      'Adult Group BJJ': 'adult_group_bjj'
+      'Adult Group BJJ': 'adult_group_bjj',
+      'Jiu-Jitsu After 60': 'jiu_jitsu_after_60'
     };
     return keys[result.title] || 'staff_review';
   }
@@ -590,11 +600,15 @@
   });
 
   const requestedPath = routeParams.get('path');
-  if (requestedPath === 'child' || requestedPath === 'adult') {
-    const audienceInput = form.querySelector(`[name="audience"][value="${requestedPath}"]`);
+  if (requestedPath === 'child' || requestedPath === 'adult' || requestedPath === 'after60') {
+    const audienceInput = form.querySelector(`[name="audience"][value="${requestedPath === 'after60' ? 'adult' : requestedPath}"]`);
     if (audienceInput) {
       audienceInput.checked = true;
       populateBranch();
+      if (requestedPath === 'after60') {
+        const after60Input = form.querySelector('[name="stage"][value="after60"]');
+        if (after60Input) after60Input.checked = true;
+      }
     }
   }
   if (routeParams.get('start') === 'quiz') startQuiz('cta');
