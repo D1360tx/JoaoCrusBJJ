@@ -181,6 +181,9 @@ function expected_recommendation(array $lead): string
         || in_array($lead['goal'], ['specific', 'schedule'], true)
         || $lead['preferred_location'] === 'austin'
         || $lead['stage'] === 'competition';
+    if ($lead['stage'] === 'after60') {
+        return 'jiu_jitsu_after_60';
+    }
     return $private ? 'private_coaching' : 'adult_group_bjj';
 }
 
@@ -205,14 +208,14 @@ function normalize_quiz(array $data): array
         throw new InvalidArgumentException('Child fields do not match audience.');
     }
 
-    $stageAllowed = $audience === 'adult' ? ['new', 'returning', 'current', 'competition'] : ['little', 'youth', 'teen'];
+    $stageAllowed = $audience === 'adult' ? ['new', 'returning', 'current', 'competition', 'after60'] : ['little', 'youth', 'teen'];
     $goalAllowed = $audience === 'adult' ? ['fundamentals', 'specific', 'schedule', 'consistent'] : ['listening', 'confidence', 'boundaries', 'activity'];
     $experienceAllowed = $audience === 'adult' ? ['group', 'private', 'hybrid', 'help'] : ['new', 'tried', 'current', 'returning'];
     $locationAllowed = $audience === 'adult' ? ['dripping', 'austin', 'either'] : ['dripping', 'austin', 'help'];
     $stage = $audience === 'adult' ? require_enum(clean_text($data['stage'] ?? ($data['age_bands'][0] ?? ''), 20), $stageAllowed, 'stage') : (string)$ageBands[0];
     $routeSource = clean_text($data['route_source'] ?? '', 40);
     if ($routeSource !== '') {
-        require_enum($routeSource, ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure'], 'route source');
+        require_enum($routeSource, ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'after60-page'], 'route source');
     }
 
     $lead = [
@@ -232,7 +235,7 @@ function normalize_quiz(array $data): array
         'goal' => require_enum(clean_text($data['goal'] ?? '', 30), $goalAllowed, 'goal'),
         'experience' => require_enum(clean_text($data['experience'] ?? '', 30), $experienceAllowed, 'experience'),
         'preferred_location' => require_enum(clean_text($data['preferred_location'] ?? '', 30), $locationAllowed, 'location'),
-        'recommended_program' => require_enum(clean_text($data['recommended_program'] ?? '', 40), ['little_champions', 'youth_bjj', 'teen_interest_path', 'family_program_plan', 'private_coaching', 'adult_group_bjj'], 'recommendation'),
+        'recommended_program' => require_enum(clean_text($data['recommended_program'] ?? '', 40), ['little_champions', 'youth_bjj', 'teen_interest_path', 'family_program_plan', 'private_coaching', 'adult_group_bjj', 'jiu_jitsu_after_60'], 'recommendation'),
         'email_consent' => ($data['email_consent'] ?? false) === true,
         'sms_consent' => ($data['sms_consent'] ?? false) === true,
         'consent_disclosure_version' => require_enum(clean_text($data['consent_disclosure_version'] ?? '', 40), ['program_fit_v1'], 'consent disclosure'),
@@ -263,7 +266,7 @@ function normalize_legacy(array $data): array
     [$firstName, $lastName] = split_name(clean_text($data['name'] ?? '', 120));
     $isGuide = $leadType === 'guide';
     $isTeen = $leadType === 'teen_interest';
-    $program = $isGuide ? 'Parent Guide' : require_enum(clean_text($data['program'] ?? '', 80), ['Little Champions 3–7', 'Youth 8–12', 'Teens 13–17', 'Teen Brazilian Jiu-Jitsu Ages 13-17', 'Adults', 'Private Coaching', 'Team / Corporate', 'Not sure yet'], 'program');
+    $program = $isGuide ? 'Parent Guide' : require_enum(clean_text($data['program'] ?? '', 80), ['Little Champions 3–7', 'Youth 8–12', 'Teens 13–17', 'Teen Brazilian Jiu-Jitsu Ages 13-17', 'Adults', 'Jiu-Jitsu After 60', 'Private Coaching', 'Team / Corporate', 'Not sure yet'], 'program');
     $location = $isGuide ? 'Not applicable' : require_enum(clean_text($data['location'] ?? '', 40), ['Dripping Springs', 'Austin', 'Either location', 'Not sure yet'], 'location');
     $role = clean_text($data['role'] ?? '', 120);
     $age = clean_text($data['age'] ?? '', 10);

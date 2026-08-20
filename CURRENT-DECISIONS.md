@@ -80,6 +80,7 @@
 - ✅ Dripping Springs Youth, ages 8–12: Mon/Wed **5:50–6:35 p.m.**
 - ✅ Dripping Springs Homeschool Program, ages 5–8: Tue/Thu **10:30–11:15 a.m.**
 - ✅ Dripping Springs adults: Mon/Wed **6:40–7:40 p.m.** and Sat **11:00 a.m.–12:00 p.m.**
+- ✅ Dripping Springs Jiu-Jitsu After 60: Tue/Thu **11:20 a.m.–12:10 p.m.** This is a distinct program with its own schedule filter, not part of the Adults filter.
 - ✅ Austin Youth, ages 8–12: Tue/Thu **5:00–5:45 p.m.**
 - ✅ Austin publishes **adult private instruction by appointment** with flexible scheduling and beginner-friendly positioning.
 - 🔴 Austin recurring **adult group** schedule remains undecided; use an interest list until confirmed and do not add private appointments to the weekly calendar.
@@ -285,6 +286,8 @@ When a statement in those sources conflicts with this file, follow this file's c
 ---
 
 ## Change log
+
+- **2026-08-20** — Diego approved a public Jiu-Jitsu After 60 program page for Dripping Springs. Position it as beginner-friendly training with a steady pace, practical technique, and confidence. Publish the exact Tue/Thu 11:20 a.m.–12:10 p.m. schedule under a standalone `after60` calendar filter. Do not silently include these classes under Adults.
 
 - **2026-07-28** — Diego prioritized SEO and AI-search visibility for the custom-site launch. Build metadata, canonicals, structured entities, sitemap/robots rules, migration redirects, local-search signals, answer-ready content, and AI crawler access from the start. `llms.txt` may supplement discovery but must not replace indexable HTML, internal links, citations, or traditional SEO.
 
