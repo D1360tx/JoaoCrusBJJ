@@ -36,7 +36,22 @@ The initial controlled submission correctly created the contact and opportunity 
 - browser storage publishes `first_touch` and `last_touch`;
 - the gateway accepts `attribution.first` and `attribution.latest`.
 
-The frontend adapter now normalizes those values explicitly before submission. A regression test protects the contract. Final live UTM read-back is required after the release containing this adapter is deployed.
+The frontend adapter now normalizes those values explicitly before submission. A regression test protects the contract.
+
+After deployment, a fresh controlled booking-popup submission verified the production result:
+
+- first-touch and latest-touch source: `hermes_release`;
+- first-touch and latest-touch medium: `qa`;
+- first-touch and latest-touch content: `booking_popup`;
+- first-touch and latest-touch term: `release_302d106`;
+- landing page and submission page: `/`;
+- program: `Adults`;
+- location: `Dripping Springs`;
+- email consent: `granted`;
+- SMS consent: `not_granted`;
+- tags: `automation_hold` and `website_lead`;
+- Joao owner assignment; and
+- exactly one open opportunity in the intended pipeline stage.
 
 ## Workflow safeguards
 
@@ -71,14 +86,24 @@ Built 33 canonical pages and 76 assets
 Production validator passed 4,306 checks across 33 routes
 ```
 
-Local PHP lint was unavailable in WSL and must run on Bluehost against the staged and deployed `api/lead.php` before promotion.
+Local PHP lint was unavailable in WSL. Bluehost PHP 8.3 lint passed against both the staged and deployed `api/lead.php` before and after promotion.
+
+## Production release evidence
+
+- Pull request: [#68](https://github.com/D1360tx/JoaoCrusBJJ/pull/68)
+- Authoritative merge commit: `302d106c0f995a59dc6c5e1427e9550370e7c543`
+- Deployment source: fresh archive of that merge commit
+- Backup: created and checksummed before promotion outside the public web root
+- Staged artifact: 115 files verified against a SHA-256 manifest
+- Deployed artifact: all 115 files reverified against the same manifest
+- Public `campaign-site.js` SHA-256: `40ad37ff71eb64ce02d0aa454406801ba3ba1bdee568c0665f61fd9795e44f5a`
+- Public routes: homepage, Program Finder, quiz, Practice Under Pressure, and sitemap returned HTTP 200
+- Public lead endpoint: GET returned HTTP 405 as designed
+- Production form: accepted the fresh controlled popup submission and displayed the thank-you state
 
 ## Remaining launch gates
 
-- Deploy the exact reviewed merge commit to Bluehost with backup-first promotion and checksum verification.
-- Run one controlled popup submission with fresh UTMs and verify both first- and latest-touch fields in HighLevel.
-- Confirm the public production asset hash matches the reviewed artifact.
-- Complete Meta Pixel/CAPI ownership and deduplication testing before using Meta conversion optimization.
+- Resolve the duplicate Meta Pixel initialization warning observed during the live browser check, then complete Meta Pixel/CAPI ownership and deduplication testing before using Meta conversion optimization.
 - Complete Google Ads click-ID and offline-conversion testing before using qualified-lead bidding.
 - Keep automated SMS disabled until A2P registration, SMS consent, DND, STOP, and replay safety pass.
 - Complete Beehiiv suppression, Zen Planner handoff, failure recovery, and export/portability tests.
