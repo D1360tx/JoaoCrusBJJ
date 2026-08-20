@@ -8,6 +8,7 @@ const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 const php = read('deploy/bluehost/api/lead.php');
 const stageHelper = read('scripts/ghl_get_stage_ids.sh');
 const bluehostHtaccess = read('deploy/bluehost/.htaccess');
+const campaignSite = read('site/assets/campaign-site.js');
 
 test('endpoint enforces method, same-origin, JSON and bounded body controls', () => {
   assert.match(php, /REQUEST_METHOD/);
@@ -113,4 +114,14 @@ test('stage discovery helper keeps the private token out of positional arguments
   assert.match(stageHelper, /read -r -s/);
   assert.match(stageHelper, /Authorization: Bearer \$\{TOKEN\}/);
   assert.doesNotMatch(stageHelper, /TOKEN=\$1/);
+});
+
+test('website forms normalize stored attribution into the gateway first/latest contract', () => {
+  const attributionAdapter = campaignSite.slice(
+    campaignSite.indexOf('function currentAttribution'),
+    campaignSite.indexOf('function updateNavOffset')
+  );
+  assert.match(attributionAdapter, /first:\s*attribution\.first_touch/);
+  assert.match(attributionAdapter, /latest:\s*attribution\.last_touch/);
+  assert.doesNotMatch(attributionAdapter, /return window\.joaoAttribution \|\| \{\}/);
 });
