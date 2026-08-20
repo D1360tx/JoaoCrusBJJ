@@ -67,7 +67,11 @@
     }
 
     function currentAttribution() {
-      return window.joaoAttribution || {};
+      var attribution = window.joaoAttribution || {};
+      return {
+        first: attribution.first_touch || {},
+        latest: attribution.last_touch || {},
+      };
     }
 
     function updateNavOffset() {

@@ -4,7 +4,9 @@
 
 **Trigger:** Run this checklist immediately after the Joao-owned HighLevel account and sub-account are created, before paid campaigns or automated SMS are activated.
 
-**Status:** Pending HighLevel setup
+**Status:** Conditional pass for the website lead-intake path as of 2026-08-20. Meta CAPI, Google Ads conversion feedback, Beehiiv suppression, Zen Planner handoff, and export testing remain open.
+
+**Evidence:** [`HIGHLEVEL-GA4-ACCEPTANCE-2026-08-20.md`](HIGHLEVEL-GA4-ACCEPTANCE-2026-08-20.md)
 
 ## Purpose
 
