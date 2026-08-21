@@ -12,6 +12,7 @@ const jsPath = 'site/assets/found-the-flyer.js';
 const videoPath = 'site/assets/campaign-videos/practice-under-pressure-welcome-2026-08.mp4';
 const posterPath = 'site/assets/campaign-videos/practice-under-pressure-welcome-poster-2026-08.webp';
 const captionsPath = 'site/assets/campaign-videos/practice-under-pressure-welcome-2026-08.vtt';
+const htaccessPath = 'deploy/bluehost/.htaccess';
 
 test('practice-under-pressure hero uses the supplied responsive welcome video', () => {
   const page = read(pagePath);
@@ -53,6 +54,11 @@ test('caption timestamps remain valid through the full video', () => {
     assert.ok(seconds < 60, `invalid seconds component in ${timecode}`);
   });
   assert.match(captions, /01:17\.300/);
+});
+
+test('Bluehost serves WebVTT captions with the required MIME type', () => {
+  const htaccess = read(htaccessPath);
+  assert.match(htaccess, /^\s*AddType\s+text\/vtt\s+\.vtt$/m);
 });
 
 test('hero video respects reduced motion and emits consent-aware analytics', () => {
