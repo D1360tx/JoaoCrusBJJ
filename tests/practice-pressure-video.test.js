@@ -44,6 +44,17 @@ test('hero video styling preserves the portrait frame and branded captions', () 
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.ff-video-poster\.ff-video-portrait/);
 });
 
+test('caption timestamps remain valid through the full video', () => {
+  const captions = read(captionsPath);
+  const timecodes = captions.match(/\d{2}:\d{2}\.\d{3}/g) || [];
+  assert.ok(timecodes.length > 0, 'expected WebVTT timestamps');
+  timecodes.forEach((timecode) => {
+    const seconds = Number(timecode.split(':')[1]);
+    assert.ok(seconds < 60, `invalid seconds component in ${timecode}`);
+  });
+  assert.match(captions, /01:17\.300/);
+});
+
 test('hero video respects reduced motion and emits consent-aware analytics', () => {
   const js = read(jsPath);
   assert.match(js, /\[data-hero-video\]/);
