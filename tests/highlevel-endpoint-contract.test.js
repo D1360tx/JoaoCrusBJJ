@@ -59,6 +59,19 @@ test('contact payload is duplicate-safe, preserves existing tags/source, and opp
   assert.match(php, /\/contacts\/' \. rawurlencode\(\$contactId\) \. '\/tags'/);
 });
 
+test('SMS nurture release is consent-gated and independently disabled until carrier setup is ready', () => {
+  const tagBridge = php.slice(
+    php.indexOf('function add_tags_if_enabled'),
+    php.indexOf('function send_legacy_alert')
+  );
+  assert.match(tagBridge, /GHL_ENABLE_SMS_RELEASE/);
+  assert.match(tagBridge, /\$lead\['sms_consent'\] === true/);
+  assert.match(tagBridge, /\$lead\['phone'\] !== ''/);
+  assert.match(tagBridge, /sms_nurture_ready/);
+  assert.match(tagBridge, /automation_hold/);
+  assert.doesNotMatch(tagBridge, /remove.*automation_hold/i);
+});
+
 test('provider calls use server-only config, bounded TLS curl, and non-PII logging', () => {
   assert.match(php, /Authorization:/);
   assert.match(php, /Version: 2021-07-28/);

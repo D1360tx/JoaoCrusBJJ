@@ -238,7 +238,7 @@ function normalize_quiz(array $data): array
         'recommended_program' => require_enum(clean_text($data['recommended_program'] ?? '', 40), ['little_champions', 'youth_bjj', 'teen_interest_path', 'family_program_plan', 'private_coaching', 'adult_group_bjj', 'jiu_jitsu_after_60'], 'recommendation'),
         'email_consent' => ($data['email_consent'] ?? false) === true,
         'sms_consent' => ($data['sms_consent'] ?? false) === true,
-        'consent_disclosure_version' => require_enum(clean_text($data['consent_disclosure_version'] ?? '', 40), ['program_fit_v1'], 'consent disclosure'),
+        'consent_disclosure_version' => require_enum(clean_text($data['consent_disclosure_version'] ?? '', 40), ['program_fit_v1', 'program_fit_sms_v2'], 'consent disclosure'),
         'page' => clean_text($data['page'] ?? '', 300),
         'attribution' => is_array($data['attribution'] ?? null) ? $data['attribution'] : [],
         'legacy' => false,
@@ -497,6 +497,16 @@ function add_tags_if_enabled(string $contactId, array $lead): void
 {
     if (env_value('GHL_ENABLE_TAG_ADD', 'false') !== 'true') return;
     $tags = $lead['lead_type'] === 'quiz' ? ['website_lead', 'quiz_lead', 'automation_hold'] : ['website_lead', 'automation_hold'];
+    // SMS release is an independent production interlock. It never clears DND or
+    // automation_hold; HighLevel remains authoritative for STOP/DND suppression.
+    if (
+        $lead['lead_type'] === 'quiz'
+        && $lead['sms_consent'] === true
+        && $lead['phone'] !== ''
+        && env_value('GHL_ENABLE_SMS_RELEASE', 'false') === 'true'
+    ) {
+        $tags[] = 'sms_nurture_ready';
+    }
     ghl_request('POST', '/contacts/' . rawurlencode($contactId) . '/tags', ['tags' => $tags], $lead['request_id']);
 }
 

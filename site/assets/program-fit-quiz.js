@@ -463,7 +463,7 @@
       recommended_program: recommendationKey(result),
       email_consent: data.get('email_consent') === 'on',
       sms_consent: data.get('sms_consent') === 'on',
-      consent_disclosure_version: 'program_fit_v1',
+      consent_disclosure_version: 'program_fit_sms_v2',
       page: `${window.location.origin}${window.location.pathname}`,
       attribution: {
         first: attribution.first_touch || {},
