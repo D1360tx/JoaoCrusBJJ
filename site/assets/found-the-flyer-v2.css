@@ -68,6 +68,10 @@
   min-width: 0;
 }
 
+.ff-video {
+  margin: 0;
+}
+
 .ff-hero-copy h1 {
   font-size: clamp(3.35rem, 6vw, 5.65rem);
   margin: 11px 0 22px;
@@ -124,6 +128,57 @@
 
 .ff-video-still {
   cursor: default;
+}
+
+.ff-video-poster.ff-video-portrait {
+  aspect-ratio: 9 / 16;
+  box-shadow: 9px 9px 0 var(--ff-blue);
+  cursor: default;
+  margin-inline: auto;
+  max-width: 360px;
+}
+
+.ff-hero-video {
+  background: var(--ff-black);
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.ff-hero-video::cue {
+  background: rgba(16, 16, 16, 0.92);
+  color: var(--ff-yellow);
+  font-family: "Space Grotesk", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.ff-video-caption {
+  align-items: center;
+  background: var(--ff-yellow);
+  border: 3px solid var(--ff-black);
+  color: var(--ff-black);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin: 10px auto 0;
+  max-width: 360px;
+  padding: 11px 13px;
+}
+
+.ff-video-caption strong {
+  font-family: Anton, Impact, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.ff-video-caption span {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-align: right;
+  text-transform: uppercase;
 }
 
 .ff-video-poster img {
@@ -510,6 +565,15 @@
 
   .ff-video-poster {
     aspect-ratio: 16 / 9;
+  }
+
+  .ff-video-poster.ff-video-portrait {
+    aspect-ratio: 9 / 16;
+    max-width: min(calc(100% - 12px), 360px);
+  }
+
+  .ff-video-caption {
+    max-width: min(calc(100% - 12px), 360px);
   }
 
   .ff-video-poster img {
