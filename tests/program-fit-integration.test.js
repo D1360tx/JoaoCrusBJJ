@@ -74,7 +74,25 @@ test('production quiz collects required email and optional SMS consent and targe
   assert.doesNotMatch(html, /name="sms_consent" required/);
   assert.match(html, /name="phone"[^>]*required/);
   assert.match(html, /name="website"/);
+  assert.match(html, /Message frequency varies/);
+  assert.match(html, /Reply STOP to opt out or HELP for help/);
+  assert.match(html, /Consent is not a condition of purchase/);
   assert.doesNotMatch(html, /does not send or store/i);
+});
+
+test('SMS disclosure version and legal policies document the same messaging program', () => {
+  const js = read('site/assets/program-fit-quiz.js');
+  const privacy = read('site/campaign/privacy.html');
+  const terms = read('site/campaign/terms.html');
+  assert.match(js, /consent_disclosure_version: 'program_fit_sms_v2'/);
+  for (const policy of [privacy, terms]) {
+    assert.match(policy, /Message\s+frequency\s+varies/);
+    assert.match(policy, /Message\s+and\s+data\s+rates\s+may\s+apply/);
+    assert.match(policy, /STOP/);
+    assert.match(policy, /HELP/);
+    assert.match(policy, /Consent is not a condition of purchase/);
+  }
+  assert.match(privacy, /mobile information.*not.*shared.*marketing or promotional purposes/is);
 });
 
 test('review quiz remains inert and preserves review disclosure', () => {

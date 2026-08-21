@@ -33,6 +33,7 @@
 - ✅ `/found-the-flyer/` is the former campaign URL and must remain a one-hop, query-preserving 301 redirect to `/practice-under-pressure/` so existing QR codes and attribution parameters continue to work.
 - ✅ Preserve the flyer-curiosity version and prior pressure-response iterations as noindex comparison artifacts. The approved Iteration 2 becomes the locked control for future tests.
 - 🟡 Shared native forms and the Program Finder are code-ready to use the Bluehost `/api/lead.php` HighLevel adapter. Production activation remains blocked on server-only configuration and controlled live acceptance. Success requires explicit contact and opportunity acceptance. Legacy internal email is best-effort only after CRM acceptance, and automated SMS remains held pending A2P.
+- 🔴 **SMS carrier readiness checked 2026-08-20:** the HighLevel sub-account has no phone number and A2P Messaging shows **Start Registration**. The consent bridge may ship behind `GHL_ENABLE_SMS_RELEASE=false`, but automated SMS must remain disabled until a number is acquired, A2P 10DLC is approved, and a controlled STOP/DND test passes.
 - 🟡 Until Joao's approved campaign video is recorded, use an honest coaching photograph without a play button or simulated playback. The video script remains a production asset for a later release.
 
 ---
