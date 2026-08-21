@@ -1,6 +1,10 @@
 DirectoryIndex index.html
 Options -Indexes
 
+<IfModule mod_mime.c>
+  AddType text/vtt .vtt
+</IfModule>
+
 RewriteEngine On
 
 # Load the server-only HighLevel configuration from outside the document root.
