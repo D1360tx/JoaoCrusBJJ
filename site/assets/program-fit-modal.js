@@ -28,7 +28,8 @@
       document.documentElement.classList.add('quiz-modal-open');
       closeButton.focus();
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'quiz_modal_open', quiz_name: 'program_fit', source: 'practice_under_pressure' });
+      const routeSource = new URL(trigger.href, window.location.href).searchParams.get('source') || 'unknown';
+      window.dataLayer.push({ event: 'quiz_modal_open', quiz_name: 'program_fit', route_source: routeSource.replace(/-/g, '_') });
     });
   });
 

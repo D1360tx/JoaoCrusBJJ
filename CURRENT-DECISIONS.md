@@ -27,6 +27,15 @@
 
 ---
 
+## Kids paid-social landing page (2026-08-24)
+
+- 🟡 Build the kids paid-social destination as a separate, `noindex` review variant. Preserve `/practice-under-pressure/` unchanged until the paid-social page is explicitly approved for release.
+- 🟡 Use one kids-only page for the first four static ads, with direct message match for tapping, practiced confidence, programs from age 3, and program fit. Do not create four separate pages at launch.
+- ✅ All dominant CTAs enter the existing Program Finder with the child route preselected, contact capture last, unique placement values, and paid attribution parameters preserved. Nothing is booked or charged automatically.
+- 🔴 Do not change the Meta ad destinations or publish this route on Bluehost until the comparison version is reviewed and approved.
+
+---
+
 ## Practice Under Pressure offline QR campaign (updated 2026-08-13)
 
 - ✅ The approved canonical landing page is `/practice-under-pressure/` using the pressure-response Iteration 2 message: **“Pressure is part of life. Practice what to do next.”** Its primary CTA opens the Program Finder directly at Question 1, skipping the quiz intro while preserving flyer attribution. Standalone quiz visits retain the intro. The homepage booking popup remains unchanged.
