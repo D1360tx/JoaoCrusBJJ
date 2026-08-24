@@ -30,7 +30,9 @@ test('hero and message-match modules align to the four approved static ads', () 
   for (const phrase of ['TAP MEANS STOP', 'CONFIDENCE GROWS THROUGH PRACTICE', 'STARTING AT AGE 3', 'THE RIGHT CLASS MATTERS']) {
     assert.match(page, new RegExp(phrase));
   }
-  assert.match(page, /Kids Brazilian Jiu-Jitsu · Ages 3–17/);
+  assert.match(page, /Kids BJJ · Ages 3–17 · Dripping Springs \+ Austin/);
+  assert.match(page, /CONFIDENCE STARTS WITH/);
+  assert.match(page, /About 60 seconds\. No booking\. No charge\./);
   assert.match(page, /Programs from age 3/);
   assert.match(page, /Dripping Springs \+ Austin/);
 });
@@ -60,14 +62,15 @@ test('paid attribution keys are forwarded to every quiz CTA', () => {
 
 test('page uses owned real-photo assets with intrinsic dimensions', () => {
   const images = matches(/<img\s+[^>]*>/g).map((match) => match[0]);
-  assert.ok(images.length >= 4);
+  assert.ok(images.length >= 3);
   images.forEach((image) => {
     assert.match(image, /width="\d+"/);
     assert.match(image, /height="\d+"/);
     assert.doesNotMatch(image, /https?:\/\//);
   });
   assert.match(page, /campaign-images\/kids-training\.webp/);
-  assert.match(page, /toddler-purposeful-play-hero\.webp/);
+  assert.doesNotMatch(page, /toddler-purposeful-play-hero\.webp/);
+  assert.match(page, /class="mk-age-mark"[^>]*>3\+</);
   assert.match(page, /campaign-images\/joao-crus\.webp/);
   assert.doesNotMatch(page, /ai-hero|ai-concept/i);
 });
