@@ -74,7 +74,7 @@ body.mk-page { background: var(--mk-warm); color: var(--mk-black); font-family: 
 .mk-card p { font-size: .9rem; margin: 0; }
 .mk-inline-cta { align-items: center; background: var(--mk-blue); border: 3px solid var(--mk-black); box-shadow: 7px 7px 0 var(--mk-yellow); color: #fff; display: flex; gap: 30px; justify-content: space-between; margin-top: 42px; padding: 22px 24px; }
 .mk-inline-cta p { margin: 0; max-width: 620px; }
-.mk-inline-cta .mk-btn { flex: 0 0 auto; }
+.mk-inline-cta .mk-btn { color: var(--mk-black); flex: 0 0 auto; }
 
 .mk-programs { background: var(--mk-yellow); }
 .mk-programs .mk-eye::before { background: var(--mk-black); }
