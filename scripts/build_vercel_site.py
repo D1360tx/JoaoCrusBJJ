@@ -171,6 +171,38 @@ def rewrite_internal_html_links(html: str, routes: dict[str, str]) -> str:
     return html
 
 
+SITELINK_LABELS = {
+    "/classes-schedule/": "Class Schedule",
+    "/coaches/": "Instructors &amp; Coaches",
+    "/contact/": "Plan a First Class",
+}
+
+
+def normalize_sitelink_labels(html: str) -> str:
+    """Keep priority sitelink wording consistent in global headers and footers."""
+
+    def normalize_region(region_match: re.Match[str]) -> str:
+        region = region_match.group(0)
+        for href, label in SITELINK_LABELS.items():
+            pattern = re.compile(
+                rf'(?P<open><a\b[^>]*\bhref=["\']{re.escape(href)}["\'][^>]*>)'
+                rf'(?P<label>[^<]*)</a\s*>',
+                re.IGNORECASE,
+            )
+            region = pattern.sub(
+                lambda match: f"{match.group('open')}{label}</a>",
+                region,
+            )
+        return region
+
+    return re.sub(
+        r"<(?:header|footer)\b[^>]*>.*?</(?:header|footer)>",
+        normalize_region,
+        html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+
+
 def qualify_fragment_links(html: str, public_path: str) -> str:
     """Keep same-page anchors on the current route after the root base is injected."""
     route = public_path if public_path.endswith("/") else public_path + "/"
@@ -245,6 +277,7 @@ def main() -> None:
         html = add_attribution_script(html)
         html = add_google_tag_manager(html)
         html = rewrite_internal_html_links(html, routes)
+        html = normalize_sitelink_labels(html)
         html = qualify_fragment_links(html, page["path"])
         html = apply_robots_directive(html, page, args.production)
         target = output_path(page["path"])

@@ -124,7 +124,7 @@
     {
       "file": "schedule.html",
       "path": "/classes-schedule/",
-      "title": "Brazilian Jiu-Jitsu Class Schedule | Austin & Dripping Springs",
+      "title": "Class Schedule | Joao Crus BJJ Austin & Dripping Springs",
       "description": "View the current Joao Crus BJJ class schedule for children, youth, teens, adults, and Jiu-Jitsu After 60 in Dripping Springs and Austin.",
       "image": "/assets/campaign-images/schedule-ai-concept.webp",
       "indexable": true,
@@ -172,8 +172,8 @@
     {
       "file": "coaches.html",
       "path": "/coaches/",
-      "title": "Brazilian Jiu-Jitsu Coaches | Joao Crus BJJ",
-      "description": "Meet the Joao Crus BJJ coaching team serving Dripping Springs and Austin, including their experience and teaching perspectives.",
+      "title": "BJJ Instructors & Coaches | Joao Crus BJJ",
+      "description": "Meet the Joao Crus BJJ instructors and coaches serving Dripping Springs and Austin, including their experience and teaching perspectives.",
       "image": "/assets/campaign-images/coaches-ai/joao-crus-ai-headshot.webp",
       "indexable": true,
       "schema": [
@@ -547,8 +547,8 @@
     {
       "file": "contact.html",
       "path": "/contact/",
-      "title": "Contact Joao Crus BJJ | Plan a First Class",
-      "description": "Contact Joao Crus BJJ to ask a question or plan a first class in Dripping Springs or Austin. Beginners are welcome.",
+      "title": "Plan a First Class | Joao Crus BJJ",
+      "description": "Plan a first Brazilian Jiu-Jitsu class with Joao Crus BJJ in Dripping Springs or Austin. Beginners are welcome, and families may ask questions before visiting.",
       "image": "/assets/campaign-images/kids-gathering.webp",
       "indexable": true,
       "schema": [

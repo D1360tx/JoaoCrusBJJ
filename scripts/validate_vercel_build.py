@@ -139,6 +139,47 @@ def main() -> None:
     check("https://joaocrusbjj.com/teens/" in sitemap, "sitemap is missing the canonical Teen page")
     check("teens-preview" not in sitemap, "sitemap still contains the superseded Teen preview route")
 
+    priority_sitelinks = {
+        "/classes-schedule/": ("Class Schedule | Joao Crus BJJ", "CLASS SCHEDULE."),
+        "/coaches/": ("BJJ Instructors &amp; Coaches | Joao Crus BJJ", "INSTRUCTORS &amp; COACHES."),
+        "/contact/": ("Plan a First Class | Joao Crus BJJ", "FIRST&nbsp;CLASS."),
+        "/training-programs/": ("Brazilian Jiu-Jitsu Programs | Joao Crus BJJ", "Programs"),
+        "/locations/": ("Joao Crus BJJ Locations | Dripping Springs &amp; Austin", "Locations"),
+    }
+    for path, (title_prefix, visible_signal) in priority_sitelinks.items():
+        page_html = route_file(path).read_text(encoding="utf-8")
+        check(f"<title>{title_prefix}" in page_html, f"{path}: priority sitelink title signal is missing")
+        check(visible_signal in page_html, f"{path}: priority sitelink visible signal is missing")
+
+    global_label_contract = {
+        "/classes-schedule/": "Class Schedule",
+        "/coaches/": "Instructors & Coaches",
+        "/contact/": "Plan a First Class",
+    }
+    for page in pages:
+        if not page["indexable"]:
+            continue
+        page_html = route_file(page["path"]).read_text(encoding="utf-8")
+        global_regions = " ".join(
+            re.findall(
+                r"<(?:header|footer)\b[^>]*>.*?</(?:header|footer)>",
+                page_html,
+                re.IGNORECASE | re.DOTALL,
+            )
+        )
+        for href, label in global_label_contract.items():
+            if f'href="{href}"' not in global_regions:
+                continue
+            encoded_label = label.replace("&", "&amp;")
+            check(
+                re.search(
+                    rf'<(?:header|footer)\b.*?<a\b[^>]*href="{re.escape(href)}"[^>]*>{re.escape(encoded_label)}</a>',
+                    page_html,
+                    re.IGNORECASE | re.DOTALL,
+                ) is not None,
+                f"{page['path']}: global navigation is missing consistent {label!r} wording",
+            )
+
     calendar_source = (ROOT / "site" / "assets" / "class-calendar.js").read_text(encoding="utf-8")
     calendar_records = re.findall(
         r'\{\s*day:\s*(\d+),\s*time:\s*"([^"]+)",\s*name:\s*"([^"]+)".*?location:\s*"([^"]+)",\s*\}',
