@@ -88,6 +88,11 @@ test('mobile CTA has explicit hidden, visible, and final-section suppression log
   assert.match(js, /!isVisible\(heroCta\) && !isVisible\(finalSection\)/);
 });
 
+test('yellow CTA buttons always use black text', () => {
+  assert.match(css, /\.mk-page \.mk-btn \{[^}]*background: var\(--mk-yellow\);[^}]*color: var\(--mk-black\);/);
+  assert.match(css, /\.mk-inline-cta \.mk-btn \{ color: var\(--mk-black\);/);
+});
+
 test('all local assets referenced by the page exist', () => {
   const refs = matches(/(?:src|href)="(\.\.\/assets\/[^"]+)"/g).map((match) => match[1]);
   refs.forEach((ref) => {

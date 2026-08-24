@@ -29,7 +29,7 @@ body.mk-page { background: var(--mk-warm); color: var(--mk-black); font-family: 
 .mk-header__actions { align-items: center; display: flex; gap: 20px; }
 .mk-call { font-size: .78rem; font-weight: 800; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
-.mk-btn { align-items: center; background: var(--mk-yellow); border: 3px solid var(--mk-black); box-shadow: 5px 5px 0 var(--mk-black); color: var(--mk-black); display: inline-flex; font-size: .82rem; font-weight: 800; gap: 14px; justify-content: center; letter-spacing: .025em; min-height: 52px; padding: 13px 18px; text-align: center; text-decoration: none; text-transform: uppercase; transition: transform .15s ease, box-shadow .15s ease; }
+.mk-page .mk-btn { align-items: center; background: var(--mk-yellow); border: 3px solid var(--mk-black); box-shadow: 5px 5px 0 var(--mk-black); color: var(--mk-black); display: inline-flex; font-size: .82rem; font-weight: 800; gap: 14px; justify-content: center; letter-spacing: .025em; min-height: 52px; padding: 13px 18px; text-align: center; text-decoration: none; text-transform: uppercase; transition: transform .15s ease, box-shadow .15s ease; }
 .mk-btn:hover { box-shadow: 2px 2px 0 var(--mk-black); transform: translate(3px, 3px); }
 .mk-btn:focus-visible, .mk-page a:focus-visible, .mk-page summary:focus-visible { outline: 4px solid var(--mk-blue); outline-offset: 3px; }
 .mk-btn--small { font-size: .72rem; min-height: 44px; padding: 9px 14px; }
