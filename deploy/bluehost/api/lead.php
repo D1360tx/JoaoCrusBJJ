@@ -215,7 +215,7 @@ function normalize_quiz(array $data): array
     $stage = $audience === 'adult' ? require_enum(clean_text($data['stage'] ?? ($data['age_bands'][0] ?? ''), 20), $stageAllowed, 'stage') : (string)$ageBands[0];
     $routeSource = clean_text($data['route_source'] ?? '', 40);
     if ($routeSource !== '') {
-        require_enum($routeSource, ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'after60-page'], 'route source');
+        require_enum($routeSource, ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'after60-page', 'meta-kids-paid'], 'route source');
     }
 
     $lead = [
