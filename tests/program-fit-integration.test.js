@@ -265,9 +265,9 @@ test('builder orders consent and attribution before quiz behavior and emits cano
   assert.match(quiz, /rel="canonical" href="https:\/\/joaocrusbjj\.com\/program-finder\/quiz\/"/);
 });
 
-test('practice-under-pressure opens its primary quiz in a modal and preserves flyer attribution', () => {
+test('practice-under-pressure opens its primary quiz in a modal and preserves landing-page attribution', () => {
   const page = read('site/campaign/practice-under-pressure.html');
-  const helper = read('site/assets/found-the-flyer.js');
+  const helper = read('site/assets/practice-under-pressure.js');
   const modal = read('site/assets/program-fit-modal.js');
   const homepage = read('site/campaign/index.html');
   assert.match(page, /href="program-fit-quiz\.html\?source=practice-under-pressure&amp;embed=1&amp;start=quiz" data-quiz-route data-quiz-modal/);
@@ -284,8 +284,8 @@ test('practice-under-pressure opens its primary quiz in a modal and preserves fl
   assert.match(page, /href="\/program-finder\/quiz\/\?source=practice-under-pressure&amp;path=help" data-quiz-route>Find my program/);
   assert.match(helper, /new URLSearchParams\(window\.location\.search\)/);
   assert.match(helper, /if \(!target\.searchParams\.has\(key\)\) target\.searchParams\.set\(key, value\)/);
-  assert.match(helper, /target\.searchParams\.set\("utm_source", "offline_flyer"\)/);
-  assert.match(helper, /target\.searchParams\.set\("utm_medium", "qr"\)/);
+  assert.match(helper, /target\.searchParams\.set\("utm_source", "website"\)/);
+  assert.match(helper, /target\.searchParams\.set\("utm_medium", "landing_page"\)/);
   assert.match(helper, /target\.searchParams\.set\("utm_campaign", "practice_under_pressure"\)/);
   assert.match(homepage, /href="contact\.html">Plan a first class/);
   assert.doesNotMatch(homepage, /data-quiz-route/);
@@ -294,8 +294,8 @@ test('practice-under-pressure opens its primary quiz in a modal and preserves fl
 test('shared-form consent grants email or call only and excludes automated texts', () => {
   const shared = read('site/assets/campaign-site.js');
   const teen = read('site/teens-campaign-ages-13-17.html');
-  const flyer = read('site/campaign/practice-under-pressure.html');
-  for (const source of [shared, teen, flyer]) {
+  const pressure = read('site/campaign/practice-under-pressure.html');
+  for (const source of [shared, teen, pressure]) {
     assert.match(source, /may email or call me/);
     assert.match(source, /Automated texts are not enabled from this form/);
     assert.doesNotMatch(source, /may call or text me/);
