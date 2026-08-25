@@ -17,7 +17,7 @@
   const endpoint = root.dataset.endpoint || '';
   const routeParams = new URLSearchParams(window.location.search);
   if (routeParams.get('embed') === '1') document.body.classList.add('fit-embed');
-  const allowedRouteSources = ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'after60-page'];
+  const allowedRouteSources = ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'meta-kids-paid', 'after60-page'];
   const requestedRouteSource = routeParams.get('source');
   const routeSource = allowedRouteSources.includes(requestedRouteSource) ? requestedRouteSource : '';
   let currentStep = 1;
