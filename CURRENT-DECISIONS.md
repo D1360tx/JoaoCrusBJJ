@@ -91,6 +91,7 @@
 - ✅ Dripping Springs Homeschool Program, ages 5–8: Tue/Thu **10:30–11:15 a.m.**
 - ✅ Dripping Springs adults: Mon/Wed **6:40–7:40 p.m.** and Sat **11:00 a.m.–12:00 p.m.**
 - ✅ Dripping Springs Jiu-Jitsu After 60: Tue/Thu **11:20 a.m.–12:10 p.m.** This is a distinct program with its own schedule filter, not part of the Adults filter.
+- ✅ Jiu-Jitsu After 60 is positioned as a **4-week introductory program for men and women 60+**, with beginner reassurance, cooperative partner work, no aggressive-sparring expectation, and **“Relational First. Physical Second.”** Keep the confirmed 50-minute schedule above and omit Joao's draft 60-minute breakdown unless he explicitly changes the class time.
 - ✅ Austin Youth, ages 8–12: Tue/Thu **5:00–5:45 p.m.**
 - ✅ Austin publishes **adult private instruction by appointment** with flexible scheduling and beginner-friendly positioning.
 - 🔴 Austin recurring **adult group** schedule remains undecided; use an interest list until confirmed and do not add private appointments to the weekly calendar.
@@ -296,6 +297,8 @@ When a statement in those sources conflicts with this file, follow this file's c
 ---
 
 ## Change log
+
+- **2026-08-25** — Diego approved Joao's expanded Jiu-Jitsu After 60 copy for the canonical page. Lead with the 4-week introductory format for men and women 60+, beginner reassurance, cooperative practice, no aggressive-sparring expectation, and “Relational First. Physical Second.” Preserve the confirmed Tue/Thu 11:20 a.m.–12:10 p.m. schedule and do not publish the conflicting 60-minute draft breakdown.
 
 - **2026-08-20** — Diego approved a public Jiu-Jitsu After 60 program page for Dripping Springs. Position it as beginner-friendly training with a steady pace, practical technique, and confidence. Publish the exact Tue/Thu 11:20 a.m.–12:10 p.m. schedule under a standalone `after60` calendar filter. Do not silently include these classes under Adults.
 
