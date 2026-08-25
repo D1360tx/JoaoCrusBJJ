@@ -10,6 +10,7 @@ RewriteEngine On
 # Load the server-only HighLevel configuration from outside the document root.
 # Keep this in the tracked release artifact so an overlay cannot remove the live bootstrap.
 SetEnv GHL_ENV_FILE /home1/joaocrus/.joao-secure/joao-highlevel.env
+SetEnv LEAD_LOG_FILE /home1/joaocrus/.joao-secure/joao-lead-api.log
 
 # Retire legacy WordPress and superseded campaign URLs with one-hop canonical redirects.
 # Preserve the original query string so printed QR attribution survives the route change.

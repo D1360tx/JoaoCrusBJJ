@@ -6,6 +6,18 @@ header('X-Content-Type-Options: nosniff');
 header('Cache-Control: no-store');
 header('Referrer-Policy: no-referrer');
 
+$privateLogFile = trim((string)(getenv('LEAD_LOG_FILE') ?: ''));
+$privateLogDirectory = $privateLogFile !== '' ? realpath(dirname($privateLogFile)) : false;
+$documentRoot = realpath((string)($_SERVER['DOCUMENT_ROOT'] ?? ''));
+if (
+    $privateLogDirectory !== false
+    && is_writable($privateLogDirectory)
+    && ($documentRoot === false || !str_starts_with($privateLogDirectory, $documentRoot . DIRECTORY_SEPARATOR))
+) {
+    ini_set('log_errors', '1');
+    ini_set('error_log', $privateLogFile);
+}
+
 const MAX_BODY_BYTES = 24576;
 const RATE_LIMIT_WINDOW_SECONDS = 900;
 const RATE_LIMIT_MAX_ATTEMPTS = 8;

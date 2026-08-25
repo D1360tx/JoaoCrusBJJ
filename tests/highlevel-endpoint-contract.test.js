@@ -84,6 +84,9 @@ test('provider calls use server-only config, bounded TLS curl, and non-PII loggi
     php.indexOf("env_value('GHL_ALLOW_CORE_ONLY'") < php.indexOf("env_value('GHL_CUSTOM_FIELD_MAP_JSON'")
   );
   assert.match(bluehostHtaccess, /SetEnv GHL_ENV_FILE \/home1\/joaocrus\/\.joao-secure\/joao-highlevel\.env/);
+  assert.match(bluehostHtaccess, /SetEnv LEAD_LOG_FILE \/home1\/joaocrus\/\.joao-secure\/joao-lead-api\.log/);
+  assert.match(php, /ini_set\('error_log', \$privateLogFile\)/);
+  assert.match(php, /!str_starts_with\(\$privateLogDirectory, \$documentRoot/);
   assert.match(php, /CURLOPT_USERAGENT/);
   assert.match(php, /CURLOPT_CONNECTTIMEOUT => 4/);
   assert.match(php, /CURLOPT_TIMEOUT => 10/);
