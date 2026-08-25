@@ -7,8 +7,8 @@ const root = path.resolve(__dirname, '..');
 const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 
 const pagePath = 'site/campaign/practice-under-pressure.html';
-const cssPath = 'site/assets/found-the-flyer-v2.css';
-const jsPath = 'site/assets/found-the-flyer.js';
+const cssPath = 'site/assets/practice-under-pressure.css';
+const jsPath = 'site/assets/practice-under-pressure.js';
 const videoPath = 'site/assets/campaign-videos/practice-under-pressure-welcome-2026-08.mp4';
 const posterPath = 'site/assets/campaign-videos/practice-under-pressure-welcome-poster-2026-08.webp';
 const captionsPath = 'site/assets/campaign-videos/practice-under-pressure-welcome-2026-08.vtt';
@@ -22,6 +22,17 @@ test('practice-under-pressure hero uses the supplied responsive welcome video', 
   assert.match(page, /<track[^>]*kind="captions"[^>]*srclang="en"[^>]*default>/);
   assert.match(page, /Joao Crus welcomes children, adults, and complete beginners/);
   assert.doesNotMatch(page, /adults-joao-coaching-hero-2026-07\.webp" width="1280" height="960" alt="Joao Crus coaching adult/);
+});
+
+test('practice-under-pressure page and runtime contain no flyer wording or identifiers', () => {
+  const page = read(pagePath);
+  const css = read(cssPath);
+  const js = read(jsPath);
+  assert.doesNotMatch(page, /flyer/i);
+  assert.doesNotMatch(css, /flyer/i);
+  assert.doesNotMatch(js, /flyer/i);
+  assert.match(page, /data-form-id="practice_under_pressure"/);
+  assert.match(page, /data-lead-type="class_inquiry"/);
 });
 
 test('hero video assets and corrected captions are present', () => {

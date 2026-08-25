@@ -408,10 +408,11 @@ def main() -> None:
             check("ff-play" not in html, "/practice-under-pressure/: simulated video play control remains")
             check("<dialog" not in html, "/practice-under-pressure/: review video dialog remains")
             check(
-                'data-form-id="found_the_flyer_pressure_v2"' in html,
+                'data-form-id="practice_under_pressure"' in html,
                 "/practice-under-pressure/: canonical form needs the stable campaign analytics ID",
             )
-            check('data-lead-type="offline_flyer"' in html, "/practice-under-pressure/: offline flyer lead type is missing")
+            check('data-lead-type="class_inquiry"' in html, "/practice-under-pressure/: class inquiry lead type is missing")
+            check("flyer" not in html.lower(), "/practice-under-pressure/: flyer wording or identifiers remain")
             check('name="consent"' in html, "/practice-under-pressure/: contact consent is missing")
             check('data-success-url="/thank-you/"' in html, "/practice-under-pressure/: success route is missing")
             check(
