@@ -9,11 +9,13 @@ const cssPath = path.join(root, 'site/assets/meta-kids-landing.css');
 const jsPath = path.join(root, 'site/assets/meta-kids-landing.js');
 const quizPath = path.join(root, 'site/assets/program-fit-quiz.js');
 const modalPath = path.join(root, 'site/assets/program-fit-modal.js');
+const endpointPath = path.join(root, 'deploy/bluehost/api/lead.php');
 const page = fs.readFileSync(pagePath, 'utf8');
 const css = fs.readFileSync(cssPath, 'utf8');
 const js = fs.readFileSync(jsPath, 'utf8');
 const quiz = fs.readFileSync(quizPath, 'utf8');
 const modal = fs.readFileSync(modalPath, 'utf8');
+const endpoint = fs.readFileSync(endpointPath, 'utf8');
 
 function matches(pattern) {
   return [...page.matchAll(pattern)];
@@ -77,6 +79,7 @@ test('page uses owned real-photo assets with intrinsic dimensions', () => {
 
 test('quiz accepts the dedicated paid-social source and modal reports it dynamically', () => {
   assert.match(quiz, /meta-kids-paid/);
+  assert.match(endpoint, /'meta-kids-paid'\], 'route source'/);
   assert.match(modal, /route_source/);
   assert.doesNotMatch(modal, /source: 'practice_under_pressure'/);
 });
