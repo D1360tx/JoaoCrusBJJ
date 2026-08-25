@@ -525,6 +525,17 @@
       "schema": []
     },
     {
+      "file": "meta-kids-first-class.html",
+      "path": "/kids-first-class/",
+      "title": "Find the Right Kids BJJ Class | Joao Crus BJJ",
+      "description": "Find an age-appropriate Joao Crus Brazilian Jiu-Jitsu class for your child in Dripping Springs or Austin. Programs begin at age 3.",
+      "image": "/assets/campaign-images/kids-training.webp",
+      "type": "WebPage",
+      "robots": "noindex,nofollow",
+      "indexable": false,
+      "schema": []
+    },
+    {
       "file": "program-fit-landing.html",
       "path": "/program-finder/",
       "title": "Find the Right Jiu-Jitsu Program | Joao Crus BJJ",

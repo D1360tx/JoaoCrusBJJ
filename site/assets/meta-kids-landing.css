@@ -16,8 +16,6 @@ body.mk-page { background: var(--mk-warm); color: var(--mk-black); font-family: 
 .mk-page p { line-height: 1.65; }
 .mk-page a { color: inherit; }
 .mk-wrap { margin-inline: auto; max-width: 1160px; width: calc(100% - 40px); }
-.mk-review { background: var(--mk-blue); color: #fff; font-size: .72rem; letter-spacing: .05em; padding: 7px 20px; text-align: center; text-transform: uppercase; }
-.mk-review strong { color: var(--mk-yellow); margin-right: 7px; }
 
 .mk-header { background: var(--mk-warm); border-bottom: 3px solid var(--mk-black); position: sticky; top: 0; z-index: 20; }
 .mk-header__inner { align-items: center; display: flex; justify-content: space-between; min-height: 78px; }
@@ -179,7 +177,6 @@ body.mk-page { background: var(--mk-warm); color: var(--mk-black); font-family: 
 }
 
 @media (max-width: 430px) {
-  .mk-review { font-size: .62rem; line-height: 1.4; }
   .mk-brand strong { font-size: 1rem; }
   .mk-hero h1 { font-size: clamp(2.65rem, 12vw, 3.2rem); }
   .mk-hero__visual { padding-bottom: 92px; }

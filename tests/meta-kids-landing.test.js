@@ -19,9 +19,9 @@ function matches(pattern) {
   return [...page.matchAll(pattern)];
 }
 
-test('kids paid-social page stays isolated and noindex', () => {
+test('kids paid-social page is production-ready, isolated, and noindex', () => {
   assert.match(page, /<meta name="robots" content="noindex,nofollow">/);
-  assert.match(page, /Internal review/);
+  assert.doesNotMatch(page, /Internal review|Not live|mk-review/i);
   assert.doesNotMatch(page, /You kept the flyer/i);
   assert.doesNotMatch(page, /adults starting/i);
 });

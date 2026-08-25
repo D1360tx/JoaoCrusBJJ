@@ -29,10 +29,10 @@
 
 ## Kids paid-social landing page (2026-08-24)
 
-- 🟡 Build the kids paid-social destination as a separate, `noindex` review variant. Preserve `/practice-under-pressure/` unchanged until the paid-social page is explicitly approved for release.
-- 🟡 Use one kids-only page for the first four static ads, with direct message match for tapping, practiced confidence, programs from age 3, and program fit. Do not create four separate pages at launch.
+- ✅ Publish the kids paid-social destination at `/kids-first-class/` as a separate `noindex,nofollow` campaign route. Keep it out of the XML sitemap and preserve `/practice-under-pressure/` unchanged.
+- ✅ Use one kids-only page for the first four static ads, with direct message match for tapping, practiced confidence, programs from age 3, and program fit. Do not create four separate pages at launch.
 - ✅ All dominant CTAs enter the existing Program Finder with the child route preselected, contact capture last, unique placement values, and paid attribution parameters preserved. Nothing is booked or charged automatically.
-- 🔴 Do not change the Meta ad destinations or publish this route on Bluehost until the comparison version is reviewed and approved.
+- ✅ Diego approved the reviewed page for Bluehost deployment on 2026-08-25. Meta ad destination changes remain a separate launch action.
 
 ---
 
