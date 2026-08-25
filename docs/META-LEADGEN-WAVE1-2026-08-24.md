@@ -6,7 +6,7 @@
 **Date:** 2026-08-24  
 **Budget:** $35/day  
 **Primary outcome:** Qualified kids-program leads in HighLevel  
-**Destination:** `https://joaocrusbjj.com/practice-under-pressure/`
+**Destination:** `https://joaocrusbjj.com/kids-first-class/`
 
 ## Decision
 
@@ -76,7 +76,7 @@ Each ad uses a 1080×1080 feed asset and 1080×1920 Stories/Reels asset. Do not 
 ## Copy and destination rules
 
 - CTA: `Learn More`
-- Destination: `https://joaocrusbjj.com/practice-under-pressure/`
+- Destination: `https://joaocrusbjj.com/kids-first-class/`
 - Do not promise a free trial, paid trial, price, uniform, guarantee, or booked class.
 - The form is a request for a recommended starting point and does not book or charge anything.
 - Do not imply that a specific child lacks confidence, is unsafe, or has behavioral problems.
@@ -91,7 +91,7 @@ Use ad-level dynamic parameters:
 
 Final URL:
 
-`https://joaocrusbjj.com/practice-under-pressure/?utm_source={{site_source_name}}&utm_medium=paid_social&utm_campaign=meta_kids_program_finder_2026_08_w1&utm_content={{ad.name}}&utm_term={{adset.name}}`
+`https://joaocrusbjj.com/kids-first-class/?utm_source={{site_source_name}}&utm_medium=paid_social&utm_campaign=meta_kids_program_finder_2026_08_w1&utm_content={{ad.name}}&utm_term={{adset.name}}`
 
 ## Evaluation plan
 
