@@ -27,7 +27,6 @@ from typing import Iterable
 ROOT = Path(__file__).resolve().parents[1]
 CAMPAIGN = ROOT / "site" / "campaign"
 DEFAULT_PROPERTY = "sc-domain:joaocrusbjj.com"
-DEFAULT_QUOTA_PROJECT = "woven-nimbus-489418-c3"
 
 ALIASES = {
     "joão": "joao",
@@ -86,11 +85,17 @@ def fetch_api(property_name: str, start: str, end: str, token: str) -> list[dict
         "rowLimit": 25000,
         "dataState": "final",
     }).encode()
-    request = urllib.request.Request(endpoint, data=payload, method="POST", headers={
+    headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",
-        "x-goog-user-project": os.environ.get("GSC_QUOTA_PROJECT", DEFAULT_QUOTA_PROJECT),
-    })
+    }
+    # User ADC may require an explicit quota project. Service-account tokens
+    # normally derive quota from their owning project, and sending this header
+    # would require an unnecessary serviceusage.services.use IAM grant.
+    quota_project = os.environ.get("GSC_QUOTA_PROJECT", "").strip()
+    if quota_project:
+        headers["x-goog-user-project"] = quota_project
+    request = urllib.request.Request(endpoint, data=payload, method="POST", headers=headers)
     with urllib.request.urlopen(request, timeout=45) as response:
         data = json.load(response)
     return [{
