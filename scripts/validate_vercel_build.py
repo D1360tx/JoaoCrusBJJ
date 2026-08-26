@@ -240,6 +240,10 @@ def main() -> None:
         f"/assets/program-fit-quiz.js?v="
         f"{hashlib.sha256((ASSETS / 'program-fit-quiz.js').read_bytes()).hexdigest()[:12]}"
     )
+    campaign_site_versioned_url = (
+        f"/assets/campaign-site.js?v="
+        f"{hashlib.sha256((ASSETS / 'campaign-site.js').read_bytes()).hexdigest()[:12]}"
+    )
     for event_name in (
         "lead_submit_success",
         "guide_request_success",
@@ -344,6 +348,11 @@ def main() -> None:
         check("assets/consent-controls.css" in html, f"{page['path']}: consent control styles are missing")
         for filename, url in versioned_assets.items():
             check(url in html, f"{page['path']}: {filename} must use its current content-versioned URL")
+        if "campaign-site.js" in html:
+            check(
+                campaign_site_versioned_url in html,
+                f"{page['path']}: shared lead behavior must use its current content-versioned URL",
+            )
         if "program-fit-quiz.js" in html:
             check(quiz_versioned_url in html, f"{page['path']}: Program Fit behavior must use its current content-versioned URL")
         lead_behavior_positions = [
