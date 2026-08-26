@@ -2,9 +2,12 @@
 from __future__ import annotations
 
 import importlib.util
+import io
+import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("gsc_report", ROOT / "scripts" / "gsc_opportunity_report.py")
@@ -34,6 +37,20 @@ class GscOpportunityReportTests(unittest.TestCase):
         source = (ROOT / "scripts" / "gsc_opportunity_report.py").read_text()
         for forbidden in ("git push", "gh pr merge", "searchconsole.sites.add", "indexing.googleapis.com"):
             self.assertNotIn(forbidden, source)
+
+    def test_quota_project_header_is_explicit_only(self) -> None:
+        with mock.patch.object(mod.urllib.request, "urlopen") as urlopen:
+            urlopen.return_value.__enter__.return_value = io.StringIO('{"rows": []}')
+            with mock.patch.dict(os.environ, {}, clear=True):
+                mod.fetch_api("sc-domain:example.com", "2026-08-01", "2026-08-02", "token")
+            request = urlopen.call_args.args[0]
+            self.assertNotIn("X-goog-user-project", request.headers)
+
+            with mock.patch.dict(os.environ, {"GSC_QUOTA_PROJECT": "quota-project"}, clear=True):
+                urlopen.return_value.__enter__.return_value = io.StringIO('{"rows": []}')
+                mod.fetch_api("sc-domain:example.com", "2026-08-01", "2026-08-02", "token")
+            request = urlopen.call_args.args[0]
+            self.assertEqual(request.headers["X-goog-user-project"], "quota-project")
 
     def test_fixture_report_decisions(self) -> None:
         rows = [

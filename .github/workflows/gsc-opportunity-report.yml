@@ -36,7 +36,6 @@ jobs:
       - name: Generate the live read-only report
         env:
           GSC_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
-          GSC_QUOTA_PROJECT: woven-nimbus-489418-c3
         run: >-
           python3 scripts/gsc_opportunity_report.py
           --output /tmp/joao-gsc-opportunities.md
