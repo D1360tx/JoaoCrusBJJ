@@ -50,7 +50,7 @@ This roadmap follows the platforms' current public guidance:
 
 ## Phase 1 — Measurement and index repair
 
-**Timing:** Days 1–7  
+**Timing:** Days 1–7
 **Outcome:** establish the baseline, remove stale dead ends, and force the major indexes toward current facts.
 
 ### Work
@@ -77,7 +77,7 @@ This roadmap follows the platforms' current public guidance:
 
 ## Phase 2 — Entity and structured-service upgrade
 
-**Timing:** Days 4–14  
+**Timing:** Days 4–14
 **Outcome:** make Joao, both locations, and every confirmed program machine-readable as one coherent graph.
 
 ### Work
@@ -117,7 +117,7 @@ This roadmap follows the platforms' current public guidance:
 
 ## Phase 3 — Local citation and profile cleanup
 
-**Timing:** Days 8–30  
+**Timing:** Days 8–30
 **Outcome:** external sources repeat the same facts as the website.
 
 ### Tier 1
@@ -156,7 +156,7 @@ This roadmap follows the platforms' current public guidance:
 
 ## Phase 4 — Joao authority publishing loop
 
-**Timing:** Days 15–60, then weekly  
+**Timing:** Days 15–60, then weekly
 **Outcome:** produce first-person, citable answers that support commercial pages instead of competing with them.
 
 ### First four anchors
@@ -204,7 +204,7 @@ The website remains canonical when the question has durable search value.
 
 ## Phase 5 — Independent authority and recommendations
 
-**Timing:** Days 30–90  
+**Timing:** Days 30–90
 **Outcome:** earn corroboration that can support “recommended” and “best fit” answers.
 
 ### Work
