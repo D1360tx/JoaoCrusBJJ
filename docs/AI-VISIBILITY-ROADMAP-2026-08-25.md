@@ -1,8 +1,9 @@
 # Joao Crus BJJ AI Visibility Roadmap
 
-> **Review draft:** 2026-08-25  
-> **Scope:** Google Gemini and AI Overviews, ChatGPT Search, Claude web search, Perplexity, Bing/Copilot  
+> **Approved planning backlog:** 2026-08-26
+> **Scope:** Google Gemini and AI Overviews, ChatGPT Search, Claude web search, Perplexity, Bing/Copilot
 > **Objective:** make Joao Crus BJJ accurately understood, cited, and recommended for relevant local and program-specific questions, while increasing qualified first-class and private-coaching inquiries.
+> **Execution state:** planned, not yet authorized for production publication or third-party profile edits.
 
 ## 1. Strategic decision
 

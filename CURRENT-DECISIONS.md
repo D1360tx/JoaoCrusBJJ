@@ -247,6 +247,21 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 
 ## 7. Ownership and immediate action list
 
+### AI visibility execution backlog (approved for planning 2026-08-26)
+
+Canonical plan: [`docs/AI-VISIBILITY-ROADMAP-2026-08-25.md`](docs/AI-VISIBILITY-ROADMAP-2026-08-25.md)
+
+- [ ] Capture the fixed 20-prompt baseline across Gemini, ChatGPT, Claude, Perplexity, and Copilot.
+- [ ] Repair stale index signals and decide whether `/member-reviews` becomes a verified reviews page or an interim one-hop redirect.
+- [ ] Verify Bing Webmaster Tools, submit the sitemap, and configure IndexNow.
+- [ ] Build the approved citation source-of-truth record and audit the seven Tier 1 local profiles before editing any listing.
+- [ ] Draft stable entity IDs plus `Service` and `OfferCatalog` relationships for confirmed programs and locations.
+- [ ] Build a separate review version of the Dripping Springs location page. Preserve production until approval.
+- [ ] Outline the first Joao-led authority answer, beginning with the After 60 topic, for Joao review before publication.
+- [ ] Re-run the benchmark after indexing changes settle and report citations, accuracy, cited URLs, competitors, and qualified-lead relevance.
+
+This backlog does not authorize production publication, Search Console mutations, directory/profile edits, outreach, or paid AI-visibility software. Execute each gated action only after its required access, fact, permission, and release checks.
+
 ### Diego
 
 - [ ] Present 2–3 finalized offer options after rate-card clarification.
@@ -297,6 +312,8 @@ When a statement in those sources conflicts with this file, follow this file's c
 ---
 
 ## Change log
+
+- **2026-08-26** — Diego approved adding the 90-day AI visibility program to the project backlog. Use the canonical roadmap for phased execution across index repair, entity/service modeling, local citation consistency, Joao-led answer content, independent corroboration, and fixed-prompt measurement. Planning approval does not authorize production or third-party listing changes.
 
 - **2026-08-25** — Diego approved Joao's expanded Jiu-Jitsu After 60 copy for the canonical page. Lead with the 4-week introductory format for men and women 60+, beginner reassurance, cooperative practice, no aggressive-sparring expectation, and “Relational First. Physical Second.” Preserve the confirmed Tue/Thu 11:20 a.m.–12:10 p.m. schedule and do not publish the conflicting 60-minute draft breakdown.
 
