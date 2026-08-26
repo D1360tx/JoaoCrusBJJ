@@ -34,13 +34,14 @@ CONCEPTS = [
         "accent": BLUE,
     },
     {
-        "slug": "03-starting-at-age-3",
-        "source": "toddler-hero-group.webp",
+        "slug": "03-starting-at-age-3-real-kids",
+        "source_path": "assets/source-images/little-champions-real-group-2026-08-26.jpg",
         "headline": ["STARTING AT", "AGE 3.", "ON PURPOSE."],
         "sub": "SHORT GAMES. SIMPLE DIRECTIONS. REAL SKILLS.",
         "footer": "LITTLE CHAMPIONS • DRIPPING SPRINGS",
         "position": (0.50, 0.40),
         "accent": YELLOW,
+        "preserve_full_group": True,
     },
     {
         "slug": "04-find-the-right-kids-class",
@@ -72,6 +73,21 @@ def cover(im, size, position):
     return ImageOps.fit(im.convert("RGB"), size, Image.Resampling.LANCZOS, centering=position)
 
 
+def source_image(c):
+    if "source_path" in c:
+        return Image.open(ROOT / c["source_path"])
+    return Image.open(ASSETS / c["source"])
+
+
+def full_group_canvas(src, size, top):
+    """Keep all four real children visible instead of center-cropping them."""
+    base = Image.new("RGB", size, BLACK)
+    photo = ImageOps.contain(src.convert("RGB"), (size[0], 810), Image.Resampling.LANCZOS)
+    x = (size[0] - photo.width) // 2
+    base.paste(photo, (x, top))
+    return base
+
+
 def logo_badge(canvas, x, y, diameter):
     logo = Image.open(ASSETS / "joao-crus-bjj-logo.png").convert("RGBA")
     logo.thumbnail((diameter, diameter), Image.Resampling.LANCZOS)
@@ -96,13 +112,14 @@ def gradient_overlay(size, top_start=0.42):
 
 def make_square(c):
     size = (1080,1080)
-    src = Image.open(ASSETS / c["source"])
-    base = cover(src, size, c["position"]).convert("RGBA")
+    src = source_image(c)
+    if c.get("preserve_full_group"):
+        base = full_group_canvas(src, size, 0).convert("RGBA")
+    else:
+        base = cover(src, size, c["position"]).convert("RGBA")
     base.alpha_composite(gradient_overlay(size, 0.38))
     d = ImageDraw.Draw(base)
-    # The age-3 source already contains the academy mark prominently.
-    if c["slug"] != "03-starting-at-age-3":
-        logo_badge(base, 52, 48, 118)
+    logo_badge(base, 52, 48, 118)
     d.rectangle((0, 0, 18, 1080), fill=c["accent"])
     x, y = 70, 560
     for line in c["headline"]:
@@ -120,8 +137,11 @@ def make_square(c):
 
 def make_story(c):
     size = (1080,1920)
-    src = Image.open(ASSETS / c["source"])
-    base = cover(src, size, c["position"]).convert("RGBA")
+    src = source_image(c)
+    if c.get("preserve_full_group"):
+        base = full_group_canvas(src, size, 300).convert("RGBA")
+    else:
+        base = cover(src, size, c["position"]).convert("RGBA")
     ov = Image.new("RGBA", size, (0,0,0,0))
     od = ImageDraw.Draw(ov)
     # Keep essential text outside the upper/lower 250 px Story/Reels UI zones.
