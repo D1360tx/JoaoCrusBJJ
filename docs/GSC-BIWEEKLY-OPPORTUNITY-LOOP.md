@@ -4,13 +4,34 @@ Run this workflow every two weeks. It turns a Google Search Console export into 
 
 ## Data collection
 
-Preferred permanent setup: grant a read-only automation identity access to the `sc-domain:joaocrusbjj.com` Search Console property, mint a short-lived OAuth access token outside the repository, and run:
+### Durable automated path
+
+The production automation uses **keyless Google Workload Identity Federation**:
+
+1. Hermes dispatches `.github/workflows/gsc-opportunity-report.yml` through the authenticated GitHub CLI.
+2. GitHub Actions presents a short-lived OIDC identity restricted to `D1360tx/JoaoCrusBJJ`.
+3. Google exchanges it for the `joao-gsc-reader@woven-nimbus-489418-c3.iam.gserviceaccount.com` identity.
+4. The workflow requests only `webmasters.readonly`, runs deterministic tests, generates the report, and uploads a seven-day artifact.
+5. `scripts/run_gsc_report_via_github.py` correlates the exact workflow run, requires a successful conclusion and non-empty artifact, and writes the report locally.
+
+Run locally with:
+
+```bash
+python3 scripts/run_gsc_report_via_github.py \
+  --output /tmp/joao-gsc-opportunities.md
+```
+
+This path stores no Google refresh token or service-account key locally. Google organization policy continues to block static service-account key creation.
+
+### Direct short-lived-token path
+
+For controlled diagnostics, a caller may still mint a short-lived read-only token outside the repository and run:
 
 ```bash
 GSC_ACCESS_TOKEN='short-lived-token' python3 scripts/gsc_opportunity_report.py
 ```
 
-Safe manual fallback:
+### Safe manual fallback
 
 1. In Search Console, open **Performance > Search results**.
 2. Select the comparison window and export query/page data as CSV.
