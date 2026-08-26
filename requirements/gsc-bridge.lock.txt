@@ -1,0 +1,4 @@
+# Fully resolved runtime for the GSC operational bridges (Python 3.11)
+cffi==2.1.1
+cryptography==50.0.1
+pycparser==3.0
