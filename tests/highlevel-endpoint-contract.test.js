@@ -53,10 +53,13 @@ test('contact payload is duplicate-safe, preserves existing tags/source, and opp
   assert.match(opportunityBuilder, /pipelineId/);
   assert.match(opportunityBuilder, /pipelineStageId/);
   assert.match(opportunityBuilder, /status' => 'open'/);
+  assert.match(opportunityBuilder, /monetaryValue' => \$config\['opportunity_value'\]/);
   assert.doesNotMatch(opportunityBuilder, /assignedTo/);
   assert.match(php, /\/contacts\/upsert/);
   assert.match(php, /\/opportunities\/upsert/);
   assert.match(php, /GHL_ENABLE_TAG_ADD/);
+  assert.match(php, /GHL_DEFAULT_OPPORTUNITY_VALUE/);
+  assert.match(php, /Default opportunity value is not configured/);
   assert.match(php, /\/contacts\/' \. rawurlencode\(\$contactId\) \. '\/tags'/);
 });
 
