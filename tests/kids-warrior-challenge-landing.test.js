@@ -7,7 +7,6 @@ const root = path.join(__dirname, '..');
 const htmlPath = path.join(root, 'site/campaign/kids-warrior-challenge-preview.html');
 const cssPath = path.join(root, 'site/assets/kids-warrior-challenge.css');
 const videoPath = path.join(root, 'site/assets/campaign-videos/kids-warrior-challenge-intro-2026-08.mp4');
-const captionsPath = path.join(root, 'site/assets/campaign-videos/kids-warrior-challenge-intro-2026-08.vtt');
 const posterPath = path.join(root, 'site/assets/campaign-videos/kids-warrior-challenge-poster-2026-08.webp');
 const html = fs.readFileSync(htmlPath, 'utf8');
 const css = fs.readFileSync(cssPath, 'utf8');
@@ -53,14 +52,15 @@ test('GHL lead form uses the accepted legacy contract', () => {
   assert.match(html, /Interested in the \$599 Six-Week Kids Warrior Challenge/);
 });
 
-test('video, poster, captions, and responsive CSS exist', () => {
-  for (const file of [videoPath, captionsPath, posterPath]) {
+test('burned-in-caption video, poster, and responsive CSS exist', () => {
+  for (const file of [videoPath, posterPath]) {
     assert.equal(fs.existsSync(file), true, `${file} should exist`);
     assert.ok(fs.statSync(file).size > 100, `${file} should not be empty`);
   }
   assert.match(html, /kids-warrior-challenge-intro-2026-08\.mp4/);
-  assert.match(html, /kids-warrior-challenge-intro-2026-08\.vtt/);
+  assert.doesNotMatch(html, /<track\b|\.vtt/);
   assert.match(html, /kids-warrior-challenge-poster-2026-08\.webp/);
+  assert.match(css, /\.kw-page \.kw-cta-note\s*\{[^}]*margin:\s*30px 0 0;/s);
   assert.match(css, /@media \(max-width: 920px\)/);
   assert.match(css, /@media \(max-width: 620px\)/);
   assert.match(css, /\.kw-page\.engaged \.kw-mobile/);

@@ -39,7 +39,7 @@
 .kw-lead { max-width: 720px; margin-bottom: 26px; font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.55; }
 .kw-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
 .kw-text-link { color: var(--kw-black); font-weight: 800; text-underline-offset: 5px; }
-.kw-cta-note { margin: 18px 0 0; color: var(--kw-muted); font-size: .88rem; }
+.kw-page .kw-cta-note { margin: 30px 0 0; color: var(--kw-muted); font-size: .88rem; }
 .kw-trust { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 24px 0 0; list-style: none; }
 .kw-trust li { border: 2px solid var(--kw-black); background: #fff; padding: 8px 10px; font-size: .76rem; font-weight: 700; text-transform: uppercase; }
 .kw-video-card { margin: 0; }
