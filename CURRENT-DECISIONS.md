@@ -34,6 +34,15 @@
 - ✅ All dominant CTAs enter the existing Program Finder with the child route preselected, contact capture last, unique placement values, and paid attribution parameters preserved. Nothing is booked or charged automatically.
 - ✅ Diego approved the reviewed page for Bluehost deployment on 2026-08-25. Meta ad destination changes remain a separate launch action.
 
+## Six-Week Kids Warrior Challenge (2026-08-27)
+
+- ✅ Diego set the offer price at **$599 for six weeks** and directed a separate paid-social landing page based on Joao's three supplied Kids Warrior Challenge videos.
+- ✅ The page's primary conversion is a **challenge spot request routed through the existing HighLevel lead gateway**. The review version uses `form_id=kids_warrior_challenge_interest`, `lead_type=class_inquiry`, and an explicit challenge-interest message while preserving program, location, consent, and attribution fields.
+- ✅ Preserve `/kids-first-class/` and every prior campaign page. Build the challenge as a separate `noindex,nofollow` iteration until approved.
+- 🟡 Working campaign name: **Six-Week Kids Warrior Challenge**. Supporting copy may describe it as a structured six-week introduction to Brazilian Jiu-Jitsu.
+- 🔴 Before publication, confirm the checkout/payment URL, cohort start date, participating age groups, location-specific availability, capacity, session mechanics, uniform/gear inclusion, cancellation/refund terms, and whether any payment becomes membership credit.
+- 🔴 Until those terms are confirmed, the page may display the user-approved **$599 six-week price** but must not promise a uniform, exact class count, guarantee, automatic renewal status, refund, membership credit, or immediate checkout. It must state that no payment is collected on the lead form and that Joao confirms fit and enrollment instructions.
+
 ---
 
 ## Practice Under Pressure offline QR campaign (updated 2026-08-13)
