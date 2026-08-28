@@ -34,6 +34,12 @@
 - ✅ All dominant CTAs enter the existing Program Finder with the child route preselected, contact capture last, unique placement values, and paid attribution parameters preserved. Nothing is booked or charged automatically.
 - ✅ Diego approved the reviewed page for Bluehost deployment on 2026-08-25. Meta ad destination changes remain a separate launch action.
 
+## Swimming + jiu-jitsu advertorial concept (2026-08-28)
+
+- 🟡 Build a separate `noindex,nofollow` review framework around the parental belief that swimming and jiu-jitsu are core childhood life skills. The current working line is **“In our family, swimming and jiu-jitsu are mandatory.”** Treat “mandatory” as an editorial family philosophy, not a medical, legal, or universal safety claim.
+- 🟡 The paid-social test uses three distinct hooks: protection when a parent is not present, composure under pressure, and the family life-skills belief. Route all variants to one matched advertorial before the existing child Program Finder preview.
+- 🟡 Keep the work in preview. Do not change Meta destinations, publish to Bluehost, or attribute the first-person belief to Joao until the final byline and exact wording are approved.
+
 ---
 
 ## Practice Under Pressure offline QR campaign (updated 2026-08-13)
