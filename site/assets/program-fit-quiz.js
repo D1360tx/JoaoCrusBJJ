@@ -74,8 +74,11 @@
       });
     }
 
-    if (analyticsGranted && typeof window.gtag === 'function') {
-      window.gtag('event', 'generate_lead', {
+    if (analyticsGranted) {
+      const ga4Command = typeof window.gtag === 'function'
+        ? window.gtag
+        : function () { window.dataLayer.push(arguments); };
+      ga4Command('event', 'generate_lead', {
         form_name: clean.form_name,
         lead_type: clean.lead_type,
         program: clean.lead_program,

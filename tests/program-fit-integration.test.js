@@ -118,7 +118,8 @@ test('quiz payload is retry-stable, channel-aware, and never places PII in analy
   assert.match(js, /meta_event_id: acceptance\.meta_event_id/);
   assert.match(js, /routeAcceptedLead\(\{/);
   assert.match(js, /event: 'lead_submit_success_routed'/);
-  assert.match(js, /window\.gtag\('event', 'generate_lead'/);
+  assert.match(js, /ga4Command\('event', 'generate_lead'/);
+  assert.match(js, /function \(\) \{ window\.dataLayer\.push\(arguments\); \}/);
   assert.match(js, /window\.fbq\('track', 'Lead',[\s\S]*\{ eventID: parameters\.meta_event_id \}/);
   assert.doesNotMatch(js, /pushQuizEvent\('lead_submit_success'/);
   assert.match(js, /body\.meta_event_id !== `lead_\$\{payload\.request_id\}`/);
@@ -261,7 +262,8 @@ test('quiz and shared forms require the explicit accepted response contract', ()
   assert.match(shared, /parameters\.meta_event_id = acceptance\.meta_event_id/);
   assert.match(shared, /routeAcceptedLead\("lead_submit_success", parameters\)/);
   assert.match(shared, /sourceEventName \+ "_routed"/);
-  assert.match(shared, /window\.gtag\("event", sourceEventName === "lead_submit_success" \? "generate_lead" : sourceEventName/);
+  assert.match(shared, /ga4Command\("event", sourceEventName === "lead_submit_success" \? "generate_lead" : sourceEventName/);
+  assert.match(shared, /function \(\) \{ window\.dataLayer\.push\(arguments\); \}/);
   assert.match(shared, /window\.fbq\("track", "Lead",[\s\S]*\{ eventID: parameters\.meta_event_id \}/);
   assert.doesNotMatch(shared, /pushAnalytics\("lead_submit_success", parameters\)/);
   assert.match(shared, /body\.meta_event_id !== "lead_" \+ data\.request_id/);

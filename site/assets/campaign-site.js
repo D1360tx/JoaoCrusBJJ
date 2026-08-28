@@ -65,7 +65,7 @@
         }));
       }
 
-      if (analyticsGranted && typeof window.gtag === "function") {
+      if (analyticsGranted) {
         var gaParameters = {
           form_name: clean.form_name,
           lead_type: clean.lead_type,
@@ -74,7 +74,10 @@
           event_callback: callback,
           event_timeout: parameters.eventTimeout || 1500
         };
-        window.gtag("event", sourceEventName === "lead_submit_success" ? "generate_lead" : sourceEventName, gaParameters);
+        var ga4Command = typeof window.gtag === "function"
+          ? window.gtag
+          : function () { window.dataLayer.push(arguments); };
+        ga4Command("event", sourceEventName === "lead_submit_success" ? "generate_lead" : sourceEventName, gaParameters);
       } else if (callback) {
         window.setTimeout(callback, 0);
       }
