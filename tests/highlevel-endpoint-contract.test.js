@@ -43,6 +43,17 @@ test('endpoint normalizes identity and validates quiz recommendation enums', () 
   assert.match(php, /'jiu_jitsu_after_60'/);
 });
 
+test('quiz custom fields use parent-facing labels without changing routing enums', () => {
+  assert.match(php, /function quiz_display_value\(string \$field, string \$value\): string/);
+  assert.match(php, /'little' => 'Little Champions · Ages 3–7'/);
+  assert.match(php, /'listening' => 'Listening and following directions'/);
+  assert.match(php, /'dripping' => 'Dripping Springs'/);
+  assert.match(php, /'little_champions' => 'Little Champions · Ages 3–7'/);
+  assert.match(php, /'audience' => quiz_display_value\('audience', \$lead\['audience'\]\)/);
+  assert.match(php, /'age_bands' => quiz_display_age_bands\(\$lead\['age_bands'\]\)/);
+  assert.match(php, /function expected_recommendation\(array \$lead\): string/);
+});
+
 test('contact payload is duplicate-safe, preserves existing tags/source, and opportunity fields are present', () => {
   const contactBuilder = php.slice(php.indexOf('function build_contact_payload'), php.indexOf('function build_opportunity_payload'));
   const opportunityBuilder = php.slice(php.indexOf('function build_opportunity_payload'), php.indexOf('function contact_id_from_response'));

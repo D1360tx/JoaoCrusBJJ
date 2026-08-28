@@ -352,6 +352,76 @@ function custom_field_map(): array
     return $map;
 }
 
+function quiz_display_value(string $field, string $value): string
+{
+    $labels = [
+        'audience' => [
+            'child' => 'Child',
+            'adult' => 'Adult',
+        ],
+        'child_count' => [
+            '1' => '1 child',
+            '2' => '2 children',
+            '3' => '3 children',
+            '4+' => '4+ children',
+        ],
+        'stage' => [
+            'little' => 'Little Champions · Ages 3–7',
+            'youth' => 'Youth · Ages 8–12',
+            'teen' => 'Teens · Ages 13–17',
+            'after60' => 'Looking for the After 60 program',
+            'new' => 'Completely new',
+            'returning' => 'Returning after time away',
+            'current' => 'Currently training',
+            'competition' => 'Preparing for competition',
+        ],
+        'goal' => [
+            'listening' => 'Listening and following directions',
+            'confidence' => 'Confidence in new situations',
+            'boundaries' => 'Safe boundaries and body control',
+            'activity' => 'A positive physical activity',
+            'fundamentals' => 'Learn the fundamentals',
+            'specific' => 'Improve a specific part of my game',
+            'schedule' => 'Train around a difficult schedule',
+            'consistent' => 'Return to consistent training',
+        ],
+        'experience' => [
+            'new' => 'Completely new',
+            'tried' => 'Tried martial arts before',
+            'current' => 'Currently training',
+            'returning' => 'Returning after a break',
+            'group' => 'Adult group classes',
+            'private' => 'Private coaching',
+            'hybrid' => 'Group plus private support',
+            'help' => 'Help me choose',
+        ],
+        'preferred_location' => [
+            'dripping' => 'Dripping Springs',
+            'austin' => 'Austin',
+            'help' => 'Help me decide',
+            'either' => 'Either location works',
+        ],
+        'recommended_program' => [
+            'little_champions' => 'Little Champions · Ages 3–7',
+            'youth_bjj' => 'Youth · Ages 8–12',
+            'teen_interest_path' => 'Teens · Ages 13–17',
+            'family_program_plan' => 'Family program plan',
+            'private_coaching' => 'Private coaching',
+            'adult_group_bjj' => 'Adult group classes',
+            'jiu_jitsu_after_60' => 'Jiu-Jitsu After 60',
+        ],
+    ];
+    return $labels[$field][$value] ?? $value;
+}
+
+function quiz_display_age_bands(array $ageBands): string
+{
+    return implode(', ', array_map(
+        static fn (mixed $ageBand): string => quiz_display_value('stage', (string)$ageBand),
+        $ageBands
+    ));
+}
+
 function flattened_values(array $lead): array
 {
     $values = [
@@ -360,15 +430,15 @@ function flattened_values(array $lead): array
         'schema_version' => $lead['schema_version'],
         'lead_type' => $lead['lead_type'],
         'route_source' => clean_text($lead['route_source'] ?? '', 40),
-        'audience' => $lead['audience'],
-        'child_count' => $lead['child_count'],
-        'age_bands' => implode(',', $lead['age_bands']),
-        'stage' => $lead['stage'],
-        'goal' => $lead['goal'],
-        'primary_goal' => $lead['goal'],
-        'experience' => $lead['experience'],
-        'preferred_location' => $lead['preferred_location'],
-        'recommended_program' => $lead['recommended_program'],
+        'audience' => quiz_display_value('audience', $lead['audience']),
+        'child_count' => quiz_display_value('child_count', $lead['child_count']),
+        'age_bands' => quiz_display_age_bands($lead['age_bands']),
+        'stage' => quiz_display_value('stage', $lead['stage']),
+        'goal' => quiz_display_value('goal', $lead['goal']),
+        'primary_goal' => quiz_display_value('goal', $lead['goal']),
+        'experience' => quiz_display_value('experience', $lead['experience']),
+        'preferred_location' => quiz_display_value('preferred_location', $lead['preferred_location']),
+        'recommended_program' => quiz_display_value('recommended_program', $lead['recommended_program']),
         'email_consent' => $lead['email_consent'] ? 'granted' : 'not_granted',
         'sms_consent' => $lead['sms_consent'] ? 'granted' : 'not_granted',
         'consent_disclosure_version' => $lead['consent_disclosure_version'],
