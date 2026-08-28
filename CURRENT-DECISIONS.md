@@ -40,6 +40,13 @@
 - 🟡 The paid-social test uses three distinct hooks: protection when a parent is not present, composure under pressure, and the family life-skills belief. Route all variants to one matched advertorial before the existing child Program Finder preview.
 - 🟡 Keep the work in preview. Do not change Meta destinations, publish to Bluehost, or attribute the first-person belief to Joao until the final byline and exact wording are approved.
 
+## Parent-practice advertorial concept (2026-08-28)
+
+- 🟡 Build a separate `noindex,nofollow` advertorial for parents whose children have trouble listening or following directions. The page may also personalize around the existing Program Finder goals: confidence in new situations, safe boundaries and body control, and a positive physical activity.
+- 🟡 Lead with the non-shaming mechanism that a child can understand a rule and still need practice using one clear cue while moving, distracted, uncertain, or frustrated. Present Joao's method as structured practice, not a diagnosis, behavior cure, guaranteed discipline outcome, or substitute for professional support.
+- 🟡 Preserve the four approved goal labels and supporting lines from the Program Finder. Keep contact capture in the existing child quiz flow and state that Joao personally calls to recommend a class and arrange a free studio visit where the child may watch or participate.
+- 🟡 Keep the page in review. Do not publish to Bluehost or change paid-ad destinations without explicit approval.
+
 ---
 
 ## Practice Under Pressure offline QR campaign (updated 2026-08-13)
