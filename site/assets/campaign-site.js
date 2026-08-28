@@ -85,6 +85,7 @@
 
       if (analyticsGranted) {
         var gaParameters = {
+          send_to: "G-EW2F2YKR3Y",
           form_name: clean.form_name,
           lead_type: clean.lead_type,
           program: clean.lead_program,

@@ -148,6 +148,7 @@ test('quiz payload is retry-stable, channel-aware, and never places PII in analy
   assert.match(js, /routeAcceptedLead\(\{/);
   assert.match(js, /event: 'lead_submit_success_routed'/);
   assert.match(js, /ga4Command\('event', 'generate_lead'/);
+  assert.match(js, /send_to: 'G-EW2F2YKR3Y'/);
   assert.match(js, /function \(\) \{ window\.dataLayer\.push\(arguments\); \}/);
   assert.match(js, /window\.fbq\('track', 'Lead',[\s\S]*\{ eventID: metaEventId \}/);
   assert.match(js, /routeMetaLead\(parameters\.meta_event_id, clean\)/);
@@ -360,6 +361,7 @@ test('quiz and shared forms require the explicit accepted response contract', ()
   assert.match(shared, /sourceEventName \+ "_routed"/);
   assert.match(shared, /sourceEventName === "guide_request_success"[\s\S]*\? "guide_request"/);
   assert.match(shared, /ga4Command\("event", gaEventName, gaParameters\)/);
+  assert.match(shared, /send_to: "G-EW2F2YKR3Y"/);
   assert.match(shared, /function \(\) \{ window\.dataLayer\.push\(arguments\); \}/);
   assert.match(shared, /window\.fbq\("track", "Lead",[\s\S]*\{ eventID: metaEventId \}/);
   assert.match(shared, /routeMetaLead\(parameters\.meta_event_id, clean\)/);
