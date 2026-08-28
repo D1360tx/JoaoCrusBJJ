@@ -42,6 +42,27 @@
       return true;
     }
 
+    var routedMetaEventIds = Object.create(null);
+
+    function routeMetaLead(metaEventId, clean) {
+      if (!/^lead_[A-Za-z0-9][A-Za-z0-9._:-]{15,79}$/.test(metaEventId || "") || routedMetaEventIds[metaEventId]) return false;
+      routedMetaEventIds[metaEventId] = true;
+      var attempts = 0;
+      function sendWhenReady() {
+        if (typeof window.fbq === "function") {
+          window.fbq("track", "Lead", {
+            content_name: clean.form_name || "website_lead",
+            content_category: clean.lead_type || "website_lead"
+          }, { eventID: metaEventId });
+          return;
+        }
+        attempts += 1;
+        if (attempts < 20) window.setTimeout(sendWhenReady, 100);
+      }
+      sendWhenReady();
+      return true;
+    }
+
     function routeAcceptedLead(sourceEventName, parameters) {
       parameters = parameters || {};
       var consent = window.joaoConsentState || {};
@@ -51,11 +72,8 @@
         ? parameters.eventCallback
         : null;
       var clean = {};
-      Object.keys(parameters || {}).forEach(function (key) {
-        if (key !== "eventCallback" && key !== "eventTimeout" && key !== "meta_event_id" &&
-            parameters[key] !== undefined && parameters[key] !== null && parameters[key] !== "") {
-          clean[key] = parameters[key];
-        }
+      ["form_name", "form_context", "lead_type", "lead_program", "lead_location", "submission_page"].forEach(function (key) {
+        if (parameters[key] !== undefined && parameters[key] !== null && parameters[key] !== "") clean[key] = parameters[key];
       });
 
       if (analyticsGranted || advertisingGranted) {
@@ -77,17 +95,17 @@
         var ga4Command = typeof window.gtag === "function"
           ? window.gtag
           : function () { window.dataLayer.push(arguments); };
-        ga4Command("event", sourceEventName === "lead_submit_success" ? "generate_lead" : sourceEventName, gaParameters);
+        var gaEventName = sourceEventName === "lead_submit_success"
+          ? "generate_lead"
+          : sourceEventName === "guide_request_success"
+            ? "guide_request"
+            : sourceEventName;
+        ga4Command("event", gaEventName, gaParameters);
       } else if (callback) {
         window.setTimeout(callback, 0);
       }
 
-      if (advertisingGranted && typeof window.fbq === "function" && /^lead_[A-Za-z0-9-]{8,100}$/.test(parameters.meta_event_id || "")) {
-        window.fbq("track", "Lead", {
-          content_name: clean.form_name || "website_lead",
-          content_category: clean.lead_type || "website_lead"
-        }, { eventID: parameters.meta_event_id });
-      }
+      if (advertisingGranted) routeMetaLead(parameters.meta_event_id, clean);
       return analyticsGranted || advertisingGranted;
     }
 

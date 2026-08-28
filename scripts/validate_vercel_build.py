@@ -254,8 +254,8 @@ def main() -> None:
         check(f'pushAnalytics("{event_name}"' in analytics_source, f"missing analytics event contract: {event_name}")
     for event_name in ("lead_submit_success", "guide_request_success"):
         check(f'routeAcceptedLead("{event_name}"' in analytics_source, f"missing accepted-lead routing contract: {event_name}")
-    check('ga4Command("event", sourceEventName === "lead_submit_success" ? "generate_lead" : sourceEventName' in analytics_source and 'function () { window.dataLayer.push(arguments); }' in analytics_source, "accepted leads must route directly to the governed GA4 event even when GTM does not expose window.gtag")
-    check('window.fbq("track", "Lead"' in analytics_source and '{ eventID: parameters.meta_event_id }' in analytics_source, "accepted leads must route one Meta browser event with the server event ID")
+    check('sourceEventName === "guide_request_success"' in analytics_source and '? "guide_request"' in analytics_source and 'ga4Command("event", gaEventName, gaParameters)' in analytics_source and 'function () { window.dataLayer.push(arguments); }' in analytics_source, "accepted leads and guide requests must route to their governed GA4 event even when GTM does not expose window.gtag")
+    check('window.fbq("track", "Lead"' in analytics_source and '{ eventID: metaEventId }' in analytics_source and 'routeMetaLead(parameters.meta_event_id, clean)' in analytics_source, "accepted leads must route one deferred Meta browser event with the server event ID")
     check('window.joaoConsentState.analytics_storage !== "granted" &&' in analytics_source and 'window.joaoConsentState.ad_storage !== "granted"' in analytics_source, "application events must not queue while both analytics and advertising storage are denied")
     check('window.setTimeout(parameters.eventCallback, 0)' in analytics_source, "blocked lead analytics must preserve immediate navigation callbacks")
     check('function clearCookies(pattern)' in consent_source and '/^_fb[pc]$|^_gcl_/' in consent_source, "category withdrawal must clear accessible Google and Meta cookies")
