@@ -114,6 +114,9 @@ test('quiz payload is retry-stable, channel-aware, and never places PII in analy
   assert.match(js, /stage: answers\.audience === 'adult'/);
   assert.match(js, /first: attribution\.first_touch/);
   assert.match(js, /latest: attribution\.last_touch/);
+  assert.match(js, /JoaoAttribution\.metaContext\(window, attribution\)/);
+  assert.match(js, /meta_event_id: acceptance\.meta_event_id/);
+  assert.match(js, /body\.meta_event_id !== `lead_\$\{payload\.request_id\}`/);
   assert.match(js, /new AbortController\(\)/);
   assert.match(js, /35000/);
 
@@ -250,6 +253,9 @@ test('quiz and shared forms require the explicit accepted response contract', ()
   assert.match(shared, /new AbortController\(\)/);
   assert.match(shared, /35000/);
   assert.match(shared, /data\.request_id = form\.dataset\.requestId/);
+  assert.match(shared, /data\.meta = currentMetaContext\(\)/);
+  assert.match(shared, /parameters\.meta_event_id = acceptance\.meta_event_id/);
+  assert.match(shared, /body\.meta_event_id !== "lead_" \+ data\.request_id/);
   assert.match(shared, /data-booking-form data-form-id="booking_popup" data-lead-type="class_inquiry"/);
   assert.doesNotMatch(shared, /fetch\("\/api\/contact\.php"/);
 });

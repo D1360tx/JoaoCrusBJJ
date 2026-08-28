@@ -22,6 +22,7 @@ const MAX_BODY_BYTES = 24576;
 const RATE_LIMIT_WINDOW_SECONDS = 900;
 const RATE_LIMIT_MAX_ATTEMPTS = 8;
 const GHL_BASE_URL = 'https://services.leadconnectorhq.com';
+const META_GRAPH_BASE_URL = 'https://graph.facebook.com';
 const LEGACY_ALERT_RECIPIENTS = ['joaocrusbjj@gmail.com', 'diego@icdcventures.com'];
 const LEGACY_ALERT_FROM = 'website@joaocrusbjj.com';
 
@@ -253,6 +254,7 @@ function normalize_quiz(array $data): array
         'consent_disclosure_version' => require_enum(clean_text($data['consent_disclosure_version'] ?? '', 40), ['program_fit_v1', 'program_fit_sms_v2'], 'consent disclosure'),
         'page' => clean_text($data['page'] ?? '', 300),
         'attribution' => is_array($data['attribution'] ?? null) ? $data['attribution'] : [],
+        'meta' => is_array($data['meta'] ?? null) ? $data['meta'] : [],
         'legacy' => false,
     ];
     if ($lead['first_name'] === '' || $lead['email'] === '' || $lead['phone'] === '' || !$lead['email_consent']) {
@@ -308,6 +310,7 @@ function normalize_legacy(array $data): array
         'consent_disclosure_version' => $isTeen ? 'teen_interest_v1' : 'website_contact_v1',
         'page' => clean_text($data['page'] ?? '', 300),
         'attribution' => is_array($data['attribution'] ?? null) ? $data['attribution'] : [],
+        'meta' => is_array($data['meta'] ?? null) ? $data['meta'] : [],
         'message' => clean_text($data['message'] ?? '', 1500),
         'role' => $role,
         'age' => $age,
@@ -466,6 +469,224 @@ function ghl_request(string $method, string $path, array $payload, string $reque
     return $body;
 }
 
+function meta_cookie_value(mixed $value): string
+{
+    $cleaned = clean_text($value, 240);
+    return preg_match('/^fb\.1\.\d{10,13}\.[A-Za-z0-9._-]{6,200}$/', $cleaned) ? $cleaned : '';
+}
+
+function meta_event_id(array $lead): string
+{
+    return 'lead_' . $lead['request_id'];
+}
+
+function meta_event_source_url(array $lead): string
+{
+    $page = clean_text($lead['page'] ?? '', 300);
+    if (str_starts_with($page, '/')) return 'https://joaocrusbjj.com' . $page;
+    $parts = parse_url($page);
+    if (
+        is_array($parts)
+        && strtolower((string)($parts['scheme'] ?? '')) === 'https'
+        && in_array(strtolower((string)($parts['host'] ?? '')), ['joaocrusbjj.com', 'www.joaocrusbjj.com'], true)
+    ) {
+        return 'https://' . strtolower((string)$parts['host']) . ((string)($parts['path'] ?? '/') ?: '/');
+    }
+    return 'https://joaocrusbjj.com/';
+}
+
+function meta_capi_configuration(): array
+{
+    $pixelId = env_value('META_PIXEL_ID');
+    $token = env_value('META_CAPI_ACCESS_TOKEN');
+    $graphVersion = env_value('META_GRAPH_VERSION');
+    if (!preg_match('/^\d{8,30}$/', $pixelId) || $token === '' || !preg_match('/^v\d+\.\d+$/', $graphVersion)) {
+        throw new RuntimeException('Meta CAPI configuration is incomplete.');
+    }
+    return ['pixel_id' => $pixelId, 'token' => $token, 'graph_version' => $graphVersion];
+}
+
+function meta_capi_outbox_dir(bool $create): string
+{
+    $configured = env_value('META_CAPI_OUTBOX_DIR');
+    if ($configured === '' || !str_starts_with($configured, '/') || str_contains($configured, '..')) {
+        throw new RuntimeException('Meta CAPI outbox is not safely configured.');
+    }
+    if ($create && !is_dir($configured) && !mkdir($configured, 0700, true) && !is_dir($configured)) {
+        throw new RuntimeException('Meta CAPI outbox could not be created.');
+    }
+    $resolved = realpath($configured);
+    if ($resolved === false || !is_dir($resolved)) throw new RuntimeException('Meta CAPI outbox is unavailable.');
+    $documentRoot = realpath((string)($_SERVER['DOCUMENT_ROOT'] ?? ''));
+    if ($documentRoot !== false && ($resolved === $documentRoot || str_starts_with($resolved . '/', $documentRoot . '/'))) {
+        throw new RuntimeException('Meta CAPI outbox cannot be under the public document root.');
+    }
+    @chmod($resolved, 0700);
+    return $resolved;
+}
+
+function meta_capi_outbox_path(string $eventId, bool $create): string
+{
+    return meta_capi_outbox_dir($create) . '/' . hash('sha256', $eventId) . '.json';
+}
+
+function meta_capi_write_outbox(array $record): void
+{
+    $eventId = clean_text($record['event_id'] ?? '', 100);
+    if (!preg_match('/^lead_[A-Za-z0-9-]{16,80}$/', $eventId)) throw new RuntimeException('Invalid Meta CAPI outbox event.');
+    $path = meta_capi_outbox_path($eventId, true);
+    $temporary = tempnam(dirname($path), '.meta-capi-');
+    if ($temporary === false) throw new RuntimeException('Meta CAPI outbox write failed.');
+    try {
+        $json = json_encode($record, JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR);
+        if (file_put_contents($temporary, $json, LOCK_EX) === false) throw new RuntimeException('Meta CAPI outbox write failed.');
+        chmod($temporary, 0600);
+        if (!rename($temporary, $path)) throw new RuntimeException('Meta CAPI outbox promotion failed.');
+    } finally {
+        if (is_file($temporary)) @unlink($temporary);
+    }
+}
+
+function meta_capi_send_payload(array $payload, string $requestId, int $attemptLimit): array
+{
+    $config = meta_capi_configuration();
+    $status = 0;
+    $errno = 0;
+    $trace = '';
+    for ($attempt = 1; $attempt <= $attemptLimit; $attempt++) {
+        $curl = curl_init(META_GRAPH_BASE_URL . '/' . rawurlencode($config['graph_version']) . '/' . rawurlencode($config['pixel_id']) . '/events');
+        curl_setopt_array($curl, [
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => json_encode($payload, JSON_UNESCAPED_SLASHES),
+            CURLOPT_HTTPHEADER => ['Authorization: Bearer ' . $config['token'], 'Content-Type: application/json', 'Accept: application/json'],
+            CURLOPT_USERAGENT => 'JoaoCrusBJJCAPI/1.0 (+https://joaocrusbjj.com/)',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CONNECTTIMEOUT => 4,
+            CURLOPT_TIMEOUT => 8,
+            CURLOPT_MAXREDIRS => 0,
+            CURLOPT_PROTOCOLS => CURLPROTO_HTTPS,
+            CURLOPT_SSL_VERIFYPEER => true,
+            CURLOPT_SSL_VERIFYHOST => 2,
+        ]);
+        $raw = curl_exec($curl);
+        $status = (int)curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
+        $errno = curl_errno($curl);
+        curl_close($curl);
+        $body = is_string($raw) ? json_decode($raw, true) : null;
+        $trace = is_array($body) ? clean_text($body['fbtrace_id'] ?? '', 100) : '';
+        if ($errno === 0 && $status >= 200 && $status < 300 && is_array($body) && (int)($body['events_received'] ?? 0) === 1) {
+            log_event($requestId, 'meta_capi_accepted', ['provider_trace' => $trace]);
+            return ['accepted' => true, 'status' => $status, 'curl_errno' => 0];
+        }
+        if ($attempt < $attemptLimit && ($errno !== 0 || $status === 429 || $status >= 500)) usleep(150000);
+        else break;
+    }
+    log_event($requestId, 'meta_capi_failed', ['status' => $status, 'curl_errno' => $errno, 'provider_trace' => $trace]);
+    return ['accepted' => false, 'status' => $status, 'curl_errno' => $errno];
+}
+
+function meta_capi_status(array $lead): string
+{
+    if (env_value('META_CAPI_ENABLED', 'false') !== 'true') return 'disabled';
+    $meta = is_array($lead['meta'] ?? null) ? $lead['meta'] : [];
+    if (($meta['ad_storage'] ?? '') !== 'granted' || ($meta['ad_user_data'] ?? '') !== 'granted') {
+        return 'consent_denied';
+    }
+
+    $userData = ['em' => [hash('sha256', strtolower($lead['email']))]];
+    $phoneDigits = preg_replace('/\D+/', '', $lead['phone']) ?? '';
+    if (strlen($phoneDigits) === 10) $phoneDigits = '1' . $phoneDigits;
+    if ($phoneDigits !== '') $userData['ph'] = [hash('sha256', $phoneDigits)];
+    $clientIp = clean_text($_SERVER['REMOTE_ADDR'] ?? '', 64);
+    $clientUserAgent = clean_text($_SERVER['HTTP_USER_AGENT'] ?? '', 500);
+    if ($clientIp !== '' && filter_var($clientIp, FILTER_VALIDATE_IP) !== false) $userData['client_ip_address'] = $clientIp;
+    if ($clientUserAgent !== '') $userData['client_user_agent'] = $clientUserAgent;
+    $fbp = meta_cookie_value($meta['fbp'] ?? '');
+    $fbc = meta_cookie_value($meta['fbc'] ?? '');
+    if ($fbp !== '') $userData['fbp'] = $fbp;
+    if ($fbc !== '') $userData['fbc'] = $fbc;
+
+    $payload = ['data' => [[
+        'event_name' => 'Lead',
+        'event_time' => time(),
+        'event_id' => meta_event_id($lead),
+        'event_source_url' => meta_event_source_url($lead),
+        'action_source' => 'website',
+        'user_data' => $userData,
+        'custom_data' => [
+            'content_name' => $lead['lead_type'] === 'guide' ? 'Parent Guide' : 'First Class Inquiry',
+            'content_category' => $lead['lead_type'] === 'guide' ? 'lead_magnet' : 'class_inquiry',
+        ],
+    ]]];
+
+    try {
+        $result = meta_capi_send_payload($payload, $lead['request_id'], 2);
+        if ($result['accepted']) {
+            try {
+                $outboxPath = meta_capi_outbox_path(meta_event_id($lead), false);
+                if (is_file($outboxPath)) @unlink($outboxPath);
+            } catch (Throwable $exception) {
+                // A successful provider receipt is authoritative even when no prior outbox exists.
+            }
+            return 'accepted';
+        }
+        meta_capi_write_outbox([
+            'version' => 1,
+            'event_id' => meta_event_id($lead),
+            'request_id' => $lead['request_id'],
+            'payload' => $payload,
+            'attempts' => 2,
+            'created_at' => time(),
+            'next_attempt_at' => time() + 300,
+            'last_status' => (int)$result['status'],
+            'last_curl_errno' => (int)$result['curl_errno'],
+        ]);
+        log_event($lead['request_id'], 'meta_capi_queued', []);
+    } catch (Throwable $exception) {
+        log_event($lead['request_id'], 'meta_capi_queue_failed', ['reason' => 'runtime']);
+    }
+    return 'failed';
+}
+
+function meta_capi_retry_outbox(int $limit = 20): array
+{
+    if (env_value('META_CAPI_ENABLED', 'false') !== 'true') return ['processed' => 0, 'accepted' => 0, 'failed' => 0, 'dead' => 0];
+    $directory = meta_capi_outbox_dir(false);
+    $files = glob($directory . '/*.json') ?: [];
+    sort($files, SORT_STRING);
+    $processed = 0;
+    $accepted = 0;
+    $failed = 0;
+    $dead = 0;
+    foreach (array_slice($files, 0, max(1, min($limit, 100))) as $path) {
+        $record = json_decode((string)file_get_contents($path), true);
+        if (!is_array($record) || !is_array($record['payload'] ?? null) || (int)($record['next_attempt_at'] ?? 0) > time()) continue;
+        $eventId = clean_text($record['event_id'] ?? '', 100);
+        $requestId = clean_text($record['request_id'] ?? '', 100);
+        if (!hash_equals(basename($path, '.json'), hash('sha256', $eventId)) || !preg_match('/^[a-f0-9-]{20,100}$/', $requestId)) continue;
+        $processed++;
+        $result = meta_capi_send_payload($record['payload'], $requestId, 1);
+        if ($result['accepted']) {
+            @unlink($path);
+            $accepted++;
+            continue;
+        }
+        $record['attempts'] = (int)($record['attempts'] ?? 0) + 1;
+        $record['last_status'] = (int)$result['status'];
+        $record['last_curl_errno'] = (int)$result['curl_errno'];
+        if ($record['attempts'] >= 10) {
+            @rename($path, $path . '.dead');
+            log_event($requestId, 'meta_capi_dead_lettered', ['attempts' => $record['attempts']]);
+            $dead++;
+            continue;
+        }
+        $record['next_attempt_at'] = time() + min(86400, 300 * (2 ** min(8, $record['attempts'] - 2)));
+        meta_capi_write_outbox($record);
+        $failed++;
+    }
+    return ['processed' => $processed, 'accepted' => $accepted, 'failed' => $failed, 'dead' => $dead];
+}
+
 function build_contact_payload(array $lead, array $map, array $config): array
 {
     $payload = [
@@ -549,6 +770,8 @@ function send_legacy_alert(array $lead): void
     }
 }
 
+if (defined('JOAO_CAPI_LIBRARY_ONLY') && JOAO_CAPI_LIBRARY_ONLY === true) return;
+
 try {
     load_server_env_file();
     if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -607,6 +830,7 @@ try {
     if ($opportunityId === '') {
         throw new RuntimeException('Opportunity acceptance was ambiguous.');
     }
+    $metaCapiStatus = meta_capi_status($lead);
     send_legacy_alert($lead);
     log_event($lead['request_id'], 'accepted', [
         'provider_trace' => clean_text($opportunityResponse['traceId'] ?? ($contactResponse['traceId'] ?? ''), 100),
@@ -616,6 +840,8 @@ try {
         'request_id' => $lead['request_id'],
         'contact_accepted' => true,
         'opportunity_accepted' => true,
+        'meta_event_id' => meta_event_id($lead),
+        'meta_capi_status' => $metaCapiStatus,
     ]);
 } catch (InvalidArgumentException | JsonException $exception) {
     respond(400, ['accepted' => false, 'error' => $exception instanceof InvalidArgumentException ? $exception->getMessage() : 'Invalid JSON request.']);

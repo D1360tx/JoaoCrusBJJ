@@ -74,6 +74,13 @@
       };
     }
 
+    function currentMetaContext() {
+      var attribution = window.joaoAttribution || {};
+      return window.JoaoAttribution && typeof window.JoaoAttribution.metaContext === "function"
+        ? window.JoaoAttribution.metaContext(window, attribution)
+        : { ad_storage: "denied", ad_user_data: "denied" };
+    }
+
     function updateNavOffset() {
       if (!n || !h || !b.classList.contains("nav-open")) return;
       n.style.setProperty("--nav-top", Math.max(0, h.getBoundingClientRect().bottom) + "px");
@@ -267,7 +274,7 @@
           } catch (error) {
             body = {};
           }
-          if (!response.ok || body.accepted !== true || body.contact_accepted !== true || body.opportunity_accepted !== true || body.request_id !== data.request_id) {
+          if (!response.ok || body.accepted !== true || body.contact_accepted !== true || body.opportunity_accepted !== true || body.request_id !== data.request_id || body.meta_event_id !== "lead_" + data.request_id) {
             throw new Error(body.error || "Unable to send your request.");
           }
           return body;
@@ -295,10 +302,11 @@
       data.page = window.location.pathname;
       data.lead_type = leadType(form, data);
       data.attribution = currentAttribution();
+      data.meta = currentMetaContext();
       status.textContent = "Sending your request…";
       submit.disabled = true;
       postLead(data)
-        .then(function () {
+        .then(function (acceptance) {
           var redirected = false;
           function redirectAfterSuccess() {
             if (redirected) return;
@@ -306,6 +314,7 @@
             window.location.href = form.dataset.successUrl || "/thank-you/";
           }
           var parameters = leadAnalyticsParameters(form, data);
+          parameters.meta_event_id = acceptance.meta_event_id;
           parameters.eventCallback = redirectAfterSuccess;
           parameters.eventTimeout = 1500;
           if (data.lead_type === "guide") {
