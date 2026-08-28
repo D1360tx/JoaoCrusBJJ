@@ -52,6 +52,46 @@
     return true;
   }
 
+  function routeAcceptedLead(parameters = {}) {
+    const consent = window.joaoConsentState || {};
+    const analyticsGranted = consent.analytics_storage === 'granted';
+    const advertisingGranted = consent.ad_storage === 'granted' && consent.ad_user_data === 'granted';
+    const clean = {
+      form_name: 'program_fit_quiz',
+      lead_type: 'quiz',
+      recommendation: parameters.recommendation,
+      lead_program: parameters.lead_program,
+      lead_location: parameters.lead_location
+    };
+
+    if (analyticsGranted || advertisingGranted) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'lead_submit_success_routed',
+        quiz_name: quizName,
+        ...clean,
+        meta_event_id: parameters.meta_event_id
+      });
+    }
+
+    if (analyticsGranted && typeof window.gtag === 'function') {
+      window.gtag('event', 'generate_lead', {
+        form_name: clean.form_name,
+        lead_type: clean.lead_type,
+        program: clean.lead_program,
+        location: clean.lead_location
+      });
+    }
+
+    if (advertisingGranted && typeof window.fbq === 'function' && /^lead_[A-Za-z0-9-]{8,100}$/.test(parameters.meta_event_id || '')) {
+      window.fbq('track', 'Lead', {
+        content_name: clean.form_name,
+        content_category: clean.lead_type
+      }, { eventID: parameters.meta_event_id });
+    }
+    return analyticsGranted || advertisingGranted;
+  }
+
   function safeStepAnswer(stepNumber) {
     if (stepNumber === 1) return answers.audience;
     if (stepNumber === 2) return 'not_collected';
@@ -569,8 +609,7 @@
       const payload = leadPayload(result);
       const acceptance = await submitLead(payload);
       showScreen('result');
-      pushQuizEvent('lead_submit_success', {
-        form_id: 'program_fit_quiz',
+      routeAcceptedLead({
         recommendation,
         lead_program: recommendation,
         lead_location: answers.location,

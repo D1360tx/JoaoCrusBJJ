@@ -116,6 +116,11 @@ test('quiz payload is retry-stable, channel-aware, and never places PII in analy
   assert.match(js, /latest: attribution\.last_touch/);
   assert.match(js, /JoaoAttribution\.metaContext\(window, attribution\)/);
   assert.match(js, /meta_event_id: acceptance\.meta_event_id/);
+  assert.match(js, /routeAcceptedLead\(\{/);
+  assert.match(js, /event: 'lead_submit_success_routed'/);
+  assert.match(js, /window\.gtag\('event', 'generate_lead'/);
+  assert.match(js, /window\.fbq\('track', 'Lead',[\s\S]*\{ eventID: parameters\.meta_event_id \}/);
+  assert.doesNotMatch(js, /pushQuizEvent\('lead_submit_success'/);
   assert.match(js, /body\.meta_event_id !== `lead_\$\{payload\.request_id\}`/);
   assert.match(js, /new AbortController\(\)/);
   assert.match(js, /35000/);
@@ -203,7 +208,6 @@ test('quiz emits a complete non-PII funnel contract with controlled question enu
     'quiz_complete',
     'quiz_result_view',
     'lead_submit_attempt',
-    'lead_submit_success',
     'lead_submit_error',
   ]) {
     assert.match(js, new RegExp(`pushQuizEvent\\('${event}'`), `${event} must use the shared analytics helper`);
@@ -255,6 +259,11 @@ test('quiz and shared forms require the explicit accepted response contract', ()
   assert.match(shared, /data\.request_id = form\.dataset\.requestId/);
   assert.match(shared, /data\.meta = currentMetaContext\(\)/);
   assert.match(shared, /parameters\.meta_event_id = acceptance\.meta_event_id/);
+  assert.match(shared, /routeAcceptedLead\("lead_submit_success", parameters\)/);
+  assert.match(shared, /sourceEventName \+ "_routed"/);
+  assert.match(shared, /window\.gtag\("event", sourceEventName === "lead_submit_success" \? "generate_lead" : sourceEventName/);
+  assert.match(shared, /window\.fbq\("track", "Lead",[\s\S]*\{ eventID: parameters\.meta_event_id \}/);
+  assert.doesNotMatch(shared, /pushAnalytics\("lead_submit_success", parameters\)/);
   assert.match(shared, /body\.meta_event_id !== "lead_" \+ data\.request_id/);
   assert.match(shared, /data-booking-form data-form-id="booking_popup" data-lead-type="class_inquiry"/);
   assert.doesNotMatch(shared, /fetch\("\/api\/contact\.php"/);

@@ -245,8 +245,6 @@ def main() -> None:
         f"{hashlib.sha256((ASSETS / 'campaign-site.js').read_bytes()).hexdigest()[:12]}"
     )
     for event_name in (
-        "lead_submit_success",
-        "guide_request_success",
         "lead_submit_error",
         "booking_start",
         "click_to_call",
@@ -254,10 +252,14 @@ def main() -> None:
         "get_directions",
     ):
         check(f'pushAnalytics("{event_name}"' in analytics_source, f"missing analytics event contract: {event_name}")
+    for event_name in ("lead_submit_success", "guide_request_success"):
+        check(f'routeAcceptedLead("{event_name}"' in analytics_source, f"missing accepted-lead routing contract: {event_name}")
+    check('window.gtag("event", sourceEventName === "lead_submit_success" ? "generate_lead" : sourceEventName' in analytics_source, "accepted leads must route directly to the governed GA4 event")
+    check('window.fbq("track", "Lead"' in analytics_source and '{ eventID: parameters.meta_event_id }' in analytics_source, "accepted leads must route one Meta browser event with the server event ID")
     check('window.joaoConsentState.analytics_storage !== "granted" &&' in analytics_source and 'window.joaoConsentState.ad_storage !== "granted"' in analytics_source, "application events must not queue while both analytics and advertising storage are denied")
     check('window.setTimeout(parameters.eventCallback, 0)' in analytics_source, "blocked lead analytics must preserve immediate navigation callbacks")
     check('function clearCookies(pattern)' in consent_source and '/^_fb[pc]$|^_gcl_/' in consent_source, "category withdrawal must clear accessible Google and Meta cookies")
-    check("parameters.eventCallback = redirectAfterSuccess" in analytics_source, "lead success event must use a GTM eventCallback before navigation")
+    check("parameters.eventCallback = redirectAfterSuccess" in analytics_source, "lead success event must preserve an analytics callback before navigation")
     check("parameters.eventTimeout = 1500" in analytics_source, "lead success event must use a bounded eventTimeout")
     check("data.attribution = currentAttribution()" in analytics_source, "lead payload must use current consent-aware non-PII attribution")
     check('formData.getAll("availability").join(", ")' in analytics_source, "Teen schedule availability must retain every selected time window")

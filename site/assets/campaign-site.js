@@ -42,6 +42,52 @@
       return true;
     }
 
+    function routeAcceptedLead(sourceEventName, parameters) {
+      parameters = parameters || {};
+      var consent = window.joaoConsentState || {};
+      var analyticsGranted = consent.analytics_storage === "granted";
+      var advertisingGranted = consent.ad_storage === "granted" && consent.ad_user_data === "granted";
+      var callback = parameters && typeof parameters.eventCallback === "function"
+        ? parameters.eventCallback
+        : null;
+      var clean = {};
+      Object.keys(parameters || {}).forEach(function (key) {
+        if (key !== "eventCallback" && key !== "eventTimeout" && key !== "meta_event_id" &&
+            parameters[key] !== undefined && parameters[key] !== null && parameters[key] !== "") {
+          clean[key] = parameters[key];
+        }
+      });
+
+      if (analyticsGranted || advertisingGranted) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Object.assign({ event: sourceEventName + "_routed" }, clean, {
+          meta_event_id: parameters.meta_event_id
+        }));
+      }
+
+      if (analyticsGranted && typeof window.gtag === "function") {
+        var gaParameters = {
+          form_name: clean.form_name,
+          lead_type: clean.lead_type,
+          program: clean.lead_program,
+          location: clean.lead_location,
+          event_callback: callback,
+          event_timeout: parameters.eventTimeout || 1500
+        };
+        window.gtag("event", sourceEventName === "lead_submit_success" ? "generate_lead" : sourceEventName, gaParameters);
+      } else if (callback) {
+        window.setTimeout(callback, 0);
+      }
+
+      if (advertisingGranted && typeof window.fbq === "function" && /^lead_[A-Za-z0-9-]{8,100}$/.test(parameters.meta_event_id || "")) {
+        window.fbq("track", "Lead", {
+          content_name: clean.form_name || "website_lead",
+          content_category: clean.lead_type || "website_lead"
+        }, { eventID: parameters.meta_event_id });
+      }
+      return analyticsGranted || advertisingGranted;
+    }
+
     function formAnalyticsName(form) {
       if (form.matches("[data-booking-form]")) return "booking_dialog";
       if (form.dataset.formId) return analyticsValue(form.dataset.formId);
@@ -318,9 +364,9 @@
           parameters.eventCallback = redirectAfterSuccess;
           parameters.eventTimeout = 1500;
           if (data.lead_type === "guide") {
-            pushAnalytics("guide_request_success", parameters);
+            routeAcceptedLead("guide_request_success", parameters);
           } else {
-            pushAnalytics("lead_submit_success", parameters);
+            routeAcceptedLead("lead_submit_success", parameters);
           }
           window.setTimeout(redirectAfterSuccess, 1700);
         })
