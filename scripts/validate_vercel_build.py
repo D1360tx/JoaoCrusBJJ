@@ -102,6 +102,7 @@ def main() -> None:
         htaccess = (DIST / ".htaccess").read_text(encoding="utf-8")
         redirect_targets = {
             "found-the-flyer": "https://joaocrusbjj.com/practice-under-pressure/",
+            "private-classes": "https://joaocrusbjj.com/private-bjj-lessons/",
             "teens-preview": "https://joaocrusbjj.com/teens/",
             "1381-2": "https://joaocrusbjj.com/",
             "free-class": "https://joaocrusbjj.com/contact/",
