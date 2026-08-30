@@ -889,7 +889,6 @@ function submission_note_payload(array $lead, array $config): array
     $payload = [
         'body' => $noteBody,
         'title' => $lead['lead_type'] === 'quiz' ? 'Website Quiz Submitted' : 'Website Lead Submitted',
-        'color' => '#194FC3',
         'pinned' => false,
     ];
     if (($config['owner_id'] ?? '') !== '') $payload['userId'] = $config['owner_id'];

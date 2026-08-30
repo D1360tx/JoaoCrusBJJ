@@ -179,6 +179,7 @@ test('every accepted submission appends a readable HighLevel note with quiz and 
   assert.match(noteBridge, /'title' =>/);
   assert.match(noteBridge, /'body' =>/);
   assert.match(noteBridge, /'pinned' => false/);
+  assert.doesNotMatch(noteBridge, /'color' =>/);
   assert.match(noteBridge, /mb_substr\(\$noteBody, 0, 4500\)/);
   assert.match(noteBridge, /'v3'/);
   assert.doesNotMatch(noteBridge, /\$lead\['email'\]|\$lead\['phone'\]/);
