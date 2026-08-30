@@ -32,6 +32,7 @@
 - ✅ Publish the kids paid-social destination at `/kids-first-class/` as a separate `noindex,nofollow` campaign route. Keep it out of the XML sitemap and preserve `/practice-under-pressure/` unchanged.
 - ✅ Use one kids-only page for the first four static ads, with direct message match for tapping, practiced confidence, programs from age 3, and program fit. Do not create four separate pages at launch.
 - ✅ All dominant CTAs enter the existing Program Finder with the child route preselected, contact capture last, unique placement values, and paid attribution parameters preserved. Nothing is booked or charged automatically.
+- ✅ Every accepted website submission must append a readable internal HighLevel note. The note preserves that submission's quiz/form answers, request ID, and first/latest campaign, ad set, ad, placement, click-ID, landing-page, and referrer context. Contact custom fields continue to represent the latest values while notes retain the submission history.
 - ✅ Diego approved the reviewed page for Bluehost deployment on 2026-08-25. Meta ad destination changes remain a separate launch action.
 
 ---

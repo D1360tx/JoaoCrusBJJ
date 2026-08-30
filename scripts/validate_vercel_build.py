@@ -91,6 +91,9 @@ def main() -> None:
         lead_source = lead_endpoint.read_text(encoding="utf-8") if lead_endpoint.is_file() else ""
         check("/contacts/upsert" in lead_source, "production lead endpoint is missing contact upsert")
         check("/opportunities/upsert" in lead_source, "production lead endpoint is missing opportunity upsert")
+        check("/notes" in lead_source and "Website Quiz Submitted" in lead_source, "production lead endpoint must append a readable submission note")
+        for paid_key in ["campaign_id", "campaign_name", "adset_id", "adset_name", "ad_id", "ad_name", "placement", "site_source_name"]:
+            check(paid_key in lead_source, f"production lead endpoint must retain paid attribution key {paid_key}")
         check("['Parent or guardian', 'Teen student']" in lead_source and "'role' => $role" in lead_source, "production endpoint must validate and retain Teen form role")
         check("['13', '14', '15', '16', '17']" in lead_source and "'age' => $age" in lead_source, "production endpoint must validate and retain Teen age")
         check("['after-school', 'evening', 'saturday']" in lead_source and "'availability' => implode(', ', $availabilityValues)" in lead_source, "production endpoint must validate and retain Teen schedule availability")

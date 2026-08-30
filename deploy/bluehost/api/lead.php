@@ -466,7 +466,7 @@ function flattened_values(array $lead): array
         'type' => clean_text($lead['type'] ?? '', 80),
         'date_of_birth' => clean_text($lead['date_of_birth'] ?? '', 40),
     ];
-    $allowedTouchKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'landing_page', 'referrer_host', 'captured_at'];
+    $allowedTouchKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'campaign_id', 'campaign_name', 'adset_id', 'adset_name', 'ad_id', 'ad_name', 'placement', 'site_source_name', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'landing_page', 'referrer_host', 'captured_at'];
     foreach (["first", "latest"] as $touchName) {
         $touch = is_array($lead['attribution'][$touchName] ?? null) ? $lead['attribution'][$touchName] : [];
         foreach ($allowedTouchKeys as $key) {
@@ -494,7 +494,7 @@ function build_custom_fields(array $lead, array $map): array
     return $fields;
 }
 
-function ghl_request(string $method, string $path, array $payload, string $requestId): array
+function ghl_request(string $method, string $path, array $payload, string $requestId, string $apiVersion = '2021-07-28'): array
 {
     if (!function_exists('curl_init')) {
         throw new RuntimeException('HTTP client unavailable.');
@@ -509,7 +509,7 @@ function ghl_request(string $method, string $path, array $payload, string $reque
         CURLOPT_POSTFIELDS => json_encode($payload, JSON_UNESCAPED_SLASHES),
         CURLOPT_HTTPHEADER => [
             'Authorization: Bearer ' . $token,
-            'Version: 2021-07-28',
+            $apiVersion === 'v3' ? 'Version: v3' : 'Version: 2021-07-28',
             'Content-Type: application/json',
             'Accept: application/json',
             'X-Request-ID: ' . $requestId,
@@ -814,6 +814,100 @@ function add_tags_if_enabled(string $contactId, array $lead): void
     ghl_request('POST', '/contacts/' . rawurlencode($contactId) . '/tags', ['tags' => $tags], $lead['request_id']);
 }
 
+function append_note_line(array &$lines, string $label, mixed $value): void
+{
+    $cleaned = clean_text($value, 500);
+    if ($cleaned !== '') $lines[] = $label . ': ' . $cleaned;
+}
+
+function append_attribution_note(array &$lines, string $heading, mixed $touch): void
+{
+    if (!is_array($touch)) return;
+    $labels = [
+        'utm_source' => 'Source',
+        'utm_medium' => 'Medium',
+        'utm_campaign' => 'UTM campaign',
+        'campaign_id' => 'Campaign ID',
+        'campaign_name' => 'Campaign name',
+        'adset_id' => 'Ad set ID',
+        'adset_name' => 'Ad set name',
+        'ad_id' => 'Ad ID',
+        'ad_name' => 'Ad name',
+        'placement' => 'Placement',
+        'site_source_name' => 'Platform',
+        'utm_content' => 'UTM content',
+        'utm_term' => 'UTM term',
+        'utm_id' => 'UTM ID',
+        'gclid' => 'GCLID',
+        'fbclid' => 'FBCLID',
+        'wbraid' => 'WBRAID',
+        'gbraid' => 'GBRAID',
+        'msclkid' => 'MSCLKID',
+        'landing_page' => 'Landing page',
+        'referrer_host' => 'Referrer',
+        'captured_at' => 'Captured at',
+    ];
+    $touchLines = [];
+    foreach ($labels as $key => $label) {
+        append_note_line($touchLines, $label, $touch[$key] ?? '');
+    }
+    if ($touchLines === []) return;
+    $lines[] = '';
+    $lines[] = $heading;
+    foreach ($touchLines as $line) $lines[] = $line;
+}
+
+function submission_note_payload(array $lead, array $config): array
+{
+    $values = flattened_values($lead);
+    $lines = ['Website submission accepted by HighLevel.'];
+    append_note_line($lines, 'Submitted at', gmdate('Y-m-d H:i:s') . ' UTC');
+    append_note_line($lines, 'Request ID', $lead['request_id']);
+    append_note_line($lines, 'Form', $lead['form_id']);
+    append_note_line($lines, 'Lead type', $lead['lead_type']);
+    append_note_line($lines, 'Route source', $lead['route_source'] ?? '');
+    append_note_line($lines, 'Recommended program', $values['recommended_program'] ?? '');
+    append_note_line($lines, 'Preferred location', $values['preferred_location'] ?? '');
+    append_note_line($lines, 'Audience', $values['audience'] ?? '');
+    append_note_line($lines, 'Child count', $values['child_count'] ?? '');
+    append_note_line($lines, 'Age band(s)', $values['age_bands'] ?? '');
+    append_note_line($lines, 'Starting stage', $values['stage'] ?? '');
+    append_note_line($lines, 'Primary goal', $values['goal'] ?? '');
+    append_note_line($lines, 'Experience', $values['experience'] ?? '');
+    append_note_line($lines, 'Role', $values['role'] ?? '');
+    append_note_line($lines, 'Age', $values['age'] ?? '');
+    append_note_line($lines, 'Availability', $values['availability'] ?? '');
+    append_note_line($lines, 'Message', $values['message'] ?? '');
+    append_note_line($lines, 'Email consent', $values['email_consent'] ?? '');
+    append_note_line($lines, 'SMS consent', $values['sms_consent'] ?? '');
+    append_note_line($lines, 'Submission page', $values['submission_page'] ?? '');
+    append_attribution_note($lines, 'First touch', $lead['attribution']['first'] ?? []);
+    append_attribution_note($lines, 'Latest touch', $lead['attribution']['latest'] ?? []);
+
+    $noteBody = implode("\n", $lines);
+    $noteBody = function_exists('mb_substr') ? mb_substr($noteBody, 0, 4500) : substr($noteBody, 0, 4500);
+    $payload = [
+        'body' => $noteBody,
+        'title' => $lead['lead_type'] === 'quiz' ? 'Website Quiz Submitted' : 'Website Lead Submitted',
+        'color' => '#194FC3',
+        'pinned' => false,
+    ];
+    if (($config['owner_id'] ?? '') !== '') $payload['userId'] = $config['owner_id'];
+    return $payload;
+}
+
+function create_submission_note(string $contactId, array $lead, array $config): bool
+{
+    $response = ghl_request(
+        'POST',
+        '/contacts/' . rawurlencode($contactId) . '/notes',
+        submission_note_payload($lead, $config),
+        $lead['request_id'],
+        'v3'
+    );
+    return clean_text($response['note']['id'] ?? '', 100) !== '';
+}
+
 function send_legacy_alert(array $lead): void
 {
     if (env_value('LEAD_ENABLE_LEGACY_EMAIL', 'true') !== 'true') return;
@@ -900,6 +994,10 @@ try {
     if ($opportunityId === '') {
         throw new RuntimeException('Opportunity acceptance was ambiguous.');
     }
+    $noteAccepted = create_submission_note($contactId, $lead, $config);
+    if (!$noteAccepted) {
+        throw new RuntimeException('Submission note acceptance was ambiguous.');
+    }
     $metaCapiStatus = meta_capi_status($lead);
     send_legacy_alert($lead);
     log_event($lead['request_id'], 'accepted', [
@@ -910,6 +1008,7 @@ try {
         'request_id' => $lead['request_id'],
         'contact_accepted' => true,
         'opportunity_accepted' => true,
+        'note_accepted' => $noteAccepted,
         'meta_event_id' => meta_event_id($lead),
         'meta_capi_status' => $metaCapiStatus,
     ]);

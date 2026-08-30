@@ -273,6 +273,28 @@ test("advertising-only consent permits non-PII campaign attribution persistence"
   assert.ok(local.getItem(attribution.STORAGE_KEY));
 });
 
+test("captures Meta campaign, ad set, ad, and placement macros for CRM attribution", () => {
+  const result = attribution.capture(
+    context(
+      "https://joaocrusbjj.com/kids-first-class/?utm_source=facebook&utm_medium=paid_social&utm_campaign=kids_fall&campaign_id=1201&campaign_name=Kids%20Fall&adset_id=2202&adset_name=Parents%203-7&ad_id=3303&ad_name=Tap%20Means%20Stop&placement=instagram_feed&site_source_name=ig",
+      "",
+      new MemoryStorage(),
+      new MemoryStorage(),
+      "granted",
+      "granted",
+    ),
+    START,
+  );
+  assert.equal(result.last_touch.campaign_id, "1201");
+  assert.equal(result.last_touch.campaign_name, "Kids Fall");
+  assert.equal(result.last_touch.adset_id, "2202");
+  assert.equal(result.last_touch.adset_name, "Parents 3-7");
+  assert.equal(result.last_touch.ad_id, "3303");
+  assert.equal(result.last_touch.ad_name, "Tap Means Stop");
+  assert.equal(result.last_touch.placement, "instagram_feed");
+  assert.equal(result.last_touch.site_source_name, "ig");
+});
+
 test("rejects PII-bearing and oversized campaign values", () => {
   const result = attribution.capture(
     context(
