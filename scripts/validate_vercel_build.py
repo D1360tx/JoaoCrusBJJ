@@ -87,6 +87,11 @@ def main() -> None:
     check(not (DIST / "about-ai-coaches").exists(), "superseded AI comparison route was deployed")
     if args.production:
         lead_endpoint = DIST / "api" / "lead.php"
+        htaccess = (DIST / ".htaccess").read_text(encoding="utf-8")
+        check(
+            "RewriteRule ^private-classes/?$ https://joaocrusbjj.com/private-bjj-lessons/ [R=301,L,NC]" in htaccess,
+            "production artifact must preserve the live private-classes canonical redirect",
+        )
         check(lead_endpoint.is_file(), "production HighLevel lead endpoint is missing")
         lead_source = lead_endpoint.read_text(encoding="utf-8") if lead_endpoint.is_file() else ""
         check("/contacts/upsert" in lead_source, "production lead endpoint is missing contact upsert")
