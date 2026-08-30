@@ -195,6 +195,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - Canonicals, Open Graph/social images, LocalBusiness/location schema, FAQ schema where appropriate, sitemap, robots rules, and noindex for drafts/variants.
 - Owned, optimized local images rather than production hot-links to WordPress media.
 - ✅ Treat traditional SEO and AI-search discoverability as launch foundations, not post-launch add-ons. Preserve valuable WordPress URLs and content, maintain a redirect inventory, assign one search intent per canonical page, publish accurate entity/schema data, keep staging noindex, and make Joao's firsthand expertise and source-backed teaching content easy for answer engines to extract and cite.
+- ✅ **Private coaching legacy consolidation (2026-08-29, Diego):** keep `/private-bjj-lessons/` as the canonical private-coaching page and permanently redirect the retired `/private-classes/` route to it in one hop.
 
 ### Content priorities
 
