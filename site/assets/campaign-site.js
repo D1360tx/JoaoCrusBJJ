@@ -42,6 +42,74 @@
       return true;
     }
 
+    var routedMetaEventIds = Object.create(null);
+
+    function routeMetaLead(metaEventId, clean) {
+      if (!/^lead_[A-Za-z0-9][A-Za-z0-9._:-]{15,79}$/.test(metaEventId || "") || routedMetaEventIds[metaEventId]) return false;
+      routedMetaEventIds[metaEventId] = true;
+      var attempts = 0;
+      function sendWhenReady() {
+        if (typeof window.fbq === "function") {
+          window.fbq("track", "Lead", {
+            content_name: clean.form_name || "website_lead",
+            content_category: clean.lead_type || "website_lead"
+          }, { eventID: metaEventId });
+          return;
+        }
+        attempts += 1;
+        if (attempts < 20) window.setTimeout(sendWhenReady, 100);
+      }
+      sendWhenReady();
+      return true;
+    }
+
+    function routeAcceptedLead(sourceEventName, parameters) {
+      parameters = parameters || {};
+      var consent = window.joaoConsentState || {};
+      var analyticsGranted = consent.analytics_storage === "granted";
+      var advertisingGranted = consent.ad_storage === "granted" && consent.ad_user_data === "granted";
+      var callback = parameters && typeof parameters.eventCallback === "function"
+        ? parameters.eventCallback
+        : null;
+      var clean = {};
+      ["form_name", "form_context", "lead_type", "lead_program", "lead_location", "submission_page"].forEach(function (key) {
+        if (parameters[key] !== undefined && parameters[key] !== null && parameters[key] !== "") clean[key] = parameters[key];
+      });
+
+      if (analyticsGranted || advertisingGranted) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Object.assign({ event: sourceEventName + "_routed" }, clean, {
+          meta_event_id: parameters.meta_event_id
+        }));
+      }
+
+      if (analyticsGranted) {
+        var gaParameters = {
+          send_to: "G-EW2F2YKR3Y",
+          form_name: clean.form_name,
+          lead_type: clean.lead_type,
+          program: clean.lead_program,
+          location: clean.lead_location,
+          event_callback: callback,
+          event_timeout: parameters.eventTimeout || 1500
+        };
+        var ga4Command = typeof window.gtag === "function"
+          ? window.gtag
+          : function () { window.dataLayer.push(arguments); };
+        var gaEventName = sourceEventName === "lead_submit_success"
+          ? "generate_lead"
+          : sourceEventName === "guide_request_success"
+            ? "guide_request"
+            : sourceEventName;
+        ga4Command("event", gaEventName, gaParameters);
+      } else if (callback) {
+        window.setTimeout(callback, 0);
+      }
+
+      if (advertisingGranted) routeMetaLead(parameters.meta_event_id, clean);
+      return analyticsGranted || advertisingGranted;
+    }
+
     function formAnalyticsName(form) {
       if (form.matches("[data-booking-form]")) return "booking_dialog";
       if (form.dataset.formId) return analyticsValue(form.dataset.formId);
@@ -318,9 +386,9 @@
           parameters.eventCallback = redirectAfterSuccess;
           parameters.eventTimeout = 1500;
           if (data.lead_type === "guide") {
-            pushAnalytics("guide_request_success", parameters);
+            routeAcceptedLead("guide_request_success", parameters);
           } else {
-            pushAnalytics("lead_submit_success", parameters);
+            routeAcceptedLead("lead_submit_success", parameters);
           }
           window.setTimeout(redirectAfterSuccess, 1700);
         })

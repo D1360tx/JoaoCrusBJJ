@@ -151,12 +151,38 @@ test('success is explicit only after durable contact and opportunity acceptance'
   const contactCheck = php.indexOf("if ($contactId === '')");
   const opportunityCall = php.indexOf("ghl_request('POST', '/opportunities/upsert'");
   const opportunityCheck = php.indexOf("if ($opportunityId === '')");
+  const noteCall = php.indexOf('create_submission_note($contactId, $lead, $config)');
   const mailCall = php.indexOf('send_legacy_alert($lead)');
   const accepted = php.indexOf("'accepted' => true", mailCall);
   assert.ok(contactCall < contactCheck && contactCheck < opportunityCall && opportunityCall < opportunityCheck);
-  assert.ok(opportunityCheck < mailCall && mailCall < accepted);
+  assert.ok(opportunityCheck < noteCall && noteCall < mailCall && mailCall < accepted);
   assert.match(php, /'contact_accepted' => true/);
   assert.match(php, /'opportunity_accepted' => true/);
+  assert.match(php, /'note_accepted' => \$noteAccepted/);
+});
+
+test('every accepted submission appends a readable HighLevel note with quiz and campaign/ad context', () => {
+  const noteBridge = php.slice(
+    php.indexOf('function append_attribution_note'),
+    php.indexOf('function send_legacy_alert')
+  );
+  assert.match(noteBridge, /Website submission/);
+  assert.match(noteBridge, /Request ID/);
+  assert.match(noteBridge, /Recommended program/);
+  assert.match(noteBridge, /Primary goal/);
+  assert.match(noteBridge, /First touch/);
+  assert.match(noteBridge, /Latest touch/);
+  for (const field of ['utm_source', 'utm_medium', 'utm_campaign', 'campaign_id', 'campaign_name', 'adset_id', 'adset_name', 'ad_id', 'ad_name', 'placement', 'site_source_name', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'landing_page', 'referrer_host']) {
+    assert.match(noteBridge, new RegExp(`['"]${field}['"]`));
+  }
+  assert.match(noteBridge, /\/contacts\/' \. rawurlencode\(\$contactId\) \. '\/notes'/);
+  assert.match(noteBridge, /'title' =>/);
+  assert.match(noteBridge, /'body' =>/);
+  assert.match(noteBridge, /'pinned' => false/);
+  assert.doesNotMatch(noteBridge, /'color' =>/);
+  assert.match(noteBridge, /mb_substr\(\$noteBody, 0, 4500\)/);
+  assert.match(noteBridge, /'v3'/);
+  assert.doesNotMatch(noteBridge, /\$lead\['email'\]|\$lead\['phone'\]/);
 });
 
 test('legacy and Teen inquiry context is validated and retained for CRM mapping and fallback alert', () => {

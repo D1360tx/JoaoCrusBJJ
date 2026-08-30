@@ -52,6 +52,66 @@
     return true;
   }
 
+  const routedMetaEventIds = new Set();
+
+  function routeMetaLead(metaEventId, clean) {
+    if (!/^lead_[A-Za-z0-9][A-Za-z0-9._:-]{15,79}$/.test(metaEventId || '') || routedMetaEventIds.has(metaEventId)) return false;
+    routedMetaEventIds.add(metaEventId);
+    let attempts = 0;
+    function sendWhenReady() {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', {
+          content_name: clean.form_name,
+          content_category: clean.lead_type
+        }, { eventID: metaEventId });
+        return;
+      }
+      attempts += 1;
+      if (attempts < 20) window.setTimeout(sendWhenReady, 100);
+    }
+    sendWhenReady();
+    return true;
+  }
+
+  function routeAcceptedLead(parameters = {}) {
+    const consent = window.joaoConsentState || {};
+    const analyticsGranted = consent.analytics_storage === 'granted';
+    const advertisingGranted = consent.ad_storage === 'granted' && consent.ad_user_data === 'granted';
+    const clean = {
+      form_name: 'program_fit_quiz',
+      lead_type: 'quiz',
+      recommendation: parameters.recommendation,
+      lead_program: parameters.lead_program,
+      lead_location: parameters.lead_location
+    };
+
+    if (analyticsGranted || advertisingGranted) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'lead_submit_success_routed',
+        quiz_name: quizName,
+        ...clean,
+        meta_event_id: parameters.meta_event_id
+      });
+    }
+
+    if (analyticsGranted) {
+      const ga4Command = typeof window.gtag === 'function'
+        ? window.gtag
+        : function () { window.dataLayer.push(arguments); };
+      ga4Command('event', 'generate_lead', {
+        send_to: 'G-EW2F2YKR3Y',
+        form_name: clean.form_name,
+        lead_type: clean.lead_type,
+        program: clean.lead_program,
+        location: clean.lead_location
+      });
+    }
+
+    if (advertisingGranted) routeMetaLead(parameters.meta_event_id, clean);
+    return analyticsGranted || advertisingGranted;
+  }
+
   function safeStepAnswer(stepNumber) {
     if (stepNumber === 1) return answers.audience;
     if (stepNumber === 2) return 'not_collected';
@@ -569,8 +629,7 @@
       const payload = leadPayload(result);
       const acceptance = await submitLead(payload);
       showScreen('result');
-      pushQuizEvent('lead_submit_success', {
-        form_id: 'program_fit_quiz',
+      routeAcceptedLead({
         recommendation,
         lead_program: recommendation,
         lead_location: answers.location,

@@ -54,6 +54,35 @@ function quizAnalyticsHarness(consent) {
   return context;
 }
 
+function acceptedLeadHarness(asset, consent) {
+  const js = read(asset);
+  const isQuiz = asset.endsWith('program-fit-quiz.js');
+  const start = isQuiz ? js.indexOf('const routedMetaEventIds') : js.indexOf('var routedMetaEventIds');
+  const end = isQuiz ? js.indexOf('function safeStepAnswer') : js.indexOf('function formAnalyticsName');
+  const timers = [];
+  const window = {
+    joaoConsentState: consent,
+    dataLayer: [],
+    setTimeout(handler) { timers.push(handler); },
+  };
+  const context = { window };
+  vm.createContext(context);
+  vm.runInContext(`
+    const quizName = 'program_fit';
+    ${js.slice(start, end)}
+    globalThis.routeAcceptedLeadForTest = routeAcceptedLead;
+  `, context);
+  context.flushTimers = (limit = 100) => {
+    let count = 0;
+    while (timers.length && count < limit) {
+      timers.shift()();
+      count += 1;
+    }
+    return count;
+  };
+  return context;
+}
+
 test('program finder production routes are separate and noindex', () => {
   const manifest = JSON.parse(read('site/campaign/seo-pages.json'));
   const landing = manifest.pages.find((page) => page.file === 'program-fit-landing.html');
@@ -116,6 +145,14 @@ test('quiz payload is retry-stable, channel-aware, and never places PII in analy
   assert.match(js, /latest: attribution\.last_touch/);
   assert.match(js, /JoaoAttribution\.metaContext\(window, attribution\)/);
   assert.match(js, /meta_event_id: acceptance\.meta_event_id/);
+  assert.match(js, /routeAcceptedLead\(\{/);
+  assert.match(js, /event: 'lead_submit_success_routed'/);
+  assert.match(js, /ga4Command\('event', 'generate_lead'/);
+  assert.match(js, /send_to: 'G-EW2F2YKR3Y'/);
+  assert.match(js, /function \(\) \{ window\.dataLayer\.push\(arguments\); \}/);
+  assert.match(js, /window\.fbq\('track', 'Lead',[\s\S]*\{ eventID: metaEventId \}/);
+  assert.match(js, /routeMetaLead\(parameters\.meta_event_id, clean\)/);
+  assert.doesNotMatch(js, /pushQuizEvent\('lead_submit_success'/);
   assert.match(js, /body\.meta_event_id !== `lead_\$\{payload\.request_id\}`/);
   assert.match(js, /new AbortController\(\)/);
   assert.match(js, /35000/);
@@ -123,6 +160,72 @@ test('quiz payload is retry-stable, channel-aware, and never places PII in analy
   const analyticsHelper = js.slice(js.indexOf('function pushQuizEvent'), js.indexOf('const icon'));
   assert.ok(analyticsHelper.length > 0, 'analytics helper must be defined before quiz behavior');
   assert.doesNotMatch(analyticsHelper, /first_name|last_name|email|phone|message|website/);
+});
+
+test('accepted lead routing obeys consent, destination semantics, and PII allowlists', () => {
+  const shared = acceptedLeadHarness('site/assets/campaign-site.js', {
+    analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied',
+  });
+  const gaCalls = [];
+  shared.window.gtag = (...args) => gaCalls.push(args);
+  shared.routeAcceptedLeadForTest('guide_request_success', {
+    form_name: 'parent_guide', lead_type: 'guide', lead_program: 'kids', lead_location: 'dripping',
+    first_name: 'MustNotLeak', email: 'private@example.com', phone: '5125550100', message: 'private',
+    meta_event_id: 'lead_qa.route_1234567890',
+  });
+  assert.equal(gaCalls[0][1], 'guide_request');
+  assert.equal(shared.window.dataLayer[0].event, 'guide_request_success_routed');
+  assert.doesNotMatch(JSON.stringify(shared.window.dataLayer), /MustNotLeak|private@example|5125550100|private/);
+
+  const denied = acceptedLeadHarness('site/assets/campaign-site.js', {
+    analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied',
+  });
+  let callbacks = 0;
+  assert.equal(denied.routeAcceptedLeadForTest('lead_submit_success', {
+    eventCallback: () => { callbacks += 1; },
+    meta_event_id: 'lead_qa.route_1234567890',
+  }), false);
+  denied.flushTimers();
+  assert.equal(callbacks, 1);
+  assert.deepEqual(denied.window.dataLayer, []);
+});
+
+test('accepted Meta leads wait for fbq, accept backend IDs, and route exactly once', () => {
+  for (const asset of ['site/assets/campaign-site.js', 'site/assets/program-fit-quiz.js']) {
+    const context = acceptedLeadHarness(asset, {
+      analytics_storage: 'denied', ad_storage: 'granted', ad_user_data: 'granted',
+    });
+    const eventId = 'lead_qa.route_id:1234567890';
+    const params = asset.endsWith('program-fit-quiz.js')
+      ? { recommendation: 'youth_bjj', lead_program: 'youth_bjj', lead_location: 'dripping', meta_event_id: eventId }
+      : { form_name: 'contact', lead_type: 'class_inquiry', meta_event_id: eventId };
+    const args = asset.endsWith('program-fit-quiz.js') ? [params] : ['lead_submit_success', params];
+    assert.equal(context.routeAcceptedLeadForTest(...args), true);
+    context.window.fbq = (...callArgs) => { context.fbqCalls = [...(context.fbqCalls || []), callArgs]; };
+    context.flushTimers();
+    context.routeAcceptedLeadForTest(...args);
+    context.flushTimers();
+    assert.equal(context.fbqCalls.length, 1, asset);
+    assert.equal(context.fbqCalls[0][0], 'track');
+    assert.equal(context.fbqCalls[0][1], 'Lead');
+    assert.equal(context.fbqCalls[0][3].eventID, eventId);
+  }
+});
+
+test('GA4 fallback queues the exact lead event when gtag is not exposed', () => {
+  for (const asset of ['site/assets/campaign-site.js', 'site/assets/program-fit-quiz.js']) {
+    const context = acceptedLeadHarness(asset, {
+      analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied',
+    });
+    const params = asset.endsWith('program-fit-quiz.js')
+      ? { recommendation: 'youth_bjj', lead_program: 'youth_bjj', lead_location: 'dripping' }
+      : { form_name: 'contact', lead_type: 'class_inquiry' };
+    const args = asset.endsWith('program-fit-quiz.js') ? [params] : ['lead_submit_success', params];
+    context.routeAcceptedLeadForTest(...args);
+    const queued = context.window.dataLayer.find((item) => Object.prototype.toString.call(item) === '[object Arguments]');
+    assert.ok(queued, asset);
+    assert.deepEqual(Array.from(queued).slice(0, 2), ['event', 'generate_lead']);
+  }
 });
 
 test('quiz analytics are discarded while measurement consent is denied', () => {
@@ -203,7 +306,6 @@ test('quiz emits a complete non-PII funnel contract with controlled question enu
     'quiz_complete',
     'quiz_result_view',
     'lead_submit_attempt',
-    'lead_submit_success',
     'lead_submit_error',
   ]) {
     assert.match(js, new RegExp(`pushQuizEvent\\('${event}'`), `${event} must use the shared analytics helper`);
@@ -255,6 +357,15 @@ test('quiz and shared forms require the explicit accepted response contract', ()
   assert.match(shared, /data\.request_id = form\.dataset\.requestId/);
   assert.match(shared, /data\.meta = currentMetaContext\(\)/);
   assert.match(shared, /parameters\.meta_event_id = acceptance\.meta_event_id/);
+  assert.match(shared, /routeAcceptedLead\("lead_submit_success", parameters\)/);
+  assert.match(shared, /sourceEventName \+ "_routed"/);
+  assert.match(shared, /sourceEventName === "guide_request_success"[\s\S]*\? "guide_request"/);
+  assert.match(shared, /ga4Command\("event", gaEventName, gaParameters\)/);
+  assert.match(shared, /send_to: "G-EW2F2YKR3Y"/);
+  assert.match(shared, /function \(\) \{ window\.dataLayer\.push\(arguments\); \}/);
+  assert.match(shared, /window\.fbq\("track", "Lead",[\s\S]*\{ eventID: metaEventId \}/);
+  assert.match(shared, /routeMetaLead\(parameters\.meta_event_id, clean\)/);
+  assert.doesNotMatch(shared, /pushAnalytics\("lead_submit_success", parameters\)/);
   assert.match(shared, /body\.meta_event_id !== "lead_" \+ data\.request_id/);
   assert.match(shared, /data-booking-form data-form-id="booking_popup" data-lead-type="class_inquiry"/);
   assert.doesNotMatch(shared, /fetch\("\/api\/contact\.php"/);
