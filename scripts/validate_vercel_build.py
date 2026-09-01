@@ -46,14 +46,20 @@ def main() -> None:
     pages = [page for page in DATA["pages"] if page["file"] not in EXCLUDED]
     routes = {page["path"] for page in pages}
     vercel_config = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
+    build_command = vercel_config.get("buildCommand", "")
+    all_node_tests = "tests/*.test.js" in build_command
 
     check(
-        "node --test tests/attribution.test.js" in vercel_config.get("buildCommand", ""),
+        all_node_tests or "node --test tests/attribution.test.js" in build_command,
         "Vercel build must execute attribution behavior tests",
     )
     check(
-        "tests/program-fit-integration.test.js" in vercel_config.get("buildCommand", ""),
+        all_node_tests or "tests/program-fit-integration.test.js" in build_command,
         "Vercel build must execute Program Fit integration tests",
+    )
+    check(
+        all_node_tests or "tests/call-tracking.test.js" in build_command,
+        "Vercel build must execute call-tracking behavior tests",
     )
     quiz_source = (ASSETS / "program-fit-quiz.js").read_text(encoding="utf-8")
     check(
