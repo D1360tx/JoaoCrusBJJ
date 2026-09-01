@@ -165,7 +165,7 @@
       '<div class="field full check booking-consent"><input id="booking-consent" name="consent" type="checkbox" required><label for="booking-consent">Joao Crus BJJ may email or call me about this request. Automated texts are not enabled from this form.</label></div>' +
       '<div class="field full"><button class="btn booking-submit" type="submit">Request my first class →</button><p class="booking-assurance">Takes about 30 seconds. We will only use your information to help with this request.</p><p class="status" tabindex="-1" aria-live="polite"></p></div>' +
       '</div></form>' +
-      '<div class="booking-direct">Prefer to talk now? <a href="tel:+151****4560">Call or text 512&#8209;644&#8209;4560</a></div>' +
+      '<div class="booking-direct">Prefer to talk now? <a href="tel:+151****4560">Call or text 512-644-4560</a></div>' +
       '</div>';
     document.body.appendChild(bookingDialog);
 

@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "python3 scripts/build_vercel_site.py && node --test tests/attribution.test.js tests/consent-policy.test.js tests/program-fit-integration.test.js tests/highlevel-endpoint-contract.test.js && python3 scripts/validate_vercel_build.py",
+  "buildCommand": "python3 scripts/build_vercel_site.py && node --test tests/*.test.js && python3 scripts/validate_vercel_build.py",
   "outputDirectory": "dist",
   "trailingSlash": true,
   "headers": [
