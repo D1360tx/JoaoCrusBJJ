@@ -39,6 +39,7 @@ ATTRIBUTION_URL = versioned_asset_url("attribution.js")
 CONSENT_CONTROLS_URL = versioned_asset_url("consent-controls.js")
 CAMPAIGN_SITE_URL = versioned_asset_url("campaign-site.js")
 PROGRAM_FIT_QUIZ_URL = versioned_asset_url("program-fit-quiz.js")
+CALL_TRACKING_URL = versioned_asset_url("call-tracking.js")
 
 
 def version_lead_behavior_scripts(html: str) -> str:
@@ -161,6 +162,27 @@ def add_google_tag_manager(html: str) -> str:
         flags=re.IGNORECASE,
     )
     return html
+
+
+def add_call_tracking(html: str) -> str:
+    """Install the consent-aware HighLevel number-pool loader on production."""
+    if CALL_TRACKING_URL in html:
+        return html
+    # HighLevel's dynamic-number-insertion matcher recognizes the canonical
+    # plain-hyphen display, not the non-breaking hyphen used by some source pages.
+    for unswappable in (
+        "512\u2011644\u20114560",
+        "512&#8209;644&#8209;4560",
+        "512&#x2011;644&#x2011;4560",
+    ):
+        html = html.replace(unswappable, "512-644-4560")
+    return re.sub(
+        r"(</body>)",
+        f'    <script src="{CALL_TRACKING_URL}" defer></script>\n  \\1',
+        html,
+        count=1,
+        flags=re.IGNORECASE,
+    )
 
 
 def rewrite_internal_html_links(html: str, routes: dict[str, str]) -> str:
@@ -289,6 +311,8 @@ def main() -> None:
         html = normalize_sitelink_labels(html)
         html = qualify_fragment_links(html, page["path"])
         html = apply_robots_directive(html, page, args.production)
+        if args.production:
+            html = add_call_tracking(html)
         target = output_path(page["path"])
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(html, encoding="utf-8")
