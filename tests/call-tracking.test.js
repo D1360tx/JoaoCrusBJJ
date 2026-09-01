@@ -9,17 +9,32 @@ const source = fs.readFileSync(
   "utf8",
 );
 
-function harness(initialState, regionReady = null) {
+function harness(initialState, regionReady = null, telLinks = []) {
   const listeners = new Map();
   const appended = [];
+  const intervals = [];
   const window = {
     joaoConsentState: { ...initialState },
     joaoRegionReady: regionReady,
     addEventListener(name, listener) {
       listeners.set(name, listener);
     },
+    setInterval(listener) {
+      intervals.push(listener);
+      return intervals.length;
+    },
+    clearInterval() {},
+  };
+  window.MutationObserver = class {
+    constructor(listener) {
+      this.listener = listener;
+    }
+    observe() {}
   };
   const document = {
+    querySelectorAll(selector) {
+      return selector === 'a[href^="tel:"]' ? telLinks : [];
+    },
     createElement(tagName) {
       const scriptListeners = new Map();
       return {
@@ -52,7 +67,21 @@ function harness(initialState, regionReady = null) {
       const listener = listeners.get("joao:consentchange");
       if (listener) listener();
     },
+    runIntervals() {
+      intervals.forEach((listener) => listener());
+    },
     window,
+  };
+}
+
+function telLink(href) {
+  return {
+    getAttribute(name) {
+      return name === "href" ? href : null;
+    },
+    setAttribute(name, value) {
+      if (name === "href") href = value;
+    },
   };
 }
 
@@ -100,4 +129,21 @@ test("loads after a granted regional default resolves", async () => {
   assert.equal(page.appended.length, 2);
   assert.match(page.appended[0].src, /number_pool[.]js$/);
   assert.match(page.appended[1].src, /user_session[.]js$/);
+});
+
+test("copies the assigned pool number to canonical tel links without visible digits", async () => {
+  const numberedLink = telLink("tel:+15126444560");
+  const textlessCallLink = telLink("tel:+15126444560");
+  const page = harness(
+    { analytics_storage: "granted", ad_storage: "denied" },
+    Promise.resolve({ country: "US", policy: "regional_default" }),
+    [numberedLink, textlessCallLink],
+  );
+  await flushPromises();
+
+  numberedLink.setAttribute("href", "tel:+17372869253");
+  page.runIntervals();
+
+  assert.equal(numberedLink.getAttribute("href"), "tel:+17372869253");
+  assert.equal(textlessCallLink.getAttribute("href"), "tel:+17372869253");
 });
