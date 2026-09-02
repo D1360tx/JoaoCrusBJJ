@@ -46,6 +46,14 @@
 - ✅ Honor explicit saved analytics choices across regions. Global Privacy Control keeps advertising-related processing off but does not disable ordinary first-party analytics outside strict regions.
 - ✅ Preserve PII stripping, origin-only referrers, consent-aware attribution storage, a durable Privacy choices control, and strict failure behavior.
 
+## A2P chat-widget compliance (2026-09-01)
+
+- ✅ Use HighLevel widget `6a97499c0df91a47ffe8ddab` through its direct LeadConnector script on the dedicated `/sms-opt-in/` route.
+- ✅ Keep the widget off pages that contain the website booking dialog, phone fields, or another SMS-consent flow. The dedicated route contains no other form.
+- ✅ Use `https://joaocrusbjj.com/sms-opt-in/` as the business website URL for the HighLevel widget-first compliance review.
+- ✅ Keep the old GTM-deployed chat widget disabled. GTM remains the consent-gated analytics control plane, not the A2P widget installer.
+- ✅ Privacy and Terms must disclose the SMS program, optional consent, frequency/rates, STOP/HELP, mobile opt-in data handling, 18+ enrollment, and carrier liability before submission.
+
 ---
 
 ## 2. Confirmed business facts
