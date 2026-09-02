@@ -399,6 +399,18 @@
       ]
     },
     {
+      "file": "sms-opt-in.html",
+      "path": "/sms-opt-in/",
+      "title": "Text Messaging Opt-In | Joao Crus BJJ",
+      "description": "Contact Joao Crus BJJ through our compliant text messaging chat widget.",
+      "image": "/assets/joao-crus-bjj-logo.png",
+      "indexable": false,
+      "robots": "noindex,follow",
+      "schema": [
+        "webpage"
+      ]
+    },
+    {
       "file": "thank-you.html",
       "path": "/thank-you/",
       "title": "Thank You | Joao Crus BJJ",

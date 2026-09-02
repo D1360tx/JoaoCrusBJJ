@@ -19,6 +19,8 @@ DATA = json.loads((SOURCE / "seo-pages.json").read_text(encoding="utf-8"))
 EXCLUDED = {"about-ai-coaches.html"}
 EXTRA_ROUTES = {"/teens-preview/"}
 GTM_CONTAINER_ID = "GTM-596MGPMD"
+A2P_WIDGET_ID = "6a97499c0df91a47ffe8ddab"
+A2P_WIDGET_ROUTE = "/sms-opt-in/"
 ERRORS: list[str] = []
 CHECKS = 0
 
@@ -156,10 +158,18 @@ def main() -> None:
     check('data-lead-type="guide"' in home_source, "homepage guide form must not count as a class lead")
     check('data-success-url="/parent-guide/"' in home_source, "homepage guide request must deliver the public guide")
     privacy_source = (SOURCE / "privacy.html").read_text(encoding="utf-8")
+    privacy_text = " ".join(privacy_source.split())
     check("Google Analytics 4" in privacy_source, "privacy policy must disclose GA4")
     check("your browser for up to 90 days" in privacy_source, "privacy policy must disclose attribution retention")
     check("EEA, the United Kingdom, and Switzerland" in privacy_source, "privacy policy must disclose strict-region opt-in behavior")
     check("country-level region lookup" in privacy_source, "privacy policy must disclose region detection")
+    check("Mobile information and text-message opt-in data are not sold or shared" in privacy_text, "privacy policy must prohibit third-party marketing use of mobile opt-in data")
+    check("Reply STOP to opt out or HELP for help" in privacy_text, "privacy policy must disclose SMS opt-out and help commands")
+    terms_source = (SOURCE / "terms.html").read_text(encoding="utf-8")
+    terms_text = " ".join(terms_source.split())
+    check("Joao Crus BJJ text messaging program" in terms_source, "terms must identify the Joao Crus BJJ messaging program")
+    check("Reply STOP to cancel future messages or HELP for help" in terms_text, "terms must disclose SMS STOP and HELP commands")
+    check("Carriers are not liable for delayed or undelivered messages" in terms_text, "terms must include the carrier liability disclaimer")
 
     for page in pages:
         target = route_file(page["path"])
@@ -193,10 +203,23 @@ def main() -> None:
         check("assets/consent-controls.css" in html, f"{page['path']}: consent control styles are missing")
         for filename, url in versioned_assets.items():
             check(url in html, f"{page['path']}: {filename} must use its current content-versioned URL")
-        check(
-            html.find("assets/attribution.js") < html.find("assets/consent-controls.js") < html.find("assets/campaign-site.js"),
-            f"{page['path']}: attribution and consent controls must load before lead-form behavior",
-        )
+        check(html.find("assets/attribution.js") < html.find("assets/consent-controls.js"), f"{page['path']}: attribution must load before consent controls")
+        if "assets/campaign-site.js" in html:
+            check(
+                html.find("assets/consent-controls.js") < html.find("assets/campaign-site.js"),
+                f"{page['path']}: consent controls must load before lead-form behavior",
+            )
+        else:
+            check(page["path"] == A2P_WIDGET_ROUTE, f"{page['path']}: shared site behavior script is unexpectedly missing")
+        if page["path"] == A2P_WIDGET_ROUTE:
+            check(html.count(A2P_WIDGET_ID) == 1, f"{page['path']}: expected exactly one direct A2P widget ID")
+            check('src="https://widgets.leadconnectorhq.com/loader.js"' in html, f"{page['path']}: direct LeadConnector widget loader is missing")
+            check('data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"' in html, f"{page['path']}: LeadConnector chat resource URL is missing")
+            check('data-source="WEB_USER"' in html, f"{page['path']}: widget source must be WEB_USER")
+            check("<form" not in html.lower(), f"{page['path']}: another form conflicts with the A2P widget")
+            check("type=\"tel\"" not in html.lower(), f"{page['path']}: another phone input conflicts with the A2P widget")
+        else:
+            check(A2P_WIDGET_ID not in html, f"{page['path']}: A2P widget must remain isolated to its compliance route")
         canonical_url = f'https://joaocrusbjj.com{page["path"]}'
         check(f'<link rel="canonical" href="{canonical_url}">' in html, f"{page['path']}: canonical does not match manifest")
         schema_scripts = re.findall(r'<script\s+type="application/ld\+json">\s*(.*?)\s*</script>', html, re.DOTALL | re.IGNORECASE)
