@@ -9,12 +9,14 @@ const cssPath = path.join(root, 'site/assets/meta-kids-landing.css');
 const jsPath = path.join(root, 'site/assets/meta-kids-landing.js');
 const quizPath = path.join(root, 'site/assets/program-fit-quiz.js');
 const modalPath = path.join(root, 'site/assets/program-fit-modal.js');
+const consentPath = path.join(root, 'site/assets/consent-controls.js');
 const endpointPath = path.join(root, 'deploy/bluehost/api/lead.php');
 const page = fs.readFileSync(pagePath, 'utf8');
 const css = fs.readFileSync(cssPath, 'utf8');
 const js = fs.readFileSync(jsPath, 'utf8');
 const quiz = fs.readFileSync(quizPath, 'utf8');
 const modal = fs.readFileSync(modalPath, 'utf8');
+const consent = fs.readFileSync(consentPath, 'utf8');
 const endpoint = fs.readFileSync(endpointPath, 'utf8');
 
 function matches(pattern) {
@@ -89,6 +91,11 @@ test('mobile CTA has explicit hidden, visible, and final-section suppression log
   assert.match(css, /\.mk-mobile-cta\.is-visible/);
   assert.match(js, /isVisible\(finalSection\)/);
   assert.match(js, /!isVisible\(heroCta\) && !isVisible\(finalSection\)/);
+});
+
+test('the first-visit consent prompt cannot drag the ad landing page away from the hero', () => {
+  assert.match(consent, /consentSave\.focus\(\{ preventScroll: true \}\)/);
+  assert.match(consent, /window\.scrollTo\(scrollLeft, scrollTop\)/);
 });
 
 test('yellow CTA buttons always use black text', () => {

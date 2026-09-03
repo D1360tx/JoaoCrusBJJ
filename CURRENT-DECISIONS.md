@@ -33,6 +33,7 @@
 - ✅ Use one kids-only page for the first four static ads, with direct message match for tapping, practiced confidence, programs from age 3, and program fit. Do not create four separate pages at launch.
 - ✅ All dominant CTAs enter the existing Program Finder with the child route preselected, contact capture last, unique placement values, and paid attribution parameters preserved. Nothing is booked or charged automatically.
 - ✅ Diego approved the reviewed page for Bluehost deployment on 2026-08-25. Meta ad destination changes remain a separate launch action.
+- ✅ **Paid-ad entry behavior corrected 2026-09-03:** `/kids-first-class/` must remain at the hero on first load, including when the region lookup fails and privacy choices open. Every “Plan a class” CTA must open the child Program Finder directly at Question 1 with no intermediate quiz-intro click.
 
 ---
 
