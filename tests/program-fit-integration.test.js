@@ -314,4 +314,7 @@ test('built routes rewrite links, preserve canonicals, and order attribution bef
   const attributionPosition = quiz.indexOf('/assets/attribution.js');
   const quizBehaviorPosition = quiz.indexOf('/assets/program-fit-quiz.js');
   assert.ok(attributionPosition >= 0 && attributionPosition < quizBehaviorPosition);
+  const quizScripts = [...quiz.matchAll(/<script\s+src="([^"]*program-fit-quiz\.js[^"]*)"/g)];
+  assert.equal(quizScripts.length, 1);
+  assert.match(quizScripts[0][1], /^\/assets\/program-fit-quiz\.js\?v=[a-f0-9]{12}$/);
 });

@@ -45,13 +45,20 @@ CALL_TRACKING_URL = versioned_asset_url("call-tracking.js")
 def version_lead_behavior_scripts(html: str) -> str:
     """Prevent browsers and CDNs from retaining stale lead behavior across releases."""
     replacements = {
-        "../assets/campaign-site.js": CAMPAIGN_SITE_URL,
-        "assets/campaign-site.js": CAMPAIGN_SITE_URL,
-        "../assets/program-fit-quiz.js": PROGRAM_FIT_QUIZ_URL,
-        "assets/program-fit-quiz.js": PROGRAM_FIT_QUIZ_URL,
+        "campaign-site.js": CAMPAIGN_SITE_URL,
+        "program-fit-quiz.js": PROGRAM_FIT_QUIZ_URL,
     }
-    for source, versioned in replacements.items():
-        html = html.replace(source, versioned)
+    for filename, versioned in replacements.items():
+        pattern = re.compile(
+            rf'(?P<prefix><script\b[^>]*\bsrc=["\'])'
+            rf'(?:(?:\.\./)|/+)?assets/{re.escape(filename)}(?:\?[^"\']*)?'
+            rf'(?P<quote>["\'])',
+            re.IGNORECASE,
+        )
+        html = pattern.sub(
+            lambda match: f"{match.group('prefix')}{versioned}{match.group('quote')}",
+            html,
+        )
     return html
 
 GTM_HEAD_SNIPPET = rf"""<!-- Google Tag Manager -->

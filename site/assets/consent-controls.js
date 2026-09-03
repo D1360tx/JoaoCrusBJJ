@@ -153,12 +153,21 @@
         consentInvoker = event && event.currentTarget instanceof HTMLElement
           ? event.currentTarget
           : null;
+        var scrollLeft = window.scrollX;
+        var scrollTop = window.scrollY;
         var state = stateForChoice(consentChoice);
         analyticsToggle.checked = state.analytics_storage === "granted";
         advertisingToggle.checked = state.ad_storage === "granted" && !hasGpc;
         consentBanner.hidden = false;
         document.body.classList.add("consent-open");
-        consentSave.focus();
+        try {
+          consentSave.focus({ preventScroll: true });
+        } catch (error) {
+          consentSave.focus();
+        }
+        if (window.scrollX !== scrollLeft || window.scrollY !== scrollTop) {
+          window.scrollTo(scrollLeft, scrollTop);
+        }
       }
 
       function hideConsentChoices() {
