@@ -7,6 +7,20 @@
   const heroCta = document.querySelector('.mk-hero [data-kids-quiz]');
   const finalSection = document.querySelector('.mk-final');
 
+  // Meta's in-app browser can reuse a WebView and restore this dedicated ad
+  // page to the visitor's previous scroll position. Paid entries should always
+  // begin at the hero unless an intentional hash target is present.
+  const resetAdEntryScroll = () => {
+    if (!window.location.hash) window.scrollTo(0, 0);
+  };
+
+  if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
+  resetAdEntryScroll();
+  window.addEventListener('pageshow', () => {
+    resetAdEntryScroll();
+    window.requestAnimationFrame(resetAdEntryScroll);
+  });
+
   if (year) year.textContent = new Date().getFullYear();
 
   quizLinks.forEach((link) => {

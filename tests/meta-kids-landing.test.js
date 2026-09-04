@@ -93,7 +93,15 @@ test('mobile CTA has explicit hidden, visible, and final-section suppression log
   assert.match(js, /!isVisible\(heroCta\) && !isVisible\(finalSection\)/);
 });
 
-test('the first-visit consent prompt cannot drag the ad landing page away from the hero', () => {
+test('the paid landing page disables browser scroll restoration and resets reused views to the hero', () => {
+  assert.match(js, /history\.scrollRestoration = 'manual'/);
+  assert.match(js, /window\.addEventListener\('pageshow'/);
+  assert.match(js, /if \(!window\.location\.hash\) window\.scrollTo\(0, 0\)/);
+  assert.match(js, /window\.requestAnimationFrame\(resetAdEntryScroll\)/);
+});
+
+test('the first-visit consent prompt cannot focus the footer unless the visitor opened it', () => {
+  assert.match(consent, /if \(consentInvoker\) \{/);
   assert.match(consent, /consentSave\.focus\(\{ preventScroll: true \}\)/);
   assert.match(consent, /window\.scrollTo\(scrollLeft, scrollTop\)/);
 });
