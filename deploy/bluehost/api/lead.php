@@ -333,7 +333,7 @@ function custom_field_map(): array
     if (!is_array($map)) {
         throw new RuntimeException('Custom field mapping is not configured.');
     }
-    $requiredFieldMappings = ['request_id', 'form_id', 'schema_version', 'lead_type', 'route_source', 'recommended_program', 'email_consent', 'sms_consent', 'consent_disclosure_version', 'consent_timestamp', 'message', 'role', 'age', 'availability'];
+    $requiredFieldMappings = ['request_id', 'form_id', 'schema_version', 'lead_type', 'route_source', 'recommended_program', 'email_consent', 'sms_consent', 'consent_disclosure_version', 'consent_timestamp', 'analytics_storage', 'ad_storage', 'ad_user_data', 'message', 'role', 'age', 'availability'];
     foreach ($requiredFieldMappings as $required) {
         if (!isset($map[$required]) || !is_array($map[$required])) {
             throw new RuntimeException('Required custom field mapping is missing.');
@@ -443,6 +443,9 @@ function flattened_values(array $lead): array
         'sms_consent' => $lead['sms_consent'] ? 'granted' : 'not_granted',
         'consent_disclosure_version' => $lead['consent_disclosure_version'],
         'consent_timestamp' => gmdate('c'),
+        'analytics_storage' => ($lead['meta']['analytics_storage'] ?? '') === 'granted' ? 'granted' : 'denied',
+        'ad_storage' => ($lead['meta']['ad_storage'] ?? '') === 'granted' ? 'granted' : 'denied',
+        'ad_user_data' => ($lead['meta']['ad_user_data'] ?? '') === 'granted' ? 'granted' : 'denied',
         'submission_page' => $lead['page'],
         'message' => clean_text($lead['message'] ?? '', 1500),
         'role' => clean_text($lead['role'] ?? '', 120),

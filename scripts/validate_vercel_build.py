@@ -19,6 +19,7 @@ DATA = json.loads((SOURCE / "seo-pages.json").read_text(encoding="utf-8"))
 EXCLUDED = {"about-ai-coaches.html"}
 
 GTM_CONTAINER_ID = "GTM-596MGPMD"
+CALL_TRACKING_POOL_ID = "egnGWH5KUrbdDxk7HLSN"
 ERRORS: list[str] = []
 CHECKS = 0
 
@@ -45,14 +46,20 @@ def main() -> None:
     pages = [page for page in DATA["pages"] if page["file"] not in EXCLUDED]
     routes = {page["path"] for page in pages}
     vercel_config = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
+    build_command = vercel_config.get("buildCommand", "")
+    all_node_tests = "tests/*.test.js" in build_command
 
     check(
-        "node --test tests/attribution.test.js" in vercel_config.get("buildCommand", ""),
+        all_node_tests or "node --test tests/attribution.test.js" in build_command,
         "Vercel build must execute attribution behavior tests",
     )
     check(
-        "tests/program-fit-integration.test.js" in vercel_config.get("buildCommand", ""),
+        all_node_tests or "tests/program-fit-integration.test.js" in build_command,
         "Vercel build must execute Program Fit integration tests",
+    )
+    check(
+        all_node_tests or "tests/call-tracking.test.js" in build_command,
+        "Vercel build must execute call-tracking behavior tests",
     )
     quiz_source = (ASSETS / "program-fit-quiz.js").read_text(encoding="utf-8")
     check(
@@ -85,18 +92,40 @@ def main() -> None:
         f"{build_label} robots.txt does not match the required policy",
     )
     check(not (DIST / "about-ai-coaches").exists(), "superseded AI comparison route was deployed")
+    call_tracking_source = (ASSETS / "call-tracking.js").read_text(encoding="utf-8")
+    call_tracking_url = (
+        f"/assets/call-tracking.js?v="
+        f"{hashlib.sha256((ASSETS / 'call-tracking.js').read_bytes()).hexdigest()[:12]}"
+    )
+    check(
+        CALL_TRACKING_POOL_ID in call_tracking_source
+        and "number_pool.js" in call_tracking_source
+        and "user_session.js" in call_tracking_source,
+        "call-tracking loader must target the approved HighLevel number pool",
+    )
+    check(
+        'state.analytics_storage === "granted" || state.ad_storage === "granted"' in call_tracking_source
+        and 'window.addEventListener("joao:consentchange", start)' in call_tracking_source
+        and "window.joaoRegionReady" in call_tracking_source,
+        "call-tracking loader must remain gated by the shared regional consent state",
+    )
     if args.production:
         lead_endpoint = DIST / "api" / "lead.php"
+        lifecycle_endpoint = DIST / "api" / "lifecycle.php"
         htaccess = (DIST / ".htaccess").read_text(encoding="utf-8")
         check(
             "RewriteRule ^private-classes/?$ https://joaocrusbjj.com/private-bjj-lessons/ [R=301,L,NC]" in htaccess,
             "production artifact must preserve the live private-classes canonical redirect",
         )
         check(lead_endpoint.is_file(), "production HighLevel lead endpoint is missing")
+        check(lifecycle_endpoint.is_file(), "production lifecycle feedback endpoint is missing")
         lead_source = lead_endpoint.read_text(encoding="utf-8") if lead_endpoint.is_file() else ""
+        lifecycle_source = lifecycle_endpoint.read_text(encoding="utf-8") if lifecycle_endpoint.is_file() else ""
         check("/contacts/upsert" in lead_source, "production lead endpoint is missing contact upsert")
         check("/opportunities/upsert" in lead_source, "production lead endpoint is missing opportunity upsert")
         check("/notes" in lead_source and "Website Quiz Submitted" in lead_source, "production lead endpoint must append a readable submission note")
+        check("lifecycle_header('Authorization')" in lifecycle_source and "GHL_LIFECYCLE_STAGE_MAP_JSON" in lifecycle_source, "production lifecycle endpoint must authenticate and validate the stage map")
+        check("QualifiedLead" in lifecycle_source and "qualify_lead" in lifecycle_source and "'Purchase'" not in lifecycle_source, "production lifecycle endpoint must preserve the approved no-Purchase event contract")
         for paid_key in ["campaign_id", "campaign_name", "adset_id", "adset_name", "ad_id", "ad_name", "placement", "site_source_name"]:
             check(paid_key in lead_source, f"production lead endpoint must retain paid attribution key {paid_key}")
         check("['Parent or guardian', 'Teen student']" in lead_source and "'role' => $role" in lead_source, "production endpoint must validate and retain Teen form role")
@@ -110,6 +139,7 @@ def main() -> None:
         htaccess = (DIST / ".htaccess").read_text(encoding="utf-8")
         redirect_targets = {
             "found-the-flyer": "https://joaocrusbjj.com/practice-under-pressure/",
+            "private-classes": "https://joaocrusbjj.com/private-bjj-lessons/",
             "teens-preview": "https://joaocrusbjj.com/teens/",
             "1381-2": "https://joaocrusbjj.com/",
             "free-class": "https://joaocrusbjj.com/contact/",
@@ -165,9 +195,25 @@ def main() -> None:
         "/contact/": "Plan a First Class",
     }
     for page in pages:
+        page_html = route_file(page["path"]).read_text(encoding="utf-8")
+        if args.production:
+            check(
+                page_html.count(call_tracking_url) == 1,
+                f"{page['path']} must include exactly one versioned call-tracking loader",
+            )
+            check(
+                "512\u2011644\u20114560" not in page_html
+                and "512&#8209;644&#8209;4560" not in page_html
+                and "512&#x2011;644&#x2011;4560" not in page_html,
+                f"{page['path']} retains a phone display HighLevel cannot swap",
+            )
+        else:
+            check(
+                "assets/call-tracking.js" not in page_html,
+                f"{page['path']}: staging route must not consume the production number pool",
+            )
         if not page["indexable"]:
             continue
-        page_html = route_file(page["path"]).read_text(encoding="utf-8")
         global_regions = " ".join(
             re.findall(
                 r"<(?:header|footer)\b[^>]*>.*?</(?:header|footer)>",
