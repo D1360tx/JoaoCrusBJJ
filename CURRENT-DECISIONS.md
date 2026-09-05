@@ -35,6 +35,12 @@
 - ✅ Diego approved the reviewed page for Bluehost deployment on 2026-08-25. Meta ad destination changes remain a separate launch action.
 - ✅ **Paid-ad entry behavior corrected 2026-09-03:** `/kids-first-class/` must remain at the hero on first load, including when the region lookup fails and privacy choices open. Every “Plan a class” CTA must open the child Program Finder directly at Question 1 with no intermediate quiz-intro click.
 
+## Swimming + jiu-jitsu advertorial concept (2026-08-28)
+
+- 🟡 Build a separate `noindex,nofollow` review framework around the parental belief that swimming and jiu-jitsu are core childhood life skills. The current working line is **“In our family, swimming and jiu-jitsu are mandatory.”** Treat “mandatory” as an editorial family philosophy, not a medical, legal, or universal safety claim.
+- 🟡 The paid-social test uses three distinct hooks: protection when a parent is not present, composure under pressure, and the family life-skills belief. Route all variants to one matched advertorial before the existing child Program Finder preview.
+- 🟡 Keep the work in preview. Do not change Meta destinations, publish to Bluehost, or attribute the first-person belief to Joao until the final byline and exact wording are approved.
+
 ---
 
 ## Practice Under Pressure offline QR campaign (updated 2026-08-13)
