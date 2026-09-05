@@ -27,6 +27,14 @@
 
 ---
 
+## Manual A2P website opt-in (2026-09-05)
+
+- Contact (`/contact/`, `contact_page`) and the shared first-class booking popup (`booking_popup`) use two separate, optional, unchecked SMS consent controls with `website_sms_v3` evidence: non-promotional customer care and promotional marketing. The Program Finder keeps its existing customer-care-only `program_fit_sms_v2` consent. Unchanged legacy forms remain email/call-only.
+- Joao is not using the chat widget. Preserve `/sms-opt-in/` as a public guide linking to the actual native forms, with no widget loader. Manual campaign message flow must describe contact, popup, and quiz paths, not a widget-only flow.
+- Promotional consent is independent from customer-care consent. Neither SMS checkbox is required or blocks form submission. Workflows must honor the selected category and may not treat either choice as consent to the other category.
+- This source change captures evidence only. Do not activate SMS release or clear existing DND. Carrier approval and controlled HELP/STOP/DND acceptance remain separate gates. Contact/popup enrollment stays held even if the existing quiz-only release interlock is enabled.
+- PR #107 merged to `launch/domain-form-books`, not `main`. Live legal pages and `/sms-opt-in/` reflect that divergent release. Preserve current main's analytics/privacy disclosures; do not deploy the old release branch wholesale or overwrite newer live lead integrations without reconciliation.
+
 ## Kids paid-social landing page (2026-08-24)
 
 - ✅ Publish the kids paid-social destination at `/kids-first-class/` as a separate `noindex,nofollow` campaign route. Keep it out of the XML sitemap and preserve `/practice-under-pressure/` unchanged.

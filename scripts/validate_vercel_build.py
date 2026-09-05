@@ -417,8 +417,9 @@ def main() -> None:
             if html.find(asset) >= 0
         ]
         check(
-            bool(lead_behavior_positions)
-            and html.find("assets/attribution.js") < html.find("assets/consent-controls.js") < min(lead_behavior_positions),
+            (not lead_behavior_positions and page['path'] == '/sms-opt-in/')
+            or (bool(lead_behavior_positions)
+                and html.find("assets/attribution.js") < html.find("assets/consent-controls.js") < min(lead_behavior_positions)),
             f"{page['path']}: attribution and consent controls must load before lead-form behavior",
         )
         canonical_url = f'https://joaocrusbjj.com{page["path"]}'

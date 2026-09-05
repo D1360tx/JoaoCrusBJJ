@@ -229,7 +229,7 @@
       '<div class="booking-shell">' +
       '<header class="booking-top"><div><span class="booking-kicker">Plan a first class</span><h2 id="booking-title">FIND THE RIGHT <span class="booking-keep">FIRST CLASS.</span></h2></div><button class="booking-close" type="button" aria-label="Close first class request">Close</button></header>' +
       '<p class="booking-intro">Tell us who wants to train. We will contact you to match the right program, location, and class time. No payment is required.</p>' +
-      '<form class="booking-form" data-booking-form data-form-id="booking_popup" data-lead-type="class_inquiry">' +
+      '<form class="booking-form" data-booking-form data-form-id="booking_popup" data-lead-type="class_inquiry" data-sms-disclosure-version="website_sms_v3">' +
       '<div class="fields">' +
       '<div class="field"><label for="booking-name">Your name</label><input id="booking-name" name="name" type="text" autocomplete="name" required></div>' +
       '<div class="field"><label for="booking-phone">Mobile number</label><input id="booking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>' +
@@ -237,7 +237,9 @@
       '<div class="field"><label for="booking-program">Who wants to train?</label><select id="booking-program" name="program" required><option value="">Choose a program</option><option>Little Champions 3–7</option><option>Youth 8–12</option><option>Teens 13–17</option><option>Adults</option><option>Jiu-Jitsu After 60</option><option>Private Coaching</option><option>Team / Corporate</option><option>Not sure yet</option></select></div>' +
       '<div class="field"><label for="booking-location">Preferred location</label><select id="booking-location" name="location" required><option value="">Choose a location</option><option>Dripping Springs</option><option>Austin</option><option>Not sure yet</option></select></div>' +
       '<div class="field website-field" aria-hidden="true"><label for="booking-website">Leave this blank</label><input id="booking-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>' +
-      '<div class="field full check booking-consent"><input id="booking-consent" name="consent" type="checkbox" required><label for="booking-consent">Joao Crus BJJ may email or call me about this request. Automated texts are not enabled from this form.</label></div>' +
+      '<div class="field full check booking-consent"><input id="booking-consent" name="consent" type="checkbox" required><label for="booking-consent">Joao Crus BJJ may email or call me about this request.</label></div>' +
+      '<div class="field full check booking-consent"><input id="booking-sms-consent" name="sms_consent" type="checkbox"><label for="booking-sms-consent">I agree to receive recurring automated non-promotional customer-care text messages from Joao Crus Brazilian Jiu-Jitsu about my request, scheduling, and class information. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is optional and is not a condition of purchase. See the <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms</a>.</label></div>' +
+      '<div class="field full check booking-consent"><input id="booking-sms-marketing-consent" name="sms_marketing_consent" type="checkbox"><label for="booking-sms-marketing-consent">I agree to receive recurring automated promotional and marketing text messages from Joao Crus Brazilian Jiu-Jitsu about academy programs, offers, and events. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is optional and is not a condition of purchase. See the <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms</a>.</label></div>' +
       '<div class="field full"><button class="btn booking-submit" type="submit">Request my first class →</button><p class="booking-assurance">Takes about 30 seconds. We will only use your information to help with this request.</p><p class="status" tabindex="-1" aria-live="polite"></p></div>' +
       '</div></form>' +
       '<div class="booking-direct">Prefer to talk now? <a href="tel:+151****4560">Call or text 512-644-4560</a></div>' +
@@ -363,6 +365,16 @@
       }
       data.consent = Boolean(form.querySelector('[name="consent"]:checked'));
       data.form_id = form.dataset.formId || "website_form";
+      // Only forms displaying this version can submit optional SMS consent.
+      if (form.dataset.smsDisclosureVersion === "website_sms_v3") {
+        data.sms_consent = Boolean(form.querySelector('[name="sms_consent"]:checked'));
+        data.sms_marketing_consent = Boolean(form.querySelector('[name="sms_marketing_consent"]:checked'));
+        data.consent_disclosure_version = form.dataset.smsDisclosureVersion;
+      } else {
+        delete data.sms_consent;
+        delete data.sms_marketing_consent;
+        delete data.consent_disclosure_version;
+      }
       data.request_id = form.dataset.requestId || (window.crypto && typeof window.crypto.randomUUID === "function"
         ? window.crypto.randomUUID()
         : "lead-" + Date.now() + "-" + Math.random().toString(16).slice(2));

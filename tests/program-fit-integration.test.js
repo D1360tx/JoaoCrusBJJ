@@ -119,7 +119,7 @@ test('SMS disclosure version and legal policies document the same messaging prog
     assert.match(policy, /Message\s+and\s+data\s+rates\s+may\s+apply/);
     assert.match(policy, /STOP/);
     assert.match(policy, /HELP/);
-    assert.match(policy, /Consent is not a condition of purchase/);
+    assert.match(policy, /Consent\s+is\s+not\s+a\s+condition\s+of\s+purchase/);
   }
   assert.match(privacy, /mobile information.*not.*shared.*marketing or promotional purposes/is);
 });
@@ -408,11 +408,10 @@ test('practice-under-pressure opens its primary quiz in a modal and preserves la
   assert.doesNotMatch(homepage, /data-quiz-route/);
 });
 
-test('shared-form consent grants email or call only and excludes automated texts', () => {
-  const shared = read('site/assets/campaign-site.js');
+test('unchanged legacy forms grant email or call only and exclude automated texts', () => {
   const teen = read('site/teens-campaign-ages-13-17.html');
   const pressure = read('site/campaign/practice-under-pressure.html');
-  for (const source of [shared, teen, pressure]) {
+  for (const source of [teen, pressure]) {
     assert.match(source, /may email or call me/);
     assert.match(source, /Automated texts are not enabled from this form/);
     assert.doesNotMatch(source, /may call or text me/);
