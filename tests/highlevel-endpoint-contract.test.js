@@ -9,6 +9,7 @@ const php = read('deploy/bluehost/api/lead.php');
 const stageHelper = read('scripts/ghl_get_stage_ids.sh');
 const bluehostHtaccess = read('deploy/bluehost/.htaccess');
 const campaignSite = read('site/assets/campaign-site.js');
+const metaRetryWorker = read('deploy/bluehost/api/meta-capi-retry.php');
 
 test('endpoint enforces method, same-origin, JSON and bounded body controls', () => {
   assert.match(php, /REQUEST_METHOD/);
@@ -42,6 +43,17 @@ test('endpoint normalizes identity and validates quiz recommendation enums', () 
   assert.match(php, /'jiu_jitsu_after_60'/);
 });
 
+test('quiz custom fields use parent-facing labels without changing routing enums', () => {
+  assert.match(php, /function quiz_display_value\(string \$field, string \$value\): string/);
+  assert.match(php, /'little' => 'Little Champions · Ages 3–7'/);
+  assert.match(php, /'listening' => 'Listening and following directions'/);
+  assert.match(php, /'dripping' => 'Dripping Springs'/);
+  assert.match(php, /'little_champions' => 'Little Champions · Ages 3–7'/);
+  assert.match(php, /'audience' => quiz_display_value\('audience', \$lead\['audience'\]\)/);
+  assert.match(php, /'age_bands' => quiz_display_age_bands\(\$lead\['age_bands'\]\)/);
+  assert.match(php, /function expected_recommendation\(array \$lead\): string/);
+});
+
 test('contact payload is duplicate-safe, preserves existing tags/source, and opportunity fields are present', () => {
   const contactBuilder = php.slice(php.indexOf('function build_contact_payload'), php.indexOf('function build_opportunity_payload'));
   const opportunityBuilder = php.slice(php.indexOf('function build_opportunity_payload'), php.indexOf('function contact_id_from_response'));
@@ -53,10 +65,13 @@ test('contact payload is duplicate-safe, preserves existing tags/source, and opp
   assert.match(opportunityBuilder, /pipelineId/);
   assert.match(opportunityBuilder, /pipelineStageId/);
   assert.match(opportunityBuilder, /status' => 'open'/);
+  assert.match(opportunityBuilder, /monetaryValue' => \$config\['opportunity_value'\]/);
   assert.doesNotMatch(opportunityBuilder, /assignedTo/);
   assert.match(php, /\/contacts\/upsert/);
   assert.match(php, /\/opportunities\/upsert/);
   assert.match(php, /GHL_ENABLE_TAG_ADD/);
+  assert.match(php, /GHL_DEFAULT_OPPORTUNITY_VALUE/);
+  assert.match(php, /Default opportunity value is not configured/);
   assert.match(php, /\/contacts\/' \. rawurlencode\(\$contactId\) \. '\/tags'/);
 });
 
@@ -96,13 +111,48 @@ test('provider calls use server-only config, bounded TLS curl, and non-PII loggi
   assert.doesNotMatch(logger, /email|phone|first_name|last_name|request body/i);
 });
 
+test('Meta CAPI Lead delivery is consent-gated, deduplicated, privacy-safe, and non-blocking', () => {
+  const metaBridge = php.slice(
+    php.indexOf('function meta_cookie_value'),
+    php.indexOf('function build_contact_payload')
+  );
+  assert.match(metaBridge, /META_CAPI_ENABLED/);
+  assert.match(metaBridge, /META_CAPI_ACCESS_TOKEN/);
+  assert.match(metaBridge, /META_PIXEL_ID/);
+  assert.match(metaBridge, /META_GRAPH_VERSION/);
+  assert.match(metaBridge, /\$meta\['ad_storage'\].*'granted'/s);
+  assert.match(metaBridge, /\$meta\['ad_user_data'\].*'granted'/s);
+  assert.match(metaBridge, /'event_name' => 'Lead'/);
+  assert.match(metaBridge, /'event_id' => meta_event_id\(\$lead\)/);
+  assert.match(metaBridge, /'action_source' => 'website'/);
+  assert.match(metaBridge, /hash\('sha256', strtolower\(\$lead\['email'\]\)\)/);
+  assert.match(metaBridge, /hash\('sha256', \$phoneDigits\)/);
+  assert.match(metaBridge, /'fbp'/);
+  assert.match(metaBridge, /'fbc'/);
+  assert.match(metaBridge, /events_received/);
+  assert.match(metaBridge, /for \(\$attempt = 1; \$attempt <= \$attemptLimit; \$attempt\+\+\)/);
+  assert.match(metaBridge, /META_CAPI_OUTBOX_DIR/);
+  assert.match(metaBridge, /file_put_contents\(\$temporary, \$json, LOCK_EX\)/);
+  assert.match(metaBridge, /next_attempt_at/);
+  assert.match(metaBridge, /meta_capi_dead_lettered/);
+  assert.match(metaBridge, /hash_equals\(basename\(\$path, '\.json'\), hash\('sha256', \$eventId\)\)/);
+  assert.match(metaRetryWorker, /PHP_SAPI !== 'cli'/);
+  assert.match(metaRetryWorker, /JOAO_CAPI_LIBRARY_ONLY/);
+  assert.match(metaRetryWorker, /meta_capi_retry_outbox\(20\)/);
+  assert.doesNotMatch(metaBridge, /log_event\([^\n]+\$lead\['email'\]/);
+  assert.match(php, /\$metaCapiStatus = meta_capi_status\(\$lead\);/);
+  assert.match(php, /'meta_event_id' => meta_event_id\(\$lead\)/);
+  assert.match(php, /'meta_capi_status' => \$metaCapiStatus/);
+  assert.ok(php.indexOf('$metaCapiStatus = meta_capi_status($lead);') > php.indexOf("if ($opportunityId === '')"));
+});
+
 test('success is explicit only after durable contact and opportunity acceptance', () => {
   const contactCall = php.indexOf("ghl_request('POST', '/contacts/upsert'");
   const contactCheck = php.indexOf("if ($contactId === '')");
   const opportunityCall = php.indexOf("ghl_request('POST', '/opportunities/upsert'");
   const opportunityCheck = php.indexOf("if ($opportunityId === '')");
   const mailCall = php.indexOf('send_legacy_alert($lead)');
-  const accepted = php.indexOf("'accepted' => true");
+  const accepted = php.indexOf("'accepted' => true", mailCall);
   assert.ok(contactCall < contactCheck && contactCheck < opportunityCall && opportunityCall < opportunityCheck);
   assert.ok(opportunityCheck < mailCall && mailCall < accepted);
   assert.match(php, /'contact_accepted' => true/);

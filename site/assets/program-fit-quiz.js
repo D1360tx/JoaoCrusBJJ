@@ -469,6 +469,9 @@
         first: attribution.first_touch || {},
         latest: attribution.last_touch || {}
       },
+      meta: window.JoaoAttribution && typeof window.JoaoAttribution.metaContext === 'function'
+        ? window.JoaoAttribution.metaContext(window, attribution)
+        : { ad_storage: 'denied', ad_user_data: 'denied' },
       website: String(data.get('website') || '').trim()
     };
   }
@@ -485,7 +488,7 @@
         signal: controller.signal
       });
       const body = await response.json().catch(() => ({}));
-      if (!response.ok || body.accepted !== true || body.contact_accepted !== true || body.opportunity_accepted !== true || body.request_id !== payload.request_id) {
+      if (!response.ok || body.accepted !== true || body.contact_accepted !== true || body.opportunity_accepted !== true || body.request_id !== payload.request_id || body.meta_event_id !== `lead_${payload.request_id}`) {
         throw new Error('Lead delivery was not accepted.');
       }
       return body;
@@ -563,13 +566,15 @@
     });
 
     try {
-      await submitLead(leadPayload(result));
+      const payload = leadPayload(result);
+      const acceptance = await submitLead(payload);
       showScreen('result');
       pushQuizEvent('lead_submit_success', {
         form_id: 'program_fit_quiz',
         recommendation,
         lead_program: recommendation,
-        lead_location: answers.location
+        lead_location: answers.location,
+        meta_event_id: acceptance.meta_event_id
       });
       pushQuizEvent('quiz_result_view', { recommendation });
     } catch (submitError) {
