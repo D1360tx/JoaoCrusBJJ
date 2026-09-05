@@ -293,10 +293,11 @@ def main() -> None:
         help="Build the indexable Bluehost artifact with the PHP HighLevel lead endpoint.",
     )
     args = parser.parse_args()
-    if args.production and not (BLUEHOST_DEPLOY / "api" / "lead.php").is_file():
-        raise SystemExit(
-            "Production build blocked: deploy/bluehost/api/lead.php is required before publishing the Program Finder quiz."
-        )
+    if args.production:
+        required_endpoints = [BLUEHOST_DEPLOY / "api" / "lead.php", BLUEHOST_DEPLOY / "api" / "lifecycle.php"]
+        missing = [str(path.relative_to(ROOT)) for path in required_endpoints if not path.is_file()]
+        if missing:
+            raise SystemExit("Production build blocked: required endpoint(s) missing: " + ", ".join(missing))
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     pages = [page for page in data["pages"] if page["file"] not in EXCLUDED_PAGES]
     routes = {page["file"]: page["path"] for page in pages}

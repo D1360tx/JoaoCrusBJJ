@@ -322,6 +322,7 @@ test("builds consent-gated Meta matching context from first-party cookies and fb
   );
   const captured = attribution.capture(ctx, START);
   assert.deepEqual(attribution.metaContext(ctx, captured), {
+    analytics_storage: "granted",
     ad_storage: "granted",
     ad_user_data: "granted",
     fbp: "fb.1.1787880000.browser_abc123",
@@ -340,10 +341,11 @@ test("derives fbc from captured fbclid but sends no identifiers without advertis
     "granted",
   );
   const captured = attribution.capture(granted, START);
-  assert.equal(attribution.metaContext(granted, captured).fbc, `fb.1.${Math.floor(START / 1000)}.derived_click_123`);
+  assert.equal(attribution.metaContext(granted, captured).fbc, `fb.1.${START}.derived_click_123`);
 
   const denied = context("https://joaocrusbjj.com/", "", new MemoryStorage(), new MemoryStorage(), "granted", "denied", "denied", "_fbp=fb.1.1787880000.browser_abc123");
   assert.deepEqual(attribution.metaContext(denied, captured), {
+    analytics_storage: "granted",
     ad_storage: "denied",
     ad_user_data: "denied",
   });

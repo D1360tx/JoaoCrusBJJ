@@ -33,15 +33,29 @@
     "gbraid",
     "msclkid",
   ];
+  var IDENTIFIER_KEYS = [
+    "utm_id",
+    "campaign_id",
+    "adset_id",
+    "ad_id",
+    "gclid",
+    "fbclid",
+    "wbraid",
+    "gbraid",
+    "msclkid",
+  ];
   var TOUCH_KEYS = CAMPAIGN_KEYS.concat(["landing_page", "referrer_host", "captured_at"]);
 
   function clean(value, maxLength) {
     return String(value || "").trim().slice(0, maxLength || 160);
   }
 
-  function sanitizeCampaignValue(value) {
+  function sanitizeCampaignValue(value, key) {
     var raw = String(value || "").trim();
     if (!raw || raw.length > 160 || /[\u0000-\u001f\u007f]/.test(raw)) return "";
+    if (IDENTIFIER_KEYS.indexOf(key) >= 0) {
+      return /^[A-Za-z0-9._:-]{1,160}$/.test(raw) ? raw : "";
+    }
     if (/[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(raw)) return "";
     if (/(?:\+?\d[\s().-]*){7,}/.test(raw)) return "";
     return raw;
@@ -100,12 +114,13 @@
   function clickIdFromAttribution(attribution) {
     var latest = attribution && attribution.last_touch;
     var first = attribution && attribution.first_touch;
-    return sanitizeCampaignValue((latest && latest.fbclid) || (first && first.fbclid));
+    return sanitizeCampaignValue((latest && latest.fbclid) || (first && first.fbclid), "fbclid");
   }
 
   function metaContext(context, attribution) {
     var state = context && context.joaoConsentState || {};
     var result = {
+      analytics_storage: state.analytics_storage === "granted" ? "granted" : "denied",
       ad_storage: state.ad_storage === "granted" ? "granted" : "denied",
       ad_user_data: state.ad_user_data === "granted" ? "granted" : "denied",
     };
@@ -118,7 +133,7 @@
         ? attribution.last_touch
         : attribution.first_touch || {};
       var capturedMs = Date.parse(touch.captured_at || "");
-      var timestamp = Number.isFinite(capturedMs) ? Math.floor(capturedMs / 1000) : Math.floor(Date.now() / 1000);
+      var timestamp = Number.isFinite(capturedMs) ? Math.floor(capturedMs) : Date.now();
       fbc = "fb.1." + timestamp + "." + fbclid;
     }
     if (fbp) result.fbp = fbp;
@@ -142,7 +157,7 @@
     var touch = {};
     TOUCH_KEYS.forEach(function (key) {
       var value = CAMPAIGN_KEYS.indexOf(key) >= 0
-        ? sanitizeCampaignValue(input && input[key])
+        ? sanitizeCampaignValue(input && input[key], key)
         : clean(input && input[key], key === "landing_page" ? 240 : 160);
       if (value) touch[key] = value;
     });
@@ -156,7 +171,7 @@
       captured_at: new Date(nowMs).toISOString(),
     };
     CAMPAIGN_KEYS.forEach(function (key) {
-      var value = sanitizeCampaignValue(query.get(key));
+      var value = sanitizeCampaignValue(query.get(key), key);
       if (value) touch[key] = value;
     });
     try {

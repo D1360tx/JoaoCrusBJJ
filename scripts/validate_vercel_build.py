@@ -111,16 +111,21 @@ def main() -> None:
     )
     if args.production:
         lead_endpoint = DIST / "api" / "lead.php"
+        lifecycle_endpoint = DIST / "api" / "lifecycle.php"
         htaccess = (DIST / ".htaccess").read_text(encoding="utf-8")
         check(
             "RewriteRule ^private-classes/?$ https://joaocrusbjj.com/private-bjj-lessons/ [R=301,L,NC]" in htaccess,
             "production artifact must preserve the live private-classes canonical redirect",
         )
         check(lead_endpoint.is_file(), "production HighLevel lead endpoint is missing")
+        check(lifecycle_endpoint.is_file(), "production lifecycle feedback endpoint is missing")
         lead_source = lead_endpoint.read_text(encoding="utf-8") if lead_endpoint.is_file() else ""
+        lifecycle_source = lifecycle_endpoint.read_text(encoding="utf-8") if lifecycle_endpoint.is_file() else ""
         check("/contacts/upsert" in lead_source, "production lead endpoint is missing contact upsert")
         check("/opportunities/upsert" in lead_source, "production lead endpoint is missing opportunity upsert")
         check("/notes" in lead_source and "Website Quiz Submitted" in lead_source, "production lead endpoint must append a readable submission note")
+        check("X-Joao-Lifecycle-Secret" in lifecycle_source and "GHL_LIFECYCLE_STAGE_MAP_JSON" in lifecycle_source, "production lifecycle endpoint must authenticate and validate the stage map")
+        check("QualifiedLead" in lifecycle_source and "qualify_lead" in lifecycle_source and "'Purchase'" not in lifecycle_source, "production lifecycle endpoint must preserve the approved no-Purchase event contract")
         for paid_key in ["campaign_id", "campaign_name", "adset_id", "adset_name", "ad_id", "ad_name", "placement", "site_source_name"]:
             check(paid_key in lead_source, f"production lead endpoint must retain paid attribution key {paid_key}")
         check("['Parent or guardian', 'Teen student']" in lead_source and "'role' => $role" in lead_source, "production endpoint must validate and retain Teen form role")
