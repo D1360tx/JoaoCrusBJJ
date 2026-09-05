@@ -118,7 +118,7 @@ function lifecycle_stage_contract(): array
 function lifecycle_header(string $name): string
 {
     $key = 'HTTP_' . strtoupper(str_replace('-', '_', $name));
-    $value = $_SERVER[$key] ?? '';
+    $value = $_SERVER[$key] ?? ($name === 'Authorization' ? ($_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? '') : '');
     return is_string($value) ? trim($value) : '';
 }
 
@@ -164,7 +164,8 @@ function lifecycle_authorize(string $rawBody): void
         return;
     }
     $expected = lifecycle_env('LIFECYCLE_WEBHOOK_SECRET');
-    $provided = lifecycle_header('X-Joao-Lifecycle-Secret');
+    $authorization = lifecycle_header('Authorization');
+    $provided = str_starts_with($authorization, 'Bearer ') ? trim(substr($authorization, 7)) : '';
     if (strlen($expected) < 32 || $provided === '' || !hash_equals($expected, $provided)) {
         lifecycle_respond(401, ['accepted' => false, 'error' => 'Unauthorized.']);
     }

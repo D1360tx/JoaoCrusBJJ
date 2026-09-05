@@ -29,7 +29,7 @@ Create four separate workflows. Each workflow:
 2. Filters to contacts tagged `website_lead` whose Website Request ID and all three measurement-consent fields are non-empty. Historical/imported records are not backfilled or enrolled.
 3. Contains one outbound webhook action and no customer-message action.
 4. Uses `POST https://joaocrusbjj.com/api/lifecycle.php`.
-5. Is accepted only when HighLevel supplies a valid `X-GHL-Signature` Ed25519 signature over the exact raw request body. If controlled testing proves the Custom Webhook action does not emit that signature, use HighLevel's masked API-key credential feature to supply the fallback `X-Joao-Lifecycle-Secret` header.
+5. Is accepted only when HighLevel supplies a valid `X-GHL-Signature` Ed25519 signature over the exact raw request body. If controlled testing proves the Custom Webhook action does not emit that signature, use HighLevel's masked API-key credential feature to supply `Authorization: Bearer <masked secret>`. Do not use a custom header containing `Secret`; Bluehost's WAF rejects that request upstream with HTTP 406.
 6. Sends JSON using the stage-specific key and live stage ID.
 7. Remains Draft until the endpoint, secret, field values, and controlled test pass.
 
@@ -78,7 +78,7 @@ The IDs below were read from the HighLevel pipeline API on 2026-09-04. Reverify 
 
 Set all secrets outside the web root in the existing file referenced by `GHL_ENV_FILE`. Create `LIFECYCLE_LEDGER_DIR` outside `public_html` with mode `700`. The endpoint creates per-event files with mode `600`.
 
-- `LIFECYCLE_WEBHOOK_SECRET`: optional fallback, random and at least 32 characters; keep empty when signed HighLevel webhooks are verified
+- `LIFECYCLE_WEBHOOK_SECRET`: optional bearer-token fallback, random and at least 32 characters; keep empty when signed HighLevel webhooks are verified
 - `LIFECYCLE_EVENT_SALT`: independent random value, at least 32 characters
 - `LIFECYCLE_LEDGER_DIR`
 - `GHL_LIFECYCLE_STAGE_MAP_JSON`

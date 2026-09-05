@@ -124,7 +124,7 @@ def main() -> None:
         check("/contacts/upsert" in lead_source, "production lead endpoint is missing contact upsert")
         check("/opportunities/upsert" in lead_source, "production lead endpoint is missing opportunity upsert")
         check("/notes" in lead_source and "Website Quiz Submitted" in lead_source, "production lead endpoint must append a readable submission note")
-        check("X-Joao-Lifecycle-Secret" in lifecycle_source and "GHL_LIFECYCLE_STAGE_MAP_JSON" in lifecycle_source, "production lifecycle endpoint must authenticate and validate the stage map")
+        check("lifecycle_header('Authorization')" in lifecycle_source and "GHL_LIFECYCLE_STAGE_MAP_JSON" in lifecycle_source, "production lifecycle endpoint must authenticate and validate the stage map")
         check("QualifiedLead" in lifecycle_source and "qualify_lead" in lifecycle_source and "'Purchase'" not in lifecycle_source, "production lifecycle endpoint must preserve the approved no-Purchase event contract")
         for paid_key in ["campaign_id", "campaign_name", "adset_id", "adset_name", "ad_id", "ad_name", "placement", "site_source_name"]:
             check(paid_key in lead_source, f"production lead endpoint must retain paid attribution key {paid_key}")

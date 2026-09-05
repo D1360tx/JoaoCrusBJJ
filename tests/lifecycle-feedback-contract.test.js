@@ -12,7 +12,8 @@ const envExample = read('docs/HIGHLEVEL-BLUEHOST-CONFIG.example.env');
 const runbook = read('docs/LIFECYCLE-FEEDBACK-PHASE1.md');
 
 test('lifecycle endpoint fails closed on auth, pipeline, stage, content type, size, and recency', () => {
-  assert.match(lifecycle, /X-Joao-Lifecycle-Secret/);
+  assert.match(lifecycle, /lifecycle_header\('Authorization'\)/);
+  assert.match(lifecycle, /str_starts_with\(\$authorization, 'Bearer '\)/);
   assert.match(lifecycle, /hash_equals\(\$expected, \$provided\)/);
   assert.match(lifecycle, /X-GHL-Signature/);
   assert.match(lifecycle, /sodium_crypto_sign_verify_detached/);
