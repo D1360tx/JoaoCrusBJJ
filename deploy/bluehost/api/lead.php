@@ -492,6 +492,7 @@ function build_opportunity_payload(array $lead, string $contactId, array $config
         'contactId' => $contactId,
         'name' => 'Website lead - ' . $lead['recommended_program'],
         'status' => 'open',
+        'monetaryValue' => $config['opportunity_value'],
     ];
 }
 
@@ -580,11 +581,16 @@ try {
     enforce_rate_limit((string)($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
 
     $lead = ($data['schema_version'] ?? '') === 'program_fit_v1' ? normalize_quiz($data) : normalize_legacy($data);
+    $opportunityValueRaw = env_value('GHL_DEFAULT_OPPORTUNITY_VALUE');
+    if ($opportunityValueRaw === '' || !is_numeric($opportunityValueRaw) || (float)$opportunityValueRaw < 0) {
+        throw new RuntimeException('Default opportunity value is not configured.');
+    }
     $config = [
         'location_id' => env_value('GHL_LOCATION_ID'),
         'pipeline_id' => env_value('GHL_PIPELINE_ID'),
         'stage_id' => env_value('GHL_NEW_LEAD_STAGE_ID'),
         'owner_id' => env_value('GHL_OWNER_USER_ID'),
+        'opportunity_value' => (float)$opportunityValueRaw,
     ];
     if ($config['location_id'] === '' || $config['pipeline_id'] === '' || $config['stage_id'] === '') {
         throw new RuntimeException('Provider account IDs are not configured.');
