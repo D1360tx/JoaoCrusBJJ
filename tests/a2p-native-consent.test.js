@@ -53,6 +53,7 @@ test('both legal pages cover customer-care, retention, no marketing sharing and 
   }
   assert.match(read('site/campaign/privacy.html'), /href="terms.html"/);
   assert.match(read('site/campaign/privacy.html'), /Data security practices/);
+  assert.match(read('site/campaign/privacy.html'), /Consent is not shared with third parties for their own marketing purposes\./);
   assert.match(read('site/campaign/terms.html'), /href="privacy.html"/);
   assert.match(read('site/campaign/terms.html'), /Carriers are not liable for\s+delayed or undelivered messages/);
 });
