@@ -24,6 +24,10 @@ foreach (['contact_page', 'booking_popup'] as $id) {
         check($values['sms_marketing_consent'] === ($marketingConsent ? 'granted' : 'not_granted'), "$id marketing storage");
         check($values['submission_page'] === $base['page'], "$id page");
         check((bool)strtotime($values['consent_timestamp']), "$id timestamp");
+        $noteBody = submission_note_payload($lead, [])['body'];
+        check(str_contains($noteBody, 'SMS customer-care consent: ' . ($consent ? 'granted' : 'not_granted')), "$id note customer-care");
+        check(str_contains($noteBody, 'SMS marketing consent: ' . ($marketingConsent ? 'granted' : 'not_granted')), "$id note marketing");
+        check(str_contains($noteBody, 'Consent disclosure version: website_sms_v3'), "$id note version");
         $fields = build_custom_fields($lead, ['sms_consent' => ['id' => 'test-sms', 'key' => 'contact.sms_consent'], 'sms_marketing_consent' => ['id' => 'test-marketing', 'key' => 'contact.sms_marketing_consent'], 'consent_disclosure_version' => ['id' => 'test-version', 'key' => 'contact.consent_disclosure_version']]);
         check(count($fields) === 3, "$id mapped fields");
         foreach (['false', 'true'] as $release) {

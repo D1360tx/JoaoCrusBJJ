@@ -894,7 +894,9 @@ function submission_note_payload(array $lead, array $config): array
     append_note_line($lines, 'Availability', $values['availability'] ?? '');
     append_note_line($lines, 'Message', $values['message'] ?? '');
     append_note_line($lines, 'Email consent', $values['email_consent'] ?? '');
-    append_note_line($lines, 'SMS consent', $values['sms_consent'] ?? '');
+    append_note_line($lines, 'SMS customer-care consent', $values['sms_consent'] ?? '');
+    append_note_line($lines, 'SMS marketing consent', $values['sms_marketing_consent'] ?? '');
+    append_note_line($lines, 'Consent disclosure version', $values['consent_disclosure_version'] ?? '');
     append_note_line($lines, 'Submission page', $values['submission_page'] ?? '');
     append_attribution_note($lines, 'First touch', $lead['attribution']['first'] ?? []);
     append_attribution_note($lines, 'Latest touch', $lead['attribution']['latest'] ?? []);
