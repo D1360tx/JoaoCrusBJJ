@@ -1,5 +1,9 @@
 (() => {
-  const attributionKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid'];
+  const attributionKeys = [
+    'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id',
+    'campaign_id', 'campaign_name', 'adset_id', 'adset_name', 'ad_id', 'ad_name',
+    'placement', 'site_source_name', 'gclid', 'fbclid'
+  ];
   const currentParams = new URLSearchParams(window.location.search);
   const quizLinks = [...document.querySelectorAll('[data-kids-quiz]')];
   const year = document.querySelector('[data-year]');

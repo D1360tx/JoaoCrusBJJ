@@ -19,6 +19,14 @@
     "utm_content",
     "utm_term",
     "utm_id",
+    "campaign_id",
+    "campaign_name",
+    "adset_id",
+    "adset_name",
+    "ad_id",
+    "ad_name",
+    "placement",
+    "site_source_name",
     "gclid",
     "fbclid",
     "wbraid",
@@ -63,6 +71,59 @@
       (context.joaoConsentState.analytics_storage === "granted" ||
         context.joaoConsentState.ad_storage === "granted")
     );
+  }
+
+  function advertisingMeasurementGranted(context) {
+    var state = context && context.joaoConsentState;
+    return Boolean(state && state.ad_storage === "granted" && state.ad_user_data === "granted");
+  }
+
+  function readCookie(context, name) {
+    try {
+      var prefix = encodeURIComponent(name) + "=";
+      var parts = String(context.document.cookie || "").split(";");
+      for (var index = 0; index < parts.length; index += 1) {
+        var part = parts[index].trim();
+        if (part.indexOf(prefix) === 0) return decodeURIComponent(part.slice(prefix.length));
+      }
+    } catch (error) {
+      // Cookie access can be blocked independently by browser privacy controls.
+    }
+    return "";
+  }
+
+  function validMetaCookie(value) {
+    var cleaned = clean(value, 240);
+    return /^fb\.1\.\d{10,13}\.[A-Za-z0-9._-]{6,200}$/.test(cleaned) ? cleaned : "";
+  }
+
+  function clickIdFromAttribution(attribution) {
+    var latest = attribution && attribution.last_touch;
+    var first = attribution && attribution.first_touch;
+    return sanitizeCampaignValue((latest && latest.fbclid) || (first && first.fbclid));
+  }
+
+  function metaContext(context, attribution) {
+    var state = context && context.joaoConsentState || {};
+    var result = {
+      ad_storage: state.ad_storage === "granted" ? "granted" : "denied",
+      ad_user_data: state.ad_user_data === "granted" ? "granted" : "denied",
+    };
+    if (!advertisingMeasurementGranted(context)) return result;
+    var fbp = validMetaCookie(readCookie(context, "_fbp"));
+    var fbc = validMetaCookie(readCookie(context, "_fbc"));
+    var fbclid = clickIdFromAttribution(attribution);
+    if (!fbc && fbclid) {
+      var touch = attribution.last_touch && attribution.last_touch.fbclid
+        ? attribution.last_touch
+        : attribution.first_touch || {};
+      var capturedMs = Date.parse(touch.captured_at || "");
+      var timestamp = Number.isFinite(capturedMs) ? Math.floor(capturedMs / 1000) : Math.floor(Date.now() / 1000);
+      fbc = "fb.1." + timestamp + "." + fbclid;
+    }
+    if (fbp) result.fbp = fbp;
+    if (fbc) result.fbc = fbc;
+    return result;
   }
 
   function clear(context) {
@@ -197,6 +258,7 @@
     WINDOW_DAYS: WINDOW_DAYS,
     clear: clear,
     capture: capture,
+    metaContext: metaContext,
     sanitizeCampaignValue: sanitizeCampaignValue,
   };
 });

@@ -71,7 +71,7 @@ GTM_HEAD_SNIPPET = rf"""<!-- Google Tag Manager -->
     w.gtag('consent','default',{{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':2000}});
     function safeCampaignValue(v){{v=String(v||'').trim();if(!v||v.length>160||/[\u0000-\u001f\u007f]/.test(v)||/[a-z0-9.!#$%&'*+\/?=^_`{{|}}~-]+@[a-z0-9.-]+\.[a-z]{{2,}}/i.test(v)||/(?:\+?\d[\s().-]*){{7,}}/.test(v))return '';return v;}}
     var safe=null;try{{var u=new URL(w.location.href);safe=new URL(u.origin+u.pathname);
-    {json.dumps(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'qa', 'gtm_debug', 'gtm_auth', 'gtm_preview', 'gtm_cookies_win'])}.forEach(function(k){{
+    {json.dumps(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'campaign_id', 'campaign_name', 'adset_id', 'adset_name', 'ad_id', 'ad_name', 'placement', 'site_source_name', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'qa', 'gtm_debug', 'gtm_auth', 'gtm_preview', 'gtm_cookies_win'])}.forEach(function(k){{
     if(u.searchParams.has(k)){{var v=safeCampaignValue(u.searchParams.get(k));if(v)safe.searchParams.set(k,v);}}}});
     var routeEnums={{source:{json.dumps(['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'meta-kids-paid', 'after60-page'])},path:{json.dumps(['child', 'adult', 'after60', 'help', 'undecided'])},embed:{json.dumps(['1'])},start:{json.dumps(['quiz'])}}};
     Object.keys(routeEnums).forEach(function(k){{var v=u.searchParams.get(k);if(routeEnums[k].indexOf(v)!==-1)safe.searchParams.set(k,v);}});

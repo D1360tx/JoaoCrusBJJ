@@ -111,10 +111,18 @@ def main() -> None:
     )
     if args.production:
         lead_endpoint = DIST / "api" / "lead.php"
+        htaccess = (DIST / ".htaccess").read_text(encoding="utf-8")
+        check(
+            "RewriteRule ^private-classes/?$ https://joaocrusbjj.com/private-bjj-lessons/ [R=301,L,NC]" in htaccess,
+            "production artifact must preserve the live private-classes canonical redirect",
+        )
         check(lead_endpoint.is_file(), "production HighLevel lead endpoint is missing")
         lead_source = lead_endpoint.read_text(encoding="utf-8") if lead_endpoint.is_file() else ""
         check("/contacts/upsert" in lead_source, "production lead endpoint is missing contact upsert")
         check("/opportunities/upsert" in lead_source, "production lead endpoint is missing opportunity upsert")
+        check("/notes" in lead_source and "Website Quiz Submitted" in lead_source, "production lead endpoint must append a readable submission note")
+        for paid_key in ["campaign_id", "campaign_name", "adset_id", "adset_name", "ad_id", "ad_name", "placement", "site_source_name"]:
+            check(paid_key in lead_source, f"production lead endpoint must retain paid attribution key {paid_key}")
         check("['Parent or guardian', 'Teen student']" in lead_source and "'role' => $role" in lead_source, "production endpoint must validate and retain Teen form role")
         check("['13', '14', '15', '16', '17']" in lead_source and "'age' => $age" in lead_source, "production endpoint must validate and retain Teen age")
         check("['after-school', 'evening', 'saturday']" in lead_source and "'availability' => implode(', ', $availabilityValues)" in lead_source, "production endpoint must validate and retain Teen schedule availability")
@@ -286,8 +294,6 @@ def main() -> None:
         f"{hashlib.sha256((ASSETS / 'campaign-site.js').read_bytes()).hexdigest()[:12]}"
     )
     for event_name in (
-        "lead_submit_success",
-        "guide_request_success",
         "lead_submit_error",
         "booking_start",
         "click_to_call",
@@ -295,10 +301,14 @@ def main() -> None:
         "get_directions",
     ):
         check(f'pushAnalytics("{event_name}"' in analytics_source, f"missing analytics event contract: {event_name}")
+    for event_name in ("lead_submit_success", "guide_request_success"):
+        check(f'routeAcceptedLead("{event_name}"' in analytics_source, f"missing accepted-lead routing contract: {event_name}")
+    check('sourceEventName === "guide_request_success"' in analytics_source and '? "guide_request"' in analytics_source and 'ga4Command("event", gaEventName, gaParameters)' in analytics_source and 'send_to: "G-EW2F2YKR3Y"' in analytics_source and 'function () { window.dataLayer.push(arguments); }' in analytics_source, "accepted leads and guide requests must route to their governed GA4 destination even when GTM does not expose window.gtag")
+    check('window.fbq("track", "Lead"' in analytics_source and '{ eventID: metaEventId }' in analytics_source and 'routeMetaLead(parameters.meta_event_id, clean)' in analytics_source, "accepted leads must route one deferred Meta browser event with the server event ID")
     check('window.joaoConsentState.analytics_storage !== "granted" &&' in analytics_source and 'window.joaoConsentState.ad_storage !== "granted"' in analytics_source, "application events must not queue while both analytics and advertising storage are denied")
     check('window.setTimeout(parameters.eventCallback, 0)' in analytics_source, "blocked lead analytics must preserve immediate navigation callbacks")
     check('function clearCookies(pattern)' in consent_source and '/^_fb[pc]$|^_gcl_/' in consent_source, "category withdrawal must clear accessible Google and Meta cookies")
-    check("parameters.eventCallback = redirectAfterSuccess" in analytics_source, "lead success event must use a GTM eventCallback before navigation")
+    check("parameters.eventCallback = redirectAfterSuccess" in analytics_source, "lead success event must preserve an analytics callback before navigation")
     check("parameters.eventTimeout = 1500" in analytics_source, "lead success event must use a bounded eventTimeout")
     check("data.attribution = currentAttribution()" in analytics_source, "lead payload must use current consent-aware non-PII attribution")
     check('formData.getAll("availability").join(", ")' in analytics_source, "Teen schedule availability must retain every selected time window")

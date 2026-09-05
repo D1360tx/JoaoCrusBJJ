@@ -17,10 +17,10 @@ class MemoryStorage {
   }
 }
 
-function context(url, referrer = "", localStorage = new MemoryStorage(), sessionStorage = new MemoryStorage(), consent = "granted", adConsent = "denied") {
+function context(url, referrer = "", localStorage = new MemoryStorage(), sessionStorage = new MemoryStorage(), consent = "granted", adConsent = "denied", adUserData = "denied", cookie = "") {
   const parsed = new URL(url);
   return {
-    document: { referrer },
+    document: { referrer, cookie },
     location: {
       href: parsed.href,
       hostname: parsed.hostname,
@@ -29,7 +29,7 @@ function context(url, referrer = "", localStorage = new MemoryStorage(), session
     },
     localStorage,
     sessionStorage,
-    joaoConsentState: { analytics_storage: consent, ad_storage: adConsent },
+    joaoConsentState: { analytics_storage: consent, ad_storage: adConsent, ad_user_data: adUserData },
   };
 }
 
@@ -273,6 +273,28 @@ test("advertising-only consent permits non-PII campaign attribution persistence"
   assert.ok(local.getItem(attribution.STORAGE_KEY));
 });
 
+test("captures Meta campaign, ad set, ad, and placement macros for CRM attribution", () => {
+  const result = attribution.capture(
+    context(
+      "https://joaocrusbjj.com/kids-first-class/?utm_source=facebook&utm_medium=paid_social&utm_campaign=kids_fall&campaign_id=1201&campaign_name=Kids%20Fall&adset_id=2202&adset_name=Parents%203-7&ad_id=3303&ad_name=Tap%20Means%20Stop&placement=instagram_feed&site_source_name=ig",
+      "",
+      new MemoryStorage(),
+      new MemoryStorage(),
+      "granted",
+      "granted",
+    ),
+    START,
+  );
+  assert.equal(result.last_touch.campaign_id, "1201");
+  assert.equal(result.last_touch.campaign_name, "Kids Fall");
+  assert.equal(result.last_touch.adset_id, "2202");
+  assert.equal(result.last_touch.adset_name, "Parents 3-7");
+  assert.equal(result.last_touch.ad_id, "3303");
+  assert.equal(result.last_touch.ad_name, "Tap Means Stop");
+  assert.equal(result.last_touch.placement, "instagram_feed");
+  assert.equal(result.last_touch.site_source_name, "ig");
+});
+
 test("rejects PII-bearing and oversized campaign values", () => {
   const result = attribution.capture(
     context(
@@ -285,6 +307,46 @@ test("rejects PII-bearing and oversized campaign values", () => {
   assert.equal(result.utm_term, undefined);
   assert.equal(result.utm_campaign, undefined);
   assert.equal(attribution.sanitizeCampaignValue("safe-creative-2"), "safe-creative-2");
+});
+
+test("builds consent-gated Meta matching context from first-party cookies and fbclid", () => {
+  const ctx = context(
+    "https://joaocrusbjj.com/program-finder/quiz/?fbclid=click_abc123",
+    "",
+    new MemoryStorage(),
+    new MemoryStorage(),
+    "granted",
+    "granted",
+    "granted",
+    "_fbp=fb.1.1787880000.browser_abc123; _fbc=fb.1.1787880000.click_cookie_123",
+  );
+  const captured = attribution.capture(ctx, START);
+  assert.deepEqual(attribution.metaContext(ctx, captured), {
+    ad_storage: "granted",
+    ad_user_data: "granted",
+    fbp: "fb.1.1787880000.browser_abc123",
+    fbc: "fb.1.1787880000.click_cookie_123",
+  });
+});
+
+test("derives fbc from captured fbclid but sends no identifiers without advertising consent", () => {
+  const granted = context(
+    "https://joaocrusbjj.com/?fbclid=derived_click_123",
+    "",
+    new MemoryStorage(),
+    new MemoryStorage(),
+    "granted",
+    "granted",
+    "granted",
+  );
+  const captured = attribution.capture(granted, START);
+  assert.equal(attribution.metaContext(granted, captured).fbc, `fb.1.${Math.floor(START / 1000)}.derived_click_123`);
+
+  const denied = context("https://joaocrusbjj.com/", "", new MemoryStorage(), new MemoryStorage(), "granted", "denied", "denied", "_fbp=fb.1.1787880000.browser_abc123");
+  assert.deepEqual(attribution.metaContext(denied, captured), {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+  });
 });
 
 test("clears durable attribution when all optional measurement consent is withdrawn", () => {

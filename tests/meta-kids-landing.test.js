@@ -58,7 +58,7 @@ test('every primary CTA enters the child quiz and preserves a unique placement',
 });
 
 test('paid attribution keys are forwarded to every quiz CTA', () => {
-  for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid']) {
+  for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid', 'campaign_id', 'campaign_name', 'adset_id', 'adset_name', 'ad_id', 'ad_name', 'placement', 'site_source_name']) {
     assert.match(js, new RegExp(`['"]${key}['"]`));
   }
   assert.match(js, /document\.querySelectorAll\('\[data-kids-quiz\]'\)/);
