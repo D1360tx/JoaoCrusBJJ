@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="color-scheme" content="light">
+  <title>Private Coaching Fit Finder | Joao Crus BJJ</title>
+  <meta name="description" content="A review-only conversion landing page and private coaching fit quiz for Joao Crus BJJ.">
+  <link rel="icon" href="../assets/favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="private-coaching-v2.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="review-bar"><span>ICDC REVIEW BUILD</span><strong>NOT LIVE · FORM NOT CONNECTED</strong></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html#private" aria-label="Back to Story Campaign Lab">
+      <img src="../assets/joao-crus-bjj-logo.png" width="56" height="56" alt="Joao Crus BJJ">
+      <span><strong>JOAO CRUS BJJ</strong><small>PRIVATE COACHING</small></span>
+    </a>
+    <button class="header-cta" type="button" data-scroll-quiz>FIND MY COACHING FIT</button>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">1-ON-1 PRIVATE JIU-JITSU COACHING</p>
+        <h1>STOP GUESSING.<br><span>BUILD YOUR NEXT&nbsp;STEP.</span></h1>
+        <p class="hero-lead">Private coaching built around your game, your goals, and the problems you want to solve.</p>
+        <button class="primary-button" type="button" data-scroll-quiz>FIND MY COACHING FIT</button>
+        <p class="cta-note">Answer four quick questions. See the starting point that may fit you best.</p>
+        <ul class="hero-points" aria-label="Private coaching benefits">
+          <li>A clear place to start</li>
+          <li>Focused 1-on-1 coaching</li>
+          <li>A plan you can use outside the session</li>
+        </ul>
+        <figure class="hero-photo">
+          <img src="../assets/campaign-images/adults-joao-coaching-hero-2026-07.webp" width="1280" height="960" alt="Joao Crus coaching an adult student through a jiu-jitsu position">
+          <figcaption>COACH THE PROBLEM. CONNECT THE GAME.</figcaption>
+        </figure>
+      </div>
+
+      <aside class="quiz-shell" id="coaching-fit-quiz" aria-label="Private coaching fit quiz">
+        <div class="quiz-topline">
+          <span>PRIVATE COACHING FIT FINDER</span>
+          <b><span data-current-step>1</span> OF 5</b>
+        </div>
+        <div class="quiz-progress" aria-label="Quiz progress"><span data-progress></span></div>
+
+        <form id="private-fit-form" novalidate>
+          <section class="quiz-step is-active" data-quiz-step="1" aria-labelledby="quiz-title">
+            <p class="step-label">QUESTION 1</p>
+            <h2 id="quiz-title" tabindex="-1">WHAT WOULD HELP MOST RIGHT&nbsp;NOW?</h2>
+            <div class="quiz-options">
+              <button type="button" data-answer="goal" data-value="connected-game"><span>01</span>Build a more connected game</button>
+              <button type="button" data-answer="goal" data-value="specific-position"><span>02</span>Fix one position or recurring problem</button>
+              <button type="button" data-answer="goal" data-value="group-class"><span>03</span>Get more from group classes and open mat</button>
+              <button type="button" data-answer="goal" data-value="return"><span>04</span>Return to training with clear direction</button>
+              <button type="button" data-answer="goal" data-value="competition"><span>05</span>Prepare for an upcoming competition</button>
+            </div>
+          </section>
+
+          <section class="quiz-step" data-quiz-step="2" aria-labelledby="experience-title" hidden>
+            <p class="step-label">QUESTION 2</p>
+            <h2 id="experience-title" tabindex="-1">WHERE ARE YOU IN YOUR JIU-JITSU RIGHT NOW?</h2>
+            <div class="quiz-options">
+              <button type="button" data-answer="experience" data-value="starting"><span>01</span>Starting or under one year</button>
+              <button type="button" data-answer="experience" data-value="developing"><span>02</span>Building my foundations</button>
+              <button type="button" data-answer="experience" data-value="experienced"><span>03</span>Experienced, but working through a plateau</button>
+              <button type="button" data-answer="experience" data-value="returning"><span>04</span>Returning after time away</button>
+            </div>
+            <button class="quiz-back" type="button" data-back>BACK</button>
+          </section>
+
+          <section class="quiz-step" data-quiz-step="3" aria-labelledby="friction-title" hidden>
+            <p class="step-label">QUESTION 3</p>
+            <h2 id="friction-title" tabindex="-1">WHAT IS GETTING IN THE WAY MOST OFTEN?</h2>
+            <div class="quiz-options">
+              <button type="button" data-answer="friction" data-value="unclear"><span>01</span>I am not sure what to work on</button>
+              <button type="button" data-answer="friction" data-value="mistakes"><span>02</span>I keep repeating the same mistakes</button>
+              <button type="button" data-answer="friction" data-value="pace"><span>03</span>Group instruction moves past my question</button>
+              <button type="button" data-answer="friction" data-value="schedule"><span>04</span>My schedule makes consistency difficult</button>
+              <button type="button" data-answer="friction" data-value="prep"><span>05</span>I need focused preparation</button>
+            </div>
+            <button class="quiz-back" type="button" data-back>BACK</button>
+          </section>
+
+          <section class="quiz-step" data-quiz-step="4" aria-labelledby="format-title" hidden>
+            <p class="step-label">QUESTION 4</p>
+            <h2 id="format-title" tabindex="-1">WHAT KIND OF SUPPORT SOUNDS MOST USEFUL?</h2>
+            <div class="quiz-options">
+              <button type="button" data-answer="format" data-value="assessment"><span>01</span>One focused assessment and next-step plan</button>
+              <button type="button" data-answer="format" data-value="series"><span>02</span>A short series around one priority</button>
+              <button type="button" data-answer="format" data-value="ongoing"><span>03</span>Ongoing 1-on-1 development</button>
+              <button type="button" data-answer="format" data-value="unsure"><span>04</span>I want Joao's recommendation</button>
+            </div>
+            <button class="quiz-back" type="button" data-back>BACK</button>
+          </section>
+
+          <section class="quiz-step quiz-capture" data-quiz-step="5" aria-labelledby="capture-title" hidden>
+            <p class="step-label">YOUR RECOMMENDATION IS READY</p>
+            <h2 id="capture-title" tabindex="-1">WHERE SHOULD WE SEND YOUR PRIVATE COACHING FIT?</h2>
+            <p>Share the minimum needed for Joao's team to follow up with the right context.</p>
+            <label>Name<input name="name" autocomplete="name" required></label>
+            <label>Email<input name="email" type="email" autocomplete="email" inputmode="email" required></label>
+            <label>Phone <small>Optional</small><input name="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
+            <input type="hidden" name="goal">
+            <input type="hidden" name="experience">
+            <input type="hidden" name="friction">
+            <input type="hidden" name="format">
+            <input type="hidden" name="form_source" value="private_coaching_fit_finder_v2">
+            <input type="hidden" name="quiz_version" value="private_fit_v2_review">
+            <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="utm_term"><input type="hidden" name="gclid"><input type="hidden" name="fbclid">
+            <button class="primary-button quiz-submit" type="submit">GET MY COACHING RECOMMENDATION</button>
+            <p class="privacy-copy">Visual preview only. No information is sent or stored. The production version will include the approved privacy and contact consent language.</p>
+            <button class="quiz-back" type="button" data-back>BACK</button>
+          </section>
+
+          <section class="quiz-step quiz-result" data-quiz-result aria-labelledby="result-title" hidden>
+            <p class="step-label">YOUR LIKELY STARTING POINT</p>
+            <h2 id="result-title" tabindex="-1" data-result-name>PRIVATE GAME ASSESSMENT</h2>
+            <p data-result-copy>A focused first session to identify the highest-value problem, coach the correction, and map what to work on next.</p>
+            <div class="result-summary"><span>BASED ON YOUR ANSWERS</span><p data-result-summary></p></div>
+            <p class="preview-confirmation"><strong>Preview complete.</strong> No lead was sent or stored.</p>
+            <button class="secondary-button" type="button" data-restart>RESTART THE QUIZ</button>
+          </section>
+        </form>
+      </aside>
+    </section>
+
+    <section class="fit-strip" aria-label="Private coaching promise">
+      <div><b>01</b><span><strong>START WITH THE PROBLEM</strong>Not a random technique list.</span></div>
+      <div><b>02</b><span><strong>COACH THE DECISION</strong>Understand what to notice and when to act.</span></div>
+      <div><b>03</b><span><strong>CARRY IT FORWARD</strong>Leave with a next step you can train.</span></div>
+    </section>
+
+    <section class="section problem-section">
+      <div class="section-heading">
+        <p class="eyebrow">WHY PRIVATE COACHING</p>
+        <h2>MORE MOVES<br>ARE NOT<br>THE ANSWER.</h2>
+      </div>
+      <div class="problem-copy">
+        <p>Group classes give you breadth. Rolling gives you feedback. Private coaching can connect the two by slowing down the exact problem that keeps appearing in your game.</p>
+        <p>The goal is not to collect more moves. It is to leave knowing what matters, why it matters, and what to train next.</p>
+      </div>
+    </section>
+
+    <section class="section use-cases">
+      <div class="section-heading compact">
+        <p class="eyebrow">WHO THIS CAN HELP</p>
+        <h2>START WITH THE SITUATION YOU ARE ACTUALLY IN.</h2>
+      </div>
+      <div class="use-grid">
+        <article><span>01</span><h3>YOU KEEP REACHING THE SAME DEAD END.</h3><p>Break down the position, the decision before it, and the options that connect from there.</p></article>
+        <article><span>02</span><h3>TURN ISOLATED TECHNIQUES INTO A CONNECTED&nbsp;GAME.</h3><p>Organize isolated techniques into a smaller, more usable game.</p></article>
+        <article><span>03</span><h3>MAKE GROUP CLASS WORK HARDER FOR&nbsp;YOU.</h3><p>Use a clear personal focus so regular training has a purpose beyond attendance.</p></article>
+        <article><span>04</span><h3>YOU NEED FOCUSED PREPARATION.</h3><p>Prioritize the positions and decisions most relevant to an upcoming goal.</p></article>
+      </div>
+    </section>
+
+    <section class="coaching-process">
+      <div class="process-photo"><img src="../assets/campaign-images/adults-joao-coaching-hero-2026-07.webp" width="1280" height="960" alt="Joao Crus coaching an adult student through a technical position"><span>PRIVATE COACHING SHOULD MAKE THE NEXT REP MORE USEFUL.</span></div>
+      <div class="process-copy">
+        <p class="eyebrow">WHAT THE FIRST STEP LOOKS LIKE</p>
+        <h2>DIAGNOSE. COACH. CONNECT.</h2>
+        <ol>
+          <li><b>01</b><div><h3>DIAGNOSE THE REAL PROBLEM</h3><p>Start with the position, habit, or goal that matters most right now.</p></div></li>
+          <li><b>02</b><div><h3>COACH THE DETAIL UNDER&nbsp;RESISTANCE</h3><p>Work through what changes when timing, pressure, and reactions enter the position.</p></div></li>
+          <li><b>03</b><div><h3>CONNECT IT TO YOUR TRAINING</h3><p>Leave with a focused next step for group class, open mat, or the next private session.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section coach-section">
+      <div>
+        <p class="eyebrow">COACH WITH CONTEXT</p>
+        <h2><span class="heading-line">PRIVATE COACHING</span><span class="heading-line">SHOULD FIT</span><span class="heading-line">THE PERSON.</span></h2>
+        <p>Experience level, body type, schedule, goals, and the way you process a position all matter. The private format creates room to ask the question, test the answer, and make the correction specific.</p>
+        <button class="primary-button" type="button" data-scroll-quiz>FIND MY COACHING FIT</button>
+      </div>
+      <img src="../assets/campaign-images/adults-black-belt-group-2026-07.webp" width="640" height="616" alt="Joao Crus with adult black belt students at the academy">
+    </section>
+
+    <section class="section faq-section">
+      <div class="section-heading compact"><p class="eyebrow">PRIVATE COACHING FAQ</p><h2>KNOW WHAT HAPPENS NEXT.</h2></div>
+      <div class="faq-list">
+        <details><summary>Do I need prior jiu-jitsu experience?</summary><p>No specific experience level is assumed in this preview. The fit quiz starts by learning where you are now so the conversation can match your situation.</p></details>
+        <details><summary>Does private coaching replace group class?</summary><p>It can complement group training by giving you a personal focus to carry into regular classes and open mat.</p></details>
+        <details><summary>Can we work on one specific position?</summary><p>Yes. A recurring position or decision can be a useful place to start, especially when it connects to a problem you keep seeing in live training.</p></details>
+        <details><summary>How many sessions will I need?</summary><p>The first conversation should determine whether one assessment, a short focused series, or ongoing coaching makes the most sense. No package claim is made in this review build.</p></details>
+        <details><summary>What happens after the quiz?</summary><p>In production, your answers can give Joao's team context before they follow up. This review version shows the experience but does not send or store any information.</p></details>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <p class="eyebrow">YOUR NEXT STEP SHOULD NOT BE RANDOM</p>
+      <h2><span class="heading-line">FIND YOUR</span><span class="heading-line">PRIVATE COACHING</span><span class="heading-line">STARTING POINT.</span></h2>
+      <button class="primary-button" type="button" data-scroll-quiz>TAKE THE 60-SECOND QUIZ</button>
+    </section>
+  </main>
+
+  <footer><span>ICDC VENTURES · PRIVATE COACHING CONVERSION REVIEW V2</span><strong>NOINDEX · NOT CONNECTED · NOT DEPLOYED TO BLUEHOST</strong></footer>
+  <button class="mobile-quiz-cta" type="button" data-scroll-quiz>FIND MY COACHING FIT</button>
+  <script src="private-coaching-v2.js"></script>
+</body>
+</html>
