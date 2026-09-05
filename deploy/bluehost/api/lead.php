@@ -251,6 +251,7 @@ function normalize_quiz(array $data): array
         'recommended_program' => require_enum(clean_text($data['recommended_program'] ?? '', 40), ['little_champions', 'youth_bjj', 'teen_interest_path', 'family_program_plan', 'private_coaching', 'adult_group_bjj', 'jiu_jitsu_after_60'], 'recommendation'),
         'email_consent' => ($data['email_consent'] ?? false) === true,
         'sms_consent' => ($data['sms_consent'] ?? false) === true,
+        'sms_marketing_consent' => false,
         'consent_disclosure_version' => require_enum(clean_text($data['consent_disclosure_version'] ?? '', 40), ['program_fit_v1', 'program_fit_sms_v2'], 'consent disclosure'),
         'page' => clean_text($data['page'] ?? '', 300),
         'attribution' => is_array($data['attribution'] ?? null) ? $data['attribution'] : [],
@@ -272,6 +273,14 @@ function normalize_legacy(array $data): array
     $formId = clean_text($data['form_id'] ?? '', 80);
     if ($formId === '' || !preg_match('/^[a-z0-9_-]{2,80}$/', $formId)) {
         throw new InvalidArgumentException('Invalid form.');
+    }
+    $smsVersion = clean_text($data['consent_disclosure_version'] ?? '', 40);
+    $smsCapable = in_array($formId, ['contact_page', 'booking_popup'], true)
+        && $smsVersion === 'website_sms_v3';
+    if (($smsVersion !== '' && !$smsCapable)
+        || (($data['sms_consent'] ?? false) !== false && (!$smsCapable || $data['sms_consent'] !== true))
+        || (($data['sms_marketing_consent'] ?? false) !== false && (!$smsCapable || $data['sms_marketing_consent'] !== true))) {
+        throw new InvalidArgumentException('Invalid SMS consent disclosure.');
     }
     $requestId = clean_text($data['request_id'] ?? '', 80);
     if (!preg_match('/^[a-zA-Z0-9][a-zA-Z0-9._:-]{15,79}$/', $requestId)) {
@@ -306,8 +315,10 @@ function normalize_legacy(array $data): array
         'preferred_location' => $location,
         'recommended_program' => $program,
         'email_consent' => ($data['consent'] ?? false) === true,
-        'sms_consent' => false,
-        'consent_disclosure_version' => $isTeen ? 'teen_interest_v1' : 'website_contact_v1',
+        // Existing sms_consent is customer-care only, never an aggregate marketing grant.
+        'sms_consent' => $smsCapable && ($data['sms_consent'] ?? false) === true,
+        'sms_marketing_consent' => $smsCapable && ($data['sms_marketing_consent'] ?? false) === true,
+        'consent_disclosure_version' => $smsCapable ? $smsVersion : ($isTeen ? 'teen_interest_v1' : 'website_contact_v1'),
         'page' => clean_text($data['page'] ?? '', 300),
         'attribution' => is_array($data['attribution'] ?? null) ? $data['attribution'] : [],
         'meta' => is_array($data['meta'] ?? null) ? $data['meta'] : [],
@@ -441,6 +452,7 @@ function flattened_values(array $lead): array
         'recommended_program' => quiz_display_value('recommended_program', $lead['recommended_program']),
         'email_consent' => $lead['email_consent'] ? 'granted' : 'not_granted',
         'sms_consent' => $lead['sms_consent'] ? 'granted' : 'not_granted',
+        'sms_marketing_consent' => ($lead['sms_marketing_consent'] ?? false) ? 'granted' : 'not_granted',
         'consent_disclosure_version' => $lead['consent_disclosure_version'],
         'consent_timestamp' => gmdate('c'),
         'analytics_storage' => ($lead['meta']['analytics_storage'] ?? '') === 'granted' ? 'granted' : 'denied',
@@ -882,7 +894,9 @@ function submission_note_payload(array $lead, array $config): array
     append_note_line($lines, 'Availability', $values['availability'] ?? '');
     append_note_line($lines, 'Message', $values['message'] ?? '');
     append_note_line($lines, 'Email consent', $values['email_consent'] ?? '');
-    append_note_line($lines, 'SMS consent', $values['sms_consent'] ?? '');
+    append_note_line($lines, 'SMS customer-care consent', $values['sms_consent'] ?? '');
+    append_note_line($lines, 'SMS marketing consent', $values['sms_marketing_consent'] ?? '');
+    append_note_line($lines, 'Consent disclosure version', $values['consent_disclosure_version'] ?? '');
     append_note_line($lines, 'Submission page', $values['submission_page'] ?? '');
     append_attribution_note($lines, 'First touch', $lead['attribution']['first'] ?? []);
     append_attribution_note($lines, 'Latest touch', $lead['attribution']['latest'] ?? []);
