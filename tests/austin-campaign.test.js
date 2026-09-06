@@ -84,6 +84,7 @@ test('Austin quiz is fixed to Austin, gates Youth age, branches adults, and capt
   assert.doesNotMatch(quiz, /link: child \? 'meta-austin/);
   assert.match(youth, /class="mk-wrap mk-footer__inner bottom"/);
   assert.match(adults, /class="mk-wrap mk-footer__inner bottom"/);
+  assert.match(quizPage, /class="fit-footer bottom"/);
   assert.match(quiz, /pushQuizEvent\('lead_submit_success'/);
   assert.ok(quiz.indexOf("await submitLead(leadPayload(result))") < quiz.indexOf("pushQuizEvent('lead_submit_success'"));
 });

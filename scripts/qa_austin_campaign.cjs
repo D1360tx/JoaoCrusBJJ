@@ -77,6 +77,7 @@ fs.mkdirSync(out, { recursive: true });
   for(const scenario of ['child','group','private','hybrid','help']) {
    await page.goto(base+`/austin-program-finder/quiz/?path=${scenario==='child'?'child':'adult'}&start=quiz`);
    await page.locator('[data-step="2"]:visible').waitFor();
+   assert.equal(await page.locator('footer .consent-preferences').count(),1,'quiz privacy choices control');
    await geometry();
    if(scenario==='child') {
     await page.locator('[name="stage"][value="outside"]').check();
