@@ -81,7 +81,7 @@ test('page uses owned real-photo assets with intrinsic dimensions', () => {
 
 test('quiz accepts the dedicated paid-social source and modal reports it dynamically', () => {
   assert.match(quiz, /meta-kids-paid/);
-  assert.match(endpoint, /'meta-kids-paid'\], 'route source'/);
+  assert.match(endpoint, /'meta-kids-paid', 'meta-austin-youth-paid', 'meta-austin-adults-paid', 'austin-program-fit'\], 'route source'/);
   assert.match(modal, /route_source/);
   assert.doesNotMatch(modal, /source: 'practice_under_pressure'/);
 });

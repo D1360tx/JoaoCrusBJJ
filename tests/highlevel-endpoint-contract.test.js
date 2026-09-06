@@ -37,7 +37,7 @@ test('endpoint normalizes identity and validates quiz recommendation enums', () 
   assert.match(php, /\['child', 'adult'\]/);
   assert.match(php, /'route_source' => \$routeSource/);
   assert.match(php, /'after60-page'/);
-  assert.match(php, /'meta-kids-paid'\], 'route source'/);
+  assert.match(php, /'meta-kids-paid', 'meta-austin-youth-paid', 'meta-austin-adults-paid', 'austin-program-fit'\], 'route source'/);
   assert.match(php, /'Jiu-Jitsu After 60'/);
   assert.match(php, /'jiu_jitsu_after_60'/);
 });

@@ -287,7 +287,7 @@ This backlog does not authorize production publication, Search Console mutations
 - [ ] Confirm the full rate card and registration/uniform rules.
 - [ ] Select the paid/deposit trial structure.
 - [ ] Confirm low-cost trial-uniform economics.
-- [ ] Confirm the shared schedule, including Saturday and any future Austin adult group class. Adult private instruction remains appointment based.
+- [ ] Confirm any future schedule changes beyond the currently approved classes. Austin adult group is confirmed Tue/Thu 6:00–7:00 p.m.; adult private instruction remains appointment based.
 - [ ] Provide Beehiiv, Zen Planner export/read-only, WordPress/hosting/DNS, Jetpack, booking, and Meta access as appropriate.
 - [ ] Confirm Castle Hill marketing terms and request a Castle Hill website/classes listing.
 - [ ] Approve the visual direction, buddy-pass mechanics, and guarantee position.

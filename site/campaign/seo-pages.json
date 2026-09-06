@@ -8,6 +8,9 @@
     "default_image": "/assets/campaign-images/home-academy-group-2026-07.webp"
   },
   "pages": [
+    {"file": "meta-austin-youth-first-class.html", "path": "/austin-youth-first-class/", "title": "Austin Youth BJJ | Joao Crus BJJ", "description": "Find your Austin youth starting point inside Castle Hill Fitness. Joao personally calls to arrange a free studio visit.", "image": "/assets/youth-junior-warriors-group.webp", "indexable": false, "schema": ["webpage"]},
+    {"file": "meta-austin-adults-first-class.html", "path": "/austin-adults-first-class/", "title": "Austin Adults BJJ | Joao Crus BJJ", "description": "Find your Austin adults starting point inside Castle Hill Fitness. Joao personally calls to arrange a free studio visit.", "image": "/assets/campaign-images/adults-black-belt-group-2026-07.webp", "indexable": false, "schema": ["webpage"]},
+    {"file": "austin-program-fit-quiz.html", "path": "/austin-program-finder/quiz/", "title": "Find Your Austin Starting Point | Joao Crus BJJ", "description": "Austin Youth ages 8–12, adult group, or private lessons at Castle Hill Fitness. Contact capture last.", "image": "/assets/youth-junior-warriors-group.webp", "indexable": false, "schema": ["webpage"]},
     {
       "file": "index.html",
       "path": "/",
@@ -148,8 +151,8 @@
     {
       "file": "austin.html",
       "path": "/austin-brazilian-jiu-jitsu/",
-      "title": "Kids Brazilian Jiu-Jitsu in Austin, TX | Joao Crus BJJ",
-      "description": "Kids Brazilian Jiu-Jitsu ages 8-12 in central Austin, plus beginner-friendly adult private instruction by appointment.",
+      "title": "Youth & Adult Brazilian Jiu-Jitsu in Austin | Joao Crus BJJ",
+      "description": "Youth Brazilian Jiu-Jitsu ages 8-12 and adult group classes inside Castle Hill Fitness in central Austin, plus private instruction by appointment.",
       "image": "/assets/campaign-images/kids-gathering.webp",
       "indexable": true,
       "schema": [
