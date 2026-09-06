@@ -1,0 +1,9 @@
+/* Isolated grand-opening iteration. Do not restyle the comparison pages. */
+.castle-opening .jc-calendar-row {display:contents}
+.castle-opening .castle-phrase {white-space:nowrap}
+.castle-opening .castle-programs {grid-template-columns:repeat(2,minmax(0,1fr))}
+.castle-opening h1,.castle-opening h2,.castle-opening h3 {text-wrap:balance}
+.castle-opening .mk-heading {display:block;max-width:900px}
+.castle-opening .mk-heading p {max-width:65ch;margin-top:20px}
+.castle-opening .mk-hero h1 {font-size:clamp(40px,4vw,64px)}
+@media(max-width:620px){.castle-opening .mk-method h2{font-size:36px}.castle-opening .castle-programs{grid-template-columns:minmax(0,1fr)}.castle-opening .castle-programs h3{font-size:28px}.castle-opening .mk-mobile-cta .mk-btn{font-size:15px}}

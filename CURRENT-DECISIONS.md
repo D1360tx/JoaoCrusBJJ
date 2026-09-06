@@ -30,8 +30,10 @@
 ## Austin Castle Hill paid-social comparison (2026-09-06)
 
 - ✅ Diego confirmed Youth ages 8–12 Tue/Thu 5:00–5:45 p.m.; adult group Tue/Thu 6:00–7:00 p.m.; adult private lessons by appointment. Location: inside Castle Hill Fitness, 1112 N Lamar Blvd, Austin TX 78703.
-- ✅ Build separate noindex Youth and Adult comparison pages feeding a dedicated Austin-only branching quiz, contact capture last. Preserve the production kids page and existing quiz.
-- 🟡 Recommend one campaign concept with separate Youth and Adult ad sets. No Meta mutations, push, deployment, or test leads in this implementation. Budget and activation require approval.
+- 🟡 **Superseding working decision (2026-09-06):** build one combined Castle Hill grand-opening landing page at `/castle-hill-grand-opening/`, feeding the dedicated Austin branching quiz. First choose child or adult; contact capture comes last; Youth is restricted to ages 8–12.
+- 🟡 One Meta Leads campaign, one broad local ad set, distinct Youth and Adult creative concepts, all to the same combined page. The previous separate-page launch and separate-ad-set recommendation is superseded. Preserve both separate Youth and Adult pages and all production pages as comparison artifacts.
+- 🔴 September 14 is a **provisional** opening date. Public draft copy may say Opening September 14, but no production deployment or activation until Joao confirms the date.
+- ✅ Implementation, verification, commit and push to PR #111 are authorized. No production deployment, Meta mutations, or lead submissions. Budget, targeting radius, tracking acceptance and activation remain separate approval gates.
 - ✅ Joao personally calls to recommend a class and schedule a free studio visit. Visitors or children may observe or participate. The quiz does not book automatically. No pricing.
 
 ## Kids paid-social landing page (2026-08-24)

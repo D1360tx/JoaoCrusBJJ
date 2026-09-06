@@ -5,11 +5,11 @@
 ## Campaign architecture
 
 - Campaign concept: `PROSPECTING | AUSTIN | CASTLE HILL | PROGRAM FINDER | W1`
-- Objective: website lead optimization only after receipt and deduplication QA passes.
-- Ad set 1: parents of Youth ages 8–12 within the approved Austin radius.
-- Ad set 2: adults within the approved Austin radius.
-- Keep Youth and Adult budgets, ads, landing pages, and reporting separate.
-- Do not mix Dripping Springs age-3 creative into the Austin Youth ad set.
+- Objective: Meta Leads, website conversion location. Optimize only after receipt and deduplication QA passes.
+- One broad local ad set for the approved Castle Hill radius. Radius and budget require approval.
+- Distinct Youth and Adult creative concepts in that same ad set, all to one combined landing page. Measure audience and hook via ad name/utm_content and quiz branch, not separate ad-set budgets.
+- Do not mix Dripping Springs age-3 creative into this campaign.
+- Opening September 14 is provisional. No production deployment or activation until Joao confirms the date.
 - Do not activate spend until Diego approves budget, targeting, creatives, destinations, and tracking.
 
 ## Confirmed offer and schedule
@@ -22,20 +22,16 @@
 
 ## Destinations and tracking
 
-**Youth destination**
+**Shared destination for every Youth and Adult creative (draft, not live)**
 
-`https://joaocrusbjj.com/austin-youth-first-class/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}`
+`https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}`
 
-**Adult destination**
+- All CTAs open the dedicated Austin quiz at its first child/adult choice, with no preselected path. Reuse the existing strict `route_source=austin-program-fit`; no new backend source is needed.
+- Preserve `fbclid`, `gclid`, supported UTMs, source and CTA placement through quiz entry. The draft quiz is disconnected and never sends a lead.
+- Use exact ad names below as `utm_content`. No unsupported `utm_creative` parameter.
+- Retained comparison artifacts, not launch destinations: `https://joaocrusbjj.com/austin-youth-first-class/` and `https://joaocrusbjj.com/austin-adults-first-class/`.
 
-`https://joaocrusbjj.com/austin-adults-first-class/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}`
-
-- Youth page opens `route_source=meta-austin-youth-paid` and the child path.
-- Adult page opens `route_source=meta-austin-adults-paid` and the adult path.
-- Preserve `fbclid`, `gclid`, and supported UTMs through the quiz and accepted lead.
-- Use the exact ad names below as `utm_content` values. Do not add a separate unsupported `utm_creative` parameter.
-
-# Youth ad set
+# Youth creative concepts
 
 ## Hook 1: Tap Means Stop
 
@@ -73,7 +69,7 @@
 
 ### AY05_CASTLE-HILL-YOUTH_STATIC
 
-- **Primary text:** Central Austin parents: Youth BJJ for ages 8–12 now trains inside Castle Hill Fitness. Tuesday and Thursday, 5:00–5:45 p.m. Answer a few practical questions, then Joao personally calls to plan a free studio visit.
+- **Primary text:** Central Austin parents: Youth BJJ for ages 8–12 is coming inside Castle Hill Fitness. Tuesday and Thursday, 5:00–5:45 p.m. Answer a few practical questions, then Joao personally calls to plan a free studio visit.
 - **Headline:** Youth BJJ in Central Austin
 - **Description:** Tue/Thu, 5:00–5:45 p.m.
 - **Creative:** Real youth group photo with a restrained location lockup. On-image copy: `YOUTH BJJ · AGES 8–12` and `CASTLE HILL FITNESS`.
@@ -85,7 +81,7 @@
 - **Description:** 1112 N Lamar Blvd
 - **Creative:** 15-second arrival-to-class sequence. Exterior or interior Castle Hill footage requires venue permission. If permission is unavailable, use owned academy footage and label the location in graphics only.
 
-# Adult ad set
+# Adult creative concepts
 
 ## Hook 1: You Do Not Need to Get in Shape First
 
@@ -137,21 +133,22 @@
 
 ## Message-match map
 
-- AY01–AY02 → Youth page module `Tap means stop.`
-- AY03–AY04 → Youth page module `Confidence grows through practice.`
-- AY05–AY06 → Youth hero and schedule: ages 8–12, Tue/Thu 5:00–5:45 p.m.
-- AA01–AA02 → Adult hero and module `New to jiu-jitsu? Start here.`
-- AA03–AA04 → Adult hero and module `Practice calm under pressure.`
-- AA05–AA06 → Adult module and quiz branch `Group or private? Find your fit.`
+- AY01–AY02 → combined page Youth module `Tap means stop.`
+- AY03–AY04 → combined page Youth module `Confidence grows through practice.`
+- AY05–AY06 → combined page hero and schedule: ages 8–12, Tue/Thu 5:00–5:45 p.m.
+- AA01–AA02 → combined page Adult module `New to jiu-jitsu? Start here.`
+- AA03–AA04 → combined page Adult module `Practice calm under pressure.`
+- AA05–AA06 → combined page Adult module and quiz branch `Group or private? Find your fit.`
 
 ## Production gates
 
-- [ ] Diego approves campaign architecture, copy, budget, targeting, and destination pages.
+- [ ] Joao confirms the provisional September 14 opening date before publishing.
+- [ ] Diego approves final copy, budget, targeting, and the shared destination.
 - [ ] Joao confirms the free studio visit applies to both Youth and Adult prospects.
 - [ ] Castle Hill approves any use of its name, logo, facility footage, member communications, signage, or retargeting audience.
 - [ ] Every identifiable student, parent, and adult participant has appropriate media permission.
 - [ ] Final crops exist in 4:5 and 1:1, with 9:16 video versions where used.
-- [ ] Youth and Adult pages pass responsive, accessibility, CTA, noindex, and message-match QA.
+- [ ] Combined page and retained comparisons pass responsive, accessibility, CTA, noindex, and message-match QA.
 - [ ] Quiz source, path, schedule, fixed Austin location, contact-last behavior, consent, and HighLevel fields pass controlled tests.
 - [ ] GA4 and Meta browser events are observed in a consented QA session, then downstream receipt and duplicate behavior are verified.
 - [ ] One accepted QA lead is authorized separately and read back in HighLevel before activation.
