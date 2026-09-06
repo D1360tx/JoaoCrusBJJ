@@ -228,6 +228,8 @@ def main() -> None:
         re.DOTALL,
     )
     expected_calendar_records = [
+        ("1", "6:00–7:00 PM", "Adults", "austin"),
+        ("3", "6:00–7:00 PM", "Adults", "austin"),
         ("0", "5:00–5:45 PM", "Little Champions (Ages 3–7)", "ds"),
         ("0", "5:50–6:35 PM", "Junior Warriors (Ages 8–12)", "ds"),
         ("0", "6:40–7:40 PM", "Adults", "ds"),

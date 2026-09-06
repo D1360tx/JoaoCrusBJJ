@@ -27,6 +27,13 @@
 
 ---
 
+## Austin Castle Hill paid-social comparison (2026-09-06)
+
+- ✅ Diego confirmed Youth ages 8–12 Tue/Thu 5:00–5:45 p.m.; adult group Tue/Thu 6:00–7:00 p.m.; adult private lessons by appointment. Location: inside Castle Hill Fitness, 1112 N Lamar Blvd, Austin TX 78703.
+- ✅ Build separate noindex Youth and Adult comparison pages feeding a dedicated Austin-only branching quiz, contact capture last. Preserve the production kids page and existing quiz.
+- 🟡 Recommend one campaign concept with separate Youth and Adult ad sets. No Meta mutations, push, deployment, or test leads in this implementation. Budget and activation require approval.
+- ✅ Joao personally calls to recommend a class and schedule a free studio visit. Visitors or children may observe or participate. The quiz does not book automatically. No pricing.
+
 ## Kids paid-social landing page (2026-08-24)
 
 - ✅ Publish the kids paid-social destination at `/kids-first-class/` as a separate `noindex,nofollow` campaign route. Keep it out of the XML sitemap and preserve `/practice-under-pressure/` unchanged.
@@ -95,7 +102,7 @@
 - ✅ Jiu-Jitsu After 60 is positioned as a **4-week introductory program for men and women 60+**, with beginner reassurance, cooperative partner work, no aggressive-sparring expectation, and **“Relational First. Physical Second.”** Keep the confirmed 50-minute schedule above and omit Joao's draft 60-minute breakdown unless he explicitly changes the class time.
 - ✅ Austin Youth, ages 8–12: Tue/Thu **5:00–5:45 p.m.**
 - ✅ Austin publishes **adult private instruction by appointment** with flexible scheduling and beginner-friendly positioning.
-- 🔴 Austin recurring **adult group** schedule remains undecided; use an interest list until confirmed and do not add private appointments to the weekly calendar.
+- ✅ Austin adult group classes: Tue/Thu **6:00–7:00 p.m.**, confirmed by Diego 2026-09-06. Adult private lessons remain by appointment. This supersedes the adult interest-list direction.
 
 ### Positioning and proof
 
@@ -205,7 +212,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - Promote private coaching as a primary offer, not a minor peer card.
 - Develop a dedicated private-coaching acquisition lane for mature professionals, executives, returning practitioners, and other adults whose schedule or body no longer fits one-size-fits-all group training. Lead with flexible appointments, individualized game planning, pressure/position/timing/efficiency, and Carlson Gracie lineage as a living teaching influence. Treat “old man jiu-jitsu” as a creative phrase to test, not an automatically approved premium offer name. See `assets/ads-podcast/02-private-coaching-grown-men.md`.
 - ✅ **Story-led acquisition direction (2026-08-07, Diego):** ads and landing pages should use real Joao, parent, and student moments to reveal a recognizable tension, Joao's coaching belief, and an observable teaching mechanism before the CTA. Start with the Chris/private-coaching schedule story, the Kaiden/tap story, purposeful play at age three, and verified Carlson/De La Riva teaching moments. Keep each story tied to one audience and offer, obtain permission for identifiable details, and do not publish the reported older Dallas judge story until age, rank, wording, and permission are confirmed. See `assets/ads-swipe/009-jun-yuh-storytelling-framework.md`.
-- Show both locations clearly. Austin may promote confirmed adult private instruction by appointment, but must not imply a recurring adult group schedule that does not yet exist.
+- Show both locations clearly. Austin offers Youth ages 8–12 Tue/Thu 5:00–5:45 p.m., adult group Tue/Thu 6:00–7:00 p.m., and adult private lessons by appointment.
 - Add schedule, coaches, linked Google reviews, FAQs, directions, books/podcast links, and a secondary lead-magnet path.
 - Do not publish the preview ribbon, draft variant hub, or duplicate toddler versions.
 
