@@ -103,7 +103,7 @@
           <div class="split">
             <div class="form" data-zone>
               <h3>Plan a first class</h3>
-              <form data-form>
+              <form data-form data-form-id="contact_page" data-sms-disclosure-version="website_sms_v3">
                 <div class="fields">
                   <div class="field">
                     <label for="name">Name</label
@@ -171,8 +171,16 @@
                       type="checkbox"
                       required><label for="consent"
                       >I agree that Joao Crus BJJ may email or call me about this
-                      request. Automated texts are not enabled from this form.</label
+                      request.</label
                     >
+                  </div>
+                  <div class="field full check">
+                    <input id="contact-sms-consent" name="sms_consent" type="checkbox">
+                    <label for="contact-sms-consent">I agree to receive recurring automated non-promotional customer-care text messages from Joao Crus Brazilian Jiu-Jitsu about my request, scheduling, and class information. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is optional and is not a condition of purchase. See the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</label>
+                  </div>
+                  <div class="field full check">
+                    <input id="contact-sms-marketing-consent" name="sms_marketing_consent" type="checkbox">
+                    <label for="contact-sms-marketing-consent">I agree to receive recurring automated promotional and marketing text messages from Joao Crus Brazilian Jiu-Jitsu about academy programs, offers, and events. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is optional and is not a condition of purchase. See the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</label>
                   </div>
                   <div class="field full">
                     <button class="btn" type="submit">Request a class →</button>
