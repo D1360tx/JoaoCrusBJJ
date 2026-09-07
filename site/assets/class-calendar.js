@@ -22,6 +22,8 @@
     { id: "all", label: "All classes" },
   ];
   var CLASSES = [
+    { day: 1, time: "6:00–7:00 PM", name: "Adults", program: "adults", groups: ["adults"], location: "austin", },
+    { day: 3, time: "6:00–7:00 PM", name: "Adults", program: "adults", groups: ["adults"], location: "austin", },
     {
       day: 0,
       time: "5:00–5:45 PM",
@@ -232,9 +234,15 @@
       grid.setAttribute("aria-label","Weekly class schedule");
       var byDay=DAYS.map(function(_,day){return filtered.filter(function(item){return item.day===day;});});
       var rows=Math.max.apply(null,byDay.map(function(items){return items.length;}).concat([1]));
-      var html="";
+      // Opt in on the new comparison only; retain legacy calendar DOM elsewhere.
+      var semanticRows = root.dataset.semanticRows === "true";
+      var rowOpen = semanticRows ? '<div class="jc-calendar-row" role="row">' : "";
+      var rowClose = semanticRows ? "</div>" : "";
+      var html=rowOpen;
       DAYS.forEach(function(day){html+='<div class="jc-calendar-day" role="columnheader">'+day+'</div>';});
+      html += rowClose;
       for(var row=0;row<rows;row++){
+        html += rowOpen;
         byDay.forEach(function(items){
           var item=items[row];
           if(!item){html+='<div class="jc-calendar-blank" role="cell">'+(row===0&&!items.length?"—":"")+'</div>';return;}
@@ -245,6 +253,7 @@
             '<span class="jc-calendar-location">'+LOCATIONS[item.location]+'</span>'+
           '</div>';
         });
+        html += rowClose;
       }
       grid.innerHTML=html;
       summary.textContent="Showing "+programLabel(selectedProgram)+" at "+locationText+" · "+filtered.length+" class"+(filtered.length===1?"":"es");

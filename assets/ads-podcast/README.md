@@ -41,6 +41,7 @@ Use [`_concept-template.md`](_concept-template.md) to start each new story or ca
 |---|---|---|---|
 | [Kaiden, the tap, and earned confidence](01-kaiden-tap-story.md) | Control creates safety; safety creates confidence | Podcast, Meta video, short clips, email | Working |
 | [Private coaching for grown men with demanding schedules](02-private-coaching-grown-men.md) | Serious adults need jiu-jitsu adapted to their calendar, body, and long-term game | Meta video, Google Search, short clips, email, landing page | Source / Working |
+| [Austin Castle Hill paid-social launch](03-austin-castle-hill-launch.md) | Separate message-matched Youth 8–12 and Adult acquisition paths at Castle Hill Fitness | Meta static/video, two landing pages, Austin fit quiz | Working comparison |
 
 ## Iteration workflow
 

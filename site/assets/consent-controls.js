@@ -160,13 +160,18 @@
         advertisingToggle.checked = state.ad_storage === "granted" && !hasGpc;
         consentBanner.hidden = false;
         document.body.classList.add("consent-open");
-        try {
-          consentSave.focus({ preventScroll: true });
-        } catch (error) {
-          consentSave.focus();
-        }
-        if (window.scrollX !== scrollLeft || window.scrollY !== scrollTop) {
-          window.scrollTo(scrollLeft, scrollTop);
+        // Focus only when the visitor explicitly opened the controls. Some
+        // in-app WebViews ignore preventScroll and drag an automatic first-load
+        // prompt to the footer where this banner is appended.
+        if (consentInvoker) {
+          try {
+            consentSave.focus({ preventScroll: true });
+          } catch (error) {
+            consentSave.focus();
+          }
+          if (window.scrollX !== scrollLeft || window.scrollY !== scrollTop) {
+            window.scrollTo(scrollLeft, scrollTop);
+          }
         }
       }
 

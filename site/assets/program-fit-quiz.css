@@ -194,7 +194,7 @@ button, label { -webkit-tap-highlight-color: transparent; }
 @keyframes fit-pulse { to { transform: scaleY(.55); transform-origin: bottom; } }
 
 .fit-panel--result { display: grid; grid-template-columns: 1.12fr .88fr; }
-.fit-result__main { padding: clamp(42px, 7vw, 82px); }
+.fit-result__main { min-width: 0; padding: clamp(42px, 7vw, 82px); }
 .fit-panel--result h2 { max-width: 760px; font-size: clamp(4rem, 8vw, 7.8rem); color: var(--blue); }
 .fit-result__summary { max-width: 680px; margin: 24px 0 30px; font-size: 1.12rem; }
 .fit-reasons { max-width: 700px; padding: 22px; border: 3px solid var(--black); background: var(--cream); box-shadow: 6px 6px 0 var(--black); }

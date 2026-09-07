@@ -190,6 +190,11 @@ function expected_recommendation(array $lead): string
         }
         return ['little' => 'little_champions', 'youth' => 'youth_bjj', 'teen' => 'teen_interest_path'][$lead['age_bands'][0]] ?? '';
     }
+    if (in_array($lead['route_source'] ?? '', ['meta-austin-youth-paid', 'meta-austin-adults-paid', 'austin-program-fit'], true)) {
+        $private = in_array($lead['experience'], ['private', 'hybrid'], true)
+            || ($lead['experience'] === 'help' && (in_array($lead['goal'], ['specific', 'schedule'], true) || $lead['stage'] === 'competition'));
+        return $private ? 'private_coaching' : 'adult_group_bjj';
+    }
     $private = in_array($lead['experience'], ['private', 'hybrid'], true)
         || in_array($lead['goal'], ['specific', 'schedule'], true)
         || $lead['preferred_location'] === 'austin'
@@ -228,7 +233,7 @@ function normalize_quiz(array $data): array
     $stage = $audience === 'adult' ? require_enum(clean_text($data['stage'] ?? ($data['age_bands'][0] ?? ''), 20), $stageAllowed, 'stage') : (string)$ageBands[0];
     $routeSource = clean_text($data['route_source'] ?? '', 40);
     if ($routeSource !== '') {
-        require_enum($routeSource, ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'after60-page', 'meta-kids-paid'], 'route source');
+        require_enum($routeSource, ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'after60-page', 'meta-kids-paid', 'meta-austin-youth-paid', 'meta-austin-adults-paid', 'austin-program-fit'], 'route source');
     }
 
     $lead = [
@@ -260,6 +265,13 @@ function normalize_quiz(array $data): array
     ];
     if ($lead['first_name'] === '' || $lead['email'] === '' || $lead['phone'] === '' || !$lead['email_consent']) {
         throw new InvalidArgumentException('Please complete all required fields.');
+    }
+    if (in_array($routeSource, ['meta-austin-youth-paid', 'meta-austin-adults-paid', 'austin-program-fit'], true)) {
+        if ($lead['preferred_location'] !== 'austin'
+            || ($audience === 'child' && ($childCount !== '1' || $ageBands !== ['youth']))
+            || ($audience === 'adult' && $stage === 'after60')) {
+            throw new InvalidArgumentException('Invalid Austin program fit.');
+        }
     }
     if ($lead['recommended_program'] !== expected_recommendation($lead)) {
         throw new InvalidArgumentException('Recommendation does not match the quiz answers.');

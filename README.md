@@ -1,6 +1,8 @@
 # JaoCrusBJJ — Centralized Project Log
 
 Working hub for the Joao Crus BJJ marketing & business-restructuring engagement.
+Current Castle Hill iteration: [combined grand-opening draft and verification](docs/CASTLE-HILL-GRAND-OPENING.md). One Meta Leads campaign, one broad local ad set, Youth and Adult creative concepts to `/castle-hill-grand-opening/`. September 14 remains provisional and unconfirmed. On 2026-09-07 Diego explicitly authorized deploying the reviewed funnel with its date unchanged, noindex/nofollow preserved, and all traffic held; this is not date confirmation or ad/GTM activation approval. See CURRENT-DECISIONS.md. Separate audience pages remain comparison artifacts.
+
 Goal: grow private clients + group students, build the digital/info-product side, and
 position Joao as a renowned BJJ authority with a cohesive brand and a real value ladder.
 

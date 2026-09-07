@@ -1,0 +1,15 @@
+/* Austin comparison only. Shared production pages remain unchanged. */
+.austin-review {padding:10px 20px;background:#101010;color:#fffdf8;text-align:center;font:700 13px Arial,sans-serif}
+.austin-page .mk-btn,.austin-page .mk-mobile-cta a,.fit-page .fit-primary {background:#f5c400;color:#101010}
+.austin-page .mk-hero__visual img {width:100%;height:auto;object-fit:contain;aspect-ratio:auto}
+.austin-page .mk-hero h1 {font-size:clamp(42px,4.5vw,72px)}
+.austin-page .mk-faq details {border-bottom:2px solid #101010;padding:20px 0}
+.austin-page .mk-faq summary {cursor:pointer;font-weight:700}
+.austin-page .mk-faq p {max-width:75ch}
+.austin-page .mk-mobile-cta {visibility:hidden}
+.austin-page .mk-mobile-cta.is-visible {visibility:visible}
+.quiz-modal-open .austin-page .mk-mobile-cta {visibility:hidden}
+.fit-page [data-age-gate] {border:2px solid #194fc3;padding:16px}
+.fit-page .fit-step legend {width:100%;max-width:100%;overflow-wrap:break-word}
+.fit-page [hidden] {display:none!important}
+@media(max-width:620px){.austin-page .mk-header .mk-btn {display:none}.austin-page .mk-hero h1{font-size:42px}.austin-page .mk-mobile-cta .mk-btn{width:100%}.fit-page .fit-step--contact legend{font-size:clamp(2.1rem,10vw,2.9rem)}}

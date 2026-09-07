@@ -1,21 +1,17 @@
 (() => {
-  const attributionKeys = [
-    'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id',
-    'campaign_id', 'campaign_name', 'adset_id', 'adset_name', 'ad_id', 'ad_name',
-    'placement', 'site_source_name', 'gclid', 'fbclid'
-  ];
+  const attributionKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'gclid', 'fbclid'];
   const currentParams = new URLSearchParams(window.location.search);
-  const quizLinks = [...document.querySelectorAll('[data-kids-quiz]')];
+  const quizLinks = [...document.querySelectorAll('[data-austin-quiz]')];
   const year = document.querySelector('[data-year]');
   const mobileCta = document.querySelector('[data-mobile-cta]');
-  const heroCta = document.querySelector('.mk-hero [data-kids-quiz]');
+  const heroCta = document.querySelector('.mk-hero');
   const finalSection = document.querySelector('.mk-final');
 
   // Meta's in-app browser can reuse a WebView and restore this dedicated ad
   // page to the visitor's previous scroll position. Paid entries should always
   // begin at the hero unless an intentional hash target is present.
   const resetAdEntryScroll = () => {
-    if (!window.location.hash) window.scrollTo(0, 0);
+    if (!window.location.hash) window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   };
 
   if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
@@ -41,7 +37,7 @@
       const rect = element.getBoundingClientRect();
       return rect.bottom > 0 && rect.top < window.innerHeight;
     };
-    const sync = () => mobileCta.classList.toggle('is-visible', !isVisible(heroCta) && !isVisible(finalSection));
+    const sync = () => mobileCta.classList.toggle('is-visible', !isVisible(heroCta) && !isVisible(finalSection) && !isVisible(document.querySelector('.austin-schedule')) && !document.documentElement.classList.contains('quiz-modal-open'));
 
     new IntersectionObserver(sync, { threshold: 0.05 }).observe(heroCta);
     new IntersectionObserver(sync, { threshold: 0.05 }).observe(finalSection);

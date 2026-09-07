@@ -47,6 +47,8 @@ def version_lead_behavior_scripts(html: str) -> str:
     replacements = {
         "campaign-site.js": CAMPAIGN_SITE_URL,
         "program-fit-quiz.js": PROGRAM_FIT_QUIZ_URL,
+        "austin-program-fit-quiz.js": versioned_asset_url("austin-program-fit-quiz.js"),
+        "austin-campaign.js": versioned_asset_url("austin-campaign.js"),
     }
     for filename, versioned in replacements.items():
         pattern = re.compile(
@@ -73,7 +75,7 @@ GTM_HEAD_SNIPPET = rf"""<!-- Google Tag Manager -->
     var safe=null;try{{var u=new URL(w.location.href);safe=new URL(u.origin+u.pathname);
     {json.dumps(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'campaign_id', 'campaign_name', 'adset_id', 'adset_name', 'ad_id', 'ad_name', 'placement', 'site_source_name', 'gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid', 'qa', 'gtm_debug', 'gtm_auth', 'gtm_preview', 'gtm_cookies_win'])}.forEach(function(k){{
     if(u.searchParams.has(k)){{var v=safeCampaignValue(u.searchParams.get(k));if(v)safe.searchParams.set(k,v);}}}});
-    var routeEnums={{source:{json.dumps(['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'meta-kids-paid', 'after60-page'])},path:{json.dumps(['child', 'adult', 'after60', 'help', 'undecided'])},embed:{json.dumps(['1'])},start:{json.dumps(['quiz'])}}};
+    var routeEnums={{source:{json.dumps(['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'meta-kids-paid', 'after60-page', 'meta-austin-youth-paid', 'meta-austin-adults-paid', 'austin-program-fit'])},path:{json.dumps(['child', 'adult', 'after60', 'help', 'undecided'])},embed:{json.dumps(['1'])},start:{json.dumps(['quiz'])}}};
     Object.keys(routeEnums).forEach(function(k){{var v=u.searchParams.get(k);if(routeEnums[k].indexOf(v)!==-1)safe.searchParams.set(k,v);}});
     if(u.pathname+u.search!==safe.pathname+safe.search)w.history.replaceState(w.history.state,'',safe.pathname+safe.search);
     }}catch(e){{}}

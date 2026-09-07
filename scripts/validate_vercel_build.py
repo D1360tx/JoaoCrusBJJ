@@ -241,6 +241,8 @@ def main() -> None:
         re.DOTALL,
     )
     expected_calendar_records = [
+        ("1", "6:00–7:00 PM", "Adults", "austin"),
+        ("3", "6:00–7:00 PM", "Adults", "austin"),
         ("0", "5:00–5:45 PM", "Little Champions (Ages 3–7)", "ds"),
         ("0", "5:50–6:35 PM", "Junior Warriors (Ages 8–12)", "ds"),
         ("0", "6:40–7:40 PM", "Adults", "ds"),
@@ -409,11 +411,11 @@ def main() -> None:
                 campaign_site_versioned_url in html,
                 f"{page['path']}: shared lead behavior must use its current content-versioned URL",
             )
-        if "program-fit-quiz.js" in html:
+        if "assets/program-fit-quiz.js" in html:
             check(quiz_versioned_url in html, f"{page['path']}: Program Fit behavior must use its current content-versioned URL")
         lead_behavior_positions = [
             html.find(asset)
-            for asset in ("assets/campaign-site.js", "assets/program-fit-landing.js", "assets/program-fit-quiz.js", "assets/meta-kids-landing.js")
+            for asset in ("assets/campaign-site.js", "assets/program-fit-landing.js", "assets/program-fit-quiz.js", "assets/meta-kids-landing.js", "assets/austin-program-fit-quiz.js", "assets/austin-campaign.js")
             if html.find(asset) >= 0
         ]
         check(

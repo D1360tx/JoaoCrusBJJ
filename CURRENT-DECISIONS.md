@@ -27,6 +27,15 @@
 
 ---
 
+## Austin Castle Hill paid-social comparison (2026-09-06)
+
+- ✅ Diego confirmed Youth ages 8–12 Tue/Thu 5:00–5:45 p.m.; adult group Tue/Thu 6:00–7:00 p.m.; adult private lessons by appointment. Location: inside Castle Hill Fitness, 1112 N Lamar Blvd, Austin TX 78703.
+- 🟡 **Superseding working decision (2026-09-06):** build one combined Castle Hill grand-opening landing page at `/castle-hill-grand-opening/`, feeding the dedicated Austin branching quiz. First choose child or adult; contact capture comes last; Youth is restricted to ages 8–12.
+- 🟡 One Meta Leads campaign, one broad local ad set, distinct Youth and Adult creative concepts, all to the same combined page. The previous separate-page launch and separate-ad-set recommendation is superseded. Preserve both separate Youth and Adult pages and all production pages as comparison artifacts.
+- 🟡 September 14 remains a **provisional, unconfirmed** opening date. On 2026-09-07 Diego explicitly authorized deploying the reviewed PR #111 funnel despite Joao not yet confirming the date. Retain the reviewed “Opening September 14” copy until confirmation, then adjust it if needed. Deployment approval is not factual date confirmation.
+- ✅ Production deployment of the reviewed funnel is authorized (2026-09-07), preserving `noindex,nofollow` and sitemap exclusion. Release status: live only after verification, with traffic held and date unconfirmed. No traffic, Meta activation/mutations, GTM publication, or real lead submissions are authorized. Budget, targeting radius, tracking acceptance and activation remain separate approval gates.
+- ✅ Joao personally calls to recommend a class and schedule a free studio visit. Visitors or children may observe or participate. The quiz does not book automatically. No pricing.
+
 ## Manual A2P website opt-in (2026-09-05)
 
 - Contact (`/contact/`, `contact_page`) and the shared first-class booking popup (`booking_popup`) use two separate, optional, unchecked SMS consent controls with `website_sms_v3` evidence: non-promotional customer care and promotional marketing. The Program Finder keeps its existing customer-care-only `program_fit_sms_v2` consent. Unchanged legacy forms remain email/call-only.
@@ -34,6 +43,7 @@
 - Promotional consent is independent from customer-care consent. Neither SMS checkbox is required or blocks form submission. Workflows must honor the selected category and may not treat either choice as consent to the other category.
 - This source change captures evidence only. Do not activate SMS release or clear existing DND. Carrier approval and controlled HELP/STOP/DND acceptance remain separate gates. Contact/popup enrollment stays held even if the existing quiz-only release interlock is enabled.
 - PR #107 merged to `launch/domain-form-books`, not `main`. Live legal pages and `/sms-opt-in/` reflect that divergent release. Preserve current main's analytics/privacy disclosures; do not deploy the old release branch wholesale or overwrite newer live lead integrations without reconciliation.
+
 
 ## Kids paid-social landing page (2026-08-24)
 
@@ -105,7 +115,7 @@
 - ✅ Jiu-Jitsu After 60 is positioned as a **4-week introductory program for men and women 60+**, with beginner reassurance, cooperative partner work, no aggressive-sparring expectation, and **“Relational First. Physical Second.”** Keep the confirmed 50-minute schedule above and omit Joao's draft 60-minute breakdown unless he explicitly changes the class time.
 - ✅ Austin Youth, ages 8–12: Tue/Thu **5:00–5:45 p.m.**
 - ✅ Austin publishes **adult private instruction by appointment** with flexible scheduling and beginner-friendly positioning.
-- 🔴 Austin recurring **adult group** schedule remains undecided; use an interest list until confirmed and do not add private appointments to the weekly calendar.
+- ✅ Austin adult group classes: Tue/Thu **6:00–7:00 p.m.**, confirmed by Diego 2026-09-06. Adult private lessons remain by appointment. This supersedes the adult interest-list direction.
 
 ### Positioning and proof
 
@@ -215,7 +225,7 @@ Until item 1 is resolved, **do not publish membership prices, LTV claims, saving
 - Promote private coaching as a primary offer, not a minor peer card.
 - Develop a dedicated private-coaching acquisition lane for mature professionals, executives, returning practitioners, and other adults whose schedule or body no longer fits one-size-fits-all group training. Lead with flexible appointments, individualized game planning, pressure/position/timing/efficiency, and Carlson Gracie lineage as a living teaching influence. Treat “old man jiu-jitsu” as a creative phrase to test, not an automatically approved premium offer name. See `assets/ads-podcast/02-private-coaching-grown-men.md`.
 - ✅ **Story-led acquisition direction (2026-08-07, Diego):** ads and landing pages should use real Joao, parent, and student moments to reveal a recognizable tension, Joao's coaching belief, and an observable teaching mechanism before the CTA. Start with the Chris/private-coaching schedule story, the Kaiden/tap story, purposeful play at age three, and verified Carlson/De La Riva teaching moments. Keep each story tied to one audience and offer, obtain permission for identifiable details, and do not publish the reported older Dallas judge story until age, rank, wording, and permission are confirmed. See `assets/ads-swipe/009-jun-yuh-storytelling-framework.md`.
-- Show both locations clearly. Austin may promote confirmed adult private instruction by appointment, but must not imply a recurring adult group schedule that does not yet exist.
+- Show both locations clearly. Austin offers Youth ages 8–12 Tue/Thu 5:00–5:45 p.m., adult group Tue/Thu 6:00–7:00 p.m., and adult private lessons by appointment.
 - Add schedule, coaches, linked Google reviews, FAQs, directions, books/podcast links, and a secondary lead-magnet path.
 - Do not publish the preview ribbon, draft variant hub, or duplicate toddler versions.
 
@@ -293,7 +303,7 @@ This backlog does not authorize production publication, Search Console mutations
 - [ ] Confirm the full rate card and registration/uniform rules.
 - [ ] Select the paid/deposit trial structure.
 - [ ] Confirm low-cost trial-uniform economics.
-- [ ] Confirm the shared schedule, including Saturday and any future Austin adult group class. Adult private instruction remains appointment based.
+- [ ] Confirm any future schedule changes beyond the currently approved classes. Austin adult group is confirmed Tue/Thu 6:00–7:00 p.m.; adult private instruction remains appointment based.
 - [ ] Provide Beehiiv, Zen Planner export/read-only, WordPress/hosting/DNS, Jetpack, booking, and Meta access as appropriate.
 - [ ] Confirm Castle Hill marketing terms and request a Castle Hill website/classes listing.
 - [ ] Approve the visual direction, buddy-pass mechanics, and guarantee position.

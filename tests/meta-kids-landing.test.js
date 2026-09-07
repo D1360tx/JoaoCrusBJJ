@@ -81,7 +81,7 @@ test('page uses owned real-photo assets with intrinsic dimensions', () => {
 
 test('quiz accepts the dedicated paid-social source and modal reports it dynamically', () => {
   assert.match(quiz, /meta-kids-paid/);
-  assert.match(endpoint, /'meta-kids-paid'\], 'route source'/);
+  assert.match(endpoint, /'meta-kids-paid', 'meta-austin-youth-paid', 'meta-austin-adults-paid', 'austin-program-fit'\], 'route source'/);
   assert.match(modal, /route_source/);
   assert.doesNotMatch(modal, /source: 'practice_under_pressure'/);
 });
@@ -93,7 +93,15 @@ test('mobile CTA has explicit hidden, visible, and final-section suppression log
   assert.match(js, /!isVisible\(heroCta\) && !isVisible\(finalSection\)/);
 });
 
-test('the first-visit consent prompt cannot drag the ad landing page away from the hero', () => {
+test('the paid landing page disables browser scroll restoration and resets reused views to the hero', () => {
+  assert.match(js, /history\.scrollRestoration = 'manual'/);
+  assert.match(js, /window\.addEventListener\('pageshow'/);
+  assert.match(js, /if \(!window\.location\.hash\) window\.scrollTo\(0, 0\)/);
+  assert.match(js, /window\.requestAnimationFrame\(resetAdEntryScroll\)/);
+});
+
+test('the first-visit consent prompt cannot focus the footer unless the visitor opened it', () => {
+  assert.match(consent, /if \(consentInvoker\) \{/);
   assert.match(consent, /consentSave\.focus\(\{ preventScroll: true \}\)/);
   assert.match(consent, /window\.scrollTo\(scrollLeft, scrollTop\)/);
 });
