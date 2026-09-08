@@ -22,8 +22,6 @@
     { id: "all", label: "All classes" },
   ];
   var CLASSES = [
-    { day: 1, time: "6:00–7:00 PM", name: "Adults", program: "adults", groups: ["adults"], location: "austin", },
-    { day: 3, time: "6:00–7:00 PM", name: "Adults", program: "adults", groups: ["adults"], location: "austin", },
     {
       day: 0,
       time: "5:00–5:45 PM",
@@ -128,6 +126,9 @@
       groups: ["adults"],
       location: "ds",
     },
+    // Later Austin classes follow Youth so each day renders chronologically.
+    { day: 1, time: "6:00–7:00 PM", name: "Adults", program: "adults", groups: ["adults"], location: "austin", },
+    { day: 3, time: "6:00–7:00 PM", name: "Adults", program: "adults", groups: ["adults"], location: "austin", },
   ];
 
   function validProgram(value) {

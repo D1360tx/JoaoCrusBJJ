@@ -34,10 +34,28 @@ test('all five CTAs start at child/adult decision using existing strict source',
   assert.match(read('deploy/bluehost/api/lead.php'), /'austin-program-fit'/);
 });
 test('both programs and honest local imagery are present without new claims', () => {
-  for (const text of ['Youth ages 8–12', 'Tue/Thu 5:00–5:45 p.m.', 'Tue/Thu 6:00–7:00 p.m.', 'private lessons', 'by appointment', 'Not a Castle Hill facility photograph.', 'joao-crus-coach-headshot.webp']) assert.ok(page.includes(text), text);
+  for (const text of ['Youth ages 8–12', 'Tue/Thu 5:00–5:45 p.m.', 'Tue/Thu 6:00–7:00 p.m.', 'private lessons', 'by appointment', 'Castle Hill Fitness Downtown', 'joao-crus-coach-headshot.webp']) assert.ok(page.includes(text), text);
   assert.match(page, /data-default-program="all" data-default-location="austin"/);
   assert.doesNotMatch(page, /Led by Joao|guaranteed|\$\d|five.star/i);
   assert.match(page, /mk-footer__inner bottom/);
+});
+test('approved photos sit between program labels and headings', () => {
+  assert.match(page, /Jiu-jitsu at Castle Hill Fitness/);
+  for (const [label, asset, width, height] of [
+    ['Youth ages 8–12', 'castle-hill-youth-group-20260907.webp', 867, 672],
+    ['Adults', 'castle-hill-adults-coaching-20260907.webp', 1280, 960],
+  ]) {
+    assert.ok(page.includes(`<p class="mk-eye">${label}</p><img class="castle-program-photo" src="../assets/${asset}" width="${width}" height="${height}" loading="lazy" alt="`));
+    assert.ok(fs.existsSync(path.resolve(__dirname, '../site/assets', asset)));
+  }
+  assert.equal((page.match(/class="castle-program-photo"[^>]+><h3>/g) || []).length, 2);
+  assert.equal(manifest.pages.find(p => p.file === 'castle-hill-grand-opening.html').image, '/assets/castle-hill-multisport-room-20260907.webp');
+});
+test('Austin shared calendar places 5 PM Youth before 6 PM Adults on both days', () => {
+  const source = read('site/assets/class-calendar.js');
+  const records = require('node:vm').runInNewContext(source.match(/var CLASSES = (\[[\s\S]*?\n  \]);/)[1]);
+  assert.equal(records.length, 15);
+  for (const day of [1, 3]) assert.deepEqual(Array.from(records.filter(c => c.day === day && c.location === 'austin'), c => c.time), ['5:00–5:45 PM', '6:00–7:00 PM']);
 });
 test('dedicated quiz is a non-transmitting honest preview, not a fake lead success', () => {
   assert.match(quiz, /data-quiz data-endpoint=""/);

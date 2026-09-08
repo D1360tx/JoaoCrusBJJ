@@ -27,6 +27,13 @@
 
 ---
 
+## Approved Castle Hill page revisions (2026-09-07)
+
+- ✅ Revise the approved live `/castle-hill-grand-opening/` route only after QA. Show Youth before Adults in each schedule day, matching 5:00 PM before 6:00 PM. Preserve the shared calendar and all class records.
+- ✅ Hero headline: “A new place to start. Jiu-jitsu at Castle Hill Fitness.” Use the official Castle Hill Multisport Room photograph, not generic academy or AI imagery.
+- ✅ Place real program photographs immediately after each Youth/Adults label and before its heading. Youth heading: “Confidence through practice.” Use Castle Hill’s published Joao partnership kids photo and the existing Joao adult-coaching photo. Record source provenance in `docs/CASTLE-HILL-PHOTO-REVISIONS.md`.
+- ✅ Keep the funnel `noindex,nofollow`, outside the sitemap, and all historical comparisons intact. No lead submissions or GHL, Meta, or GTM mutations. September 14 remains unconfirmed and traffic remains held.
+
 ## Austin Castle Hill paid-social comparison (2026-09-06)
 
 - ✅ Diego confirmed Youth ages 8–12 Tue/Thu 5:00–5:45 p.m.; adult group Tue/Thu 6:00–7:00 p.m.; adult private lessons by appointment. Location: inside Castle Hill Fitness, 1112 N Lamar Blvd, Austin TX 78703.
