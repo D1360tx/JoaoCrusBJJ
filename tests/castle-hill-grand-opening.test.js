@@ -43,13 +43,19 @@ test('approved photos sit between program labels and headings', () => {
   assert.match(page, /Jiu-jitsu at Castle Hill Fitness/);
   for (const [label, asset, width, height] of [
     ['Youth ages 8–12', 'castle-hill-youth-group-20260907.webp', 867, 672],
-    ['Adults', 'castle-hill-adults-coaching-20260907.webp', 1280, 960],
+    ['Adults', 'campaign-images/adults-black-belt-group-2026-07.webp', 640, 616],
   ]) {
     assert.ok(page.includes(`<p class="mk-eye">${label}</p><img class="castle-program-photo" src="../assets/${asset}" width="${width}" height="${height}" loading="lazy" alt="`));
     assert.ok(fs.existsSync(path.resolve(__dirname, '../site/assets', asset)));
   }
   assert.equal((page.match(/class="castle-program-photo"[^>]+><h3>/g) || []).length, 2);
   assert.equal(manifest.pages.find(p => p.file === 'castle-hill-grand-opening.html').image, '/assets/castle-hill-multisport-room-20260907.webp');
+});
+test('adult photo provenance and alt cannot regress to the AI coaching copy', () => {
+  assert.match(page, /alt="Five adult black belts standing together at Joao Crus Brazilian Jiu-Jitsu"/);
+  assert.doesNotMatch(page, /castle-hill-adults-coaching|adults-joao-coaching/);
+  assert.equal(fs.existsSync(path.resolve(__dirname, '../site/assets/castle-hill-adults-coaching-20260907.webp')), false);
+  assert.match(read('scripts/prepare_adults_hero.py'), /adults-black-belt-group-original-2026-07-31\.jpg/);
 });
 test('Austin shared calendar places 5 PM Youth before 6 PM Adults on both days', () => {
   const source = read('site/assets/class-calendar.js');

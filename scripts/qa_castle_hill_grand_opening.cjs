@@ -60,6 +60,10 @@ fs.mkdirSync(out, {recursive:true});
   const hero = await page.locator('.mk-hero__frame img').evaluate(i=>({ratio:i.clientWidth/i.clientHeight,native:i.naturalWidth/i.naturalHeight}));
   assert.ok(Math.abs(hero.ratio-hero.native)<0.02,'hero preserves native crop');
   assert.deepEqual(await page.locator('.jc-calendar-slot .jc-calendar-time').allTextContents(), ['5:00–5:45 PM','5:00–5:45 PM','6:00–7:00 PM','6:00–7:00 PM']);
+  const adult = page.locator('.castle-programs article').nth(1).locator('img');
+  assert.match(await adult.getAttribute('src'), /campaign-images\/adults-black-belt-group-2026-07\.webp$/);
+  assert.equal(await adult.getAttribute('alt'), 'Five adult black belts standing together at Joao Crus Brazilian Jiu-Jitsu');
+  assert.deepEqual(await adult.evaluate(i=>[i.naturalWidth,i.naturalHeight]), [640,616]);
   const cards = await page.locator('.castle-programs article').evaluateAll(es => es.map(e => {
     const img=e.querySelector('img'), h=e.querySelector('h3');
     return {order: img.previousElementSibling.classList.contains('mk-eye') && img.nextElementSibling === h, gap: h.getBoundingClientRect().top-img.getBoundingClientRect().bottom, fit:getComputedStyle(img).objectFit, ratio:img.clientWidth/img.clientHeight};
