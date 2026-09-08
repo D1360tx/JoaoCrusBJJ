@@ -1,0 +1,50 @@
+[
+  {
+    "ad_name": "AY01_TAP-MEANS-STOP_STATIC",
+    "primary_text": "One of the first lessons in jiu-jitsu is not how to win. It is how to communicate and respect a boundary. At Joao Crus BJJ, Youth ages 8–12 practice tapping, stopping when a partner taps, resetting, and trying again with a coach. See the Austin class inside Castle Hill Fitness.",
+    "headline": "Tap Means Stop",
+    "description": "Youth BJJ, Tue/Thu at 5:00 p.m.",
+    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY01_TAP-MEANS-STOP_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+    "utm_content": "AY01_TAP-MEANS-STOP_STATIC"
+  },
+  {
+    "ad_name": "AY03_CONFIDENCE-IS-PRACTICED_STATIC",
+    "primary_text": "Confidence does not have to come before the first class. It can grow when a child gets stuck, listens to coaching, tries again, and sees progress. Austin Youth BJJ is built for ages 8–12, including complete beginners.",
+    "headline": "Confidence Is Practiced",
+    "description": "No experience required",
+    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY03_CONFIDENCE-IS-PRACTICED_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+    "utm_content": "AY03_CONFIDENCE-IS-PRACTICED_STATIC"
+  },
+  {
+    "ad_name": "AY05_CASTLE-HILL-YOUTH_STATIC",
+    "primary_text": "Central Austin parents: Youth BJJ for ages 8–12 is coming inside Castle Hill Fitness. Tuesday and Thursday, 5:00–5:45 p.m. Answer a few practical questions, then Joao personally calls to plan a free studio visit.",
+    "headline": "Youth BJJ in Central Austin",
+    "description": "Tue/Thu, 5:00–5:45 p.m.",
+    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY05_CASTLE-HILL-YOUTH_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+    "utm_content": "AY05_CASTLE-HILL-YOUTH_STATIC"
+  },
+  {
+    "ad_name": "AA01_BEGINNER-STARTS-HERE_STATIC",
+    "primary_text": "You do not need to get in shape before starting jiu-jitsu. You need a place where beginner questions are expected and the first step is clear. Adult group classes meet Tue/Thu from 6:00–7:00 p.m. inside Castle Hill Fitness.",
+    "headline": "New to Jiu-Jitsu? Start Here.",
+    "description": "Beginner-friendly adult BJJ in Austin",
+    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AA01_BEGINNER-STARTS-HERE_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+    "utm_content": "AA01_BEGINNER-STARTS-HERE_STATIC"
+  },
+  {
+    "ad_name": "AA03_CALM-UNDER-PRESSURE_STATIC",
+    "primary_text": "Pressure is part of training. Panic does not have to control the response. Adult BJJ gives you a place to practice position, timing, breathing, and technical decisions with coaching. Train Tue/Thu inside Castle Hill Fitness.",
+    "headline": "Practice Calm Under Pressure",
+    "description": "Adult BJJ, Tue/Thu 6:00–7:00 p.m.",
+    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AA03_CALM-UNDER-PRESSURE_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+    "utm_content": "AA03_CALM-UNDER-PRESSURE_STATIC"
+  },
+  {
+    "ad_name": "AA05_GROUP-OR-PRIVATE_STATIC",
+    "primary_text": "Some adults want a consistent group. Others need focused coaching around a schedule, injury history, or technical goal. Austin offers group classes Tue/Thu from 6:00–7:00 p.m. plus private lessons by appointment. Use the finder to choose a starting point.",
+    "headline": "Group or Private? Find Your Fit.",
+    "description": "Inside Castle Hill Fitness",
+    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AA05_GROUP-OR-PRIVATE_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+    "utm_content": "AA05_GROUP-OR-PRIVATE_STATIC"
+  }
+]

@@ -27,6 +27,12 @@
 
 ---
 
+## Castle Hill permission-safe paused ads (2026-09-08)
+
+- User expressly authorized “Use only Joao/facility-safe creative and keep every ad paused.” This authorizes the separate six-concept, twelve-image safe iteration, media uploads and placement-specific creative/ad creation under campaign `120251246135250072`, ad set `120251246144560072` only.
+- Use only the verified existing empty facility photograph, official Joao portrait/logo, and brand typography. This iteration uses facility + logo only. No students, minors, groups, AI people, or blocked #114 imagery.
+- Preserve #114 unchanged/open. Do not activate any entity or change budget/targeting. The unconfirmed date and traffic/tracking approval remain separate holds. See `assets/meta/castle-hill/safe-wave-1/README.md`.
+
 ## Approved Castle Hill page revisions (2026-09-07)
 
 - ✅ Revise the approved live `/castle-hill-grand-opening/` route only after QA. Show Youth before Adults in each schedule day, matching 5:00 PM before 6:00 PM. Preserve the shared calendar and all class records.
