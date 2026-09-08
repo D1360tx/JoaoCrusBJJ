@@ -27,6 +27,13 @@
 
 ---
 
+## Austin Youth AY07 / AY08 paused-only variations (2026-09-08)
+
+- User explicitly authorized two new real-photo static ads, AY07 and AY08, under campaign `120251246135250072` and ad set `120251246144560072`, with every ad PAUSED. This is a separate, narrow authorization from the people-free safe wave below.
+- Use `castle-hill-youth-group-20260907.webp` for the age-matched AY07 rationale and `youth-junior-warriors-group.webp` for AY08 practice/confidence. No AI imagery; do not assert either photograph was taken at Castle Hill. Existing website/publication approval does not prove identifiable-student paid-media releases.
+- Identifiable-student media approval for both photos remains a before-activation gate. Preserve website-only Lead, exact dynamic UTMs, square feed / vertical Stories-Reels routing, all enhancement opt-outs, parent targeting and budgets. Nothing may be activated; no merge or deployment is authorized by this build.
+- Evidence: `assets/meta/castle-hill/youth-wave-2/`.
+
 ## Castle Hill permission-safe paused ads (2026-09-08)
 
 - User expressly authorized “Use only Joao/facility-safe creative and keep every ad paused.” This authorizes the separate six-concept, twelve-image safe iteration, media uploads and placement-specific creative/ad creation under campaign `120251246135250072`, ad set `120251246144560072` only.

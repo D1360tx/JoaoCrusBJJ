@@ -1,0 +1,330 @@
+{
+  "status": "PAUSED_ONLY_MEDIA_RELEASE_GATE",
+  "ai_imagery": false,
+  "activation_gates": [
+    "Identifiable-student media approval for both photos",
+    "Explicit traffic/activation authorization",
+    "Opening date and website Lead tracking acceptance"
+  ],
+  "reference": "AD03_START-AT-3_STATIC: condensed three-line rationale hook, accent, real group photo; adapted age-specific teaching, not toddler claims.",
+  "source_allowlist": [
+    {
+      "path": "site/assets/castle-hill-youth-group-20260907.webp",
+      "sha256": "daa61df73363fdc7522a4748e9eff16c6ec488ca72db39ff5e179301743a8ea5",
+      "provenance": "Castle Hill public co-marketing article; see docs/CASTLE-HILL-PHOTO-REVISIONS.md. Location of photo not asserted.",
+      "paid_media_release": "Before-activation gate; website publication is not a participant release."
+    },
+    {
+      "path": "site/assets/youth-junior-warriors-group.webp",
+      "sha256": "48844d16147d109475d70251797a7a5354ca746cc9f6b7b0abd3885dbf1f9ffd",
+      "provenance": "Owned/supplied real academy photograph approved on Youth page. Location of photo not asserted.",
+      "paid_media_release": "Before-activation gate; website publication is not a participant release."
+    }
+  ],
+  "assets": [
+    {
+      "ad_name": "AY07_YOUTH-8-12-ON-PURPOSE_STATIC",
+      "primary_text": "Ages 8–12 need instruction built for their stage, not a toddler class or an adult class made smaller. At Joao Crus BJJ, age-matched coaching combines movement, clear directions and partner practice. Austin Youth meets Tuesday and Thursday, 5:00–5:45 p.m., inside Castle Hill Fitness. Complete the class finder and Joao personally calls to arrange a free visit. Your child may watch or participate.",
+      "headline": "Youth BJJ Built for Ages 8–12",
+      "description": "Tue/Thu at Castle Hill Fitness.",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "cta": "LEARN_MORE",
+      "filename": "assets/meta/castle-hill/youth-wave-2/images/1x1/AY07_YOUTH-8-12-ON-PURPOSE_STATIC_1x1.png",
+      "source_images": [
+        "site/assets/castle-hill-youth-group-20260907.webp"
+      ],
+      "aspect_ratio": "1x1",
+      "width": 1080,
+      "height": 1080,
+      "sha256": "4ba4413f3f3a18f4362cb1b811768d1eef1c9aa8f4260df6002cfeecd559d32f",
+      "text_boxes": [
+        {
+          "text": "STARTING AT",
+          "bounds": [
+            72,
+            60,
+            514,
+            133
+          ],
+          "font_px": 90
+        },
+        {
+          "text": "AGES 8–12.",
+          "bounds": [
+            71,
+            160,
+            456,
+            233
+          ],
+          "font_px": 90
+        },
+        {
+          "text": "ON PURPOSE.",
+          "bounds": [
+            72,
+            260,
+            524,
+            333
+          ],
+          "font_px": 90
+        },
+        {
+          "text": "AGE-MATCHED COACHING. REAL PRACTICE.",
+          "bounds": [
+            72,
+            372,
+            823,
+            395
+          ],
+          "font_px": 31
+        },
+        {
+          "text": "YOUTH BJJ • CASTLE HILL FITNESS",
+          "bounds": [
+            71,
+            1005,
+            627,
+            1032
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        60,
+        1016,
+        1040
+      ],
+      "photo_frame": [
+        201,
+        430,
+        878,
+        955
+      ],
+      "crop": "none; full original aspect ratio retained"
+    },
+    {
+      "ad_name": "AY07_YOUTH-8-12-ON-PURPOSE_STATIC",
+      "primary_text": "Ages 8–12 need instruction built for their stage, not a toddler class or an adult class made smaller. At Joao Crus BJJ, age-matched coaching combines movement, clear directions and partner practice. Austin Youth meets Tuesday and Thursday, 5:00–5:45 p.m., inside Castle Hill Fitness. Complete the class finder and Joao personally calls to arrange a free visit. Your child may watch or participate.",
+      "headline": "Youth BJJ Built for Ages 8–12",
+      "description": "Tue/Thu at Castle Hill Fitness.",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "cta": "LEARN_MORE",
+      "filename": "assets/meta/castle-hill/youth-wave-2/images/9x16/AY07_YOUTH-8-12-ON-PURPOSE_STATIC_9x16.png",
+      "source_images": [
+        "site/assets/castle-hill-youth-group-20260907.webp"
+      ],
+      "aspect_ratio": "9x16",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "7a6b8d162f6803dceade6bf9d4d195335b342da96bc07b4f397b4190f772b7ed",
+      "text_boxes": [
+        {
+          "text": "STARTING AT",
+          "bounds": [
+            72,
+            280,
+            623,
+            372
+          ],
+          "font_px": 112
+        },
+        {
+          "text": "AGES 8–12.",
+          "bounds": [
+            71,
+            405,
+            550,
+            497
+          ],
+          "font_px": 112
+        },
+        {
+          "text": "ON PURPOSE.",
+          "bounds": [
+            72,
+            530,
+            634,
+            622
+          ],
+          "font_px": 112
+        },
+        {
+          "text": "AGE-MATCHED COACHING. REAL PRACTICE.",
+          "bounds": [
+            72,
+            667,
+            823,
+            690
+          ],
+          "font_px": 31
+        },
+        {
+          "text": "YOUTH BJJ • CASTLE HILL FITNESS",
+          "bounds": [
+            71,
+            1540,
+            627,
+            1567
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        280,
+        1016,
+        1590
+      ],
+      "photo_frame": [
+        106,
+        760,
+        973,
+        1432
+      ],
+      "crop": "none; full original aspect ratio retained"
+    },
+    {
+      "ad_name": "AY08_REAL-PRACTICE_STATIC",
+      "primary_text": "Confidence grows through practice: a coached attempt, a clear boundary, responsibility for a partner, then a reset and another try. Austin Youth BJJ welcomes ages 8–12, including complete beginners, inside Castle Hill Fitness. Classes meet Tuesday and Thursday, 5:00–5:45 p.m. Complete the class finder and Joao personally calls to arrange a free visit. Your child may watch or participate.",
+      "headline": "Confidence Grows Through Practice",
+      "description": "Youth BJJ in Central Austin.",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "cta": "LEARN_MORE",
+      "filename": "assets/meta/castle-hill/youth-wave-2/images/1x1/AY08_REAL-PRACTICE_STATIC_1x1.png",
+      "source_images": [
+        "site/assets/youth-junior-warriors-group.webp"
+      ],
+      "aspect_ratio": "1x1",
+      "width": 1080,
+      "height": 1080,
+      "sha256": "6aca8f6d5b1677ce89b38374f27a3e1db7f782336aed9bc3d25d34c888e786e6",
+      "text_boxes": [
+        {
+          "text": "REAL PRACTICE.",
+          "bounds": [
+            72,
+            60,
+            614,
+            133
+          ],
+          "font_px": 90
+        },
+        {
+          "text": "EARNED CONFIDENCE.",
+          "bounds": [
+            72,
+            160,
+            804,
+            233
+          ],
+          "font_px": 90
+        },
+        {
+          "text": "AGES 8–12 • COMPLETE BEGINNERS WELCOME.",
+          "bounds": [
+            72,
+            272,
+            894,
+            295
+          ],
+          "font_px": 31
+        },
+        {
+          "text": "JOAO CRUS BJJ • CENTRAL AUSTIN",
+          "bounds": [
+            70,
+            1005,
+            624,
+            1032
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        60,
+        1016,
+        1040
+      ],
+      "photo_frame": [
+        141,
+        420,
+        938,
+        853
+      ],
+      "crop": "none; full original aspect ratio retained"
+    },
+    {
+      "ad_name": "AY08_REAL-PRACTICE_STATIC",
+      "primary_text": "Confidence grows through practice: a coached attempt, a clear boundary, responsibility for a partner, then a reset and another try. Austin Youth BJJ welcomes ages 8–12, including complete beginners, inside Castle Hill Fitness. Classes meet Tuesday and Thursday, 5:00–5:45 p.m. Complete the class finder and Joao personally calls to arrange a free visit. Your child may watch or participate.",
+      "headline": "Confidence Grows Through Practice",
+      "description": "Youth BJJ in Central Austin.",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "cta": "LEARN_MORE",
+      "filename": "assets/meta/castle-hill/youth-wave-2/images/9x16/AY08_REAL-PRACTICE_STATIC_9x16.png",
+      "source_images": [
+        "site/assets/youth-junior-warriors-group.webp"
+      ],
+      "aspect_ratio": "9x16",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "a39d7ded262fa690951f7c13909756961400c2c88f3a34c50faaaa1ab3840549",
+      "text_boxes": [
+        {
+          "text": "REAL PRACTICE.",
+          "bounds": [
+            72,
+            280,
+            747,
+            372
+          ],
+          "font_px": 112
+        },
+        {
+          "text": "EARNED CONFIDENCE.",
+          "bounds": [
+            72,
+            405,
+            984,
+            497
+          ],
+          "font_px": 112
+        },
+        {
+          "text": "AGES 8–12 • COMPLETE BEGINNERS WELCOME.",
+          "bounds": [
+            72,
+            542,
+            894,
+            565
+          ],
+          "font_px": 31
+        },
+        {
+          "text": "JOAO CRUS BJJ • CENTRAL AUSTIN",
+          "bounds": [
+            70,
+            1540,
+            624,
+            1567
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        280,
+        1016,
+        1590
+      ],
+      "photo_frame": [
+        141,
+        760,
+        938,
+        1193
+      ],
+      "crop": "none; full original aspect ratio retained"
+    }
+  ]
+}
