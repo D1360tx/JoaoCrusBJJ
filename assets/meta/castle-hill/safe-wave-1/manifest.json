@@ -1,0 +1,1418 @@
+{
+  "schema_version": 1,
+  "status": "permission_safe_paused_build",
+  "approval": "User: Use only Joao/facility-safe creative and keep every ad paused.",
+  "copy_source": {
+    "pr": 114,
+    "commit": "4b3059495579ac2796ec4308b05a860224557b54",
+    "changes": []
+  },
+  "source_allowlist": [
+    {
+      "path": "site/assets/castle-hill-multisport-room-20260907.webp",
+      "sha256": "5c5beb053f6393f6c7e017d98fd54a1a1c1bfbbe4e73821f0b57090ad8c43b72",
+      "origin": "https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/Multisport-Room.jpg?bwg=1769443583",
+      "evidence": "docs/CASTLE-HILL-PHOTO-REVISIONS.md",
+      "visual_review": "Empty real facility, including mirrors. No people or portraits. Illustrative location photo, not assigned classroom proof."
+    },
+    {
+      "path": "site/assets/joao-crus-bjj-logo.png",
+      "sha256": "894985fc6f9a593895ef07ec9bbcd6994b1aa5a9a0aaa6ce9286821dcab3fb29",
+      "evidence": "Official academy logo, existing brand asset; explicit user safe-creative authorization."
+    }
+  ],
+  "assets": [
+    {
+      "ad_name": "AY01_TAP-MEANS-STOP_STATIC",
+      "primary_text": "One of the first lessons in jiu-jitsu is not how to win. It is how to communicate and respect a boundary. At Joao Crus BJJ, Youth ages 8–12 practice tapping, stopping when a partner taps, resetting, and trying again with a coach. See the Austin class inside Castle Hill Fitness.",
+      "headline": "Tap Means Stop",
+      "description": "Youth BJJ, Tue/Thu at 5:00 p.m.",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY01_TAP-MEANS-STOP_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "utm_content": "AY01_TAP-MEANS-STOP_STATIC",
+      "filename": "assets/meta/castle-hill/safe-wave-1/images/1x1/AY01_TAP-MEANS-STOP_STATIC_1x1.png",
+      "width": 1080,
+      "height": 1080,
+      "aspect_ratio": "1x1",
+      "sha256": "6c3d7c9d2f8868998df9f4a9b576a3115859338444ad1b09c380d5ce39a3a5a4",
+      "source_images": [
+        "site/assets/castle-hill-multisport-room-20260907.webp",
+        "site/assets/joao-crus-bjj-logo.png"
+      ],
+      "text_boxes": [
+        {
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            192,
+            72,
+            468,
+            104
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "INSIDE CASTLE HILL FITNESS",
+          "bounds": [
+            194,
+            122,
+            555,
+            140
+          ],
+          "font_px": 25
+        },
+        {
+          "text": "TAP MEANS",
+          "bounds": [
+            72,
+            209,
+            628,
+            274
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "STOP.",
+          "bounds": [
+            72,
+            309,
+            346,
+            374
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "Communicate. Stop. Reset.",
+          "bounds": [
+            72,
+            419,
+            481,
+            448
+          ],
+          "font_px": 30
+        },
+        {
+          "text": "Castle Hill facility photo. Program described in copy.",
+          "bounds": [
+            72,
+            854,
+            671,
+            876
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "Illustrative space, not a class or assigned-room photo.",
+          "bounds": [
+            72,
+            885,
+            696,
+            907
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "LEARN MORE  →",
+          "bounds": [
+            96,
+            964,
+            354,
+            985
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        64,
+        1016,
+        1024
+      ],
+      "photo_frame": [
+        72,
+        484,
+        1008,
+        829
+      ]
+    },
+    {
+      "ad_name": "AY01_TAP-MEANS-STOP_STATIC",
+      "primary_text": "One of the first lessons in jiu-jitsu is not how to win. It is how to communicate and respect a boundary. At Joao Crus BJJ, Youth ages 8–12 practice tapping, stopping when a partner taps, resetting, and trying again with a coach. See the Austin class inside Castle Hill Fitness.",
+      "headline": "Tap Means Stop",
+      "description": "Youth BJJ, Tue/Thu at 5:00 p.m.",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY01_TAP-MEANS-STOP_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "utm_content": "AY01_TAP-MEANS-STOP_STATIC",
+      "filename": "assets/meta/castle-hill/safe-wave-1/images/9x16/AY01_TAP-MEANS-STOP_STATIC_9x16.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect_ratio": "9x16",
+      "sha256": "fca3fb5bb063b0020073205d93759fa88288d438b035ba12839edf320eefba4c",
+      "source_images": [
+        "site/assets/castle-hill-multisport-room-20260907.webp",
+        "site/assets/joao-crus-bjj-logo.png"
+      ],
+      "text_boxes": [
+        {
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            192,
+            288,
+            468,
+            320
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "INSIDE CASTLE HILL FITNESS",
+          "bounds": [
+            194,
+            338,
+            555,
+            356
+          ],
+          "font_px": 25
+        },
+        {
+          "text": "TAP MEANS",
+          "bounds": [
+            72,
+            425,
+            628,
+            490
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "STOP.",
+          "bounds": [
+            72,
+            525,
+            346,
+            590
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "Communicate. Stop. Reset.",
+          "bounds": [
+            72,
+            635,
+            481,
+            664
+          ],
+          "font_px": 30
+        },
+        {
+          "text": "Castle Hill facility photo. Program described in copy.",
+          "bounds": [
+            72,
+            1325,
+            671,
+            1347
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "Illustrative space, not a class or assigned-room photo.",
+          "bounds": [
+            72,
+            1356,
+            696,
+            1378
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "LEARN MORE  →",
+          "bounds": [
+            96,
+            1489,
+            354,
+            1510
+          ],
+          "font_px": 29
+        },
+        {
+          "text": "1112 N LAMAR BLVD · AUSTIN",
+          "bounds": [
+            72,
+            1410,
+            557,
+            1431
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        280,
+        1016,
+        1570
+      ],
+      "photo_frame": [
+        72,
+        700,
+        1008,
+        1300
+      ]
+    },
+    {
+      "ad_name": "AY03_CONFIDENCE-IS-PRACTICED_STATIC",
+      "primary_text": "Confidence does not have to come before the first class. It can grow when a child gets stuck, listens to coaching, tries again, and sees progress. Austin Youth BJJ is built for ages 8–12, including complete beginners.",
+      "headline": "Confidence Is Practiced",
+      "description": "No experience required",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY03_CONFIDENCE-IS-PRACTICED_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "utm_content": "AY03_CONFIDENCE-IS-PRACTICED_STATIC",
+      "filename": "assets/meta/castle-hill/safe-wave-1/images/1x1/AY03_CONFIDENCE-IS-PRACTICED_STATIC_1x1.png",
+      "width": 1080,
+      "height": 1080,
+      "aspect_ratio": "1x1",
+      "sha256": "b3635be2c4245c4a415ed3a25b62773143fdc88568286b603de7dda0963ea076",
+      "source_images": [
+        "site/assets/castle-hill-multisport-room-20260907.webp",
+        "site/assets/joao-crus-bjj-logo.png"
+      ],
+      "text_boxes": [
+        {
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            192,
+            72,
+            468,
+            104
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "INSIDE CASTLE HILL FITNESS",
+          "bounds": [
+            194,
+            122,
+            555,
+            140
+          ],
+          "font_px": 25
+        },
+        {
+          "text": "CONFIDENCE",
+          "bounds": [
+            72,
+            209,
+            695,
+            274
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "IS PRACTICED.",
+          "bounds": [
+            72,
+            309,
+            771,
+            374
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "Try. Listen. Try again.",
+          "bounds": [
+            71,
+            419,
+            386,
+            448
+          ],
+          "font_px": 30
+        },
+        {
+          "text": "Castle Hill facility photo. Program described in copy.",
+          "bounds": [
+            72,
+            854,
+            671,
+            876
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "Illustrative space, not a class or assigned-room photo.",
+          "bounds": [
+            72,
+            885,
+            696,
+            907
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "LEARN MORE  →",
+          "bounds": [
+            96,
+            964,
+            354,
+            985
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        64,
+        1016,
+        1024
+      ],
+      "photo_frame": [
+        72,
+        484,
+        912,
+        829
+      ]
+    },
+    {
+      "ad_name": "AY03_CONFIDENCE-IS-PRACTICED_STATIC",
+      "primary_text": "Confidence does not have to come before the first class. It can grow when a child gets stuck, listens to coaching, tries again, and sees progress. Austin Youth BJJ is built for ages 8–12, including complete beginners.",
+      "headline": "Confidence Is Practiced",
+      "description": "No experience required",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY03_CONFIDENCE-IS-PRACTICED_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "utm_content": "AY03_CONFIDENCE-IS-PRACTICED_STATIC",
+      "filename": "assets/meta/castle-hill/safe-wave-1/images/9x16/AY03_CONFIDENCE-IS-PRACTICED_STATIC_9x16.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect_ratio": "9x16",
+      "sha256": "d27572695e9eb305e6d1504743aeb673425e8e912de58d8721048b1db94536df",
+      "source_images": [
+        "site/assets/castle-hill-multisport-room-20260907.webp",
+        "site/assets/joao-crus-bjj-logo.png"
+      ],
+      "text_boxes": [
+        {
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            192,
+            288,
+            468,
+            320
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "INSIDE CASTLE HILL FITNESS",
+          "bounds": [
+            194,
+            338,
+            555,
+            356
+          ],
+          "font_px": 25
+        },
+        {
+          "text": "CONFIDENCE",
+          "bounds": [
+            72,
+            425,
+            695,
+            490
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "IS PRACTICED.",
+          "bounds": [
+            72,
+            525,
+            771,
+            590
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "Try. Listen. Try again.",
+          "bounds": [
+            71,
+            635,
+            386,
+            664
+          ],
+          "font_px": 30
+        },
+        {
+          "text": "Castle Hill facility photo. Program described in copy.",
+          "bounds": [
+            72,
+            1325,
+            671,
+            1347
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "Illustrative space, not a class or assigned-room photo.",
+          "bounds": [
+            72,
+            1356,
+            696,
+            1378
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "LEARN MORE  →",
+          "bounds": [
+            96,
+            1489,
+            354,
+            1510
+          ],
+          "font_px": 29
+        },
+        {
+          "text": "1112 N LAMAR BLVD · AUSTIN",
+          "bounds": [
+            72,
+            1410,
+            557,
+            1431
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        280,
+        1016,
+        1570
+      ],
+      "photo_frame": [
+        72,
+        700,
+        912,
+        1300
+      ]
+    },
+    {
+      "ad_name": "AY05_CASTLE-HILL-YOUTH_STATIC",
+      "primary_text": "Central Austin parents: Youth BJJ for ages 8–12 is coming inside Castle Hill Fitness. Tuesday and Thursday, 5:00–5:45 p.m. Answer a few practical questions, then Joao personally calls to plan a free studio visit.",
+      "headline": "Youth BJJ in Central Austin",
+      "description": "Tue/Thu, 5:00–5:45 p.m.",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY05_CASTLE-HILL-YOUTH_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "utm_content": "AY05_CASTLE-HILL-YOUTH_STATIC",
+      "filename": "assets/meta/castle-hill/safe-wave-1/images/1x1/AY05_CASTLE-HILL-YOUTH_STATIC_1x1.png",
+      "width": 1080,
+      "height": 1080,
+      "aspect_ratio": "1x1",
+      "sha256": "12abc99046d11761a0eeb2f67d7d2264cb73cf3cec366f096e9faca53d25868a",
+      "source_images": [
+        "site/assets/castle-hill-multisport-room-20260907.webp",
+        "site/assets/joao-crus-bjj-logo.png"
+      ],
+      "text_boxes": [
+        {
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            192,
+            72,
+            468,
+            104
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "INSIDE CASTLE HILL FITNESS",
+          "bounds": [
+            194,
+            122,
+            555,
+            140
+          ],
+          "font_px": 25
+        },
+        {
+          "text": "CASTLE HILL",
+          "bounds": [
+            72,
+            209,
+            679,
+            274
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "YOUTH BJJ.",
+          "bounds": [
+            71,
+            309,
+            597,
+            390
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "Ages 8–12 | Tue/Thu 5:00–5:45 p.m.",
+          "bounds": [
+            72,
+            419,
+            611,
+            449
+          ],
+          "font_px": 30
+        },
+        {
+          "text": "Castle Hill facility photo. Program described in copy.",
+          "bounds": [
+            72,
+            854,
+            671,
+            876
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "Illustrative space, not a class or assigned-room photo.",
+          "bounds": [
+            72,
+            885,
+            696,
+            907
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "LEARN MORE  →",
+          "bounds": [
+            96,
+            964,
+            354,
+            985
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        64,
+        1016,
+        1024
+      ],
+      "photo_frame": [
+        72,
+        484,
+        1008,
+        829
+      ]
+    },
+    {
+      "ad_name": "AY05_CASTLE-HILL-YOUTH_STATIC",
+      "primary_text": "Central Austin parents: Youth BJJ for ages 8–12 is coming inside Castle Hill Fitness. Tuesday and Thursday, 5:00–5:45 p.m. Answer a few practical questions, then Joao personally calls to plan a free studio visit.",
+      "headline": "Youth BJJ in Central Austin",
+      "description": "Tue/Thu, 5:00–5:45 p.m.",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY05_CASTLE-HILL-YOUTH_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "utm_content": "AY05_CASTLE-HILL-YOUTH_STATIC",
+      "filename": "assets/meta/castle-hill/safe-wave-1/images/9x16/AY05_CASTLE-HILL-YOUTH_STATIC_9x16.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect_ratio": "9x16",
+      "sha256": "a6e54683786257dc3af575e179dc58fe0175abc5fb7e68276a235a745aabb07a",
+      "source_images": [
+        "site/assets/castle-hill-multisport-room-20260907.webp",
+        "site/assets/joao-crus-bjj-logo.png"
+      ],
+      "text_boxes": [
+        {
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            192,
+            288,
+            468,
+            320
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "INSIDE CASTLE HILL FITNESS",
+          "bounds": [
+            194,
+            338,
+            555,
+            356
+          ],
+          "font_px": 25
+        },
+        {
+          "text": "CASTLE HILL",
+          "bounds": [
+            72,
+            425,
+            679,
+            490
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "YOUTH BJJ.",
+          "bounds": [
+            71,
+            525,
+            597,
+            606
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "Ages 8–12 | Tue/Thu 5:00–5:45 p.m.",
+          "bounds": [
+            72,
+            635,
+            611,
+            665
+          ],
+          "font_px": 30
+        },
+        {
+          "text": "Castle Hill facility photo. Program described in copy.",
+          "bounds": [
+            72,
+            1325,
+            671,
+            1347
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "Illustrative space, not a class or assigned-room photo.",
+          "bounds": [
+            72,
+            1356,
+            696,
+            1378
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "LEARN MORE  →",
+          "bounds": [
+            96,
+            1489,
+            354,
+            1510
+          ],
+          "font_px": 29
+        },
+        {
+          "text": "1112 N LAMAR BLVD · AUSTIN",
+          "bounds": [
+            72,
+            1410,
+            557,
+            1431
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        280,
+        1016,
+        1570
+      ],
+      "photo_frame": [
+        72,
+        700,
+        1008,
+        1300
+      ]
+    },
+    {
+      "ad_name": "AA01_BEGINNER-STARTS-HERE_STATIC",
+      "primary_text": "You do not need to get in shape before starting jiu-jitsu. You need a place where beginner questions are expected and the first step is clear. Adult group classes meet Tue/Thu from 6:00–7:00 p.m. inside Castle Hill Fitness.",
+      "headline": "New to Jiu-Jitsu? Start Here.",
+      "description": "Beginner-friendly adult BJJ in Austin",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AA01_BEGINNER-STARTS-HERE_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "utm_content": "AA01_BEGINNER-STARTS-HERE_STATIC",
+      "filename": "assets/meta/castle-hill/safe-wave-1/images/1x1/AA01_BEGINNER-STARTS-HERE_STATIC_1x1.png",
+      "width": 1080,
+      "height": 1080,
+      "aspect_ratio": "1x1",
+      "sha256": "a17d8c97bb9256a437f5241ca4df493b0acdd1f7e5292cb970b5a7506507a9e1",
+      "source_images": [
+        "site/assets/castle-hill-multisport-room-20260907.webp",
+        "site/assets/joao-crus-bjj-logo.png"
+      ],
+      "text_boxes": [
+        {
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            192,
+            72,
+            468,
+            104
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "INSIDE CASTLE HILL FITNESS",
+          "bounds": [
+            194,
+            122,
+            555,
+            140
+          ],
+          "font_px": 25
+        },
+        {
+          "text": "BEGINNER",
+          "bounds": [
+            72,
+            209,
+            568,
+            274
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "STARTS HERE.",
+          "bounds": [
+            72,
+            309,
+            754,
+            374
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "Adult BJJ | Tue/Thu 6:00–7:00 p.m.",
+          "bounds": [
+            72,
+            419,
+            581,
+            449
+          ],
+          "font_px": 30
+        },
+        {
+          "text": "Castle Hill facility photo. Program described in copy.",
+          "bounds": [
+            72,
+            854,
+            671,
+            876
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "Illustrative space, not a class or assigned-room photo.",
+          "bounds": [
+            72,
+            885,
+            696,
+            907
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "LEARN MORE  →",
+          "bounds": [
+            96,
+            964,
+            354,
+            985
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        64,
+        1016,
+        1024
+      ],
+      "photo_frame": [
+        168,
+        484,
+        1008,
+        829
+      ]
+    },
+    {
+      "ad_name": "AA01_BEGINNER-STARTS-HERE_STATIC",
+      "primary_text": "You do not need to get in shape before starting jiu-jitsu. You need a place where beginner questions are expected and the first step is clear. Adult group classes meet Tue/Thu from 6:00–7:00 p.m. inside Castle Hill Fitness.",
+      "headline": "New to Jiu-Jitsu? Start Here.",
+      "description": "Beginner-friendly adult BJJ in Austin",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AA01_BEGINNER-STARTS-HERE_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "utm_content": "AA01_BEGINNER-STARTS-HERE_STATIC",
+      "filename": "assets/meta/castle-hill/safe-wave-1/images/9x16/AA01_BEGINNER-STARTS-HERE_STATIC_9x16.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect_ratio": "9x16",
+      "sha256": "d1e9eb5a12f287b79943b3d5cdabd9ce3e095552175b6f9bb0ae9bce7660cd74",
+      "source_images": [
+        "site/assets/castle-hill-multisport-room-20260907.webp",
+        "site/assets/joao-crus-bjj-logo.png"
+      ],
+      "text_boxes": [
+        {
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            192,
+            288,
+            468,
+            320
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "INSIDE CASTLE HILL FITNESS",
+          "bounds": [
+            194,
+            338,
+            555,
+            356
+          ],
+          "font_px": 25
+        },
+        {
+          "text": "BEGINNER",
+          "bounds": [
+            72,
+            425,
+            568,
+            490
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "STARTS HERE.",
+          "bounds": [
+            72,
+            525,
+            754,
+            590
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "Adult BJJ | Tue/Thu 6:00–7:00 p.m.",
+          "bounds": [
+            72,
+            635,
+            581,
+            665
+          ],
+          "font_px": 30
+        },
+        {
+          "text": "Castle Hill facility photo. Program described in copy.",
+          "bounds": [
+            72,
+            1325,
+            671,
+            1347
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "Illustrative space, not a class or assigned-room photo.",
+          "bounds": [
+            72,
+            1356,
+            696,
+            1378
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "LEARN MORE  →",
+          "bounds": [
+            96,
+            1489,
+            354,
+            1510
+          ],
+          "font_px": 29
+        },
+        {
+          "text": "1112 N LAMAR BLVD · AUSTIN",
+          "bounds": [
+            72,
+            1410,
+            557,
+            1431
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        280,
+        1016,
+        1570
+      ],
+      "photo_frame": [
+        168,
+        700,
+        1008,
+        1300
+      ]
+    },
+    {
+      "ad_name": "AA03_CALM-UNDER-PRESSURE_STATIC",
+      "primary_text": "Pressure is part of training. Panic does not have to control the response. Adult BJJ gives you a place to practice position, timing, breathing, and technical decisions with coaching. Train Tue/Thu inside Castle Hill Fitness.",
+      "headline": "Practice Calm Under Pressure",
+      "description": "Adult BJJ, Tue/Thu 6:00–7:00 p.m.",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AA03_CALM-UNDER-PRESSURE_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "utm_content": "AA03_CALM-UNDER-PRESSURE_STATIC",
+      "filename": "assets/meta/castle-hill/safe-wave-1/images/1x1/AA03_CALM-UNDER-PRESSURE_STATIC_1x1.png",
+      "width": 1080,
+      "height": 1080,
+      "aspect_ratio": "1x1",
+      "sha256": "71392d4156b460b936b390f17c038f697ae22d7f2bba1f7a953f2c2dfd153700",
+      "source_images": [
+        "site/assets/castle-hill-multisport-room-20260907.webp",
+        "site/assets/joao-crus-bjj-logo.png"
+      ],
+      "text_boxes": [
+        {
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            192,
+            72,
+            468,
+            104
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "INSIDE CASTLE HILL FITNESS",
+          "bounds": [
+            194,
+            122,
+            555,
+            140
+          ],
+          "font_px": 25
+        },
+        {
+          "text": "CALM UNDER",
+          "bounds": [
+            72,
+            209,
+            710,
+            274
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "PRESSURE.",
+          "bounds": [
+            72,
+            309,
+            607,
+            374
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "Position. Timing. Breathing.",
+          "bounds": [
+            72,
+            419,
+            484,
+            448
+          ],
+          "font_px": 30
+        },
+        {
+          "text": "Castle Hill facility photo. Program described in copy.",
+          "bounds": [
+            72,
+            854,
+            671,
+            876
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "Illustrative space, not a class or assigned-room photo.",
+          "bounds": [
+            72,
+            885,
+            696,
+            907
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "LEARN MORE  →",
+          "bounds": [
+            96,
+            964,
+            354,
+            985
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        64,
+        1016,
+        1024
+      ],
+      "photo_frame": [
+        96,
+        484,
+        984,
+        829
+      ]
+    },
+    {
+      "ad_name": "AA03_CALM-UNDER-PRESSURE_STATIC",
+      "primary_text": "Pressure is part of training. Panic does not have to control the response. Adult BJJ gives you a place to practice position, timing, breathing, and technical decisions with coaching. Train Tue/Thu inside Castle Hill Fitness.",
+      "headline": "Practice Calm Under Pressure",
+      "description": "Adult BJJ, Tue/Thu 6:00–7:00 p.m.",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AA03_CALM-UNDER-PRESSURE_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "utm_content": "AA03_CALM-UNDER-PRESSURE_STATIC",
+      "filename": "assets/meta/castle-hill/safe-wave-1/images/9x16/AA03_CALM-UNDER-PRESSURE_STATIC_9x16.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect_ratio": "9x16",
+      "sha256": "10d739f589bbede85a787183b098bb40ca6482593a682635d3d292b1d63293a2",
+      "source_images": [
+        "site/assets/castle-hill-multisport-room-20260907.webp",
+        "site/assets/joao-crus-bjj-logo.png"
+      ],
+      "text_boxes": [
+        {
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            192,
+            288,
+            468,
+            320
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "INSIDE CASTLE HILL FITNESS",
+          "bounds": [
+            194,
+            338,
+            555,
+            356
+          ],
+          "font_px": 25
+        },
+        {
+          "text": "CALM UNDER",
+          "bounds": [
+            72,
+            425,
+            710,
+            490
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "PRESSURE.",
+          "bounds": [
+            72,
+            525,
+            607,
+            590
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "Position. Timing. Breathing.",
+          "bounds": [
+            72,
+            635,
+            484,
+            664
+          ],
+          "font_px": 30
+        },
+        {
+          "text": "Castle Hill facility photo. Program described in copy.",
+          "bounds": [
+            72,
+            1325,
+            671,
+            1347
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "Illustrative space, not a class or assigned-room photo.",
+          "bounds": [
+            72,
+            1356,
+            696,
+            1378
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "LEARN MORE  →",
+          "bounds": [
+            96,
+            1489,
+            354,
+            1510
+          ],
+          "font_px": 29
+        },
+        {
+          "text": "1112 N LAMAR BLVD · AUSTIN",
+          "bounds": [
+            72,
+            1410,
+            557,
+            1431
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        280,
+        1016,
+        1570
+      ],
+      "photo_frame": [
+        96,
+        700,
+        984,
+        1300
+      ]
+    },
+    {
+      "ad_name": "AA05_GROUP-OR-PRIVATE_STATIC",
+      "primary_text": "Some adults want a consistent group. Others need focused coaching around a schedule, injury history, or technical goal. Austin offers group classes Tue/Thu from 6:00–7:00 p.m. plus private lessons by appointment. Use the finder to choose a starting point.",
+      "headline": "Group or Private? Find Your Fit.",
+      "description": "Inside Castle Hill Fitness",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AA05_GROUP-OR-PRIVATE_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "utm_content": "AA05_GROUP-OR-PRIVATE_STATIC",
+      "filename": "assets/meta/castle-hill/safe-wave-1/images/1x1/AA05_GROUP-OR-PRIVATE_STATIC_1x1.png",
+      "width": 1080,
+      "height": 1080,
+      "aspect_ratio": "1x1",
+      "sha256": "b6897af926b5d35172940570c8411836226d3ad839c8d864c3178dfc05ef85b2",
+      "source_images": [
+        "site/assets/castle-hill-multisport-room-20260907.webp",
+        "site/assets/joao-crus-bjj-logo.png"
+      ],
+      "text_boxes": [
+        {
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            192,
+            72,
+            468,
+            104
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "INSIDE CASTLE HILL FITNESS",
+          "bounds": [
+            194,
+            122,
+            555,
+            140
+          ],
+          "font_px": 25
+        },
+        {
+          "text": "GROUP OR",
+          "bounds": [
+            72,
+            209,
+            584,
+            274
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "PRIVATE?",
+          "bounds": [
+            72,
+            309,
+            521,
+            372
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "Group classes. Private appointments.",
+          "bounds": [
+            72,
+            419,
+            632,
+            448
+          ],
+          "font_px": 30
+        },
+        {
+          "text": "Castle Hill facility photo. Program described in copy.",
+          "bounds": [
+            72,
+            854,
+            671,
+            876
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "Illustrative space, not a class or assigned-room photo.",
+          "bounds": [
+            72,
+            885,
+            696,
+            907
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "LEARN MORE  →",
+          "bounds": [
+            96,
+            964,
+            354,
+            985
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        64,
+        1016,
+        1024
+      ],
+      "photo_frame": [
+        72,
+        484,
+        1008,
+        829
+      ]
+    },
+    {
+      "ad_name": "AA05_GROUP-OR-PRIVATE_STATIC",
+      "primary_text": "Some adults want a consistent group. Others need focused coaching around a schedule, injury history, or technical goal. Austin offers group classes Tue/Thu from 6:00–7:00 p.m. plus private lessons by appointment. Use the finder to choose a starting point.",
+      "headline": "Group or Private? Find Your Fit.",
+      "description": "Inside Castle Hill Fitness",
+      "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AA05_GROUP-OR-PRIVATE_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+      "utm_content": "AA05_GROUP-OR-PRIVATE_STATIC",
+      "filename": "assets/meta/castle-hill/safe-wave-1/images/9x16/AA05_GROUP-OR-PRIVATE_STATIC_9x16.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect_ratio": "9x16",
+      "sha256": "2468809b58bbd9eb363cbe32dd4b93585d281ec4b9a08cc3214281473b5d29d9",
+      "source_images": [
+        "site/assets/castle-hill-multisport-room-20260907.webp",
+        "site/assets/joao-crus-bjj-logo.png"
+      ],
+      "text_boxes": [
+        {
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            192,
+            288,
+            468,
+            320
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "INSIDE CASTLE HILL FITNESS",
+          "bounds": [
+            194,
+            338,
+            555,
+            356
+          ],
+          "font_px": 25
+        },
+        {
+          "text": "GROUP OR",
+          "bounds": [
+            72,
+            425,
+            584,
+            490
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "PRIVATE?",
+          "bounds": [
+            72,
+            525,
+            521,
+            588
+          ],
+          "font_px": 86
+        },
+        {
+          "text": "Group classes. Private appointments.",
+          "bounds": [
+            72,
+            635,
+            632,
+            664
+          ],
+          "font_px": 30
+        },
+        {
+          "text": "Castle Hill facility photo. Program described in copy.",
+          "bounds": [
+            72,
+            1325,
+            671,
+            1347
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "Illustrative space, not a class or assigned-room photo.",
+          "bounds": [
+            72,
+            1356,
+            696,
+            1378
+          ],
+          "font_px": 23
+        },
+        {
+          "text": "LEARN MORE  →",
+          "bounds": [
+            96,
+            1489,
+            354,
+            1510
+          ],
+          "font_px": 29
+        },
+        {
+          "text": "1112 N LAMAR BLVD · AUSTIN",
+          "bounds": [
+            72,
+            1410,
+            557,
+            1431
+          ],
+          "font_px": 29
+        }
+      ],
+      "safe_zone": [
+        64,
+        280,
+        1016,
+        1570
+      ],
+      "photo_frame": [
+        72,
+        700,
+        1008,
+        1300
+      ]
+    }
+  ]
+}
