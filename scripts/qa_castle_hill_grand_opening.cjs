@@ -3,22 +3,26 @@ const { chromium } = require('playwright');
 const { AxeBuilder } = require('@axe-core/playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
-const base = 'http://127.0.0.1:8766';
+const base = process.env.QA_BASE || 'http://127.0.0.1:8766';
 const out = 'qa/castle-hill-grand-opening';
 fs.mkdirSync(out, {recursive:true});
 (async () => {
  const browser = await chromium.launch({headless:true});
  const context = await browser.newContext();
+ context.setDefaultTimeout(15000);
+ context.setDefaultNavigationTimeout(20000);
  const posts=[], errors=[], broken=[], results=[];
  await context.route('**/*', route => {
   const req=route.request(), u=new URL(req.url());
   if(req.method()!=='GET'){posts.push(req.method()+' '+u.pathname);return route.abort();}
   if(u.hostname==='api.country.is') return route.fulfill({contentType:'application/json',body:'{"country":"US"}'});
+  if(['fonts.googleapis.com','fonts.gstatic.com'].includes(u.hostname)) return route.continue();
   if(u.origin!==base) return route.fulfill({contentType:'text/plain',body:''});
   return route.continue();
  });
  const page=await context.newPage();
  page.on('pageerror',e=>errors.push(e.message));
+ page.on('requestfailed',req=>{if(req.failure()?.errorText !== 'net::ERR_ABORTED')broken.push(req.url()+': '+req.failure()?.errorText);});
  page.on('response',r=>{if(r.url().startsWith(base)&&r.status()>=400)broken.push(r.url());});
  const geometry=async()=>{
   await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(async i=>{i.loading='eager';await i.decode().catch(()=>{});}));});
@@ -42,13 +46,32 @@ fs.mkdirSync(out, {recursive:true});
   assert.deepEqual(orphans,[],'single-word heading orphans');
  };
  const params=new URLSearchParams({utm_source:'meta',utm_medium:'paid_social',utm_campaign:'austin_castle_hill_launch_v1',utm_content:'AY01',utm_term:'broad_local',utm_id:'campaign-test',gclid:'test-gclid',fbclid:'test-fbclid'});
- for(const width of [390,768,1280,1440,1920]){
+ for(const width of (process.env.QA_WIDTHS || '390,768,1280,1440,1920').split(',').map(Number)){
+  console.log('QA width', width);
   await page.setViewportSize({width,height:900});
   await page.goto(`${base}/castle-hill-grand-opening/?${params}`);
   await geometry();await headings();await a11y();
-  assert.equal(await page.locator('h1').count(),1);
-  assert.equal(await page.locator('.consent-preferences').count(),1);
   assert.equal(await page.evaluate(()=>scrollY),0);
+  assert.equal(await page.locator('h1').count(),1);
+  assert.equal((await page.locator('h1').innerText()).replace(/\s+/g,' ').toLowerCase(), 'a new place to start.jiu-jitsu at castle hill fitness.');
+  assert.match(await page.locator('meta[name=robots]').getAttribute('content'), /noindex/);
+  // Shared calendar uses an em-dash glyph for empty cells, not editorial copy.
+  assert.equal(await page.locator('main').evaluate(e=>{const copy=e.cloneNode(true);copy.querySelectorAll('.jc-calendar-blank').forEach(n=>n.remove());return copy.textContent.includes('—');}),false);
+  const hero = await page.locator('.mk-hero__frame img').evaluate(i=>({ratio:i.clientWidth/i.clientHeight,native:i.naturalWidth/i.naturalHeight}));
+  assert.ok(Math.abs(hero.ratio-hero.native)<0.02,'hero preserves native crop');
+  assert.deepEqual(await page.locator('.jc-calendar-slot .jc-calendar-time').allTextContents(), ['5:00–5:45 PM','5:00–5:45 PM','6:00–7:00 PM','6:00–7:00 PM']);
+  const cards = await page.locator('.castle-programs article').evaluateAll(es => es.map(e => {
+    const img=e.querySelector('img'), h=e.querySelector('h3');
+    return {order: img.previousElementSibling.classList.contains('mk-eye') && img.nextElementSibling === h, gap: h.getBoundingClientRect().top-img.getBoundingClientRect().bottom, fit:getComputedStyle(img).objectFit, ratio:img.clientWidth/img.clientHeight};
+  }));
+  for(const card of cards){assert.equal(card.order,true);assert.equal(card.gap,18);assert.equal(card.fit,'contain');assert.ok(Math.abs(card.ratio-4/3)<0.02);}
+  assert.deepEqual(await page.locator('.castle-opening h1,.castle-opening h2,.castle-opening h3').evaluateAll(es=>es.filter(e=>e.scrollWidth>e.clientWidth+1).map(e=>e.textContent)),[],'heading clipping');
+  await page.screenshot({path:`${out}/hero-${width}.png`});
+  await page.locator('.castle-programs').scrollIntoViewIfNeeded();
+  await page.screenshot({path:`${out}/programs-${width}.png`});
+  await page.evaluate(()=>{document.documentElement.style.scrollBehavior='auto';window.scrollTo(0,0);});
+  assert.equal(await page.locator('.consent-preferences').count(),1);
+
   const links=await page.locator('[data-austin-quiz]').evaluateAll(es=>es.map(e=>e.href));
   assert.equal(links.length,5);
   for(const href of links){const u=new URL(href);assert.equal(u.pathname,'/austin-program-finder/quiz/');assert.equal(u.searchParams.get('path'),null);assert.equal(u.searchParams.get('source'),'austin-program-fit');assert.ok(u.searchParams.get('placement'));for(const [k,v]of params)assert.equal(u.searchParams.get(k),v);}
@@ -78,16 +101,16 @@ fs.mkdirSync(out, {recursive:true});
    await page.goto(`${base}/austin-program-finder/quiz/?source=austin-program-fit&start=quiz&placement=hero&${params}`);
    await page.locator('[data-step="1"]:visible').waitFor();
    await page.locator(`[name="audience"][value="${scenario==='child'?'child':'adult'}"]`).check();
-   await page.locator('[data-next]').click();await geometry();
+   await page.locator('[data-next]').click();await geometry();await a11y();
    if(scenario==='child'){
     await page.locator('[name="stage"][value="outside"]').check();assert.equal(await page.locator('[data-next]').isDisabled(),true);assert.equal(await page.locator('[data-age-gate]').isVisible(),true);
    }
    await page.locator(`[name="stage"][value="${scenario==='child'?'youth':scenario==='competition-help'?'competition':'new'}"]`).check();
-   await page.locator('[data-next]').click();await geometry();
+   await page.locator('[data-next]').click();await geometry();await a11y();
    await page.locator(`[name="goal"][value="${scenario==='child'?'boundaries':scenario==='help-private'?'schedule':'fundamentals'}"]`).check();
-   await page.locator('[data-next]').click();await geometry();
+   await page.locator('[data-next]').click();await geometry();await a11y();
    await page.locator(`[name="experience"][value="${scenario==='child'?'new':scenario.includes('help')?'help':scenario}"]`).check();
-   await page.locator('[data-next]').click();await geometry();
+   await page.locator('[data-next]').click();await geometry();await a11y();
    await page.locator('[name="location"][value="austin"]').check();
    await page.locator('[data-next]').click();await geometry();await a11y();
    assert.equal(await page.locator('[data-submit]').isDisabled(),true,'contact-last submit remains disabled until required fields and consent are complete');

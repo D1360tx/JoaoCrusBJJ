@@ -2,6 +2,8 @@
 .castle-opening .jc-calendar-row {display:contents}
 .castle-opening .castle-phrase {white-space:nowrap}
 .castle-opening .castle-programs {grid-template-columns:repeat(2,minmax(0,1fr))}
+.castle-opening .castle-program-photo {display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#fffdf8;border:3px solid #101010}
+.castle-opening .castle-program-photo + h3 {margin-top:18px}
 .castle-opening h1,.castle-opening h2,.castle-opening h3 {text-wrap:balance}
 .castle-opening .mk-heading {display:block;max-width:900px}
 .castle-opening .mk-heading p {max-width:65ch;margin-top:20px}
