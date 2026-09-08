@@ -38,7 +38,7 @@ All twelve images uploaded; six placement-customized creatives and exactly six a
 | AA03 | 28521308404223057 | 120251260015710072 | PENDING_REVIEW |
 | AA05 | 2003106970488268 | 120251260015870072 | PENDING_REVIEW |
 
-**Async acceptance still pending:** configured status is PAUSED for all six, but Meta review temporarily reports PENDING_REVIEW for five. The strict effective-PAUSED gate is recorded false; the verifier exits 2 until every ad resolves to a paused effective status. This is not activation or permission to spend. Do not recreate ads or change parent settings to clear review.
+**Async acceptance still pending:** configured status is PAUSED for all six, but Meta review temporarily reports PENDING_REVIEW for five. The strict effective-PAUSED gate is recorded false; the verifier exits 2 until every ad resolves to a paused effective status. PR #116 is intentionally left open and unmerged while this final acceptance gate remains pending. This is not activation or permission to spend. Do not recreate ads or change parent settings to clear review.
 
 **Meta API correction:** the initial creative call rejected deprecated `standard_enhancements` (code 100/subcode 3858504). Only that deprecated umbrella field was removed; all individual opt-outs remained and were verified. No malformed ads or duplicate creatives were created by the rejected request.
 
