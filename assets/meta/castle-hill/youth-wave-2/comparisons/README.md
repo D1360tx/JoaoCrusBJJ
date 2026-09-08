@@ -1,15 +1,15 @@
 # AY07 beginner-belonging + AY09 format comparisons
 
-## Attribution correction status: PARTIAL / BLOCKED
+## Attribution correction status: COMPLETE / PAUSED
 
-AY09B now has dynamic `utm_content={{ad.name}}` and is verified PAUSED. AY09A still has its old hardcoded UTM: Meta remapped existing video IDs in both replacement attempts. The exact-media-ID gate stopped both before an ad swap. Unattached replacement creatives `1742996493484338` and `1635025141591684` are retained, not active inventory. This is not complete; the strict live-contract test intentionally fails until AY09A is corrected.
+AY09A and AY09B now have dynamic `utm_content={{ad.name}}` and are verified PAUSED. AY09A uses replacement creative `1742996493484338`; Meta-owned video copies were accepted only after ready status, identical 26.866-second duration, unchanged placement dimensions, and byte-identical decoded preferred thumbnails were verified against the prior creative. Unattached creative `1635025141591684` remains evidence, not active inventory.
 
 ## Verified current Meta objects
 
 | Concept | Ad ID | Creative ID | Configured / effective |
 |---|---|---|---|
 | AY07_BEGINNER-BELONGING_STATIC | 120251261010900072 | 1687998043330822 | PAUSED / PAUSED |
-| AY09A_BEGINNERS-WELCOME_LONG-VIDEO | 120251263139970072 | 1050466397745571 | PAUSED / PAUSED |
+| AY09A_BEGINNERS-WELCOME_LONG-VIDEO | 120251263139970072 | 1742996493484338 | PAUSED / PAUSED |
 | AY09B_BEGINNERS-WELCOME_STATIC | 120251263002380072 | 1066872229294951 | PAUSED / PAUSED |
 
 AY07 was updated in place, including its name, using Meta's supported creative swap. No replacement ad or deletion was necessary. The previous creative `1532274342037820` and historical local artifacts are retained.
@@ -33,7 +33,7 @@ All paths below are relative to this directory:
 - `contact-sheet-*.jpg`, `AY09A-contact-sheet-*.jpg`, `AY09A-*-frame-*.jpg`: reviewed static pairs and five beginning/middle/ending frames per video placement.
 - `meta-audit.json`: exact response journal with only signed media URLs redacted, upload IDs, creative/ad IDs, readbacks, parent before/after snapshots and verification timestamps. Raw signed responses remain private outside git.
 
-Required AY09A/B tracking is `utm_content={{ad.name}}`, retaining the same landing page and every other query parameter. AY09B now meets this contract; AY09A remains on literal `utm_content=AY09_BEGINNERS-WELCOME_VIDEO` because Meta remapped the supplied video IDs on replacement creation. Original AY09 and AY07 remain untouched. The earlier decision to retain identical literal content UTMs is superseded: backend/CRM variant differentiation requires dynamic ad-name attribution. Approved copy describes the target, while the manifest and audit record the actual partial state.
+Required AY09A/B tracking is `utm_content={{ad.name}}`, retaining the same landing page and every other query parameter. Both comparison ads now meet this contract. Original AY09 and AY07 remain untouched. The earlier decision to retain identical literal content UTMs is superseded: backend/CRM variant differentiation requires dynamic ad-name attribution.
 
 ## Why the video no longer cuts off
 
@@ -74,11 +74,11 @@ git diff --check
 
 Render dependencies: Pillow, FFmpeg with libx264/libass, Impact at `/mnt/c/Windows/Fonts/impact.ttf`, DejaVu Sans / DejaVu Sans Bold. Local Whisper small.en supplies audio verification, not generated audio. Run both build commands in order: the static build starts the manifest and the video build extends it. Existing source media is referenced from this repository, not a stale external worktree.
 
-`fix_austin_youth_comparison_attribution.py` defaults to read-only and has an exact URL-only equality gate before swapping. `--apply --ad-name AY09B_BEGINNERS-WELCOME_STATIC` completed the static correction. Do not retry the video replacement or relax its media-ID gate without resolving the documented scope blocker.
+`fix_austin_youth_comparison_attribution.py` defaults to read-only and has an exact URL-only equality gate before swapping. AY09B was corrected directly. AY09A required a Meta-copy equivalence gate because Meta remapped its video IDs; the replacement was attached only after status, duration, dimensions, and decoded-thumbnail checks passed.
 
 `austin_youth_comparison_meta.py` defaults to read-only preflight. Its explicit `--apply-static` and `--apply-video` flags are narrowly scoped and resumable; never run concurrent instances. If Meta remaps new video IDs, `verify_austin_youth_video_copies.py` proves the mapping before resuming. Do not treat transient processing as authorization to activate or duplicate an ad.
 
-Current correction QA: **9 Austin Youth tests pass / 1 fails**, no skips. The live-contract failure is AY09A still using the old UTM. Historical pre-correction QA had 10/10 passing; existing safe-wave validator passes **6 concepts / 12 images** unchanged; original AY09 validator passes; current paused-state and protected-parent readbacks pass, but strict comparison URL verification is blocked on AY09A. Static bounds/overlap/hash/copy checks pass. Both static contact sheets and both five-frame video sheets were visually reviewed. These are safe-zone/contact-sheet checks, not native Ads Manager placement-overlay previews.
+Current correction QA passes with no skips. Existing safe-wave validator passes **6 concepts / 12 images** unchanged; original AY09 validator passes; current paused-state, dynamic URL and protected-parent readbacks pass. Static bounds/overlap/hash/copy checks pass. Both static contact sheets and both five-frame video sheets were visually reviewed. These are safe-zone/contact-sheet checks, not native Ads Manager placement-overlay previews.
 
 ## Remaining gates
 

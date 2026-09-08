@@ -1,8 +1,8 @@
 # Austin Youth AY07 / AY08 / AY09: paused draft inventory
 
-## Current attribution correction: partial / blocked
+## Current attribution correction: complete / paused
 
-AY09B now uses replacement creative `1066872229294951` with dynamic `utm_content={{ad.name}}`; its ad ID is unchanged. AY09A remains on its previous creative because Meta remapped the exact supplied video IDs in both attempted replacements. No video ad swap occurred. Both ads remain PAUSED / PAUSED. See the comparison audit for the failed exact-media-ID gate; current native QA is 9 pass / 1 fail, not complete.
+AY09A now uses replacement creative `1742996493484338` and AY09B uses `1066872229294951`, both with dynamic `utm_content={{ad.name}}`; both ad IDs are unchanged. Meta remapped AY09A's video IDs, so the replacement was accepted only after ready status, identical duration, unchanged dimensions, and byte-identical decoded preferred thumbnails were verified. Both ads remain PAUSED / PAUSED. Current native QA passes.
 
 ## Prior approved revision and comparisons
 
