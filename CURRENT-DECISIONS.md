@@ -27,6 +27,13 @@
 
 ---
 
+## Austin Youth AY09 video and proposed initial launch slate (2026-09-08)
+
+- AY09 is a **PAUSED draft**, creative `1107882611663240`, ad `120251261045730072`, under the existing Castle Hill campaign/ad set. Final readback is configured/effective PAUSED. Placement-aware 4:5 feed and 9:16 Stories/Reels exports show Joao only, no students. Source-video and participant paid-media permission remain activation gates; no claim that the source depicts a Castle Hill class.
+- Recommended initial slate at a proposed **$10/day total campaign budget**: activate **at most AY07 + AY09 + existing safe AY01 Tap Means Stop**, only after all applicable permission, tracking and explicit activation gates pass. Keep AY08 and every other ad paused as rotation inventory. This is not a recommendation to run six ads simultaneously or a guarantee of equal spend across three ads.
+- The user said “probably around $10”; this is provisional, not an exact budget authorization. Campaign `120251246135250072` remains at **3500 minor units**. A budget mutation awaits exact final confirmation. No budget, targeting or activation changes were made for AY09 documentation.
+- Production MP4s, ASS captions, reviewed contact sheets, source hashes, exact copy, redacted Meta readbacks and strict validator: `assets/meta/castle-hill/youth-wave-2/video/`. AY07/AY08 assets remain intact. No merge or deployment authorized.
+
 ## Austin Youth AY07 / AY08 paused-only variations (2026-09-08)
 
 - User explicitly authorized two new real-photo static ads, AY07 and AY08, under campaign `120251246135250072` and ad set `120251246144560072`, with every ad PAUSED. This is a separate, narrow authorization from the people-free safe wave below.

@@ -1,4 +1,16 @@
-# Austin Youth AY07 / AY08: paused real-photo variations
+# Austin Youth AY07 / AY08 / AY09: paused draft inventory
+
+## AY09 video extension
+
+[AY09 production assets and evidence](video/README.md) add a placement-aware SINGLE_VIDEO draft: creative `1107882611663240`, ad `120251261045730072`, final configured/effective **PAUSED / PAUSED**. Two H.264/AAC exports (720×1280 Stories/Reels and 720×900 feed, each 16.607 seconds), two ASS caption files and two reviewed contact sheets are retained. The separate `video/approved-copy.json`, `video/manifest.json` and `video/meta-audit.json` preserve the existing AY07/AY08 schemas and evidence unchanged. Joao only, no students; participant/video paid-media permission remains an activation gate.
+
+## Recommended initial launch slate (not activation authorization)
+
+At the proposed **$10/day total campaign budget**, activate **at most AY07 + AY09 + existing safe AY01 Tap Means Stop** after all applicable permission, tracking and explicit activation gates pass. Keep AY08 and all other ads PAUSED as rotation inventory. Do not run six simultaneously; this recommendation does not imply equal per-ad delivery.
+
+The user said “probably around $10,” so budget mutation awaits exact final confirmation. Campaign budget remains **3500 minor units**. No budget, targeting or activation changes were made. All current drafts remain paused.
+
+The sections below retain the original AY07/AY08 delivery and historical audit.
 
 ## Delivery
 

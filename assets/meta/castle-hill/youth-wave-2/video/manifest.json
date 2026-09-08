@@ -1,0 +1,109 @@
+{
+  "ad_name": "AY09_BEGINNERS-WELCOME_VIDEO",
+  "status": "PAUSED DRAFT",
+  "files": [
+    {
+      "filename": "AY09_BEGINNERS-WELCOME_VIDEO_9x16.mp4",
+      "sha256": "3f5c4f17d220d93b56e4fade3f1fd14fa6cb17d311eb435b04d2453e8a24dbc1",
+      "bytes": 3277171,
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 720,
+            "height": 1280
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "16.607007"
+        }
+      }
+    },
+    {
+      "filename": "AY09_BEGINNERS-WELCOME_VIDEO_4x5.mp4",
+      "sha256": "c290a404323b15ca5b3da824505d64c6f78f67165f34722789b14dfb1cce9739",
+      "bytes": 2384673,
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 720,
+            "height": 900
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "16.607007"
+        }
+      }
+    },
+    {
+      "filename": "AY09-captions.ass",
+      "sha256": "20d1a03910e586416fb805a53b9d262fe2585ec4bd73225a3e3f069dadc33b85",
+      "bytes": 947
+    },
+    {
+      "filename": "AY09-captions-4x5.ass",
+      "sha256": "57995af6c1edeb6f16558c358b3ce9c8b5a73ddbf2739b26afb7c924ef882c4d",
+      "bytes": 945
+    },
+    {
+      "filename": "AY09-contact-sheet-final.jpg",
+      "sha256": "2f936394ebf1563083c2153e29beb708df33c0db0f8c0699907d31583a24f948",
+      "bytes": 88641
+    },
+    {
+      "filename": "AY09-contact-sheet-4x5.jpg",
+      "sha256": "ea588711d545f72a40900af7f1123bddd7cb11626d23d007526eedc9ee4a17f6",
+      "bytes": 63610
+    }
+  ],
+  "source": {
+    "path": "/home/d1360/workspaces/JoaoCrusBJJ-austin-youth-campaign/site/assets/campaign-videos/practice-under-pressure-welcome-2026-08-v2.mp4",
+    "sha256": "717feb0c5b21f6159eb3a02ddcf0050e20af80bf0c5aa54bf7a8ab966cbc879b",
+    "provenance": "Drive-derived generic Joao coach video; source preserved externally, not duplicated in this pack.",
+    "people": "Joao only; no students",
+    "location_claim": "Not evidence of a Castle Hill class"
+  },
+  "edit": {
+    "source_in_seconds": 24.92,
+    "source_out_seconds": 39.0,
+    "end_card_seconds": 2.5,
+    "description": "Burned captions, Youth BJJ ages 8–12 banner and Castle Hill Fitness Tue/Thu 5 PM end card. Caption clipping corrected before final export.",
+    "reproduction_limit": "Final exports and ASS retained; temporary segment and overlay intermediates excluded. This is not a bit-exact render recipe."
+  },
+  "source_uploads": {
+    "vertical": {
+      "id": "1105203821964858",
+      "path": "/home/d1360/workspaces/joao-drive-media-inventory/processed/AY09_BEGINNERS-WELCOME_VIDEO_9x16.mp4"
+    },
+    "feed": {
+      "id": "1576133854006081",
+      "path": "/home/d1360/workspaces/joao-drive-media-inventory/processed/AY09_BEGINNERS-WELCOME_VIDEO_4x5.mp4"
+    }
+  },
+  "upload_status_evidence": "Parent agent reported both uploads ready/complete; no raw status response supplied in this handoff. Upload IDs are distinct from the creative-referenced Meta video IDs.",
+  "creative_video_ids": {
+    "feed": "2134875450753413",
+    "vertical": "1824100178577845"
+  },
+  "activation_gates": [
+    "Documented participant/video paid-media permission, including Joao and source-video rights",
+    "Explicit traffic activation authorization",
+    "Opening-date and website Lead tracking acceptance"
+  ],
+  "visual_qa": "Both final contact sheets inspected: captions and end cards readable, no observed caption clipping, Joao only. Not a live placement-overlay preview."
+}
