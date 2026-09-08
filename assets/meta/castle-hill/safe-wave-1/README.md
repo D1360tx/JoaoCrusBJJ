@@ -24,3 +24,22 @@ Every image visibly explains: “Castle Hill facility photo. Program described i
 Existing campaign `120251246135250072` and ad set `120251246144560072` only. Both read PAUSED before any write; ad set contained zero ads. Never activate, change budget, targeting, dates or parent settings. Website-only `LEARN_MORE`, Page `977808342257807`, Instagram `17841402345785819`. Each creative must pair its own labeled square default and vertical Stories/Reels override, preserve exact ad-specific URL/copy, omit Instant Form extensions and translations, and explicitly opt out of Advantage+ creative enhancements. Do not fall back to single-image or automatic enhancement behavior on rejection. Persist creation receipts and exact-target readbacks in `meta-audit.json` once available.
 
 Traffic remains held, independently of creative completeness, including the landing page's unconfirmed opening date and separate activation/tracking approval.
+
+## Actual Meta result
+
+All twelve images uploaded; six placement-customized creatives and exactly six ads created under the approved ad set, each explicitly PAUSED. All exact-target readbacks are in `meta-audit.json`; `scripts/verify_castle_meta.py` is read-only and reproducible. Every creative returns **83 OPT_OUT feature controls**, including image/text translation and site extensions. Exact copy, URLs/UTMs, identities, CTA, square/vertical hash mapping and Stories/Reels rule priority passed mechanical comparison. Campaign and ad set remain PAUSED with original $35/day campaign budget and original targeting. Website destination and pixel verified. No issues_info or recommendations returned.
+
+| Concept | Creative ID | Ad ID | Effective status at saved readback |
+|---|---|---|---|
+| AY01 | 2103156577742211 | 120251260014400072 | PENDING_REVIEW |
+| AY03 | 2564936567304589 | 120251260014790072 | PAUSED |
+| AY05 | 1541320053989486 | 120251260015140072 | PENDING_REVIEW |
+| AA01 | 2077252959817026 | 120251260015570072 | PENDING_REVIEW |
+| AA03 | 28521308404223057 | 120251260015710072 | PENDING_REVIEW |
+| AA05 | 2003106970488268 | 120251260015870072 | PENDING_REVIEW |
+
+**Async acceptance still pending:** configured status is PAUSED for all six, but Meta review temporarily reports PENDING_REVIEW for five. The strict effective-PAUSED gate is recorded false; the verifier exits 2 until every ad resolves to a paused effective status. This is not activation or permission to spend. Do not recreate ads or change parent settings to clear review.
+
+**Meta API correction:** the initial creative call rejected deprecated `standard_enhancements` (code 100/subcode 3858504). Only that deprecated umbrella field was removed; all individual opt-outs remained and were verified. No malformed ads or duplicate creatives were created by the rejected request.
+
+PR #114 readback remains OPEN at `4b3059495579ac2796ec4308b05a860224557b54`. Its exact copy was independently compared across all twelve original manifest entries. The local full Node suite passes 130/130 after the required build.
