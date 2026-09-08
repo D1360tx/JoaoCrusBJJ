@@ -1,0 +1,450 @@
+{
+  "status": "PAUSED_ONLY",
+  "source_video": {
+    "path": "site/assets/campaign-videos/practice-under-pressure-welcome-2026-08-v2.mp4",
+    "sha256": "717feb0c5b21f6159eb3a02ddcf0050e20af80bf0c5aa54bf7a8ab966cbc879b",
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 720,
+          "height": 1280,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "67.616009"
+      }
+    },
+    "provenance": "Existing Drive-derived Joao-only source, retained unchanged. Not evidence of a Castle Hill class."
+  },
+  "activation_gates": [
+    "Identifiable-student paid-media releases for AY07; website publication is not a release",
+    "Joao/source-video paid-media rights",
+    "Explicit activation and exact budget authorization",
+    "Opening date and website Lead acceptance"
+  ],
+  "assets": [
+    {
+      "ad_name": "AY07_BEGINNER-BELONGING_STATIC",
+      "ratio": "1x1",
+      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY07_BEGINNER-BELONGING_STATIC_1x1.png",
+      "sha256": "ce77a53c1a98fa5400da6512efa56863dca406ea8955d9632ad807c822c09581",
+      "width": 1080,
+      "height": 1080,
+      "source": "site/assets/castle-hill-youth-group-20260907.webp",
+      "source_sha256": "daa61df73363fdc7522a4748e9eff16c6ec488ca72db39ff5e179301743a8ea5",
+      "text_boxes": [
+        {
+          "text": "THERE'S ROOM",
+          "bounds": [
+            72,
+            60,
+            577,
+            133
+          ],
+          "font_px": 90
+        },
+        {
+          "text": "TO BE A BEGINNER.",
+          "bounds": [
+            72,
+            158,
+            706,
+            231
+          ],
+          "font_px": 90
+        },
+        {
+          "text": "A coach to learn from. Partners to practice with.",
+          "bounds": [
+            72,
+            275,
+            1001,
+            308
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "YOUTH BJJ | AGES 8–12 | CASTLE HILL FITNESS",
+          "bounds": [
+            71,
+            995,
+            821,
+            1024
+          ],
+          "font_px": 29
+        }
+      ],
+      "photo_frame": [
+        160,
+        366,
+        920,
+        957
+      ],
+      "safe_zone": [
+        64,
+        40,
+        1016,
+        1040
+      ],
+      "crop": "none; entire group retained"
+    },
+    {
+      "ad_name": "AY07_BEGINNER-BELONGING_STATIC",
+      "ratio": "9x16",
+      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY07_BEGINNER-BELONGING_STATIC_9x16.png",
+      "sha256": "469e19a7f3c390065794ffd367065eee78d6c2ade091803f3f8f0f1bdebb14eb",
+      "width": 1080,
+      "height": 1920,
+      "source": "site/assets/castle-hill-youth-group-20260907.webp",
+      "source_sha256": "daa61df73363fdc7522a4748e9eff16c6ec488ca72db39ff5e179301743a8ea5",
+      "text_boxes": [
+        {
+          "text": "THERE'S ROOM",
+          "bounds": [
+            72,
+            285,
+            678,
+            374
+          ],
+          "font_px": 108
+        },
+        {
+          "text": "TO BE A BEGINNER.",
+          "bounds": [
+            72,
+            405,
+            832,
+            494
+          ],
+          "font_px": 108
+        },
+        {
+          "text": "A coach to learn from. Partners to practice with.",
+          "bounds": [
+            72,
+            555,
+            1001,
+            588
+          ],
+          "font_px": 34
+        },
+        {
+          "text": "YOUTH BJJ | AGES 8–12 | CASTLE HILL FITNESS",
+          "bounds": [
+            71,
+            1540,
+            821,
+            1569
+          ],
+          "font_px": 29
+        }
+      ],
+      "photo_frame": [
+        102,
+        766,
+        977,
+        1446
+      ],
+      "safe_zone": [
+        64,
+        250,
+        1016,
+        1600
+      ],
+      "crop": "none; entire group retained"
+    },
+    {
+      "ad_name": "AY09B_BEGINNERS-WELCOME_STATIC",
+      "ratio": "1x1",
+      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09B_BEGINNERS-WELCOME_STATIC_1x1.png",
+      "sha256": "d5c347008d2b562e88840c0c2566f26b3e6f3c310dfa9f06c592337f99cb19a9",
+      "width": 1080,
+      "height": 1080,
+      "source": "assets/meta/castle-hill/youth-wave-2/comparisons/source-joao-frame-29s.png",
+      "source_sha256": "63cefd9e6becaf59667b282141c57a68887910c92c5c689545f27608287cfcb8",
+      "text_boxes": [
+        {
+          "text": "COMPLETE BEGINNERS",
+          "bounds": [
+            72,
+            60,
+            838,
+            133
+          ],
+          "font_px": 90
+        },
+        {
+          "text": "ARE WELCOME.",
+          "bounds": [
+            71,
+            158,
+            581,
+            231
+          ],
+          "font_px": 90
+        },
+        {
+          "text": "YOUTH BJJ | AGES 8–12 | CASTLE HILL FITNESS",
+          "bounds": [
+            71,
+            995,
+            821,
+            1024
+          ],
+          "font_px": 29
+        }
+      ],
+      "photo_frame": [
+        337,
+        281,
+        743,
+        889
+      ],
+      "safe_zone": [
+        64,
+        40,
+        1016,
+        1040
+      ],
+      "crop": "source frame 29s, crop [70,105,650,980]; full face preserved"
+    },
+    {
+      "ad_name": "AY09B_BEGINNERS-WELCOME_STATIC",
+      "ratio": "9x16",
+      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09B_BEGINNERS-WELCOME_STATIC_9x16.png",
+      "sha256": "f91cfbf6b8ddf3310269f40f09d82fbf9d7e752cbc055497bfe95a9e18ccee71",
+      "width": 1080,
+      "height": 1920,
+      "source": "assets/meta/castle-hill/youth-wave-2/comparisons/source-joao-frame-29s.png",
+      "source_sha256": "63cefd9e6becaf59667b282141c57a68887910c92c5c689545f27608287cfcb8",
+      "text_boxes": [
+        {
+          "text": "COMPLETE BEGINNERS",
+          "bounds": [
+            72,
+            285,
+            992,
+            374
+          ],
+          "font_px": 108
+        },
+        {
+          "text": "ARE WELCOME.",
+          "bounds": [
+            71,
+            405,
+            682,
+            494
+          ],
+          "font_px": 108
+        },
+        {
+          "text": "YOUTH BJJ | AGES 8–12 | CASTLE HILL FITNESS",
+          "bounds": [
+            71,
+            1540,
+            821,
+            1569
+          ],
+          "font_px": 29
+        }
+      ],
+      "photo_frame": [
+        254,
+        601,
+        825,
+        1459
+      ],
+      "safe_zone": [
+        64,
+        250,
+        1016,
+        1600
+      ],
+      "crop": "source frame 29s, crop [70,105,650,980]; full face preserved"
+    }
+  ],
+  "video_edit": {
+    "source_in": 28.04,
+    "source_out": 54.88,
+    "duration": 26.84,
+    "method": "Local Whisper small.en word timestamps, cross-checked against source VTT; capitalization/punctuation normalized only. Final rendered audio independently retranscribed.",
+    "original_defect": "Original source-out 39.00 interrupts I would love to meet you at the academy after meet. Original captions paraphrased audio and omitted this partial sentence.",
+    "ending": "Just come in, meet us, and see whether it feels like the right place for you or your child.",
+    "next_sentence_starts": 55.18,
+    "captions": [
+      {
+        "source_start": 28.18,
+        "source_end": 30.5,
+        "start": 0.14,
+        "end": 2.46,
+        "text": "We welcome complete beginners,"
+      },
+      {
+        "source_start": 31.06,
+        "source_end": 33.65,
+        "start": 3.02,
+        "end": 5.61,
+        "text": "so you do not need to be in shape,"
+      },
+      {
+        "source_start": 33.86,
+        "source_end": 35.5,
+        "start": 5.82,
+        "end": 7.46,
+        "text": "know anything about jiu-jitsu,"
+      },
+      {
+        "source_start": 35.54,
+        "source_end": 37.65,
+        "start": 7.5,
+        "end": 9.61,
+        "text": "or feel ready before you visit."
+      },
+      {
+        "source_start": 38.14,
+        "source_end": 40.6,
+        "start": 10.1,
+        "end": 12.56,
+        "text": "I would love to meet you at the academy,"
+      },
+      {
+        "source_start": 40.7,
+        "source_end": 41.85,
+        "start": 12.66,
+        "end": 13.81,
+        "text": "show you around,"
+      },
+      {
+        "source_start": 42.04,
+        "source_end": 44.55,
+        "start": 14.0,
+        "end": 16.51,
+        "text": "explain how our programs work,"
+      },
+      {
+        "source_start": 44.74,
+        "source_end": 46.2,
+        "start": 16.7,
+        "end": 18.16,
+        "text": "and let you see a class."
+      },
+      {
+        "source_start": 46.58,
+        "source_end": 48.55,
+        "start": 18.54,
+        "end": 20.51,
+        "text": "There is no pressure and no obligation."
+      },
+      {
+        "source_start": 48.92,
+        "source_end": 50.6,
+        "start": 20.88,
+        "end": 22.56,
+        "text": "Just come in, meet us,"
+      },
+      {
+        "source_start": 50.68,
+        "source_end": 52.45,
+        "start": 22.64,
+        "end": 24.41,
+        "text": "and see whether it feels like"
+      },
+      {
+        "source_start": 52.45,
+        "source_end": 54.88,
+        "start": 24.41,
+        "end": 26.84,
+        "text": "the right place for you or your child."
+      }
+    ]
+  },
+  "videos": [
+    {
+      "ad_name": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO",
+      "ratio": "9x16",
+      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A_BEGINNERS-WELCOME_LONG-VIDEO_9x16.mp4",
+      "sha256": "29f75d8464fa8d6662db4f30b919e9ff3a1366e6e92a625d0a77545122033a31",
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 720,
+            "height": 1280,
+            "r_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "26.866667"
+        }
+      },
+      "caption_file": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A-captions-9x16.ass",
+      "caption_sha256": "d1e4ce971146619d9438dc26c2da23902e59cdc980bc7a6445ad8614294de72c",
+      "thumbnail_path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A-9x16-frame-0.jpg",
+      "caption_center_y": 950,
+      "footer_bottom": 1075,
+      "safe_zone": [
+        40,
+        145,
+        680,
+        1080
+      ]
+    },
+    {
+      "ad_name": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO",
+      "ratio": "4x5",
+      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A_BEGINNERS-WELCOME_LONG-VIDEO_4x5.mp4",
+      "sha256": "ac20c8f9b8cf2f05511079b7f382087c48ec8f68d4452562c4069028eb6b5540",
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 720,
+            "height": 900,
+            "r_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "26.866667"
+        }
+      },
+      "caption_file": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A-captions-4x5.ass",
+      "caption_sha256": "24727c49f2f9d42703a3ede39c907beffabcc0fe1656f11e0e4f1fdc49dd5bc8",
+      "thumbnail_path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A-4x5-frame-0.jpg",
+      "caption_center_y": 708,
+      "footer_bottom": 845,
+      "safe_zone": [
+        40,
+        20,
+        680,
+        865
+      ]
+    }
+  ]
+}

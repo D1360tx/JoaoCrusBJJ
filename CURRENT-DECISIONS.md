@@ -27,6 +27,15 @@
 
 ---
 
+## Austin Youth approved beginner-belonging and format comparisons (2026-09-08)
+
+- User explicitly approved replacing existing PAUSED AY07 with beginner-belonging copy and real group-photo visuals, plus two separate PAUSED AY09 comparisons. No activation, parent/budget/targeting/destination change, website deployment or PR merge is authorized.
+- AY07 updated **in place**, preserving ad `120251261010900072`, now `AY07_BEGINNER-BELONGING_STATIC`, creative `1687998043330822`. The approved two-line hook is “THERE'S ROOM” / “TO BE A BEGINNER.” Full group photograph and all faces are retained. Historical AY07 files and old creative evidence are retained, not current live configuration.
+- AY09A `AY09A_BEGINNERS-WELCOME_LONG-VIDEO`: ad `120251263139970072`, creative `1050466397745571`. Continuous source 28.04–54.88 seconds completes the beginner/visit thought. Encoded 4:5 and 9:16 exports are 26.867 seconds, ending “…the right place for you or your child.” No freeze padding or empty outro. Original AY09 cut at source 39.00 after “meet,” interrupting the next sentence; prior claims of a complete cut are superseded by this source/audio audit.
+- AY09B `AY09B_BEGINNERS-WELCOME_STATIC`: ad `120251263002380072`, creative `1091227666887241`. Real Joao-only frame from the same source; 1:1 and 9:16 graphics. AY09A/AY09B hold original AY09 body, headline, description, CTA and destination/UTMs constant. Original AY09 uses a literal `utm_content=AY09_BEGINNERS-WELCOME_VIDEO` with dynamic ad-set/campaign tokens; these are intentionally unchanged for the requested format comparison, not silently replaced with an ad-name token.
+- All three updated/new ads and both parents read back configured/effective **PAUSED / PAUSED**. Original AY09 ad `120251261045730072` and creative `1107882611663240` remain unchanged and PAUSED. Daily budget remains `3500`; ad-set targeting unchanged. Website-only Lead, Pixel/identities, placement routing, no Instant Form and all returned enhancement opt-outs verified.
+- Paid-media rights (including identifiable students in AY07), opening date, Lead-tracking acceptance, exact budget and explicit activation approval remain gates. Website photo publication is not a participant release. Comparison assets, source/ending transcript, deterministic scripts and redacted mutation/readback journal: `assets/meta/castle-hill/youth-wave-2/comparisons/`. PR #117 remains unmerged.
+
 ## Austin Youth AY09 video and proposed initial launch slate (2026-09-08)
 
 - AY09 is a **PAUSED draft**, creative `1107882611663240`, ad `120251261045730072`, under the existing Castle Hill campaign/ad set. Final readback is configured/effective PAUSED. Placement-aware 4:5 feed and 9:16 Stories/Reels exports show Joao only, no students. Source-video and participant paid-media permission remain activation gates; no claim that the source depicts a Castle Hill class.

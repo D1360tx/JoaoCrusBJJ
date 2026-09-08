@@ -1,0 +1,1612 @@
+{
+  "source_transcription": {
+    "model": "local OpenAI Whisper small.en",
+    "segments": [
+      {
+        "start": 0.0,
+        "end": 6.42,
+        "text": " Hi, I'm João Cruz. I'm originally from Brazil, and I have spent more than 25 years teaching Brazilian jiu-jitsu.",
+        "words": [
+          {
+            "word": " Hi,",
+            "start": 0.0,
+            "end": 0.58,
+            "probability": 0.5483003854751587
+          },
+          {
+            "word": " I'm",
+            "start": 0.66,
+            "end": 0.8,
+            "probability": 0.9582138061523438
+          },
+          {
+            "word": " João",
+            "start": 0.8,
+            "end": 1.02,
+            "probability": 0.513473853468895
+          },
+          {
+            "word": " Cruz.",
+            "start": 1.02,
+            "end": 1.34,
+            "probability": 0.9700326919555664
+          },
+          {
+            "word": " I'm",
+            "start": 1.7,
+            "end": 1.8,
+            "probability": 0.9777331352233887
+          },
+          {
+            "word": " originally",
+            "start": 1.8,
+            "end": 2.02,
+            "probability": 0.836226761341095
+          },
+          {
+            "word": " from",
+            "start": 2.02,
+            "end": 2.34,
+            "probability": 0.9974654912948608
+          },
+          {
+            "word": " Brazil,",
+            "start": 2.34,
+            "end": 2.68,
+            "probability": 0.9946808218955994
+          },
+          {
+            "word": " and",
+            "start": 3.16,
+            "end": 3.3,
+            "probability": 0.9959041476249695
+          },
+          {
+            "word": " I",
+            "start": 3.3,
+            "end": 3.42,
+            "probability": 0.9970389604568481
+          },
+          {
+            "word": " have",
+            "start": 3.42,
+            "end": 3.56,
+            "probability": 0.9823703765869141
+          },
+          {
+            "word": " spent",
+            "start": 3.56,
+            "end": 3.82,
+            "probability": 0.9966230392456055
+          },
+          {
+            "word": " more",
+            "start": 3.82,
+            "end": 4.06,
+            "probability": 0.9969735145568848
+          },
+          {
+            "word": " than",
+            "start": 4.06,
+            "end": 4.2,
+            "probability": 0.9986690282821655
+          },
+          {
+            "word": " 25",
+            "start": 4.2,
+            "end": 4.54,
+            "probability": 0.9693751335144043
+          },
+          {
+            "word": " years",
+            "start": 4.54,
+            "end": 5.04,
+            "probability": 0.9994468092918396
+          },
+          {
+            "word": " teaching",
+            "start": 5.04,
+            "end": 5.5,
+            "probability": 0.9956181049346924
+          },
+          {
+            "word": " Brazilian",
+            "start": 5.5,
+            "end": 5.98,
+            "probability": 0.9996798038482666
+          },
+          {
+            "word": " jiu",
+            "start": 5.98,
+            "end": 6.14,
+            "probability": 0.5851596593856812
+          },
+          {
+            "word": "-jitsu.",
+            "start": 6.14,
+            "end": 6.42,
+            "probability": 0.9279744823773702
+          }
+        ]
+      },
+      {
+        "start": 6.9,
+        "end": 12.18,
+        "text": " I trained with custom Gracie and Ricardo de la Riva, and I founded my academy in 2003.",
+        "words": [
+          {
+            "word": " I",
+            "start": 6.9,
+            "end": 7.0,
+            "probability": 0.9952982068061829
+          },
+          {
+            "word": " trained",
+            "start": 7.0,
+            "end": 7.28,
+            "probability": 0.9331908226013184
+          },
+          {
+            "word": " with",
+            "start": 7.28,
+            "end": 7.5,
+            "probability": 0.9849338531494141
+          },
+          {
+            "word": " custom",
+            "start": 7.5,
+            "end": 7.78,
+            "probability": 0.1743003875017166
+          },
+          {
+            "word": " Gracie",
+            "start": 7.78,
+            "end": 8.26,
+            "probability": 0.837894856929779
+          },
+          {
+            "word": " and",
+            "start": 8.26,
+            "end": 8.48,
+            "probability": 0.9766814708709717
+          },
+          {
+            "word": " Ricardo",
+            "start": 8.48,
+            "end": 8.8,
+            "probability": 0.9084806442260742
+          },
+          {
+            "word": " de",
+            "start": 8.8,
+            "end": 8.98,
+            "probability": 0.9481967091560364
+          },
+          {
+            "word": " la",
+            "start": 8.98,
+            "end": 9.08,
+            "probability": 0.8988121747970581
+          },
+          {
+            "word": " Riva,",
+            "start": 9.08,
+            "end": 9.28,
+            "probability": 0.7569500803947449
+          },
+          {
+            "word": " and",
+            "start": 9.54,
+            "end": 9.94,
+            "probability": 0.9952383041381836
+          },
+          {
+            "word": " I",
+            "start": 9.94,
+            "end": 10.06,
+            "probability": 0.9973164200782776
+          },
+          {
+            "word": " founded",
+            "start": 10.06,
+            "end": 10.52,
+            "probability": 0.9867126941680908
+          },
+          {
+            "word": " my",
+            "start": 10.52,
+            "end": 10.98,
+            "probability": 0.995109498500824
+          },
+          {
+            "word": " academy",
+            "start": 10.98,
+            "end": 11.34,
+            "probability": 0.8256886601448059
+          },
+          {
+            "word": " in",
+            "start": 11.34,
+            "end": 11.56,
+            "probability": 0.996901273727417
+          },
+          {
+            "word": " 2003.",
+            "start": 11.56,
+            "end": 12.18,
+            "probability": 0.9967893362045288
+          }
+        ]
+      },
+      {
+        "start": 13.24,
+        "end": 15.44,
+        "text": " But what we teach here goes beyond",
+        "words": [
+          {
+            "word": " But",
+            "start": 13.24,
+            "end": 13.38,
+            "probability": 0.9871814846992493
+          },
+          {
+            "word": " what",
+            "start": 13.38,
+            "end": 13.7,
+            "probability": 0.9738083481788635
+          },
+          {
+            "word": " we",
+            "start": 13.7,
+            "end": 14.0,
+            "probability": 0.9995187520980835
+          },
+          {
+            "word": " teach",
+            "start": 14.0,
+            "end": 14.26,
+            "probability": 0.9991599321365356
+          },
+          {
+            "word": " here",
+            "start": 14.26,
+            "end": 14.7,
+            "probability": 0.9968961477279663
+          },
+          {
+            "word": " goes",
+            "start": 14.7,
+            "end": 14.96,
+            "probability": 0.9896492958068848
+          },
+          {
+            "word": " beyond",
+            "start": 14.96,
+            "end": 15.44,
+            "probability": 0.9992648959159851
+          }
+        ]
+      },
+      {
+        "start": 16.0,
+        "end": 16.5,
+        "text": " techniques.",
+        "words": [
+          {
+            "word": " techniques.",
+            "start": 16.0,
+            "end": 16.5,
+            "probability": 0.9256256222724915
+          }
+        ]
+      },
+      {
+        "start": 17.36,
+        "end": 21.42,
+        "text": " Jiu-jitsu gives children and adults a place to practice staying calm under pressure,",
+        "words": [
+          {
+            "word": " Jiu",
+            "start": 17.36,
+            "end": 17.4,
+            "probability": 0.7015838623046875
+          },
+          {
+            "word": "-jitsu",
+            "start": 17.4,
+            "end": 17.66,
+            "probability": 0.9807151953379313
+          },
+          {
+            "word": " gives",
+            "start": 17.66,
+            "end": 17.96,
+            "probability": 0.9921608567237854
+          },
+          {
+            "word": " children",
+            "start": 17.96,
+            "end": 18.42,
+            "probability": 0.9985721111297607
+          },
+          {
+            "word": " and",
+            "start": 18.42,
+            "end": 18.56,
+            "probability": 0.7126686573028564
+          },
+          {
+            "word": " adults",
+            "start": 18.56,
+            "end": 18.84,
+            "probability": 0.9993293285369873
+          },
+          {
+            "word": " a",
+            "start": 18.84,
+            "end": 19.02,
+            "probability": 0.988616406917572
+          },
+          {
+            "word": " place",
+            "start": 19.02,
+            "end": 19.22,
+            "probability": 0.9993384480476379
+          },
+          {
+            "word": " to",
+            "start": 19.22,
+            "end": 19.48,
+            "probability": 0.9960485100746155
+          },
+          {
+            "word": " practice",
+            "start": 19.48,
+            "end": 19.78,
+            "probability": 0.8701613545417786
+          },
+          {
+            "word": " staying",
+            "start": 19.78,
+            "end": 20.4,
+            "probability": 0.7451788783073425
+          },
+          {
+            "word": " calm",
+            "start": 20.4,
+            "end": 20.78,
+            "probability": 0.9979932308197021
+          },
+          {
+            "word": " under",
+            "start": 20.78,
+            "end": 20.98,
+            "probability": 0.5391455888748169
+          },
+          {
+            "word": " pressure,",
+            "start": 20.98,
+            "end": 21.42,
+            "probability": 0.9866646528244019
+          }
+        ]
+      },
+      {
+        "start": 21.9,
+        "end": 27.08,
+        "text": " solving problems, setting boundaries, and building confidence through real experience.",
+        "words": [
+          {
+            "word": " solving",
+            "start": 21.9,
+            "end": 22.34,
+            "probability": 0.996123731136322
+          },
+          {
+            "word": " problems,",
+            "start": 22.34,
+            "end": 22.96,
+            "probability": 0.9987583160400391
+          },
+          {
+            "word": " setting",
+            "start": 23.4,
+            "end": 23.76,
+            "probability": 0.9940128922462463
+          },
+          {
+            "word": " boundaries,",
+            "start": 23.76,
+            "end": 24.24,
+            "probability": 0.9995112419128418
+          },
+          {
+            "word": " and",
+            "start": 24.52,
+            "end": 24.62,
+            "probability": 0.9937744140625
+          },
+          {
+            "word": " building",
+            "start": 24.62,
+            "end": 24.92,
+            "probability": 0.994176983833313
+          },
+          {
+            "word": " confidence",
+            "start": 24.92,
+            "end": 25.56,
+            "probability": 0.9993288516998291
+          },
+          {
+            "word": " through",
+            "start": 25.56,
+            "end": 25.9,
+            "probability": 0.9955912828445435
+          },
+          {
+            "word": " real",
+            "start": 25.9,
+            "end": 26.42,
+            "probability": 0.9957451224327087
+          },
+          {
+            "word": " experience.",
+            "start": 26.42,
+            "end": 27.08,
+            "probability": 0.9956269264221191
+          }
+        ]
+      },
+      {
+        "start": 28.180000000000007,
+        "end": 30.26,
+        "text": " We welcome complete beginners,",
+        "words": [
+          {
+            "word": " We",
+            "start": 28.180000000000007,
+            "end": 28.78,
+            "probability": 0.6212900280952454
+          },
+          {
+            "word": " welcome",
+            "start": 28.78,
+            "end": 29.26,
+            "probability": 0.938414454460144
+          },
+          {
+            "word": " complete",
+            "start": 29.26,
+            "end": 29.72,
+            "probability": 0.9544622302055359
+          },
+          {
+            "word": " beginners,",
+            "start": 29.72,
+            "end": 30.26,
+            "probability": 0.9898437261581421
+          }
+        ]
+      },
+      {
+        "start": 31.06,
+        "end": 37.34,
+        "text": " so you do not need to be in shape, know anything about jiu-jitsu, or feel ready before you visit.",
+        "words": [
+          {
+            "word": " so",
+            "start": 31.06,
+            "end": 31.5,
+            "probability": 0.9942508935928345
+          },
+          {
+            "word": " you",
+            "start": 31.5,
+            "end": 31.62,
+            "probability": 0.9713060259819031
+          },
+          {
+            "word": " do",
+            "start": 31.62,
+            "end": 31.72,
+            "probability": 0.8827112317085266
+          },
+          {
+            "word": " not",
+            "start": 31.72,
+            "end": 31.88,
+            "probability": 0.9986642599105835
+          },
+          {
+            "word": " need",
+            "start": 31.88,
+            "end": 32.14,
+            "probability": 0.996006190776825
+          },
+          {
+            "word": " to",
+            "start": 32.14,
+            "end": 32.32,
+            "probability": 0.998773992061615
+          },
+          {
+            "word": " be",
+            "start": 32.32,
+            "end": 32.58,
+            "probability": 0.9980371594429016
+          },
+          {
+            "word": " in",
+            "start": 32.58,
+            "end": 33.08,
+            "probability": 0.9877710342407227
+          },
+          {
+            "word": " shape,",
+            "start": 33.08,
+            "end": 33.5,
+            "probability": 0.9936755299568176
+          },
+          {
+            "word": " know",
+            "start": 33.86,
+            "end": 34.3,
+            "probability": 0.9534852504730225
+          },
+          {
+            "word": " anything",
+            "start": 34.3,
+            "end": 34.62,
+            "probability": 0.9532632827758789
+          },
+          {
+            "word": " about",
+            "start": 34.62,
+            "end": 34.96,
+            "probability": 0.9980955719947815
+          },
+          {
+            "word": " jiu",
+            "start": 34.96,
+            "end": 35.18,
+            "probability": 0.4902894888073206
+          },
+          {
+            "word": "-jitsu,",
+            "start": 35.18,
+            "end": 35.48,
+            "probability": 0.8660807609558105
+          },
+          {
+            "word": " or",
+            "start": 35.54,
+            "end": 35.72,
+            "probability": 0.995884120464325
+          },
+          {
+            "word": " feel",
+            "start": 35.72,
+            "end": 36.06,
+            "probability": 0.9952293634414673
+          },
+          {
+            "word": " ready",
+            "start": 36.06,
+            "end": 36.46,
+            "probability": 0.9990528225898743
+          },
+          {
+            "word": " before",
+            "start": 36.46,
+            "end": 36.82,
+            "probability": 0.9946870803833008
+          },
+          {
+            "word": " you",
+            "start": 36.82,
+            "end": 37.0,
+            "probability": 0.9816027283668518
+          },
+          {
+            "word": " visit.",
+            "start": 37.0,
+            "end": 37.34,
+            "probability": 0.9948806762695312
+          }
+        ]
+      },
+      {
+        "start": 38.14,
+        "end": 41.58,
+        "text": " I would love to meet you at the academy, show you around,",
+        "words": [
+          {
+            "word": " I",
+            "start": 38.14,
+            "end": 38.36,
+            "probability": 0.981315553188324
+          },
+          {
+            "word": " would",
+            "start": 38.36,
+            "end": 38.46,
+            "probability": 0.5238713026046753
+          },
+          {
+            "word": " love",
+            "start": 38.46,
+            "end": 38.66,
+            "probability": 0.9135054349899292
+          },
+          {
+            "word": " to",
+            "start": 38.66,
+            "end": 38.84,
+            "probability": 0.9951179027557373
+          },
+          {
+            "word": " meet",
+            "start": 38.84,
+            "end": 39.0,
+            "probability": 0.9976269602775574
+          },
+          {
+            "word": " you",
+            "start": 39.0,
+            "end": 39.4,
+            "probability": 0.9917844533920288
+          },
+          {
+            "word": " at",
+            "start": 39.4,
+            "end": 39.96,
+            "probability": 0.9655209183692932
+          },
+          {
+            "word": " the",
+            "start": 39.96,
+            "end": 40.12,
+            "probability": 0.9855477809906006
+          },
+          {
+            "word": " academy,",
+            "start": 40.12,
+            "end": 40.52,
+            "probability": 0.746320903301239
+          },
+          {
+            "word": " show",
+            "start": 40.7,
+            "end": 40.96,
+            "probability": 0.9649669528007507
+          },
+          {
+            "word": " you",
+            "start": 40.96,
+            "end": 41.14,
+            "probability": 0.9904428124427795
+          },
+          {
+            "word": " around,",
+            "start": 41.14,
+            "end": 41.58,
+            "probability": 0.997098445892334
+          }
+        ]
+      },
+      {
+        "start": 42.04,
+        "end": 48.32,
+        "text": " explain how our programs work, and let you see a class. There is no pressure and no obligation.",
+        "words": [
+          {
+            "word": " explain",
+            "start": 42.04,
+            "end": 42.62,
+            "probability": 0.9911038875579834
+          },
+          {
+            "word": " how",
+            "start": 42.62,
+            "end": 43.2,
+            "probability": 0.9980265498161316
+          },
+          {
+            "word": " our",
+            "start": 43.2,
+            "end": 43.52,
+            "probability": 0.9923564195632935
+          },
+          {
+            "word": " programs",
+            "start": 43.52,
+            "end": 43.86,
+            "probability": 0.9817097783088684
+          },
+          {
+            "word": " work,",
+            "start": 43.86,
+            "end": 44.34,
+            "probability": 0.9945312142372131
+          },
+          {
+            "word": " and",
+            "start": 44.74,
+            "end": 45.02,
+            "probability": 0.9970574378967285
+          },
+          {
+            "word": " let",
+            "start": 45.02,
+            "end": 45.18,
+            "probability": 0.9887346625328064
+          },
+          {
+            "word": " you",
+            "start": 45.18,
+            "end": 45.32,
+            "probability": 0.9986721277236938
+          },
+          {
+            "word": " see",
+            "start": 45.32,
+            "end": 45.56,
+            "probability": 0.9984488487243652
+          },
+          {
+            "word": " a",
+            "start": 45.56,
+            "end": 45.7,
+            "probability": 0.9610575437545776
+          },
+          {
+            "word": " class.",
+            "start": 45.7,
+            "end": 45.96,
+            "probability": 0.9977044463157654
+          },
+          {
+            "word": " There",
+            "start": 46.58,
+            "end": 46.76,
+            "probability": 0.9964842796325684
+          },
+          {
+            "word": " is",
+            "start": 46.76,
+            "end": 46.88,
+            "probability": 0.9761812686920166
+          },
+          {
+            "word": " no",
+            "start": 46.88,
+            "end": 47.02,
+            "probability": 0.9965656399726868
+          },
+          {
+            "word": " pressure",
+            "start": 47.02,
+            "end": 47.44,
+            "probability": 0.9994733929634094
+          },
+          {
+            "word": " and",
+            "start": 47.44,
+            "end": 47.82,
+            "probability": 0.8748335242271423
+          },
+          {
+            "word": " no",
+            "start": 47.82,
+            "end": 48.0,
+            "probability": 0.9957078695297241
+          },
+          {
+            "word": " obligation.",
+            "start": 48.0,
+            "end": 48.32,
+            "probability": 0.9968467354774475
+          }
+        ]
+      },
+      {
+        "start": 48.92,
+        "end": 54.62,
+        "text": " Just come in, meet us, and see whether it feels like the right place for you or your child.",
+        "words": [
+          {
+            "word": " Just",
+            "start": 48.92,
+            "end": 49.12,
+            "probability": 0.9980983138084412
+          },
+          {
+            "word": " come",
+            "start": 49.12,
+            "end": 49.34,
+            "probability": 0.9986610412597656
+          },
+          {
+            "word": " in,",
+            "start": 49.34,
+            "end": 49.64,
+            "probability": 0.9975799322128296
+          },
+          {
+            "word": " meet",
+            "start": 49.8,
+            "end": 50.04,
+            "probability": 0.9985812902450562
+          },
+          {
+            "word": " us,",
+            "start": 50.04,
+            "end": 50.44,
+            "probability": 0.9969664216041565
+          },
+          {
+            "word": " and",
+            "start": 50.68,
+            "end": 51.04,
+            "probability": 0.9982013702392578
+          },
+          {
+            "word": " see",
+            "start": 51.04,
+            "end": 51.24,
+            "probability": 0.9985431432723999
+          },
+          {
+            "word": " whether",
+            "start": 51.24,
+            "end": 51.48,
+            "probability": 0.8222863674163818
+          },
+          {
+            "word": " it",
+            "start": 51.48,
+            "end": 51.66,
+            "probability": 0.9949461817741394
+          },
+          {
+            "word": " feels",
+            "start": 51.66,
+            "end": 52.04,
+            "probability": 0.9970424771308899
+          },
+          {
+            "word": " like",
+            "start": 52.04,
+            "end": 52.42,
+            "probability": 0.9932498931884766
+          },
+          {
+            "word": " the",
+            "start": 52.42,
+            "end": 52.68,
+            "probability": 0.9944496154785156
+          },
+          {
+            "word": " right",
+            "start": 52.68,
+            "end": 52.98,
+            "probability": 0.9984633922576904
+          },
+          {
+            "word": " place",
+            "start": 52.98,
+            "end": 53.28,
+            "probability": 0.9993543028831482
+          },
+          {
+            "word": " for",
+            "start": 53.28,
+            "end": 53.54,
+            "probability": 0.9990119934082031
+          },
+          {
+            "word": " you",
+            "start": 53.54,
+            "end": 53.8,
+            "probability": 0.9975696206092834
+          },
+          {
+            "word": " or",
+            "start": 53.8,
+            "end": 54.1,
+            "probability": 0.9760587215423584
+          },
+          {
+            "word": " your",
+            "start": 54.1,
+            "end": 54.32,
+            "probability": 0.9919010996818542
+          },
+          {
+            "word": " child.",
+            "start": 54.32,
+            "end": 54.62,
+            "probability": 0.9990432858467102
+          }
+        ]
+      },
+      {
+        "start": 55.18,
+        "end": 60.48,
+        "text": " Use the form below, and we will help you choose the right class and location.",
+        "words": [
+          {
+            "word": " Use",
+            "start": 55.18,
+            "end": 55.66,
+            "probability": 0.7158443331718445
+          },
+          {
+            "word": " the",
+            "start": 55.66,
+            "end": 55.86,
+            "probability": 0.9855073690414429
+          },
+          {
+            "word": " form",
+            "start": 55.86,
+            "end": 56.1,
+            "probability": 0.9698343276977539
+          },
+          {
+            "word": " below,",
+            "start": 56.1,
+            "end": 56.5,
+            "probability": 0.9969077706336975
+          },
+          {
+            "word": " and",
+            "start": 57.58,
+            "end": 57.74,
+            "probability": 0.994162380695343
+          },
+          {
+            "word": " we",
+            "start": 57.74,
+            "end": 58.12,
+            "probability": 0.9921028017997742
+          },
+          {
+            "word": " will",
+            "start": 58.12,
+            "end": 58.22,
+            "probability": 0.5915209054946899
+          },
+          {
+            "word": " help",
+            "start": 58.22,
+            "end": 58.44,
+            "probability": 0.9982547163963318
+          },
+          {
+            "word": " you",
+            "start": 58.44,
+            "end": 58.74,
+            "probability": 0.998778760433197
+          },
+          {
+            "word": " choose",
+            "start": 58.74,
+            "end": 59.1,
+            "probability": 0.9794647097587585
+          },
+          {
+            "word": " the",
+            "start": 59.1,
+            "end": 59.3,
+            "probability": 0.9893407225608826
+          },
+          {
+            "word": " right",
+            "start": 59.3,
+            "end": 59.46,
+            "probability": 0.9989864230155945
+          },
+          {
+            "word": " class",
+            "start": 59.46,
+            "end": 59.8,
+            "probability": 0.9950461387634277
+          },
+          {
+            "word": " and",
+            "start": 59.8,
+            "end": 60.12,
+            "probability": 0.9780139923095703
+          },
+          {
+            "word": " location.",
+            "start": 60.12,
+            "end": 60.48,
+            "probability": 0.9986936450004578
+          }
+        ]
+      },
+      {
+        "start": 61.3,
+        "end": 66.74,
+        "text": " I'm looking forward to meeting you and helping you to take that first step of the journey.",
+        "words": [
+          {
+            "word": " I'm",
+            "start": 61.3,
+            "end": 61.46,
+            "probability": 0.968072772026062
+          },
+          {
+            "word": " looking",
+            "start": 61.46,
+            "end": 61.66,
+            "probability": 0.9985613226890564
+          },
+          {
+            "word": " forward",
+            "start": 61.66,
+            "end": 62.08,
+            "probability": 0.9991415739059448
+          },
+          {
+            "word": " to",
+            "start": 62.08,
+            "end": 62.74,
+            "probability": 0.9974002838134766
+          },
+          {
+            "word": " meeting",
+            "start": 62.74,
+            "end": 62.94,
+            "probability": 0.9972532391548157
+          },
+          {
+            "word": " you",
+            "start": 62.94,
+            "end": 63.32,
+            "probability": 0.9904541969299316
+          },
+          {
+            "word": " and",
+            "start": 63.32,
+            "end": 63.64,
+            "probability": 0.8247544765472412
+          },
+          {
+            "word": " helping",
+            "start": 63.64,
+            "end": 64.22,
+            "probability": 0.6177282333374023
+          },
+          {
+            "word": " you",
+            "start": 64.22,
+            "end": 64.6,
+            "probability": 0.9934592247009277
+          },
+          {
+            "word": " to",
+            "start": 64.6,
+            "end": 64.78,
+            "probability": 0.9390553832054138
+          },
+          {
+            "word": " take",
+            "start": 64.78,
+            "end": 65.0,
+            "probability": 0.997307538986206
+          },
+          {
+            "word": " that",
+            "start": 65.0,
+            "end": 65.34,
+            "probability": 0.9821142554283142
+          },
+          {
+            "word": " first",
+            "start": 65.34,
+            "end": 65.94,
+            "probability": 0.9860125184059143
+          },
+          {
+            "word": " step",
+            "start": 65.94,
+            "end": 66.26,
+            "probability": 0.9988271594047546
+          },
+          {
+            "word": " of",
+            "start": 66.26,
+            "end": 66.4,
+            "probability": 0.9760366082191467
+          },
+          {
+            "word": " the",
+            "start": 66.4,
+            "end": 66.52,
+            "probability": 0.9649630188941956
+          },
+          {
+            "word": " journey.",
+            "start": 66.52,
+            "end": 66.74,
+            "probability": 0.9985143542289734
+          }
+        ]
+      }
+    ]
+  },
+  "rendered_transcription": {
+    "model": "local OpenAI Whisper small.en",
+    "text": " We welcome complete beginners, so you do not need to be in shape, know anything about Jiu Jitsu, or feel ready before you visit. I would love to meet you at the academy, show you around, explain how our programs work, and let you see a class. There is no pressure and no obligation. Just come in, meet us, and see whether it feels like the right place for you or your child.",
+    "segments": [
+      {
+        "start": 0.0,
+        "end": 9.3,
+        "text": " We welcome complete beginners, so you do not need to be in shape, know anything about Jiu Jitsu, or feel ready before you visit.",
+        "words": [
+          {
+            "word": " We",
+            "start": 0.0,
+            "end": 0.76,
+            "probability": 0.9101028442382812
+          },
+          {
+            "word": " welcome",
+            "start": 0.76,
+            "end": 1.22,
+            "probability": 0.9771748185157776
+          },
+          {
+            "word": " complete",
+            "start": 1.22,
+            "end": 1.68,
+            "probability": 0.9654998183250427
+          },
+          {
+            "word": " beginners,",
+            "start": 1.68,
+            "end": 2.22,
+            "probability": 0.9913839101791382
+          },
+          {
+            "word": " so",
+            "start": 3.1,
+            "end": 3.46,
+            "probability": 0.9948531985282898
+          },
+          {
+            "word": " you",
+            "start": 3.46,
+            "end": 3.58,
+            "probability": 0.9774302244186401
+          },
+          {
+            "word": " do",
+            "start": 3.58,
+            "end": 3.68,
+            "probability": 0.8631775379180908
+          },
+          {
+            "word": " not",
+            "start": 3.68,
+            "end": 3.84,
+            "probability": 0.9989458918571472
+          },
+          {
+            "word": " need",
+            "start": 3.84,
+            "end": 4.1,
+            "probability": 0.9962339997291565
+          },
+          {
+            "word": " to",
+            "start": 4.1,
+            "end": 4.26,
+            "probability": 0.9989387392997742
+          },
+          {
+            "word": " be",
+            "start": 4.26,
+            "end": 4.56,
+            "probability": 0.998401939868927
+          },
+          {
+            "word": " in",
+            "start": 4.56,
+            "end": 5.04,
+            "probability": 0.9875640273094177
+          },
+          {
+            "word": " shape,",
+            "start": 5.04,
+            "end": 5.46,
+            "probability": 0.9959142804145813
+          },
+          {
+            "word": " know",
+            "start": 5.88,
+            "end": 6.26,
+            "probability": 0.9737977385520935
+          },
+          {
+            "word": " anything",
+            "start": 6.26,
+            "end": 6.58,
+            "probability": 0.9776174426078796
+          },
+          {
+            "word": " about",
+            "start": 6.58,
+            "end": 6.92,
+            "probability": 0.9984582662582397
+          },
+          {
+            "word": " Jiu",
+            "start": 6.92,
+            "end": 7.14,
+            "probability": 0.1635931432247162
+          },
+          {
+            "word": " Jitsu,",
+            "start": 7.14,
+            "end": 7.42,
+            "probability": 0.7120554596185684
+          },
+          {
+            "word": " or",
+            "start": 7.5,
+            "end": 7.68,
+            "probability": 0.9954599738121033
+          },
+          {
+            "word": " feel",
+            "start": 7.68,
+            "end": 8.02,
+            "probability": 0.9968377351760864
+          },
+          {
+            "word": " ready",
+            "start": 8.02,
+            "end": 8.42,
+            "probability": 0.9991511106491089
+          },
+          {
+            "word": " before",
+            "start": 8.42,
+            "end": 8.78,
+            "probability": 0.9954147338867188
+          },
+          {
+            "word": " you",
+            "start": 8.78,
+            "end": 8.96,
+            "probability": 0.9849612712860107
+          },
+          {
+            "word": " visit.",
+            "start": 8.96,
+            "end": 9.3,
+            "probability": 0.9960554838180542
+          }
+        ]
+      },
+      {
+        "start": 10.12,
+        "end": 17.92,
+        "text": " I would love to meet you at the academy, show you around, explain how our programs work, and let you see a class.",
+        "words": [
+          {
+            "word": " I",
+            "start": 10.12,
+            "end": 10.34,
+            "probability": 0.9881479144096375
+          },
+          {
+            "word": " would",
+            "start": 10.34,
+            "end": 10.42,
+            "probability": 0.6565367579460144
+          },
+          {
+            "word": " love",
+            "start": 10.42,
+            "end": 10.62,
+            "probability": 0.8959381580352783
+          },
+          {
+            "word": " to",
+            "start": 10.62,
+            "end": 10.8,
+            "probability": 0.9969024062156677
+          },
+          {
+            "word": " meet",
+            "start": 10.8,
+            "end": 10.96,
+            "probability": 0.9981698989868164
+          },
+          {
+            "word": " you",
+            "start": 10.96,
+            "end": 11.36,
+            "probability": 0.9942319989204407
+          },
+          {
+            "word": " at",
+            "start": 11.36,
+            "end": 11.92,
+            "probability": 0.9617719650268555
+          },
+          {
+            "word": " the",
+            "start": 11.92,
+            "end": 12.08,
+            "probability": 0.9875211715698242
+          },
+          {
+            "word": " academy,",
+            "start": 12.08,
+            "end": 12.46,
+            "probability": 0.6538156867027283
+          },
+          {
+            "word": " show",
+            "start": 12.66,
+            "end": 12.92,
+            "probability": 0.9820698499679565
+          },
+          {
+            "word": " you",
+            "start": 12.92,
+            "end": 13.1,
+            "probability": 0.9954919815063477
+          },
+          {
+            "word": " around,",
+            "start": 13.1,
+            "end": 13.54,
+            "probability": 0.9981014132499695
+          },
+          {
+            "word": " explain",
+            "start": 13.98,
+            "end": 14.58,
+            "probability": 0.9917627573013306
+          },
+          {
+            "word": " how",
+            "start": 14.58,
+            "end": 15.16,
+            "probability": 0.9980605244636536
+          },
+          {
+            "word": " our",
+            "start": 15.16,
+            "end": 15.5,
+            "probability": 0.9939084053039551
+          },
+          {
+            "word": " programs",
+            "start": 15.5,
+            "end": 15.82,
+            "probability": 0.9767009615898132
+          },
+          {
+            "word": " work,",
+            "start": 15.82,
+            "end": 16.3,
+            "probability": 0.9949677586555481
+          },
+          {
+            "word": " and",
+            "start": 16.7,
+            "end": 16.98,
+            "probability": 0.9980621933937073
+          },
+          {
+            "word": " let",
+            "start": 16.98,
+            "end": 17.14,
+            "probability": 0.9912810921669006
+          },
+          {
+            "word": " you",
+            "start": 17.14,
+            "end": 17.28,
+            "probability": 0.998900294303894
+          },
+          {
+            "word": " see",
+            "start": 17.28,
+            "end": 17.52,
+            "probability": 0.9986268281936646
+          },
+          {
+            "word": " a",
+            "start": 17.52,
+            "end": 17.66,
+            "probability": 0.9675983190536499
+          },
+          {
+            "word": " class.",
+            "start": 17.66,
+            "end": 17.92,
+            "probability": 0.9981009364128113
+          }
+        ]
+      },
+      {
+        "start": 18.56,
+        "end": 26.56,
+        "text": " There is no pressure and no obligation. Just come in, meet us, and see whether it feels like the right place for you or your child.",
+        "words": [
+          {
+            "word": " There",
+            "start": 18.56,
+            "end": 18.72,
+            "probability": 0.9970805048942566
+          },
+          {
+            "word": " is",
+            "start": 18.72,
+            "end": 18.84,
+            "probability": 0.9752697348594666
+          },
+          {
+            "word": " no",
+            "start": 18.84,
+            "end": 18.98,
+            "probability": 0.997423529624939
+          },
+          {
+            "word": " pressure",
+            "start": 18.98,
+            "end": 19.4,
+            "probability": 0.9996116757392883
+          },
+          {
+            "word": " and",
+            "start": 19.4,
+            "end": 19.78,
+            "probability": 0.8574804663658142
+          },
+          {
+            "word": " no",
+            "start": 19.78,
+            "end": 19.96,
+            "probability": 0.9962616562843323
+          },
+          {
+            "word": " obligation.",
+            "start": 19.96,
+            "end": 20.3,
+            "probability": 0.9970130920410156
+          },
+          {
+            "word": " Just",
+            "start": 20.88,
+            "end": 21.1,
+            "probability": 0.9981815814971924
+          },
+          {
+            "word": " come",
+            "start": 21.1,
+            "end": 21.3,
+            "probability": 0.998406708240509
+          },
+          {
+            "word": " in,",
+            "start": 21.3,
+            "end": 21.6,
+            "probability": 0.9978048205375671
+          },
+          {
+            "word": " meet",
+            "start": 21.76,
+            "end": 22.0,
+            "probability": 0.9985164999961853
+          },
+          {
+            "word": " us,",
+            "start": 22.0,
+            "end": 22.4,
+            "probability": 0.9980689883232117
+          },
+          {
+            "word": " and",
+            "start": 22.64,
+            "end": 23.0,
+            "probability": 0.9983038902282715
+          },
+          {
+            "word": " see",
+            "start": 23.0,
+            "end": 23.2,
+            "probability": 0.9982323050498962
+          },
+          {
+            "word": " whether",
+            "start": 23.2,
+            "end": 23.44,
+            "probability": 0.912094235420227
+          },
+          {
+            "word": " it",
+            "start": 23.44,
+            "end": 23.66,
+            "probability": 0.9941387176513672
+          },
+          {
+            "word": " feels",
+            "start": 23.66,
+            "end": 24.0,
+            "probability": 0.9974657297134399
+          },
+          {
+            "word": " like",
+            "start": 24.0,
+            "end": 24.38,
+            "probability": 0.9927461743354797
+          },
+          {
+            "word": " the",
+            "start": 24.38,
+            "end": 24.64,
+            "probability": 0.9950380921363831
+          },
+          {
+            "word": " right",
+            "start": 24.64,
+            "end": 24.94,
+            "probability": 0.9984215497970581
+          },
+          {
+            "word": " place",
+            "start": 24.94,
+            "end": 25.22,
+            "probability": 0.9991580247879028
+          },
+          {
+            "word": " for",
+            "start": 25.22,
+            "end": 25.5,
+            "probability": 0.9990084767341614
+          },
+          {
+            "word": " you",
+            "start": 25.5,
+            "end": 25.76,
+            "probability": 0.9982107877731323
+          },
+          {
+            "word": " or",
+            "start": 25.76,
+            "end": 26.06,
+            "probability": 0.9708518981933594
+          },
+          {
+            "word": " your",
+            "start": 26.06,
+            "end": 26.28,
+            "probability": 0.99234938621521
+          },
+          {
+            "word": " child.",
+            "start": 26.28,
+            "end": 26.56,
+            "probability": 0.9978871941566467
+          }
+        ]
+      }
+    ]
+  },
+  "visual_review": {
+    "static": "Both 1:1 and 9:16 contact sheets reviewed. Exact headline/support/footer, no text/photo overlap; all four group faces preserved. Real Joao-only source frame; no AI.",
+    "video": "Both five-frame contact sheets reviewed at beginning, middle and ending. Joao face remains clear; captions do not obscure face. Burned final caption ends child. No freeze-frame extension or empty end card.",
+    "limitations": "Contact-sheet/safe-zone review is not a native Ads Manager placement-overlay preview. Remote Meta creative-copy source URL unavailable; exact preferred thumbnails, durations, status and create-request mapping verified instead."
+  }
+}

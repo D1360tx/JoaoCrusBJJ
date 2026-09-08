@@ -1,0 +1,26 @@
+[
+  {
+    "ad_name": "AY07_BEGINNER-BELONGING_STATIC",
+    "primary_text": "At 8–12, joining a new group can feel like the hardest part. Youth BJJ gives complete beginners a clear way in: meet the coach, learn one movement, practice with a partner, and build from there.\n\nOn the first visit, your child can watch or participate while your family sees how the class feels.\n\nClasses meet Tuesday and Thursday, 5:00–5:45 p.m. inside Castle Hill Fitness. Complete the class finder and Joao will personally call to help plan a free visit.",
+    "headline": "A Place to Start and Learn Together",
+    "description": "Youth BJJ, ages 8–12 in Austin.",
+    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+    "cta": "LEARN_MORE"
+  },
+  {
+    "ad_name": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO",
+    "primary_text": "A child does not have to feel ready before starting. In Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress. Complete beginners are welcome. Find the right starting point in Austin.",
+    "headline": "Youth BJJ for Ages 8–12",
+    "description": "Castle Hill Fitness · Tue/Thu at 5 p.m.",
+    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY09_BEGINNERS-WELCOME_VIDEO&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+    "cta": "LEARN_MORE"
+  },
+  {
+    "ad_name": "AY09B_BEGINNERS-WELCOME_STATIC",
+    "primary_text": "A child does not have to feel ready before starting. In Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress. Complete beginners are welcome. Find the right starting point in Austin.",
+    "headline": "Youth BJJ for Ages 8–12",
+    "description": "Castle Hill Fitness · Tue/Thu at 5 p.m.",
+    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY09_BEGINNERS-WELCOME_VIDEO&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+    "cta": "LEARN_MORE"
+  }
+]

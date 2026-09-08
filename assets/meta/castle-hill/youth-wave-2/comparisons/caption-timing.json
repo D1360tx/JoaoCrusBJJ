@@ -1,0 +1,95 @@
+{
+  "source_in": 28.04,
+  "source_out": 54.88,
+  "duration": 26.84,
+  "method": "Local Whisper small.en word timestamps, cross-checked against source VTT; capitalization/punctuation normalized only. Final rendered audio independently retranscribed.",
+  "original_defect": "Original source-out 39.00 interrupts I would love to meet you at the academy after meet. Original captions paraphrased audio and omitted this partial sentence.",
+  "ending": "Just come in, meet us, and see whether it feels like the right place for you or your child.",
+  "next_sentence_starts": 55.18,
+  "captions": [
+    {
+      "source_start": 28.18,
+      "source_end": 30.5,
+      "start": 0.14,
+      "end": 2.46,
+      "text": "We welcome complete beginners,"
+    },
+    {
+      "source_start": 31.06,
+      "source_end": 33.65,
+      "start": 3.02,
+      "end": 5.61,
+      "text": "so you do not need to be in shape,"
+    },
+    {
+      "source_start": 33.86,
+      "source_end": 35.5,
+      "start": 5.82,
+      "end": 7.46,
+      "text": "know anything about jiu-jitsu,"
+    },
+    {
+      "source_start": 35.54,
+      "source_end": 37.65,
+      "start": 7.5,
+      "end": 9.61,
+      "text": "or feel ready before you visit."
+    },
+    {
+      "source_start": 38.14,
+      "source_end": 40.6,
+      "start": 10.1,
+      "end": 12.56,
+      "text": "I would love to meet you at the academy,"
+    },
+    {
+      "source_start": 40.7,
+      "source_end": 41.85,
+      "start": 12.66,
+      "end": 13.81,
+      "text": "show you around,"
+    },
+    {
+      "source_start": 42.04,
+      "source_end": 44.55,
+      "start": 14.0,
+      "end": 16.51,
+      "text": "explain how our programs work,"
+    },
+    {
+      "source_start": 44.74,
+      "source_end": 46.2,
+      "start": 16.7,
+      "end": 18.16,
+      "text": "and let you see a class."
+    },
+    {
+      "source_start": 46.58,
+      "source_end": 48.55,
+      "start": 18.54,
+      "end": 20.51,
+      "text": "There is no pressure and no obligation."
+    },
+    {
+      "source_start": 48.92,
+      "source_end": 50.6,
+      "start": 20.88,
+      "end": 22.56,
+      "text": "Just come in, meet us,"
+    },
+    {
+      "source_start": 50.68,
+      "source_end": 52.45,
+      "start": 22.64,
+      "end": 24.41,
+      "text": "and see whether it feels like"
+    },
+    {
+      "source_start": 52.45,
+      "source_end": 54.88,
+      "start": 24.41,
+      "end": 26.84,
+      "text": "the right place for you or your child."
+    }
+  ]
+}

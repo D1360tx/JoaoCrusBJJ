@@ -1,5 +1,12 @@
 # Austin Youth AY07 / AY08 / AY09: paused draft inventory
 
+## Current approved revision and comparisons
+
+**Current evidence: [comparisons/README.md](comparisons/README.md).** AY07 was updated in place to beginner-belonging (creative `1687998043330822`); AY09A longer video and AY09B static were separately created and verified PAUSED. Original AY09 and every prior asset below remain intact. The original AY07 table/audit is historical, not its current creative. Do not run the historical `austin_youth_meta.py` to refresh current AY07 evidence; use `austin_youth_comparison_meta.py --verify`.
+
+The original AY09's 39.00-second source boundary cut the sentence after “meet.” Earlier complete-cut wording is superseded by the source-word/encoded-audio evidence in comparisons. The replacement comparison uses a continuous completed 26.84-second thought, not a longer empty outro.
+
+
 ## AY09 video extension
 
 [AY09 production assets and evidence](video/README.md) add a placement-aware SINGLE_VIDEO draft: creative `1107882611663240`, ad `120251261045730072`, final configured/effective **PAUSED / PAUSED**. Two H.264/AAC exports (720×1280 Stories/Reels and 720×900 feed, each 16.607 seconds), two ASS caption files and two reviewed contact sheets are retained. The separate `video/approved-copy.json`, `video/manifest.json` and `video/meta-audit.json` preserve the existing AY07/AY08 schemas and evidence unchanged. Joao only, no students; participant/video paid-media permission remains an activation gate.
