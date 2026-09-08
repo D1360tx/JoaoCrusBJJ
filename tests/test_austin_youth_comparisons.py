@@ -18,7 +18,11 @@ class ComparisonTests(unittest.TestCase):
   a,b,c=self.copy; self.assertEqual(a['headline'],'A Place to Start and Learn Together'); self.assertEqual(a['description'],'Youth BJJ, ages 8–12 in Austin.')
   self.assertEqual(a['primary_text'],'At 8–12, joining a new group can feel like the hardest part. Youth BJJ gives complete beginners a clear way in: meet the coach, learn one movement, practice with a partner, and build from there.\n\nOn the first visit, your child can watch or participate while your family sees how the class feels.\n\nClasses meet Tuesday and Thursday, 5:00–5:45 p.m. inside Castle Hill Fitness. Complete the class finder and Joao will personally call to help plan a free visit.')
   for key in ['primary_text','headline','description','destination_url','cta']:
-   self.assertEqual(b[key],c[key]); self.assertEqual(b[key],json.loads((P.parent/'video/approved-copy.json').read_text())[key])
+   self.assertEqual(b[key],c[key])
+   original=json.loads((P.parent/'video/approved-copy.json').read_text())[key]
+   if key=='destination_url': original=original.replace('utm_content=AY09_BEGINNERS-WELCOME_VIDEO','utm_content={{ad.name}}')
+   self.assertEqual(b[key],original)
+  for x in [b,c]: self.assertIn('utm_content={{ad.name}}',x['destination_url'])
   for x in self.copy: self.assertNotIn('—',x['primary_text']); self.assertIn('{{adset.name}}',x['destination_url']); self.assertIn('{{campaign.id}}',x['destination_url'])
   self.assertIn('{{ad.name}}',a['destination_url'])
   for asset in self.m['assets']:
@@ -47,6 +51,9 @@ class ComparisonTests(unittest.TestCase):
    features=cr['degrees_of_freedom_spec']['creative_features_spec']; self.assertEqual(set(features),set(a['original_creative']['degrees_of_freedom_spec']['creative_features_spec'])); self.assertTrue(all(v['enroll_status']=='OPT_OUT' for v in features.values()))
    for field,key in [('bodies','primary_text'),('titles','headline'),('descriptions','description')]: self.assertEqual(f[field],[{'text':x[key]}])
    self.assertEqual(f['link_urls'],[{'website_url':x['destination_url']}]); self.assertEqual(f['call_to_action_types'],['LEARN_MORE']); self.assertEqual(f['optimization_type'],'PLACEMENT'); self.assertNotIn('form_id',json.dumps(cr))
+   if name.startswith('AY09'):
+    self.assertIn('utm_content={{ad.name}}',f['link_urls'][0]['website_url'])
+    self.assertEqual(len(features),83)
    video='LONG-VIDEO' in name; media=f['videos' if video else 'images']; self.assertEqual({z['adlabels'][0]['name']:z['video_id' if video else 'hash'] for z in media},r.get('creative_media',r['media']))
    self.assertEqual([z['priority'] for z in f['asset_customization_rules']],[1,2])
 if __name__=='__main__': unittest.main()

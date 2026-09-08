@@ -30,7 +30,9 @@ def persist(tool,args,value):
 
 def call(tool,args):
  assert tool in {'get_campaign','get_adset','get_ad','get_creative','upload_image','create_creative','create_ad','update_ad'}
- if tool=='update_ad': assert args['ad_id']==AY07 and args['status']=='PAUSED' and set(args)=={'ad_id','creative_id','status','name'}
+ if tool=='update_ad':
+  allowed={AY07:'AY07_BEGINNER-BELONGING_STATIC','120251263139970072':'AY09A_BEGINNERS-WELCOME_LONG-VIDEO','120251263002380072':'AY09B_BEGINNERS-WELCOME_STATIC'}
+  assert args['ad_id'] in allowed and args['name']==allowed[args['ad_id']] and args['status']=='PAUSED' and set(args)=={'ad_id','creative_id','status','name'}
  if tool=='create_ad': assert args['adset_id']==S and args['status']=='PAUSED'
  result=subprocess.run(['npx','--yes','mcporter','call','--stdio','/home/d1360/.hermes/mcp/meta-ads-mcp/run-hermes.sh',tool,'--args',json.dumps(args),'--output','json'],capture_output=True,text=True,check=True,timeout=120)
  return persist(tool,args,json.loads(result.stdout))
@@ -70,7 +72,7 @@ def preflight():
  assert A['original_ad_before']['status']==A['original_ad_before']['effective_status']=='PAUSED'
  for key,field in [('primary_text','bodies'),('headline','titles'),('description','descriptions')]:
   assert A['original_creative']['asset_feed_spec'][field][0]['text']==COPIES[1][key]
- assert A['original_creative']['asset_feed_spec']['link_urls'][0]['website_url']==COPIES[1]['destination_url']
+ assert A['original_creative']['asset_feed_spec']['link_urls'][0]['website_url'].replace('utm_content=AY09_BEGINNERS-WELCOME_VIDEO','utm_content={{ad.name}}')==COPIES[1]['destination_url']
  return p
 
 def unchanged(p):

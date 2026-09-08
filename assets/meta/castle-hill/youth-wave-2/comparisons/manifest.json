@@ -446,5 +446,23 @@
         865
       ]
     }
-  ]
+  ],
+  "comparison_attribution": {
+    "status": "PARTIAL_BLOCKED_VIDEO_ID_REMAP",
+    "required_utm_content": "{{ad.name}}",
+    "blocker": "Meta remaps both existing AY09A video IDs on new creative creation, with and without supplied thumbnail_url. Exact-media-ID acceptance fails; neither video creative was attached. AY09A remains on its original hardcoded UTM creative.",
+    "records": {
+      "AY09B_BEGINNERS-WELCOME_STATIC": {
+        "ad_id": "120251263002380072",
+        "creative_id": "1066872229294951",
+        "current_destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}"
+      },
+      "AY09A_BEGINNERS-WELCOME_LONG-VIDEO": {
+        "ad_id": "120251263139970072",
+        "creative_id": "1050466397745571",
+        "current_destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY09_BEGINNERS-WELCOME_VIDEO&utm_term={{adset.name}}&utm_id={{campaign.id}}"
+      }
+    },
+    "evidence": "meta-audit.json#attribution_correction"
+  }
 }

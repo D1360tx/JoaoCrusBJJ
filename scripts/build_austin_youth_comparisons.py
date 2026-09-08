@@ -19,7 +19,8 @@ def text(im,boxes,s,y,size=70,color=WHITE,font=DISPLAY,x=72,maxw=936):
 def main():
  PACK.mkdir(parents=True,exist_ok=True)
  old=json.loads((PACK.parent/'video/approved-copy.json').read_text())
- # Match current AY09 media test copy and destination exactly, including its existing content UTM.
+ # Preserve copy and landing page; distinguish comparison variants in CRM attribution.
+ old['destination_url']=old['destination_url'].replace('utm_content=AY09_BEGINNERS-WELCOME_VIDEO','utm_content={{ad.name}}')
  a7={'ad_name':'AY07_BEGINNER-BELONGING_STATIC','primary_text':'At 8–12, joining a new group can feel like the hardest part. Youth BJJ gives complete beginners a clear way in: meet the coach, learn one movement, practice with a partner, and build from there.\n\nOn the first visit, your child can watch or participate while your family sees how the class feels.\n\nClasses meet Tuesday and Thursday, 5:00–5:45 p.m. inside Castle Hill Fitness. Complete the class finder and Joao will personally call to help plan a free visit.','headline':'A Place to Start and Learn Together','description':'Youth BJJ, ages 8–12 in Austin.','destination_url':json.loads((PACK.parent/'approved-copy.json').read_text())[0]['destination_url'],'cta':'LEARN_MORE'}
  copies=[a7]+[{k:v for k,v in old.items() if k!='meta_ad_name'}|{'ad_name':n} for n in ['AY09A_BEGINNERS-WELCOME_LONG-VIDEO','AY09B_BEGINNERS-WELCOME_STATIC']]
  write(PACK/'approved-copy.json',copies)

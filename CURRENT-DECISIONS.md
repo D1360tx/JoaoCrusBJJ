@@ -27,7 +27,14 @@
 
 ---
 
-## Austin Youth approved beginner-belonging and format comparisons (2026-09-08)
+## AY09 comparison attribution correction: partial, blocked (2026-09-08)
+
+- Required comparison attribution is `utm_content={{ad.name}}`; identical hardcoded content UTMs do not distinguish variants in the backend/CRM. This supersedes the earlier deliberate-constant-UTM decision below. Landing page and all other query parameters remain unchanged.
+- AY09B ad `120251263002380072` was updated in place to creative `1066872229294951`. Independently verified dynamic URL, exact unchanged image hashes/copy/routing/identities, all 83 OPT_OUT values, no form and PAUSED / PAUSED.
+- AY09A remains blocked: Meta remapped both existing video IDs in two replacement attempts (with and without thumbnail_url). The exact-media-ID gate rejected both before any ad swap. Unattached creatives `1742996493484338` and `1635025141591684` are retained as evidence; AY09A still uses creative `1050466397745571` and its old literal UTM. Accepting verified creative-owned video copies requires a scope decision; do not silently weaken the gate.
+- Both comparison ads and parents remain PAUSED / PAUSED; AY07 and original AY09 are untouched. Budget remains `3500`, targeting unchanged. Strict regression suite correctly reports 9 pass / 1 fail because AY09A is not corrected. No merge, activation or deployment.
+
+## Austin Youth approved beginner-belonging and format comparisons (2026-09-08, historical baseline)
 
 - User explicitly approved replacing existing PAUSED AY07 with beginner-belonging copy and real group-photo visuals, plus two separate PAUSED AY09 comparisons. No activation, parent/budget/targeting/destination change, website deployment or PR merge is authorized.
 - AY07 updated **in place**, preserving ad `120251261010900072`, now `AY07_BEGINNER-BELONGING_STATIC`, creative `1687998043330822`. The approved two-line hook is “THERE'S ROOM” / “TO BE A BEGINNER.” Full group photograph and all faces are retained. Historical AY07 files and old creative evidence are retained, not current live configuration.

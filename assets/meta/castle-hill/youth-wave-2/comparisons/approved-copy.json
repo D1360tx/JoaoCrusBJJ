@@ -12,7 +12,7 @@
     "primary_text": "A child does not have to feel ready before starting. In Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress. Complete beginners are welcome. Find the right starting point in Austin.",
     "headline": "Youth BJJ for Ages 8–12",
     "description": "Castle Hill Fitness · Tue/Thu at 5 p.m.",
-    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY09_BEGINNERS-WELCOME_VIDEO&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}",
     "cta": "LEARN_MORE"
   },
   {
@@ -20,7 +20,7 @@
     "primary_text": "A child does not have to feel ready before starting. In Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress. Complete beginners are welcome. Find the right starting point in Austin.",
     "headline": "Youth BJJ for Ages 8–12",
     "description": "Castle Hill Fitness · Tue/Thu at 5 p.m.",
-    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY09_BEGINNERS-WELCOME_VIDEO&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+    "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}",
     "cta": "LEARN_MORE"
   }
 ]
