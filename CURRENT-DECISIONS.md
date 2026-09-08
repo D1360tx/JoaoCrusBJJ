@@ -27,6 +27,15 @@
 
 ---
 
+## Castle Hill Meta creative pack and paused-build approval (2026-09-07)
+
+- ✅ Diego authorized building a **paused campaign only**, not activating it. This creative-production task makes **no Meta reads or mutations**, uploads, campaign creations, budget edits, or activation calls. A later separately scoped build must explicitly keep campaign, ad set, and ads PAUSED.
+- 🟡 Working values for that later paused build: **$35/day campaign budget**, **10-mile Austin radius** centered on Castle Hill Fitness, and **ages 24–54**. Budget, radius, age targeting, and the September 14 opening date remain provisional. This is not spend approval.
+- ✅ Produce six static concepts, each in 1080×1080 and 1080×1920, using official branding and existing real photographs only. See `assets/meta/castle-hill/launch-wave-1/README.md` and its machine-readable manifest.
+- 🔴 Source audit found `castle-hill-adults-coaching-20260907.webp` is an AI-derived asset despite the earlier photography note calling it real. Its source is proven by `scripts/prepare_adults_joao_ai_hero.py`. Exclude it from this real-photo-only pack. No live site changes are included in this task.
+- 🔴 The twelve exported files are **review-only, not upload-ready**: cleared adult instruction/drilling/private-coaching images and a Youth two-partner/visible-coach image are not available in the audited source set. Real portrait/group substitutions are explicitly flagged, never described as meeting the required scenes.
+- 🔴 Existing site publication and partnership-photo documentation do not establish paid-media releases. Confirm participant/guardian releases and Castle Hill naming/co-marketing permission before upload or traffic. Do not merge this pack while scene QA is unresolved. Final creative approval, targeting, date confirmation, destination/tracking acceptance, and explicit activation approval remain separate gates.
+
 ## Approved Castle Hill page revisions (2026-09-07)
 
 - ✅ Revise the approved live `/castle-hill-grand-opening/` route only after QA. Show Youth before Adults in each schedule day, matching 5:00 PM before 6:00 PM. Preserve the shared calendar and all class records.
