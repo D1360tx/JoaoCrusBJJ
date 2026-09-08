@@ -1,0 +1,79 @@
+{
+  "technical_status": "pass",
+  "asset_count": 12,
+  "concept_count": 6,
+  "dimension_counts": {
+    "(1080, 1080)": 6,
+    "(1080, 1920)": 6
+  },
+  "checks": [
+    "SHA256 all exports and sources",
+    "Exact ad-specific UTM contracts",
+    "No em dashes",
+    "Text/photo/logo safe-zone containment",
+    "Pixel-exact official logo composition",
+    "Black text on exact yellow CTA",
+    "12 unique RGB PNG outputs",
+    "No known AI derivatives or five-black-belt lineup",
+    "AA05 two source frames"
+  ],
+  "copy_length_warnings": [
+    {
+      "ad_name": "AY01_TAP-MEANS-STOP_STATIC",
+      "field": "primary_text",
+      "length": 278,
+      "recommended": 125
+    },
+    {
+      "ad_name": "AY01_TAP-MEANS-STOP_STATIC",
+      "field": "description",
+      "length": 31,
+      "recommended": 30
+    },
+    {
+      "ad_name": "AY03_CONFIDENCE-IS-PRACTICED_STATIC",
+      "field": "primary_text",
+      "length": 217,
+      "recommended": 125
+    },
+    {
+      "ad_name": "AY05_CASTLE-HILL-YOUTH_STATIC",
+      "field": "primary_text",
+      "length": 212,
+      "recommended": 125
+    },
+    {
+      "ad_name": "AA01_BEGINNER-STARTS-HERE_STATIC",
+      "field": "primary_text",
+      "length": 223,
+      "recommended": 125
+    },
+    {
+      "ad_name": "AA01_BEGINNER-STARTS-HERE_STATIC",
+      "field": "description",
+      "length": 37,
+      "recommended": 30
+    },
+    {
+      "ad_name": "AA03_CALM-UNDER-PRESSURE_STATIC",
+      "field": "primary_text",
+      "length": 224,
+      "recommended": 125
+    },
+    {
+      "ad_name": "AA03_CALM-UNDER-PRESSURE_STATIC",
+      "field": "description",
+      "length": 33,
+      "recommended": 30
+    },
+    {
+      "ad_name": "AA05_GROUP-OR-PRIVATE_STATIC",
+      "field": "primary_text",
+      "length": 255,
+      "recommended": 125
+    }
+  ],
+  "visual_status": "blocked_scene_requirements",
+  "permission_status": "blocked_paid_media_releases_not_documented",
+  "activation_allowed": false
+}
