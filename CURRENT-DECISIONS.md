@@ -31,7 +31,7 @@
 
 - ✅ Revise the approved live `/castle-hill-grand-opening/` route only after QA. Show Youth before Adults in each schedule day, matching 5:00 PM before 6:00 PM. Preserve the shared calendar and all class records.
 - ✅ Hero headline: “A new place to start. Jiu-jitsu at Castle Hill Fitness.” Use the official Castle Hill Multisport Room photograph, not generic academy or AI imagery.
-- ✅ Place real program photographs immediately after each Youth/Adults label and before its heading. Youth heading: “Confidence through practice.” Use Castle Hill’s published Joao partnership kids photo and the existing Joao adult-coaching photo. Record source provenance in `docs/CASTLE-HILL-PHOTO-REVISIONS.md`.
+- ✅ Place real program photographs immediately after each Youth/Adults label and before its heading. Youth heading: “Confidence through practice.” Use Castle Hill’s published Joao partnership kids photo and the verified real adult black-belt group photograph (`campaign-images/adults-black-belt-group-2026-07.webp`, 640×616). The previously selected coaching derivative was misclassified: `scripts/prepare_adults_joao_ai_hero.py` traces it to an AI original. Remove the unique Castle Hill AI copy after backup and production-reference verification. Keep the adult image between label and heading, describe black belts rather than beginners/coaching, and leave hero/Youth and PR #114 untouched. Record source provenance in `docs/CASTLE-HILL-PHOTO-REVISIONS.md`.
 - ✅ Keep the funnel `noindex,nofollow`, outside the sitemap, and all historical comparisons intact. No lead submissions or GHL, Meta, or GTM mutations. September 14 remains unconfirmed and traffic remains held.
 
 ## Austin Castle Hill paid-social comparison (2026-09-06)
