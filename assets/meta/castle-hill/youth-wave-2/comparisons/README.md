@@ -1,70 +1,42 @@
-# AY07 beginner-belonging + AY09 format comparisons
+# AY09 Adults + Youth artwork: verified PAUSED
 
-## Attribution correction status: COMPLETE / PAUSED
+## AY09 final Adults + Youth artwork revision (2026-09-08)
 
-AY09A and AY09B now have dynamic `utm_content={{ad.name}}` and are verified PAUSED. AY09A uses replacement creative `1742996493484338`; Meta-owned video copies were accepted only after ready status, identical 26.866-second duration, unchanged placement dimensions, and byte-identical decoded preferred thumbnails were verified against the prior creative. Unattached creative `1635025141591684` remains evidence, not active inventory.
+- Final AY09A ad `120251263139970072` → creative `1392143345711700`; AY09B ad `120251263002380072` → creative `1548660843191930`. Both final configured/effective **PAUSED / PAUSED** after review processing settled. Same ad IDs/names; AY07 and original AY09 ads/creatives unchanged.
+- AY09B uses the explicitly selected Drive adult academy group JPEG `IMG_6449-adults-group-source-2026-09-08.jpg` (1572×1179; SHA-256 `0e25957e88c7b59ed9a55fa3ef0811950293621db34319a41e0f1bf141f1ea59`). Full source and all faces retained in 1:1/9:16 framed statics. Do not describe pictured adults as youth or claim this is Castle Hill. Participant paid-media permission remains an activation gate.
+- Both use **COMPLETE BEGINNERS / ARE WELCOME.**, exact footer **ADULTS + YOUTH AGES 8–12 · CASTLE HILL FITNESS**, approved five-paragraph combined primary text and **You Don’t Have to Feel Ready** headline. AY09A was freshly rendered in 4:5 and 9:16; audio is byte-identical decoded PCM to the prior completed cut. Description intentionally changed from youth-time-only **Castle Hill Fitness · Tue/Thu at 5 p.m.** to **Adults + Youth Ages 8–12 in Austin.** to avoid implying that adult private instruction shares the youth schedule.
+- Final destination readbacks are exactly `https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}`. Six unique raw UTMs; no stale/encoded macros, missing/duplicate/conflicting keys, URL tags or manual fbclid. Automatic fbclid behavior is untouched. Hard gate: `scripts/validate_austin_youth_final_utm.py`.
+- Separate user-authorized parent-agent fix for error **1870194**: Meta normalized `location_types` from `['frequently_in','home']` to `['frequently_in','home','recent']`. Same Austin city key `2525495`, radius **10 miles**, ages **24–54**, Facebook/Instagram, website Lead optimization and budget `3500`. Meta changed disabled-expansion representation from `targeting_automation: {advantage_audience: 0}` to `targeting_relaxation_types: {lookalike: 0, custom_audience: 0}`. Exact exception comparison rejects other differences; no claim of byte-identical targeting. Campaign/ad set settled PAUSED / PAUSED; final ad-set readback returned no issues_info. No targeting writes by the artwork script.
+- New uploaded videos → ready creative copies: vertical `951510241314059` → `1734165961000142`; feed `2511572895920770` → `2093447011244219`. Both 26.866 seconds, 720×1280 / 720×900, exact decoded preferred-thumbnail RGB hashes match the **fresh uploads**, not old artwork. Full remote-video byte equivalence is not claimed.
+- Evidence: `comparisons/meta-audit.json` sections `artwork_revision`, `authorized_location_type_revision`, `final_utm_acceptance`; `manifest.json` maps current assets. Earlier copy-only/attribution evidence is historical, not final current creatives. No activation, merge or deployment.
 
-## Verified current Meta objects
+## Current assets and provenance
 
-| Concept | Ad ID | Creative ID | Configured / effective |
-|---|---|---|---|
-| AY07_BEGINNER-BELONGING_STATIC | 120251261010900072 | 1687998043330822 | PAUSED / PAUSED |
-| AY09A_BEGINNERS-WELCOME_LONG-VIDEO | 120251263139970072 | 1742996493484338 | PAUSED / PAUSED |
-| AY09B_BEGINNERS-WELCOME_STATIC | 120251263002380072 | 1066872229294951 | PAUSED / PAUSED |
+Current assets have the `-adults-youth` suffix; historical Joao-only AY09B statics and prior video exports remain intact.
 
-AY07 was updated in place, including its name, using Meta's supported creative swap. No replacement ad or deletion was necessary. The previous creative `1532274342037820` and historical local artifacts are retained.
+- `AY09B_BEGINNERS-WELCOME_STATIC_1x1-adults-youth.png`: 1080×1080.
+- `AY09B_BEGINNERS-WELCOME_STATIC_9x16-adults-youth.png`: 1080×1920.
+- `AY09A_BEGINNERS-WELCOME_LONG-VIDEO_4x5-adults-youth.mp4`: 720×900 H.264/AAC.
+- `AY09A_BEGINNERS-WELCOME_LONG-VIDEO_9x16-adults-youth.mp4`: 720×1280 H.264/AAC.
+- `source/IMG_6449-adults-group-source-2026-09-08.jpg`: exact user-selected original. Full image is contained, never cropped, generated or relabeled as a youth/Castle Hill scene.
+- `contact-sheet-1x1.jpg`, `contact-sheet-9x16.jpg`: current AY07 / AY09B comparison; both visually inspected.
+- `AY09A-contact-sheet-{4x5,9x16}-adults-youth.jpg`: five inspected beginning/middle/ending frames per placement. These are local safe-zone checks, not native Ads Manager overlay previews.
+- `approved-copy.json`: exact paid text; `manifest.json`: source/output hashes, text geometry, ffprobe and current creative IDs.
+- `caption-timing.json`: continuous source interval 28.04–54.88. Final thought ends “the right place for you or your child.” No freeze padding, synthetic speech or empty outro. Re-rendered decoded audio matches the previously transcribed complete cut exactly.
 
-Original AY09 ad `120251261045730072`, creative `1107882611663240`, remains unchanged and PAUSED. AY08 and other inventory were not mutated.
+## Final preserved controls
 
-Campaign `120251246135250072` and ad set `120251246144560072` were read back before and after. Both remain configured/effective PAUSED. Campaign daily budget is unchanged at `3500` account minor units; ad-set targeting matches exactly. Website-only Leads, `OFFSITE_CONVERSIONS`, Pixel `592714768141415`, Page `977808342257807`, Instagram `17841402345785819`, LEARN_MORE, no Instant Form and all **83 individual creative-feature OPT_OUT values** were verified. Neither parent was written.
+AY07 ad `120251261010900072` / creative `1687998043330822` and original AY09 ad `120251261045730072` / creative `1107882611663240` are unchanged and PAUSED / PAUSED. Campaign `120251246135250072`, ad set `120251246144560072` remain PAUSED / PAUSED. The only authorized parent exception is documented above.
 
-## Assets and exact copy
+LEARN_MORE, website-only Lead, OFFSITE_CONVERSIONS, Pixel `592714768141415`, Page `977808342257807`, Instagram `17841402345785819`, and all 83 enhancement OPT_OUT settings remain exact. Priority 1 vertical routes Facebook story/facebook_reels and Instagram story/reels; priority 2 feed is square static / 4:5 video. No Instant Form. Generated creative names/unpublished post IDs differ; ad names and tracking event/pixel/page fields are preserved, allowing array reordering.
 
-All paths below are relative to this directory:
-
-- `AY07_BEGINNER-BELONGING_STATIC_1x1.png` and `_9x16.png`: 1080×1080 / 1080×1920. Approved hook, support and footer, with the full real group photograph. No face cropping or text/photo overlap.
-- `AY09B_BEGINNERS-WELCOME_STATIC_1x1.png` and `_9x16.png`: same static dimensions. Joao-only frame extracted at source 29 seconds, with “COMPLETE BEGINNERS / ARE WELCOME.” No AI imagery, generated likeness or claimed Castle Hill training scene.
-- `AY09A_BEGINNERS-WELCOME_LONG-VIDEO_4x5.mp4`: 720×900, H.264/AAC, **26.866667 seconds**.
-- `AY09A_BEGINNERS-WELCOME_LONG-VIDEO_9x16.mp4`: 720×1280, H.264/AAC, **26.866667 seconds**.
-- `approved-copy.json`: exact approved AY07 copy, and unchanged original AY09 copy for both comparison formats.
-- `manifest.json`: local source/output SHA-256, ffprobe metadata, geometry and source provenance.
-- `caption-timing.json`, `AY09A-captions-*.ass`: accurate spoken captions and source/output timings.
-- `audio-visual-qa.json`: fresh local source transcription, independent transcription of the encoded longer video, and actual contact-sheet review notes.
-- `contact-sheet-*.jpg`, `AY09A-contact-sheet-*.jpg`, `AY09A-*-frame-*.jpg`: reviewed static pairs and five beginning/middle/ending frames per video placement.
-- `meta-audit.json`: exact response journal with only signed media URLs redacted, upload IDs, creative/ad IDs, readbacks, parent before/after snapshots and verification timestamps. Raw signed responses remain private outside git.
-
-Required AY09A/B tracking is `utm_content={{ad.name}}`, retaining the same landing page and every other query parameter. Both comparison ads now meet this contract. Original AY09 and AY07 remain untouched. The earlier decision to retain identical literal content UTMs is superseded: backend/CRM variant differentiation requires dynamic ad-name attribution.
-
-## Why the video no longer cuts off
-
-Original AY09 ended at source **39.00**, immediately after “meet” in “I would love to meet you at the academy…” Its old burned captions paraphrased the preceding audio and omitted this partial next sentence. The historical claim of a complete cut is superseded.
-
-The new edit is one continuous **28.04–54.88** source interval, 26.84 seconds before frame-rate rounding. It begins “We welcome complete beginners,” then completes the readiness reassurance, the academy-visit invitation and the no-pressure reassurance. The final sentence is:
-
-> Just come in, meet us, and see whether it feels like the right place for you or your child.
-
-The final spoken word ends around source **54.62**. The cut retains natural room through **54.88**, before the next sentence starts around **55.18**. There is no freeze-frame extension, synthetic speech, changed speaking speed, empty outro or clipped next sentence. Only the final 80 ms receives an audio fade, after the final spoken word. The independently retranscribed encoded output includes the complete final sentence, with its final word ending around output 26.56 seconds.
-
-## Placement routing and Meta video-copy behavior
-
-Static creative routing uses `vertical` priority 1 for Facebook story/facebook_reels and Instagram story/reels, with `feed` priority 2 as the square default. Video uses the same vertical rule and a 4:5 feed default. Asset counts and both label mappings are verified, not inferred from successful creation.
-
-Meta creates creative-owned video copies with different IDs from the uploads:
-
-| Placement | Upload ID | Creative video ID |
-|---|---|---|
-| 9:16 | 911807341648497 | 1085431400759011 |
-| 4:5 | 1571933488047190 | 951277087315201 |
-
-Creation stopped before making the video ad when these IDs differed. The copies were then read back ready, with equal 26.866-second durations, matching expected aspect ratios and **pixel-identical preferred thumbnails** (mean absolute difference 0.0). The exact create request also preserves each original upload/label association. Only then was the video ad created and read back PAUSED. Graph omitted the copy's `source` field; no claim of remote decoded-video equivalence is made. The full local exports were decoded and transcribed.
-
-## Reproduction and QA
-
-From the PR worktree:
+## Reproduction and acceptance
 
 ```sh
 python scripts/build_austin_youth_comparisons.py
 python scripts/render_austin_youth_long_video.py
+python scripts/update_austin_youth_artwork.py
+python scripts/validate_austin_youth_final_utm.py
 python -m unittest discover -s tests -p 'test_austin_youth*.py' -v
 python scripts/validate_castle_safe.py
 python scripts/validate_austin_youth_video.py
@@ -72,14 +44,12 @@ python scripts/austin_youth_comparison_meta.py --verify
 git diff --check
 ```
 
-Render dependencies: Pillow, FFmpeg with libx264/libass, Impact at `/mnt/c/Windows/Fonts/impact.ttf`, DejaVu Sans / DejaVu Sans Bold. Local Whisper small.en supplies audio verification, not generated audio. Run both build commands in order: the static build starts the manifest and the video build extends it. Existing source media is referenced from this repository, not a stale external worktree.
+`update_austin_youth_artwork.py` only mutates with `--apply`. Do not run concurrently. Historical mutation scripts are not the current workflow. Candidate creatives are read back and validated before same-ID PAUSED ad swaps; uploads and remaps must meet strict decoded-thumbnail proof. Signed media URLs and credentials stay outside git; public evidence is redacted.
 
-`fix_austin_youth_comparison_attribution.py` defaults to read-only and has an exact URL-only equality gate before swapping. AY09B was corrected directly. AY09A required a Meta-copy equivalence gate because Meta remapped its video IDs; the replacement was attached only after status, duration, dimensions, and decoded-thumbnail checks passed.
+Acceptance: **19/19 AY tests PASS**, including exact full-source photo pixels, bounds/overlap/hash checks, footer, decoded audio preservation, fresh-upload remap evidence, final PAUSED state, narrow parent exception and negative UTM mutations. Safe-wave validator **6 concepts / 12 images PASS**. Original AY09 strict validator PASS. Hard final UTM readback PASS on both final creatives: six unique exact values in one canonical website_url, `url_tags` absent, no conflicting link representation or manually appended fbclid. Campaign/ad set and both final ads are PAUSED / PAUSED; final ad-set issues_info absent.
 
-`austin_youth_comparison_meta.py` defaults to read-only preflight. Its explicit `--apply-static` and `--apply-video` flags are narrowly scoped and resumable; never run concurrent instances. If Meta remaps new video IDs, `verify_austin_youth_video_copies.py` proves the mapping before resuming. Do not treat transient processing as authorization to activate or duplicate an ad.
+## History and holds
 
-Current correction QA passes with no skips. Existing safe-wave validator passes **6 concepts / 12 images** unchanged; original AY09 validator passes; current paused-state, dynamic URL and protected-parent readbacks pass. Static bounds/overlap/hash/copy checks pass. Both static contact sheets and both five-frame video sheets were visually reviewed. These are safe-zone/contact-sheet checks, not native Ads Manager placement-overlay previews.
+The prior copy-only revision used creatives `28341354795499624` / `1066596592851512`; attribution-only revision used `1742996493484338` / `1066872229294951`. Their evidence is retained under historical audit sections, not current inventory. Prior Joao-only AY09B assets are historical.
 
-## Remaining gates
-
-**Do not activate, merge or deploy.** Student paid-media releases remain required for AY07; website/co-marketing publication is provenance, not a participant release. Joao/source-video paid-media rights remain a gate for AY09A/B. Opening-date confirmation, website Lead-tracking acceptance, exact budget approval and explicit traffic authorization remain separate holds. The user authorized this paused-only build, not spend.
+**Do not activate, merge or deploy.** All identifiable AY09B adult-group participants and AY07 students require paid-media permission; public/Drive availability is not a release. Joao/source-video rights, opening date, website Lead acceptance, exact budget authorization and explicit traffic approval remain activation gates. No spend was authorized.

@@ -20,6 +20,9 @@ class ComparisonTests(unittest.TestCase):
   for key in ['primary_text','headline','description','destination_url','cta']:
    self.assertEqual(b[key],c[key])
    original=json.loads((P.parent/'video/approved-copy.json').read_text())[key]
+   if key=='primary_text': original='You or your child do not have to feel ready before starting.\n\nIn Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress.\n\nFor adults, private BJJ instruction at Castle Hill Fitness offers focused coaching, practical problem-solving, and progress at your own pace.\n\nComplete beginners are welcome.\n\nFind the right starting point in Austin.'
+   if key=='headline': original='You Don’t Have to Feel Ready'
+   if key=='description': original='Adults + Youth Ages 8–12 in Austin.'
    if key=='destination_url': original=original.replace('utm_content=AY09_BEGINNERS-WELCOME_VIDEO','utm_content={{ad.name}}')
    self.assertEqual(b[key],original)
   for x in [b,c]: self.assertIn('utm_content={{ad.name}}',x['destination_url'])
@@ -42,7 +45,10 @@ class ComparisonTests(unittest.TestCase):
   if not a.get('all_three_verified'): self.skipTest('Full three-ad Meta verification not yet complete')
   self.assertEqual(len(a['records']),3)
   self.assertEqual(a['records']['AY07_BEGINNER-BELONGING_STATIC']['ad_id'],'120251261010900072')
-  self.assertEqual(a['original_ad_before'],a['original_ad_after']); self.assertEqual(a['before']['adset'],a['after']['adset'])
+  self.assertEqual(a['original_ad_before'],a['original_ad_after'])
+  import sys; sys.path.insert(0,str(R/'scripts'))
+  from austin_youth_comparison_meta import assert_parent_preserved
+  assert_parent_preserved(a['before'],a['after'])
   for key in ['daily_budget','lifetime_budget','bid_strategy','status','effective_status']: self.assertEqual(a['before']['campaign'].get(key),a['after']['campaign'].get(key))
   for name,r in a['records'].items():
    ad=r['ad_readback']; self.assertEqual(ad['status'],'PAUSED'); self.assertEqual(ad['effective_status'],'PAUSED'); self.assertEqual(ad['creative']['id'],r['creative_id']); self.assertEqual(ad['adset_id'],'120251246144560072'); self.assertEqual(ad['campaign_id'],'120251246135250072')

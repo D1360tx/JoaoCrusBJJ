@@ -27,7 +27,23 @@
 
 ---
 
-## AY09 comparison attribution correction: complete, paused (2026-09-08)
+## AY09 final Adults + Youth artwork revision (2026-09-08)
+
+- Final AY09A ad `120251263139970072` → creative `1392143345711700`; AY09B ad `120251263002380072` → creative `1548660843191930`. Both final configured/effective **PAUSED / PAUSED** after review processing settled. Same ad IDs/names; AY07 and original AY09 ads/creatives unchanged.
+- AY09B uses the explicitly selected Drive adult academy group JPEG `IMG_6449-adults-group-source-2026-09-08.jpg` (1572×1179; SHA-256 `0e25957e88c7b59ed9a55fa3ef0811950293621db34319a41e0f1bf141f1ea59`). Full source and all faces retained in 1:1/9:16 framed statics. Do not describe pictured adults as youth or claim this is Castle Hill. Participant paid-media permission remains an activation gate.
+- Both use **COMPLETE BEGINNERS / ARE WELCOME.**, exact footer **ADULTS + YOUTH AGES 8–12 · CASTLE HILL FITNESS**, approved five-paragraph combined primary text and **You Don’t Have to Feel Ready** headline. AY09A was freshly rendered in 4:5 and 9:16; audio is byte-identical decoded PCM to the prior completed cut. Description intentionally changed from youth-time-only **Castle Hill Fitness · Tue/Thu at 5 p.m.** to **Adults + Youth Ages 8–12 in Austin.** to avoid implying that adult private instruction shares the youth schedule.
+- Final destination readbacks are exactly `https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}`. Six unique raw UTMs; no stale/encoded macros, missing/duplicate/conflicting keys, URL tags or manual fbclid. Automatic fbclid behavior is untouched. Hard gate: `scripts/validate_austin_youth_final_utm.py`.
+- Separate user-authorized parent-agent fix for error **1870194**: Meta normalized `location_types` from `['frequently_in','home']` to `['frequently_in','home','recent']`. Same Austin city key `2525495`, radius **10 miles**, ages **24–54**, Facebook/Instagram, website Lead optimization and budget `3500`. Meta changed disabled-expansion representation from `targeting_automation: {advantage_audience: 0}` to `targeting_relaxation_types: {lookalike: 0, custom_audience: 0}`. Exact exception comparison rejects other differences; no claim of byte-identical targeting. Campaign/ad set settled PAUSED / PAUSED; final ad-set readback returned no issues_info. No targeting writes by the artwork script.
+- New uploaded videos → ready creative copies: vertical `951510241314059` → `1734165961000142`; feed `2511572895920770` → `2093447011244219`. Both 26.866 seconds, 720×1280 / 720×900, exact decoded preferred-thumbnail RGB hashes match the **fresh uploads**, not old artwork. Full remote-video byte equivalence is not claimed.
+- Evidence: `comparisons/meta-audit.json` sections `artwork_revision`, `authorized_location_type_revision`, `final_utm_acceptance`; `manifest.json` maps current assets. Earlier copy-only/attribution evidence is historical, not final current creatives. No activation, merge or deployment.
+
+## AY09 combined youth/adult copy revision (2026-09-08, historical)
+
+- User approved the exact combined youth-and-adult primary text in `comparisons/approved-copy.json` and headline **You Don’t Have to Feel Ready** for existing PAUSED AY09A/B only. Preserve description, destination, dynamic UTMs, CTA, media/routing, identities, all enhancement opt-outs and all parent fields.
+- Complete: AY09A ad `120251263139970072` now uses creative `28341354795499624`; AY09B ad `120251263002380072` now uses creative `1066596592851512`. Both read back PAUSED / PAUSED with exact approved primary text/headline. Original ads/creatives and parent settings are unchanged. Meta-generated internal creative-name suffixes and unpublished post IDs change with the replacement; ad names and all tracking event/pixel/page settings are preserved. Ready/equal-duration/equal-dimension/byte-identical decoded preferred-thumbnail proof is required for Meta video-ID remaps; full remote-video equivalence is not claimed.
+- Original AY09 and AY07 are protected. No merge, activation, budget/targeting change or deployment authorized. The following attribution section is the historical pre-copy-revision baseline.
+
+## AY09 comparison attribution correction: complete, paused (2026-09-08, historical)
 
 - Required comparison attribution is `utm_content={{ad.name}}`; identical hardcoded content UTMs do not distinguish variants in the backend/CRM. This supersedes the earlier deliberate-constant-UTM decision below. Landing page and all other query parameters remain unchanged.
 - AY09B ad `120251263002380072` was updated in place to creative `1066872229294951`. Independently verified dynamic URL, exact unchanged image hashes/copy/routing/identities, all 83 OPT_OUT values, no form and PAUSED / PAUSED.

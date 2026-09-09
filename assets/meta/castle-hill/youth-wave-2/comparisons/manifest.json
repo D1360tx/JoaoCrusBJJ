@@ -30,7 +30,8 @@
     "Identifiable-student paid-media releases for AY07; website publication is not a release",
     "Joao/source-video paid-media rights",
     "Explicit activation and exact budget authorization",
-    "Opening date and website Lead acceptance"
+    "Opening date and website Lead acceptance",
+    "All identifiable AY09B adult group participants paid-media permission before activation"
   ],
   "assets": [
     {
@@ -166,12 +167,12 @@
     {
       "ad_name": "AY09B_BEGINNERS-WELCOME_STATIC",
       "ratio": "1x1",
-      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09B_BEGINNERS-WELCOME_STATIC_1x1.png",
-      "sha256": "d5c347008d2b562e88840c0c2566f26b3e6f3c310dfa9f06c592337f99cb19a9",
+      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09B_BEGINNERS-WELCOME_STATIC_1x1-adults-youth.png",
+      "sha256": "912d76bc9c3636972089aede0aadc85c596b58ac39f4fc7e76212fa67876d474",
       "width": 1080,
       "height": 1080,
-      "source": "assets/meta/castle-hill/youth-wave-2/comparisons/source-joao-frame-29s.png",
-      "source_sha256": "63cefd9e6becaf59667b282141c57a68887910c92c5c689545f27608287cfcb8",
+      "source": "assets/meta/castle-hill/youth-wave-2/comparisons/source/IMG_6449-adults-group-source-2026-09-08.jpg",
+      "source_sha256": "0e25957e88c7b59ed9a55fa3ef0811950293621db34319a41e0f1bf141f1ea59",
       "text_boxes": [
         {
           "text": "COMPLETE BEGINNERS",
@@ -194,21 +195,21 @@
           "font_px": 90
         },
         {
-          "text": "YOUTH BJJ | AGES 8–12 | CASTLE HILL FITNESS",
+          "text": "ADULTS + YOUTH AGES 8–12 · CASTLE HILL FITNESS",
           "bounds": [
-            71,
+            72,
             995,
-            821,
-            1024
+            916,
+            1016
           ],
           "font_px": 29
         }
       ],
       "photo_frame": [
-        337,
+        96,
         281,
-        743,
-        889
+        984,
+        949
       ],
       "safe_zone": [
         64,
@@ -216,17 +217,17 @@
         1016,
         1040
       ],
-      "crop": "source frame 29s, crop [70,105,650,980]; full face preserved"
+      "crop": "none; full selected adult academy group retained; not a youth or Castle Hill scene claim"
     },
     {
       "ad_name": "AY09B_BEGINNERS-WELCOME_STATIC",
       "ratio": "9x16",
-      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09B_BEGINNERS-WELCOME_STATIC_9x16.png",
-      "sha256": "f91cfbf6b8ddf3310269f40f09d82fbf9d7e752cbc055497bfe95a9e18ccee71",
+      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09B_BEGINNERS-WELCOME_STATIC_9x16-adults-youth.png",
+      "sha256": "7f66d2cc58ee00861e0beea8a4a201fd9ca9771d561396cdb4fdb5b77c044e8f",
       "width": 1080,
       "height": 1920,
-      "source": "assets/meta/castle-hill/youth-wave-2/comparisons/source-joao-frame-29s.png",
-      "source_sha256": "63cefd9e6becaf59667b282141c57a68887910c92c5c689545f27608287cfcb8",
+      "source": "assets/meta/castle-hill/youth-wave-2/comparisons/source/IMG_6449-adults-group-source-2026-09-08.jpg",
+      "source_sha256": "0e25957e88c7b59ed9a55fa3ef0811950293621db34319a41e0f1bf141f1ea59",
       "text_boxes": [
         {
           "text": "COMPLETE BEGINNERS",
@@ -249,21 +250,21 @@
           "font_px": 108
         },
         {
-          "text": "YOUTH BJJ | AGES 8–12 | CASTLE HILL FITNESS",
+          "text": "ADULTS + YOUTH AGES 8–12 · CASTLE HILL FITNESS",
           "bounds": [
-            71,
+            72,
             1540,
-            821,
-            1569
+            916,
+            1561
           ],
           "font_px": 29
         }
       ],
       "photo_frame": [
-        254,
-        601,
-        825,
-        1459
+        68,
+        686,
+        1012,
+        1396
       ],
       "safe_zone": [
         64,
@@ -271,9 +272,22 @@
         1016,
         1600
       ],
-      "crop": "source frame 29s, crop [70,105,650,980]; full face preserved"
+      "crop": "none; full selected adult academy group retained; not a youth or Castle Hill scene claim"
     }
   ],
+  "combined_copy_revision": {
+    "primary_text": "You or your child do not have to feel ready before starting.\n\nIn Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress.\n\nFor adults, private BJJ instruction at Castle Hill Fitness offers focused coaching, practical problem-solving, and progress at your own pace.\n\nComplete beginners are welcome.\n\nFind the right starting point in Austin.",
+    "headline": "You Don’t Have to Feel Ready",
+    "ad_ids": {
+      "AY09A_BEGINNERS-WELCOME_LONG-VIDEO": "120251263139970072",
+      "AY09B_BEGINNERS-WELCOME_STATIC": "120251263002380072"
+    },
+    "creative_ids": {
+      "AY09A_BEGINNERS-WELCOME_LONG-VIDEO": "28341354795499624",
+      "AY09B_BEGINNERS-WELCOME_STATIC": "1066596592851512"
+    },
+    "evidence": "meta-audit.json#combined_copy_revision"
+  },
   "video_edit": {
     "source_in": 28.04,
     "source_out": 54.88,
@@ -373,8 +387,8 @@
     {
       "ad_name": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO",
       "ratio": "9x16",
-      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A_BEGINNERS-WELCOME_LONG-VIDEO_9x16.mp4",
-      "sha256": "29f75d8464fa8d6662db4f30b919e9ff3a1366e6e92a625d0a77545122033a31",
+      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A_BEGINNERS-WELCOME_LONG-VIDEO_9x16-adults-youth.mp4",
+      "sha256": "4cd8f0936d2fbcb32e3324885196b21bc33044bd1082308e4da053e635d7f37b",
       "ffprobe": {
         "programs": [],
         "stream_groups": [],
@@ -396,9 +410,9 @@
           "duration": "26.866667"
         }
       },
-      "caption_file": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A-captions-9x16.ass",
-      "caption_sha256": "d1e4ce971146619d9438dc26c2da23902e59cdc980bc7a6445ad8614294de72c",
-      "thumbnail_path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A-9x16-frame-0.jpg",
+      "caption_file": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A-captions-9x16-adults-youth.ass",
+      "caption_sha256": "8d9778bc0e96f7c5d1a6a31ebbfce2a3b04af0686a924353485551ffc691a79e",
+      "thumbnail_path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A-9x16-adults-youth-frame-0.jpg",
       "caption_center_y": 950,
       "footer_bottom": 1075,
       "safe_zone": [
@@ -411,8 +425,8 @@
     {
       "ad_name": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO",
       "ratio": "4x5",
-      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A_BEGINNERS-WELCOME_LONG-VIDEO_4x5.mp4",
-      "sha256": "ac20c8f9b8cf2f05511079b7f382087c48ec8f68d4452562c4069028eb6b5540",
+      "path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A_BEGINNERS-WELCOME_LONG-VIDEO_4x5-adults-youth.mp4",
+      "sha256": "83214cf3c962b4d5ff5af0c98d7a8301bb01abc7953c3e5d9f74ea9152565883",
       "ffprobe": {
         "programs": [],
         "stream_groups": [],
@@ -434,9 +448,9 @@
           "duration": "26.866667"
         }
       },
-      "caption_file": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A-captions-4x5.ass",
-      "caption_sha256": "24727c49f2f9d42703a3ede39c907beffabcc0fe1656f11e0e4f1fdc49dd5bc8",
-      "thumbnail_path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A-4x5-frame-0.jpg",
+      "caption_file": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A-captions-4x5-adults-youth.ass",
+      "caption_sha256": "d9268cd5ffb2219aac732449cd2bad2c6aefcdccb25b36b035a1aaa65fdb148c",
+      "thumbnail_path": "assets/meta/castle-hill/youth-wave-2/comparisons/AY09A-4x5-adults-youth-frame-0.jpg",
       "caption_center_y": 708,
       "footer_bottom": 845,
       "safe_zone": [
@@ -447,22 +461,12 @@
       ]
     }
   ],
-  "comparison_attribution": {
-    "status": "PARTIAL_BLOCKED_VIDEO_ID_REMAP",
-    "required_utm_content": "{{ad.name}}",
-    "blocker": "Meta remaps both existing AY09A video IDs on new creative creation, with and without supplied thumbnail_url. Exact-media-ID acceptance fails; neither video creative was attached. AY09A remains on its original hardcoded UTM creative.",
-    "records": {
-      "AY09B_BEGINNERS-WELCOME_STATIC": {
-        "ad_id": "120251263002380072",
-        "creative_id": "1066872229294951",
-        "current_destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}"
-      },
-      "AY09A_BEGINNERS-WELCOME_LONG-VIDEO": {
-        "ad_id": "120251263139970072",
-        "creative_id": "1050466397745571",
-        "current_destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY09_BEGINNERS-WELCOME_VIDEO&utm_term={{adset.name}}&utm_id={{campaign.id}}"
-      }
+  "artwork_revision": {
+    "creative_ids": {
+      "AY09A_BEGINNERS-WELCOME_LONG-VIDEO": "1392143345711700",
+      "AY09B_BEGINNERS-WELCOME_STATIC": "1548660843191930"
     },
-    "evidence": "meta-audit.json#attribution_correction"
+    "evidence": "meta-audit.json#artwork_revision",
+    "footer": "ADULTS + YOUTH AGES 8–12 · CASTLE HILL FITNESS"
   }
 }

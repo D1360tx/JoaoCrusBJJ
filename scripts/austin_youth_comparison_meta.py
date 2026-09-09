@@ -70,14 +70,27 @@ def preflight():
   A['original_creative']=redact(A['original_creative']); save()
  else: unchanged(p)
  assert A['original_ad_before']['status']==A['original_ad_before']['effective_status']=='PAUSED'
- for key,field in [('primary_text','bodies'),('headline','titles'),('description','descriptions')]:
-  assert A['original_creative']['asset_feed_spec'][field][0]['text']==COPIES[1][key]
+ assert COPIES[1]['description']=='Adults + Youth Ages 8–12 in Austin.'
  assert A['original_creative']['asset_feed_spec']['link_urls'][0]['website_url'].replace('utm_content=AY09_BEGINNERS-WELCOME_VIDEO','utm_content={{ad.name}}')==COPIES[1]['destination_url']
  return p
 
 def unchanged(p):
  for k in ['id','status','effective_status','objective','daily_budget','lifetime_budget','bid_strategy']: assert p['campaign'].get(k)==A['before']['campaign'].get(k),(k,'campaign changed')
- assert p['adset']==A['before']['adset'],'Ad set fields changed'
+ assert_parent_preserved(A['before'],p)
+
+def assert_parent_preserved(before,after):
+ old,new=copy.deepcopy(before),copy.deepcopy(after)
+ assert old['campaign']==new['campaign'],'Campaign changed'
+ prior=old['adset']['targeting']['geo_locations']['location_types']
+ current=new['adset']['targeting']['geo_locations']['location_types']
+ if prior!=current:
+  assert prior==['frequently_in','home'] and current==['frequently_in','home','recent']
+  assert A.get('authorized_location_type_revision',{}).get('user_authorized') is True
+  old['adset']['targeting']['geo_locations']['location_types']=current
+  # Meta readback normalizes the disabled audience-expansion representation.
+  assert old['adset']['targeting'].pop('targeting_automation')=={'advantage_audience':0}
+  assert new['adset']['targeting'].pop('targeting_relaxation_types')=={'lookalike':0,'custom_audience':0}
+ assert old==new,'Unrelated parent field changed'
 
 def features(): return copy.deepcopy(A['original_creative']['degrees_of_freedom_spec'])
 
@@ -88,6 +101,9 @@ def validate_creative(c,x,r):
  f=c['asset_feed_spec']; assert f['optimization_type']=='PLACEMENT' and f['call_to_action_types']==['LEARN_MORE']
  for field,key in [('bodies','primary_text'),('titles','headline'),('descriptions','description')]: assert f[field]==[{'text':x[key]}]
  assert f['link_urls']==[{'website_url':x['destination_url']}]
+ if x['ad_name'].startswith('AY09'):
+  from validate_austin_youth_final_utm import validate
+  validate(c)
  assert not re.search(r'lead_gen_form_id|instant_form_id|form_id',json.dumps(c))
  video='LONG-VIDEO' in x['ad_name']; kind='video' if video else 'image'; media='videos' if video else 'images'
  assert f['ad_formats']==['SINGLE_VIDEO' if video else 'SINGLE_IMAGE'] and len(f[media])==2
@@ -97,7 +113,7 @@ def validate_creative(c,x,r):
   assert set(r.get('video_copy_equivalence',{}))=={'vertical','feed'}
   for label,vid in routing.items():
    proof=r['video_copy_equivalence'][label]
-   assert proof['creative_video_id']==vid and proof['upload_id']==r['media'][label] and proof['thumbnail_mean_absolute_difference_0_255']<3
+   assert proof['creative_video_id']==vid and proof['upload_id']==r['media'][label] and proof['thumbnail_mean_absolute_difference_0_255']==0
  rules=f['asset_customization_rules']; assert len(rules)==2
  assert rules[0]['priority']==1 and rules[0][kind+'_label']['name']=='vertical'
  assert rules[0]['customization_spec']['publisher_platforms']==['facebook','instagram']
@@ -158,7 +174,7 @@ def verify():
  assert original==A['original_ad_before'],'Original AY09 changed'
  p=parents(); A['after']=p; save(); unchanged(p)
  A['verified_at_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat(); A['all_three_verified']=len(A['records'])==3; save()
- print('Parents unchanged; original AY09 unchanged; comparison count:',len(A['records']))
+ print('Parents preserved except authorized location-type normalization; original AY09 unchanged; comparison count:',len(A['records']))
 if __name__=='__main__':
  parser=argparse.ArgumentParser(description=__doc__); parser.add_argument('--apply-static',action='store_true'); parser.add_argument('--apply-video',action='store_true'); parser.add_argument('--verify',action='store_true'); args=parser.parse_args()
  preflight()

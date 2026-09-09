@@ -20,19 +20,18 @@ def render():
    return f'Dialogue: 0,{stamp(s)},{stamp(e)},Main,,0,0,0,,{{\\pos(360,{y})\\fs{size}\\c{color}}}{t}\n'
   ass+=event(0,END-START,'COMPLETE BEGINNERS',top,32)
   ass+=event(0,END-START,'ARE WELCOME.',top+42,36,'&H00C4F5&')
-  ass+=event(0,END-START,'YOUTH BJJ | AGES 8–12',footer,22)
-  ass+=event(0,END-START,'CASTLE HILL FITNESS',footer+28,22)
+  ass+=event(0,END-START,'ADULTS + YOUTH AGES 8–12 · CASTLE HILL FITNESS',footer,18)
   for s,e,t in CAPTIONS: ass+=event(s-START,e-START,'\\N'.join(textwrap.wrap(t,34)),cap_y)
-  ap=PACK/f'AY09A-captions-{ratio}.ass'; ap.write_text(ass)
-  out=PACK/f'AY09A_BEGINNERS-WELCOME_LONG-VIDEO_{ratio}.mp4'
+  ap=PACK/f'AY09A-captions-{ratio}-adults-youth.ass'; ap.write_text(ass)
+  out=PACK/f'AY09A_BEGINNERS-WELCOME_LONG-VIDEO_{ratio}-adults-youth.mp4'
   vf=f'crop=720:1000:0:100,scale={width}:{ph},pad=720:{h}:(ow-iw)/2:{py}:color=0x101010,setsar=1,ass={ap}'
   run(['ffmpeg','-v','error','-y','-ss',str(START),'-i',str(SOURCE),'-t',str(round(END-START,2)),'-vf',vf,'-c:v','libx264','-preset','medium','-crf','20','-threads','4','-pix_fmt','yuv420p','-r','30','-c:a','aac','-b:a','160k','-af','afade=t=out:st=26.76:d=0.08','-movflags','+faststart',str(out)])
   frames=[]
   for i,t in enumerate([0.35,8.4,14.4,21.6,26.5]):
-   p=PACK/f'AY09A-{ratio}-frame-{i}.jpg'; run(['ffmpeg','-v','error','-y','-ss',str(t),'-i',str(out),'-frames:v','1',str(p)]); frames.append(p)
+   p=PACK/f'AY09A-{ratio}-adults-youth-frame-{i}.jpg'; run(['ffmpeg','-v','error','-y','-ss',str(t),'-i',str(out),'-frames:v','1',str(p)]); frames.append(p)
   sheet=Image.new('RGB',(360*5,h//2))
   for i,p in enumerate(frames): sheet.paste(Image.open(p).resize((360,h//2)),(i*360,0))
-  sheet.save(PACK/f'AY09A-contact-sheet-{ratio}.jpg',quality=94)
+  sheet.save(PACK/f'AY09A-contact-sheet-{ratio}-adults-youth.jpg',quality=94)
   manifest['videos'].append({'ad_name':'AY09A_BEGINNERS-WELCOME_LONG-VIDEO','ratio':ratio,'path':str(out.relative_to(ROOT)),'sha256':sha(out),'ffprobe':probe(out),'caption_file':str(ap.relative_to(ROOT)),'caption_sha256':sha(ap),'thumbnail_path':str(frames[0].relative_to(ROOT)),'caption_center_y':cap_y,'footer_bottom':footer+40,'safe_zone':[40,145 if tall else 20,680,1080 if tall else 865]})
  write(PACK/'manifest.json',manifest)
  print('Rendered both continuous 26.84-second placement cuts, complete thought and five-frame sheets.')
