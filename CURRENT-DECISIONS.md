@@ -27,6 +27,21 @@
 
 ---
 
+## GSC opportunity implementation decisions (2026-09-09)
+
+Source: Diego's explicit implementation approval and business clarifications supplied 2026-09-09.
+
+- ✅ Teen BJJ is available. Details, schedule, and capacity still need discussion with Joao. Keep `/teens/` as an honest interest/discussion path; publish no teen times or guaranteed placement.
+- ✅ No-gi is not offered now. Classify related search queries as **IGNORE**, not an offer or content target.
+- 🔴 Dedicated self-defense curriculum claims are unconfirmed. Use only already-supported boundary and practice-under-pressure language; no dedicated self-defense course claims or guarantees.
+- ✅ A qualified lead is someone who submits a form and then has a qualified conversation with Joao. Trial attendance is the preferred next milestone. Joao owns follow-up. A submission or CTA click alone is not a qualified lead.
+- ✅ Joao personally calls to discuss fit and arrange a free studio visit/trial class. Forms do not instantly book a place or calendar slot.
+- ✅ Austin adult group remains Tue/Thu **6:00–7:00 p.m.**, confirmed by Diego 2026-09-06, with private lessons by appointment. No opening date is newly confirmed.
+- ✅ One canonical owner per query cluster: Home for Dripping Springs and broad local/near-me discovery; Austin for Austin BJJ; Adults for adult BJJ; Kids for the kids overview; Little Champions for preschool/ages 3–7; Teens for teen BJJ; About for accurate Carlson Gracie and De La Riva lineage. No doorway pages or generic Gracie-branded offer.
+- ✅ Implement the approved priority and secondary opportunities in code/content/docs and a reviewable PR. This implementation must not deploy, merge, mutate Search Console, or edit listings; external actions are outside this scope.
+
+See `docs/GSC-QUERY-OWNERSHIP-AND-MEASUREMENT.md` for ownership and post-release checks.
+
 ## Castle Hill permission-safe paused ads (2026-09-08)
 
 - User expressly authorized “Use only Joao/facility-safe creative and keep every ad paused.” This authorizes the separate six-concept, twelve-image safe iteration, media uploads and placement-specific creative/ad creation under campaign `120251246135250072`, ad set `120251246144560072` only.

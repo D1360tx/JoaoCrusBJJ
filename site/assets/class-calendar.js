@@ -222,13 +222,13 @@
       });
       var locationText=selectedLocation==="all"?"all locations":LOCATIONS[selectedLocation];
       if(!filtered.length){
-        var isTeenLaunch=selectedProgram==="teen";
-        var title=isTeenLaunch?"Teen schedule forming now.":"No classes published for this filter.";
-        var copy=isTeenLaunch?"Join the interest list below to help choose the first class time.":"Try another program or location.";
+        var isTeen=selectedProgram==="teen";
+        var title=isTeen?"Discuss teen availability with Joao.":"No classes published for this filter.";
+        var copy=isTeen?"Teen schedule and capacity need discussion with Joao before you make plans.":"Try another program or location.";
         grid.setAttribute("role","status");
-        grid.setAttribute("aria-label",isTeenLaunch?"Teen schedule status":"Filtered schedule status");
+        grid.setAttribute("aria-label",isTeen?"Teen schedule status":"Filtered schedule status");
         grid.innerHTML='<div class="jc-calendar-empty"><strong>'+title+'</strong><span>'+copy+'</span></div>';
-        summary.textContent="Showing "+programLabel(selectedProgram)+" at "+locationText+(isTeenLaunch?" · schedule forming":" · 0 classes");
+        summary.textContent="Showing "+programLabel(selectedProgram)+" at "+locationText+(isTeen?" · discuss availability":" · 0 classes");
         return;
       }
       grid.setAttribute("role","table");

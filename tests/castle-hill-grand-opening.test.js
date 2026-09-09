@@ -13,7 +13,7 @@ test('grand opening is manifest-driven, isolated, noindex and date-gated', () =>
   assert.equal(entry.indexable, false);
   assert.match(page, /noindex,nofollow/);
   assert.match(page, /Opening September 14/);
-  assert.match(page, /Opening date pending confirmation/);
+  assert.doesNotMatch(page, /class="austin-review"/);
   assert.match(read('CURRENT-DECISIONS.md'), /provisional/);
   assert.match(page, /castle-hill-grand-opening.css/);
   assert.doesNotMatch(page, /—/);
@@ -63,10 +63,10 @@ test('Austin shared calendar places 5 PM Youth before 6 PM Adults on both days',
   assert.equal(records.length, 15);
   for (const day of [1, 3]) assert.deepEqual(Array.from(records.filter(c => c.day === day && c.location === 'austin'), c => c.time), ['5:00–5:45 PM', '6:00–7:00 PM']);
 });
-test('dedicated quiz is a non-transmitting honest preview, not a fake lead success', () => {
-  assert.match(quiz, /data-quiz data-endpoint=""/);
-  assert.match(quiz, /Preview my Austin class plan/);
-  assert.match(quiz, /No request was sent/);
+test('dedicated quiz is connected with honest accepted-request copy', () => {
+  assert.match(quiz, /data-quiz data-endpoint="\/api\/lead.php"/);
+  assert.match(quiz, /Send my Austin class request/);
+  assert.match(quiz, /Your request has been received/);
   assert.doesNotMatch(quiz, /your request was securely sent/);
   assert.match(quiz, /data-step="1"[\s\S]*name="audience" value="child"[\s\S]*name="audience" value="adult"/);
 });
