@@ -1,0 +1,703 @@
+{
+  "ad_polls": [
+    {
+      "readback_at_utc": "2026-09-08T20:06:07.587537+00:00",
+      "ad_readback": {
+        "id": "120251261045730072",
+        "name": "AY09_BEGINNERS-WELCOME_VIDEO | PAUSED DRAFT | 2026-09-08",
+        "account_id": "456685748412595",
+        "adset_id": "120251246144560072",
+        "campaign_id": "120251246135250072",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "creative": {
+          "id": "1107882611663240"
+        },
+        "tracking_specs": [
+          {
+            "action.type": [
+              "offsite_conversion"
+            ],
+            "fb_pixel": [
+              "592714768141415"
+            ]
+          },
+          {
+            "action.type": [
+              "onsite_conversion"
+            ],
+            "conversion_id": [
+              "10096747817027824"
+            ]
+          },
+          {
+            "action.type": [
+              "onsite_conversion"
+            ]
+          },
+          {
+            "action.type": [
+              "post_interaction_gross"
+            ],
+            "page": [
+              "977808342257807"
+            ],
+            "post": [
+              "1812766546914405"
+            ]
+          },
+          {
+            "action.type": [
+              "post_engagement"
+            ],
+            "page": [
+              "977808342257807"
+            ],
+            "post": [
+              "1812766546914405"
+            ]
+          },
+          {
+            "action.type": [
+              "link_click"
+            ],
+            "post": [
+              "1812766546914405"
+            ],
+            "post.wall": [
+              "977808342257807"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "readback_at_utc": "2026-09-08T20:08:54.856527+00:00",
+      "ad_readback": {
+        "id": "120251261045730072",
+        "name": "AY09_BEGINNERS-WELCOME_VIDEO | PAUSED DRAFT | 2026-09-08",
+        "account_id": "456685748412595",
+        "adset_id": "120251246144560072",
+        "campaign_id": "120251246135250072",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "creative": {
+          "id": "1107882611663240"
+        },
+        "tracking_specs": [
+          {
+            "action.type": [
+              "offsite_conversion"
+            ],
+            "fb_pixel": [
+              "592714768141415"
+            ]
+          },
+          {
+            "action.type": [
+              "onsite_conversion"
+            ],
+            "conversion_id": [
+              "10096747817027824"
+            ]
+          },
+          {
+            "action.type": [
+              "onsite_conversion"
+            ]
+          },
+          {
+            "action.type": [
+              "post_interaction_gross"
+            ],
+            "page": [
+              "977808342257807"
+            ],
+            "post": [
+              "1812766546914405"
+            ]
+          },
+          {
+            "action.type": [
+              "post_engagement"
+            ],
+            "page": [
+              "977808342257807"
+            ],
+            "post": [
+              "1812766546914405"
+            ]
+          },
+          {
+            "action.type": [
+              "link_click"
+            ],
+            "post": [
+              "1812766546914405"
+            ],
+            "post.wall": [
+              "977808342257807"
+            ]
+          }
+        ],
+        "updated_time": "2026-09-08T15:05:48-0500"
+      }
+    },
+    {
+      "readback_at_utc": "2026-09-08T20:10:39.768970+00:00",
+      "ad_readback": {
+        "id": "120251261045730072",
+        "name": "AY09_BEGINNERS-WELCOME_VIDEO | PAUSED DRAFT | 2026-09-08",
+        "account_id": "456685748412595",
+        "adset_id": "120251246144560072",
+        "campaign_id": "120251246135250072",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "creative": {
+          "id": "1107882611663240"
+        },
+        "tracking_specs": [
+          {
+            "action.type": [
+              "offsite_conversion"
+            ],
+            "fb_pixel": [
+              "592714768141415"
+            ]
+          },
+          {
+            "action.type": [
+              "onsite_conversion"
+            ],
+            "conversion_id": [
+              "10096747817027824"
+            ]
+          },
+          {
+            "action.type": [
+              "onsite_conversion"
+            ]
+          },
+          {
+            "action.type": [
+              "post_interaction_gross"
+            ],
+            "page": [
+              "977808342257807"
+            ],
+            "post": [
+              "1812766546914405"
+            ]
+          },
+          {
+            "action.type": [
+              "post_engagement"
+            ],
+            "page": [
+              "977808342257807"
+            ],
+            "post": [
+              "1812766546914405"
+            ]
+          },
+          {
+            "action.type": [
+              "link_click"
+            ],
+            "post": [
+              "1812766546914405"
+            ],
+            "post.wall": [
+              "977808342257807"
+            ]
+          }
+        ],
+        "updated_time": "2026-09-08T15:05:48-0500"
+      }
+    }
+  ],
+  "creative_readback": {
+    "id": "1107882611663240",
+    "name": "AY09_BEGINNERS-WELCOME_VIDEO | DRIVE | 4x5+9x16 2026-09-08 2026-09-08-bc0cba7f29c5be73668967f8d97fdc0f",
+    "object_story_spec": {
+      "page_id": "977808342257807",
+      "instagram_user_id": "17841402345785819"
+    },
+    "asset_feed_spec": {
+      "videos": [
+        {
+          "adlabels": [
+            {
+              "name": "vertical",
+              "id": "120250983105790072"
+            }
+          ],
+          "video_id": "1824100178577845"
+        },
+        {
+          "adlabels": [
+            {
+              "name": "feed",
+              "id": "120251261042600072"
+            }
+          ],
+          "video_id": "2134875450753413"
+        }
+      ],
+      "bodies": [
+        {
+          "text": "A child does not have to feel ready before starting. In Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress. Complete beginners are welcome. Find the right starting point in Austin."
+        }
+      ],
+      "call_to_action_types": [
+        "LEARN_MORE"
+      ],
+      "descriptions": [
+        {
+          "text": "Castle Hill Fitness · Tue/Thu at 5 p.m."
+        }
+      ],
+      "link_urls": [
+        {
+          "website_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AY09_BEGINNERS-WELCOME_VIDEO&utm_term={{adset.name}}&utm_id={{campaign.id}}"
+        }
+      ],
+      "titles": [
+        {
+          "text": "Youth BJJ for Ages 8–12"
+        }
+      ],
+      "ad_formats": [
+        "SINGLE_VIDEO"
+      ],
+      "asset_customization_rules": [
+        {
+          "customization_spec": {
+            "age_max": 65,
+            "age_min": 13,
+            "publisher_platforms": [
+              "facebook",
+              "instagram"
+            ],
+            "facebook_positions": [
+              "story",
+              "facebook_reels"
+            ],
+            "instagram_positions": [
+              "story",
+              "reels"
+            ]
+          },
+          "video_label": {
+            "name": "vertical",
+            "id": "120250983105790072"
+          },
+          "priority": 1
+        },
+        {
+          "customization_spec": {
+            "age_max": 65,
+            "age_min": 13
+          },
+          "video_label": {
+            "name": "feed",
+            "id": "120251261042600072"
+          },
+          "priority": 2
+        }
+      ],
+      "optimization_type": "PLACEMENT",
+      "additional_data": {
+        "multi_share_end_card": false,
+        "is_click_to_message": false
+      },
+      "reasons_to_shop": false,
+      "shops_bundle": false
+    },
+    "degrees_of_freedom_spec": {
+      "creative_features_spec": {
+        "adapt_to_placement": {
+          "enroll_status": "OPT_OUT"
+        },
+        "add_text_overlay": {
+          "enroll_status": "OPT_OUT"
+        },
+        "ads_with_benefits": {
+          "enroll_status": "OPT_OUT"
+        },
+        "advantage_plus_creative": {
+          "enroll_status": "OPT_OUT"
+        },
+        "app_highlights": {
+          "enroll_status": "OPT_OUT"
+        },
+        "audio": {
+          "enroll_status": "OPT_OUT"
+        },
+        "auto_promotion_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "biz_ai": {
+          "enroll_status": "OPT_OUT"
+        },
+        "carousel_to_video": {
+          "enroll_status": "OPT_OUT"
+        },
+        "catalog_feed_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "creative_stickers": {
+          "enroll_status": "OPT_OUT"
+        },
+        "customize_product_recommendation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "cv_transformation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "description_automation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "dha_optimization": {
+          "enroll_status": "OPT_OUT"
+        },
+        "dynamic_cta_text": {
+          "enroll_status": "OPT_OUT"
+        },
+        "dynamic_partner_content": {
+          "enroll_status": "OPT_OUT"
+        },
+        "enable_ncs_testimonials": {
+          "enroll_status": "OPT_OUT"
+        },
+        "enhance_cta": {
+          "enroll_status": "OPT_OUT"
+        },
+        "fb_feed_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "fb_reels_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "fb_story_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "feed_caption_optimization": {
+          "enroll_status": "OPT_OUT"
+        },
+        "generate_cta": {
+          "enroll_status": "OPT_OUT"
+        },
+        "hide_price": {
+          "enroll_status": "OPT_OUT"
+        },
+        "hyperlink_formatting": {
+          "enroll_status": "OPT_OUT"
+        },
+        "ig_feed_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "ig_glados_feed": {
+          "enroll_status": "OPT_OUT"
+        },
+        "ig_reels_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "ig_stream_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "ig_video_native_subtitle": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_animation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_auto_crop": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_background_gen": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_banner": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_brightness_and_contrast": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_end_card": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_enhancement": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_templates": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_text_translation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_touchups": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_uncrop": {
+          "enroll_status": "OPT_OUT"
+        },
+        "inline_comment": {
+          "enroll_status": "OPT_OUT"
+        },
+        "local_store_extension": {
+          "enroll_status": "OPT_OUT"
+        },
+        "media_liquidity_animated_image": {
+          "enroll_status": "OPT_OUT"
+        },
+        "media_order": {
+          "enroll_status": "OPT_OUT"
+        },
+        "media_type_automation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "multi_creative_post_carousel": {
+          "enroll_status": "OPT_OUT"
+        },
+        "multi_photo_to_video": {
+          "enroll_status": "OPT_OUT"
+        },
+        "music_generation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "pac_genai_recomposition": {
+          "enroll_status": "OPT_OUT"
+        },
+        "pac_recomposition": {
+          "enroll_status": "OPT_OUT"
+        },
+        "pac_relaxation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "product_browsing": {
+          "enroll_status": "OPT_OUT"
+        },
+        "product_extensions": {
+          "enroll_status": "OPT_OUT"
+        },
+        "product_metadata_automation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "product_tags": {
+          "enroll_status": "OPT_OUT"
+        },
+        "profile_card": {
+          "enroll_status": "OPT_OUT"
+        },
+        "profile_extension": {
+          "enroll_status": "OPT_OUT"
+        },
+        "replace_media_text": {
+          "enroll_status": "OPT_OUT"
+        },
+        "reveal_details_over_time": {
+          "enroll_status": "OPT_OUT"
+        },
+        "show_destination_blurbs": {
+          "enroll_status": "OPT_OUT"
+        },
+        "show_summary": {
+          "enroll_status": "OPT_OUT"
+        },
+        "site_extensions": {
+          "enroll_status": "OPT_OUT"
+        },
+        "standard_enhancements_catalog": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_extraction_for_headline": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_extraction_for_tap_target": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_formatting_optimization": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_generation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_optimizations": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_overlay_translation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_translation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "translate_voiceover": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_auto_crop": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_filtering": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_highlight": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_highlights": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_to_image": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_uncrop": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_uncrop_9x16_to_9x18": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_voiceover": {
+          "enroll_status": "OPT_OUT"
+        },
+        "wa_mm_image_filtering": {
+          "enroll_status": "OPT_OUT"
+        },
+        "wa_mm_text_truncation_length": {
+          "enroll_status": "OPT_OUT"
+        }
+      }
+    }
+  },
+  "redactions": [
+    "asset_feed_spec.videos[*].thumbnail_url (expiring signed URLs; raw response private)"
+  ],
+  "ad_readback": {
+    "id": "120251261045730072",
+    "name": "AY09_BEGINNERS-WELCOME_VIDEO | PAUSED DRAFT | 2026-09-08",
+    "account_id": "456685748412595",
+    "adset_id": "120251246144560072",
+    "campaign_id": "120251246135250072",
+    "status": "PAUSED",
+    "effective_status": "PAUSED",
+    "creative": {
+      "id": "1107882611663240"
+    },
+    "tracking_specs": [
+      {
+        "action.type": [
+          "offsite_conversion"
+        ],
+        "fb_pixel": [
+          "592714768141415"
+        ]
+      },
+      {
+        "action.type": [
+          "onsite_conversion"
+        ],
+        "conversion_id": [
+          "10096747817027824"
+        ]
+      },
+      {
+        "action.type": [
+          "onsite_conversion"
+        ]
+      },
+      {
+        "action.type": [
+          "post_interaction_gross"
+        ],
+        "page": [
+          "977808342257807"
+        ],
+        "post": [
+          "1812766546914405"
+        ]
+      },
+      {
+        "action.type": [
+          "post_engagement"
+        ],
+        "page": [
+          "977808342257807"
+        ],
+        "post": [
+          "1812766546914405"
+        ]
+      },
+      {
+        "action.type": [
+          "link_click"
+        ],
+        "post": [
+          "1812766546914405"
+        ],
+        "post.wall": [
+          "977808342257807"
+        ]
+      }
+    ],
+    "updated_time": "2026-09-08T15:05:48-0500"
+  },
+  "effective_paused_gate_passed": true,
+  "parents_readback": {
+    "campaign": {
+      "id": "120251246135250072",
+      "name": "PROSPECTING | AUSTIN | CASTLE HILL | PROGRAM FINDER | W1 | 202609",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "buying_type": "AUCTION",
+      "created_time": "2026-09-07T22:35:24-0500",
+      "updated_time": "2026-09-07T22:35:24-0500",
+      "start_time": "2026-09-07T22:36:41-0500",
+      "daily_budget": "3500",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "special_ad_categories": []
+    },
+    "adset": {
+      "id": "120251246144560072",
+      "name": "AUSTIN_10MI_BROAD_24-54_CASTLE-HILL_W1",
+      "campaign_id": "120251246135250072",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "targeting": {
+        "age_max": 54,
+        "age_min": 24,
+        "geo_locations": {
+          "cities": [
+            {
+              "country": "US",
+              "distance_unit": "mile",
+              "key": "2525495",
+              "name": "Austin",
+              "radius": 10,
+              "region": "Texas",
+              "region_id": "3886"
+            }
+          ],
+          "location_types": [
+            "frequently_in",
+            "home"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram"
+        ]
+      },
+      "destination_type": "WEBSITE",
+      "promoted_object": {
+        "pixel_id": "592714768141415",
+        "custom_event_type": "LEAD",
+        "smart_pse_enabled": false
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS"
+    }
+  },
+  "readback_at_utc": "2026-09-08T20:10:43.492078+00:00"
+}

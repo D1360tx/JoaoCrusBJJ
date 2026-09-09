@@ -191,7 +191,7 @@ test('accepted lead routing obeys consent, destination semantics, and PII allowl
 });
 
 test('accepted Meta leads wait for fbq, accept backend IDs, and route exactly once', () => {
-  for (const asset of ['site/assets/campaign-site.js', 'site/assets/program-fit-quiz.js']) {
+  for (const asset of ['site/assets/campaign-site.js', 'site/assets/program-fit-quiz.js', 'site/assets/austin-program-fit-quiz.js']) {
     const context = acceptedLeadHarness(asset, {
       analytics_storage: 'denied', ad_storage: 'granted', ad_user_data: 'granted',
     });
@@ -213,7 +213,7 @@ test('accepted Meta leads wait for fbq, accept backend IDs, and route exactly on
 });
 
 test('GA4 fallback queues the exact lead event when gtag is not exposed', () => {
-  for (const asset of ['site/assets/campaign-site.js', 'site/assets/program-fit-quiz.js']) {
+  for (const asset of ['site/assets/campaign-site.js', 'site/assets/program-fit-quiz.js', 'site/assets/austin-program-fit-quiz.js']) {
     const context = acceptedLeadHarness(asset, {
       analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied',
     });

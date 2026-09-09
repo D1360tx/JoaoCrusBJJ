@@ -1,0 +1,53 @@
+{
+  "rebuild_identical_assets": 23,
+  "changed_assets": [],
+  "commands": [
+    {
+      "command": "python scripts/build_austin_youth_comparisons.py",
+      "result": {
+        "output": "Built four static assets, source frame, two contact sheets and exact-copy manifest.",
+        "exit_code": 0,
+        "error": null
+      }
+    },
+    {
+      "command": "python scripts/render_austin_youth_long_video.py",
+      "result": {
+        "output": "Rendered both continuous 26.84-second placement cuts, complete thought and five-frame sheets.",
+        "exit_code": 0,
+        "error": null
+      }
+    },
+    {
+      "command": "full decode AY09A_BEGINNERS-WELCOME_LONG-VIDEO_4x5.mp4",
+      "result": {
+        "output": "",
+        "exit_code": 0,
+        "error": null
+      }
+    },
+    {
+      "command": "full decode AY09A_BEGINNERS-WELCOME_LONG-VIDEO_9x16.mp4",
+      "result": {
+        "output": "",
+        "exit_code": 0,
+        "error": null
+      }
+    }
+  ],
+  "audio_track_equivalence": [
+    {
+      "file": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO_4x5.mp4",
+      "decoded_pcm_sha256": "9c2c0f81c1c8b187f65835eca5b14222f67168ff9e884a14ca6b78325ba2555c"
+    },
+    {
+      "file": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO_9x16.mp4",
+      "decoded_pcm_sha256": "9c2c0f81c1c8b187f65835eca5b14222f67168ff9e884a14ca6b78325ba2555c"
+    }
+  ],
+  "font_sha256": {
+    "/mnt/c/Windows/Fonts/impact.ttf": "d8bbdb72e3f930157824b2e59677d3a912d4512c14a948e6656a2e3fb0c935ad",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf": "5c1247acef7f2b8522a31742c76d6adcb5569bacc0be7ceaa4dc39dd252ce895",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf": "ae7b7855e115a5966d8b1b3f80f254ccc117ec86f9965e202ee2940453837280"
+  }
+}

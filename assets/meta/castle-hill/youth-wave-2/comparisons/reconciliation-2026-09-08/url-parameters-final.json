@@ -1,0 +1,79 @@
+{
+  "campaign": {
+    "id": "120251246135250072",
+    "status": "PAUSED",
+    "effective_status": "PAUSED",
+    "daily_budget": "1000"
+  },
+  "adset": {
+    "id": "120251246144560072",
+    "status": "PAUSED",
+    "effective_status": "PAUSED",
+    "location": "Austin, Texas",
+    "radius_miles": 10,
+    "age_min": 24,
+    "age_max": 54
+  },
+  "destination_url": "https://joaocrusbjj.com/castle-hill-grand-opening/",
+  "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+  "ads": [
+    {
+      "id": "120251263002380072",
+      "name": "AY09B_BEGINNERS-WELCOME_STATIC",
+      "creative_id": "1567708678432946",
+      "format": "SINGLE_IMAGE",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "website_url_clean": true,
+      "url_tags_exact": true,
+      "ui_url_parameters_visible": true
+    },
+    {
+      "id": "120251263139970072",
+      "name": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO",
+      "creative_id": "1571675311324124",
+      "format": "SINGLE_VIDEO",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "website_url_clean": true,
+      "url_tags_exact": true,
+      "ui_url_parameters_visible": true
+    },
+    {
+      "id": "120251261045730072",
+      "name": "AY09_BEGINNERS-WELCOME_VIDEO | PAUSED DRAFT | 2026-09-08",
+      "creative_id": "1571675311324124",
+      "format": "SINGLE_VIDEO",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "website_url_clean": true,
+      "url_tags_exact": true,
+      "ui_url_parameters_visible": true
+    }
+  ],
+  "all_campaign_ads": {
+    "count": 11,
+    "all_configured_paused": true,
+    "all_effective_paused": true
+  },
+  "video_preservation": {
+    "duration_seconds": 26.866,
+    "feed_dimensions": "720x900",
+    "vertical_dimensions": "720x1280",
+    "preferred_thumbnails_rgb_identical": true,
+    "approved_source_reused_for_meta_clone": true,
+    "meta_reprocessed_video_ids": {
+      "feed": "1911621773147370",
+      "vertical": "2175548869693779"
+    }
+  },
+  "ui_evidence": [
+    "original-ay09-url-parameters-visible.png",
+    "ay09b-url-parameters-visible.png"
+  ],
+  "publish_state": {
+    "pending_draft": false,
+    "publish_button_disabled": true,
+    "meaning": "API-backed changes are already saved; selective activation remains separate."
+  }
+}

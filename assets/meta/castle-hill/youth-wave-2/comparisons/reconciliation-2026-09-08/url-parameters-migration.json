@@ -1,0 +1,4879 @@
+{
+  "target_url": "https://joaocrusbjj.com/castle-hill-grand-opening/",
+  "target_url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}",
+  "original_mappings": {
+    "120251263002380072": "1548660843191930",
+    "120251263139970072": "1392143345711700",
+    "120251261045730072": "1392143345711700"
+  },
+  "before": {
+    "time_utc": "2026-09-09T03:18:07.573271+00:00",
+    "ads": {
+      "data": [
+        {
+          "id": "120251261045730072",
+          "name": "AY09_BEGINNERS-WELCOME_VIDEO | PAUSED DRAFT | 2026-09-08",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "1392143345711700"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812973796893680"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812973796893680"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812973796893680"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251260015870072",
+          "name": "AA05_GROUP-OR-PRIVATE_STATIC | SAFE | PLACEMENT",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "2003106970488268"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812722260252167"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812722260252167"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812722260252167"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251263002380072",
+          "name": "AY09B_BEGINNERS-WELCOME_STATIC",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "1548660843191930"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812978716893188"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812978716893188"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812978716893188"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251260014400072",
+          "name": "AY01_TAP-MEANS-STOP_STATIC | SAFE | PLACEMENT",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "2103156577742211"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812720460252347"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812720460252347"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812720460252347"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251260015710072",
+          "name": "AA03_CALM-UNDER-PRESSURE_STATIC | SAFE | PLACEMENT",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "28521308404223057"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812722176918842"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812722176918842"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812722176918842"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251261015960072",
+          "name": "AY08_REAL-PRACTICE_STATIC",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "4302676583376329"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1813024266888633"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1813024266888633"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1813024266888633"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251260015140072",
+          "name": "AY05_CASTLE-HILL-YOUTH_STATIC | SAFE | PLACEMENT",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "1541320053989486"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812721410252252"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812721410252252"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812721410252252"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251263139970072",
+          "name": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "1392143345711700"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812973796893680"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812973796893680"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812973796893680"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251260014790072",
+          "name": "AY03_CONFIDENCE-IS-PRACTICED_STATIC | SAFE | PLACEMENT",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "2564936567304589"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812721346918925"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812721346918925"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812721346918925"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251261010900072",
+          "name": "AY07_BEGINNER-BELONGING_STATIC",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "1687998043330822"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812853326905727"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812853326905727"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812853326905727"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251260015570072",
+          "name": "AA01_BEGINNER-STARTS-HERE_STATIC | SAFE | PLACEMENT",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "2077252959817026"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812721516918908"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812721516918908"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812721516918908"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "parents": {
+      "campaign": {
+        "id": "120251246135250072",
+        "name": "PROSPECTING | AUSTIN | CASTLE HILL | PROGRAM FINDER | W1 | 202609",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "daily_budget": "1000"
+      },
+      "adset": {
+        "id": "120251246144560072",
+        "name": "AUSTIN_10MI_BROAD_24-54_CASTLE-HILL_W1",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "campaign_id": "120251246135250072",
+        "targeting": {
+          "age_max": 54,
+          "age_min": 24,
+          "geo_locations": {
+            "cities": [
+              {
+                "country": "US",
+                "distance_unit": "mile",
+                "key": "2525495",
+                "name": "Austin",
+                "radius": 10,
+                "region": "Texas",
+                "region_id": "3886"
+              }
+            ],
+            "location_types": [
+              "frequently_in",
+              "home",
+              "recent"
+            ]
+          },
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ]
+        },
+        "destination_type": "WEBSITE",
+        "promoted_object": {
+          "pixel_id": "592714768141415",
+          "custom_event_type": "LEAD",
+          "smart_pse_enabled": false
+        },
+        "optimization_goal": "OFFSITE_CONVERSIONS"
+      }
+    },
+    "creatives": {
+      "1392143345711700": {
+        "id": "1392143345711700",
+        "name": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO | ADULTS YOUTH ARTWORK | PAID MEDIA HOLD 2026-09-08-c75f6226c92671e5483f0a070ab708e9",
+        "object_story_spec": {
+          "page_id": "977808342257807",
+          "instagram_user_id": "17841402345785819"
+        },
+        "asset_feed_spec": {
+          "videos": [
+            {
+              "adlabels": [
+                {
+                  "name": "vertical",
+                  "id": "120250983105790072"
+                }
+              ],
+              "video_id": "1734165961000142"
+            },
+            {
+              "adlabels": [
+                {
+                  "name": "feed",
+                  "id": "120251261042600072"
+                }
+              ],
+              "video_id": "2093447011244219"
+            }
+          ],
+          "bodies": [
+            {
+              "text": "You or your child do not have to feel ready before starting.\n\nIn Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress.\n\nFor adults, private BJJ instruction at Castle Hill Fitness offers focused coaching, practical problem-solving, and progress at your own pace.\n\nComplete beginners are welcome.\n\nFind the right starting point in Austin."
+            }
+          ],
+          "call_to_action_types": [
+            "LEARN_MORE"
+          ],
+          "descriptions": [
+            {
+              "text": "Adults + Youth Ages 8–12 in Austin."
+            }
+          ],
+          "link_urls": [
+            {
+              "website_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}"
+            }
+          ],
+          "titles": [
+            {
+              "text": "You Don’t Have to Feel Ready"
+            }
+          ],
+          "ad_formats": [
+            "SINGLE_VIDEO"
+          ],
+          "asset_customization_rules": [
+            {
+              "customization_spec": {
+                "age_max": 65,
+                "age_min": 13,
+                "publisher_platforms": [
+                  "facebook",
+                  "instagram"
+                ],
+                "facebook_positions": [
+                  "story",
+                  "facebook_reels"
+                ],
+                "instagram_positions": [
+                  "story",
+                  "reels"
+                ]
+              },
+              "video_label": {
+                "name": "vertical",
+                "id": "120250983105790072"
+              },
+              "priority": 1
+            },
+            {
+              "customization_spec": {
+                "age_max": 65,
+                "age_min": 13
+              },
+              "video_label": {
+                "name": "feed",
+                "id": "120251261042600072"
+              },
+              "priority": 2
+            }
+          ],
+          "optimization_type": "PLACEMENT",
+          "additional_data": {
+            "multi_share_end_card": false,
+            "is_click_to_message": false
+          },
+          "reasons_to_shop": false,
+          "shops_bundle": false
+        },
+        "degrees_of_freedom_spec": {
+          "creative_features_spec": {
+            "adapt_to_placement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "add_text_overlay": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ads_with_benefits": {
+              "enroll_status": "OPT_OUT"
+            },
+            "advantage_plus_creative": {
+              "enroll_status": "OPT_OUT"
+            },
+            "app_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "audio": {
+              "enroll_status": "OPT_OUT"
+            },
+            "auto_promotion_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "biz_ai": {
+              "enroll_status": "OPT_OUT"
+            },
+            "carousel_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "catalog_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "creative_stickers": {
+              "enroll_status": "OPT_OUT"
+            },
+            "customize_product_recommendation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "cv_transformation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "description_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dha_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_cta_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_partner_content": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enable_ncs_testimonials": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enhance_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_story_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "feed_caption_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "generate_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hide_price": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hyperlink_formatting": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_glados_feed": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_stream_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_video_native_subtitle": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_animation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_background_gen": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_banner": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_brightness_and_contrast": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_end_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_enhancement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_templates": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_touchups": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "inline_comment": {
+              "enroll_status": "OPT_OUT"
+            },
+            "local_store_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_liquidity_animated_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_order": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_type_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_creative_post_carousel": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_photo_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "music_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_genai_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_relaxation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_browsing": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_metadata_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_tags": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "replace_media_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "reveal_details_over_time": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_destination_blurbs": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_summary": {
+              "enroll_status": "OPT_OUT"
+            },
+            "site_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "standard_enhancements_catalog": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_headline": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_tap_target": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_formatting_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_optimizations": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_overlay_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "translate_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlight": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_to_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop_9x16_to_9x18": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_image_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_text_truncation_length": {
+              "enroll_status": "OPT_OUT"
+            }
+          }
+        }
+      },
+      "1548660843191930": {
+        "id": "1548660843191930",
+        "name": "AY09B_BEGINNERS-WELCOME_STATIC | ADULTS YOUTH ARTWORK | PAID MEDIA HOLD 2026-09-08-f1936b145a8495dcbde92260c1ee5547",
+        "object_story_spec": {
+          "page_id": "977808342257807",
+          "instagram_user_id": "17841402345785819"
+        },
+        "asset_feed_spec": {
+          "optimization_type": "PLACEMENT",
+          "call_to_action_types": [
+            "LEARN_MORE"
+          ],
+          "ad_formats": [
+            "SINGLE_IMAGE"
+          ],
+          "reasons_to_shop": false,
+          "shops_bundle": false,
+          "bodies": [
+            {
+              "text": "You or your child do not have to feel ready before starting.\n\nIn Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress.\n\nFor adults, private BJJ instruction at Castle Hill Fitness offers focused coaching, practical problem-solving, and progress at your own pace.\n\nComplete beginners are welcome.\n\nFind the right starting point in Austin."
+            }
+          ],
+          "titles": [
+            {
+              "text": "You Don’t Have to Feel Ready"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "Adults + Youth Ages 8–12 in Austin."
+            }
+          ],
+          "link_urls": [
+            {
+              "website_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}"
+            }
+          ],
+          "images": [
+            {
+              "hash": "a35ae481c4a5fc565115ed45b80f476f",
+              "adlabels": [
+                {
+                  "name": "feed",
+                  "id": "120251261042600072"
+                }
+              ]
+            },
+            {
+              "hash": "1e0bbe2da0912a0c768aa97776824260",
+              "adlabels": [
+                {
+                  "name": "vertical",
+                  "id": "120250983105790072"
+                }
+              ]
+            }
+          ],
+          "asset_customization_rules": [
+            {
+              "priority": 1,
+              "image_label": {
+                "name": "vertical",
+                "id": "120250983105790072"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65,
+                "publisher_platforms": [
+                  "facebook",
+                  "instagram"
+                ],
+                "instagram_positions": [
+                  "story",
+                  "reels"
+                ],
+                "facebook_positions": [
+                  "story",
+                  "facebook_reels"
+                ]
+              }
+            },
+            {
+              "priority": 2,
+              "image_label": {
+                "name": "feed",
+                "id": "120251261042600072"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65
+              }
+            }
+          ],
+          "additional_data": {
+            "multi_share_end_card": false,
+            "is_click_to_message": false
+          }
+        },
+        "degrees_of_freedom_spec": {
+          "creative_features_spec": {
+            "adapt_to_placement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "add_text_overlay": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ads_with_benefits": {
+              "enroll_status": "OPT_OUT"
+            },
+            "advantage_plus_creative": {
+              "enroll_status": "OPT_OUT"
+            },
+            "app_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "audio": {
+              "enroll_status": "OPT_OUT"
+            },
+            "auto_promotion_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "biz_ai": {
+              "enroll_status": "OPT_OUT"
+            },
+            "carousel_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "catalog_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "creative_stickers": {
+              "enroll_status": "OPT_OUT"
+            },
+            "customize_product_recommendation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "cv_transformation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "description_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dha_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_cta_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_partner_content": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enable_ncs_testimonials": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enhance_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_story_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "feed_caption_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "generate_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hide_price": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hyperlink_formatting": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_glados_feed": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_stream_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_video_native_subtitle": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_animation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_background_gen": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_banner": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_brightness_and_contrast": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_end_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_enhancement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_templates": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_touchups": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "inline_comment": {
+              "enroll_status": "OPT_OUT"
+            },
+            "local_store_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_liquidity_animated_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_order": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_type_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_creative_post_carousel": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_photo_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "music_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_genai_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_relaxation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_browsing": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_metadata_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_tags": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "replace_media_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "reveal_details_over_time": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_destination_blurbs": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_summary": {
+              "enroll_status": "OPT_OUT"
+            },
+            "site_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "standard_enhancements_catalog": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_headline": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_tap_target": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_formatting_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_optimizations": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_overlay_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "translate_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlight": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_to_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop_9x16_to_9x18": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_image_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_text_truncation_length": {
+              "enroll_status": "OPT_OUT"
+            }
+          }
+        }
+      }
+    }
+  },
+  "in_place_update_attempt": {
+    "error": {
+      "message": "Invalid parameter",
+      "type": "OAuthException",
+      "code": 100,
+      "error_subcode": 1815573,
+      "is_transient": false,
+      "error_user_title": "Failed to update the creative",
+      "error_user_msg": "Failed to update creative 1,548,660,843,191,930. Please specify name, status or associated adlabels for updating the creative.",
+      "fbtrace_id": "A_SBc9JTfwwRpuz-BIYX3tN"
+    }
+  },
+  "in_place_update_readback": {
+    "id": "1548660843191930",
+    "name": "AY09B_BEGINNERS-WELCOME_STATIC | ADULTS YOUTH ARTWORK | PAID MEDIA HOLD 2026-09-08-f1936b145a8495dcbde92260c1ee5547",
+    "object_story_spec": {
+      "page_id": "977808342257807",
+      "instagram_user_id": "17841402345785819"
+    },
+    "asset_feed_spec": {
+      "images": [
+        {
+          "adlabels": [
+            {
+              "name": "feed",
+              "id": "120251261042600072"
+            }
+          ],
+          "hash": "a35ae481c4a5fc565115ed45b80f476f"
+        },
+        {
+          "adlabels": [
+            {
+              "name": "vertical",
+              "id": "120250983105790072"
+            }
+          ],
+          "hash": "1e0bbe2da0912a0c768aa97776824260"
+        }
+      ],
+      "bodies": [
+        {
+          "text": "You or your child do not have to feel ready before starting.\n\nIn Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress.\n\nFor adults, private BJJ instruction at Castle Hill Fitness offers focused coaching, practical problem-solving, and progress at your own pace.\n\nComplete beginners are welcome.\n\nFind the right starting point in Austin."
+        }
+      ],
+      "call_to_action_types": [
+        "LEARN_MORE"
+      ],
+      "descriptions": [
+        {
+          "text": "Adults + Youth Ages 8–12 in Austin."
+        }
+      ],
+      "link_urls": [
+        {
+          "website_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}"
+        }
+      ],
+      "titles": [
+        {
+          "text": "You Don’t Have to Feel Ready"
+        }
+      ],
+      "ad_formats": [
+        "SINGLE_IMAGE"
+      ],
+      "asset_customization_rules": [
+        {
+          "customization_spec": {
+            "age_max": 65,
+            "age_min": 13,
+            "publisher_platforms": [
+              "facebook",
+              "instagram"
+            ],
+            "facebook_positions": [
+              "story",
+              "facebook_reels"
+            ],
+            "instagram_positions": [
+              "story",
+              "reels"
+            ]
+          },
+          "image_label": {
+            "name": "vertical",
+            "id": "120250983105790072"
+          },
+          "priority": 1
+        },
+        {
+          "customization_spec": {
+            "age_max": 65,
+            "age_min": 13
+          },
+          "image_label": {
+            "name": "feed",
+            "id": "120251261042600072"
+          },
+          "priority": 2
+        }
+      ],
+      "optimization_type": "PLACEMENT",
+      "additional_data": {
+        "multi_share_end_card": false,
+        "is_click_to_message": false
+      },
+      "reasons_to_shop": false,
+      "shops_bundle": false
+    },
+    "degrees_of_freedom_spec": {
+      "creative_features_spec": {
+        "adapt_to_placement": {
+          "enroll_status": "OPT_OUT"
+        },
+        "add_text_overlay": {
+          "enroll_status": "OPT_OUT"
+        },
+        "ads_with_benefits": {
+          "enroll_status": "OPT_OUT"
+        },
+        "advantage_plus_creative": {
+          "enroll_status": "OPT_OUT"
+        },
+        "app_highlights": {
+          "enroll_status": "OPT_OUT"
+        },
+        "audio": {
+          "enroll_status": "OPT_OUT"
+        },
+        "auto_promotion_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "biz_ai": {
+          "enroll_status": "OPT_OUT"
+        },
+        "carousel_to_video": {
+          "enroll_status": "OPT_OUT"
+        },
+        "catalog_feed_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "creative_stickers": {
+          "enroll_status": "OPT_OUT"
+        },
+        "customize_product_recommendation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "cv_transformation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "description_automation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "dha_optimization": {
+          "enroll_status": "OPT_OUT"
+        },
+        "dynamic_cta_text": {
+          "enroll_status": "OPT_OUT"
+        },
+        "dynamic_partner_content": {
+          "enroll_status": "OPT_OUT"
+        },
+        "enable_ncs_testimonials": {
+          "enroll_status": "OPT_OUT"
+        },
+        "enhance_cta": {
+          "enroll_status": "OPT_OUT"
+        },
+        "fb_feed_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "fb_reels_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "fb_story_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "feed_caption_optimization": {
+          "enroll_status": "OPT_OUT"
+        },
+        "generate_cta": {
+          "enroll_status": "OPT_OUT"
+        },
+        "hide_price": {
+          "enroll_status": "OPT_OUT"
+        },
+        "hyperlink_formatting": {
+          "enroll_status": "OPT_OUT"
+        },
+        "ig_feed_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "ig_glados_feed": {
+          "enroll_status": "OPT_OUT"
+        },
+        "ig_reels_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "ig_stream_tag": {
+          "enroll_status": "OPT_OUT"
+        },
+        "ig_video_native_subtitle": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_animation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_auto_crop": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_background_gen": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_banner": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_brightness_and_contrast": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_end_card": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_enhancement": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_templates": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_text_translation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_touchups": {
+          "enroll_status": "OPT_OUT"
+        },
+        "image_uncrop": {
+          "enroll_status": "OPT_OUT"
+        },
+        "inline_comment": {
+          "enroll_status": "OPT_OUT"
+        },
+        "local_store_extension": {
+          "enroll_status": "OPT_OUT"
+        },
+        "media_liquidity_animated_image": {
+          "enroll_status": "OPT_OUT"
+        },
+        "media_order": {
+          "enroll_status": "OPT_OUT"
+        },
+        "media_type_automation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "multi_creative_post_carousel": {
+          "enroll_status": "OPT_OUT"
+        },
+        "multi_photo_to_video": {
+          "enroll_status": "OPT_OUT"
+        },
+        "music_generation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "pac_genai_recomposition": {
+          "enroll_status": "OPT_OUT"
+        },
+        "pac_recomposition": {
+          "enroll_status": "OPT_OUT"
+        },
+        "pac_relaxation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "product_browsing": {
+          "enroll_status": "OPT_OUT"
+        },
+        "product_extensions": {
+          "enroll_status": "OPT_OUT"
+        },
+        "product_metadata_automation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "product_tags": {
+          "enroll_status": "OPT_OUT"
+        },
+        "profile_card": {
+          "enroll_status": "OPT_OUT"
+        },
+        "profile_extension": {
+          "enroll_status": "OPT_OUT"
+        },
+        "replace_media_text": {
+          "enroll_status": "OPT_OUT"
+        },
+        "reveal_details_over_time": {
+          "enroll_status": "OPT_OUT"
+        },
+        "show_destination_blurbs": {
+          "enroll_status": "OPT_OUT"
+        },
+        "show_summary": {
+          "enroll_status": "OPT_OUT"
+        },
+        "site_extensions": {
+          "enroll_status": "OPT_OUT"
+        },
+        "standard_enhancements_catalog": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_extraction_for_headline": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_extraction_for_tap_target": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_formatting_optimization": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_generation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_optimizations": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_overlay_translation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "text_translation": {
+          "enroll_status": "OPT_OUT"
+        },
+        "translate_voiceover": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_auto_crop": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_filtering": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_highlight": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_highlights": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_to_image": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_uncrop": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_uncrop_9x16_to_9x18": {
+          "enroll_status": "OPT_OUT"
+        },
+        "video_voiceover": {
+          "enroll_status": "OPT_OUT"
+        },
+        "wa_mm_image_filtering": {
+          "enroll_status": "OPT_OUT"
+        },
+        "wa_mm_text_truncation_length": {
+          "enroll_status": "OPT_OUT"
+        }
+      }
+    }
+  },
+  "replacements": {
+    "1548660843191930": {
+      "request": {
+        "name": "AY09B_BEGINNERS-WELCOME_STATIC | Dedicated URL parameters | PAID MEDIA HOLD",
+        "object_story_spec": {
+          "page_id": "977808342257807",
+          "instagram_user_id": "17841402345785819"
+        },
+        "asset_feed_spec": {
+          "optimization_type": "PLACEMENT",
+          "call_to_action_types": [
+            "LEARN_MORE"
+          ],
+          "ad_formats": [
+            "SINGLE_IMAGE"
+          ],
+          "reasons_to_shop": false,
+          "shops_bundle": false,
+          "bodies": [
+            {
+              "text": "You or your child do not have to feel ready before starting.\n\nIn Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress.\n\nFor adults, private BJJ instruction at Castle Hill Fitness offers focused coaching, practical problem-solving, and progress at your own pace.\n\nComplete beginners are welcome.\n\nFind the right starting point in Austin."
+            }
+          ],
+          "titles": [
+            {
+              "text": "You Don’t Have to Feel Ready"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "Adults + Youth Ages 8–12 in Austin."
+            }
+          ],
+          "link_urls": [
+            {
+              "website_url": "https://joaocrusbjj.com/castle-hill-grand-opening/"
+            }
+          ],
+          "images": [
+            {
+              "hash": "a35ae481c4a5fc565115ed45b80f476f",
+              "adlabels": [
+                {
+                  "name": "feed",
+                  "id": "120251261042600072"
+                }
+              ]
+            },
+            {
+              "hash": "1e0bbe2da0912a0c768aa97776824260",
+              "adlabels": [
+                {
+                  "name": "vertical",
+                  "id": "120250983105790072"
+                }
+              ]
+            }
+          ],
+          "asset_customization_rules": [
+            {
+              "priority": 1,
+              "image_label": {
+                "name": "vertical",
+                "id": "120250983105790072"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65,
+                "publisher_platforms": [
+                  "facebook",
+                  "instagram"
+                ],
+                "instagram_positions": [
+                  "story",
+                  "reels"
+                ],
+                "facebook_positions": [
+                  "story",
+                  "facebook_reels"
+                ]
+              }
+            },
+            {
+              "priority": 2,
+              "image_label": {
+                "name": "feed",
+                "id": "120251261042600072"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65
+              }
+            }
+          ],
+          "additional_data": {
+            "multi_share_end_card": false,
+            "is_click_to_message": false
+          }
+        },
+        "degrees_of_freedom_spec": {
+          "creative_features_spec": {
+            "adapt_to_placement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "add_text_overlay": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ads_with_benefits": {
+              "enroll_status": "OPT_OUT"
+            },
+            "advantage_plus_creative": {
+              "enroll_status": "OPT_OUT"
+            },
+            "app_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "audio": {
+              "enroll_status": "OPT_OUT"
+            },
+            "auto_promotion_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "biz_ai": {
+              "enroll_status": "OPT_OUT"
+            },
+            "carousel_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "catalog_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "creative_stickers": {
+              "enroll_status": "OPT_OUT"
+            },
+            "customize_product_recommendation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "cv_transformation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "description_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dha_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_cta_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_partner_content": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enable_ncs_testimonials": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enhance_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_story_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "feed_caption_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "generate_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hide_price": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hyperlink_formatting": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_glados_feed": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_stream_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_video_native_subtitle": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_animation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_background_gen": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_banner": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_brightness_and_contrast": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_end_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_enhancement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_templates": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_touchups": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "inline_comment": {
+              "enroll_status": "OPT_OUT"
+            },
+            "local_store_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_liquidity_animated_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_order": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_type_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_creative_post_carousel": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_photo_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "music_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_genai_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_relaxation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_browsing": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_metadata_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_tags": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "replace_media_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "reveal_details_over_time": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_destination_blurbs": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_summary": {
+              "enroll_status": "OPT_OUT"
+            },
+            "site_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "standard_enhancements_catalog": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_headline": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_tap_target": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_formatting_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_optimizations": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_overlay_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "translate_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlight": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_to_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop_9x16_to_9x18": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_image_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_text_truncation_length": {
+              "enroll_status": "OPT_OUT"
+            }
+          }
+        },
+        "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}"
+      },
+      "response": {
+        "id": "1567708678432946"
+      },
+      "readback": {
+        "id": "1567708678432946",
+        "name": "AY09B_BEGINNERS-WELCOME_STATIC | Dedicated URL parameters | PAID MEDIA HOLD 2026-09-08-119157866565adb81fa4d8505daf0fcf",
+        "object_story_spec": {
+          "page_id": "977808342257807",
+          "instagram_user_id": "17841402345785819"
+        },
+        "asset_feed_spec": {
+          "optimization_type": "PLACEMENT",
+          "call_to_action_types": [
+            "LEARN_MORE"
+          ],
+          "ad_formats": [
+            "SINGLE_IMAGE"
+          ],
+          "reasons_to_shop": false,
+          "shops_bundle": false,
+          "bodies": [
+            {
+              "text": "You or your child do not have to feel ready before starting.\n\nIn Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress.\n\nFor adults, private BJJ instruction at Castle Hill Fitness offers focused coaching, practical problem-solving, and progress at your own pace.\n\nComplete beginners are welcome.\n\nFind the right starting point in Austin."
+            }
+          ],
+          "titles": [
+            {
+              "text": "You Don’t Have to Feel Ready"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "Adults + Youth Ages 8–12 in Austin."
+            }
+          ],
+          "link_urls": [
+            {
+              "website_url": "https://joaocrusbjj.com/castle-hill-grand-opening/"
+            }
+          ],
+          "images": [
+            {
+              "hash": "a35ae481c4a5fc565115ed45b80f476f",
+              "adlabels": [
+                {
+                  "name": "feed",
+                  "id": "120251261042600072"
+                }
+              ]
+            },
+            {
+              "hash": "1e0bbe2da0912a0c768aa97776824260",
+              "adlabels": [
+                {
+                  "name": "vertical",
+                  "id": "120250983105790072"
+                }
+              ]
+            }
+          ],
+          "asset_customization_rules": [
+            {
+              "priority": 1,
+              "image_label": {
+                "name": "vertical",
+                "id": "120250983105790072"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65,
+                "publisher_platforms": [
+                  "facebook",
+                  "instagram"
+                ],
+                "instagram_positions": [
+                  "story",
+                  "reels"
+                ],
+                "facebook_positions": [
+                  "story",
+                  "facebook_reels"
+                ]
+              }
+            },
+            {
+              "priority": 2,
+              "image_label": {
+                "name": "feed",
+                "id": "120251261042600072"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65
+              }
+            }
+          ],
+          "additional_data": {
+            "multi_share_end_card": false,
+            "is_click_to_message": false
+          }
+        },
+        "degrees_of_freedom_spec": {
+          "creative_features_spec": {
+            "adapt_to_placement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "add_text_overlay": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ads_with_benefits": {
+              "enroll_status": "OPT_OUT"
+            },
+            "advantage_plus_creative": {
+              "enroll_status": "OPT_OUT"
+            },
+            "app_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "audio": {
+              "enroll_status": "OPT_OUT"
+            },
+            "auto_promotion_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "biz_ai": {
+              "enroll_status": "OPT_OUT"
+            },
+            "carousel_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "catalog_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "creative_stickers": {
+              "enroll_status": "OPT_OUT"
+            },
+            "customize_product_recommendation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "cv_transformation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "description_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dha_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_cta_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_partner_content": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enable_ncs_testimonials": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enhance_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_story_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "feed_caption_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "generate_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hide_price": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hyperlink_formatting": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_glados_feed": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_stream_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_video_native_subtitle": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_animation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_background_gen": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_banner": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_brightness_and_contrast": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_end_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_enhancement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_templates": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_touchups": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "inline_comment": {
+              "enroll_status": "OPT_OUT"
+            },
+            "local_store_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_liquidity_animated_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_order": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_type_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_creative_post_carousel": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_photo_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "music_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_genai_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_relaxation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_browsing": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_metadata_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_tags": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "replace_media_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "reveal_details_over_time": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_destination_blurbs": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_summary": {
+              "enroll_status": "OPT_OUT"
+            },
+            "site_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "standard_enhancements_catalog": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_headline": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_tap_target": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_formatting_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_optimizations": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_overlay_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "translate_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlight": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_to_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop_9x16_to_9x18": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_image_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_text_truncation_length": {
+              "enroll_status": "OPT_OUT"
+            }
+          }
+        },
+        "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}"
+      }
+    },
+    "1392143345711700": {
+      "request": {
+        "name": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO | Dedicated URL parameters | PAID MEDIA HOLD",
+        "object_story_spec": {
+          "page_id": "977808342257807",
+          "instagram_user_id": "17841402345785819"
+        },
+        "asset_feed_spec": {
+          "videos": [
+            {
+              "adlabels": [
+                {
+                  "name": "vertical",
+                  "id": "120250983105790072"
+                }
+              ],
+              "video_id": "1734165961000142"
+            },
+            {
+              "adlabels": [
+                {
+                  "name": "feed",
+                  "id": "120251261042600072"
+                }
+              ],
+              "video_id": "2093447011244219"
+            }
+          ],
+          "bodies": [
+            {
+              "text": "You or your child do not have to feel ready before starting.\n\nIn Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress.\n\nFor adults, private BJJ instruction at Castle Hill Fitness offers focused coaching, practical problem-solving, and progress at your own pace.\n\nComplete beginners are welcome.\n\nFind the right starting point in Austin."
+            }
+          ],
+          "call_to_action_types": [
+            "LEARN_MORE"
+          ],
+          "descriptions": [
+            {
+              "text": "Adults + Youth Ages 8–12 in Austin."
+            }
+          ],
+          "link_urls": [
+            {
+              "website_url": "https://joaocrusbjj.com/castle-hill-grand-opening/"
+            }
+          ],
+          "titles": [
+            {
+              "text": "You Don’t Have to Feel Ready"
+            }
+          ],
+          "ad_formats": [
+            "SINGLE_VIDEO"
+          ],
+          "asset_customization_rules": [
+            {
+              "customization_spec": {
+                "age_max": 65,
+                "age_min": 13,
+                "publisher_platforms": [
+                  "facebook",
+                  "instagram"
+                ],
+                "facebook_positions": [
+                  "story",
+                  "facebook_reels"
+                ],
+                "instagram_positions": [
+                  "story",
+                  "reels"
+                ]
+              },
+              "video_label": {
+                "name": "vertical",
+                "id": "120250983105790072"
+              },
+              "priority": 1
+            },
+            {
+              "customization_spec": {
+                "age_max": 65,
+                "age_min": 13
+              },
+              "video_label": {
+                "name": "feed",
+                "id": "120251261042600072"
+              },
+              "priority": 2
+            }
+          ],
+          "optimization_type": "PLACEMENT",
+          "additional_data": {
+            "multi_share_end_card": false,
+            "is_click_to_message": false
+          },
+          "reasons_to_shop": false,
+          "shops_bundle": false
+        },
+        "degrees_of_freedom_spec": {
+          "creative_features_spec": {
+            "adapt_to_placement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "add_text_overlay": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ads_with_benefits": {
+              "enroll_status": "OPT_OUT"
+            },
+            "advantage_plus_creative": {
+              "enroll_status": "OPT_OUT"
+            },
+            "app_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "audio": {
+              "enroll_status": "OPT_OUT"
+            },
+            "auto_promotion_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "biz_ai": {
+              "enroll_status": "OPT_OUT"
+            },
+            "carousel_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "catalog_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "creative_stickers": {
+              "enroll_status": "OPT_OUT"
+            },
+            "customize_product_recommendation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "cv_transformation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "description_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dha_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_cta_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_partner_content": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enable_ncs_testimonials": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enhance_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_story_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "feed_caption_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "generate_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hide_price": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hyperlink_formatting": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_glados_feed": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_stream_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_video_native_subtitle": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_animation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_background_gen": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_banner": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_brightness_and_contrast": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_end_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_enhancement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_templates": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_touchups": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "inline_comment": {
+              "enroll_status": "OPT_OUT"
+            },
+            "local_store_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_liquidity_animated_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_order": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_type_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_creative_post_carousel": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_photo_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "music_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_genai_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_relaxation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_browsing": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_metadata_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_tags": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "replace_media_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "reveal_details_over_time": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_destination_blurbs": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_summary": {
+              "enroll_status": "OPT_OUT"
+            },
+            "site_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "standard_enhancements_catalog": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_headline": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_tap_target": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_formatting_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_optimizations": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_overlay_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "translate_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlight": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_to_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop_9x16_to_9x18": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_image_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_text_truncation_length": {
+              "enroll_status": "OPT_OUT"
+            }
+          }
+        },
+        "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}"
+      },
+      "response": {
+        "id": "1571675311324124"
+      },
+      "readback": {
+        "id": "1571675311324124",
+        "name": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO | Dedicated URL parameters | PAID MEDIA HOLD 2026-09-08-ef97d9dc59bdd1404300e0f8a85072fb",
+        "object_story_spec": {
+          "page_id": "977808342257807",
+          "instagram_user_id": "17841402345785819"
+        },
+        "asset_feed_spec": {
+          "optimization_type": "PLACEMENT",
+          "call_to_action_types": [
+            "LEARN_MORE"
+          ],
+          "ad_formats": [
+            "SINGLE_VIDEO"
+          ],
+          "reasons_to_shop": false,
+          "shops_bundle": false,
+          "bodies": [
+            {
+              "text": "You or your child do not have to feel ready before starting.\n\nIn Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress.\n\nFor adults, private BJJ instruction at Castle Hill Fitness offers focused coaching, practical problem-solving, and progress at your own pace.\n\nComplete beginners are welcome.\n\nFind the right starting point in Austin."
+            }
+          ],
+          "titles": [
+            {
+              "text": "You Don’t Have to Feel Ready"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "Adults + Youth Ages 8–12 in Austin."
+            }
+          ],
+          "link_urls": [
+            {
+              "website_url": "https://joaocrusbjj.com/castle-hill-grand-opening/"
+            }
+          ],
+          "videos": [
+            {
+              "video_id": "1911621773147370",
+              "adlabels": [
+                {
+                  "name": "feed",
+                  "id": "120251261042600072"
+                }
+              ]
+            },
+            {
+              "video_id": "2175548869693779",
+              "adlabels": [
+                {
+                  "name": "vertical",
+                  "id": "120250983105790072"
+                }
+              ]
+            }
+          ],
+          "asset_customization_rules": [
+            {
+              "priority": 1,
+              "video_label": {
+                "name": "vertical",
+                "id": "120250983105790072"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65,
+                "publisher_platforms": [
+                  "facebook",
+                  "instagram"
+                ],
+                "instagram_positions": [
+                  "story",
+                  "reels"
+                ],
+                "facebook_positions": [
+                  "story",
+                  "facebook_reels"
+                ]
+              }
+            },
+            {
+              "priority": 2,
+              "video_label": {
+                "name": "feed",
+                "id": "120251261042600072"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65
+              }
+            }
+          ],
+          "additional_data": {
+            "multi_share_end_card": false,
+            "is_click_to_message": false
+          }
+        },
+        "degrees_of_freedom_spec": {
+          "creative_features_spec": {
+            "adapt_to_placement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "add_text_overlay": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ads_with_benefits": {
+              "enroll_status": "OPT_OUT"
+            },
+            "advantage_plus_creative": {
+              "enroll_status": "OPT_OUT"
+            },
+            "app_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "audio": {
+              "enroll_status": "OPT_OUT"
+            },
+            "auto_promotion_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "biz_ai": {
+              "enroll_status": "OPT_OUT"
+            },
+            "carousel_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "catalog_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "creative_stickers": {
+              "enroll_status": "OPT_OUT"
+            },
+            "customize_product_recommendation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "cv_transformation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "description_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dha_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_cta_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_partner_content": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enable_ncs_testimonials": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enhance_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_story_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "feed_caption_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "generate_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hide_price": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hyperlink_formatting": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_glados_feed": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_stream_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_video_native_subtitle": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_animation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_background_gen": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_banner": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_brightness_and_contrast": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_end_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_enhancement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_templates": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_touchups": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "inline_comment": {
+              "enroll_status": "OPT_OUT"
+            },
+            "local_store_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_liquidity_animated_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_order": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_type_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_creative_post_carousel": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_photo_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "music_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_genai_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_relaxation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_browsing": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_metadata_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_tags": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "replace_media_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "reveal_details_over_time": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_destination_blurbs": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_summary": {
+              "enroll_status": "OPT_OUT"
+            },
+            "site_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "standard_enhancements_catalog": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_headline": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_tap_target": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_formatting_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_optimizations": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_overlay_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "translate_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlight": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_to_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop_9x16_to_9x18": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_image_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_text_truncation_length": {
+              "enroll_status": "OPT_OUT"
+            }
+          }
+        },
+        "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}"
+      }
+    }
+  },
+  "static_swap_response": {
+    "success": true
+  },
+  "static_swap_readback": {
+    "id": "120251263002380072",
+    "name": "AY09B_BEGINNERS-WELCOME_STATIC",
+    "campaign_id": "120251246135250072",
+    "adset_id": "120251246144560072",
+    "status": "PAUSED",
+    "effective_status": "IN_PROCESS",
+    "creative": {
+      "id": "1567708678432946"
+    },
+    "tracking_specs": [
+      {
+        "action.type": [
+          "offsite_conversion"
+        ],
+        "fb_pixel": [
+          "592714768141415"
+        ]
+      },
+      {
+        "action.type": [
+          "onsite_conversion"
+        ],
+        "conversion_id": [
+          "10096747817027824"
+        ]
+      },
+      {
+        "action.type": [
+          "onsite_conversion"
+        ]
+      },
+      {
+        "action.type": [
+          "link_click"
+        ],
+        "post": [
+          "1813040770220316"
+        ],
+        "post.wall": [
+          "977808342257807"
+        ]
+      },
+      {
+        "action.type": [
+          "post_engagement"
+        ],
+        "page": [
+          "977808342257807"
+        ],
+        "post": [
+          "1813040770220316"
+        ]
+      },
+      {
+        "action.type": [
+          "post_interaction_gross"
+        ],
+        "page": [
+          "977808342257807"
+        ],
+        "post": [
+          "1813040770220316"
+        ]
+      }
+    ]
+  },
+  "after": {
+    "time_utc": "2026-09-09T03:22:58.099087+00:00",
+    "ads": {
+      "data": [
+        {
+          "id": "120251263002380072",
+          "name": "AY09B_BEGINNERS-WELCOME_STATIC",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "1567708678432946"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1813040770220316"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1813040770220316"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1813040770220316"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251261045730072",
+          "name": "AY09_BEGINNERS-WELCOME_VIDEO | PAUSED DRAFT | 2026-09-08",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "1392143345711700"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812973796893680"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812973796893680"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812973796893680"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251260015870072",
+          "name": "AA05_GROUP-OR-PRIVATE_STATIC | SAFE | PLACEMENT",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "2003106970488268"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812722260252167"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812722260252167"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812722260252167"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251260014400072",
+          "name": "AY01_TAP-MEANS-STOP_STATIC | SAFE | PLACEMENT",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "2103156577742211"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812720460252347"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812720460252347"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812720460252347"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251260015710072",
+          "name": "AA03_CALM-UNDER-PRESSURE_STATIC | SAFE | PLACEMENT",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "28521308404223057"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812722176918842"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812722176918842"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812722176918842"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251261015960072",
+          "name": "AY08_REAL-PRACTICE_STATIC",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "4302676583376329"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1813024266888633"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1813024266888633"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1813024266888633"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251260015140072",
+          "name": "AY05_CASTLE-HILL-YOUTH_STATIC | SAFE | PLACEMENT",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "1541320053989486"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812721410252252"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812721410252252"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812721410252252"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251263139970072",
+          "name": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "1392143345711700"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812973796893680"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812973796893680"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812973796893680"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251260014790072",
+          "name": "AY03_CONFIDENCE-IS-PRACTICED_STATIC | SAFE | PLACEMENT",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "2564936567304589"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812721346918925"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812721346918925"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812721346918925"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251261010900072",
+          "name": "AY07_BEGINNER-BELONGING_STATIC",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "1687998043330822"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812853326905727"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812853326905727"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812853326905727"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "120251260015570072",
+          "name": "AA01_BEGINNER-STARTS-HERE_STATIC | SAFE | PLACEMENT",
+          "campaign_id": "120251246135250072",
+          "adset_id": "120251246144560072",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "creative": {
+            "id": "2077252959817026"
+          },
+          "tracking_specs": [
+            {
+              "action.type": [
+                "offsite_conversion"
+              ],
+              "fb_pixel": [
+                "592714768141415"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ],
+              "conversion_id": [
+                "10096747817027824"
+              ]
+            },
+            {
+              "action.type": [
+                "onsite_conversion"
+              ]
+            },
+            {
+              "action.type": [
+                "post_interaction_gross"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812721516918908"
+              ]
+            },
+            {
+              "action.type": [
+                "post_engagement"
+              ],
+              "page": [
+                "977808342257807"
+              ],
+              "post": [
+                "1812721516918908"
+              ]
+            },
+            {
+              "action.type": [
+                "link_click"
+              ],
+              "post": [
+                "1812721516918908"
+              ],
+              "post.wall": [
+                "977808342257807"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "parents": {
+      "campaign": {
+        "id": "120251246135250072",
+        "name": "PROSPECTING | AUSTIN | CASTLE HILL | PROGRAM FINDER | W1 | 202609",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "daily_budget": "1000"
+      },
+      "adset": {
+        "id": "120251246144560072",
+        "name": "AUSTIN_10MI_BROAD_24-54_CASTLE-HILL_W1",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "campaign_id": "120251246135250072",
+        "targeting": {
+          "age_max": 54,
+          "age_min": 24,
+          "geo_locations": {
+            "cities": [
+              {
+                "country": "US",
+                "distance_unit": "mile",
+                "key": "2525495",
+                "name": "Austin",
+                "radius": 10,
+                "region": "Texas",
+                "region_id": "3886"
+              }
+            ],
+            "location_types": [
+              "frequently_in",
+              "home",
+              "recent"
+            ]
+          },
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ]
+        },
+        "destination_type": "WEBSITE",
+        "promoted_object": {
+          "pixel_id": "592714768141415",
+          "custom_event_type": "LEAD",
+          "smart_pse_enabled": false
+        },
+        "optimization_goal": "OFFSITE_CONVERSIONS"
+      }
+    },
+    "creatives": {
+      "1392143345711700": {
+        "id": "1392143345711700",
+        "name": "AY09A_BEGINNERS-WELCOME_LONG-VIDEO | ADULTS YOUTH ARTWORK | PAID MEDIA HOLD 2026-09-08-c75f6226c92671e5483f0a070ab708e9",
+        "object_story_spec": {
+          "page_id": "977808342257807",
+          "instagram_user_id": "17841402345785819"
+        },
+        "asset_feed_spec": {
+          "optimization_type": "PLACEMENT",
+          "call_to_action_types": [
+            "LEARN_MORE"
+          ],
+          "ad_formats": [
+            "SINGLE_VIDEO"
+          ],
+          "reasons_to_shop": false,
+          "shops_bundle": false,
+          "bodies": [
+            {
+              "text": "You or your child do not have to feel ready before starting.\n\nIn Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress.\n\nFor adults, private BJJ instruction at Castle Hill Fitness offers focused coaching, practical problem-solving, and progress at your own pace.\n\nComplete beginners are welcome.\n\nFind the right starting point in Austin."
+            }
+          ],
+          "titles": [
+            {
+              "text": "You Don’t Have to Feel Ready"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "Adults + Youth Ages 8–12 in Austin."
+            }
+          ],
+          "link_urls": [
+            {
+              "website_url": "https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}"
+            }
+          ],
+          "videos": [
+            {
+              "video_id": "1734165961000142",
+              "adlabels": [
+                {
+                  "name": "vertical",
+                  "id": "120250983105790072"
+                }
+              ]
+            },
+            {
+              "video_id": "2093447011244219",
+              "adlabels": [
+                {
+                  "name": "feed",
+                  "id": "120251261042600072"
+                }
+              ]
+            }
+          ],
+          "asset_customization_rules": [
+            {
+              "priority": 1,
+              "video_label": {
+                "name": "vertical",
+                "id": "120250983105790072"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65,
+                "publisher_platforms": [
+                  "facebook",
+                  "instagram"
+                ],
+                "instagram_positions": [
+                  "story",
+                  "reels"
+                ],
+                "facebook_positions": [
+                  "story",
+                  "facebook_reels"
+                ]
+              }
+            },
+            {
+              "priority": 2,
+              "video_label": {
+                "name": "feed",
+                "id": "120251261042600072"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65
+              }
+            }
+          ],
+          "additional_data": {
+            "multi_share_end_card": false,
+            "is_click_to_message": false
+          }
+        },
+        "degrees_of_freedom_spec": {
+          "creative_features_spec": {
+            "adapt_to_placement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "add_text_overlay": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ads_with_benefits": {
+              "enroll_status": "OPT_OUT"
+            },
+            "advantage_plus_creative": {
+              "enroll_status": "OPT_OUT"
+            },
+            "app_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "audio": {
+              "enroll_status": "OPT_OUT"
+            },
+            "auto_promotion_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "biz_ai": {
+              "enroll_status": "OPT_OUT"
+            },
+            "carousel_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "catalog_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "creative_stickers": {
+              "enroll_status": "OPT_OUT"
+            },
+            "customize_product_recommendation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "cv_transformation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "description_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dha_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_cta_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_partner_content": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enable_ncs_testimonials": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enhance_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_story_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "feed_caption_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "generate_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hide_price": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hyperlink_formatting": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_glados_feed": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_stream_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_video_native_subtitle": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_animation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_background_gen": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_banner": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_brightness_and_contrast": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_end_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_enhancement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_templates": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_touchups": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "inline_comment": {
+              "enroll_status": "OPT_OUT"
+            },
+            "local_store_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_liquidity_animated_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_order": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_type_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_creative_post_carousel": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_photo_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "music_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_genai_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_relaxation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_browsing": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_metadata_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_tags": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "replace_media_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "reveal_details_over_time": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_destination_blurbs": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_summary": {
+              "enroll_status": "OPT_OUT"
+            },
+            "site_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "standard_enhancements_catalog": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_headline": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_tap_target": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_formatting_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_optimizations": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_overlay_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "translate_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlight": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_to_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop_9x16_to_9x18": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_image_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_text_truncation_length": {
+              "enroll_status": "OPT_OUT"
+            }
+          }
+        }
+      },
+      "1567708678432946": {
+        "id": "1567708678432946",
+        "name": "AY09B_BEGINNERS-WELCOME_STATIC | Dedicated URL parameters | PAID MEDIA HOLD 2026-09-08-119157866565adb81fa4d8505daf0fcf",
+        "object_story_spec": {
+          "page_id": "977808342257807",
+          "instagram_user_id": "17841402345785819"
+        },
+        "asset_feed_spec": {
+          "images": [
+            {
+              "adlabels": [
+                {
+                  "name": "feed",
+                  "id": "120251261042600072"
+                }
+              ],
+              "hash": "a35ae481c4a5fc565115ed45b80f476f"
+            },
+            {
+              "adlabels": [
+                {
+                  "name": "vertical",
+                  "id": "120250983105790072"
+                }
+              ],
+              "hash": "1e0bbe2da0912a0c768aa97776824260"
+            }
+          ],
+          "bodies": [
+            {
+              "text": "You or your child do not have to feel ready before starting.\n\nIn Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress.\n\nFor adults, private BJJ instruction at Castle Hill Fitness offers focused coaching, practical problem-solving, and progress at your own pace.\n\nComplete beginners are welcome.\n\nFind the right starting point in Austin."
+            }
+          ],
+          "call_to_action_types": [
+            "LEARN_MORE"
+          ],
+          "descriptions": [
+            {
+              "text": "Adults + Youth Ages 8–12 in Austin."
+            }
+          ],
+          "link_urls": [
+            {
+              "website_url": "https://joaocrusbjj.com/castle-hill-grand-opening/"
+            }
+          ],
+          "titles": [
+            {
+              "text": "You Don’t Have to Feel Ready"
+            }
+          ],
+          "ad_formats": [
+            "SINGLE_IMAGE"
+          ],
+          "asset_customization_rules": [
+            {
+              "customization_spec": {
+                "age_max": 65,
+                "age_min": 13,
+                "publisher_platforms": [
+                  "facebook",
+                  "instagram"
+                ],
+                "facebook_positions": [
+                  "story",
+                  "facebook_reels"
+                ],
+                "instagram_positions": [
+                  "story",
+                  "reels"
+                ]
+              },
+              "image_label": {
+                "name": "vertical",
+                "id": "120250983105790072"
+              },
+              "priority": 1
+            },
+            {
+              "customization_spec": {
+                "age_max": 65,
+                "age_min": 13
+              },
+              "image_label": {
+                "name": "feed",
+                "id": "120251261042600072"
+              },
+              "priority": 2
+            }
+          ],
+          "optimization_type": "PLACEMENT",
+          "additional_data": {
+            "multi_share_end_card": false,
+            "is_click_to_message": false
+          },
+          "reasons_to_shop": false,
+          "shops_bundle": false
+        },
+        "degrees_of_freedom_spec": {
+          "creative_features_spec": {
+            "adapt_to_placement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "add_text_overlay": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ads_with_benefits": {
+              "enroll_status": "OPT_OUT"
+            },
+            "advantage_plus_creative": {
+              "enroll_status": "OPT_OUT"
+            },
+            "app_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "audio": {
+              "enroll_status": "OPT_OUT"
+            },
+            "auto_promotion_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "biz_ai": {
+              "enroll_status": "OPT_OUT"
+            },
+            "carousel_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "catalog_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "creative_stickers": {
+              "enroll_status": "OPT_OUT"
+            },
+            "customize_product_recommendation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "cv_transformation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "description_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dha_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_cta_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "dynamic_partner_content": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enable_ncs_testimonials": {
+              "enroll_status": "OPT_OUT"
+            },
+            "enhance_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "fb_story_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "feed_caption_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "generate_cta": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hide_price": {
+              "enroll_status": "OPT_OUT"
+            },
+            "hyperlink_formatting": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_feed_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_glados_feed": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_reels_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_stream_tag": {
+              "enroll_status": "OPT_OUT"
+            },
+            "ig_video_native_subtitle": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_animation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_background_gen": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_banner": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_brightness_and_contrast": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_end_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_enhancement": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_templates": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_touchups": {
+              "enroll_status": "OPT_OUT"
+            },
+            "image_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "inline_comment": {
+              "enroll_status": "OPT_OUT"
+            },
+            "local_store_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_liquidity_animated_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_order": {
+              "enroll_status": "OPT_OUT"
+            },
+            "media_type_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_creative_post_carousel": {
+              "enroll_status": "OPT_OUT"
+            },
+            "multi_photo_to_video": {
+              "enroll_status": "OPT_OUT"
+            },
+            "music_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_genai_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_recomposition": {
+              "enroll_status": "OPT_OUT"
+            },
+            "pac_relaxation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_browsing": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_metadata_automation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "product_tags": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_card": {
+              "enroll_status": "OPT_OUT"
+            },
+            "profile_extension": {
+              "enroll_status": "OPT_OUT"
+            },
+            "replace_media_text": {
+              "enroll_status": "OPT_OUT"
+            },
+            "reveal_details_over_time": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_destination_blurbs": {
+              "enroll_status": "OPT_OUT"
+            },
+            "show_summary": {
+              "enroll_status": "OPT_OUT"
+            },
+            "site_extensions": {
+              "enroll_status": "OPT_OUT"
+            },
+            "standard_enhancements_catalog": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_headline": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_extraction_for_tap_target": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_formatting_optimization": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_generation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_optimizations": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_overlay_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "text_translation": {
+              "enroll_status": "OPT_OUT"
+            },
+            "translate_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_auto_crop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlight": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_highlights": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_to_image": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_uncrop_9x16_to_9x18": {
+              "enroll_status": "OPT_OUT"
+            },
+            "video_voiceover": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_image_filtering": {
+              "enroll_status": "OPT_OUT"
+            },
+            "wa_mm_text_truncation_length": {
+              "enroll_status": "OPT_OUT"
+            }
+          }
+        },
+        "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}"
+      }
+    }
+  },
+  "outcome": {
+    "status": "PARTIAL_BLOCKED",
+    "static_api_verified": true,
+    "video_blocker": "Meta remapped existing media IDs during URL-only creative clone; candidate not attached",
+    "ui_verified": false,
+    "all_eleven_ads_paused": true
+  }
+}

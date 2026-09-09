@@ -1,0 +1,28 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 720
+PlayResY: 900
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Main,DejaVu Sans,28,&H00F8FDFF,&H00F8FDFF,&H00101010,&H00101010,-1,0,0,0,100,100,0,0,3,2,0,5,48,48,0,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.00,0:00:26.84,Main,,0,0,0,,{\pos(360,38)\fs32\c&HF8FDFF&}COMPLETE BEGINNERS
+Dialogue: 0,0:00:00.00,0:00:26.84,Main,,0,0,0,,{\pos(360,80)\fs36\c&H00C4F5&}ARE WELCOME.
+Dialogue: 0,0:00:00.00,0:00:26.84,Main,,0,0,0,,{\pos(360,805)\fs18\c&HF8FDFF&}ADULTS + YOUTH AGES 8–12 · CASTLE HILL FITNESS
+Dialogue: 0,0:00:00.14,0:00:02.46,Main,,0,0,0,,{\pos(360,708)\fs28\c&HF8FDFF&}We welcome complete beginners,
+Dialogue: 0,0:00:03.02,0:00:05.61,Main,,0,0,0,,{\pos(360,708)\fs28\c&HF8FDFF&}so you do not need to be in shape,
+Dialogue: 0,0:00:05.82,0:00:07.46,Main,,0,0,0,,{\pos(360,708)\fs28\c&HF8FDFF&}know anything about jiu-jitsu,
+Dialogue: 0,0:00:07.50,0:00:09.61,Main,,0,0,0,,{\pos(360,708)\fs28\c&HF8FDFF&}or feel ready before you visit.
+Dialogue: 0,0:00:10.10,0:00:12.56,Main,,0,0,0,,{\pos(360,708)\fs28\c&HF8FDFF&}I would love to meet you at the\Nacademy,
+Dialogue: 0,0:00:12.66,0:00:13.81,Main,,0,0,0,,{\pos(360,708)\fs28\c&HF8FDFF&}show you around,
+Dialogue: 0,0:00:14.00,0:00:16.51,Main,,0,0,0,,{\pos(360,708)\fs28\c&HF8FDFF&}explain how our programs work,
+Dialogue: 0,0:00:16.70,0:00:18.16,Main,,0,0,0,,{\pos(360,708)\fs28\c&HF8FDFF&}and let you see a class.
+Dialogue: 0,0:00:18.54,0:00:20.51,Main,,0,0,0,,{\pos(360,708)\fs28\c&HF8FDFF&}There is no pressure and no\Nobligation.
+Dialogue: 0,0:00:20.88,0:00:22.56,Main,,0,0,0,,{\pos(360,708)\fs28\c&HF8FDFF&}Just come in, meet us,
+Dialogue: 0,0:00:22.64,0:00:24.41,Main,,0,0,0,,{\pos(360,708)\fs28\c&HF8FDFF&}and see whether it feels like
+Dialogue: 0,0:00:24.41,0:00:26.84,Main,,0,0,0,,{\pos(360,708)\fs28\c&HF8FDFF&}the right place for you or your\Nchild.

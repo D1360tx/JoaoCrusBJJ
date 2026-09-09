@@ -1,0 +1,74 @@
+{
+  "historical_pre_correction": [
+    {
+      "command": "python -m unittest discover -s tests -p 'test_austin_youth*.py' -v",
+      "output": "test_copy_and_one_variable_comparison (test_austin_youth_comparisons.ComparisonTests.test_copy_and_one_variable_comparison) ... ok\ntest_live_contract_when_present (test_austin_youth_comparisons.ComparisonTests.test_live_contract_when_present) ... ok\ntest_natural_video_cut (test_austin_youth_comparisons.ComparisonTests.test_natural_video_cut) ... ok\ntest_no_public_secrets (test_austin_youth_comparisons.ComparisonTests.test_no_public_secrets) ... ok\ntest_static_assets_bounds_and_hashes (test_austin_youth_comparisons.ComparisonTests.test_static_assets_bounds_and_hashes) ... ok\ntest_assets (test_austin_youth_pack.YouthPack.test_assets) ... ok\ntest_meta (test_austin_youth_pack.YouthPack.test_meta) ... ok\ntest_assets (test_austin_youth_video.YouthVideoPack.test_assets) ... ok\ntest_contract_rejects_mutations (test_austin_youth_video.YouthVideoPack.test_contract_rejects_mutations) ... ok\ntest_exact_meta (test_austin_youth_video.YouthVideoPack.test_exact_meta) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.649s\n\nOK",
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "command": "python scripts/validate_castle_safe.py",
+      "output": "PASS: 6 concepts / 12 unique PNGs; dimensions, checksums, two-source allowlist, exact copy, safe zones, zero text overlaps, no unconfirmed date.",
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "command": "python scripts/validate_austin_youth_video.py",
+      "output": "AY09 strict validation PASS: six hashed artifacts, full decode, exact Meta contract and 83 opt-outs",
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "command": "git diff --check",
+      "output": "",
+      "exit_code": 0,
+      "error": null
+    }
+  ],
+  "attribution_correction": {
+    "at_utc": "2026-09-08T22:55:20.247115+00:00",
+    "status": "PARTIAL_BLOCKED_VIDEO_ID_REMAP",
+    "results": [
+      {
+        "command": [
+          "python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_austin_youth*.py",
+          "-v"
+        ],
+        "output": "test_copy_and_one_variable_comparison (test_austin_youth_comparisons.ComparisonTests.test_copy_and_one_variable_comparison) ... ok\ntest_live_contract_when_present (test_austin_youth_comparisons.ComparisonTests.test_live_contract_when_present) ... FAIL\ntest_natural_video_cut (test_austin_youth_comparisons.ComparisonTests.test_natural_video_cut) ... ok\ntest_no_public_secrets (test_austin_youth_comparisons.ComparisonTests.test_no_public_secrets) ... ok\ntest_static_assets_bounds_and_hashes (test_austin_youth_comparisons.ComparisonTests.test_static_assets_bounds_and_hashes) ... ok\ntest_assets (test_austin_youth_pack.YouthPack.test_assets) ... ok\ntest_meta (test_austin_youth_pack.YouthPack.test_meta) ... ok\ntest_assets (test_austin_youth_video.YouthVideoPack.test_assets) ... ok\ntest_contract_rejects_mutations (test_austin_youth_video.YouthVideoPack.test_contract_rejects_mutations) ... ok\ntest_exact_meta (test_austin_youth_video.YouthVideoPack.test_exact_meta) ... ok\n\n======================================================================\nFAIL: test_live_contract_when_present (test_austin_youth_comparisons.ComparisonTests.test_live_contract_when_present)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/d1360/joao-austin-youth-ay07-ay08/tests/test_austin_youth_comparisons.py\", line 53, in test_live_contract_when_present\n    self.assertEqual(f['link_urls'],[{'website_url':x['destination_url']}]); self.assertEqual(f['call_to_action_types'],['LEARN_MORE']); self.assertEqual(f['optimization_type'],'PLACEMENT'); self.assertNotIn('form_id',json.dumps(cr))\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [{'we[152 chars]tent=AY09_BEGINNERS-WELCOME_VIDEO&utm_term={{a[32 chars]}}'}] != [{'we[152 chars]tent={{ad.name}}&utm_term={{adset.name}}&utm_i[15 chars]}}'}]\n\nFirst differing element 0:\n{'web[151 chars]tent=AY09_BEGINNERS-WELCOME_VIDEO&utm_term={{a[31 chars]d}}'}\n{'web[151 chars]tent={{ad.name}}&utm_term={{adset.name}}&utm_i[14 chars]d}}'}\n\nDiff is 840 characters long. Set self.maxDiff to None to see it.\n\n----------------------------------------------------------------------\nRan 10 tests in 0.658s\n\nFAILED (failures=1)\n",
+        "exit_code": 1
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_castle_safe.py"
+        ],
+        "output": "PASS: 6 concepts / 12 unique PNGs; dimensions, checksums, two-source allowlist, exact copy, safe zones, zero text overlaps, no unconfirmed date.\n",
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_austin_youth_video.py"
+        ],
+        "output": "AY09 strict validation PASS: six hashed artifacts, full decode, exact Meta contract and 83 opt-outs\n",
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "output": "",
+        "exit_code": 0
+      }
+    ]
+  }
+}

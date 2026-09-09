@@ -1,0 +1,18 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 720
+PlayResY: 900
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Main,DejaVu Sans,32,&H00FFFDF8,&H00FFFDF8,&H00101010,&HA0101010,-1,0,0,0,100,100,0,0,3,2,0,2,40,40,60,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.00,0:00:02.50,Main,,0,0,0,,CONFIDENCE THROUGH\NREAL EXPERIENCE.
+Dialogue: 0,0:00:02.50,0:00:04.80,Main,,0,0,0,,WE WELCOME\NCOMPLETE BEGINNERS.
+Dialogue: 0,0:00:04.80,0:00:07.50,Main,,0,0,0,,YOU DO NOT NEED\NTO BE IN SHAPE.
+Dialogue: 0,0:00:07.50,0:00:10.04,Main,,0,0,0,,YOU DO NOT NEED TO KNOW\NJIU-JITSU.
+Dialogue: 0,0:00:10.04,0:00:14.08,Main,,0,0,0,,YOU DO NOT HAVE TO FEEL READY\NBEFORE YOU VISIT.
