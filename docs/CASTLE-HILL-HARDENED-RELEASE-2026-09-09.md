@@ -6,6 +6,10 @@
 
 This supersedes the stopped engineering/deployment preflight in `CASTLE-HILL-READINESS-AUDIT-2026-09-08.md`, not that audit's unresolved launch/business gates.
 
+## Follow-up diagnosis
+
+See [the ModSecurity diagnosis](CASTLE-HILL-MODSEC-DIAGNOSIS-2026-09-09.md): exact phase-1 rule 900401 identified; Windows UA rejection controls pass but the original Linux UA still fails. A backup-first exact-route exclusion trial was ineffective and rolled back. Bluehost administrative action is required; no second synthetic lead sent and traffic remains paused.
+
 ## Exact release
 
 - Source commit: `8480f5c497f75c4e95569e4b92c992a3d42b5f3f`, branch `feat/austin-youth-ay07-ay08-paused`, PR #117.

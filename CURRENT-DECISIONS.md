@@ -5,6 +5,12 @@
 > **Authoritative status as of 2026-08-04**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
+## Castle Hill ModSecurity diagnosis (2026-09-09 UTC)
+
+- Exact original blocker identified: Bluehost phase-1 rule `900401`, `PHP Spam Botnet`. Original Linux Chromium UA plus harmless JSON remains 406; Windows Chromium control reaches PHP and passes all seven rejection guards. This is not a universal JSON failure or a completed repair.
+- Backup-first exact-route rule-removal trial did not affect the early block and was immediately rolled back with matching `.htaccess` hash. No WAF exception remains. Account lacks the ModSecurity feature; Bluehost must apply any necessary exact-host/exact-path pre-rule exclusion. Traffic remains paused and no second synthetic lead was sent.
+- See `docs/CASTLE-HILL-MODSEC-DIAGNOSIS-2026-09-09.md` for rule/event evidence, backup, rollback, safe probes and hosting handoff. Campaign, ad set and all 11 ads independently re-read PAUSED / PAUSED.
+
 ## Castle Hill hardened production repair (2026-09-09 UTC)
 
 - Deployed exact repair commit `8480f5c497f75c4e95569e4b92c992a3d42b5f3f` to Bluehost after full-root backup, 130/130 Node tests, 5323 production checks, PHP lint and non-transmitting Playwright QA. Austin quiz now uses the hardened consent/acceptance/Meta-ID adapter and `/api/lead.php`; full numeric/extended attribution handoff is repaired. Parent's banner removal and adult Tue/Thu 6–7 p.m. retained.
