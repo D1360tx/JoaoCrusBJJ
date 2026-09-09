@@ -60,4 +60,10 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    if "--historical" in sys.argv:
+        main()
+    else:
+        from validate_castle_live_four_ads import validate, E
+        validate(json.loads((E / "live-four-ad-normalization.json").read_text()))
+        print("PASS: current four-ad ACTIVE/ACTIVE state and exact dedicated URL parameters; use --historical for the superseded paused snapshot")
