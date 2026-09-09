@@ -85,8 +85,13 @@ test('Austin quiz is fixed to Austin, gates Youth age, branches adults, and capt
   assert.match(youth, /class="mk-wrap mk-footer__inner bottom"/);
   assert.match(adults, /class="mk-wrap mk-footer__inner bottom"/);
   assert.match(quizPage, /class="fit-footer bottom"/);
-  assert.match(quiz, /pushQuizEvent\('lead_submit_success'/);
-  assert.ok(quiz.indexOf("await submitLead(leadPayload(result))") < quiz.indexOf("pushQuizEvent('lead_submit_success'"));
+  assert.match(quizPage, /data-endpoint="\/api\/lead.php"/);
+  assert.doesNotMatch(quizPage, /Preview only|No request is sent/);
+  assert.match(quiz, /metaContext\(window, attribution\)/);
+  assert.match(quiz, /body.note_accepted !== true/);
+  assert.match(quiz, /body.meta_event_id !== `lead_\$\{payload.request_id\}`/);
+  assert.doesNotMatch(quiz, /pushQuizEvent\('lead_submit_success'/);
+  assert.ok(quiz.indexOf('const acceptance = await submitLead(payload)') < quiz.indexOf('      routeAcceptedLead({'));
 });
 
 test('backend accepts only explicit Austin route sources and rejects mismatched Austin payloads', () => {
