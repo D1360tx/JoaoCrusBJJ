@@ -5,6 +5,12 @@
 > **Authoritative status as of 2026-08-04**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
+## Castle Hill hardened production repair (2026-09-09 UTC)
+
+- Deployed exact repair commit `8480f5c497f75c4e95569e4b92c992a3d42b5f3f` to Bluehost after full-root backup, 130/130 Node tests, 5323 production checks, PHP lint and non-transmitting Playwright QA. Austin quiz now uses the hardened consent/acceptance/Meta-ID adapter and `/api/lead.php`; full numeric/extended attribution handoff is repaired. Parent's banner removal and adult Tue/Thu 6–7 p.m. retained.
+- **Traffic remains paused.** The one authorized synthetic lead POST was rejected by Bluehost Mod_Security HTTP 406 before PHP/GHL acceptance. Exact and unique-marker contact searches returned zero records. No downstream GA4/Meta conversion receipt or synthetic custom-field writes are claimed. Workflow-list HTTP 401 is a known audit limitation, not the engineering blocker.
+- Fresh post-deploy Meta reads: all 11 ads, ad set and campaign configured/effective PAUSED. SMS release remains false; no environment, GTM or Meta mutation. See `docs/CASTLE-HILL-HARDENED-RELEASE-2026-09-09.md` for exact hashes and blocker evidence. Resolve the hosting POST rejection before any traffic activation or further synthetic acceptance attempt.
+
 ## Status legend
 
 | Status              | Meaning                                                                      |

@@ -1,5 +1,7 @@
 # Castle Hill landing page and Austin quiz readiness audit
 
+> Historical audit. Engineering/deployment status below is superseded by [the 2026-09-09 hardened release evidence](CASTLE-HILL-HARDENED-RELEASE-2026-09-09.md): repair deployed; one synthetic POST blocked by Bluehost Mod_Security HTTP 406; all traffic remains paused.
+
 Audited 2026-09-08 CDT / 2026-09-09 UTC. Verdict: **NOT ready for lead acquisition. The public page opens a deliberately disconnected preview quiz.**
 
 ## Authorized repair preflight: safely stopped, not deployed
