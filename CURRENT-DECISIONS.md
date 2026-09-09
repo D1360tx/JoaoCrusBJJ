@@ -27,7 +27,16 @@
 
 ---
 
-## Castle Hill live/draft reconciliation (2026-09-08, supersedes earlier state)
+## Castle Hill dedicated URL parameters migration (2026-09-08, partial; supersedes URL storage below)
+
+- User requires the six UTMs in Ads Manager's dedicated URL parameters field, not in Website URL. Target website is `https://joaocrusbjj.com/castle-hill-grand-opening/`; top-level creative `url_tags` must be exactly `utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}`. Never duplicate UTMs in both fields.
+- **AY09B completed at API level:** ad `120251263002380072` now points to creative `1567708678432946`. Clean website_url and exact url_tags independently read back; image hashes, copy, labels, routing, identities and enhancement opt-outs are unchanged. Internal creative name and generated unpublished post ID changed. Ad settled PAUSED / PAUSED.
+- **AY09A and original AY09 blocked by exact-media-ID preservation:** ads `120251263139970072` and `120251261045730072` remain on creative `1392143345711700`, with UTMs still in Website URL. Candidate creative `1571675311324124` has the requested clean URL/tags but Meta remapped feed `2093447011244219` to `1911621773147370` and vertical `1734165961000142` to `2175548869693779`. Candidate was rejected before any ad swap and remains unattached. Do not claim all three are fixed, or relax exact-ID preservation without authorization.
+- In-place creative update was rejected with Graph 100 / 1815573. MCP creation schema does not expose url_tags, so the authorized existing scoped Graph credentials were used directly without configuration changes.
+- Final API readback: all eleven campaign ads and both parents PAUSED / PAUSED; parent fields, budget `1000`, targeting and eight unrelated ads unchanged. Dedicated UI field visibility and complete draft/error acceptance remain unverified: native background navigation did not visibly take effect and no editor field or Publish action was used.
+- Evidence: reconciliation directory `url-parameters-migration.json`. `scripts/validate_castle_url_parameters.py` deliberately exits nonzero for the two incomplete video ads; historical reconciliation validator remains a historical snapshot check, not current acceptance.
+
+## Castle Hill live/draft reconciliation (2026-09-08, historical snapshot)
 
 - Fresh investigation found AY09A/B attached to stale UI-generated creatives, original AY09 still on its short youth-only creative, and five campaign ads configured ACTIVE despite their paused parent. All eleven campaign ads now read back PAUSED / PAUSED; campaign `120251246135250072` and ad set `120251246144560072` also PAUSED / PAUSED.
 - Restored AY09A `120251263139970072` → independently re-read creative `1392143345711700`, AY09B `120251263002380072` → `1548660843191930`. Updated original AY09 `120251261045730072` to the same completed Adults + Youth video creative as AY09A, preserving its exact name and ID. Original AY09 is no longer the protected stale short-cut baseline.
