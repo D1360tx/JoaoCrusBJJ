@@ -27,6 +27,16 @@
 
 ---
 
+## Castle Hill cloned-video content-equivalence follow-up (2026-09-08, blocked)
+
+- User explicitly permits new internal video IDs **only when actual approved visual and temporal content is demonstrably equivalent**. This supersedes the earlier exact-ID-only restriction, not the content-preservation gate.
+- Candidate `1571675311324124` remains unattached. Fresh Graph metadata confirms both approved/candidate pairs ready at **26.866 seconds**; native feed **720×900**, vertical **720×1280**. Each pair's full-resolution preferred JPEG and decoded RGB pixels match exactly. Visually inspected contact sheet shows the same coach framing, heading and footer. Copy, labels/routing, identity and enhancement settings match after accounting for documented video-ID remaps, video-array order and signed thumbnail URLs.
+- **Missing proof:** Graph omits all four `source` URLs, including candidate source-only queries. Public reel/plugin HTML and creative preview HTML expose no playable stream. Browser automation refused because the real-profile default browser is unsupported. Therefore no full playback, intermediate/key-frame timeline, ending or audio comparison was obtained. One matching thumbnail plus duration is not full-video equivalence. Neither video ad was changed.
+- Fresh API verifies all **11 ads and both parents PAUSED / PAUSED**. Validate-only PAUSED requests succeed for all three AY09 ads and the ad set; these validate the existing configuration, not the unattached candidate's full delivery/policy acceptance. AY09B retains its clean URL/exact tags; AY09A and original AY09 still have embedded website UTMs.
+- Dedicated Chrome window `311759374` was captured on the correct ad-set Review screen. Element input failed with `snapshot_id_required`; background pixel and foreground navigation attempts did not reach the requested exact-ad editor. URL parameters fields remain visually unverified. No Publish, activation, draft discard or other configuration write was performed.
+- Safest next step: restore an operable authenticated Ads Manager/media-preview browser, obtain both candidate playback streams and compare the full timeline/audio against the approved versions. Only then attach the candidate with explicit PAUSED and rerun every acceptance gate. Do not re-upload or substitute another creative merely to bypass missing proof.
+- Evidence: `url-tag-video-equivalence.json`, four full-resolution `*-preferred.png` images, `url-tag-video-thumbnail-comparison.jpg`, and `url-tag-ui-blocked-review.png` in the reconciliation directory. Validator now checks fresh proof/statuses but intentionally remains nonzero for the two incomplete migrations. **Not publish-ready.**
+
 ## Castle Hill dedicated URL parameters migration (2026-09-08, partial; supersedes URL storage below)
 
 - User requires the six UTMs in Ads Manager's dedicated URL parameters field, not in Website URL. Target website is `https://joaocrusbjj.com/castle-hill-grand-opening/`; top-level creative `url_tags` must be exactly `utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}`. Never duplicate UTMs in both fields.

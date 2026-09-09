@@ -6,7 +6,25 @@ E=R/'assets/meta/castle-hill/youth-wave-2/comparisons/reconciliation-2026-09-08/
 def main():
  e=json.loads(E.read_text()); b=e['before']; a=e['after']; ids=e['original_mappings']; ads=a['ads']['data']
  assert len(ads)==len({v['id'] for v in ads})==11
- assert all(v['status']=='PAUSED' and not v.get('issues_info') for v in ads)
+ assert all(v['status']==v['effective_status']=='PAUSED' and not v.get('issues_info') for v in ads)
+ proof_path=E.with_name('url-tag-video-equivalence.json')
+ if proof_path.exists():
+  proof=json.loads(proof_path.read_text())
+  current=proof['ads']['data']
+  assert len(current)==len({v['id'] for v in current})==11
+  assert all(v['status']==v['effective_status']=='PAUSED' for v in current)
+  assert all(v['status']==v['effective_status']=='PAUSED' for v in proof['parents'].values())
+  assert proof['parents']==b['parents']
+  assert proof['copy_routing_media_labels_equal_after_documented_remap']
+  assert proof['identity_equal'] and proof['enhancements_equal']
+  assert all(p['equal_duration'] and p['equal_thumbnail_dimensions'] and p['equal_thumbnail_rgb'] for p in proof['pairs'])
+  assert all(v=={'success':True} for v in proof['validate_only'].values())
+  assert {v['id']:v['creative']['id'] for v in current}=={v['id']:v['creative']['id'] for v in ads}
+  ads=current
+  a=dict(a,ads=proof['ads'],creatives=proof['current_creatives'],parents=proof['parents'])
+  print('PASS fresh paused-state, validate-only and thumbnail evidence; full video equivalence:',proof['full_video_equivalence_proven'])
+  # A preferred thumbnail and matching duration cannot authorize a full-video swap.
+  # This evidence records an unresolved gate, never a replacement for timeline proof.
  assert a['parents']==b['parents']
  failures=[]
  for aid,old_id in ids.items():
