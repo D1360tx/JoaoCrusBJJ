@@ -27,7 +27,15 @@
 
 ---
 
-## Castle Hill cloned-video content-equivalence follow-up (2026-09-08, blocked)
+## Castle Hill dedicated URL parameters final state (2026-09-08, confirmed)
+
+- All three AY09 ads now use a clean `https://joaocrusbjj.com/castle-hill-grand-opening/` Website URL and the exact top-level URL parameters `utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}`; no UTM query remains embedded in Website URL.
+- Final mappings: AY09B `120251263002380072` → static creative `1567708678432946`; AY09A `120251263139970072` and original AY09 `120251261045730072` → video creative `1571675311324124`. Meta cloned/reprocessed the approved feed and vertical uploads under new internal video IDs while preserving the approved source request, 26.866-second duration, 720×900 / 720×1280 dimensions, pixel-identical preferred thumbnails, copy, labels, routing, identity and enhancements.
+- Authenticated Ads Manager editors visibly show the URL parameters under Tracking. Meta displays “Values previously set,” confirming recognition of the saved parameters. Publish is disabled because the API-backed changes are already saved, not pending as drafts.
+- Campaign, ad set and all 11 ads independently read back `PAUSED / PAUSED`; budget remains `1000`, Austin radius remains 10 miles and ages remain 24–54. Configuration is ready for selective activation. At $10/day, launch AY09A and AY09B only; keep the duplicate original AY09 and the eight unrelated ads paused unless separately approved.
+- Evidence: `url-parameters-final.json`, authenticated UI captures, and passing `scripts/validate_castle_url_parameters.py` in the reconciliation directory. The blocked sections below are superseded historical snapshots.
+
+## Castle Hill cloned-video content-equivalence follow-up (2026-09-08, superseded historical block)
 
 - User explicitly permits new internal video IDs **only when actual approved visual and temporal content is demonstrably equivalent**. This supersedes the earlier exact-ID-only restriction, not the content-preservation gate.
 - Candidate `1571675311324124` remains unattached. Fresh Graph metadata confirms both approved/candidate pairs ready at **26.866 seconds**; native feed **720×900**, vertical **720×1280**. Each pair's full-resolution preferred JPEG and decoded RGB pixels match exactly. Visually inspected contact sheet shows the same coach framing, heading and footer. Copy, labels/routing, identity and enhancement settings match after accounting for documented video-ID remaps, video-array order and signed thumbnail URLs.
