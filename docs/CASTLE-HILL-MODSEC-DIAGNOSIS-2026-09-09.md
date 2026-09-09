@@ -1,6 +1,22 @@
 # Bluehost lead POST diagnosis — 2026-09-09 UTC
 
-## Outcome: hosting-level fix blocked, production restored
+## Current outcome: supported UA paths verified; Linux residual accepted
+
+The user explicitly authorized exactly one replacement synthetic submission with Windows browser/user-agent and accepted the Linux-desktop-only WAF limitation as **non-launch-blocking**. The replacement passed the actual live landing → embedded quiz → submit UI using Playwright Chromium on WSL with a Windows UA. HTTP 200 with contact/opportunity/note/CAPI accepted; exact CRM and analytics evidence is in [the hardened release certificate](CASTLE-HILL-HARDENED-RELEASE-2026-09-09.md). This does **not** claim native Windows or physical-device certification.
+
+| UA path | Latest evidence | Scope |
+|---|---|---|
+| Windows Chromium | Valid UI submission HTTP 200, accepted CRM + GA4 + paired Meta | One authorized replacement; no repeat |
+| macOS Chromium | HTTP 400 JSON `accepted:false`, `Invalid form.` | Fixed empty-object control only |
+| iOS Safari | HTTP 400 JSON `accepted:false`, `Invalid form.` | Fixed empty-object control only |
+| Android Chromium | HTTP 400 JSON `accepted:false`, `Invalid form.` | Fixed empty-object control only |
+| Linux desktop Chromium | HTTP 406 Mod_Security HTML | Same original UA; residual rule 900401 |
+
+The four new invalid-only controls contained `{}` and cannot create a lead. They prove UA-path reachability/rejection, not full mobile or native-OS E2E. Only **one valid replacement POST** occurred: request `d4a28f30-ce91-482c-991c-d195f461cece`, event `lead_d4a28f30-ce91-482c-991c-d195f461cece`, contact `zFGHIX1kLASZg2nLvEFH`, opportunity `OxJ4tQ9AizMt78PfzIZK`. No second replacement, security-rule exception, production code/env change or Meta write. Campaign, ad set and all 11 ads remain PAUSED / PAUSED.
+
+Linux compatibility remains a Bluehost follow-up, not a gate to the separately authorized supported-path launch. Do not extrapolate that rule 900401 blocks every Linux browser or that all other native platforms are fully tested: the evidence isolates the tested UA signatures. The scoped remediation advice below remains valid; there is no permission to disable WAF globally.
+
+## Historical diagnosis: hosting-level fix blocked, production restored
 
 The block is **not all JSON POSTs**. The exact Linux Chromium User-Agent from the consumed synthetic attempt triggers Bluehost rule **900401**, `PHP Spam Botnet`, phase 1, `/opt/mod_security/hg_rules.conf` line 187. A Windows Chromium User-Agent with the same route, origin, referer, JSON content type and `{}` body reaches PHP and returns 400 JSON `accepted:false`, `Invalid form.`. This is diagnostic contrast, not permission to spoof visitor browsers or claim Linux compatibility fixed.
 
@@ -32,7 +48,7 @@ The Windows Chromium control reached these existing PHP guards. All JSON results
 
 `scripts/probe_lead_rejections.py` contains only these fixed invalid payloads, never identity or a complete valid lead. Its nonzero status is intentional until Linux compatibility is repaired. The first run also exposed a probe expectation typo (`Invalid JSON.` versus actual `Invalid JSON request.`), corrected in source; the HTTP result was valid rejection throughout. Avoid repeated rapid runs: the ordinary application rate limit remains 8 attempts/15 minutes.
 
-No second synthetic lead submission occurred. Every transmitted body was empty, malformed, lacked required identity/consent, or contained the honeypot. Code-path inspection places each observed guard before contact/opportunity writes, email and CAPI; direct HTTP probes execute no browser analytics. No contact/opportunity/conversion was created by these probes. This is not downstream acceptance proof and does not replace the consumed test.
+During the earlier diagnostic phase, no second synthetic lead submission occurred. Every transmitted body was empty, malformed, lacked required identity/consent, or contained the honeypot. Code-path inspection places each observed guard before contact/opportunity writes, email and CAPI; direct HTTP probes execute no browser analytics. No contact/opportunity/conversion was created by these probes. This is not downstream acceptance proof and does not replace the consumed test.
 
 Fresh independent Meta MCP reads verified campaign `120251246135250072`, ad set `120251246144560072`, and the same 11 unique ad IDs listed in the hardened release audit all configured/effective PAUSED. No pagination next link was present. No Meta writes.
 

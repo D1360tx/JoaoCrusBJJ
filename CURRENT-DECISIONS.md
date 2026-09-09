@@ -5,17 +5,14 @@
 > **Authoritative status as of 2026-08-04**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
-## Castle Hill ModSecurity diagnosis (2026-09-09 UTC)
+## Castle Hill E2E certification and accepted compatibility residual (2026-09-09 UTC)
 
-- Exact original blocker identified: Bluehost phase-1 rule `900401`, `PHP Spam Botnet`. Original Linux Chromium UA plus harmless JSON remains 406; Windows Chromium control reaches PHP and passes all seven rejection guards. This is not a universal JSON failure or a completed repair.
-- Backup-first exact-route rule-removal trial did not affect the early block and was immediately rolled back with matching `.htaccess` hash. No WAF exception remains. Account lacks the ModSecurity feature; Bluehost must apply any necessary exact-host/exact-path pre-rule exclusion. Traffic remains paused and no second synthetic lead was sent.
-- See `docs/CASTLE-HILL-MODSEC-DIAGNOSIS-2026-09-09.md` for rule/event evidence, backup, rollback, safe probes and hosting handoff. Campaign, ad set and all 11 ads independently re-read PAUSED / PAUSED.
-
-## Castle Hill hardened production repair (2026-09-09 UTC)
-
-- Deployed exact repair commit `8480f5c497f75c4e95569e4b92c992a3d42b5f3f` to Bluehost after full-root backup, 130/130 Node tests, 5323 production checks, PHP lint and non-transmitting Playwright QA. Austin quiz now uses the hardened consent/acceptance/Meta-ID adapter and `/api/lead.php`; full numeric/extended attribution handoff is repaired. Parent's banner removal and adult Tue/Thu 6–7 p.m. retained.
-- **Traffic remains paused.** The one authorized synthetic lead POST was rejected by Bluehost Mod_Security HTTP 406 before PHP/GHL acceptance. Exact and unique-marker contact searches returned zero records. No downstream GA4/Meta conversion receipt or synthetic custom-field writes are claimed. Workflow-list HTTP 401 is a known audit limitation, not the engineering blocker.
-- Fresh post-deploy Meta reads: all 11 ads, ad set and campaign configured/effective PAUSED. SMS release remains false; no environment, GTM or Meta mutation. See `docs/CASTLE-HILL-HARDENED-RELEASE-2026-09-09.md` for exact hashes and blocker evidence. Resolve the hosting POST rejection before any traffic activation or further synthetic acceptance attempt.
+- User explicitly authorized one replacement synthetic lead using Windows browser/user-agent and directed that the Linux-desktop-only Bluehost WAF issue is **not a launch blocker**. This supersedes the earlier Linux-attempt blocker decision below. No ad activation was authorized.
+- Exactly one replacement live landing → quiz UI submission accepted at approximately 05:05:31 UTC. Request `d4a28f30-ce91-482c-991c-d195f461cece`; contact `zFGHIX1kLASZg2nLvEFH`; opportunity `OxJ4tQ9AizMt78PfzIZK`; note `Q3GrI69eKarEIkOLKZwZ`. Full 53-key schema/value/absence audit passes (37 populated, 16 intentionally uncollected). First/latest numeric UTMs and extended metadata retained; expected tags include `automation_hold`; SMS release remains false.
+- Exactly one GA4 generate_lead HTTP 204 and independent Realtime count 1; one Meta browser Lead HTTP 200 plus accepted CAPI, shared event ID `lead_d4a28f30-ce91-482c-991c-d195f461cece`, empty outbox. Meta internal dedup reporting, processed campaign aggregation and message absence (401 scope) remain explicit audit limitations, not invented proof.
+- Windows Chromium **UA path** passed valid browser E2E on WSL. macOS/iOS/Android UA invalid-only controls reach PHP 400; Linux desktop UA still gets rule 900401 / 406. These do not claim native OS/device testing. Existing WAF rollback retained; scoped Bluehost remediation is a non-blocking follow-up.
+- Campaign, ad set and all 11 ads freshly read **PAUSED / PAUSED**. No Meta/GTM/env/backend/WAF changes; synthetic remains held for audit and no second replacement attempt was made. Production remains exact source `8480f5c497f75c4e95569e4b92c992a3d42b5f3f`.
+- See `docs/CASTLE-HILL-HARDENED-RELEASE-2026-09-09.md` and `docs/CASTLE-HILL-MODSEC-DIAGNOSIS-2026-09-09.md` for exact readbacks and scoped verdict.
 
 ## Status legend
 
