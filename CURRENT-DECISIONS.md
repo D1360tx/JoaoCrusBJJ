@@ -27,7 +27,16 @@
 
 ---
 
-## AY09 final Adults + Youth artwork revision (2026-09-08)
+## Castle Hill live/draft reconciliation (2026-09-08, supersedes earlier state)
+
+- Fresh investigation found AY09A/B attached to stale UI-generated creatives, original AY09 still on its short youth-only creative, and five campaign ads configured ACTIVE despite their paused parent. All eleven campaign ads now read back PAUSED / PAUSED; campaign `120251246135250072` and ad set `120251246144560072` also PAUSED / PAUSED.
+- Restored AY09A `120251263139970072` → independently re-read creative `1392143345711700`, AY09B `120251263002380072` → `1548660843191930`. Updated original AY09 `120251261045730072` to the same completed Adults + Youth video creative as AY09A, preserving its exact name and ID. Original AY09 is no longer the protected stale short-cut baseline.
+- All three have exact approved five-paragraph copy, **You Don’t Have to Feel Ready**, **Adults + Youth Ages 8–12 in Austin.**, placement-paired final artwork and canonical six dynamic UTMs in the website URL; absent URL tags, no duplicate query or manual fbclid. Both videos are ready, 26.866 seconds. AY09B uses selected IMG_6449 adult group photo; current Meta image hashes `a35ae481c4a5fc565115ed45b80f476f` / `1e0bbe2da0912a0c768aa97776824260`.
+- Error #1870194 persisted in an **unpublished ad-set Audience / Ad set status draft**, not the corrected saved object. Posting `home,recent` again normalized to `frequently_in,home,recent`. Discarded only the identified stale ad-set draft from its editor, not account-wide drafts. Reopened Ads Manager Review has no location error and shows Off; campaign queue reached zero. Current API targeting equals the pre-reconciliation saved targeting exactly.
+- Budget already read `1000` at start and remains unchanged ($10/day intent), not the historical `3500`. No budget mutation, activation, new ad set, merge or deployment. API validate-only PAUSED checks returned success for all three ads and the ad set; this is configuration validation, not a guarantee of future policy approval.
+- Evidence: `assets/meta/castle-hill/youth-wave-2/comparisons/reconciliation-2026-09-08/`. Includes exact final readback, paused UI table/editor, video previews/current thumbnails and static media. Earlier error-owner and clean Review captures were inspected during this session but expired from the tool cache before archival. Current CDN static pixels differ from local PNG encoding, so no remote pixel-byte equivalence claim; hashes, dimensions, source mapping and visual review establish the intended assets. Local final video audio rechecked equal to completed-cut PCM for both ratios. Full decoded remote-video equivalence is not claimed.
+
+## AY09 final Adults + Youth artwork revision (2026-09-08, historical)
 
 - Final AY09A ad `120251263139970072` → creative `1392143345711700`; AY09B ad `120251263002380072` → creative `1548660843191930`. Both final configured/effective **PAUSED / PAUSED** after review processing settled. Same ad IDs/names; AY07 and original AY09 ads/creatives unchanged.
 - AY09B uses the explicitly selected Drive adult academy group JPEG `IMG_6449-adults-group-source-2026-09-08.jpg` (1572×1179; SHA-256 `0e25957e88c7b59ed9a55fa3ef0811950293621db34319a41e0f1bf141f1ea59`). Full source and all faces retained in 1:1/9:16 framed statics. Do not describe pictured adults as youth or claim this is Castle Hill. Participant paid-media permission remains an activation gate.
