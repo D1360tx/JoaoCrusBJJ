@@ -3,7 +3,7 @@ const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const base = 'http://127.0.0.1:8766';
+const base = process.env.QA_BASE || 'http://127.0.0.1:8766';
 const out = path.resolve('qa/austin');
 fs.mkdirSync(out, { recursive: true });
 (async () => {
