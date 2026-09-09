@@ -2,6 +2,24 @@
 
 Audited 2026-09-08 CDT / 2026-09-09 UTC. Verdict: **NOT ready for lead acquisition. The public page opens a deliberately disconnected preview quiz.**
 
+## Authorized repair preflight: safely stopped, not deployed
+
+The subsequent user authorization permits full repair, a backup-first production deployment, and one controlled synthetic lead with naturally triggered staff notifications, but no customer SMS or traffic activation. **The funnel is still not repaired or end-to-end verified.**
+
+Fresh Meta MCP reads contradicted the earlier all-paused snapshot: AY09A `120251263139970072`, AY09B `120251263002380072`, AY07 `120251261010900072`, AY08 `120251261015960072`, and ad set `120251246144560072` were configured ACTIVE, although the campaign pause prevented delivery. Under the explicit keep-paused authorization, these five objects were set to PAUSED. Independent subsequent MCP reads confirmed all eleven campaign ads, the ad set, and campaign `120251246135250072` are **PAUSED / PAUSED**. Initial ad readback briefly showed IN_PROCESS; the final readback settled PAUSED. Do not restore the prior ACTIVE child states as a rollback.
+
+The safety gate remains unverified: workflow MCP returned HTTP 401, `The token is not authorized for this scope`; the tags connector then entered its failure circuit breaker. The signed-in HighLevel browser fallback failed before navigation because the user's default browser is unsupported by real-profile Browser Use. Thus this pass could not establish workflow suppression or observable staff-notification evidence before exercising the authorized synthetic lead. No synthetic submission was consumed, no contact/opportunity created, and no staff/customer message intentionally triggered. Restore an operable authorized HighLevel read path before proceeding with the live acceptance test; do not infer safe workflow behavior from `automation_hold` being present in source.
+
+Production was not written. The parent's removed banner, adult schedule and integrations were left untouched. Origin SSH readback before and after this preflight returned identical hashes:
+
+| Exact target | SHA-256 |
+|---|---|
+| `castle-hill-grand-opening/index.html` | `3743c15197f31107aa80913ecfdc3840a0154f1b80fb370fbffae73fe87f09ca` |
+| `austin-program-finder/quiz/index.html` | `2110c09bc75dbdb246b588aacee47aea82f35ac05ca04965a095cd46c04722ef` |
+| `api/lead.php` | `888f2c7e148796c3677f97b2a0f46f2457964bac08736980afce1cbc869191ea` |
+
+Secure directory/file modes read back 0700/0600. A later boolean-only runtime probe encountered an SSH disconnect and produced no result; a minimal SSH retry succeeded. The earlier audit's SMS-release-false observation is not promoted to a fresh configuration read. No env change occurred. No new production build, PHP lint, deterministic browser test suite, GA4 conversion receipt or Meta deduplication acceptance was performed in this stopped pass. The historical test results below are not new repair evidence. No website rollback is needed because no website deployment occurred; keep the corrected Meta pauses in force. An unrelated account campaign was observed ACTIVE and was not changed because this repair is scoped to Castle Hill.
+
 ## Scope and safety
 
 Read-only origin SSH, public browser loads, harmless choice interactions through question 4, public endpoint GET, provider GET APIs, isolated local builds/unit tests, and a pure extracted payload-function harness. No contact details entered into the live browser; no live form submit, lead/conversion event, contact/opportunity mutation, owner alert, Meta campaign mutation, GTM publication, or production write performed by this auditor. Ordinary GA4/Ads/Meta page/diagnostic traffic was allowed only for the initial safe transport probe. A separate privacy/UTM probe blocked all third-party destinations and mocked country lookup explicitly. Browser isolation used a new Playwright context, not the user's desktop/profile.
