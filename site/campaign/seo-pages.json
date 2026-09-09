@@ -15,8 +15,8 @@
     {
       "file": "index.html",
       "path": "/",
-      "title": "Brazilian Jiu-Jitsu in Dripping Springs & Austin | Joao Crus",
-      "description": "Brazilian Jiu-Jitsu classes in Dripping Springs and Austin for children from age 3, teens, adults, private students, and teams.",
+      "title": "Brazilian Jiu-Jitsu in Dripping Springs | Joao Crus BJJ",
+      "description": "Beginner-friendly BJJ in Dripping Springs for kids from age 3 and adults. Explore programs and request a free studio visit. Joao personally calls.",
       "image": "/assets/campaign-images/home-academy-group-2026-07.webp",
       "indexable": true,
       "schema": [
@@ -38,8 +38,8 @@
     {
       "file": "kids.html",
       "path": "/kids-program/",
-      "title": "Kids Brazilian Jiu-Jitsu in Dripping Springs & Austin",
-      "description": "Explore age-appropriate kids Brazilian Jiu-Jitsu classes focused on confidence, body control, safe boundaries, and steady progress.",
+      "title": "Kids Martial Arts & BJJ in Dripping Springs | Joao Crus",
+      "description": "Compare kids Brazilian Jiu-Jitsu programs from age 3 in Dripping Springs and youth ages 8-12 in Austin. Find the right age group and ask Joao about a visit.",
       "image": "/assets/campaign-images/kids-training.webp",
       "indexable": true,
       "schema": [
@@ -49,8 +49,8 @@
     {
       "file": "little-champions.html",
       "path": "/little-champions/",
-      "title": "Brazilian Jiu-Jitsu for Kids Ages 3-7 | Joao Crus BJJ",
-      "description": "Playful Brazilian Jiu-Jitsu classes for ages 3-7 in Dripping Springs, using short activities and age-appropriate instruction.",
+      "title": "Preschool & Kids BJJ Ages 3-7 in Dripping Springs",
+      "description": "Little Champions BJJ for ages 3-7 in Dripping Springs. Explore purposeful play, short activities and parent observation. Joao calls to arrange a free visit.",
       "image": "/assets/campaign-images/kids-training.webp",
       "indexable": true,
       "schema": [
@@ -73,7 +73,7 @@
       "source_file": "teens-campaign-ages-13-17.html",
       "path": "/teens/",
       "title": "Teen Brazilian Jiu-Jitsu Ages 13-17 in Dripping Springs",
-      "description": "Join the interest list for Teen Brazilian Jiu-Jitsu ages 13-17 in Dripping Springs, with real technique, controlled pressure, and age-aware coaching.",
+      "description": "Teen BJJ ages 13-17 in Dripping Springs is available. Discuss program fit, schedule and capacity with Joao. Share your interest without booking a class.",
       "image": "/assets/teen-cohort-hero.webp",
       "indexable": true,
       "schema": []
@@ -81,8 +81,8 @@
     {
       "file": "adults.html",
       "path": "/adults-program/",
-      "title": "Adult Brazilian Jiu-Jitsu in Dripping Springs, TX",
-      "description": "Beginner-friendly adult Brazilian Jiu-Jitsu classes in Dripping Springs with technical coaching, practical skill, and structured progress.",
+      "title": "Beginner & Adult BJJ in Dripping Springs | Joao Crus BJJ",
+      "description": "Start adult Brazilian Jiu-Jitsu in Dripping Springs. Beginner-friendly fundamentals, Mon/Wed evenings and Saturday classes. Joao calls to arrange a free visit.",
       "image": "/assets/campaign-images/adults-joao-coaching-hero-2026-07.webp",
       "indexable": true,
       "schema": [
@@ -152,8 +152,8 @@
     {
       "file": "austin.html",
       "path": "/austin-brazilian-jiu-jitsu/",
-      "title": "Youth & Adult Brazilian Jiu-Jitsu in Austin | Joao Crus BJJ",
-      "description": "Youth Brazilian Jiu-Jitsu ages 8-12 and adult group classes inside Castle Hill Fitness in central Austin, plus private instruction by appointment.",
+      "title": "Austin Brazilian Jiu-Jitsu at Castle Hill | Joao Crus BJJ",
+      "description": "Youth ages 8-12 and adult BJJ at Castle Hill Fitness, 1112 N Lamar Blvd, Austin. Tue/Thu groups and private lessons by appointment. Ask Joao about fit.",
       "image": "/assets/campaign-images/kids-gathering.webp",
       "indexable": true,
       "schema": [
