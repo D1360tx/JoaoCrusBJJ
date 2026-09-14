@@ -1,16 +1,15 @@
 /* Review-only booking routing. No fetch, tracking, contact data, or automatic navigation. */
 (function (root) {
   'use strict';
-  // Calendar IDs were read from HighLevel. URLs and release approvals must be
-  // read back independently; an ID, click, or thank-you view is not a booking.
+  // Verified Share URLs are not activation approval. Both gates must be released separately.
   var calendars = Object.freeze({
-    'little:dripping-springs': Object.freeze({ id: 'WqEFb31yftWo7HOIxyv1', approved: false, url: '' }),
-    'youth:dripping-springs': Object.freeze({ id: 'lwI401IPhkVBM5TUAhYm', approved: false, url: '' }),
-    'homeschool:dripping-springs': Object.freeze({ id: 'TZDZNzvBn0gcHFyfjk2l', approved: false, url: '' }),
-    'adults:dripping-springs': Object.freeze({ id: 'GO56GPdtrVWfqhOmGK3w', approved: false, url: '' })
+    'little:dripping-springs': Object.freeze({ id: 'WqEFb31yftWo7HOIxyv1', approved: false, url: 'https://api.leadconnectorhq.com/widget/booking/WqEFb31yftWo7HOIxyv1' }),
+    'youth:dripping-springs': Object.freeze({ id: 'lwI401IPhkVBM5TUAhYm', approved: false, url: 'https://api.leadconnectorhq.com/widget/booking/lwI401IPhkVBM5TUAhYm' }),
+    'homeschool:dripping-springs': Object.freeze({ id: 'TZDZNzvBn0gcHFyfjk2l', approved: false, url: 'https://api.leadconnectorhq.com/widget/booking/TZDZNzvBn0gcHFyfjk2l' }),
+    'adults:dripping-springs': Object.freeze({ id: 'GO56GPdtrVWfqhOmGK3w', approved: false, url: 'https://api.leadconnectorhq.com/widget/booking/GO56GPdtrVWfqhOmGK3w' }),
+    'youth:austin': Object.freeze({ id: 'wY51xc5N1INt6jsQByeC', approved: false, url: 'https://api.leadconnectorhq.com/widget/booking/wY51xc5N1INt6jsQByeC' })
   });
   var releaseEnabled = false;
-  var fallback = 'mailto:joaocrusbjj@gmail.com';
 
   function validBookingURL(value, id) {
     try {
@@ -28,31 +27,29 @@
     var released = enabled === true && calendar && calendar.approved === true &&
       /^[A-Za-z0-9]{20}$/.test(calendar.id) && validBookingURL(calendar.url, calendar.id);
     return {
-      href: released ? calendar.url : fallback,
+      href: released ? calendar.url : null,
       bookable: !!released,
-      label: released ? 'Choose a first-class time' : 'Ask Joao about your first class',
+      label: 'Book Your Class',
       message: released ?
-        'Choose an available time on HighLevel. Your place is booked only after the calendar confirms it.' :
-        'Online booking is not open for this selection. Joao will personally call to help you choose the right class. You can also email him below.'
+        'Choose a date and time. Your class is booked only after the calendar confirms it.' :
+        'Booking paused for review. This calendar is not accepting reservations yet.'
     };
   }
 
   function mount(document) {
-    var chooser = document.querySelector('[data-first-class-chooser]');
-    if (!chooser) return;
-    var program = chooser.querySelector('[data-booking-program]');
-    var location = chooser.querySelector('[data-booking-location]');
-    var link = chooser.querySelector('[data-booking-link]');
-    var status = chooser.querySelector('[data-booking-status]');
-    function update() {
-      var result = resolve(program.value, location.value, calendars, releaseEnabled);
-      link.href = result.href;
+    document.querySelectorAll('[data-booking-card]').forEach(function (card) {
+      var key = card.getAttribute('data-booking-card').split(':');
+      var link = card.querySelector('[data-booking-link]');
+      var result = resolve(key[0], key[1], calendars, releaseEnabled);
       link.textContent = result.label;
-      status.textContent = result.message;
-    }
-    program.addEventListener('change', update);
-    location.addEventListener('change', update);
-    update();
+      link.setAttribute('aria-disabled', String(!result.bookable));
+      if (result.bookable) link.setAttribute('href', result.href);
+      else link.removeAttribute('href');
+      card.querySelector('[data-booking-status]').textContent = result.message;
+      link.addEventListener('click', function (event) {
+        if (!result.bookable) event.preventDefault();
+      });
+    });
   }
 
   if (typeof module === 'object' && module.exports) {

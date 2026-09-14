@@ -2,7 +2,15 @@
 
 Execution: **GPT-6 Astra**. Scope: review artifacts only. No GHL workflow edits, test sends, enrollment, publication, calendar activation or production deployment performed in this pass.
 
-## Observed state and blockers
+## Updated website review handoff
+
+The follow-up task supplied verified standard Share URLs for all five calendars, including saved Austin Youth `wY51xc5N1INt6jsQByeC`, and confirmed that all five are intentionally inactive. This supersedes the earlier missing-Austin/active-duplicate finding below, which is retained as historical evidence only. No new HighLevel audit or mutation was performed in this website-only pass.
+
+The thank-you draft now displays all five schedules and Book Your Class controls without a selection gate. Copy and hero CTA are centered. Each disabled booking link has a visible review explanation, while Email Joao remains a separate action. The exact standard URLs are stored in `site/assets/first-class-booking.js`; `releaseEnabled=false` and all route approvals remain false. Static schedule summaries are regression-checked against the shared calendar records. The no-JS page retains all five schedules and the personal-contact fallback. No sticky new-lead CTA covers the cards.
+
+Activation approval, live calendar acceptance, workflow acceptance and deployment remain separate gates. The workflow specification below remains unapplied.
+
+## Historical observed state and blockers
 
 - Canonical main worktree: `/home/d1360/workspaces/JoaoCrusBJJ-review`, dirty and behind remote main. Left untouched.
 - Implementation base: `origin/main` at `167dc66`; related decision PR: #121 (`9c6994a`). This PR incorporates the relevant direction independently and explicitly includes Homeschool from the repair request.

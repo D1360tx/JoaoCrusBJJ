@@ -2,7 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const booking = require('../site/assets/first-class-booking.js');
-const fallback = 'mailto:joaocrusbjj@gmail.com';
+const fallback = null;
 const source = fs.readFileSync('site/campaign/thank-you.html', 'utf8');
 const script = fs.readFileSync('site/assets/first-class-booking.js', 'utf8');
 const id = 'WqEFb31yftWo7HOIxyv1';
@@ -18,8 +18,16 @@ test('all current choices stay closed; no unknown route defaults to DS', () => {
       assert.equal(result.href, fallback);
     }
   }
-  assert.equal(Object.keys(booking.calendars).length, 4);
-  assert.ok(Object.values(booking.calendars).every(c => !c.approved && !c.url));
+  assert.equal(Object.keys(booking.calendars).length, 5);
+  assert.ok(Object.values(booking.calendars).every(c => !c.approved && c.url === 'https://api.leadconnectorhq.com/widget/booking/' + c.id));
+  assert.deepEqual(Object.values(booking.calendars).map(c => c.id), ['WqEFb31yftWo7HOIxyv1', 'lwI401IPhkVBM5TUAhYm', 'TZDZNzvBn0gcHFyfjk2l', 'GO56GPdtrVWfqhOmGK3w', 'wY51xc5N1INt6jsQByeC']);
+  for (const [key, calendar] of Object.entries(booking.calendars)) {
+    const [program, location] = key.split(':');
+    const approved = { [key]: { ...calendar, approved: true } };
+    assert.equal(booking.resolve(program, location, approved, false).href, null);
+    assert.equal(booking.resolve(program, location, booking.calendars, true).href, null);
+    assert.equal(booking.resolve(program, location, approved, true).href, calendar.url);
+  }
 });
 
 test('both release and route approval and a matching clean URL are required', () => {
@@ -41,35 +49,49 @@ test('both release and route approval and a matching clean URL are required', ()
   assert.equal(booking.resolve('adults', 'austin', ready, true).href, fallback);
 });
 
-test('chooser reacts to both selections without submitting or auto-navigating', () => {
-  const events = {};
-  const program = { value: 'little', addEventListener: (event, fn) => { events.program = fn; } };
-  const location = { value: 'dripping-springs', addEventListener: (event, fn) => { events.location = fn; } };
-  const link = {}; const status = {};
-  const nodes = { '[data-booking-program]': program, '[data-booking-location]': location, '[data-booking-link]': link, '[data-booking-status]': status };
-  booking.mount({ querySelector: () => ({ querySelector: selector => nodes[selector] }) });
-  assert.equal(link.href, fallback);
-  location.value = 'austin'; events.location();
-  assert.match(status.textContent, /not open/);
-  program.value = 'private'; events.program();
-  assert.equal(link.href, fallback);
+test('all five cards mount as disabled booking links, never email redirects', () => {
+  const cards = Object.keys(booking.calendars).map(key => {
+    const attrs = { href: 'https://stale.example' }; const events = {};
+    const link = { setAttribute: (k,v) => attrs[k]=v, removeAttribute: k => delete attrs[k], addEventListener: (k,v) => events[k]=v };
+    const status = {};
+    return { attrs, events, link, status, getAttribute: () => key, querySelector: q => q === '[data-booking-link]' ? link : status };
+  });
+  booking.mount({ querySelectorAll: () => cards });
+  for (const c of cards) {
+    assert.equal(c.attrs.href, undefined);
+    assert.equal(c.attrs['aria-disabled'], 'true');
+    assert.equal(c.link.textContent, 'Book Your Class');
+    let prevented = false; c.events.click({ preventDefault: () => prevented = true });
+    assert.ok(prevented); assert.match(c.status.textContent, /paused for review/);
+  }
   assert.doesNotMatch(script, /fetch\(|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|dataLayer|location\.(href|assign|replace)\s*[=(]/);
 });
 
-test('page preserves honest confirmation, secondary schedule and accessible no-JS fallback', () => {
+test('visible static schedules exactly match shared canonical calendar records', () => {
+  const calendar = fs.readFileSync('site/assets/class-calendar.js', 'utf8');
+  const classes = JSON.parse(JSON.stringify(require('node:vm').runInNewContext(calendar.match(/var CLASSES = (\[[\s\S]*?\n  \]);/)[1])));
+  const cards = [...source.matchAll(/data-booking-card="([^"]+)"[\s\S]*?<ul class="booking-times">([\s\S]*?)<\/ul>/g)];
+  assert.deepEqual(cards.map(c => c[1]), Object.keys(booking.calendars));
+  const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  for (const [,key,html] of cards) {
+    const [program, location] = key.split(':');
+    const expected = classes.filter(c => c.groups.includes(program) && c.location === (location === 'dripping-springs' ? 'ds' : location));
+    const actual = [...html.matchAll(/<strong>(.*?)<\/strong><span>(.*?)<\/span>/g)].flatMap(([,ds,time]) => ds.split(' &amp; ').map(day => ({day:days.indexOf(day), time})));
+    assert.deepEqual(actual.sort((a,b)=>a.day-b.day), expected.map(({day,time})=>({day,time})).sort((a,b)=>a.day-b.day));
+  }
+});
+
+test('page preserves honest confirmation, visible review controls and no-JS fallback', () => {
+  assert.match(source, /We’ll reach out shortly/);
+  assert.match(source, /Book your class below/);
   assert.match(source, /Joao will personally call/);
   assert.match(source, /did not reserve a calendar slot/);
   assert.match(source, /href="#first-class-options"/);
-  assert.match(source, /id="first-class-options"/);
   assert.match(source, /href="schedule.html">View schedule/);
-  assert.match(source, /data-booking-link href="mailto:joaocrusbjj@gmail.com"/);
-  assert.match(source, /data-booking-status role="status" aria-live="polite"/);
-  for (const field of ['program', 'location']) {
-    assert.match(source, new RegExp('label for="first-class-' + field + '"'));
-    assert.match(source, new RegExp('id="first-class-' + field + '"'));
-  }
+  assert.equal((source.match(/data-booking-link role="link" tabindex="0" aria-disabled="true"/g)||[]).length, 5);
+  assert.match(source, /href="mailto:joaocrusbjj@gmail.com">Email Joao/);
   assert.match(source, /<noscript>/);
-  assert.doesNotMatch(source, /<iframe|\/widget\/booking\//);
+  assert.doesNotMatch(source, /<iframe|\/widget\/booking\/|—/);
 });
 
 test('built thank-you route has qualified anchors and versioned booking asset', { skip: !fs.existsSync('dist/thank-you/index.html') }, () => {
