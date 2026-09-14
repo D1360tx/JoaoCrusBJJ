@@ -27,6 +27,13 @@
 
 ---
 
+## Production hardening approval (2026-09-13)
+
+- Diego approved a branded local Apache 404 and lossless optimization of the two book PNGs and shared logo, preserving design, existing references, CRM and analytics behavior.
+- HSTS/CSP may be enabled only after hosting/runtime compatibility is proven. No GTM checklist-driven edits.
+- Never submit a real production lead, trigger owner alerts, or customer outreach for QA. Accepted-lead end-to-end proof requires a proven non-transmitting pathway first.
+- Deployment remains subject to exact-SHA builds, live baseline comparison, a verified full rollback backup, and public readback. Current SSH resets and the Bluehost login wall block those gates; do not merge/deploy around them.
+
 ## GSC opportunity implementation decisions (2026-09-09)
 
 Source: Diego's explicit implementation approval and business clarifications supplied 2026-09-09.

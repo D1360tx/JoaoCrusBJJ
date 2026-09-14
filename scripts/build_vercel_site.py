@@ -281,6 +281,21 @@ def apply_robots_directive(html: str, page: dict, production: bool) -> str:
     )
 
 
+def optimize_display_images(html: str) -> str:
+    """Use pixel-identical derivatives for display; retain original PNG URLs.
+
+    Only img src attributes change. Structured data, social metadata, downloads,
+    comparison source pages and every other runtime contract remain untouched.
+    """
+    names = ("joao-crus-bjj-logo", "trauma-to-triumph", "grapple-with-emotions")
+    for name in names:
+        html = re.sub(
+            rf'(<img\b[^>]*?\bsrc=["\'][^"\']*/){re.escape(name)}\.png(["\'])',
+            rf'\g<1>{name}-lossless.webp\2', html, flags=re.IGNORECASE,
+        )
+    return html
+
+
 def output_path(public_path: str) -> Path:
     if public_path == "/":
         return DIST / "index.html"
@@ -320,6 +335,7 @@ def main() -> None:
         html = rewrite_internal_html_links(html, routes)
         html = normalize_sitelink_labels(html)
         html = qualify_fragment_links(html, page["path"])
+        html = optimize_display_images(html)
         html = apply_robots_directive(html, page, args.production)
         if args.production:
             html = add_call_tracking(html)

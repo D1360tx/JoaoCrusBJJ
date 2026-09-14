@@ -1,6 +1,10 @@
 DirectoryIndex index.html
 Options -Indexes
 
+# Local internal error document preserves the original HTTP 404 status.
+# Override inherited hosting error paths that may themselves be missing.
+ErrorDocument 404 /404.html
+
 <IfModule mod_mime.c>
   AddType text/vtt .vtt
 </IfModule>
