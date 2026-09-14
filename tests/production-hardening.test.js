@@ -10,7 +10,10 @@ test('404 uses an internal error document and script-free recovery links', () =>
   const config = read('deploy/bluehost/.htaccess');
   assert.match(config, /^ErrorDocument 404 \/404\.html$/m);
   const html = read('deploy/bluehost/404.html');
-  for (const route of ['programs','schedule','contact']) assert.match(html, new RegExp(`href="/${route}/"`));
+  for (const route of ['training-programs','classes-schedule','contact']) {
+    assert.match(html, new RegExp(`href="/${route}/"`));
+    assert.ok(JSON.parse(read('site/campaign/seo-pages.json')).pages.some(p => p.path === `/${route}/`));
+  }
   assert.match(html, /noindex,follow/);
   assert.doesNotMatch(html, /<script|<form|http-equiv="refresh"/i);
   assert.match(config, /SetEnv GHL_ENV_FILE \/home1\/joaocrus\/\.joao-secure\/joao-highlevel.env/);
