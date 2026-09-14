@@ -48,6 +48,7 @@ try:
                 consent_save.click()
             page.locator('a[href="/thank-you/#first-class-options"]').click()
             page.wait_for_url('**/thank-you/#first-class-options')
+            page.wait_for_function("document.querySelector('#first-class-options .eye').getBoundingClientRect().top >= document.querySelector('.header').getBoundingClientRect().bottom")
             programs = page.locator('[data-booking-program] option').evaluate_all('(xs) => xs.map(x => x.value)')
             locations = page.locator('[data-booking-location] option').evaluate_all('(xs) => xs.map(x => x.value)')
             combinations = 0
