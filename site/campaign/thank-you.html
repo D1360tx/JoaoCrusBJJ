@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="../assets/class-calendar.css">
     <script src="../assets/campaign-site.js" defer></script>
     <script src="../assets/class-calendar.js" defer></script>
+    <script src="../assets/first-class-booking.js" defer></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -76,13 +77,48 @@
           <div class="eye">Confirmation state</div>
           <h1>THANK YOU. <span class="blue">WE’LL HELP YOU START.</span></h1>
           <p class="lead">
-            Your request is in. The Joao Crus BJJ team will follow up to help
+            Your request is in. Joao will personally call to help
             you choose the right program, location, and first class.
           </p>
+          <p>Your form did not reserve a calendar slot. Your next step is a free studio visit or first-class experience.</p>
           <div class="buttons">
-            <a class="btn u" href="schedule.html">View schedule →</a
+            <a class="btn u" href="#first-class-options">Choose your next step →</a>
+            <a class="btn dark" href="schedule.html">View schedule →</a
             ><a class="btn dark" href="index.html">Return home →</a>
           </div>
+        </div>
+      </section>
+      <section class="section" id="first-class-options" aria-labelledby="first-class-title">
+        <div class="wrap" data-first-class-chooser>
+          <div class="eye">Your first visit</div>
+          <h2 id="first-class-title">FIND YOUR <span class="blue">NEXT STEP.</span></h2>
+          <p>Choose a program and location. If online booking is unavailable, Joao will help you arrange your visit personally. Not sure which class fits? Choose “Help me choose.”</p>
+          <div class="fields">
+            <div class="field">
+              <label for="first-class-program">Program</label>
+              <select id="first-class-program" data-booking-program>
+                <option value="help">Help me choose</option>
+                <option value="little">Little Champions · Ages 3–7</option>
+                <option value="youth">Youth · Ages 8–12</option>
+                <option value="homeschool">Homeschool · Ages 5–8</option>
+                <option value="adults">Adults</option>
+                <option value="teens">Teens · Ages 13–17</option>
+                <option value="after60">Jiu-Jitsu After 60</option>
+                <option value="private">Private coaching</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="first-class-location">Location</label>
+              <select id="first-class-location" data-booking-location>
+                <option value="help">Help me choose</option>
+                <option value="dripping-springs">Dripping Springs</option>
+                <option value="austin">Austin · Castle Hill Fitness</option>
+              </select>
+            </div>
+          </div>
+          <p data-booking-status role="status" aria-live="polite">Online booking is not open yet. Joao will personally call to help you choose the right class. You can also email him below.</p>
+          <div class="buttons"><a class="btn u" data-booking-link href="mailto:joaocrusbjj@gmail.com">Ask Joao about your first class</a></div>
+          <noscript><p>You can email Joao using the link above. No appointment has been reserved by this page.</p></noscript>
         </div>
       </section>
     </main>

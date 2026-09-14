@@ -2,7 +2,7 @@
 
 # Joao Crus BJJ — Current Decisions
 
-> **Authoritative status as of 2026-08-04**
+> **Authoritative status as of 2026-09-14**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
 ## Status legend
@@ -26,6 +26,17 @@
 6. 🟡 Preserve the broader **one hub / three lines** concept as the working brand architecture, pending final sign-off and naming.
 
 ---
+
+## HighLevel first-class self-scheduling review (2026-09-14)
+
+Source: Diego's approved scheduling direction recorded in PR #121 and the follow-up implementation request in topic 8048.
+
+- HighLevel owns optional self-scheduling after accepted lead capture. The quiz/form does not book a slot. Joao personally calls leads who do not book; a free studio visit/first-class experience remains the offer.
+- Use separate First Class program/location calendars. The current repair scope includes Dripping Springs Little Champions, Youth, Homeschool and Adults, plus Austin Youth. Austin Adults is separately confirmed Tue/Thu 6:00–7:00 p.m. but has no verified new calendar yet. Do not silently send Austin adults to Dripping Springs. Teen, After 60, private and ambiguous requests retain personal follow-up unless their own booking setup is verified.
+- Initial defaults remain America/Chicago, two trial guests per class, 28-day horizon, 12-hour minimum notice, automatic confirmation and reschedule/cancel links. Keep calendars inactive and customer workflows Draft until separate approval.
+- Welcome booking CTAs must stop on confirmed appointment, reply, enrollment or suppression. Preserve automation_hold release and raw email consent = granted. Recheck eligibility immediately before every email, not only upon entry. No SMS release.
+- This PR stages a program/location chooser on the thank-you page behind a default-off release gate. It does not deploy, expose active booking links, send, book, enroll or test HighLevel workflows. Workflow copy/branch specification is an unapplied artifact, not evidence of saved GHL edits.
+- Read-only API discovery found four correctly named inactive DS calendars, plus an active duplicate still named Copy of Little Champions First Class | Dripping Springs. It did not return a saved Austin Youth calendar. New DS calendars report one seat and zero-day notice; schedule/horizon read-back is incomplete. Calendar repair remains blocked by browser_consent_required from the running driver, despite grant_existing_profile being true in the saved Hermes config. Workflow API reads additionally return scope HTTP 401.
 
 ## GSC opportunity implementation decisions (2026-09-09)
 
