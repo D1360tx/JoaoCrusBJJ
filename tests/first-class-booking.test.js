@@ -64,7 +64,7 @@ test('all five cards mount as disabled booking links, never email redirects', ()
     let prevented = false; c.events.click({ preventDefault: () => prevented = true });
     assert.ok(prevented); assert.match(c.status.textContent, /paused for review/);
   }
-  assert.doesNotMatch(script, /fetch\(|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|dataLayer|location\.(href|assign|replace)\s*[=(]/);
+  assert.doesNotMatch(script, /fetch\(|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|location\.(href|assign|replace)\s*[=(]/);
 });
 
 test('visible static schedules exactly match shared canonical calendar records', () => {

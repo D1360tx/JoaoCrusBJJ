@@ -1,5 +1,7 @@
 # Welcome booking follow-up: unapplied draft
 
+> **Current execution status:** see [September 15 evidence](GHL-BOOKING-EXECUTION-2026-09-15.md). Execution/controlled testing are now authorized, but authenticated browser, messaging-safety and release gates are blocked. All five public widgets rendered 404; source route gates remain closed. GTM is live compiled version 13. This September 14 document is historical and its no-execution permission statement, selector description and no-tracking claim must not override the newer report.
+
 Execution: **GPT-6 Astra**. Scope: review artifacts only. No GHL workflow edits, test sends, enrollment, publication, calendar activation or production deployment performed in this pass.
 
 ## Updated website review handoff

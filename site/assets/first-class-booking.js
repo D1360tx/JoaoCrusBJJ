@@ -1,4 +1,4 @@
-/* Review-only booking routing. No fetch, tracking, contact data, or automatic navigation. */
+/* Release-gated booking routes. Intent tracking only; never confirmation or lead success. */
 (function (root) {
   'use strict';
   // Verified Share URLs are not activation approval. Both gates must be released separately.
@@ -36,6 +36,35 @@
     };
   }
 
+  // Like accepted-lead routing, use the existing GTM-owned Google/Meta bases
+  // directly, avoiding a second send through GTM's legacy intent-event router.
+  function trackBookingStart(key, result) {
+    if (!result || !result.bookable || !Object.prototype.hasOwnProperty.call(calendars, key) ||
+        result.href !== calendars[key].url) return false;
+    var consent = root.joaoConsentState || {};
+    var analytics = consent.analytics_storage === 'granted';
+    var advertising = consent.ad_storage === 'granted' && consent.ad_user_data === 'granted' &&
+      !(root.navigator && root.navigator.globalPrivacyControl === true);
+    if (!analytics && !advertising) return false;
+    var parts = key.split(':');
+    var parameters = {
+      form_name: 'thank_you_booking',
+      program: parts[0],
+      location: parts[1].replace(/-/g, '_'),
+      link_context: 'thank_you_class_card'
+    };
+    if (analytics) {
+      root.dataLayer = root.dataLayer || [];
+      var command = typeof root.gtag === 'function' ? root.gtag : function () { root.dataLayer.push(arguments); };
+      command('event', 'booking_start', Object.assign({ send_to: 'G-EW2F2YKR3Y' }, parameters));
+    }
+    // No delayed replay: absent/blocked Pixel stays absent. Navigation is never held.
+    if (advertising && typeof root.fbq === 'function') {
+      root.fbq('trackCustom', 'StartFirstClassBooking', parameters);
+    }
+    return true;
+  }
+
   function mount(document) {
     document.querySelectorAll('[data-booking-card]').forEach(function (card) {
       var key = card.getAttribute('data-booking-card').split(':');
@@ -48,6 +77,7 @@
       card.querySelector('[data-booking-status]').textContent = result.message;
       link.addEventListener('click', function (event) {
         if (!result.bookable) event.preventDefault();
+        else if (!event.defaultPrevented) trackBookingStart(key.join(':'), result);
       });
     });
   }

@@ -2,7 +2,7 @@
 
 # Joao Crus BJJ — Current Decisions
 
-> **Authoritative status as of 2026-09-14**
+> **Authoritative status as of 2026-09-15**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
 ## Status legend
@@ -27,7 +27,20 @@
 
 ---
 
+## First-class booking execution approval and current blockers (2026-09-15)
+
+- Diego explicitly approved completing the five calendars, working thank-you booking links, GA4/Meta lead and confirmed-booking verification, controlled synthetic acceptance, and safe release if all project gates pass. This supersedes the September 14 approval-only restrictions below, not the technical verification gates. No marketing messages or SMS are authorized.
+- Fresh GHL inventory confirms the five intended names/IDs, correct DS/Austin addresses, Joao user `vJgE7dMVAvCSPOxOv3n3`, 45-minute classes except 60-minute Adults, and auto-confirm/reschedule/cancel enabled. All five remain inactive and return one seat per slot, zero-day minimum notice and no numeric horizon. Weekly availability/timezone require the native editor; empty class-calendar `openHours` is not proof of missing availability.
+- All five exact public widget URLs returned rendered **404 Page Not Found** in isolated Chromium. Keep `releaseEnabled=false` and all `approved=false`; no activation or live link exposure until repair and widget acceptance.
+- No accidental duplicate is present in the returned inventory. Austin Youth now owns `wY51xc5N1INt6jsQByeC` with its correct address. Preserve unrelated Dripping Springs Trial Visits and Diego personal calendars.
+- Live compiled GTM is **version 13**, not the historical version 11. Existing booking intent remains Meta custom `StartFirstClassBooking`. Source forms already own `generate_lead`/Meta `Lead`; never fire another lead merely because the thank-you route loads. Reserve `Schedule` and booking confirmation for a provider-verified confirmed appointment. Do not use `Purchase`.
+- Staged card-click instrumentation uses the existing GTM-loaded GA4/Meta bases with category-specific consent checks, GPC advertising suppression and no duplicate legacy dataLayer router event. It is intent-only and remains unreachable behind closed route gates. Confirmed-appointment tracking is **not implemented or proven** in this branch.
+- Authenticated execution is blocked: the historical Chrome window no longer exists; the real-profile browser tool reports an unsupported default browser. Current Hermes docs have removed the old typed browser/profile-grant route. GHL workflow reads return scope HTTP 401. Bluehost SSH resets before authentication. Do not work around these gates or test a lead before messaging safety is established.
+- Canonical `/thank-you/` still serves the old page with zero booking cards. No GHL/GTM/Bluehost mutation, synthetic submission, merge, or production deployment was performed. See `docs/GHL-BOOKING-EXECUTION-2026-09-15.md` for evidence and remaining gates.
+
 ## HighLevel first-class self-scheduling review (2026-09-14)
+
+The restrictions in this historical review are superseded by the explicit September 15 execution approval above; its technical release gates remain in force.
 
 Source: Diego's approved scheduling direction recorded in PR #121 and the follow-up implementation request in topic 8048.
 
