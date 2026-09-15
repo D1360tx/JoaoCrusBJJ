@@ -457,6 +457,16 @@ def main() -> None:
             f'name="robots" content="{expected_page_robots}"' in html,
             f"{page['path']}: {build_label} robots directive does not match manifest policy",
         )
+        if page["path"] == "/thank-you/":
+            check(html.count('data-booking-card=') == 5, "/thank-you/: exactly five schedule cards required")
+            check(html.count('data-booking-link role="link" tabindex="0" aria-disabled="true"') == 5, "/thank-you/: booking must stay visibly disabled in draft")
+            check('href="/thank-you/#first-class-options"' in html, "/thank-you/: schedule CTA needs a qualified anchor")
+            check('We’ll reach out shortly.' in html, "/thank-you/: personal confirmation missing")
+            check('Book your class below' in html, "/thank-you/: booking transition missing")
+            check('/widget/booking/' not in html, "/thank-you/: inactive calendar links must not leak into HTML")
+            check('<noscript>' in html, "/thank-you/: no-JS help missing")
+            for key in ['little:dripping-springs', 'youth:dripping-springs', 'homeschool:dripping-springs', 'adults:dripping-springs', 'youth:austin']:
+                check('data-booking-card="' + key + '"' in html, "/thank-you/: missing route " + key)
         if page["path"] == "/teens/":
             visible_preview_terms = ("launch preview", "campaign preview", "preview form", "preview complete")
             check(not any(term in html.lower() for term in visible_preview_terms), "/teens/: visible preview wording remains")

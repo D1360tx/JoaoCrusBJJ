@@ -38,6 +38,15 @@
 - First- and last-touch campaign parameters, landing paths, and referrer hosts use consent-gated local storage with a 90-day window plus a legacy session-storage migration path. They are delivered only to the lead endpoint for staff attribution.
 - `click_to_call` records intent, not a connected or qualified call. If Google Ads is reopened, configure call reporting and use an agreed duration threshold for the primary call conversion.
 
+## Thank-you scheduling ownership (2026-09-15)
+
+- Current accepted-lead code bypasses the legacy GTM success-event router: forms emit `lead_submit_success_routed` diagnostically and call GA4 `generate_lead` explicitly with `send_to=G-EW2F2YKR3Y`. Meta browser `Lead` uses `eventID=lead_<request_id>` to match the server event. The legacy names in the table describe the semantic contract, not a requirement to push them again.
+- The thank-you page must **not** send a second lead. A source form that already emitted `generate_lead` owns that submission. Direct visits, refreshes, scheduler clicks, arbitrary query strings and provider redirects alone are not accepted-lead evidence. No thank-you lead fallback is installed; adding one would require a server-issued accepted-submission receipt and a cross-page shared idempotency contract, not a URL flag.
+- Released class-card clicks route GA4 `booking_start` and Meta custom `StartFirstClassBooking` directly through the existing GTM-loaded destination bases. They do not also push the legacy `booking_start` custom event, which would double-route the click. Only registry-controlled program/location/context values are sent. GA4 requires analytics consent; Meta requires advertising storage and user-data consent, with GPC suppression. Check current consent per click, never replay denied clicks, and never hold navigation for tracking. A missing Pixel is not fabricated delivery; transport and receipt still need acceptance.
+- All five route gates remain closed. The new click code is staged, unit-tested intent instrumentation, not live delivery evidence. Live GTM compiled version 13 retains the historical `booking_start` → `StartFirstClassBooking` mapping. No GTM edit/publication occurred.
+- Confirmed appointment tracking remains **blocked and unimplemented in this branch**. A future `booking_confirmed`/GA4 `trial_booked` → Meta `Schedule` path must require genuine provider confirmation, exact allowlisted calendar, appointment ID, current consent, stable appointment-scoped event ID and idempotent server delivery. Reuse the existing lifecycle design where possible; audit its deployment/workflow state before adding another owner. Do not trigger on CTA click, thank-you load, iframe load, unsigned query flag, or unverified postMessage. Do not emit `Purchase`.
+- Required acceptance is one controlled lead/contact/opportunity/appointment chain with messaging suppressed, plus GA4 destination receipt and Meta Test Events/dedup evidence. None of those new synthetic acceptance steps ran in this pass because authenticated editing and workflow safety verification were blocked.
+
 ## Publication gates
 
 1. Source build and validator pass.

@@ -49,6 +49,7 @@ def version_lead_behavior_scripts(html: str) -> str:
         "program-fit-quiz.js": PROGRAM_FIT_QUIZ_URL,
         "austin-program-fit-quiz.js": versioned_asset_url("austin-program-fit-quiz.js"),
         "austin-campaign.js": versioned_asset_url("austin-campaign.js"),
+        "first-class-booking.js": versioned_asset_url("first-class-booking.js"),
     }
     for filename, versioned in replacements.items():
         pattern = re.compile(

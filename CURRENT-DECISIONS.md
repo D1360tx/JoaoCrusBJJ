@@ -2,7 +2,7 @@
 
 # Joao Crus BJJ — Current Decisions
 
-> **Authoritative status as of 2026-08-04**
+> **Authoritative status as of 2026-09-15**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
 ## Status legend
@@ -26,6 +26,35 @@
 6. 🟡 Preserve the broader **one hub / three lines** concept as the working brand architecture, pending final sign-off and naming.
 
 ---
+
+## First-class booking execution approval and current blockers (2026-09-15)
+
+**Latest source implementation checkpoint:** PR source now sets `releaseEnabled=true` and all five route approvals true. Fresh provider inventory and anonymous browser verification correct three earlier handoff errors: actual Share slugs are `little-champions-first-ds`, `youth-first-ds`, `homeschool-first-ds`, `adults-first-ds`, `youth-first-austin`. All five render correct available slots. Previous shorter Little/Homeschool/Adults slugs returned 404; the old checkpoint must not supply deployment URLs. Source copy, exact-route tests and consent-aware intent are updated. A default-off signed appointment webhook adapter is locally tested, not subscribed/deployed/enabled. Existing GA4 `trial_booked`/Meta `Schedule` contract is retained; opportunity-vs-appointment event ownership remains a release gate. No public confirmation page fabricates conversion proof. Production remains unchanged: SSH resets and native Bluehost is logged out; seven baseline source-SEO failures persist. No synthetic appointment or destination receipt was obtained. PR remains Draft, with no merge, workflow publication, DNS or mail changes. Full current evidence and unfinished gates are at the top of `docs/GHL-BOOKING-EXECUTION-2026-09-15.md`; this paragraph supersedes older closed-source-gate and incorrect URL claims below.
+
+**Native activation completion update:** all five repaired First Class calendars are now ACTIVE, verified in the native calendar list after browser reload. All five public Share widgets render working calendars with schedule-matching available slots in America/Chicago. Native trigger inspection found no Appointment Status, Customer Booked Appointment, calendar-ID or other appointment trigger in the four named Published website workflows or Draft Welcome. Email/Welcome use `automation_hold` tag removal; Staff uses `website_lead` tag addition; Reply Routing uses Customer replied with Has Tag `website_lead`; SMS has two Contact tag triggers with unresolved tag selectors and validation warnings. No workflow was modified or paused. No synthetic appointment, outbound-message test, website/GTM change or production deployment was performed. This proves activation and passive widget availability, not full booking acceptance or all downstream action/producer behavior. See the native activation checkpoint in `docs/GHL-BOOKING-EXECUTION-2026-09-15.md`. This update supersedes the inactive/404/access-blocker observations below, which describe earlier checkpoints; keep website release gates closed pending the remaining acceptance work.
+
+- Diego explicitly approved completing the five calendars, working thank-you booking links, GA4/Meta lead and confirmed-booking verification, controlled synthetic acceptance, and safe release if all project gates pass. This supersedes the September 14 approval-only restrictions below, not the technical verification gates. No marketing messages or SMS are authorized.
+- Latest read-only GHL inventory (trace `9c3266cd-c101-47c3-b709-92124f281752`) reconfirms all five intended calendars inactive, two seats per slot, 12-hour minimum notice, 28-day horizon, correct DS/Austin addresses, Joao ownership, 45-minute classes except 60-minute Adults, auto-confirm/reschedule/cancel enabled, and Google invitation emails false. Weekly schedules/timezone retain the prior native verification; empty class-calendar API `openHours` is not proof of missing availability.
+- All five exact public widget URLs returned rendered **404 Page Not Found** in isolated Chromium. Keep `releaseEnabled=false` and all `approved=false`; no activation or live link exposure until repair and widget acceptance.
+- No accidental duplicate is present in the returned inventory. Austin Youth now owns `wY51xc5N1INt6jsQByeC` with its correct address. Preserve unrelated Dripping Springs Trial Visits and Diego personal calendars.
+- Live compiled GTM is **version 13**, not the historical version 11. Existing booking intent remains Meta custom `StartFirstClassBooking`. Source forms already own `generate_lead`/Meta `Lead`; never fire another lead merely because the thank-you route loads. Reserve `Schedule` and booking confirmation for a provider-verified confirmed appointment. Do not use `Purchase`.
+- Staged card-click instrumentation uses the existing GTM-loaded GA4/Meta bases with category-specific consent checks, GPC advertising suppression and no duplicate legacy dataLayer router event. It is intent-only and remains unreachable behind closed route gates. Confirmed-appointment tracking is **not implemented or proven** in this branch.
+- Latest continuation rediscovered Chrome `pid=10232`, `window_id=526090` and passively captured the correct Joao workflow list. The supported authenticated `browser_exec(local=True)` route still refuses the unsupported default browser; current tool schema has no typed-browser route. Per the loaded safety runbook, authenticated writes were stopped rather than bypassing that refusal. Workflow API retry still returns scope HTTP 401. Set up supported Chromium real-profile access before continuing exact trigger/action audits; no synthetic booking or activation until messaging safety is proven. Public GET recheck of all five exact widgets returned HTTP 404 with Page Not Found; no available slot was verified. Earlier Bluehost SSH blocker was not re-tested.
+- Canonical `/thank-you/` still serves the old page with zero booking cards. No GHL/GTM/Bluehost mutation, synthetic submission, merge, or production deployment was performed. See `docs/GHL-BOOKING-EXECUTION-2026-09-15.md` for evidence and remaining gates.
+
+## HighLevel first-class self-scheduling review (2026-09-14)
+
+The restrictions in this historical review are superseded by the explicit September 15 execution approval above; its technical release gates remain in force.
+
+Source: Diego's approved scheduling direction recorded in PR #121 and the follow-up implementation request in topic 8048.
+
+- HighLevel owns optional self-scheduling after accepted lead capture. The quiz/form does not book a slot. Joao personally calls leads who do not book; a free studio visit/first-class experience remains the offer.
+- Use separate First Class program/location calendars. The current repair scope includes Dripping Springs Little Champions, Youth, Homeschool and Adults, plus Austin Youth. Austin Adults is separately confirmed Tue/Thu 6:00–7:00 p.m. but has no verified new calendar yet. Do not silently send Austin adults to Dripping Springs. Teen, After 60, private and ambiguous requests retain personal follow-up unless their own booking setup is verified.
+- Initial defaults remain America/Chicago, two trial guests per class, 28-day horizon, 12-hour minimum notice, automatic confirmation and reschedule/cancel links. Keep calendars inactive and customer workflows Draft until separate approval.
+- Welcome booking CTAs must stop on confirmed appointment, reply, enrollment or suppression. Preserve automation_hold release and raw email consent = granted. Recheck eligibility immediately before every email, not only upon entry. No SMS release.
+- This PR stages a program/location chooser on the thank-you page behind a default-off release gate. It does not deploy, expose active booking links, send, book, enroll or test HighLevel workflows. Workflow copy/branch specification is an unapplied artifact, not evidence of saved GHL edits.
+- Updated review handoff: five verified calendar IDs and standard Share URLs are available for Dripping Springs Little Champions, Youth, Homeschool and Adults, plus Austin Youth. All remain intentionally inactive. The earlier duplicate/Austin discovery finding is superseded by this handoff; this website pass does not independently audit or change HighLevel.
+- Show all five class schedules and unmistakable Book Your Class controls on the thank-you draft, grouped by location. Center the supporting hero message. Keep controls visibly disabled with a review explanation, not hidden or repurposed as email. Store exact Share URLs but preserve global `releaseEnabled=false` and per-route `approved=false` until activation approval and runtime acceptance. No calendar/workflow activation, production release or reservation claim is authorized.
 
 ## GSC opportunity implementation decisions (2026-09-09)
 
