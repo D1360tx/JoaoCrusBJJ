@@ -1,21 +1,24 @@
 /* Release-gated booking routes. Intent tracking only; never confirmation or lead success. */
 (function (root) {
   'use strict';
-  // Verified Share URLs are not activation approval. Both gates must be released separately.
+  // Native activation and exact public Share slugs verified 2026-09-15.
+  // These source gates do not bypass the separate production acceptance gate.
   var calendars = Object.freeze({
-    'little:dripping-springs': Object.freeze({ id: 'WqEFb31yftWo7HOIxyv1', approved: false, url: 'https://api.leadconnectorhq.com/widget/booking/WqEFb31yftWo7HOIxyv1' }),
-    'youth:dripping-springs': Object.freeze({ id: 'lwI401IPhkVBM5TUAhYm', approved: false, url: 'https://api.leadconnectorhq.com/widget/booking/lwI401IPhkVBM5TUAhYm' }),
-    'homeschool:dripping-springs': Object.freeze({ id: 'TZDZNzvBn0gcHFyfjk2l', approved: false, url: 'https://api.leadconnectorhq.com/widget/booking/TZDZNzvBn0gcHFyfjk2l' }),
-    'adults:dripping-springs': Object.freeze({ id: 'GO56GPdtrVWfqhOmGK3w', approved: false, url: 'https://api.leadconnectorhq.com/widget/booking/GO56GPdtrVWfqhOmGK3w' }),
-    'youth:austin': Object.freeze({ id: 'wY51xc5N1INt6jsQByeC', approved: false, url: 'https://api.leadconnectorhq.com/widget/booking/wY51xc5N1INt6jsQByeC' })
+    'little:dripping-springs': Object.freeze({ id: 'WqEFb31yftWo7HOIxyv1', approved: true, url: 'https://api.leadconnectorhq.com/widget/bookings/little-champions-first-ds' }),
+    'youth:dripping-springs': Object.freeze({ id: 'lwI401IPhkVBM5TUAhYm', approved: true, url: 'https://api.leadconnectorhq.com/widget/bookings/youth-first-ds' }),
+    'homeschool:dripping-springs': Object.freeze({ id: 'TZDZNzvBn0gcHFyfjk2l', approved: true, url: 'https://api.leadconnectorhq.com/widget/bookings/homeschool-first-ds' }),
+    'adults:dripping-springs': Object.freeze({ id: 'GO56GPdtrVWfqhOmGK3w', approved: true, url: 'https://api.leadconnectorhq.com/widget/bookings/adults-first-ds' }),
+    'youth:austin': Object.freeze({ id: 'wY51xc5N1INt6jsQByeC', approved: true, url: 'https://api.leadconnectorhq.com/widget/bookings/youth-first-austin' })
   });
-  var releaseEnabled = false;
+  var releaseEnabled = true;
 
   function validBookingURL(value, id) {
     try {
       var url = new URL(value);
       return url.origin === 'https://api.leadconnectorhq.com' &&
-        url.pathname === '/widget/booking/' + id && !url.search && !url.hash &&
+        Object.keys(calendars).some(function (key) {
+          return calendars[key].id === id && calendars[key].url === value;
+        }) && !url.search && !url.hash &&
         !url.username && !url.password;
     } catch (_) { return false; }
   }
@@ -69,6 +72,8 @@
     document.querySelectorAll('[data-booking-card]').forEach(function (card) {
       var key = card.getAttribute('data-booking-card').split(':');
       var link = card.querySelector('[data-booking-link]');
+      if (link.joaoBookingMounted) return;
+      link.joaoBookingMounted = true;
       var result = resolve(key[0], key[1], calendars, releaseEnabled);
       link.textContent = result.label;
       link.setAttribute('aria-disabled', String(!result.bookable));

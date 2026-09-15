@@ -1,6 +1,63 @@
 # Booking execution evidence: 2026-09-15
 
-## Outcome
+## Latest website wiring checkpoint — supersedes earlier closed-source-gate notes
+
+Five booking routes are enabled in the PR source, with exact ID-to-URL validation and idempotent handler mounting. **Three supplied/handoff slugs were wrong:** `little-champions-first-class`, `homeschool-first`, and `adults-first` returned 404 in anonymous Chromium. Fresh GHL inventory trace `20ca142a-0bc0-4985-aa86-e8961a85bab4` identifies the actual slugs as `little-champions-first-ds`, `homeschool-first-ds`, and `adults-first-ds`; Youth retains `youth-first-ds` and `youth-first-austin`. Native Adults address-bar verification agreed, although its document title retained the old URL. All five corrected URLs were then independently re-opened anonymously: HTTP 200, correct program, America/Chicago, matching available times and two seats. Supplied URLs are preserved here as rejected evidence, not silently treated as verified.
+
+The thank-you source no longer falsely says active calendars are paused. Schedules and separate human follow-up remain. `booking_start` routes directly once per click to consented GA4; Meta custom `StartFirstClassBooking` uses the existing Pixel and separate ad/user-data/GPC checks. No legacy custom-event push duplicates this routing. Local tests stub transports; no downstream receipt is claimed.
+
+A **staged, default-off** signed provider webhook adapter reuses existing lifecycle destination functions for GA4 `trial_booked` and Meta `Schedule`. It verifies provider signatures, source/status/calendar/location/contact, fails missing consent closed, and uses a stable appointment ID plus private ledger. No public confirmation-load conversion exists. See `BOOKING-WEBHOOK-CONTRACT.md`: subscription registration, existing opportunity-Schedule ownership reconciliation, live deployment and destination acceptance remain unfinished. No GHL redirect/subscription or server configuration was changed.
+
+**Release blocked, PR stays Draft:** fresh SSH attempt reset before authentication at `162.241.225.99:22`; native Bluehost tab shows Portal Login. No origin backup or deployment was possible. Source SEO validator still reports the same seven baseline issues. No controlled booking was submitted because the intended confirmation adapter cannot yet be deployed/connected; contact/appointment/opportunity read-back, cleanup, GA4 receipt and Meta Test Events remain unperformed. Welcome, DNS, mail and all workflows remain unchanged.
+
+Verification: 154 Node tests passed (zero failed/skipped); staging validator 5,197 checks passed; PHP lint and executable signature/consent/dedup test passed using isolated PHP 8.3 CLI; 390/768/1280/1440 browser runs checked all five links (20 card checks), no overflow/page errors, one stubbed GA4 and Meta start per click. Fresh public GTM resource remains v13, tag 26 sole active base with ad_storage; router 21 lacks an explicit compiled additional-consent array. No GTM changes/publication or Preview acceptance. Local evidence: `/home/d1360/joao-booking-audit-20260915/release-phase/`.
+
+## Native activation checkpoint — latest, supersedes inactive/404 checkpoints
+
+Controlled only the already-authenticated native Chrome window `pid=10232`, `window_id=526090` using `computer_use`. No browser_exec or workflow API was used in this continuation.
+
+**Five of five calendars activated and read back ACTIVE after a native browser reload.** Unrelated Dripping Springs Trial Visits and Diego calendars were not changed. Five public Share URLs were copied from their exact calendar rows, opened in native Chrome, and rendered available slots rather than Page Not Found. No booking was submitted.
+
+| Calendar ID | Public Share path under https://api.leadconnectorhq.com/widget/bookings/ | Observed available slot (America/Chicago) |
+| --- | --- | --- |
+| WqEFb31yftWo7HOIxyv1 | little-champions-first-class | Wed Sep 16, 2026, 5:00 PM; 45 min |
+| lwI401IPhkVBM5TUAhYm | youth-first-ds | Wed Sep 16, 2026, 5:50 PM; 45 min |
+| TZDZNzvBn0gcHFyfjk2l | homeschool-first | Thu Sep 17, 2026, 10:30 AM; 45 min |
+| GO56GPdtrVWfqhOmGK3w | adults-first | Wed Sep 16, 2026, 6:40 PM, and selected Sat Sep 19, 11:00 AM; 60 min |
+| wY51xc5N1INt6jsQByeC | youth-first-austin | Thu Sep 17, 2026, 5:00 PM; 45 min |
+
+The working Share/slugs above were the browser targets. This continuation did not independently retest the older singular `/widget/booking/{ID}` paths or submit contact details. Calendar selection and visible available times prove passive widget readiness, not successful reservation or downstream delivery.
+
+### Native workflow trigger audit
+
+Opened each named workflow and its existing trigger cards without saving changes:
+
+- **Website Lead - Email First Release (Published):** Contact tag; Tag removed = `automation_hold`. Visible Email consent gate branches on Email Consent Status = `granted`; Do not message branch ends. Email follow-up and wait actions are visible downstream.
+- **Website Lead - Reply Routing (Published):** Customer replied; Has Tag = `website_lead`. Visible branches include Reply contains STOP, unsubscribe, or cancel, plus None, with routing actions downstream. A booking alone is not a customer reply.
+- **Website Lead - SMS Consent Nurture (Published):** two Contact tag triggers. First shows Tag added with unresolved Select a tag; second shows Tag removed with unresolved Select a tag. Both cards have validation warnings. Visible actions are Send Initial SMS, Wait for Reply, Follow-up SMS. Do not infer from unresolved selectors either operational readiness or a safe no-send guarantee for arbitrary tag changes. No Appointment Status or Customer Booked Appointment trigger is present in these two cards.
+- **Website Lead - Staff Alert (Published):** Contact tag; Tag added = `website_lead`; Send internal email alert action visible. It is not an appointment trigger.
+- **Website Lead - Welcome Email + Trial Next Step (Draft):** Contact tag; Tag removed = `automation_hold`; Email Consent Status = `granted` branch leads to Welcome email - expectations and next step and Wait; None ends. List read-back shows zero total/active enrolled. Remains Draft.
+- Additional visible Published **Internal Email Deliverability Seed QA - 14 Day** was inspected: Contact tag; Tag added = `deliverability_seed_start`; seed email/wait actions. No appointment trigger found there either.
+
+**Conclusion:** none of the inspected trigger cards references Appointment Status, Customer Booked Appointment, a new calendar ID, or another appointment event. Passive calendar activation/widget viewing does not create a contact/tag/reply and no message-producing test was run. No workflow was paused, edited, published or given an exclusion. This is trigger-level evidence, not a complete inspection of every downstream action configuration, external tag producer, calendar form behavior, or successful no-send booking execution. Before synthetic booking, use a fresh noncustomer identity, avoid website/release/seed tag changes, retain raw consent denied, and finish any needed producer/action checks. Do not release SMS based on this audit.
+
+Durable local evidence: `/home/d1360/joao-booking-audit-20260915/native-activation/`, including `activation-results.json` (five unique IDs), `all-active-after-reload.png`, five widget screenshots, `workflow-statuses.png`, and exact email/reply/SMS/staff/welcome/seed trigger screenshots. Earlier trigger captures were evicted from the short-lived cache, so the trigger panels were reopened and replacement captures copied immediately.
+
+No website/GTM edits, analytics conversion tests, production deployment, synthetic appointment or outbound communication occurred. Existing uncommitted documentation changes were preserved. Calendar/widget activation is complete; full booking acceptance and website/analytics release remain separate unfinished gates.
+
+## Native authenticated resume (supersedes browser-access blocker below)
+
+The existing Chrome window `pid=10232`, `window_id=526090` was successfully controlled with `computer_use`. No browser_exec session was launched. The Welcome workflow was inspected in Draft with Errors (0); it was not edited, tested or published.
+
+**Partial progress, not release complete:** Little Champions `WqEFb31yftWo7HOIxyv1` was repaired and saved. API read-back trace `6be72602-08a5-42a1-8edb-c7027c4cd96f` confirms two seats, 45 minutes, 12 hours notice, 28 days horizon, auto-confirm, Joao ownership/address, reschedule/cancel enabled, Google invitation emails false, and truthful on-screen confirmation copy. Native Availability read-back shows a calendar-specific Custom schedule, America/Chicago, Monday/Wednesday 5:00–5:45 PM, all other days unavailable; no date-specific overrides. The broad calendar consent checkbox was disabled (the API still retains its unused label). Notifications & policies shows email/SMS disabled on all listed notification types; in-app notifications remain. External calendar invitation and assignment-email settings were turned off and saved. Do not claim end-to-end messaging suppression from this single-calendar configuration: other workflows and the test source still need review.
+
+All five calendars remain **inactive**, verified in the native list and API inventory. The other four retain the previously documented defaults and were not changed. No synthetic contact, opportunity, appointment, analytics event, GTM publication or website deployment was performed. The browser remains authenticated on Settings > Calendars list, with no unsaved editor. PR #122 remains Draft at `3a534bb6544e9baae863d4d89dd436c8b825a03a` before this documentation edit.
+
+Resume mechanics: element clicks are refused because the wrapper does not forward snapshot tokens; screenshot-coordinate background clicks work and scale internally (do not multiply screenshot coordinates). Keyboard/text input require foreground delivery after the explicit background-unavailable response. Capture after Ctrl+A and verify selection before typing; otherwise time fields can concatenate. For Availability, click Joao's row, choose Custom schedule rather than modifying shared Working hours, disable unneeded weekdays, set the first day's exact start/end, and use Copy times only to the desired weekdays. Save the side panel, then global Save. Global Save keeps the editor open; return to the calendar list and reopen for durable read-back. Scroll coordinates were ignored by the wrapper in one attempt; prefer the actual visible scrollbar or freshly captured controls.
+
+Durable local evidence: `/home/d1360/joao-booking-audit-20260915/native-resume/calendar-progress.json`, `little-weekly-hours.png`, `little-notifications.png`, `calendar-inventory.png`. The older workflow-error screenshot was evicted from the short-lived cache before copying; its observation remains in this run's tool history.
+
+## Earlier outcome
 
 **Incomplete; production release blocked.** Five saved calendars were read, five exact public widgets were opened, live thank-you runtime and GTM were audited, and consent-gated booking-intent instrumentation was added behind the existing closed release gates. No calendar, workflow, GTM, production files, DNS or mail settings were changed. No synthetic lead or appointment was submitted.
 
@@ -78,3 +135,30 @@ Local evidence: `/home/d1360/joao-booking-audit-20260915/` (`public-probes.json`
 ## Resume acceptance gate
 
 Restore supported signed-in browser access and inspect only Joao's exact location/container/dataset. Complete and read back calendar settings and notification suppression, verify public slots, then install a genuine confirmed-appointment signal with one destination owner and stable dedup IDs. Run one labeled synthetic lead + opportunity + appointment, read all three back and prove GA4/Meta destination receipt. Preserve evidence before cleanup. Only then open route gates, finish source/production validators, update the Draft PR, and run the exact-SHA backup-first Bluehost release plus live HTML/asset/CTA verification. No DNS/mail change is required.
+
+## Final calendar repair checkpoint — 2026-09-15
+
+All five intended calendars now have saved native UI and read-API verification. Remaining-four schedule and notification screenshots are archived under `/home/d1360/joao-booking-audit-20260915/native-resume/`; `calendar-progress.json` now enumerates five unique repaired records.
+
+| Calendar ID | America/Chicago weekly availability | Minutes |
+| --- | --- | --- |
+| WqEFb31yftWo7HOIxyv1 | Mon/Wed 17:00–17:45 | 45 |
+| lwI401IPhkVBM5TUAhYm | Mon/Wed 17:50–18:35 | 45 |
+| TZDZNzvBn0gcHFyfjk2l | Tue/Thu 10:30–11:15 | 45 |
+| GO56GPdtrVWfqhOmGK3w | Mon/Wed 18:40–19:40; Sat 11:00–12:00 | 60 |
+| wY51xc5N1INt6jsQByeC | Tue/Thu 17:00–17:45 | 45 |
+
+Final `list_calendars` trace `a4c8ddb5-4eb0-41d9-8cfa-4f1db513992f` confirms all five inactive, two seats, 12-hour notice, 28-day horizon, invitations false, auto-confirm/reschedule/cancellation true, correct Joao assignee, exact DS/Austin addresses, and class-confirmed copy without promising an email. Schedule/timezone evidence is native UI, not the API's empty class-calendar openHours. Native email/SMS/WhatsApp notification chips are disabled on all six event rows; existing confirmed/unconfirmed booking in-app alerts are retained.
+
+**Safety gate remains blocked/unproven; calendars NOT activated.** Workflow read API remains scope-limited. Native workflow list confirms Welcome Draft, zero total/active enrolled. Email First Release, Reply Routing, SMS Consent Nurture and Staff Alert remain Published. SMS Consent Nurture has two trigger cards with warning icons and a Send Initial SMS action; opening a trigger displayed an unresolved tag selector. This does not prove that a calendar booking enrolls there, nor that suppression is safe. Do not silently publish/fix/disable these unrelated workflows or submit a synthetic booking until the full trigger/producer/suppression chain is established. Screenshots: `workflow-release-gates.png`, `sms-trigger-warning.png`.
+
+No synthetic contact, appointment, outbound message, workflow change, calendar activation, analytics release or website deployment was performed in this continuation. Public available-slot proof remains outstanding, not successful. Browser is left on the filtered workflow list with no unsaved editor. Existing unrelated calendars were preserved.
+
+## Workflow safety continuation: access gate reconfirmed
+
+- Rediscovered exact Chrome `pid=10232`, `window_id=526090`; passive native AX capture confirms Joao Crus Brazilian Jiu-Jitsu, Dripping Springs and the workflow list. Current `computer_use` schema exposes native actions only, not the former exact typed-browser route.
+- Supported authenticated `browser_exec(local=True, session="joao-booking-safety")` failed with the unsupported Chromium-default-browser error. The loaded live-operations runbook explicitly requires stopping authenticated writes at this refusal, not using native input as a workaround. No browser configuration/profile/permission changes were made. Supported Chromium real-profile setup is needed to resume.
+- Fresh `list_workflows` retry returned HTTP 401, token not authorized for this scope. Exact trigger calendar IDs/statuses/tags/pipeline/source/form filters and outbound actions therefore remain unproven. No exclusion was added and no workflow was disabled. Prior SMS warning-card observations do not establish suppression. Welcome was not published.
+- Fresh `list_calendars` trace `9c3266cd-c101-47c3-b709-92124f281752` reconfirms every exact target inactive, two seats, 12-hour notice, 28-day horizon, Google invitation emails false, correct durations/addresses and automatic confirmation. Prior native schedule and other notification evidence is retained; this inventory does not independently expose all notification settings.
+- Anonymous extraction failed for all five widgets; independent direct HTTP GETs then returned **404** with **Page Not Found** for all five exact IDs. Five unique records were programmatically counted and saved in `/home/d1360/joao-booking-audit-20260915/workflow-safety-public-recheck.json`. These are HTTP checks, not fresh browser renders or slot proof.
+- Activation and synthetic booking were withheld because the required no-send proof did not pass. No external mutations, website/GTM publication, or changes to unrelated calendars occurred. Existing uncommitted document edits were preserved.

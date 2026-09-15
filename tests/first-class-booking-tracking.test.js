@@ -19,8 +19,8 @@ function harness({ released = false, analytics = false, ads = false, userData = 
     dataLayer: [], gtag: (...args) => ga.push(args),
     ...(pixel ? { fbq: (...args) => meta.push(args) } : {})
   };
-  // Simulate approved routes only in this VM. Never change the production gate.
-  const code = released ? source.replace('var releaseEnabled = false;', 'var releaseEnabled = true;').replaceAll('approved: false', 'approved: true') : source;
+  // Exercise the rollback gate without changing the released source.
+  const code = released ? source : source.replace('var releaseEnabled = true;', 'var releaseEnabled = false;');
   vm.runInNewContext(code, { window, URL });
   return { cards, window, ga, meta, click: (index = 0, cancelled = false) => cards[index].listeners.click({ defaultPrevented: cancelled, preventDefault() {} }) };
 }

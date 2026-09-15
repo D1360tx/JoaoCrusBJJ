@@ -6,26 +6,27 @@ const fallback = null;
 const source = fs.readFileSync('site/campaign/thank-you.html', 'utf8');
 const script = fs.readFileSync('site/assets/first-class-booking.js', 'utf8');
 const id = 'WqEFb31yftWo7HOIxyv1';
-const url = 'https://api.leadconnectorhq.com/widget/booking/' + id;
+const url = 'https://api.leadconnectorhq.com/widget/bookings/little-champions-first-ds';
 const route = entry => ({ 'little:dripping-springs': entry });
 
-test('all current choices stay closed; no unknown route defaults to DS', () => {
-  assert.equal(booking.releaseEnabled, false);
+test('exactly five approved choices open; no unknown route defaults to DS', () => {
+  assert.equal(booking.releaseEnabled, true);
   for (const program of ['help', 'little', 'youth', 'homeschool', 'adults', 'teens', 'after60', 'private', '__proto__']) {
     for (const location of ['help', 'dripping-springs', 'austin', 'other']) {
       const result = booking.resolve(program, location, booking.calendars, booking.releaseEnabled);
-      assert.equal(result.bookable, false);
-      assert.equal(result.href, fallback);
+      const calendar = booking.calendars[program + ':' + location];
+      assert.equal(result.bookable, !!calendar);
+      assert.equal(result.href, calendar ? calendar.url : fallback);
     }
   }
   assert.equal(Object.keys(booking.calendars).length, 5);
-  assert.ok(Object.values(booking.calendars).every(c => !c.approved && c.url === 'https://api.leadconnectorhq.com/widget/booking/' + c.id));
+  assert.ok(Object.values(booking.calendars).every(c => c.approved && c.url.startsWith('https://api.leadconnectorhq.com/widget/bookings/')));
   assert.deepEqual(Object.values(booking.calendars).map(c => c.id), ['WqEFb31yftWo7HOIxyv1', 'lwI401IPhkVBM5TUAhYm', 'TZDZNzvBn0gcHFyfjk2l', 'GO56GPdtrVWfqhOmGK3w', 'wY51xc5N1INt6jsQByeC']);
   for (const [key, calendar] of Object.entries(booking.calendars)) {
     const [program, location] = key.split(':');
     const approved = { [key]: { ...calendar, approved: true } };
     assert.equal(booking.resolve(program, location, approved, false).href, null);
-    assert.equal(booking.resolve(program, location, booking.calendars, true).href, null);
+    assert.equal(booking.resolve(program, location, { [key]: { ...calendar, approved: false } }, true).href, null);
     assert.equal(booking.resolve(program, location, approved, true).href, calendar.url);
   }
 });
@@ -41,7 +42,8 @@ test('both release and route approval and a matching clean URL are required', ()
     { id, url: 'javascript:alert(1)', approved: true },
     { id, url: url + '?email=private@example.com', approved: true },
     { id, url: url + '#confirmed', approved: true },
-    { id, url: url.replace(id, 'lwI401IPhkVBM5TUAhYm'), approved: true },
+    { id, url: url.replace('little-champions-first-ds', 'youth-first-ds'), approved: true },
+    { id, url: 'https://api.leadconnectorhq.com/widget/booking/' + id, approved: true },
     { id, url: url.replace('api.', 'evil.api.'), approved: true },
     { id, url: url.replace('https://', 'https://user:pass@'), approved: true },
     { id: 'invalid', url, approved: true },
@@ -49,7 +51,7 @@ test('both release and route approval and a matching clean URL are required', ()
   assert.equal(booking.resolve('adults', 'austin', ready, true).href, fallback);
 });
 
-test('all five cards mount as disabled booking links, never email redirects', () => {
+test('all five cards mount as exact booking links, never email redirects', () => {
   const cards = Object.keys(booking.calendars).map(key => {
     const attrs = { href: 'https://stale.example' }; const events = {};
     const link = { setAttribute: (k,v) => attrs[k]=v, removeAttribute: k => delete attrs[k], addEventListener: (k,v) => events[k]=v };
@@ -58,11 +60,11 @@ test('all five cards mount as disabled booking links, never email redirects', ()
   });
   booking.mount({ querySelectorAll: () => cards });
   for (const c of cards) {
-    assert.equal(c.attrs.href, undefined);
-    assert.equal(c.attrs['aria-disabled'], 'true');
+    assert.equal(c.attrs.href, booking.calendars[c.getAttribute()].url);
+    assert.equal(c.attrs['aria-disabled'], 'false');
     assert.equal(c.link.textContent, 'Book Your Class');
     let prevented = false; c.events.click({ preventDefault: () => prevented = true });
-    assert.ok(prevented); assert.match(c.status.textContent, /paused for review/);
+    assert.equal(prevented, false); assert.match(c.status.textContent, /only after the calendar confirms/);
   }
   assert.doesNotMatch(script, /fetch\(|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|location\.(href|assign|replace)\s*[=(]/);
 });
