@@ -95,11 +95,16 @@ EXIT     contact replies, books, or unsubscribes
 
 ### 4.1 Acknowledgement copy
 
+> **BLOCKED on the offer decision.** `CURRENT-DECISIONS.md` §161 records a move away from a
+> free-only trial toward a paid or deposit trial, and the launch offer itself is open blocker #2.
+> The copy below deliberately says "your first class" rather than "your free first class".
+> Do not publish any of this copy until the offer is confirmed. See §10.
+
 **SMS** (when A2P is live, 1 segment):
 
 ```
 Hi {{contact.first_name}}, this is Joao Crus BJJ. We got your request about
-{{contact.recommended_program}}. Pick a time for your free first class here:
+{{contact.recommended_program}}. Pick a time for your first class here:
 {{booking_link}} Reply STOP to opt out.
 ```
 
@@ -152,7 +157,7 @@ EXIT ON  appointment created (any class calendar)
 ```
 Hi {{contact.first_name}},
 
-A first class is 45 minutes. No uniform needed, just comfortable clothes.
+A first class is 45 minutes. Wear comfortable clothes.
 
 Nobody gets thrown in. New students start with the basics: how to move, how to
 fall safely, and the one rule everything else is built on, which is that tapping
@@ -246,8 +251,7 @@ at the door.
 
 {{waiver_link}}
 
-Wear comfortable clothes. No uniform needed for the first class. Arrive about
-10 minutes early.
+Wear comfortable clothes. Arrive about 10 minutes early.
 
 See you there,
 Joao
@@ -342,3 +346,9 @@ is what lets Workflows A, B, C and D ship now with SMS added later as an additio
   tag be introduced so the two channels gate independently?
 - Who marks Qualified, and from what surface? A one-tap internal link after a logged call is the
   lowest-friction option.
+- **What is the trial offer?** All six calendars are named "First Class" and their confirmation text
+  reads "your first class is confirmed", which implies a simple free visit. `CURRENT-DECISIONS.md`
+  §161 says move to a paid or deposit trial. Those two are in conflict today. Every acknowledgement,
+  nurture and confirmation message depends on the answer.
+- Is a trial uniform included, required, or neither? Open blocker #3. Affects the "what to wear" line
+  in three separate messages.
