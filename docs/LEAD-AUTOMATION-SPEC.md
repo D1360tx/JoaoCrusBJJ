@@ -72,7 +72,7 @@ NEVER moves a contact backwards. Compare stage position before writing.
 
 The never-backwards rule matters: a lead at Trial Booked who sends a question must not drop to Contacted.
 
-## 4. Workflow A — New Lead Intake
+## 4. Workflow A: New Lead Intake
 
 Replaces the lead-facing half of `Website Lead - Email First Release`.
 
@@ -103,7 +103,7 @@ Hi {{contact.first_name}}, this is Joao Crus BJJ. We got your request about
 {{booking_link}} Reply STOP to opt out.
 ```
 
-**Email** — subject: `Your first class at Joao Crus BJJ`
+**Email**, subject: `Your first class at Joao Crus BJJ`
 
 ```
 Hi {{contact.first_name}},
@@ -127,7 +127,7 @@ Joao Crus Brazilian Jiu-Jitsu
 `{{contact.primary_goal}}` is already populated by the quiz for 20 of 27 recent leads.
 Branch to a generic line when it is empty.
 
-## 5. Workflow B — Booking Nurture
+## 5. Workflow B: Booking Nurture
 
 Your steps 6 and 7. Runs only while the contact has not booked.
 
@@ -147,7 +147,7 @@ EXIT ON  appointment created (any class calendar)
          stage advanced past Attempting Contact by any other source
 ```
 
-### 5.1 Day 2 — subject: `What the first class looks like`
+### 5.1 Day 2, subject: `What the first class looks like`
 
 ```
 Hi {{contact.first_name}},
@@ -167,9 +167,9 @@ Questions? Just reply. I read every one.
 Joao
 ```
 
-### 5.2 Day 4 — branch on `contact.audience`
+### 5.2 Day 4, branch on `contact.audience`
 
-**Child** — subject: `"My kid is shy" is the most common thing I hear`
+**Child**, subject: `"My kid is shy" is the most common thing I hear`
 
 ```
 Hi {{contact.first_name}},
@@ -188,7 +188,7 @@ We start as young as three. Ages three to seven train together in Little Champio
 Joao
 ```
 
-**Adult** — subject: `You do not need to be in shape first`
+**Adult**, subject: `You do not need to be in shape first`
 
 ```
 Hi {{contact.first_name}},
@@ -204,7 +204,7 @@ are the majority of who starts with us.
 Joao
 ```
 
-### 5.3 Day 7 — subject: `Should I close this out?`
+### 5.3 Day 7, subject: `Should I close this out?`
 
 ```
 Hi {{contact.first_name}},
@@ -219,7 +219,7 @@ If not, no hard feelings. Reply "not now" and I will stop.
 Joao
 ```
 
-## 6. Workflow C — Post-Booking
+## 6. Workflow C: Post-Booking
 
 ```
 NAME     Trial Booked - Confirm and Prepare
@@ -232,7 +232,7 @@ STEP 3   IF waiver not signed after 24h  -> one reminder only
 STEP 4   Enter "Trial Reminders" (Workflow D)
 ```
 
-### 6.1 Confirmation copy — subject: `You are booked for {{appointment.start_time}}`
+### 6.1 Confirmation copy, subject: `You are booked for {{appointment.start_time}}`
 
 ```
 Hi {{contact.first_name}},
@@ -257,7 +257,7 @@ Joao
 the Castle Hill waiver link on 2026-09-11 and it is not clear she received one. Confirm whether a
 separate Castle Hill waiver exists and branch step 2 on `{{appointment.address}}` if so.
 
-## 7. Workflow D — Trial Reminders
+## 7. Workflow D: Trial Reminders
 
 Replaces `Dripping Springs Trial Reminders` (draft, to be deleted). One workflow, all calendars.
 
@@ -282,7 +282,7 @@ five booking URLs verified in PR #122. Retire it, or assign it to `yvqSkqWbsqW7n
 
 ### 7.1 Reminder copy
 
-**2 days before** — subject: `Your first class is in 2 days`
+**2 days before**, subject: `Your first class is in 2 days`
 
 ```
 Hi {{contact.first_name}},
@@ -297,7 +297,7 @@ Need to change it? {{reschedule_link}}
 Joao
 ```
 
-**2 hours before** — SMS when available, otherwise email. Subject: `See you in a couple of hours`
+**2 hours before**, SMS when available, otherwise email. Subject: `See you in a couple of hours`
 
 ```
 Hi {{contact.first_name}}, your class is at {{appointment.start_time}} today at
