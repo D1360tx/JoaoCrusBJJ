@@ -46,6 +46,21 @@ function clean_text(mixed $value, int $maxLength): string
     return function_exists('mb_substr') ? mb_substr($text, 0, $maxLength) : substr($text, 0, $maxLength);
 }
 
+/**
+ * Click identifiers (fbclid in particular) are much longer than UTM values.
+ * Truncating one to 160 characters is worse than dropping it: the fragment
+ * still looks valid and yields an _fbc that Meta cannot match.
+ */
+const CLICK_ID_TOUCH_KEYS = ['gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid'];
+
+function touch_value_limit(string $key): int
+{
+    if (in_array($key, CLICK_ID_TOUCH_KEYS, true)) {
+        return 512;
+    }
+    return $key === 'landing_page' ? 240 : 160;
+}
+
 function env_value(string $key, string $default = ''): string
 {
     $value = getenv($key);
@@ -497,7 +512,7 @@ function flattened_values(array $lead): array
     foreach (["first", "latest"] as $touchName) {
         $touch = is_array($lead['attribution'][$touchName] ?? null) ? $lead['attribution'][$touchName] : [];
         foreach ($allowedTouchKeys as $key) {
-            $values[$touchName . '_' . $key] = clean_text($touch[$key] ?? '', $key === 'landing_page' ? 240 : 160);
+            $values[$touchName . '_' . $key] = clean_text($touch[$key] ?? '', touch_value_limit($key));
         }
     }
     return $values;

@@ -108,7 +108,9 @@ $cleanTouch = static function ($input) use ($attributionKeys): array {
     $input = is_array($input) ? $input : [];
     $touch = [];
     foreach ($attributionKeys as $key) {
-        $touch[$key] = clean_value($input[$key] ?? '', $key === 'landing_page' ? 240 : 160);
+        $clickIds = ['gclid', 'fbclid', 'wbraid', 'gbraid', 'msclkid'];
+        $limit = in_array($key, $clickIds, true) ? 512 : ($key === 'landing_page' ? 240 : 160);
+        $touch[$key] = clean_value($input[$key] ?? '', $limit);
     }
     return $touch;
 };

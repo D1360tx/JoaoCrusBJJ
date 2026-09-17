@@ -26,10 +26,22 @@ test('every emitted route retains CTA placement and strict numeric campaign/clic
     ids.forEach(k => assert.equal(safe.searchParams.get(k), params.get(k), entry.path + k));
     for (const k of ['cta_placement','placement','source','start','embed']) assert.equal(safe.searchParams.get(k), params.get(k));
     assert.equal(safe.searchParams.has('email'), false);
-    for (const invalid of ['private@example.invalid','bad value','bad:identifier','x\nvalue','x'.repeat(161)]) {
+    for (const invalid of ['private@example.invalid','bad value','bad:identifier','x\nvalue']) {
       const rejected = sanitize(script, new URLSearchParams(Object.fromEntries(ids.map(k => [k, invalid]))));
       ids.forEach(k => assert.equal(rejected.searchParams.has(k), false, entry.path + k));
     }
+    // Click identifiers get a larger ceiling than UTM-style identifiers: a real
+    // Meta fbclid runs past 160 characters, and the old shared limit stripped it
+    // from the URL before the pixel or attribution.js could read it.
+    const clickIds = ['gclid','fbclid','wbraid','gbraid','msclkid'];
+    const utmIds = ids.filter(k => !clickIds.includes(k));
+    const beyondUtmLimit = 'x'.repeat(161);
+    const mixed = sanitize(script, new URLSearchParams(Object.fromEntries(ids.map(k => [k, beyondUtmLimit]))));
+    utmIds.forEach(k => assert.equal(mixed.searchParams.has(k), false, entry.path + k));
+    clickIds.forEach(k => assert.equal(mixed.searchParams.get(k), beyondUtmLimit, entry.path + k));
+    const beyondClickLimit = 'x'.repeat(513);
+    const overflow = sanitize(script, new URLSearchParams(Object.fromEntries(ids.map(k => [k, beyondClickLimit]))));
+    ids.forEach(k => assert.equal(overflow.searchParams.has(k), false, entry.path + k));
   }
 });
 

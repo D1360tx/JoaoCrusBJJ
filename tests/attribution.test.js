@@ -399,3 +399,70 @@ test("uses local persistence when sessionStorage alone is denied", () => {
   assert.equal(result.first_touch.utm_source, "google");
   assert.equal(result.last_touch.utm_medium, "cpc");
 });
+
+// Regression: every pre-existing fbclid test used a toy value ("abc123", "qa123").
+// Real Meta click IDs are base64url and routinely exceed 200 characters, so a
+// 160-character ceiling discarded 100% of them in production.
+const REAL_FBCLID =
+  "IwY2xjawFqZ1VleHRuA2FlbQIxMAABHc" + "Qk7mZ4vN2pR8sT1uW3xY5zA6bC9dE0fG1hI2jK3lM4nO5pQ6rS7tU8vW9xY0zA1bC2dE3fG4hI5jK6lM7nO8pQ9rS0tU1vW2xY3zA4bC5dE6fG7hI8jK9lM0nO1pQ2rS3tU4vW5xY6zA7bC8dE9fG0hI1jK2lM3nO4pQ5rS6tU7vW8xY9zA0bC1dE2fG3hI4jK5lM6nO7pQ8rS9tU0vW1xY2zA3bC4dE5fG6hI7jK8lM9nO0pQ1rS2";
+
+test("captures a production-length Meta click ID", () => {
+  assert.ok(REAL_FBCLID.length > 160, "fixture must exceed the old 160-character ceiling");
+  const result = attribution.capture(
+    context(
+      `https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&fbclid=${REAL_FBCLID}`,
+      "https://m.facebook.com/",
+    ),
+    START,
+  );
+  assert.equal(result.last_touch.fbclid, REAL_FBCLID);
+  assert.equal(result.first_touch.fbclid, REAL_FBCLID);
+});
+
+test("still rejects a click ID beyond the documented ceiling", () => {
+  const tooLong = "A".repeat(attribution.MAX_CLICK_ID_LENGTH + 1);
+  assert.equal(attribution.sanitizeCampaignValue(tooLong, "fbclid"), "");
+  assert.equal(
+    attribution.sanitizeCampaignValue("A".repeat(attribution.MAX_CLICK_ID_LENGTH), "fbclid"),
+    "A".repeat(attribution.MAX_CLICK_ID_LENGTH),
+  );
+});
+
+test("keeps the tighter ceiling for ordinary campaign values", () => {
+  assert.equal(attribution.maxLengthFor("utm_campaign"), 160);
+  assert.equal(attribution.maxLengthFor("landing_page"), 240);
+  assert.equal(attribution.maxLengthFor("fbclid"), 512);
+  assert.equal(attribution.sanitizeCampaignValue("x".repeat(161), "utm_campaign"), "");
+});
+
+test("derives a matchable _fbc from a production-length click ID", () => {
+  const ctx = context(
+    `https://joaocrusbjj.com/?fbclid=${REAL_FBCLID}`,
+    "https://m.facebook.com/",
+    new MemoryStorage(),
+    new MemoryStorage(),
+    "granted",
+    "granted",
+    "granted",
+  );
+  const captured = attribution.capture(ctx, START);
+  const meta = attribution.metaContext(ctx, captured);
+  assert.ok(meta.fbc, "advertising consent granted should yield an _fbc");
+  assert.equal(meta.fbc, `fb.1.${START}.${REAL_FBCLID}`);
+});
+
+test("accepts a first-party _fbc cookie carrying a production-length click ID", () => {
+  const cookieValue = `fb.1.${START}.${REAL_FBCLID}`;
+  const ctx = context(
+    "https://joaocrusbjj.com/",
+    "",
+    new MemoryStorage(),
+    new MemoryStorage(),
+    "granted",
+    "granted",
+    "granted",
+    `_fbc=${encodeURIComponent(cookieValue)}`,
+  );
+  const meta = attribution.metaContext(ctx, attribution.capture(ctx, START));
+  assert.equal(meta.fbc, cookieValue);
+});

@@ -45,6 +45,19 @@
     "msclkid",
   ];
   var TOUCH_KEYS = CAMPAIGN_KEYS.concat(["landing_page", "referrer_host", "captured_at"]);
+  var CLICK_ID_KEYS = ["gclid", "fbclid", "wbraid", "gbraid", "msclkid"];
+  // Click identifiers are far longer than UTM values. Meta's fbclid (IwAR... and
+  // IwY2xjaw... formats) regularly runs past 200 characters, so a 160-character
+  // budget silently discards every real one. Give click IDs their own ceiling.
+  var MAX_CLICK_ID_LENGTH = 512;
+  var MAX_LANDING_PAGE_LENGTH = 240;
+  var MAX_CAMPAIGN_LENGTH = 160;
+
+  function maxLengthFor(key) {
+    if (CLICK_ID_KEYS.indexOf(key) >= 0) return MAX_CLICK_ID_LENGTH;
+    if (key === "landing_page") return MAX_LANDING_PAGE_LENGTH;
+    return MAX_CAMPAIGN_LENGTH;
+  }
 
   function clean(value, maxLength) {
     return String(value || "").trim().slice(0, maxLength || 160);
@@ -52,9 +65,9 @@
 
   function sanitizeCampaignValue(value, key) {
     var raw = String(value || "").trim();
-    if (!raw || raw.length > 160 || /[\u0000-\u001f\u007f]/.test(raw)) return "";
+    if (!raw || raw.length > maxLengthFor(key) || /[\u0000-\u001f\u007f]/.test(raw)) return "";
     if (IDENTIFIER_KEYS.indexOf(key) >= 0) {
-      return /^[A-Za-z0-9._:-]{1,160}$/.test(raw) ? raw : "";
+      return /^[A-Za-z0-9._:~-]+$/.test(raw) ? raw : "";
     }
     if (/[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(raw)) return "";
     if (/(?:\+?\d[\s().-]*){7,}/.test(raw)) return "";
@@ -107,8 +120,8 @@
   }
 
   function validMetaCookie(value) {
-    var cleaned = clean(value, 240);
-    return /^fb\.1\.\d{10,13}\.[A-Za-z0-9._-]{6,200}$/.test(cleaned) ? cleaned : "";
+    var cleaned = clean(value, MAX_CLICK_ID_LENGTH + 32);
+    return /^fb\.1\.\d{10,13}\.[A-Za-z0-9._-]{6,512}$/.test(cleaned) ? cleaned : "";
   }
 
   function clickIdFromAttribution(attribution) {
@@ -158,7 +171,7 @@
     TOUCH_KEYS.forEach(function (key) {
       var value = CAMPAIGN_KEYS.indexOf(key) >= 0
         ? sanitizeCampaignValue(input && input[key], key)
-        : clean(input && input[key], key === "landing_page" ? 240 : 160);
+        : clean(input && input[key], maxLengthFor(key));
       if (value) touch[key] = value;
     });
     return touch;
@@ -269,6 +282,9 @@
 
   return {
     CAMPAIGN_KEYS: CAMPAIGN_KEYS.slice(),
+    CLICK_ID_KEYS: CLICK_ID_KEYS.slice(),
+    MAX_CLICK_ID_LENGTH: MAX_CLICK_ID_LENGTH,
+    maxLengthFor: maxLengthFor,
     STORAGE_KEY: STORAGE_KEY,
     WINDOW_DAYS: WINDOW_DAYS,
     clear: clear,

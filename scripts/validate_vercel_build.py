@@ -346,7 +346,8 @@ def main() -> None:
     check("consentInvoker.focus()" in consent_source, "consent UI must restore focus to the invoking preference control")
     check('var WINDOW_DAYS = 90' in attribution_source, "attribution must retain a 90-day first-party window")
     check("measurementStorageGranted(context)" in attribution_source, "attribution persistence must be gated by analytics or advertising consent")
-    check("sanitizeCampaignValue" in attribution_source and "raw.length > 160" in attribution_source, "campaign attribution must reject PII-bearing and oversized values")
+    check("sanitizeCampaignValue" in attribution_source and "raw.length > maxLengthFor(key)" in attribution_source, "campaign attribution must reject PII-bearing and oversized values")
+    check("MAX_CLICK_ID_LENGTH = 512" in attribution_source, "click identifiers must allow the full Meta/Google click-ID length")
     check('first_touch' in attribution_source and 'last_touch' in attribution_source, "attribution must preserve first and last touch")
     for click_id in ("gclid", "fbclid", "wbraid", "gbraid", "msclkid"):
         check(f'"{click_id}"' in attribution_source, f"attribution must capture {click_id}")
