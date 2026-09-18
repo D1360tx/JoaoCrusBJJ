@@ -174,6 +174,7 @@ See `docs/GSC-QUERY-OWNERSHIP-AND-MEASUREMENT.md` for ownership and post-release
 - ✅ Preferred offer logic: a trial deposit becomes a **credit toward annual membership** when the student continues.
 - ✅ Paid social is approved at approximately **$35/day** for the Back-to-School campaign.
 - ✅ Paid social will use our own pages and tracking and run alongside the existing agency.
+- 🟡 **Kids AI-spokesperson framework (2026-09-15):** develop representative adult-guide creative for parents of children ages 5–7 and 8–12 in Dripping Springs, plus parents of children ages 8–12 in Austin. The first framework tests confidence through practice, tapping and boundaries, and purposeful problem-solving. Do not present a synthetic spokesperson as a customer, generate AI children, advertise ages 5–7 in Austin, call Seedance/ElevenLabs/image APIs, or activate Meta traffic without separate approval. See `docs/KIDS-AI-SPOKESPERSON-AD-FRAMEWORK-2026-09-15.md`.
 - ✅ **Google Ads is documented for future use and explicitly deferred from the current launch.** Do not allocate budget or build campaigns until Diego reopens the channel. When activated, start with transactional/commercial local intent, exact and phrase match, program-specific landing pages, and HighLevel quality feedback. Do not begin with broad match or Performance Max. See `docs/GOOGLE-ADS-KEYWORD-PLAYBOOK-2026-07-30.md`.
 - ✅ Social cadence preference: approximately **one useful instructional post per week**; content should drive to offers rather than function as a free school.
 - ✅ Joao's children's storybooks (shy/distracted-kid themes) are working lead-magnet and trial-gift assets.
@@ -379,6 +380,8 @@ When a statement in those sources conflicts with this file, follow this file's c
 ---
 
 ## Change log
+
+- **2026-09-15** — Diego requested a concept-only AI-spokesperson ad framework for parents of ages 5–7 and 8–12 in Dripping Springs and Austin. Current class eligibility restricts ages 5–7 creative to Dripping Springs and allows ages 8–12 creative in both markets. No generation API use or Meta activation is authorized.
 
 - **2026-08-26** — Diego approved adding the 90-day AI visibility program to the project backlog. Use the canonical roadmap for phased execution across index repair, entity/service modeling, local citation consistency, Joao-led answer content, independent corroboration, and fixed-prompt measurement. Planning approval does not authorize production or third-party listing changes.
 
