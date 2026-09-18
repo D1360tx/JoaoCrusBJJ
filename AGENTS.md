@@ -12,8 +12,13 @@ HighLevel account: Claude, GrokBot, Hermes, and anything added later.
 These are not preferences. Breaking one costs real money or real trust.
 
 - **Paused means paused.** Never activate a campaign, ad, ad set, or creative.
-- **Never clear a DND, enable an SMS release flag, or turn on customer messaging.**
-  `GHL_ENABLE_SMS_RELEASE` stays false until A2P clears and a human says go.
+- **Never clear a DND.** HighLevel stays authoritative for STOP and DND suppression.
+- **SMS sending from HighLevel is cleared** (Diego, 2026-09-18) and is in live use from
+  `+1 571 604 5365`. That clearance covers sending. It does not authorise enabling an
+  automated sequence, which still needs its own release gate.
+- `GHL_ENABLE_SMS_RELEASE` is a **website-side tagging interlock**, not a send switch.
+  It only adds `sms_nurture_ready` to consented quiz leads in `lead.php`. Leave it false
+  until someone deliberately flips it; do not treat it as the thing that gates SMS.
 - **Never merge a pull request marked "do not merge" or left as a draft on purpose.**
 - **Never send to a real contact** from a workflow that has not passed its release gate.
 - **Never skip, disable, or quarantine a test** to make a check pass.
@@ -146,7 +151,15 @@ Stage ids are in `docs/LEAD-AUTOMATION-SPEC.md` §3.
 - Emails Joao sends from personal Gmail never reach HighLevel, so outreach looks absent
   when it is not. Do not infer "never contacted" from an empty conversation.
 - Phone calls made from his cell are not logged at all.
-- Inbound SMS asking about pricing has arrived with no contact record attached, so some
-  leads exist only as an orphan conversation.
+- Leads can exist as a conversation with **no opportunity attached**, so they are invisible
+  in the pipeline. Confirmed case: contact `S7Yej6ixIkbXDdphttMT`, `+1 734 752 5793`, no
+  name, no email, three unread messages, asking about Little Champions for a son turning
+  three in October. Two missed calls two weeks apart, question never answered.
+- **Missed Call Text Back can fail silently.** On 2026-09-03 it errored with
+  `"Missed Call Text Back was not sent because no eligible SMS sender was available."`
+  That lead went unanswered for fourteen days.
+- **At least three inbound numbers are in play**: `+1 737 302 5253`, `+1 737 384 8448`,
+  and outbound `+1 571 604 5365`. Plus `833-532-4152` on the website, origin unknown.
+  Do not assume a single number owns a conversation.
 - The trial offer is unresolved. Do not write customer copy that names a price or
   promises a free class.

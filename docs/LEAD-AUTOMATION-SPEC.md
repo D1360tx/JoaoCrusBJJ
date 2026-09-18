@@ -314,15 +314,22 @@ Nothing here goes live without the matching gate cleared.
 
 | Gate | Blocks | Status |
 |---|---|---|
-| A2P 10DLC registration | all SMS steps | not complete |
-| `GHL_ENABLE_SMS_RELEASE` | all SMS steps | false by default, correct |
+| SMS sending from HighLevel | all SMS steps | **cleared** (Diego, 2026-09-18), live from `+1 571 604 5365` |
+| Automated SMS sequence enablement | Workflows A, B, D SMS branches | still a deliberate human go |
+| `GHL_ENABLE_SMS_RELEASE` | website `sms_nurture_ready` tagging only, not sending | false, leave it |
 | `automation_hold` tag policy | all customer-facing sends | currently blanket; needs an email-only carve-out |
 | GA4 Measurement Protocol secret | lifecycle webhook workflows | not created |
 | Gmail capture (§ below) | accurate stage derivation | not solved |
 
-**A2P governs SMS only.** Email needs no carrier registration, and all 24 stalled leads carry
-`email_consent = granted`. The blanket hold is a policy choice, not a regulatory one. Splitting it
-is what lets Workflows A, B, C and D ship now with SMS added later as an additional channel.
+**SMS is now cleared and already in manual use** (Diego, 2026-09-18), sending from
+`+1 571 604 5365`. The original assumption that SMS had to wait on A2P no longer holds, so
+Workflows A, B and D can treat SMS as a first-class channel rather than a deferred one.
+
+Consent is not universal, so the per-contact check in every send step still matters. Karen
+Sarkis and Emily (`emilywhite3@`) both carry `sms_consent = not_granted` and are email-only.
+
+The remaining blanket `automation_hold` is a policy choice, not a regulatory one, and is still
+what keeps every customer-facing workflow from firing.
 
 ## 9. Build order
 
