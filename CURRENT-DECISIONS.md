@@ -2,7 +2,7 @@
 
 # Joao Crus BJJ — Current Decisions
 
-> **Authoritative status as of 2026-08-04**
+> **Authoritative status as of 2026-09-14**
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
 ## Status legend
@@ -27,6 +27,18 @@
 
 ---
 
+## HighLevel first-class self-scheduling (2026-09-14)
+
+Source: Diego's explicit approval in the Joao Crus BJJ project thread on 2026-09-14.
+
+- ✅ After a website lead is successfully stored, the thank-you/result experience should offer optional HighLevel self-scheduling for a free first-class/studio visit. The class schedule remains a secondary reference, and Joao personally calls leads who do not book.
+- ✅ Use a `First Class` calendar group with separate program/location calendars so duration, address, and availability match the actual class being visited. Do not expose broad office-hour availability.
+- ✅ Initial recurring calendars cover Dripping Springs Little Champions, Dripping Springs Youth, Dripping Springs Adults, Austin Youth, and Austin Adults. Keep Teen, private coaching, and other appointment-only programs off recurring class calendars until availability is confirmed.
+- ✅ Availability must match the confirmed class schedule in this file. Use America/Chicago, two trial guests per class, a 28-day booking horizon, 12-hour minimum notice, automatic confirmation, and reschedule/cancel links as the initial adjustable defaults.
+- 🟡 Keep the new calendars inactive and unlinked while calendar read-back, route selection, appointment-trigger safeguards, confirmation/reminder copy, and booking analytics remain unverified. Do not book or message a real contact during setup.
+
+---
+
 ## GSC opportunity implementation decisions (2026-09-09)
 
 Source: Diego's explicit implementation approval and business clarifications supplied 2026-09-09.
@@ -35,7 +47,7 @@ Source: Diego's explicit implementation approval and business clarifications sup
 - ✅ No-gi is not offered now. Classify related search queries as **IGNORE**, not an offer or content target.
 - 🔴 Dedicated self-defense curriculum claims are unconfirmed. Use only already-supported boundary and practice-under-pressure language; no dedicated self-defense course claims or guarantees.
 - ✅ A qualified lead is someone who submits a form and then has a qualified conversation with Joao. Trial attendance is the preferred next milestone. Joao owns follow-up. A submission or CTA click alone is not a qualified lead.
-- ✅ Joao personally calls to discuss fit and arrange a free studio visit/trial class. Forms do not instantly book a place or calendar slot.
+- ✅ Joao personally calls to discuss fit and arrange a free studio visit/trial class when a lead does not self-schedule. Starting 2026-09-14, an accepted lead may optionally choose a matching HighLevel first-class calendar slot from the thank-you/result experience; the lead form itself still does not reserve a slot.
 - ✅ Austin adult group remains Tue/Thu **6:00–7:00 p.m.**, confirmed by Diego 2026-09-06, with private lessons by appointment. No opening date is newly confirmed.
 - ✅ One canonical owner per query cluster: Home for Dripping Springs and broad local/near-me discovery; Austin for Austin BJJ; Adults for adult BJJ; Kids for the kids overview; Little Champions for preschool/ages 3–7; Teens for teen BJJ; About for accurate Carlson Gracie and De La Riva lineage. No doorway pages or generic Gracie-branded offer.
 - ✅ Implement the approved priority and secondary opportunities in code/content/docs and a reviewable PR. This implementation must not deploy, merge, mutate Search Console, or edit listings; external actions are outside this scope.
@@ -185,7 +197,7 @@ See `docs/GSC-QUERY-OWNERSHIP-AND-MEASUREMENT.md` for ownership and post-release
 | 🔴 1     | Confirm full rate card: when $69/week applies versus $49–59/week; family rates; $99 registration; kids/adults differences         | Joao         | Offer math, pricing copy, checkout                |
 | 🔴 2     | Select launch offer: paid Kickstart versus 4-week deposit-credit intro; deposit amount, duration, capacity, refund/credit rules   | Joao + Diego | Landing pages, ads, scripts, payment flow         |
 | 🔴 3     | Confirm trial-uniform cost and whether the offer includes a low-cost trial uniform, enrollment gi, or no uniform bonus            | Joao         | Offer profitability and copy                      |
-| 🔴 4     | Confirm booking system: existing WP Booking Calendar, Zen Planner booking, or Cal.com                                             | Joao + Diego | CTA and automation wiring                         |
+| ✅ 4     | **Resolved 2026-09-14:** HighLevel owns first-class self-scheduling after successful lead capture; Joao calls unbooked leads      | Diego        | Calendar configuration and QA in progress         |
 | ✅ 5     | **Resolved 2026-07-23:** Joao approved the `toddlers-campaign-group.html` black/yellow/blue direction and requested the full site in this style | Joao + Diego | Unblocked—full-site buildout in progress           |
 | 🔴 6     | Confirm hosting/registrar/DNS access and create a school-domain email                                                             | Joao + Diego | Email authentication, Twilio signup               |
 | 🔴 7     | Obtain Beehiiv access and verify list size, consent, segments, and deliverability                                                 | Joao         | Broadcasts, lead magnet, nurture                  |
