@@ -75,17 +75,11 @@ test('contact payload is duplicate-safe, preserves existing tags/source, and opp
   assert.match(php, /\/contacts\/' \. rawurlencode\(\$contactId\) \. '\/tags'/);
 });
 
-test('SMS nurture release is consent-gated and independently disabled until carrier setup is ready', () => {
-  const tagBridge = php.slice(
-    php.indexOf('function add_tags_if_enabled'),
-    php.indexOf('function send_legacy_alert')
-  );
-  assert.match(tagBridge, /GHL_ENABLE_SMS_RELEASE/);
-  assert.match(tagBridge, /\$lead\['sms_consent'\] === true/);
-  assert.match(tagBridge, /\$lead\['phone'\] !== ''/);
-  assert.match(tagBridge, /sms_nurture_ready/);
-  assert.match(tagBridge, /automation_hold/);
-  assert.doesNotMatch(tagBridge, /remove.*automation_hold/i);
+test('new website tags are additive without holds or draft nurture producers', () => {
+  const tagBridge = php.slice(php.indexOf('function add_tags_if_enabled'), php.indexOf('function append_note_line'));
+  assert.match(tagBridge, /\['website_lead', 'quiz_lead'\] : \['website_lead'\]/);
+  assert.doesNotMatch(tagBridge, /automation_hold|sms_nurture_ready|DELETE|PUT/);
+  assert.match(tagBridge, /ghl_request\('POST'/);
 });
 
 test('provider calls use server-only config, bounded TLS curl, and non-PII logging', () => {
