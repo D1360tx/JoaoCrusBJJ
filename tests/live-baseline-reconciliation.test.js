@@ -26,7 +26,11 @@ test('every emitted route retains CTA placement and strict numeric campaign/clic
     ids.forEach(k => assert.equal(safe.searchParams.get(k), params.get(k), entry.path + k));
     for (const k of ['cta_placement','placement','source','start','embed']) assert.equal(safe.searchParams.get(k), params.get(k));
     assert.equal(safe.searchParams.has('email'), false);
-    for (const invalid of ['private@example.invalid','bad value','bad:identifier','x\nvalue','x'.repeat(161)]) {
+    for (const length of [160, 161, 512, 513]) {
+      const bounded = sanitize(script, new URLSearchParams(Object.fromEntries(ids.map(k => [k, 'x'.repeat(length)]))));
+      ids.forEach(k => assert.equal(bounded.searchParams.get(k), length <= (['fbclid','gclid'].includes(k) ? 512 : 160) ? 'x'.repeat(length) : null, entry.path + k + length));
+    }
+    for (const invalid of ['private@example.invalid','bad value','bad:identifier','x\nvalue','x'.repeat(513)]) {
       const rejected = sanitize(script, new URLSearchParams(Object.fromEntries(ids.map(k => [k, invalid]))));
       ids.forEach(k => assert.equal(rejected.searchParams.has(k), false, entry.path + k));
     }

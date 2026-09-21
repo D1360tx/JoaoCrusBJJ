@@ -33,6 +33,20 @@ function context(url, referrer = "", localStorage = new MemoryStorage(), session
   };
 }
 
+test("only fbclid/gclid expand to 512 through first/latest capture and storage", () => {
+  for (const key of ["fbclid", "gclid", "wbraid", "gbraid", "msclkid", "utm_id", "campaign_id", "utm_campaign"]) {
+    for (const length of [160, 161, 512, 513]) {
+      const value = "x".repeat(length);
+      const limit = ["fbclid", "gclid"].includes(key) ? 512 : 160;
+      const local = new MemoryStorage();
+      const result = attribution.capture(context(`https://joaocrusbjj.com/?${key}=${value}`, "", local));
+      for (const touch of ["first_touch", "last_touch"]) assert.equal(result[touch][key], length <= limit ? value : undefined);
+      const restored = attribution.capture(context("https://joaocrusbjj.com/contact/", "", local));
+      for (const touch of ["first_touch", "last_touch"]) assert.equal(restored[touch][key], length <= limit ? value : undefined);
+    }
+  }
+});
+
 const DAY = 24 * 60 * 60 * 1000;
 const START = Date.UTC(2026, 7, 3, 15, 0, 0);
 

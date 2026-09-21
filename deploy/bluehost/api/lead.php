@@ -301,7 +301,7 @@ function normalize_legacy(array $data): array
     [$firstName, $lastName] = split_name(clean_text($data['name'] ?? '', 120));
     $isGuide = $leadType === 'guide';
     $isTeen = $leadType === 'teen_interest';
-    $program = $isGuide ? 'Parent Guide' : require_enum(clean_text($data['program'] ?? '', 80), ['Little Champions 3–7', 'Youth 8–12', 'Teens 13–17', 'Teen Brazilian Jiu-Jitsu Ages 13-17', 'Adults', 'Jiu-Jitsu After 60', 'Private Coaching', 'Team / Corporate', 'Not sure yet'], 'program');
+    $program = $isGuide ? 'Parent Guide' : require_enum(clean_text($data['program'] ?? '', 80), ['Little Champions 3–7', 'Youth 8–12', 'Teens 13–17', 'Teen Brazilian Jiu-Jitsu Ages 13-17', 'Adults', 'Homeschool', 'Jiu-Jitsu After 60', 'Private Coaching', 'Team / Corporate', 'Not sure yet'], 'program');
     $location = $isGuide ? 'Not applicable' : require_enum(clean_text($data['location'] ?? '', 40), ['Dripping Springs', 'Austin', 'Either location', 'Not sure yet'], 'location');
     $role = clean_text($data['role'] ?? '', 120);
     $age = clean_text($data['age'] ?? '', 10);
@@ -356,7 +356,7 @@ function custom_field_map(): array
     if (!is_array($map)) {
         throw new RuntimeException('Custom field mapping is not configured.');
     }
-    $requiredFieldMappings = ['request_id', 'form_id', 'schema_version', 'lead_type', 'route_source', 'recommended_program', 'email_consent', 'sms_consent', 'consent_disclosure_version', 'consent_timestamp', 'analytics_storage', 'ad_storage', 'ad_user_data', 'message', 'role', 'age', 'availability'];
+    $requiredFieldMappings = ['request_id', 'form_id', 'schema_version', 'lead_type', 'route_source', 'recommended_program', 'booking_link', 'email_consent', 'sms_consent', 'consent_disclosure_version', 'consent_timestamp', 'analytics_storage', 'ad_storage', 'ad_user_data', 'message', 'role', 'age', 'availability'];
     foreach ($requiredFieldMappings as $required) {
         if (!isset($map[$required]) || !is_array($map[$required])) {
             throw new RuntimeException('Required custom field mapping is missing.');
@@ -370,6 +370,14 @@ function custom_field_map(): array
         $key = clean_text($definition['key'] ?? '', 160);
         if ($id === '' || $key === '' || !preg_match('/^[a-zA-Z0-9._-]+$/', $id) || !preg_match('/^[a-zA-Z0-9._-]+$/', $key)) {
             throw new RuntimeException('Invalid custom field mapping.');
+        }
+    }
+    if ($map['booking_link']['key'] !== 'contact.booking_link') {
+        throw new RuntimeException('Invalid booking link field mapping.');
+    }
+    foreach ($map as $logical => $definition) {
+        if ($logical !== 'booking_link' && ($definition['key'] === 'contact.booking_link' || $definition['id'] === $map['booking_link']['id'])) {
+            throw new RuntimeException('Duplicate booking link field mapping.');
         }
     }
     return $map;
@@ -445,6 +453,25 @@ function quiz_display_age_bands(array $ageBands): string
     ));
 }
 
+function booking_link(array $lead): string
+{
+    // Only exact validated quiz enums or accepted website labels. Never use a client URL or age inference.
+    $programs = [
+        'adult_group_bjj' => 'adults', 'Adults' => 'adults',
+        'little_champions' => 'little-champions', 'Little Champions 3–7' => 'little-champions',
+        'youth_bjj' => 'youth', 'Youth 8–12' => 'youth',
+        'homeschool' => 'homeschool', 'Homeschool' => 'homeschool',
+    ];
+    $locations = ['dripping' => 'ds', 'Dripping Springs' => 'ds', 'austin' => 'austin', 'Austin' => 'austin'];
+    $program = $programs[$lead['recommended_program'] ?? ''] ?? '';
+    $location = $locations[$lead['preferred_location'] ?? ''] ?? '';
+    if (($location === 'ds' && in_array($program, ['adults', 'little-champions', 'youth', 'homeschool'], true))
+        || ($location === 'austin' && $program === 'youth')) {
+        return 'https://api.leadconnectorhq.com/widget/bookings/' . $program . '-first-' . $location;
+    }
+    return 'https://joaocrusbjj.com/contact/';
+}
+
 function flattened_values(array $lead): array
 {
     $values = [
@@ -470,6 +497,7 @@ function flattened_values(array $lead): array
         'analytics_storage' => ($lead['meta']['analytics_storage'] ?? '') === 'granted' ? 'granted' : 'denied',
         'ad_storage' => ($lead['meta']['ad_storage'] ?? '') === 'granted' ? 'granted' : 'denied',
         'ad_user_data' => ($lead['meta']['ad_user_data'] ?? '') === 'granted' ? 'granted' : 'denied',
+        'booking_link' => booking_link($lead),
         'submission_page' => $lead['page'],
         'message' => clean_text($lead['message'] ?? '', 1500),
         'role' => clean_text($lead['role'] ?? '', 120),
@@ -497,7 +525,7 @@ function flattened_values(array $lead): array
     foreach (["first", "latest"] as $touchName) {
         $touch = is_array($lead['attribution'][$touchName] ?? null) ? $lead['attribution'][$touchName] : [];
         foreach ($allowedTouchKeys as $key) {
-            $values[$touchName . '_' . $key] = clean_text($touch[$key] ?? '', $key === 'landing_page' ? 240 : 160);
+            $values[$touchName . '_' . $key] = clean_text($touch[$key] ?? '', $key === 'landing_page' ? 240 : (in_array($key, ['fbclid', 'gclid'], true) ? 512 : 160));
         }
     }
     return $values;
@@ -827,17 +855,8 @@ function opportunity_id_from_response(array $response): string
 function add_tags_if_enabled(string $contactId, array $lead): void
 {
     if (env_value('GHL_ENABLE_TAG_ADD', 'false') !== 'true') return;
-    $tags = $lead['lead_type'] === 'quiz' ? ['website_lead', 'quiz_lead', 'automation_hold'] : ['website_lead', 'automation_hold'];
-    // SMS release is an independent production interlock. It never clears DND or
-    // automation_hold; HighLevel remains authoritative for STOP/DND suppression.
-    if (
-        $lead['lead_type'] === 'quiz'
-        && $lead['sms_consent'] === true
-        && $lead['phone'] !== ''
-        && env_value('GHL_ENABLE_SMS_RELEASE', 'false') === 'true'
-    ) {
-        $tags[] = 'sms_nurture_ready';
-    }
+    $tags = $lead['lead_type'] === 'quiz' ? ['website_lead', 'quiz_lead'] : ['website_lead'];
+    // Additive only: preserve existing tags, holds and DND. No draft nurture enrollment.
     ghl_request('POST', '/contacts/' . rawurlencode($contactId) . '/tags', ['tags' => $tags], $lead['request_id']);
 }
 

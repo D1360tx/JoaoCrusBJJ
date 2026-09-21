@@ -35,7 +35,7 @@ foreach (['contact_page', 'booking_popup'] as $id) {
             add_tags_if_enabled('local-test-only', $lead);
             $last = $calls[count($calls) - 1];
             check(!in_array('sms_nurture_ready', $last[2]['tags'], true), "$id held under $release");
-            check(in_array('automation_hold', $last[2]['tags'], true), "$id automation hold");
+            check($last[2]['tags'] === ['website_lead'], "$id approved additive tags");
         }
     }
     $old = normalize_legacy($base + ['form_id' => $id]);

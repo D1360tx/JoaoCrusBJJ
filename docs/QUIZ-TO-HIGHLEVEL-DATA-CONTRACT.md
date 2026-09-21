@@ -75,6 +75,17 @@ The existing review pages remain separate until approval. Existing program resul
 - `GHL_CUSTOM_FIELD_MAP_JSON` using the logical-name → `{id,key}` contract in `docs/HIGHLEVEL-BLUEHOST-CONFIG.example.env`
 - `GHL_ENV_FILE` pointing to a populated file outside Bluehost `public_html`
 
+## Server-owned booking link and additive tag contract
+
+- Strict maps require logical `booking_link` with exact key `contact.booking_link` and a protected, deployment-time field ID. Repository configuration uses `replace-booking-link-field-id` only. A missing, wrong-key, or colliding booking definition fails before provider calls; the existing explicit core-only override remains unchanged.
+- Contact upsert carries this computed field for both new and existing contacts before additive tagging. Client-supplied booking URLs are ignored.
+- Dripping Springs: Adults → `adults-first-ds`, Little Champions → `little-champions-first-ds`, Youth → `youth-first-ds`, Homeschool → `homeschool-first-ds`. Austin Youth → `youth-first-austin`. All slugs use `https://api.leadconnectorhq.com/widget/bookings/`.
+- Unsupported/ambiguous combinations use `https://joaocrusbjj.com/contact/`, including Austin Adults, private, Teen, After 60, family plans and undecided locations. No age-based Homeschool inference: contact/popup explicitly offers `Homeschool` as an accepted program value. Existing quiz recommendation validation remains unchanged.
+- Add only `website_lead`, plus `quiz_lead` for quiz submissions. Do not add `automation_hold` or `sms_nurture_ready`; never delete existing tags, holds or DND. SMS release configuration remains false and is not activated by this patch.
+- Only `fbclid` and `gclid` expand from 160 to 512 characters, across pre-GTM sanitization, attribution capture and PHP custom fields. Other identifiers/campaign limits remain 160. Browser overlength identifiers are rejected; PHP retains its existing bounded truncation behavior.
+- Tracked-template inventory: `git ls-files '*setup*' '*env*' '*CONFIG*'` plus tracked searches for `GHL_CUSTOM_FIELD_MAP_JSON` find one applicable env template, `docs/HIGHLEVEL-BLUEHOST-CONFIG.example.env`, and no tracked env writer. Stage-ID discovery is not a field-map template. Do not edit untracked `/tmp` helpers or protected environments during repository work.
+- No deployment or synthetic acceptance is authorized by this repository patch. A later approved deployment must first update the protected map, then obtain separate approval for controlled synthetic acceptance. Existing workflows, stages, historical contacts and lifecycle code are untouched.
+
 ## QA gate
 
 Use synthetic contacts only. Verify contact upsert, duplicate behavior, complete quiz fields, attribution, consent, opportunity v3 payload acceptance, owner, task/workflow, malformed-success rejection, retry behavior, and thank-you routing. Keep all automations disabled during QA. No real API calls are part of repository tests.

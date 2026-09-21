@@ -27,6 +27,14 @@
 
 ---
 
+## Approved repository-only website lead routing patch
+
+- Implementation approval covers a draft PR only: no deployment, live form submission, provider writes, workflow changes or historical-contact changes.
+- New website intake adds `website_lead` and conditional `quiz_lead` only, without adding a global hold or old Draft-nurture tags. Existing tags/holds/DND are never removed; `GHL_ENABLE_SMS_RELEASE=false` remains unchanged.
+- Persist server-derived `contact.booking_link` before tagging. Exact supported calendars: Dripping Springs Adults, Little Champions, Youth and explicitly selected Homeschool; Austin Youth. All other/ambiguous selections fall back to `https://joaocrusbjj.com/contact/`. This narrow mapping supersedes the earlier proposed Austin Adults calendar for this patch only.
+- Expand only `fbclid`/`gclid` from 160 to 512; preserve other limits and consent/attribution semantics. Later deployment requires the protected booking-field map update and separate synthetic-acceptance approval.
+- Contract and tracked-template inventory: `docs/QUIZ-TO-HIGHLEVEL-DATA-CONTRACT.md`.
+
 ## HighLevel first-class self-scheduling (2026-09-14)
 
 Source: Diego's explicit approval in the Joao Crus BJJ project thread on 2026-09-14.

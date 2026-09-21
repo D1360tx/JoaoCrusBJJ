@@ -52,9 +52,10 @@
 
   function sanitizeCampaignValue(value, key) {
     var raw = String(value || "").trim();
-    if (!raw || raw.length > 160 || /[\u0000-\u001f\u007f]/.test(raw)) return "";
+    var maxLength = key === "fbclid" || key === "gclid" ? 512 : 160;
+    if (!raw || raw.length > maxLength || /[\u0000-\u001f\u007f]/.test(raw)) return "";
     if (IDENTIFIER_KEYS.indexOf(key) >= 0) {
-      return /^[A-Za-z0-9._:-]{1,160}$/.test(raw) ? raw : "";
+      return /^[A-Za-z0-9._:-]+$/.test(raw) ? raw : "";
     }
     if (/[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(raw)) return "";
     if (/(?:\+?\d[\s().-]*){7,}/.test(raw)) return "";
