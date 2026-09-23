@@ -308,8 +308,10 @@ def main() -> None:
     check((DIST / "assets" / book_asset).read_bytes() == (ASSETS / "campaign-site.js").read_bytes(), "booking runtime must match source hash")
     check('noindex,nofollow' in book_html and 'https://joaocrusbjj.com/book/' in book_html, "booking page must preserve noindex and canonical")
     check(not re.search(r'<form\b|<dialog\b|lead\.php|type=[\"\']submit|(?:src|href)=[\"\'][^\"\']*quiz', book_html, re.I), "booking page must not expose a form, quiz, endpoint or submit control")
-    booking_links = re.findall(r'href="(https://api\.leadconnectorhq\.com/widget/booking/[^\"]+)"', book_html)
-    check(booking_links == [f"https://api.leadconnectorhq.com/widget/booking/{slug}" for slug in ("adults-first-ds", "little-champions-first-ds", "youth-first-ds", "homeschool-first-ds", "youth-first-austin")], "booking page must preserve exactly five approved calendar URLs")
+    booking_links = re.findall(r'href="(https://api\.leadconnectorhq\.com/widget/bookings/[^\"]+)"', book_html)
+    check(booking_links == [f"https://api.leadconnectorhq.com/widget/bookings/{slug}" for slug in ("adults-first-ds", "little-champions-first-ds", "youth-first-ds", "homeschool-first-ds", "youth-first-austin", "adults-first-austin")], "booking page must preserve exactly six approved calendar URLs")
+    check('/widget/booking/' not in book_html and '(DS)' not in book_html, "booking page must not use singular paths or DS shorthand")
+    check(re.findall(r'<strong>([^<]+)</strong><span>[^<]*open calendar', book_html) == ["Adults (Dripping Springs)", "Little Champions (Dripping Springs)", "Youth (Dripping Springs)", "Homeschool (Dripping Springs)", "Youth (Austin)", "Adults (Austin)"], "booking page must preserve exact program/location labels")
 
     for event_name in (
         "lead_submit_error",

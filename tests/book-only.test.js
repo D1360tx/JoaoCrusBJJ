@@ -6,7 +6,8 @@ const vm = require('node:vm');
 const { createHash } = require('node:crypto');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
-const calendars = ['adults-first-ds', 'little-champions-first-ds', 'youth-first-ds', 'homeschool-first-ds', 'youth-first-austin'].map(slug => `https://api.leadconnectorhq.com/widget/booking/${slug}`);
+const calendars = ['adults-first-ds', 'little-champions-first-ds', 'youth-first-ds', 'homeschool-first-ds', 'youth-first-austin', 'adults-first-austin'].map(slug => `https://api.leadconnectorhq.com/widget/bookings/${slug}`);
+const labels = ['Adults (Dripping Springs)', 'Little Champions (Dripping Springs)', 'Youth (Dripping Springs)', 'Homeschool (Dripping Springs)', 'Youth (Austin)', 'Adults (Austin)'];
 
 function runShell(source, bookingOnly) {
   const appended = [], events = {}, classes = new Set();
@@ -31,7 +32,9 @@ test('production booking page uses a content-hashed isolated runtime and exact c
   assert.equal(read(`dist/assets/campaign-site.${hash}.js`), source);
   assert.match(html, /name="robots" content="noindex,nofollow"/);
   assert.match(html, /rel="canonical" href="https:\/\/joaocrusbjj.com\/book\/"/);
-  assert.deepEqual([...html.matchAll(/href="(https:\/\/api\.leadconnectorhq\.com\/widget\/booking\/[^" ]+)"/g)].map(m => m[1]), calendars);
+  assert.deepEqual([...html.matchAll(/href="(https:\/\/api\.leadconnectorhq\.com\/widget\/bookings\/[^" ]+)"/g)].map(m => m[1]), calendars);
+  assert.deepEqual([...html.matchAll(/<strong>([^<]+)<\/strong><span>[^<]*open calendar/g)].map(m => m[1]), labels);
+  assert.doesNotMatch(html, /\/widget\/booking\/|\(DS\)/);
   assert.doesNotMatch(html, /<form\b|<dialog\b|lead\.php|type="submit"|(?:src|href)="[^"]*quiz/i);
   for (const name of ['consent-policy.js', 'attribution.js', 'consent-controls.js', 'GTM-596MGPMD']) assert.ok(html.includes(name));
   for (const file of ['dist/contact/index.html', 'dist/index.html']) assert.ok(!read(file).includes(`campaign-site.${hash}.js`));
