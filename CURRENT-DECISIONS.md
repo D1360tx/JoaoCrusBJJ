@@ -27,6 +27,13 @@
 
 ---
 
+## Approved full Bluehost booking pass (2026-09-22)
+
+- Diego approved implementation, PR merge, and surgical Bluehost deployment of `/book/` and `api/lead.php`. This supersedes the earlier draft-only routing restriction below for these two deployed paths only.
+- `/book/` exposes six plural `/widget/bookings/` calendars: Dripping Springs Adults, Little Champions, Youth, Homeschool; Austin Youth and Adults. Spell out Dripping Springs in card labels. Preserve the booking-only guard and isolated immutable runtime.
+- Unmatched lead booking links fall back to `https://joaocrusbjj.com/book/`. Austin adult selections include `Adults`, `Austin Adults`, `Adults Austin`, and the existing adult-group quiz enum with Austin location. Preserve every other payload, tag, hold, consent, and routing behavior.
+- No GHL/workflow writes, lead submissions, protected environment changes, contact-page deployment, shared-asset overwrite, sitemap, GTM, or Search Console changes. Ops already handled GHL stamps.
+
 ## Approved repository-only website lead routing patch
 
 - Implementation approval covers a draft PR only: no deployment, live form submission, provider writes, workflow changes or historical-contact changes.

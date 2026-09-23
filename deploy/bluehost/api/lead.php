@@ -301,7 +301,7 @@ function normalize_legacy(array $data): array
     [$firstName, $lastName] = split_name(clean_text($data['name'] ?? '', 120));
     $isGuide = $leadType === 'guide';
     $isTeen = $leadType === 'teen_interest';
-    $program = $isGuide ? 'Parent Guide' : require_enum(clean_text($data['program'] ?? '', 80), ['Little Champions 3–7', 'Youth 8–12', 'Teens 13–17', 'Teen Brazilian Jiu-Jitsu Ages 13-17', 'Adults', 'Homeschool', 'Jiu-Jitsu After 60', 'Private Coaching', 'Team / Corporate', 'Not sure yet'], 'program');
+    $program = $isGuide ? 'Parent Guide' : require_enum(clean_text($data['program'] ?? '', 80), ['Little Champions 3–7', 'Youth 8–12', 'Teens 13–17', 'Teen Brazilian Jiu-Jitsu Ages 13-17', 'Adults', 'Austin Adults', 'Adults Austin', 'Homeschool', 'Jiu-Jitsu After 60', 'Private Coaching', 'Team / Corporate', 'Not sure yet'], 'program');
     $location = $isGuide ? 'Not applicable' : require_enum(clean_text($data['location'] ?? '', 40), ['Dripping Springs', 'Austin', 'Either location', 'Not sure yet'], 'location');
     $role = clean_text($data['role'] ?? '', 120);
     $age = clean_text($data['age'] ?? '', 10);
@@ -465,11 +465,14 @@ function booking_link(array $lead): string
     $locations = ['dripping' => 'ds', 'Dripping Springs' => 'ds', 'austin' => 'austin', 'Austin' => 'austin'];
     $program = $programs[$lead['recommended_program'] ?? ''] ?? '';
     $location = $locations[$lead['preferred_location'] ?? ''] ?? '';
+    if ($location === 'austin' && in_array($lead['recommended_program'] ?? '', ['Austin Adults', 'Adults Austin'], true)) {
+        $program = 'adults';
+    }
     if (($location === 'ds' && in_array($program, ['adults', 'little-champions', 'youth', 'homeschool'], true))
-        || ($location === 'austin' && $program === 'youth')) {
+        || ($location === 'austin' && in_array($program, ['youth', 'adults'], true))) {
         return 'https://api.leadconnectorhq.com/widget/bookings/' . $program . '-first-' . $location;
     }
-    return 'https://joaocrusbjj.com/contact/';
+    return 'https://joaocrusbjj.com/book/';
 }
 
 function flattened_values(array $lead): array

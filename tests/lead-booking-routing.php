@@ -14,8 +14,8 @@ $base = ['request_id' => 'local-routing-fixture-2026', 'form_id' => 'booking_pop
 $map = ['booking_link' => ['id' => 'fixture-booking-field', 'key' => 'contact.booking_link']];
 $config = ['location_id' => 'fixture-location', 'owner_id' => 'fixture-owner'];
 $prefix = 'https://api.leadconnectorhq.com/widget/bookings/';
-$fallback = 'https://joaocrusbjj.com/contact/';
-foreach ([['Adults','Dripping Springs','adults-first-ds'], ['Little Champions 3–7','Dripping Springs','little-champions-first-ds'], ['Youth 8–12','Dripping Springs','youth-first-ds'], ['Homeschool','Dripping Springs','homeschool-first-ds'], ['Youth 8–12','Austin','youth-first-austin'], ['Adults','Austin',''], ['Homeschool','Austin',''], ['Private Coaching','Dripping Springs',''], ['Not sure yet','Dripping Springs',''], ['Adults','Either location',''], ['Youth 8–12','Not sure yet',''], ['Teens 13–17','Austin',''], ['Jiu-Jitsu After 60','Dripping Springs','']] as [$program,$location,$slug]) {
+$fallback = 'https://joaocrusbjj.com/book/';
+foreach ([['Adults','Dripping Springs','adults-first-ds'], ['Little Champions 3–7','Dripping Springs','little-champions-first-ds'], ['Youth 8–12','Dripping Springs','youth-first-ds'], ['Homeschool','Dripping Springs','homeschool-first-ds'], ['Youth 8–12','Austin','youth-first-austin'], ['Adults','Austin','adults-first-austin'], ['Austin Adults','Austin','adults-first-austin'], ['Adults Austin','Austin','adults-first-austin'], ['Austin Adults','Dripping Springs',''], ['Adults Austin','Either location',''], ['Homeschool','Austin',''], ['Private Coaching','Dripping Springs',''], ['Not sure yet','Dripping Springs',''], ['Adults','Either location',''], ['Youth 8–12','Not sure yet',''], ['Teens 13–17','Austin',''], ['Jiu-Jitsu After 60','Dripping Springs','']] as [$program,$location,$slug]) {
     $lead = normalize_legacy($base + ['program' => $program, 'location' => $location, 'booking_link' => 'https://attacker.example/']);
     $expected = $slug ? $prefix . $slug : $fallback;
     check(flattened_values($lead)['booking_link'] === $expected, "$program/$location routing");
