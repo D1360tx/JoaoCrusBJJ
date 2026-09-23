@@ -6,7 +6,7 @@ const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
 const read = p => fs.readFileSync(path.join(root, p), 'utf8');
 const script = read('site/assets/campaign-site.js');
-const assignment = script.match(/bookingDialog.innerHTML =([\s\S]*?);\n    document.body.appendChild/)[1];
+const assignment = script.match(/bookingDialog.innerHTML =([\s\S]*?);\n\s+document.body.appendChild/)[1];
 const popup = vm.runInNewContext(assignment);
 
 for (const [name, html] of [['contact', read('site/campaign/contact.html')], ['popup', popup]]) {

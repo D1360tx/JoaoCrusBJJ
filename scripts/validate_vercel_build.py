@@ -426,7 +426,7 @@ def main() -> None:
             check(quiz_versioned_url in html, f"{page['path']}: Program Fit behavior must use its current content-versioned URL")
         lead_behavior_positions = [
             html.find(asset)
-            for asset in ("assets/campaign-site.js", "assets/program-fit-landing.js", "assets/program-fit-quiz.js", "assets/meta-kids-landing.js", "assets/austin-program-fit-quiz.js", "assets/austin-campaign.js")
+            for asset in (f"assets/{book_asset}", "assets/campaign-site.js", "assets/program-fit-landing.js", "assets/program-fit-quiz.js", "assets/meta-kids-landing.js", "assets/austin-program-fit-quiz.js", "assets/austin-campaign.js")
             if html.find(asset) >= 0
         ]
         check(
@@ -530,7 +530,7 @@ def main() -> None:
 
     source_assets = {path.relative_to(ROOT / "site" / "assets") for path in (ROOT / "site" / "assets").rglob("*") if path.is_file()}
     built_assets = {path.relative_to(DIST / "assets") for path in (DIST / "assets").rglob("*") if path.is_file()}
-    check(source_assets == built_assets, "built assets do not exactly match source assets")
+    check(source_assets | {Path(book_asset)} == built_assets, "built assets must match source plus the isolated booking runtime")
 
     if ERRORS:
         print("Vercel build validation FAILED:")
