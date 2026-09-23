@@ -300,6 +300,17 @@ def main() -> None:
         f"/assets/campaign-site.js?v="
         f"{hashlib.sha256((ASSETS / 'campaign-site.js').read_bytes()).hexdigest()[:12]}"
     )
+    book_html = (DIST / "book" / "index.html").read_text(encoding="utf-8")
+    book_digest = hashlib.sha256((ASSETS / "campaign-site.js").read_bytes()).hexdigest()[:12]
+    book_asset = f"campaign-site.{book_digest}.js"
+    check('<body data-booking-only>' in book_html, "booking page must opt out of lead-dialog initialization")
+    check(f'/assets/{book_asset}' in book_html, "booking page must load its immutable shared runtime")
+    check((DIST / "assets" / book_asset).read_bytes() == (ASSETS / "campaign-site.js").read_bytes(), "booking runtime must match source hash")
+    check('noindex,nofollow' in book_html and 'https://joaocrusbjj.com/book/' in book_html, "booking page must preserve noindex and canonical")
+    check(not re.search(r'<form\b|<dialog\b|lead\.php|type=[\"\']submit|(?:src|href)=[\"\'][^\"\']*quiz', book_html, re.I), "booking page must not expose a form, quiz, endpoint or submit control")
+    booking_links = re.findall(r'href="(https://api\.leadconnectorhq\.com/widget/booking/[^\"]+)"', book_html)
+    check(booking_links == [f"https://api.leadconnectorhq.com/widget/booking/{slug}" for slug in ("adults-first-ds", "little-champions-first-ds", "youth-first-ds", "homeschool-first-ds", "youth-first-austin")], "booking page must preserve exactly five approved calendar URLs")
+
     for event_name in (
         "lead_submit_error",
         "booking_start",
@@ -415,7 +426,7 @@ def main() -> None:
             check(quiz_versioned_url in html, f"{page['path']}: Program Fit behavior must use its current content-versioned URL")
         lead_behavior_positions = [
             html.find(asset)
-            for asset in ("assets/campaign-site.js", "assets/program-fit-landing.js", "assets/program-fit-quiz.js", "assets/meta-kids-landing.js", "assets/austin-program-fit-quiz.js", "assets/austin-campaign.js")
+            for asset in (f"assets/{book_asset}", "assets/campaign-site.js", "assets/program-fit-landing.js", "assets/program-fit-quiz.js", "assets/meta-kids-landing.js", "assets/austin-program-fit-quiz.js", "assets/austin-campaign.js")
             if html.find(asset) >= 0
         ]
         check(
@@ -519,7 +530,7 @@ def main() -> None:
 
     source_assets = {path.relative_to(ROOT / "site" / "assets") for path in (ROOT / "site" / "assets").rglob("*") if path.is_file()}
     built_assets = {path.relative_to(DIST / "assets") for path in (DIST / "assets").rglob("*") if path.is_file()}
-    check(source_assets == built_assets, "built assets do not exactly match source assets")
+    check(source_assets | {Path(book_asset)} == built_assets, "built assets must match source plus the isolated booking runtime")
 
     if ERRORS:
         print("Vercel build validation FAILED:")

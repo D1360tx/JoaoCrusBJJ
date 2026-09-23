@@ -315,6 +315,12 @@ def main() -> None:
         html = source_path.read_text(encoding="utf-8")
         html = add_base_element(html)
         html = version_lead_behavior_scripts(html)
+        if page["path"] == "/book/":
+            # A surgical booking release must not overwrite other pages' runtime.
+            digest = hashlib.sha256((ASSETS / "campaign-site.js").read_bytes()).hexdigest()[:12]
+            booking_asset = f"campaign-site.{digest}.js"
+            shutil.copy2(ASSETS / "campaign-site.js", DIST / "assets" / booking_asset)
+            html = html.replace(CAMPAIGN_SITE_URL, f"/assets/{booking_asset}")
         html = add_attribution_script(html)
         html = add_google_tag_manager(html)
         html = rewrite_internal_html_links(html, routes)
