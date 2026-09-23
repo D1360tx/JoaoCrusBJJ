@@ -222,111 +222,121 @@
       }
     }
 
-    var bookingDialog = document.createElement("dialog");
-    bookingDialog.className = "booking-dialog";
-    bookingDialog.setAttribute("aria-labelledby", "booking-title");
-    bookingDialog.innerHTML =
-      '<div class="booking-shell">' +
-      '<header class="booking-top"><div><span class="booking-kicker">Plan a first class</span><h2 id="booking-title">FIND THE RIGHT <span class="booking-keep">FIRST CLASS.</span></h2></div><button class="booking-close" type="button" aria-label="Close first class request">Close</button></header>' +
-      '<p class="booking-intro">Tell us who wants to train. We will contact you to match the right program, location, and class time. No payment is required.</p>' +
-      '<form class="booking-form" data-booking-form data-form-id="booking_popup" data-lead-type="class_inquiry" data-sms-disclosure-version="website_sms_v3">' +
-      '<div class="fields">' +
-      '<div class="field"><label for="booking-name">Your name</label><input id="booking-name" name="name" type="text" autocomplete="name" required></div>' +
-      '<div class="field"><label for="booking-phone">Mobile number</label><input id="booking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>' +
-      '<div class="field"><label for="booking-email">Email</label><input id="booking-email" name="email" type="email" autocomplete="email" required></div>' +
-      '<div class="field"><label for="booking-program">Who wants to train?</label><select id="booking-program" name="program" required><option value="">Choose a program</option><option>Little Champions 3–7</option><option>Youth 8–12</option><option>Teens 13–17</option><option>Adults</option><option>Homeschool</option><option>Jiu-Jitsu After 60</option><option>Private Coaching</option><option>Team / Corporate</option><option>Not sure yet</option></select></div>' +
-      '<div class="field"><label for="booking-location">Preferred location</label><select id="booking-location" name="location" required><option value="">Choose a location</option><option>Dripping Springs</option><option>Austin</option><option>Not sure yet</option></select></div>' +
-      '<div class="field website-field" aria-hidden="true"><label for="booking-website">Leave this blank</label><input id="booking-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>' +
-      '<div class="field full check booking-consent"><input id="booking-consent" name="consent" type="checkbox" required><label for="booking-consent">Joao Crus BJJ may email or call me about this request.</label></div>' +
-      '<div class="field full check booking-consent"><input id="booking-sms-consent" name="sms_consent" type="checkbox"><label for="booking-sms-consent">I agree to receive recurring automated non-promotional customer-care text messages from Joao Crus Brazilian Jiu-Jitsu about my request, scheduling, and class information. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is optional and is not a condition of purchase. See the <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms</a>.</label></div>' +
-      '<div class="field full check booking-consent"><input id="booking-sms-marketing-consent" name="sms_marketing_consent" type="checkbox"><label for="booking-sms-marketing-consent">I agree to receive recurring automated promotional and marketing text messages from Joao Crus Brazilian Jiu-Jitsu about academy programs, offers, and events. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is optional and is not a condition of purchase. See the <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms</a>.</label></div>' +
-      '<div class="field full"><button class="btn booking-submit" type="submit">Request my first class →</button><p class="booking-assurance">Takes about 30 seconds. We will only use your information to help with this request.</p><p class="status" tabindex="-1" aria-live="polite"></p></div>' +
-      '</div></form>' +
-      '<div class="booking-direct">Prefer to talk now? <a href="tel:+151****4560">Call or text 512-644-4560</a></div>' +
-      '</div>';
-    document.body.appendChild(bookingDialog);
+    var bookingDialog = null;
+    function initializeBookingDialog() {
+      // Calendar-only pages keep the shell without creating a lead-capture UI.
+      if (b.hasAttribute("data-booking-only")) return;
+      bookingDialog = document.createElement("dialog");
+      bookingDialog.className = "booking-dialog";
+      bookingDialog.setAttribute("aria-labelledby", "booking-title");
+      bookingDialog.innerHTML =
+        '<div class="booking-shell">' +
+        '<header class="booking-top"><div><span class="booking-kicker">Plan a first class</span><h2 id="booking-title">FIND THE RIGHT <span class="booking-keep">FIRST CLASS.</span></h2></div><button class="booking-close" type="button" aria-label="Close first class request">Close</button></header>' +
+        '<p class="booking-intro">Tell us who wants to train. We will contact you to match the right program, location, and class time. No payment is required.</p>' +
+        '<form class="booking-form" data-booking-form data-form-id="booking_popup" data-lead-type="class_inquiry" data-sms-disclosure-version="website_sms_v3">' +
+        '<div class="fields">' +
+        '<div class="field"><label for="booking-name">Your name</label><input id="booking-name" name="name" type="text" autocomplete="name" required></div>' +
+        '<div class="field"><label for="booking-phone">Mobile number</label><input id="booking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>' +
+        '<div class="field"><label for="booking-email">Email</label><input id="booking-email" name="email" type="email" autocomplete="email" required></div>' +
+        '<div class="field"><label for="booking-program">Who wants to train?</label><select id="booking-program" name="program" required><option value="">Choose a program</option><option>Little Champions 3–7</option><option>Youth 8–12</option><option>Teens 13–17</option><option>Adults</option><option>Homeschool</option><option>Jiu-Jitsu After 60</option><option>Private Coaching</option><option>Team / Corporate</option><option>Not sure yet</option></select></div>' +
+        '<div class="field"><label for="booking-location">Preferred location</label><select id="booking-location" name="location" required><option value="">Choose a location</option><option>Dripping Springs</option><option>Austin</option><option>Not sure yet</option></select></div>' +
+        '<div class="field website-field" aria-hidden="true"><label for="booking-website">Leave this blank</label><input id="booking-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>' +
+        '<div class="field full check booking-consent"><input id="booking-consent" name="consent" type="checkbox" required><label for="booking-consent">Joao Crus BJJ may email or call me about this request.</label></div>' +
+        '<div class="field full check booking-consent"><input id="booking-sms-consent" name="sms_consent" type="checkbox"><label for="booking-sms-consent">I agree to receive recurring automated non-promotional customer-care text messages from Joao Crus Brazilian Jiu-Jitsu about my request, scheduling, and class information. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is optional and is not a condition of purchase. See the <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms</a>.</label></div>' +
+        '<div class="field full check booking-consent"><input id="booking-sms-marketing-consent" name="sms_marketing_consent" type="checkbox"><label for="booking-sms-marketing-consent">I agree to receive recurring automated promotional and marketing text messages from Joao Crus Brazilian Jiu-Jitsu about academy programs, offers, and events. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is optional and is not a condition of purchase. See the <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms</a>.</label></div>' +
+        '<div class="field full"><button class="btn booking-submit" type="submit">Request my first class →</button><p class="booking-assurance">Takes about 30 seconds. We will only use your information to help with this request.</p><p class="status" tabindex="-1" aria-live="polite"></p></div>' +
+        '</div></form>' +
+        '<div class="booking-direct">Prefer to talk now? <a href="tel:+151****4560">Call or text 512-644-4560</a></div>' +
+        '</div>';
+      document.body.appendChild(bookingDialog);
 
-    var bookingForm = bookingDialog.querySelector("[data-booking-form]"),
-      bookingClose = bookingDialog.querySelector(".booking-close"),
-      bookingProgram = bookingDialog.querySelector("#booking-program"),
-      bookingLocation = bookingDialog.querySelector("#booking-location"),
-      lastBookingTrigger = null;
+      var bookingForm = bookingDialog.querySelector("[data-booking-form]"),
+        bookingClose = bookingDialog.querySelector(".booking-close"),
+        bookingProgram = bookingDialog.querySelector("#booking-program"),
+        bookingLocation = bookingDialog.querySelector("#booking-location"),
+        lastBookingTrigger = null;
 
-    function contextualBookingDefaults() {
-      var page = location.pathname.replace(/\/+$/, "").split("/").pop() || "index";
-      var programs = {
-        "little-champions": "Little Champions 3–7",
-        "little-champions.html": "Little Champions 3–7",
-        "toddlers-campaign-purposeful-play.html": "Little Champions 3–7",
-        "youth-bjj": "Youth 8–12",
-        "youth.html": "Youth 8–12",
-        "youth-campaign-ages-8-12.html": "Youth 8–12",
-        teens: "Teens 13–17",
-        "teens-campaign-ages-13-17.html": "Teens 13–17",
-        "adults-program": "Adults",
-        "adults.html": "Adults",
-        "jiu-jitsu-after-60": "Jiu-Jitsu After 60",
-        "jiu-jitsu-after-60.html": "Jiu-Jitsu After 60",
-        "private-bjj-lessons": "Private Coaching",
-        "private-coaching.html": "Private Coaching",
-        "team-building": "Team / Corporate",
-        "teams.html": "Team / Corporate",
-      };
-      bookingProgram.value = programs[page] || "";
-      bookingLocation.value = page === "austin-brazilian-jiu-jitsu" || page === "austin.html" ? "Austin" : "";
-    }
+      function contextualBookingDefaults() {
+        var page = location.pathname.replace(/\/+$/, "").split("/").pop() || "index";
+        var programs = {
+          "little-champions": "Little Champions 3–7",
+          "little-champions.html": "Little Champions 3–7",
+          "toddlers-campaign-purposeful-play.html": "Little Champions 3–7",
+          "youth-bjj": "Youth 8–12",
+          "youth.html": "Youth 8–12",
+          "youth-campaign-ages-8-12.html": "Youth 8–12",
+          teens: "Teens 13–17",
+          "teens-campaign-ages-13-17.html": "Teens 13–17",
+          "adults-program": "Adults",
+          "adults.html": "Adults",
+          "jiu-jitsu-after-60": "Jiu-Jitsu After 60",
+          "jiu-jitsu-after-60.html": "Jiu-Jitsu After 60",
+          "private-bjj-lessons": "Private Coaching",
+          "private-coaching.html": "Private Coaching",
+          "team-building": "Team / Corporate",
+          "teams.html": "Team / Corporate",
+        };
+        bookingProgram.value = programs[page] || "";
+        bookingLocation.value = page === "austin-brazilian-jiu-jitsu" || page === "austin.html" ? "Austin" : "";
+      }
 
-    function openBooking(trigger) {
-      if (typeof bookingDialog.showModal !== "function") {
+      function openBooking(trigger) {
+        if (typeof bookingDialog.showModal !== "function") {
+          pushAnalytics("booking_start", {
+            form_name: "contact_page",
+            link_context: analyticsContext(trigger),
+            submission_page: location.pathname,
+          });
+          window.location.href = trigger && trigger.href ? trigger.href : "contact.html";
+          return;
+        }
+        lastBookingTrigger = trigger || document.activeElement;
+        setNav(false);
+        contextualBookingDefaults();
+        bookingDialog.showModal();
+        b.classList.add("booking-open");
         pushAnalytics("booking_start", {
-          form_name: "contact_page",
+          form_name: "booking_dialog",
           link_context: analyticsContext(trigger),
+          lead_program: analyticsValue(bookingProgram.value),
+          lead_location: analyticsValue(bookingLocation.value),
           submission_page: location.pathname,
         });
-        window.location.href = trigger && trigger.href ? trigger.href : "contact.html";
-        return;
+        requestAnimationFrame(function () {
+          bookingDialog.querySelector("#booking-name").focus();
+        });
       }
-      lastBookingTrigger = trigger || document.activeElement;
-      setNav(false);
-      contextualBookingDefaults();
-      bookingDialog.showModal();
-      b.classList.add("booking-open");
-      pushAnalytics("booking_start", {
-        form_name: "booking_dialog",
-        link_context: analyticsContext(trigger),
-        lead_program: analyticsValue(bookingProgram.value),
-        lead_location: analyticsValue(bookingLocation.value),
-        submission_page: location.pathname,
+
+      function closeBooking() {
+        if (bookingDialog.open) bookingDialog.close();
+      }
+
+      document.querySelectorAll('a[href$="contact.html"], a[href$="/contact/"]').forEach(function (link) {
+        if (!/(plan|first class|request|ask about)/i.test(link.textContent)) return;
+        link.setAttribute("aria-haspopup", "dialog");
+        link.addEventListener("click", function (event) {
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          openBooking(link);
+        });
       });
-      requestAnimationFrame(function () {
-        bookingDialog.querySelector("#booking-name").focus();
+      bookingClose.addEventListener("click", closeBooking);
+      bookingDialog.addEventListener("click", function (event) {
+        if (event.target === bookingDialog) closeBooking();
+      });
+      bookingDialog.addEventListener("close", function () {
+        b.classList.remove("booking-open");
+        if (lastBookingTrigger && document.contains(lastBookingTrigger)) lastBookingTrigger.focus();
+      });
+      bookingDialog.addEventListener("cancel", function () {
+        b.classList.remove("booking-open");
+      });
+      bookingForm.addEventListener("submit", function (event) {
+        submitLeadForm(bookingForm, event);
       });
     }
+    initializeBookingDialog();
 
-    function closeBooking() {
-      if (bookingDialog.open) bookingDialog.close();
-    }
-
-    document.querySelectorAll('a[href$="contact.html"], a[href$="/contact/"]').forEach(function (link) {
-      if (!/(plan|first class|request|ask about)/i.test(link.textContent)) return;
-      link.setAttribute("aria-haspopup", "dialog");
-      link.addEventListener("click", function (event) {
-        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        event.preventDefault();
-        openBooking(link);
-      });
-    });
-    bookingClose.addEventListener("click", closeBooking);
-    bookingDialog.addEventListener("click", function (event) {
-      if (event.target === bookingDialog) closeBooking();
-    });
-    bookingDialog.addEventListener("close", function () {
-      b.classList.remove("booking-open");
-      if (lastBookingTrigger && document.contains(lastBookingTrigger)) lastBookingTrigger.focus();
-    });
-    bookingDialog.addEventListener("cancel", function () {
-      b.classList.remove("booking-open");
-    });
     function postLead(data) {
       var controller = new AbortController();
       var timeout = window.setTimeout(function () { controller.abort(); }, 35000);
@@ -414,10 +424,6 @@
         });
     }
 
-    bookingForm.addEventListener("submit", function (event) {
-      submitLeadForm(bookingForm, event);
-    });
-
     document.querySelectorAll(".faqbtn").forEach(function (q) {
       q.onclick = function () {
         var a = document.getElementById(q.getAttribute("aria-controls")),
@@ -453,7 +459,7 @@
         pushAnalytics("get_directions", common);
         return;
       }
-      if (/(?:^|\/)(?:contact\.html|contact\/?)(?:[?#].*)?$/i.test(href) && !bookingDialog.open) {
+      if (/(?:^|\/)(?:contact\.html|contact\/?)(?:[?#].*)?$/i.test(href) && (!bookingDialog || !bookingDialog.open)) {
         common.form_name = "contact_page";
         pushAnalytics("booking_start", common);
       }

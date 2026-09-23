@@ -22,7 +22,7 @@ test('offline PHP booking/tag/strict-map/click-ID contract', phpOptions, () => {
 test('Homeschool is explicit in contact/popup options and maps as a class inquiry', () => {
   const vm = require('node:vm');
   const script = fs.readFileSync(path.join(root, 'site/assets/campaign-site.js'), 'utf8');
-  const popup = vm.runInNewContext(script.match(/bookingDialog.innerHTML =([\s\S]*?);\n    document.body.appendChild/)[1]);
+  const popup = vm.runInNewContext(script.match(/bookingDialog.innerHTML =([\s\S]*?);\n\s+document.body.appendChild/)[1]);
   const contact = fs.readFileSync(path.join(root, 'site/campaign/contact.html'), 'utf8');
   for (const html of [popup, contact]) assert.match(html, /<option>Homeschool<\/option>/);
   const code = script.slice(script.indexOf('function leadType('), script.indexOf('function leadType(') + 1500);

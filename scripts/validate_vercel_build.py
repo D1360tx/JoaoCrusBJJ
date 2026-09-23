@@ -300,6 +300,17 @@ def main() -> None:
         f"/assets/campaign-site.js?v="
         f"{hashlib.sha256((ASSETS / 'campaign-site.js').read_bytes()).hexdigest()[:12]}"
     )
+    book_html = (DIST / "book" / "index.html").read_text(encoding="utf-8")
+    book_digest = hashlib.sha256((ASSETS / "campaign-site.js").read_bytes()).hexdigest()[:12]
+    book_asset = f"campaign-site.{book_digest}.js"
+    check('<body data-booking-only>' in book_html, "booking page must opt out of lead-dialog initialization")
+    check(f'/assets/{book_asset}' in book_html, "booking page must load its immutable shared runtime")
+    check((DIST / "assets" / book_asset).read_bytes() == (ASSETS / "campaign-site.js").read_bytes(), "booking runtime must match source hash")
+    check('noindex,nofollow' in book_html and 'https://joaocrusbjj.com/book/' in book_html, "booking page must preserve noindex and canonical")
+    check(not re.search(r'<form\b|<dialog\b|lead\.php|type=[\"\']submit|(?:src|href)=[\"\'][^\"\']*quiz', book_html, re.I), "booking page must not expose a form, quiz, endpoint or submit control")
+    booking_links = re.findall(r'href="(https://api\.leadconnectorhq\.com/widget/booking/[^\"]+)"', book_html)
+    check(booking_links == [f"https://api.leadconnectorhq.com/widget/booking/{slug}" for slug in ("adults-first-ds", "little-champions-first-ds", "youth-first-ds", "homeschool-first-ds", "youth-first-austin")], "booking page must preserve exactly five approved calendar URLs")
+
     for event_name in (
         "lead_submit_error",
         "booking_start",
