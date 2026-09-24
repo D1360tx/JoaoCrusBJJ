@@ -27,6 +27,13 @@
 
 ---
 
+## Canonical shared navbar (2026-09-24)
+
+- Supersedes the Resources/Practice Under Pressure navigation exclusions below: all 25 manifest-indexable routes use one build-time `site/campaign/components/main-navbar.html`. Source pages contain one placeholder, not duplicated global nav. Preserve contextual program rows and existing footer/contextual Resources discovery.
+- Order: Programs (existing destinations), Schedule, Locations, About, Resources, Coaches, Plan a first class. Exact destination links alone receive `aria-current="page"`; routes without an exact navbar destination have no false active page.
+- Dedicated scoped navbar CSS/JS owns menu/dropdown behavior; legacy runtime selectors do not match it. Resources gains no campaign runtime or lead dialog. Noindex routes retain their existing headers.
+- Release only indexable HTML plus the two dedicated versioned navbar assets. Preserve exact live runtime references and require header-only normalized baseline parity, full backup, checksum allowlist and public read-back. No shared runtime/backend/consent/analytics overwrite or provider mutations.
+
 ## Approved Resources promotion (2026-09-24)
 
 - Diego approved promoting Resources from `ae0ba9f8e83a5b8b37ecee3d7f78f5997fd6a2b9` to `/resources/`, preserving all five resources, destinations, copy and desktop alternating/mobile preview-first layout.

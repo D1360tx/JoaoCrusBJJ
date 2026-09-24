@@ -9,6 +9,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from main_navbar import validate_navbar
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -190,12 +191,16 @@ def main() -> None:
         check(visible_signal in page_html, f"{path}: priority sitelink visible signal is missing")
 
     global_label_contract = {
-        "/classes-schedule/": "Class Schedule",
-        "/coaches/": "Instructors & Coaches",
+        "/classes-schedule/": "Schedule",
+        "/coaches/": "Coaches",
         "/contact/": "Plan a First Class",
     }
     for page in pages:
         page_html = route_file(page["path"]).read_text(encoding="utf-8")
+        try:
+            validate_navbar(page_html, page)
+        except AssertionError as error:
+            check(False, str(error))
         if args.production:
             check(
                 page_html.count(call_tracking_url) == 1,
@@ -227,7 +232,7 @@ def main() -> None:
             encoded_label = label.replace("&", "&amp;")
             check(
                 re.search(
-                    rf'<(?:header|footer)\b.*?<a\b[^>]*href="{re.escape(href)}"[^>]*>{re.escape(encoded_label)}</a>',
+                    rf'<(?:header|footer)\b.*?<a\b[^>]*href="{re.escape(href)}"[^>]*>{re.escape(encoded_label)}</a\s*>',
                     page_html,
                     re.IGNORECASE | re.DOTALL,
                 ) is not None,

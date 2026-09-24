@@ -15,6 +15,7 @@ import hashlib
 import re
 import shutil
 from pathlib import Path
+from main_navbar import apply_navbar, validate_navbar
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "site" / "campaign"
@@ -329,6 +330,8 @@ def main() -> None:
         html = apply_robots_directive(html, page, args.production)
         if args.production:
             html = add_call_tracking(html)
+        html = apply_navbar(html, page)
+        validate_navbar(html, page)
         target = output_path(page["path"])
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(html, encoding="utf-8")
