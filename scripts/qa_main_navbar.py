@@ -52,6 +52,8 @@ async def run(args):
                             assert await h.locator('.jc-main-links').is_visible()
                         else:assert not await button.is_visible()
                         await summary.focus();await page.keyboard.press('Enter');assert await h.locator('details').get_attribute('open') is not None
+                        row['open_navbar_axe']=await page.evaluate('async()=> (await axe.run(document.querySelector("[data-main-navbar]"))).violations.map(v=>v.id)')
+                        assert not row['open_navbar_axe'],(route,width,row['open_navbar_axe'])
                         await page.keyboard.press('Escape');assert await h.locator('details').get_attribute('open') is None
                         assert await summary.evaluate('(e)=>e===document.activeElement')
                         await summary.click();await h.locator('.jc-main-brand').focus();await h.locator('.jc-main-mark').click(position={'x':2,'y':2},trial=True)
