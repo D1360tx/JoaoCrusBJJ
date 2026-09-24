@@ -6,7 +6,7 @@ const root = path.resolve(__dirname, '..');
 const read = p => fs.readFileSync(path.join(root,p),'utf8');
 const html = read('site/campaign/resources.html');
 const built = read('dist/resources/index.html');
-const urls = ['https://grapplewithemotions.com/','https://jiu-jitsuclasses.online/courses/','https://blueprint.justjiuit.com/','https://boundaryguard.joaocrusbjj.com/','https://blackbeltparenting.net/'];
+const urls = ['https://grapplewithemotions.com/','https://www.jiu-jitsuclasses.online/courses/','https://blueprint.justjiuit.com/','https://boundaryguard.joaocrusbjj.com/','https://blackbeltparenting.net/'];
 test('resources: five approved destinations, preview-first accessible cards',()=>{
  const cards=[...html.matchAll(/<article\b[^>]*>([\s\S]*?)<\/article>/g)];assert.equal(cards.length,5);
  cards.forEach(([all,body],i)=>{assert.match(body,/^\s*<figure class="jr-preview">/);assert.ok(body.includes(`href="${urls[i]}"`));assert.match(body,/target="_blank" rel="noopener noreferrer external"/);assert.ok(body.indexOf('</figure>')<body.indexOf('class="jr-project-copy"'));});

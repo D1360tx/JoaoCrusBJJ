@@ -444,7 +444,7 @@ def main() -> None:
             check('jr-footer-links bottom' in html, 'Resources needs the shared Privacy choices host')
             check('Draft Preview' not in html and 'resources-draft' not in html,
                   'Resources production artifact must not retain draft semantics')
-            for destination in ('https://grapplewithemotions.com/', 'https://jiu-jitsuclasses.online/courses/',
+            for destination in ('https://grapplewithemotions.com/', 'https://www.jiu-jitsuclasses.online/courses/',
                                 'https://blueprint.justjiuit.com/', 'https://boundaryguard.joaocrusbjj.com/',
                                 'https://blackbeltparenting.net/'):
                 check(f'href="{destination}" target="_blank" rel="noopener noreferrer external"' in html,
