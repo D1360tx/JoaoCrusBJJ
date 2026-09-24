@@ -2,21 +2,21 @@
 
 # Joao Meta Ads Creative Workroom
 
-**As of:** 2026-09-23  
+**As of:** 2026-09-24 (static-only scope update)
 **Markets:** Dripping Springs and Austin / Castle Hill  
 **Status:** Internal working brief. Copy and production recommendations require approval. No authorization to upload, change an existing ad, activate spend, deploy a page, or call video-generation APIs.  
 **Outcome:** Finalize the first four ad packages, then separately authorize loading them as paused ads.
 
 ## 1. Start here
 
-Build **two controls plus two challengers**, not the whole library:
+Build **two static controls plus two static challengers**. Video is deferred by the user's latest direction, not a first-wave dependency.
 
-1. `DS_YOUTH_CONTROL_Y02`: migrate the existing calm/problem-solving static without editorial changes.
-2. `DS_YOUTH_CH01_PARTNER-RESET`: real Youth partner drill, clear tap, release and reset.
-3. `AUS_CONTROL_AY09A_LONG-VIDEO`: migrate the existing mixed Adults + Youth beginner-welcome video without editorial changes.
-4. `AUS_ADULT_CH01_BEGINNER-COACHING`: a dedicated adult first-class coaching sequence.
+1. `DS_YOUTH_CONTROL_Y02`: exact existing single-image control, ad `120251283184710072`, creative `1614797546902344`. No new crop, copy or CTA.
+2. `DS_YOUTH_CH01_TAP-STOP-RESET_STATIC`: new real Youth partner-practice photo with curriculum-led copy. Local 1:1 + 9:16 review exports now exist.
+3. `AUS_CONTROL_AY09B_STATIC`: exact existing mixed Adults + Youth static, ad `120251263002380072`, creative `1567708678432946`.
+4. `AUS_ADULT_CH01_AA01_STATIC`: existing adult beginner static, ad `120251260015570072`, creative `2077252959817026`.
 
-The first work is creative approval and an asset/release audit. The combined campaign is a paused shell with no ads. Nothing in this document marks a challenger produced or an incumbent cloned. Keep the Age-3 incumbent separate. Keep later Youth, Adult and AI-guide ideas in rotation inventory rather than adding them all to delivery.
+This is a local production/review package, not upload or activation authorization. The historical campaign-shell read below is dated September 23, not a fresh status census. No Meta objects were changed. Keep Age-3 separate. AY09A, both filmed coaching concepts, all AI-guide video and all capture/edit work are deferred.
 
 **Repository status:** PR [#123](https://github.com/D1360tx/JoaoCrusBJJ/pull/123) is merged. This consolidated workroom is the successor document on branch `docs/meta-ads-creative-workroom-20260923`, based on current `origin/main`.
 
@@ -50,14 +50,14 @@ Newest specific verified state wins over an old creative ID or README. A concept
 
 The September 21 execution plan records 7-day-click attribution. Re-read the actual attribution specification before upload/cutover. Combined planned budget is $30/day. The separate Age-3 DS lane is $5/day in that plan, giving a $35/day intended steady-state portfolio, not permission to add $30/day on top of every older campaign still delivering.
 
-### Controls: META LIVE READBACK creative identity, historical performance window
+### Historical incumbent performance context, not the new static selection
 
 | Slot | Existing source ad | Current source creative supplied | Through Sep 20 | Destination |
 |---|---|---|---|---|
 | DS Youth | `120251283184710072`, `Y02_CALM-PROBLEM-SOLVING_STATIC` | `1614797546902344` | $25.44 spend, 1 website lead | `/kids-first-class/` |
 | Austin mixed | `120251263139970072`, `AY09A_BEGINNERS-WELCOME_LONG-VIDEO` | `1571675311324124` | $146.25 spend, 2 website leads, source reports $73.13 CPL | `/castle-hill-grand-opening/` |
 
-These are **incumbent controls, not statistically established winners**. The Austin ad is not a pure adult ad. Neither supplied result establishes qualified conversations, attended visits, enrollment or CAC. Do not compare the two locations' CPLs as a controlled experiment.
+The preceding Y02/AY09A table preserves the prior plan's historical context. AY09A is deferred and its results must not be attributed to AY09B. Selected static identities are in section 5. These are **incumbents, not statistically established winners**. The Austin ad is not a pure adult ad. Neither supplied result establishes qualified conversations, attended visits, enrollment or CAC. Do not compare the two locations' CPLs as a controlled experiment.
 
 The September 21 plan calls for pausing `Y03_FIND-YOUTH-CLASS_STATIC`, ad `120251283184900072`, leaving Y02 and AY09A running while replacements are built, and leaving Age-3 untouched. Those are future authorized-execution instructions, not actions performed here. Re-read all existing statuses before acting. Snapshot performance first. Do not infer that Y03 is currently paused or the controls currently active from this document.
 
@@ -73,7 +73,7 @@ The September 21 plan calls for pausing `Y03_FIND-YOUTH-CLASS_STATIC`, ad `12025
 
 Austin address: **1112 N Lamar Blvd, Austin, TX 78703, inside Castle Hill Fitness**. DS address in the decision file: **120 Frog Pond Lane, Suite 200, Dripping Springs, TX 78620**. Reconfirm schedules, capacity and any public address details at approval/upload, not by inheriting an old end card.
 
-**Approved next-step model in the worktree's dated decisions:** complete the finder, Joao personally calls to discuss fit and arrange a free studio visit. The visitor or child may observe or participate. The finder does not instantly book a place. Use `LEARN_MORE` for the first wave. Do not add a price, deposit, uniform bonus, unlimited trial, guarantee, urgency or scarcity without new confirmation.
+**Approved next-step model in the worktree's dated decisions:** complete the finder, Joao personally calls to discuss fit and arrange a free studio visit. The visitor or child may observe or participate. The finder does not instantly book a place. Use `LEARN_MORE` for new static creatives and the existing Austin pair; preserve Y02's exact `SEE_DETAILS` control CTA. Do not add a price, deposit, uniform bonus, unlimited trial, guarantee, urgency or scarcity without new confirmation.
 
 Austin retains the combined child/adult choice at quiz entry, with no preselected branch and contact capture last. Preserve the existing `austin-program-fit` routing contract. `/austin-youth-first-class/` and `/austin-adults-first-class/` are retained comparisons, not default launch destinations. A noindex paid landing page can be intentional; noindex alone does not prove the lead path is disconnected or ready.
 
@@ -103,20 +103,18 @@ Use independent gates: `FACTS`, `RELEASES`, `VENUE`, `MEDIA`, `COPY`, `DESTINATI
 
 Use `AUS` for new matrix names; retain older `ATX`, `AY`, `AA`, `P1/P2` names as aliases. Do not rename live incumbents simply to make the taxonomy tidy. Formats and location derivatives are executions of a concept, not automatically new hypotheses. New campaign ad names become the exact `utm_content` values.
 
-## 5. Priority matrix: the eight ABO slots
+## 5. Exact four-static matrix and creation readiness
 
-These are the September 21 execution-plan slots. New packages remain proposed.
+| Slot | Source ad / creative | Exact media | Creation readiness |
+|---|---|---|---|
+| `DS_YOUTH_CONTROL_Y02` | `120251283184710072` / `1614797546902344` | Single-image hash `a1ed68821a64c8bd65985d4e7a9ab33e`; preserve incumbent, do not invent a placement pair | Existing source; faithful clone requires current full payload/opt-out read and separate approval |
+| `DS_YOUTH_CH01_TAP-STOP-RESET_STATIC` | New local concept; no Meta IDs | [Square](../assets/meta/dripping-springs/static-wave-1/DS_YOUTH_CH01_TAP-STOP-RESET_STATIC_1x1.png) + [vertical](../assets/meta/dripping-springs/static-wave-1/DS_YOUTH_CH01_TAP-STOP-RESET_STATIC_9x16.png) | Produced and locally QAed; exact copy/curriculum approval and paid-media guardian releases remain gates |
+| `AUS_CONTROL_AY09B_STATIC` | `120251263002380072` / `1567708678432946` | Feed `a35ae481c4a5fc565115ed45b80f476f`; vertical `1e0bbe2da0912a0c768aa97776824260` | Existing placement-paired source; adult participant rights and native previews still gated |
+| `AUS_ADULT_CH01_AA01_STATIC` | `120251260015570072` / `2077252959817026` | Square `256015d83ed27def18afda5ce5396d94`; vertical `7a7a3626c696701abff058e55df660c5` | Existing paired exports/payload; venue use, current schedule, attribution and paused-clone approval still gated |
 
-| Priority | Exact slot | Angle / visible proof | Reuse versus production | Current workroom state / next step |
-|---|---|---|---|---|
-| First four | `DS_YOUTH_CONTROL_Y02` | Calm problem-solving, partner responsibility | Reuse live approved media/copy/placement structure | Source control exists; export current creative and audit permissions before paused clone |
-| First four | `DS_YOUTH_CH01_PARTNER-RESET` | Tap, release, reset, coached partner practice | Script mechanisms from Kaiden, AY02, P2-B1/B2; real Youth footage required | BRIEF; select or film permissioned sequence |
-| Later | `DS_ADULT_CH01_BEGINNER-COACHING` | First-class greeting and clear correction | Reuse adult shoot grammar, not an Austin-labelled export | SOURCE; localize DS, verify adult destination |
-| Later | `DS_ADULT_CH02_USEFUL-WORKOUT` | Useful technical skill + shared practice | National-sweep motivation only; new Joao footage/copy | SOURCE; avoid fitness guarantees or invented community outcomes |
-| First four | `AUS_CONTROL_AY09A_LONG-VIDEO` | Complete beginners welcome, Adults + Youth | Current live placement-paired video/copy, not an older local creative ID | Source control exists; read back current creative and native placement previews |
-| First four | `AUS_ADULT_CH01_BEGINNER-COACHING` | Adult-only first-class walkthrough | AA02 script architecture; new or audited real adult teaching sequence | BRIEF; permissioned footage and adult-specific edit needed |
-| Later | `AUS_YOUTH_CH01_BELONGING` | Clear way into a group for beginners | AY07 revised artwork is a reusable candidate, not release-cleared by default | Existing historical package; verify rights/current copy and create localized paired asset if needed |
-| Later | `AUS_YOUTH_CH02_CALM-PROBLEM-SOLVING` | Coach cue, correction, second attempt | Y02 mechanism + AY04/P2-A2 | SOURCE; use Austin-labelled copy, no false claim that DS footage is Castle Hill footage |
+The three source creatives' copy, image hashes and placement structures were re-read on September 24 via read-only Meta calls. This does not verify ad status, permissions or downstream lead receipt. There are exactly four selected concepts, not four newly created Meta ads. [DS contact sheet](../assets/meta/dripping-springs/static-wave-1/contact-sheet.jpg), [manifest](../assets/meta/dripping-springs/static-wave-1/manifest.json), [render/validation script](../assets/meta/dripping-springs/static-wave-1/render.py).
+
+All video concepts and the remaining four ABO library slots are later inventory. AA01 is now the selected adult static challenger, not a silent substitute for a filmed coaching sequence. AY09B replaces AY09A only in this production queue; do not mutate or pause AY09A based on this document.
 
 ## 6. Existing concept registry and alias map
 
@@ -134,8 +132,8 @@ Source: `assets/ads-podcast/03-austin-castle-hill-launch.md` in the Austin campa
 | AY04 | Miss Reset Solve, video | Austin Calm Problem-Solving / P2-A2 | Script/shot plan; sequence must show real correction and retry |
 | AY05 | Castle Hill Youth, static | Location and after-school fit / P2-C2 | Facility-safe exports and historical ad; remove stale “coming” language in a separately approved version |
 | AY06 | After-School Start, video | Location/fit / P2-C2 | Script/shot plan; venue footage and exact schedule gated |
-| AA01 | Beginner Starts Here, static | Adult beginner reassurance | Facility-safe exports and historical ad; possible fallback, not proof of real coaching |
-| AA02 | First Class Without Ego, video | Austin Adult Beginner Coaching | Script/shot plan reused for first challenger |
+| AA01 | Beginner Starts Here, static | Adult beginner reassurance | Facility-safe exports and historical ad; selected static challenger, not proof of real coaching |
+| AA02 | First Class Without Ego, video | Austin Adult Beginner Coaching | Deferred script/shot plan; AA01 static selected instead |
 | AA03 | Calm Under Pressure, static | Adult technical practice rotation | Facility-safe exports and historical ad; no off-mat calm guarantee |
 | AA04 | Slow Down Reset, video | Adult coach-cue iteration | Script/shot plan; observable single technical correction |
 | AA05 | Group or Private, static | Adult practical-fit rotation | Facility-safe exports and historical ad; do not inherit injury-related personalization |
@@ -150,7 +148,7 @@ Source worktree: `/home/d1360/joao-austin-youth-ay07-ay08/`, primarily `assets/m
 | AY07 | Original “Youth 8–12 on purpose,” revised to beginner belonging | Source ad `120251261010900072`; historical revised creative `1687998043330822`. Prefer revised concept: “THERE'S ROOM / TO BE A BEGINNER.” Real four-girl group photo is evidence of warmth, not proof of instant friendship or a Castle Hill class. Paid-media releases still required. |
 | AY08 | Real Practice static | Source ad `120251261015960072`; historical creative `1094650096414688`. Square/vertical assets exist. Supplied Youth group photo does not demonstrate a technical correction. Match copy to what it shows. |
 | AY09 | Original short Joao video | Source ad `120251261045730072`; historical creative `1107882611663240`. Source-boundary evidence says its cut ended mid-thought after “meet.” Preserve history, do not select it as the replacement control. |
-| AY09A | Longer beginner-welcome video, later Adults + Youth artwork | Source ad `120251263139970072`. Local comparisons preserve 26.866-second 4:5 and 9:16 exports. Handoff current creative is `1571675311324124`; older local IDs are not current proof. First-wave control. |
+| AY09A | Longer beginner-welcome video, later Adults + Youth artwork | Source ad `120251263139970072`. Local comparisons preserve 26.866-second 4:5 and 9:16 exports. Handoff current creative is `1571675311324124`; older local IDs are not current proof. Deferred video control; not selected for static wave. |
 | AY09B | Beginner-welcome static, Adults + Youth | Source ad `120251263002380072`. Local selected adult group source and square/vertical exports exist. Historical creative IDs vary by revision; re-fetch before reuse. Adult group is not Youth, beginner teaching or Castle Hill location evidence. |
 
 AY07 research adds four single-angle variants: **earned progress**, **belonging/connection**, **reset after frustration**, **boundaries under pressure**. Keep these in rotation. Use a coaching sequence for progress/reset, partner introductions for connection, and tap/release for boundaries. Do not publish the fear-leaning “hard moments when you are not there” line without a fresh claim review. Prefer direct observable practice.
@@ -212,69 +210,62 @@ Adjacent backlog, not first-wave ads: private-coaching calendar-fit/individualiz
 - **Exact current description:** `Safe, coached practice`.
 - **Exact current CTA:** `SEE_DETAILS`.
 - **Control rule:** preserve the exact current body, headline, description, CTA and media for the faithful control. Do not substitute newly written copy and call it unchanged.
-- **Media:** preserve current approved source assets, identity, placement rules and opt-outs. Verify actual dimensions and all placement previews.
+- **Media:** exact single-image hash `a1ed68821a64c8bd65985d4e7a9ab33e`, not a placement pair. Preserve source identity and opt-outs. Verify actual dimensions and native placement previews.
+- **Exact source link and CTA value.link:** `https://joaocrusbjj.com/kids-first-class/?utm_source=meta&utm_medium=paid_social&utm_campaign=youth_8_12_wave1&utm_content=y02_calm_problem_solving&utm_term={{adset.name}}&utm_creative={{ad.name}}`. Preserve the incumbent; any new-campaign tracking migration is a separately approved change.
 - **Destination:** `https://joaocrusbjj.com/kids-first-class/`.
 - **Required work:** retrieve source payload and asset references, verify releases/facts, approve campaign-specific tracking, then later create one paused clone. New ad/creative IDs remain blank until actual creation/readback.
 
-### 02. DS challenger: `DS_YOUTH_CH01_PARTNER-RESET`
+### 02. DS challenger: `DS_YOUTH_CH01_TAP-STOP-RESET_STATIC`
 
-**PROPOSED exact copy, subject to Joao/Diego approval:**
+**PROPOSED copy, not approved:**
 
-- **Primary text:** Dripping Springs Youth BJJ, ages 8–12. Tap. Stop. Reset. Practice responding to a partner and trying again with a coach. Complete the class finder and Joao will personally call to help plan a free studio visit. Your child can watch or participate.
+- **Primary text:** Dripping Springs Youth BJJ, ages 8-12. Practice tapping, stopping and resetting with a partner. Explore a free visit.
 - **Headline:** Tap. Stop. Reset.
 - **Description:** Youth BJJ in Dripping Springs
 - **CTA:** `LEARN_MORE`.
 - **Destination:** `https://joaocrusbjj.com/kids-first-class/`.
-- **Opening frame:** `DRIPPING SPRINGS · YOUTH AGES 8–12` plus `TAP. STOP. RESET.`
+- **Artwork:** `DRIPPING SPRINGS | YOUTH 8-12`, `TAP. STOP. RESET.`, `WHAT STUDENTS PRACTICE`, `Practice the stop signal.`, `Respond to a partner. Try again.`, `EXPLORE YOUTH BJJ`.
+- **Produced:** 1080×1080 and 1080×1920 PNGs in [static-wave-1](../assets/meta/dripping-springs/static-wave-1/README.md). Source `site/assets/campaign-images/kids-training.webp` and official `site/assets/joao-crus-bjj-logo.png`; no generated people, no alteration to the source scene, full photo aspect ratio retained.
+- **Evidence boundary:** the frame shows Youth partner practice only, not a visible tap, immediate release or reset. The heading explicitly describes what students practice. Joao must approve the curriculum wording. It is not a sequence or proof of a guaranteed safety outcome.
+- **Activation gate:** obtain a specific paid-media guardian release for each identifiable minor, with source and derivative scope. Website publication is provenance, not release proof. No upload is authorized here.
+- **Technical QA:** manifest records source/output SHA-256, dimensions, measured text/photo/logo rectangles, conservative safe zones, zero element overlap, and character counts. Native placement previews are a later gate.
 
-**Proposed 18–22-second edit:**
-
-| Time | Picture | Voice / captions |
-|---|---|---|
-| 0–3s | Real controlled tap and immediate release, coach in context | “Tap means stop.” |
-| 3–9s | Show both partners resetting, no painful submission | “Youth students practice responding to a partner's signal and resetting with a coach.” |
-| 9–14s | One coach cue and another slow repetition | “Then they try the next step together.” |
-| 14–22s | Clear local end card, calm scene | “Explore Youth BJJ for ages 8–12 in Dripping Springs. Complete the finder. Joao personally calls.” |
-
-Deliver 1080×1080 feed and 1080×1920 vertical exports, captioned and sound-off legible. Adjust pacing after a real read rather than speeding through the callback. If existing footage cannot show an immediate stop and coached reset clearly, film it with releases or hold the concept. A group photograph does not prove this sequence. Keep the offer, destination and audience aligned with Y02; acknowledge video versus static is a creative-package difference, not a pure isolated hook test.
-
-### 03. Austin control: `AUS_CONTROL_AY09A_LONG-VIDEO`
+### 03. Austin control: `AUS_CONTROL_AY09B_STATIC`
 
 - **Target ad set:** `120251542146660072`.
-- **Source:** ad `120251263139970072`, current creative `1571675311324124` from direct Meta readback.
-- **Role:** mixed Adults + Youth incumbent. Do not relabel its historical leads as adult leads without CRM evidence.
+- **Source:** ad `120251263002380072`, creative `1567708678432946`.
 - **Exact current primary text:** “You or your child do not have to feel ready before starting.\n\nIn Youth BJJ at Castle Hill Fitness, ages 8–12 build confidence through coached practice, respectful partner work, and real progress.\n\nFor adults, private BJJ instruction at Castle Hill Fitness offers focused coaching, practical problem-solving, and progress at your own pace.\n\nComplete beginners are welcome.\n\nFind the right starting point in Austin.”
-- **Exact current headline:** `You Don’t Have to Feel Ready`.
-- **Exact current description:** `Adults + Youth Ages 8–12 in Austin.`
-- **Exact current CTA:** `LEARN_MORE`.
-- **Copy/media:** clone the current exact body/headline/description, complete spoken thought, audience footer, identity and placement assignment. Local comparison copy is recovery evidence, not permission to replace the current version.
-- **Destination:** `https://joaocrusbjj.com/castle-hill-grand-opening/`.
-- **Format conflict:** local historical control uses 4:5 feed + 9:16 video. The ABO plan asks for 1:1 + 9:16. Preserve the incumbent's actual live feed mapping for a faithful control, or approve a separately named square derivative. Do not silently crop the control and claim no creative change.
-- **Required work:** current API payload/export, source-media and transcript comparison, venue/video rights, opening-date page audit and paused-clone tracking approval.
-
-### 04. Austin challenger: `AUS_ADULT_CH01_BEGINNER-COACHING`
-
-**PROPOSED exact copy, subject to Joao/Diego approval:**
-
-- **Primary text:** Adult BJJ inside Castle Hill Fitness. A first class is a starting point, not an audition. Learn a position, ask a question, and practice the next step with a coach. Use the finder and Joao will personally call to discuss a group or private starting point.
-- **Headline:** A Clear First Step in Adult BJJ
-- **Description:** Inside Castle Hill Fitness
+- **Exact headline:** `You Don’t Have to Feel Ready`.
+- **Exact description:** `Adults + Youth Ages 8–12 in Austin.`
 - **CTA:** `LEARN_MORE`.
 - **Destination:** `https://joaocrusbjj.com/castle-hill-grand-opening/`.
-- **Opening frame:** `CENTRAL AUSTIN · ADULT BJJ` plus `A FIRST CLASS IS A STARTING POINT.`
+- **Identity:** Page `977808342257807`, Instagram `17841402345785819`.
+- **Mapping:** `PLACEMENT`, `SINGLE_IMAGE`; `vertical` priority 1 for Facebook story/facebook_reels and Instagram story/reels; `feed` priority 2 default. Preserve both exact hashes in the matrix.
+- **Current dedicated URL parameters:** `utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}`.
+- **Local recovery assets:** `/home/d1360/joao-austin-youth-ay07-ay08/assets/meta/castle-hill/youth-wave-2/comparisons/AY09B_BEGINNERS-WELCOME_STATIC_{1x1,9x16}-adults-youth.png`. Preserve originals; use exact Meta hashes as source identity, not an assumed equivalence from filename.
+- **Boundary:** posed adult group is not Youth, beginner coaching or Castle Hill class evidence. Paid participant permission remains an activation gate. AY09A's historical spend/leads do not transfer to AY09B.
 
-**Proposed 18–22-second edit:**
+### 04. Austin challenger: `AUS_ADULT_CH01_AA01_STATIC`
 
-| Time | Picture | Voice / captions |
-|---|---|---|
-| 0–3s | Joao greeting an adult or real beginner instruction | “A first class is a starting point, not an audition.” |
-| 3–10s | One position explained, slow drill, clear feedback | “Learn a position. Ask a question. Practice the next step with a coach.” |
-| 10–15s | Respectful partner reset or approved private correction | “Explore adult BJJ inside Castle Hill Fitness.” |
-| 15–22s | Adult-only location/CTA end card | “Use the finder. Joao personally calls to discuss your starting point.” |
+- **Source:** ad `120251260015570072`, creative `2077252959817026`.
+- **Exact current primary text:** You do not need to get in shape before starting jiu-jitsu. You need a place where beginner questions are expected and the first step is clear. Adult group classes meet Tue/Thu from 6:00–7:00 p.m. inside Castle Hill Fitness.
+- **Exact headline:** `New to Jiu-Jitsu? Start Here.`
+- **Exact description:** `Beginner-friendly adult BJJ in Austin`.
+- **CTA:** `LEARN_MORE`.
+- **Identity:** Page `977808342257807`, Instagram `17841402345785819`.
+- **Existing square:** [AA01 1x1](../assets/meta/castle-hill/safe-wave-1/images/1x1/AA01_BEGINNER-STARTS-HERE_STATIC_1x1.png).
+- **Existing vertical:** [AA01 9x16](../assets/meta/castle-hill/safe-wave-1/images/9x16/AA01_BEGINNER-STARTS-HERE_STATIC_9x16.png).
+- **Mapping:** `PLACEMENT`, `SINGLE_IMAGE`; `vertical` priority 1 for Facebook story/facebook_reels and Instagram story/reels; `square` priority 2 default. Preserve matrix hashes.
+- **Exact current website URL:** `https://joaocrusbjj.com/castle-hill-grand-opening/?utm_source=meta&utm_medium=paid_social&utm_campaign=austin_castle_hill_launch_v1&utm_content=AA01_BEGINNER-STARTS-HERE_STATIC&utm_term={{adset.name}}&utm_id={{campaign.id}}`. No dedicated `url_tags` returned in this read.
+- **Boundary:** facility plus official logo, not real coaching evidence or proof of an assigned class room. Reconfirm schedule and venue permission. New-campaign tracking normalization requires explicit approval, not edits to this incumbent.
 
-Deliver 1080×1080 and 1080×1920 versions. Show real adult coaching, not an AI-derived scene or a posed black-belt group relabeled as beginners. If filming at DS, do not imply the room is Castle Hill; label academy teaching footage when needed and use only an approved venue identifier. Use current schedule on an end card only after reconfirmation. Keep the combined destination and offer fixed against AY09A. This is a dedicated-adult package comparison against a mixed incumbent, not a clean causal test of one sentence.
+### Copy-limit review
 
-**Fallback if filming/rights are blocked:** prepare AA01's existing facility-safe static for a separate approval. It can test adult beginner messaging but cannot be labeled the real-coaching challenger. Do not auto-substitute it into the selected four.
+The new DS copy is 117 primary-text, 17 headline and 29 description characters, within the 125/40/30 review recommendations. Exact incumbent text remains unchanged even when exceeding those recommendations: long bodies may truncate; AY09B and AA01 descriptions exceed 30. These are recommendation exceptions, not evidence of API rejection. All four public copy cards must remain free of em dashes. Do not shorten a control and label it unchanged.
+
+### Deferred video inventory
+
+AY09A long video, DS Partner Reset filmed tap/release sequence, AA02-based adult coaching walkthrough, and synthetic-guide concepts are **deferred, not first-wave deliverables**. Preserve source scripts and existing media. Any later filmed mechanism requires a real clear tap, immediate release and reset; a still photograph cannot substitute as sequence proof. No filming, editing, generated video, voice API or video upload is required for this static package.
 
 ## 8. Asset reuse and production checklist
 
@@ -288,7 +279,7 @@ Deliver 1080×1080 and 1080×1920 versions. Show real adult coaching, not an AI-
 
 The original #114 Castle Hill image pack remains a blocked comparison, not an automatic asset source. Keep it and all prior versions intact.
 
-### One capture session, separate outputs
+### Deferred video capture session, not first-wave work
 
 1. **DS Youth:** coach cue, clear tap/release, reset, another repetition, optional partner introduction. Obtain guardian releases and record actual program/venue.
 2. **Adults:** greeting, question, slow technical explanation, partner drill, correction, optional private coaching. Obtain participant and coach paid-media permission.
@@ -308,15 +299,15 @@ Base URL is the audience-matched destination above. Proposed dedicated URL-param
 utm_source=meta&utm_medium=paid_social&utm_campaign=prospecting_youth_adults_ds_austin_abo_w1_202609&utm_content={{ad.name}}&utm_term={{adset.name}}&utm_id={{campaign.id}}
 ```
 
-This campaign slug is proposed, not a current live value. Preserve macros exactly. Use one canonical parameter representation with no duplicate/conflicting keys, no unsupported `utm_creative` and no manually appended `fbclid`. Legacy AY09 audits stored the parameters in `website_url` with `url_tags` absent. Moving to the dedicated field is a deliberate migration change: remove stale query keys from the new clone's base link, then verify the assembled landing URL. Do not edit the old control merely to normalize tracking.
+This campaign slug is proposed, not a current live value. Preserve macros exactly. Use one canonical parameter representation with no duplicate/conflicting keys, no unsupported `utm_creative` and no manually appended `fbclid`. Historical AY09 audits stored parameters in `website_url`; current AY09B has dedicated `url_tags`, while current AA01 still has query parameters in `website_url`. Moving to the dedicated field is a deliberate migration change: remove stale query keys from the new clone's base link, then verify the assembled landing URL. Do not edit the old control merely to normalize tracking.
 
 ### Step-by-step handoff, not executed here
 
 | Step | Owner | Acceptance evidence |
 |---|---|---|
-| Select the four and approve wording/format exception | Diego + Joao | Dated approval, current capacity, source-control copy frozen |
+| Approve the four-static matrix and proposed DS wording | Diego + Joao | Dated approval, current capacity, source-control copy frozen |
 | Clear media/venue/participant rights | Joao + Diego | Specific paid-media scope for each selected source and derivative |
-| Produce two challengers and audit two controls | Editor | Final paired exports, transcript, manifests and reviewed placement previews |
+| Review new DS pair and audit three existing statics | Editor | Exact media hashes, manifests and reviewed placement previews |
 | Audit actual destinations and callback flow | Web/CRM operator | Mobile CTA routing, correct child/adult branch, form acceptance and no stale date promises |
 | Authorize paused upload separately | Diego | Exact four names, two ad-set IDs, budgets unchanged, no activation |
 | Read source and parent objects before changes | Ads operator | Dated snapshot of budgets, targeting, attribution, source copy, media and identity |
@@ -339,7 +330,7 @@ The September 21 plan reserves 20% for testing: DS $2.40/day and Austin $3.60/da
 
 Recommended sequence:
 
-1. DS Y02 versus Partner Reset, and Austin AY09A versus dedicated adult beginner package, subject to enforceable allocation.
+1. DS Y02 versus Tap/Stop/Reset static, and Austin AY09B versus AA01 adult static, subject to enforceable allocation.
 2. DS adult concepts after adult routing and local media are ready.
 3. Austin Youth belonging versus calm/problem-solving after releases and sufficient budget/evidence.
 4. Within a promising concept, test a single hook while holding spokesperson, body, offer, destination, format and geography fixed.
@@ -349,7 +340,7 @@ The first-wave pairs differ in more than one element. Treat them as operational 
 ### Review gates
 
 - Check technical breakage immediately. Pause/reject broken ads only under the operator's authorized scope; do not wait for an impression quota to address wrong destinations or unsafe claims.
-- Otherwise use the plan's minimum 1,000 impressions per tested creative for diagnostic review. Examine outbound CTR, landing-page-view rate/cost, frequency and video retention.
+- Otherwise use the plan's minimum 1,000 impressions per tested creative for diagnostic review. Examine outbound CTR, landing-page-view rate/cost, frequency; video retention is deferred.
 - A low-budget test may not produce enough leads in 7–14 days. No winner from one lead. Expected-CPL spend benchmarks and an agreed stop-loss must be written before testing; the two incumbent results are sparse, not universal thresholds.
 - Graduate by qualified conversations, trial bookings, attendance, enrollment and qualified/enrolled CAC. Agree acceptable acquisition economics before scale; do not import temporary CRM opportunity value as verified revenue.
 
@@ -380,7 +371,7 @@ Deduplicate CRM people/opportunities, exclude synthetic records and record the a
 | AI framework says sequential markets / 3–5 ads | Later combined ABO plan governs first-wave allocation; AI matrix is inventory | Diego |
 | Younger-child AI concepts mixed into Youth+Adults | P1 stays DS Little Champions outside this first wave; no under-8 Austin ads | Creative reviewer |
 | Historical AY09A creative IDs disagree | Current handoff ID `1571675311324124` is source of truth pending upload-time live readback | Ads operator |
-| 1:1 requirement versus current 4:5 control | Preserve the actual control or approve a new square derivative explicitly | Diego + editor |
+| Deferred AY09A 4:5 video format conflict | Not a static-wave dependency; preserve historical video untouched | Diego + editor |
 | Historical AY09 clipped sentence | Do not reuse the original short cut as control; audit full current audio ending | Editor |
 | Public/Drive group images treated as permission | Provenance is not a paid release; children and adults each require clearance | Joao |
 | AI adult coaching image previously mistaken for real | Reject `adults-joao-coaching-hero-2026-07.webp` as documentary proof; real black-belt group is only posed group evidence | Editor |
@@ -394,13 +385,14 @@ Deduplicate CRM people/opportunities, exclude synthetic records and record the a
 ## 12. Approvals worksheet
 
 - [ ] Diego selects the exact first four names above.
-- [ ] Joao approves the two challenger copy cards and observable coaching claims.
+- [ ] Joao approves DS curriculum copy and AA01 reuse; no still is described as coaching-sequence proof.
 - [ ] Joao confirms current program capacity and published schedules.
-- [ ] Diego approves preservation of AY09A's actual live feed format, or orders a separately named derivative.
+- [ ] Preserve Y02 single-image and AY09B/AA01 exact paired mappings. No video format exception is needed.
 - [ ] Source-control copy/payload exports are attached; no invented control text.
 - [ ] Each selected image/clip has provenance and a specific paid-media release reference.
 - [ ] Castle Hill name/logo/facility use is covered for this proposed use.
-- [ ] Two challenger asset pairs are produced and reviewed; no AI API use assumed.
+- [x] New DS static pair and contact sheet produced with deterministic local QA.
+- [ ] Diego/Joao visually approve DS pair and review the three existing static sources; no AI API use assumed.
 - [ ] Destination, quiz branch, callback promise and opening-date truth pass current mobile QA.
 - [ ] New campaign UTMs survive into HighLevel latest-touch fields and submission notes.
 - [ ] Accepted website Lead browser/server deduplication and consent are verified.
@@ -425,4 +417,4 @@ Repository-local links resolve from this worktree where present. External worktr
 9. **National sweep:** `/home/d1360/workspaces/JoaoCrusBJJ-review/research/meta-ad-library-national-sweep-2026-09-21.md`. Borrow local identity, real class/group proof, beginner reassurance and a clear next step. Do not infer profit, continuous spend or Joao economics from ad longevity. Do not copy competitor free uniforms, unlimited passes, price points or urgency.
 10. **Adjacent private-story backlog:** `/home/d1360/workspaces/JoaoCrusBJJ-meta-leadgen-wave1/assets/ads-podcast/02-private-coaching-grown-men.md`.
 
-**Completion boundary:** this file consolidates strategy, source concepts, production instructions and release gates. It does not certify current media rights, production assets, full website behavior or lifecycle receipt. The campaign/ad-set state and two control payloads were read directly from Meta on 2026-09-23. No Meta changes, video-generation calls, production deployment or lead submission were performed while preparing it.
+**Completion boundary:** the static-only local package includes a produced DS pair, contact sheet, deterministic renderer and manifest. Existing static copy/media identities were read on September 24; campaign/ad-set state and performance above remain September 23/historical evidence. Media releases, copy approval, native previews, destination/tracking acceptance, upload and activation remain separate gates. No Meta mutation, video generation, deployment or lead submission occurred.

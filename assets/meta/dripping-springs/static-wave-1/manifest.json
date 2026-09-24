@@ -1,0 +1,284 @@
+{
+  "concept_id": "DS_YOUTH_CH01_TAP-STOP-RESET_STATIC",
+  "status": "LOCAL-REVIEW; NOT UPLOAD-READY",
+  "public_copy": {
+    "primary_text": "Dripping Springs Youth BJJ, ages 8-12. Practice tapping, stopping and resetting with a partner. Explore a free visit.",
+    "headline": "Tap. Stop. Reset.",
+    "description": "Youth BJJ in Dripping Springs",
+    "cta": "LEARN_MORE",
+    "destination": "https://joaocrusbjj.com/kids-first-class/"
+  },
+  "character_counts": {
+    "primary_text": 117,
+    "headline": 17,
+    "description": 29
+  },
+  "copy_limits": {
+    "primary_text": 125,
+    "headline": 40,
+    "description": 30
+  },
+  "photo_evidence": "Youth partner practice only. This frame does not prove a tap, immediate release or reset. Copy describes curriculum practice, not a depicted sequence.",
+  "activation_gates": [
+    "Specific paid-media guardian release for every identifiable minor",
+    "Joao/Diego exact copy and curriculum approval",
+    "Destination and attribution QA",
+    "Separate paused-upload and activation authorization"
+  ],
+  "source_assets": [
+    {
+      "path": "site/assets/campaign-images/kids-training.webp",
+      "sha256": "bc4d5e21bfcc3a1a433148848b28710fdca3a56e82571e024e3381fe5e6889cc",
+      "dimensions": [
+        1233,
+        817
+      ]
+    },
+    {
+      "path": "site/assets/joao-crus-bjj-logo.png",
+      "sha256": "894985fc6f9a593895ef07ec9bbcd6994b1aa5a9a0aaa6ce9286821dcab3fb29",
+      "dimensions": [
+        512,
+        512
+      ]
+    }
+  ],
+  "fonts": [
+    {
+      "path": "/mnt/c/Windows/Fonts/impact.ttf",
+      "sha256": "d8bbdb72e3f930157824b2e59677d3a912d4512c14a948e6656a2e3fb0c935ad"
+    },
+    {
+      "path": "/mnt/c/Windows/Fonts/arial.ttf",
+      "sha256": "b3658eadae55e682b5f69eb64c439c1ecc8f196c0bb8d4756d145d13bc86476a"
+    }
+  ],
+  "pillow_version": "12.3.0",
+  "safe_zone_policy": "Conservative local review bounds, not native placement-preview approval. Vertical reserves top 270, bottom 410 and right 180 pixels.",
+  "assets": [
+    {
+      "path": "DS_YOUTH_CH01_TAP-STOP-RESET_STATIC_1x1.png",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "47f47a76adde16f073daf4ca91c07fc6821083da33ebde59026426685686ca07",
+      "safe_bounds": [
+        48,
+        48,
+        1032,
+        1032
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            48,
+            48,
+            134,
+            134
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            156,
+            60,
+            354,
+            88
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "DRIPPING SPRINGS | YOUTH 8-12",
+          "bounds": [
+            156,
+            106,
+            577,
+            130
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "TAP. STOP. RESET.",
+          "bounds": [
+            48,
+            160,
+            748,
+            251
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "WHAT STUDENTS PRACTICE",
+          "bounds": [
+            48,
+            283,
+            464,
+            305
+          ]
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            160,
+            333,
+            920,
+            837
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "Practice the stop signal.",
+          "bounds": [
+            48,
+            865,
+            388,
+            894
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "Respond to a partner. Try again.",
+          "bounds": [
+            48,
+            907,
+            505,
+            936
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE YOUTH BJJ",
+          "bounds": [
+            68,
+            959,
+            320,
+            986
+          ]
+        }
+      ],
+      "photo_crop": "none; entire original frame proportionally resized",
+      "bytes": 468546
+    },
+    {
+      "path": "DS_YOUTH_CH01_TAP-STOP-RESET_STATIC_9x16.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "9de467ad033dbb0321738a6589cdbd7c707927b3a875b27f31c85b6ffd2ef906",
+      "safe_bounds": [
+        65,
+        270,
+        900,
+        1510
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            65,
+            270,
+            161,
+            366
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            183,
+            282,
+            381,
+            310
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "DRIPPING SPRINGS | YOUTH 8-12",
+          "bounds": [
+            183,
+            328,
+            604,
+            352
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "TAP. STOP. RESET.",
+          "bounds": [
+            65,
+            402,
+            727,
+            488
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "WHAT STUDENTS PRACTICE",
+          "bounds": [
+            65,
+            532,
+            481,
+            554
+          ]
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            65,
+            597,
+            900,
+            1150
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "Practice the stop signal.",
+          "bounds": [
+            65,
+            1178,
+            469,
+            1213
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "Respond to a partner. Try again.",
+          "bounds": [
+            65,
+            1228,
+            608,
+            1263
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE YOUTH BJJ",
+          "bounds": [
+            85,
+            1308,
+            337,
+            1335
+          ]
+        }
+      ],
+      "photo_crop": "none; entire original frame proportionally resized",
+      "bytes": 541907
+    }
+  ],
+  "contact_sheet": {
+    "path": "contact-sheet.jpg",
+    "sha256": "5c6f22e265db506efd10bfc5efc3853dfd717aab94c1c95e374b03e19fb8dd70",
+    "upload": false
+  },
+  "validation": {
+    "dimensions": "PASS",
+    "safe_bounds": "PASS",
+    "pairwise_overlap": "PASS",
+    "copy_limits": "PASS",
+    "no_em_dash": "PASS"
+  }
+}

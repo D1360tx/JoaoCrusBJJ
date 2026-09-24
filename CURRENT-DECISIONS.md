@@ -27,6 +27,13 @@
 
 ---
 
+## Meta first-wave static-only scope (2026-09-24)
+
+- User explicitly narrowed production to static ads now, video later. Local review production and repository documentation are authorized; no Meta mutation, upload or activation is authorized by this decision.
+- Selected four: DS Y02 exact single-image control; new DS Youth Tap/Stop/Reset static pair; Austin AY09B exact static control; Austin AA01 adult beginner static challenger. Preserve existing controls and earlier source assets.
+- DS source photo is Youth partner practice, not visible proof of tap/release/reset. Copy describes what students practice. Specific paid-media guardian releases and exact curriculum/copy approval remain gates.
+- See [static-only workroom](docs/META-ADS-CREATIVE-WORKROOM-2026-09-23.md). AY09A, filmed coaching challengers and synthetic video are deferred, not required to complete the static package.
+
 ## Approved full Bluehost booking pass (2026-09-22)
 
 - Diego approved implementation, PR merge, and surgical Bluehost deployment of `/book/` and `api/lead.php`. This supersedes the earlier draft-only routing restriction below for these two deployed paths only.

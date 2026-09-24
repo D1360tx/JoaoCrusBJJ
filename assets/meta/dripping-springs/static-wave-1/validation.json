@@ -1,0 +1,125 @@
+{
+  "result": "PASS",
+  "selected_static_concepts": 4,
+  "new_ds_exports": 2,
+  "deterministic_rerender": true,
+  "local_links_checked": 17,
+  "copy_counts": [
+    {
+      "field": "primary text",
+      "characters": 441,
+      "recommendation": 125,
+      "within_recommendation": false
+    },
+    {
+      "field": "headline",
+      "characters": 36,
+      "recommendation": 40,
+      "within_recommendation": true
+    },
+    {
+      "field": "description",
+      "characters": 22,
+      "recommendation": 30,
+      "within_recommendation": true
+    },
+    {
+      "field": "primary text",
+      "characters": 117,
+      "recommendation": 125,
+      "within_recommendation": true
+    },
+    {
+      "field": "headline",
+      "characters": 17,
+      "recommendation": 40,
+      "within_recommendation": true
+    },
+    {
+      "field": "description",
+      "characters": 29,
+      "recommendation": 30,
+      "within_recommendation": true
+    },
+    {
+      "field": "primary text",
+      "characters": 413,
+      "recommendation": 125,
+      "within_recommendation": false
+    },
+    {
+      "field": "headline",
+      "characters": 28,
+      "recommendation": 40,
+      "within_recommendation": true
+    },
+    {
+      "field": "description",
+      "characters": 35,
+      "recommendation": 30,
+      "within_recommendation": false
+    },
+    {
+      "field": "primary text",
+      "characters": 223,
+      "recommendation": 125,
+      "within_recommendation": false
+    },
+    {
+      "field": "headline",
+      "characters": 29,
+      "recommendation": 40,
+      "within_recommendation": true
+    },
+    {
+      "field": "description",
+      "characters": 37,
+      "recommendation": 30,
+      "within_recommendation": false
+    }
+  ],
+  "source_and_output_hashes": "PASS",
+  "existing_recovery_assets": [
+    {
+      "path": "assets/meta/castle-hill/safe-wave-1/images/1x1/AA01_BEGINNER-STARTS-HERE_STATIC_1x1.png",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "a17d8c97bb9256a437f5241ca4df493b0acdd1f7e5292cb970b5a7506507a9e1"
+    },
+    {
+      "external_recovery_path": "/home/d1360/joao-austin-youth-ay07-ay08/assets/meta/castle-hill/youth-wave-2/comparisons/AY09B_BEGINNERS-WELCOME_STATIC_1x1-adults-youth.png",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "912d76bc9c3636972089aede0aadc85c596b58ac39f4fc7e76212fa67876d474",
+      "note": "Local recovery hash; not proof of equivalence to Meta hash"
+    },
+    {
+      "path": "assets/meta/castle-hill/safe-wave-1/images/9x16/AA01_BEGINNER-STARTS-HERE_STATIC_9x16.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "d1e9eb5a12f287b79943b3d5cdabd9ce3e095552175b6f9bb0ae9bce7660cd74"
+    },
+    {
+      "external_recovery_path": "/home/d1360/joao-austin-youth-ay07-ay08/assets/meta/castle-hill/youth-wave-2/comparisons/AY09B_BEGINNERS-WELCOME_STATIC_9x16-adults-youth.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "7f66d2cc58ee00861e0beea8a4a201fd9ca9771d561396cdb4fdb5b77c044e8f",
+      "note": "Local recovery hash; not proof of equivalence to Meta hash"
+    }
+  ],
+  "visual_review": "Contact sheet inspected: no clipping, full partner-practice frame retained, text outside photo; native previews and user approval pending",
+  "remaining_gates": [
+    "Specific paid-media guardian release for every identifiable minor",
+    "Joao/Diego exact copy and curriculum approval",
+    "Destination and attribution QA",
+    "Separate paused-upload and activation authorization"
+  ]
+}
