@@ -432,11 +432,23 @@ def main() -> None:
             if html.find(asset) >= 0
         ]
         check(
-            (not lead_behavior_positions and page['path'] == '/sms-opt-in/')
+            (not lead_behavior_positions and page['path'] in ('/sms-opt-in/', '/resources/'))
             or (bool(lead_behavior_positions)
                 and html.find("assets/attribution.js") < html.find("assets/consent-controls.js") < min(lead_behavior_positions)),
             f"{page['path']}: attribution and consent controls must load before lead-form behavior",
         )
+        if page['path'] == '/resources/':
+            check(not lead_behavior_positions and '<form' not in html and '<iframe' not in html,
+                  'Resources must remain a no-form, non-embedded authority collection')
+            check(html.count('<article ') == 5, 'Resources must contain all five approved cards')
+            check('jr-footer-links bottom' in html, 'Resources needs the shared Privacy choices host')
+            check('Draft Preview' not in html and 'resources-draft' not in html,
+                  'Resources production artifact must not retain draft semantics')
+            for destination in ('https://grapplewithemotions.com/', 'https://jiu-jitsuclasses.online/courses/',
+                                'https://blueprint.justjiuit.com/', 'https://boundaryguard.joaocrusbjj.com/',
+                                'https://blackbeltparenting.net/'):
+                check(f'href="{destination}" target="_blank" rel="noopener noreferrer external"' in html,
+                      f'Resources destination changed: {destination}')
         canonical_url = f'https://joaocrusbjj.com{page["path"]}'
         check(f'<link rel="canonical" href="{canonical_url}">' in html, f"{page['path']}: canonical does not match manifest")
         schema_scripts = re.findall(r'<script\s+type="application/ld\+json">\s*(.*?)\s*</script>', html, re.DOTALL | re.IGNORECASE)
