@@ -19,7 +19,7 @@ async def run(args):
                 context=await browser.new_context()
                 # No lead, number-pool, provider, CAPI, analytics or messaging writes.
                 async def guard(r):
-                    if r.request.method not in ['GET','HEAD'] or not r.request.url.startswith(args.base):
+                    if r.request.method not in ['GET','HEAD'] or not (r.request.url.startswith(args.base) or r.request.url.startswith(('https://fonts.googleapis.com/', 'https://fonts.gstatic.com/'))):
                         await r.abort();return
                     await r.continue_()
                 await context.route('**/*',guard)
@@ -28,6 +28,9 @@ async def run(args):
                 page.on('response',lambda r:failed.append([r.status,r.url]) if r.status>=400 and r.url.startswith(args.base) else None)
                 await page.goto(args.base+route,wait_until='load')
                 await page.evaluate('document.fonts.ready')
+                deny=page.get_by_role('button',name='Turn off optional tracking',exact=True)
+                if await deny.is_visible():
+                    await deny.click()
                 await page.add_script_tag(path=args.axe)
                 for width in [390,768,1280,1440,1920]:
                     await page.set_viewport_size({'width':width,'height':950})
