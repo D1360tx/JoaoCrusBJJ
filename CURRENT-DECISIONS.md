@@ -27,6 +27,13 @@
 
 ---
 
+## Approved Resources promotion (2026-09-24)
+
+- Diego approved promoting Resources from `ae0ba9f8e83a5b8b37ecee3d7f78f5997fd6a2b9` to `/resources/`, preserving all five resources, destinations, copy and desktop alternating/mobile preview-first layout.
+- Preserve both comparison drafts on their review branch. Keep Resources out of primary navigation. Add a secondary footer discovery link on `/book/` and sitemap/llms entries. The booking route is the smallest existing HTML companion reproducible against live; broader footer/About discovery awaits shared-runtime baseline reconciliation.
+- Reuse the existing consent-gated GTM/GA4/Meta contract, with no new event owner, form, conversion or CAPI event. Resource outbound clicks are diagnostic Enhanced Measurement events, not leads or appointments.
+- Release only reviewed dedicated assets, canonical HTML, matching booking HTML companion and discovery files. Current main/live campaign-site.js drift must not be overwritten.
+
 ## Approved full Bluehost booking pass (2026-09-22)
 
 - Diego approved implementation, PR merge, and surgical Bluehost deployment of `/book/` and `api/lead.php`. This supersedes the earlier draft-only routing restriction below for these two deployed paths only.
