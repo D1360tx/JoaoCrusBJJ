@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "identical_rerender_files": 16,
+  "hashes": {
+    "AUS_C_FIRST_VISIT_1x1.png": "8f2cb4f25485c5641e37b643ac92274dbe599a3f567034ba5f52e18d73aaa64b",
+    "DS_C_FIRST_VISIT_9x16.png": "992ccd287cb9f50a5ed0a6e2fee820bb062d034f1f033dcbb246f7ce134d6ce6",
+    "AUS_A_LOCAL_9x16.png": "763da19cab486c16567fdac8bd3ba2992c93f5fb3018c168d9cd45317449d895",
+    "AUS_B_TOGETHER_9x16.png": "c11eef9ce2566e6540880d18a17f5f2d84c93fb1d2ef285a84579990edc93ec9",
+    "DS_A_LOCAL_9x16.png": "a9f6c59b02f09e5c5d0b4eb1ba2cc2032c3d1cca442374d7ddc1da0919f8af3e",
+    "DS_A_LOCAL_1x1.png": "167f3cecb57c535a0a4b6d305abddceaa76a95c0eca51541e2cbb595cfa3495b",
+    "AUS_A_LOCAL_1x1.png": "160fea185621f6244d9aad7b7943fe46b3ea68d02822ad359b611e3d85d9b895",
+    "DS_B_TOGETHER_9x16.png": "a2c83a0656afd9eff68fcc76d8660fe2ac2877b8543464339833302fc6232051",
+    "AUS_B_TOGETHER_1x1.png": "62cc9f4d1fe68995db66e0dc4959be06c7f549d5f5be9ce3c55b8302ccb38b88",
+    "DS_B_TOGETHER_1x1.png": "dfb3394daa5c084a33de92cb002b208da22e12656f4d90f09caaac98b15551fe",
+    "AUS_C_FIRST_VISIT_9x16.png": "682d2200bf3cb0b3c358cbbd56d07f7077cfde35f356f8075c3a86cfbbf905a5",
+    "DS_C_FIRST_VISIT_1x1.png": "ce8631924233e5bb83d373532ea62fb0b6845609a6445df6919fbb145e852fa1",
+    "contact-sheet-1x1.jpg": "086f8f324819a9b30ba1946301568b0465326e8b6eeb8a0a1a778f7d38af1789",
+    "contact-sheet-9x16.jpg": "a19606744836ad089b414db64e34871de91fd768d32e528828738a4f3faf20f8",
+    "manifest.json": "e9c844f0c19e8921e0d7bd6957b2a57b4be107b0ec422ac7bb21aed7d4400521",
+    "comparison-sheet.csv": "9aca83c5f1434355cd9687ac334912d5fa2103d03a326e7d3581f10e4ca8e84f"
+  },
+  "local_markdown_links": "PASS",
+  "notes": "Same Pillow and recorded font hashes. No network."
+}

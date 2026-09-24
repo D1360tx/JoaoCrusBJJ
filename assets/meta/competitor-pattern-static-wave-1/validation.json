@@ -1,0 +1,434 @@
+{
+  "status": "PASS",
+  "checks_count": 98,
+  "checks": [
+    {
+      "check": "6 concepts / 12 exports",
+      "pass_": true
+    },
+    {
+      "check": "3 concepts per market",
+      "pass_": true
+    },
+    {
+      "check": "12 unique outputs",
+      "pass_": true
+    },
+    {
+      "check": "No missing or extra ad PNGs",
+      "pass_": true
+    },
+    {
+      "check": "Exact local source allowlist",
+      "pass_": true
+    },
+    {
+      "check": "Source hash site/assets/campaign-images/kids-gathering.webp",
+      "pass_": true
+    },
+    {
+      "check": "Source hash site/assets/campaign-images/kids-training.webp",
+      "pass_": true
+    },
+    {
+      "check": "Source hash site/assets/castle-hill-multisport-room-20260907.webp",
+      "pass_": true
+    },
+    {
+      "check": "Source hash site/assets/castle-hill-youth-group-20260907.webp",
+      "pass_": true
+    },
+    {
+      "check": "Source hash site/assets/joao-crus-bjj-logo.png",
+      "pass_": true
+    },
+    {
+      "check": "Font hash /mnt/c/Windows/Fonts/impact.ttf",
+      "pass_": true
+    },
+    {
+      "check": "Font hash /mnt/c/Windows/Fonts/arial.ttf",
+      "pass_": true
+    },
+    {
+      "check": "Copy recommendations DS_A_LOCAL",
+      "pass_": true
+    },
+    {
+      "check": "No public em dash DS_A_LOCAL",
+      "pass_": true
+    },
+    {
+      "check": "CTA and destination DS_A_LOCAL",
+      "pass_": true
+    },
+    {
+      "check": "Placement pair DS_A_LOCAL",
+      "pass_": true
+    },
+    {
+      "check": "Copy recommendations DS_B_TOGETHER",
+      "pass_": true
+    },
+    {
+      "check": "No public em dash DS_B_TOGETHER",
+      "pass_": true
+    },
+    {
+      "check": "CTA and destination DS_B_TOGETHER",
+      "pass_": true
+    },
+    {
+      "check": "Placement pair DS_B_TOGETHER",
+      "pass_": true
+    },
+    {
+      "check": "Copy recommendations DS_C_FIRST_VISIT",
+      "pass_": true
+    },
+    {
+      "check": "No public em dash DS_C_FIRST_VISIT",
+      "pass_": true
+    },
+    {
+      "check": "CTA and destination DS_C_FIRST_VISIT",
+      "pass_": true
+    },
+    {
+      "check": "Placement pair DS_C_FIRST_VISIT",
+      "pass_": true
+    },
+    {
+      "check": "Copy recommendations AUS_A_LOCAL",
+      "pass_": true
+    },
+    {
+      "check": "No public em dash AUS_A_LOCAL",
+      "pass_": true
+    },
+    {
+      "check": "CTA and destination AUS_A_LOCAL",
+      "pass_": true
+    },
+    {
+      "check": "Placement pair AUS_A_LOCAL",
+      "pass_": true
+    },
+    {
+      "check": "Copy recommendations AUS_B_TOGETHER",
+      "pass_": true
+    },
+    {
+      "check": "No public em dash AUS_B_TOGETHER",
+      "pass_": true
+    },
+    {
+      "check": "CTA and destination AUS_B_TOGETHER",
+      "pass_": true
+    },
+    {
+      "check": "Placement pair AUS_B_TOGETHER",
+      "pass_": true
+    },
+    {
+      "check": "Copy recommendations AUS_C_FIRST_VISIT",
+      "pass_": true
+    },
+    {
+      "check": "No public em dash AUS_C_FIRST_VISIT",
+      "pass_": true
+    },
+    {
+      "check": "CTA and destination AUS_C_FIRST_VISIT",
+      "pass_": true
+    },
+    {
+      "check": "Placement pair AUS_C_FIRST_VISIT",
+      "pass_": true
+    },
+    {
+      "check": "Dimensions RGB DS_A_LOCAL_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Output hash / under 30 MB DS_A_LOCAL_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Safe bounds / no clipping DS_A_LOCAL_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "No text/photo/logo overlap DS_A_LOCAL_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Minimum text 25px DS_A_LOCAL_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Dimensions RGB DS_A_LOCAL_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Output hash / under 30 MB DS_A_LOCAL_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Safe bounds / no clipping DS_A_LOCAL_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "No text/photo/logo overlap DS_A_LOCAL_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Minimum text 25px DS_A_LOCAL_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Dimensions RGB DS_B_TOGETHER_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Output hash / under 30 MB DS_B_TOGETHER_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Safe bounds / no clipping DS_B_TOGETHER_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "No text/photo/logo overlap DS_B_TOGETHER_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Minimum text 25px DS_B_TOGETHER_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Dimensions RGB DS_B_TOGETHER_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Output hash / under 30 MB DS_B_TOGETHER_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Safe bounds / no clipping DS_B_TOGETHER_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "No text/photo/logo overlap DS_B_TOGETHER_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Minimum text 25px DS_B_TOGETHER_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Dimensions RGB DS_C_FIRST_VISIT_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Output hash / under 30 MB DS_C_FIRST_VISIT_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Safe bounds / no clipping DS_C_FIRST_VISIT_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "No text/photo/logo overlap DS_C_FIRST_VISIT_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Minimum text 25px DS_C_FIRST_VISIT_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Dimensions RGB DS_C_FIRST_VISIT_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Output hash / under 30 MB DS_C_FIRST_VISIT_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Safe bounds / no clipping DS_C_FIRST_VISIT_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "No text/photo/logo overlap DS_C_FIRST_VISIT_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Minimum text 25px DS_C_FIRST_VISIT_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Dimensions RGB AUS_A_LOCAL_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Output hash / under 30 MB AUS_A_LOCAL_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Safe bounds / no clipping AUS_A_LOCAL_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "No text/photo/logo overlap AUS_A_LOCAL_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Minimum text 25px AUS_A_LOCAL_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Dimensions RGB AUS_A_LOCAL_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Output hash / under 30 MB AUS_A_LOCAL_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Safe bounds / no clipping AUS_A_LOCAL_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "No text/photo/logo overlap AUS_A_LOCAL_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Minimum text 25px AUS_A_LOCAL_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Dimensions RGB AUS_B_TOGETHER_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Output hash / under 30 MB AUS_B_TOGETHER_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Safe bounds / no clipping AUS_B_TOGETHER_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "No text/photo/logo overlap AUS_B_TOGETHER_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Minimum text 25px AUS_B_TOGETHER_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Dimensions RGB AUS_B_TOGETHER_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Output hash / under 30 MB AUS_B_TOGETHER_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Safe bounds / no clipping AUS_B_TOGETHER_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "No text/photo/logo overlap AUS_B_TOGETHER_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Minimum text 25px AUS_B_TOGETHER_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Dimensions RGB AUS_C_FIRST_VISIT_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Output hash / under 30 MB AUS_C_FIRST_VISIT_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Safe bounds / no clipping AUS_C_FIRST_VISIT_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "No text/photo/logo overlap AUS_C_FIRST_VISIT_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Minimum text 25px AUS_C_FIRST_VISIT_1x1.png",
+      "pass_": true
+    },
+    {
+      "check": "Dimensions RGB AUS_C_FIRST_VISIT_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Output hash / under 30 MB AUS_C_FIRST_VISIT_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Safe bounds / no clipping AUS_C_FIRST_VISIT_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "No text/photo/logo overlap AUS_C_FIRST_VISIT_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Minimum text 25px AUS_C_FIRST_VISIT_9x16.png",
+      "pass_": true
+    },
+    {
+      "check": "Contact sheet hash contact-sheet-1x1.jpg",
+      "pass_": true
+    },
+    {
+      "check": "Contact sheet hash contact-sheet-9x16.jpg",
+      "pass_": true
+    }
+  ],
+  "character_counts": {
+    "DS_A_LOCAL": {
+      "primary_text": 94,
+      "headline": 29,
+      "description": 27
+    },
+    "DS_B_TOGETHER": {
+      "primary_text": 122,
+      "headline": 20,
+      "description": 20
+    },
+    "DS_C_FIRST_VISIT": {
+      "primary_text": 107,
+      "headline": 30,
+      "description": 17
+    },
+    "AUS_A_LOCAL": {
+      "primary_text": 103,
+      "headline": 24,
+      "description": 27
+    },
+    "AUS_B_TOGETHER": {
+      "primary_text": 122,
+      "headline": 27,
+      "description": 27
+    },
+    "AUS_C_FIRST_VISIT": {
+      "primary_text": 106,
+      "headline": 32,
+      "description": 19
+    }
+  },
+  "limitations": [
+    "Local geometry and source checks are not native Meta preview approval.",
+    "Copy, releases, venue, current destination/attribution and upload/activation remain gated."
+  ]
+}

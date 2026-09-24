@@ -1,0 +1,2034 @@
+{
+  "status": "LOCAL REVIEW ONLY; NOT UPLOAD READY",
+  "concepts": [
+    {
+      "id": "DS_A_LOCAL",
+      "market": "DS",
+      "program": "Youth 8-12",
+      "pattern": "A",
+      "source": "site/assets/campaign-images/kids-training.webp",
+      "eyebrow": "DRIPPING SPRINGS | YOUTH 8-12",
+      "hook": [
+        "JIU-JITSU IN",
+        "DRIPPING SPRINGS"
+      ],
+      "detail": [
+        "Youth BJJ for ages 8-12."
+      ],
+      "caption": [
+        "Real partner practice at Joao Crus BJJ."
+      ],
+      "primary_text": "Dripping Springs Youth BJJ, ages 8-12. Explore a free studio visit. Joao calls to discuss fit.",
+      "headline": "Youth BJJ in Dripping Springs",
+      "description": "Explore a free studio visit",
+      "cta": "LEARN_MORE",
+      "art_cta": "EXPLORE A FREE VISIT",
+      "destination": "https://joaocrusbjj.com/kids-first-class/",
+      "hypothesis": "Location-first specificity may help nearby parents recognize a relevant program.",
+      "evidence_boundary": "Partner practice only, not a visible tap, release or reset sequence.",
+      "source_ad_ids": [
+        "305919000079182",
+        "2283285645285480"
+      ],
+      "permissions": [
+        "Exact copy approval by Diego/Joao",
+        "Current destination, offer and tracking QA",
+        "Separate upload and activation authorization",
+        "Paid-media guardian releases for every identifiable minor"
+      ]
+    },
+    {
+      "id": "DS_B_TOGETHER",
+      "market": "DS",
+      "program": "Youth 8-12",
+      "pattern": "B",
+      "source": "site/assets/campaign-images/kids-gathering.webp",
+      "eyebrow": "DRIPPING SPRINGS | YOUTH 8-12",
+      "hook": [
+        "MORE THAN",
+        "A SOLO ACTIVITY."
+      ],
+      "detail": [
+        "Explore Youth BJJ together."
+      ],
+      "caption": [
+        "A real Joao Crus BJJ group moment."
+      ],
+      "primary_text": "A shared activity in Dripping Springs. Explore Youth BJJ for ages 8-12 and a free studio visit. Joao calls to discuss fit.",
+      "headline": "An activity to share",
+      "description": "Youth BJJ, ages 8-12",
+      "cta": "LEARN_MORE",
+      "art_cta": "EXPLORE A FREE VISIT",
+      "destination": "https://joaocrusbjj.com/kids-first-class/",
+      "hypothesis": "A real group moment may make the program easier to picture than an abstract benefit claim.",
+      "evidence_boundary": "A gathering demonstrates people together, not instant friendship or guaranteed belonging.",
+      "source_ad_ids": [
+        "2283285645285480",
+        "663335501713298",
+        "470294208469143"
+      ],
+      "permissions": [
+        "Exact copy approval by Diego/Joao",
+        "Current destination, offer and tracking QA",
+        "Separate upload and activation authorization",
+        "Paid-media guardian releases for every identifiable minor"
+      ]
+    },
+    {
+      "id": "DS_C_FIRST_VISIT",
+      "market": "DS",
+      "program": "Youth 8-12",
+      "pattern": "C",
+      "source": "site/assets/campaign-images/kids-gathering.webp",
+      "eyebrow": "DRIPPING SPRINGS | YOUTH 8-12",
+      "hook": [
+        "START WITH",
+        "A FREE VISIT."
+      ],
+      "detail": [
+        "1  Complete the finder.",
+        "2  Joao calls to discuss fit."
+      ],
+      "caption": [
+        "A real group moment, not a first-visit scene."
+      ],
+      "primary_text": "New to Youth BJJ? Explore a free studio visit in Dripping Springs for ages 8-12. Joao calls to discuss fit.",
+      "headline": "Start with a free studio visit",
+      "description": "Explore Youth BJJ",
+      "cta": "LEARN_MORE",
+      "art_cta": "EXPLORE A FREE VISIT",
+      "destination": "https://joaocrusbjj.com/kids-first-class/",
+      "hypothesis": "A concrete free-visit invitation and callback explanation may reduce uncertainty about the first step.",
+      "evidence_boundary": "This is a group moment, not evidence of a first class; the form does not reserve a place.",
+      "source_ad_ids": [
+        "740996063152127",
+        "1465295947228702",
+        "2789452561186206"
+      ],
+      "permissions": [
+        "Exact copy approval by Diego/Joao",
+        "Current destination, offer and tracking QA",
+        "Separate upload and activation authorization",
+        "Paid-media guardian releases for every identifiable minor"
+      ]
+    },
+    {
+      "id": "AUS_A_LOCAL",
+      "market": "AUS",
+      "program": "Adults",
+      "pattern": "A",
+      "source": "site/assets/castle-hill-multisport-room-20260907.webp",
+      "eyebrow": "AUSTIN | ADULT BJJ",
+      "hook": [
+        "JIU-JITSU AT",
+        "CASTLE HILL FITNESS"
+      ],
+      "detail": [
+        "1112 N Lamar Blvd, Austin."
+      ],
+      "caption": [
+        "Castle Hill facility. Illustrative space,",
+        "not a class or assigned-room photo."
+      ],
+      "primary_text": "Adult BJJ inside Castle Hill Fitness in Austin. Explore a free studio visit. Joao calls to discuss fit.",
+      "headline": "Adult BJJ at Castle Hill",
+      "description": "Explore a free studio visit",
+      "cta": "LEARN_MORE",
+      "art_cta": "EXPLORE A FREE VISIT",
+      "destination": "https://joaocrusbjj.com/castle-hill-grand-opening/",
+      "hypothesis": "Venue and street-level relevance may help Austin adults identify a practical local starting point.",
+      "evidence_boundary": "Empty facility photo is illustrative, not proof of the assigned room or a class in progress.",
+      "source_ad_ids": [
+        "305919000079182",
+        "2283285645285480"
+      ],
+      "permissions": [
+        "Exact copy approval by Diego/Joao",
+        "Current destination, offer and tracking QA",
+        "Separate upload and activation authorization",
+        "Castle Hill venue/name/image permission for this new use"
+      ]
+    },
+    {
+      "id": "AUS_B_TOGETHER",
+      "market": "AUS",
+      "program": "Youth 8-12",
+      "pattern": "B",
+      "source": "site/assets/castle-hill-youth-group-20260907.webp",
+      "eyebrow": "AUSTIN | YOUTH 8-12",
+      "hook": [
+        "A SHARED",
+        "STARTING POINT."
+      ],
+      "detail": [
+        "Youth BJJ at Castle Hill Fitness."
+      ],
+      "caption": [
+        "Joao partnership photo: a group moment,",
+        "not proof of a Castle Hill class."
+      ],
+      "primary_text": "Explore Youth BJJ, ages 8-12, at Castle Hill Fitness in Austin. Start with a free studio visit. Joao calls to discuss fit.",
+      "headline": "Explore Youth BJJ in Austin",
+      "description": "A free visit to get started",
+      "cta": "LEARN_MORE",
+      "art_cta": "EXPLORE A FREE VISIT",
+      "destination": "https://joaocrusbjj.com/castle-hill-grand-opening/",
+      "hypothesis": "Real group warmth may make the youth invitation more approachable without promising friendship.",
+      "evidence_boundary": "Published Joao partnership photo shows group warmth; neither instant friendship nor Castle Hill class location is established.",
+      "source_ad_ids": [
+        "2283285645285480",
+        "663335501713298",
+        "470294208469143"
+      ],
+      "permissions": [
+        "Exact copy approval by Diego/Joao",
+        "Current destination, offer and tracking QA",
+        "Separate upload and activation authorization",
+        "Paid-media guardian releases for every identifiable minor",
+        "Castle Hill venue/name/image permission for this new use"
+      ]
+    },
+    {
+      "id": "AUS_C_FIRST_VISIT",
+      "market": "AUS",
+      "program": "Adults",
+      "pattern": "C",
+      "source": "site/assets/castle-hill-multisport-room-20260907.webp",
+      "eyebrow": "AUSTIN | ADULT BJJ",
+      "hook": [
+        "NEW TO JIU-JITSU?",
+        "START WITH A VISIT."
+      ],
+      "detail": [
+        "1  Complete the finder.",
+        "2  Joao calls to discuss fit."
+      ],
+      "caption": [
+        "Castle Hill facility. Illustrative space,",
+        "not a class or assigned-room photo."
+      ],
+      "primary_text": "New to adult BJJ? Explore a free studio visit at Castle Hill Fitness in Austin. Joao calls to discuss fit.",
+      "headline": "New to BJJ? Explore a free visit",
+      "description": "Adult BJJ in Austin",
+      "cta": "LEARN_MORE",
+      "art_cta": "EXPLORE A FREE VISIT",
+      "destination": "https://joaocrusbjj.com/castle-hill-grand-opening/",
+      "hypothesis": "Beginner-directed invitation plus an explicit next step may reduce first-visit uncertainty.",
+      "evidence_boundary": "Facility only, not beginner coaching proof. No instant booking, readiness or fitness outcome promised.",
+      "source_ad_ids": [
+        "740996063152127",
+        "1465295947228702",
+        "2789452561186206"
+      ],
+      "permissions": [
+        "Exact copy approval by Diego/Joao",
+        "Current destination, offer and tracking QA",
+        "Separate upload and activation authorization",
+        "Castle Hill venue/name/image permission for this new use"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "path": "DS_A_LOCAL_1x1.png",
+      "concept_id": "DS_A_LOCAL",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "167f3cecb57c535a0a4b6d305abddceaa76a95c0eca51541e2cbb595cfa3495b",
+      "bytes": 290436,
+      "safe_bounds": [
+        48,
+        48,
+        1032,
+        1032
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            48,
+            48,
+            122,
+            122
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            142,
+            50,
+            317,
+            75
+          ],
+          "size": 31
+        },
+        {
+          "kind": "text",
+          "text": "DRIPPING SPRINGS | YOUTH 8-12",
+          "bounds": [
+            142,
+            93,
+            547,
+            116
+          ],
+          "size": 25
+        },
+        {
+          "kind": "text",
+          "text": "JIU-JITSU IN",
+          "bounds": [
+            48,
+            150,
+            426,
+            217
+          ],
+          "size": 82
+        },
+        {
+          "kind": "text",
+          "text": "DRIPPING SPRINGS",
+          "bounds": [
+            48,
+            229,
+            654,
+            296
+          ],
+          "size": 82
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            279,
+            322,
+            800,
+            667
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "Real partner practice at Joao Crus BJJ.",
+          "bounds": [
+            48,
+            685,
+            502,
+            709
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "Youth BJJ for ages 8-12.",
+          "bounds": [
+            48,
+            734,
+            419,
+            766
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE A FREE VISIT",
+          "bounds": [
+            66,
+            811,
+            319,
+            836
+          ],
+          "size": 31
+        },
+        {
+          "kind": "cta_container",
+          "bounds": [
+            48,
+            796,
+            518,
+            858
+          ],
+          "container": true
+        },
+        {
+          "kind": "text",
+          "text": "Joao calls to discuss fit.",
+          "bounds": [
+            48,
+            878,
+            342,
+            898
+          ],
+          "size": 28
+        }
+      ],
+      "photo_crop": "none; complete source aspect ratio retained"
+    },
+    {
+      "path": "DS_A_LOCAL_9x16.png",
+      "concept_id": "DS_A_LOCAL",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "a9f6c59b02f09e5c5d0b4eb1ba2cc2032c3d1cca442374d7ddc1da0919f8af3e",
+      "bytes": 498467,
+      "safe_bounds": [
+        65,
+        270,
+        900,
+        1510
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            65,
+            270,
+            139,
+            344
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            159,
+            272,
+            334,
+            297
+          ],
+          "size": 31
+        },
+        {
+          "kind": "text",
+          "text": "DRIPPING SPRINGS | YOUTH 8-12",
+          "bounds": [
+            159,
+            315,
+            564,
+            338
+          ],
+          "size": 25
+        },
+        {
+          "kind": "text",
+          "text": "JIU-JITSU IN",
+          "bounds": [
+            65,
+            372,
+            415,
+            434
+          ],
+          "size": 76
+        },
+        {
+          "kind": "text",
+          "text": "DRIPPING SPRINGS",
+          "bounds": [
+            65,
+            446,
+            627,
+            508
+          ],
+          "size": 76
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            90,
+            534,
+            875,
+            1054
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "Real partner practice at Joao Crus BJJ.",
+          "bounds": [
+            65,
+            1072,
+            519,
+            1096
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "Youth BJJ for ages 8-12.",
+          "bounds": [
+            65,
+            1121,
+            436,
+            1153
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE A FREE VISIT",
+          "bounds": [
+            83,
+            1198,
+            336,
+            1223
+          ],
+          "size": 31
+        },
+        {
+          "kind": "cta_container",
+          "bounds": [
+            65,
+            1183,
+            535,
+            1245
+          ],
+          "container": true
+        },
+        {
+          "kind": "text",
+          "text": "Joao calls to discuss fit.",
+          "bounds": [
+            65,
+            1265,
+            359,
+            1285
+          ],
+          "size": 28
+        }
+      ],
+      "photo_crop": "none; complete source aspect ratio retained"
+    },
+    {
+      "path": "DS_B_TOGETHER_1x1.png",
+      "concept_id": "DS_B_TOGETHER",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "dfb3394daa5c084a33de92cb002b208da22e12656f4d90f09caaac98b15551fe",
+      "bytes": 372376,
+      "safe_bounds": [
+        48,
+        48,
+        1032,
+        1032
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            48,
+            48,
+            122,
+            122
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            142,
+            50,
+            317,
+            75
+          ],
+          "size": 31
+        },
+        {
+          "kind": "text",
+          "text": "DRIPPING SPRINGS | YOUTH 8-12",
+          "bounds": [
+            142,
+            93,
+            547,
+            116
+          ],
+          "size": 25
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            222,
+            150,
+            857,
+            495
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "A real Joao Crus BJJ group moment.",
+          "bounds": [
+            48,
+            513,
+            474,
+            537
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "MORE THAN",
+          "bounds": [
+            48,
+            568,
+            414,
+            635
+          ],
+          "size": 82
+        },
+        {
+          "kind": "text",
+          "text": "A SOLO ACTIVITY.",
+          "bounds": [
+            48,
+            647,
+            583,
+            714
+          ],
+          "size": 82
+        },
+        {
+          "kind": "text",
+          "text": "Explore Youth BJJ together.",
+          "bounds": [
+            48,
+            740,
+            466,
+            772
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE A FREE VISIT",
+          "bounds": [
+            66,
+            817,
+            319,
+            842
+          ],
+          "size": 31
+        },
+        {
+          "kind": "cta_container",
+          "bounds": [
+            48,
+            802,
+            518,
+            864
+          ],
+          "container": true
+        },
+        {
+          "kind": "text",
+          "text": "Joao calls to discuss fit.",
+          "bounds": [
+            48,
+            884,
+            342,
+            904
+          ],
+          "size": 28
+        }
+      ],
+      "photo_crop": "none; complete source aspect ratio retained"
+    },
+    {
+      "path": "DS_B_TOGETHER_9x16.png",
+      "concept_id": "DS_B_TOGETHER",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "a2c83a0656afd9eff68fcc76d8660fe2ac2877b8543464339833302fc6232051",
+      "bytes": 498782,
+      "safe_bounds": [
+        65,
+        270,
+        900,
+        1510
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            65,
+            270,
+            139,
+            344
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            159,
+            272,
+            334,
+            297
+          ],
+          "size": 31
+        },
+        {
+          "kind": "text",
+          "text": "DRIPPING SPRINGS | YOUTH 8-12",
+          "bounds": [
+            159,
+            315,
+            564,
+            338
+          ],
+          "size": 25
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            84,
+            372,
+            881,
+            805
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "A real Joao Crus BJJ group moment.",
+          "bounds": [
+            65,
+            823,
+            491,
+            847
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "MORE THAN",
+          "bounds": [
+            65,
+            878,
+            404,
+            940
+          ],
+          "size": 76
+        },
+        {
+          "kind": "text",
+          "text": "A SOLO ACTIVITY.",
+          "bounds": [
+            65,
+            952,
+            561,
+            1014
+          ],
+          "size": 76
+        },
+        {
+          "kind": "text",
+          "text": "Explore Youth BJJ together.",
+          "bounds": [
+            65,
+            1040,
+            483,
+            1072
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE A FREE VISIT",
+          "bounds": [
+            83,
+            1117,
+            336,
+            1142
+          ],
+          "size": 31
+        },
+        {
+          "kind": "cta_container",
+          "bounds": [
+            65,
+            1102,
+            535,
+            1164
+          ],
+          "container": true
+        },
+        {
+          "kind": "text",
+          "text": "Joao calls to discuss fit.",
+          "bounds": [
+            65,
+            1184,
+            359,
+            1204
+          ],
+          "size": 28
+        }
+      ],
+      "photo_crop": "none; complete source aspect ratio retained"
+    },
+    {
+      "path": "DS_C_FIRST_VISIT_1x1.png",
+      "concept_id": "DS_C_FIRST_VISIT",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "ce8631924233e5bb83d373532ea62fb0b6845609a6445df6919fbb145e852fa1",
+      "bytes": 379043,
+      "safe_bounds": [
+        48,
+        48,
+        1032,
+        1032
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            48,
+            48,
+            122,
+            122
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            142,
+            50,
+            317,
+            75
+          ],
+          "size": 31
+        },
+        {
+          "kind": "text",
+          "text": "DRIPPING SPRINGS | YOUTH 8-12",
+          "bounds": [
+            142,
+            93,
+            547,
+            116
+          ],
+          "size": 25
+        },
+        {
+          "kind": "text",
+          "text": "START WITH",
+          "bounds": [
+            48,
+            150,
+            437,
+            217
+          ],
+          "size": 82
+        },
+        {
+          "kind": "text",
+          "text": "A FREE VISIT.",
+          "bounds": [
+            48,
+            229,
+            443,
+            296
+          ],
+          "size": 82
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            222,
+            322,
+            857,
+            667
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "A real group moment, not a first-visit scene.",
+          "bounds": [
+            48,
+            685,
+            549,
+            709
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "1  Complete the finder.",
+          "bounds": [
+            48,
+            734,
+            390,
+            766
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "2  Joao calls to discuss fit.",
+          "bounds": [
+            48,
+            778,
+            443,
+            803
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE A FREE VISIT",
+          "bounds": [
+            66,
+            848,
+            319,
+            873
+          ],
+          "size": 31
+        },
+        {
+          "kind": "cta_container",
+          "bounds": [
+            48,
+            833,
+            518,
+            895
+          ],
+          "container": true
+        },
+        {
+          "kind": "text",
+          "text": "Free studio visit. Observe or participate.",
+          "bounds": [
+            48,
+            915,
+            543,
+            941
+          ],
+          "size": 28
+        }
+      ],
+      "photo_crop": "none; complete source aspect ratio retained"
+    },
+    {
+      "path": "DS_C_FIRST_VISIT_9x16.png",
+      "concept_id": "DS_C_FIRST_VISIT",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "992ccd287cb9f50a5ed0a6e2fee820bb062d034f1f033dcbb246f7ce134d6ce6",
+      "bytes": 504031,
+      "safe_bounds": [
+        65,
+        270,
+        900,
+        1510
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            65,
+            270,
+            139,
+            344
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            159,
+            272,
+            334,
+            297
+          ],
+          "size": 31
+        },
+        {
+          "kind": "text",
+          "text": "DRIPPING SPRINGS | YOUTH 8-12",
+          "bounds": [
+            159,
+            315,
+            564,
+            338
+          ],
+          "size": 25
+        },
+        {
+          "kind": "text",
+          "text": "START WITH",
+          "bounds": [
+            65,
+            372,
+            425,
+            434
+          ],
+          "size": 76
+        },
+        {
+          "kind": "text",
+          "text": "A FREE VISIT.",
+          "bounds": [
+            65,
+            446,
+            431,
+            508
+          ],
+          "size": 76
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            84,
+            534,
+            881,
+            967
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "A real group moment, not a first-visit scene.",
+          "bounds": [
+            65,
+            985,
+            566,
+            1009
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "1  Complete the finder.",
+          "bounds": [
+            65,
+            1034,
+            407,
+            1066
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "2  Joao calls to discuss fit.",
+          "bounds": [
+            65,
+            1078,
+            460,
+            1103
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE A FREE VISIT",
+          "bounds": [
+            83,
+            1148,
+            336,
+            1173
+          ],
+          "size": 31
+        },
+        {
+          "kind": "cta_container",
+          "bounds": [
+            65,
+            1133,
+            535,
+            1195
+          ],
+          "container": true
+        },
+        {
+          "kind": "text",
+          "text": "Free studio visit. Observe or participate.",
+          "bounds": [
+            65,
+            1215,
+            560,
+            1241
+          ],
+          "size": 28
+        }
+      ],
+      "photo_crop": "none; complete source aspect ratio retained"
+    },
+    {
+      "path": "AUS_A_LOCAL_1x1.png",
+      "concept_id": "AUS_A_LOCAL",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "160fea185621f6244d9aad7b7943fe46b3ea68d02822ad359b611e3d85d9b895",
+      "bytes": 287709,
+      "safe_bounds": [
+        48,
+        48,
+        1032,
+        1032
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            48,
+            48,
+            122,
+            122
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            142,
+            50,
+            317,
+            75
+          ],
+          "size": 31
+        },
+        {
+          "kind": "text",
+          "text": "AUSTIN | ADULT BJJ",
+          "bounds": [
+            142,
+            93,
+            382,
+            116
+          ],
+          "size": 25
+        },
+        {
+          "kind": "text",
+          "text": "JIU-JITSU AT",
+          "bounds": [
+            48,
+            150,
+            433,
+            217
+          ],
+          "size": 82
+        },
+        {
+          "kind": "text",
+          "text": "CASTLE HILL FITNESS",
+          "bounds": [
+            48,
+            229,
+            698,
+            296
+          ],
+          "size": 82
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            304,
+            322,
+            776,
+            637
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "Castle Hill facility. Illustrative space,",
+          "bounds": [
+            48,
+            655,
+            458,
+            679
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "not a class or assigned-room photo.",
+          "bounds": [
+            48,
+            686,
+            461,
+            710
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "1112 N Lamar Blvd, Austin.",
+          "bounds": [
+            48,
+            735,
+            455,
+            765
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE A FREE VISIT",
+          "bounds": [
+            66,
+            810,
+            319,
+            835
+          ],
+          "size": 31
+        },
+        {
+          "kind": "cta_container",
+          "bounds": [
+            48,
+            795,
+            518,
+            857
+          ],
+          "container": true
+        },
+        {
+          "kind": "text",
+          "text": "Joao calls to discuss fit.",
+          "bounds": [
+            48,
+            877,
+            342,
+            897
+          ],
+          "size": 28
+        }
+      ],
+      "photo_crop": "none; complete source aspect ratio retained"
+    },
+    {
+      "path": "AUS_A_LOCAL_9x16.png",
+      "concept_id": "AUS_A_LOCAL",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "763da19cab486c16567fdac8bd3ba2992c93f5fb3018c168d9cd45317449d895",
+      "bytes": 638209,
+      "safe_bounds": [
+        65,
+        270,
+        900,
+        1510
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            65,
+            270,
+            139,
+            344
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            159,
+            272,
+            334,
+            297
+          ],
+          "size": 31
+        },
+        {
+          "kind": "text",
+          "text": "AUSTIN | ADULT BJJ",
+          "bounds": [
+            159,
+            315,
+            399,
+            338
+          ],
+          "size": 25
+        },
+        {
+          "kind": "text",
+          "text": "JIU-JITSU AT",
+          "bounds": [
+            65,
+            372,
+            422,
+            434
+          ],
+          "size": 76
+        },
+        {
+          "kind": "text",
+          "text": "CASTLE HILL FITNESS",
+          "bounds": [
+            65,
+            446,
+            668,
+            508
+          ],
+          "size": 76
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            92,
+            534,
+            872,
+            1054
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "Castle Hill facility. Illustrative space,",
+          "bounds": [
+            65,
+            1072,
+            475,
+            1096
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "not a class or assigned-room photo.",
+          "bounds": [
+            65,
+            1103,
+            478,
+            1127
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "1112 N Lamar Blvd, Austin.",
+          "bounds": [
+            65,
+            1152,
+            472,
+            1182
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE A FREE VISIT",
+          "bounds": [
+            83,
+            1227,
+            336,
+            1252
+          ],
+          "size": 31
+        },
+        {
+          "kind": "cta_container",
+          "bounds": [
+            65,
+            1212,
+            535,
+            1274
+          ],
+          "container": true
+        },
+        {
+          "kind": "text",
+          "text": "Joao calls to discuss fit.",
+          "bounds": [
+            65,
+            1294,
+            359,
+            1314
+          ],
+          "size": 28
+        }
+      ],
+      "photo_crop": "none; complete source aspect ratio retained"
+    },
+    {
+      "path": "AUS_B_TOGETHER_1x1.png",
+      "concept_id": "AUS_B_TOGETHER",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "62cc9f4d1fe68995db66e0dc4959be06c7f549d5f5be9ce3c55b8302ccb38b88",
+      "bytes": 242917,
+      "safe_bounds": [
+        48,
+        48,
+        1032,
+        1032
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            48,
+            48,
+            122,
+            122
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            142,
+            50,
+            317,
+            75
+          ],
+          "size": 31
+        },
+        {
+          "kind": "text",
+          "text": "AUSTIN | YOUTH 8-12",
+          "bounds": [
+            142,
+            93,
+            399,
+            116
+          ],
+          "size": 25
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            337,
+            150,
+            743,
+            465
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "Joao partnership photo: a group moment,",
+          "bounds": [
+            48,
+            483,
+            525,
+            507
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "not proof of a Castle Hill class.",
+          "bounds": [
+            48,
+            514,
+            399,
+            538
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "A SHARED",
+          "bounds": [
+            48,
+            569,
+            358,
+            636
+          ],
+          "size": 82
+        },
+        {
+          "kind": "text",
+          "text": "STARTING POINT.",
+          "bounds": [
+            48,
+            648,
+            576,
+            715
+          ],
+          "size": 82
+        },
+        {
+          "kind": "text",
+          "text": "Youth BJJ at Castle Hill Fitness.",
+          "bounds": [
+            48,
+            741,
+            529,
+            766
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE A FREE VISIT",
+          "bounds": [
+            66,
+            811,
+            319,
+            836
+          ],
+          "size": 31
+        },
+        {
+          "kind": "cta_container",
+          "bounds": [
+            48,
+            796,
+            518,
+            858
+          ],
+          "container": true
+        },
+        {
+          "kind": "text",
+          "text": "Joao calls to discuss fit.",
+          "bounds": [
+            48,
+            878,
+            342,
+            898
+          ],
+          "size": 28
+        }
+      ],
+      "photo_crop": "none; complete source aspect ratio retained"
+    },
+    {
+      "path": "AUS_B_TOGETHER_9x16.png",
+      "concept_id": "AUS_B_TOGETHER",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "c11eef9ce2566e6540880d18a17f5f2d84c93fb1d2ef285a84579990edc93ec9",
+      "bytes": 489798,
+      "safe_bounds": [
+        65,
+        270,
+        900,
+        1510
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            65,
+            270,
+            139,
+            344
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            159,
+            272,
+            334,
+            297
+          ],
+          "size": 31
+        },
+        {
+          "kind": "text",
+          "text": "AUSTIN | YOUTH 8-12",
+          "bounds": [
+            159,
+            315,
+            416,
+            338
+          ],
+          "size": 25
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            147,
+            372,
+            818,
+            892
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "Joao partnership photo: a group moment,",
+          "bounds": [
+            65,
+            910,
+            542,
+            934
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "not proof of a Castle Hill class.",
+          "bounds": [
+            65,
+            941,
+            416,
+            965
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "A SHARED",
+          "bounds": [
+            65,
+            996,
+            353,
+            1058
+          ],
+          "size": 76
+        },
+        {
+          "kind": "text",
+          "text": "STARTING POINT.",
+          "bounds": [
+            65,
+            1070,
+            555,
+            1132
+          ],
+          "size": 76
+        },
+        {
+          "kind": "text",
+          "text": "Youth BJJ at Castle Hill Fitness.",
+          "bounds": [
+            65,
+            1158,
+            546,
+            1183
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE A FREE VISIT",
+          "bounds": [
+            83,
+            1228,
+            336,
+            1253
+          ],
+          "size": 31
+        },
+        {
+          "kind": "cta_container",
+          "bounds": [
+            65,
+            1213,
+            535,
+            1275
+          ],
+          "container": true
+        },
+        {
+          "kind": "text",
+          "text": "Joao calls to discuss fit.",
+          "bounds": [
+            65,
+            1295,
+            359,
+            1315
+          ],
+          "size": 28
+        }
+      ],
+      "photo_crop": "none; complete source aspect ratio retained"
+    },
+    {
+      "path": "AUS_C_FIRST_VISIT_1x1.png",
+      "concept_id": "AUS_C_FIRST_VISIT",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "8f2cb4f25485c5641e37b643ac92274dbe599a3f567034ba5f52e18d73aaa64b",
+      "bytes": 298284,
+      "safe_bounds": [
+        48,
+        48,
+        1032,
+        1032
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            48,
+            48,
+            122,
+            122
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            142,
+            50,
+            317,
+            75
+          ],
+          "size": 31
+        },
+        {
+          "kind": "text",
+          "text": "AUSTIN | ADULT BJJ",
+          "bounds": [
+            142,
+            93,
+            382,
+            116
+          ],
+          "size": 25
+        },
+        {
+          "kind": "text",
+          "text": "NEW TO JIU-JITSU?",
+          "bounds": [
+            48,
+            150,
+            643,
+            217
+          ],
+          "size": 82
+        },
+        {
+          "kind": "text",
+          "text": "START WITH A VISIT.",
+          "bounds": [
+            48,
+            229,
+            686,
+            296
+          ],
+          "size": 82
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            304,
+            322,
+            776,
+            637
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "Castle Hill facility. Illustrative space,",
+          "bounds": [
+            48,
+            655,
+            458,
+            679
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "not a class or assigned-room photo.",
+          "bounds": [
+            48,
+            686,
+            461,
+            710
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "1  Complete the finder.",
+          "bounds": [
+            48,
+            735,
+            390,
+            767
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "2  Joao calls to discuss fit.",
+          "bounds": [
+            48,
+            779,
+            443,
+            804
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE A FREE VISIT",
+          "bounds": [
+            66,
+            849,
+            319,
+            874
+          ],
+          "size": 31
+        },
+        {
+          "kind": "cta_container",
+          "bounds": [
+            48,
+            834,
+            518,
+            896
+          ],
+          "container": true
+        },
+        {
+          "kind": "text",
+          "text": "Free studio visit. Observe or participate.",
+          "bounds": [
+            48,
+            916,
+            543,
+            942
+          ],
+          "size": 28
+        }
+      ],
+      "photo_crop": "none; complete source aspect ratio retained"
+    },
+    {
+      "path": "AUS_C_FIRST_VISIT_9x16.png",
+      "concept_id": "AUS_C_FIRST_VISIT",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "682d2200bf3cb0b3c358cbbd56d07f7077cfde35f356f8075c3a86cfbbf905a5",
+      "bytes": 648679,
+      "safe_bounds": [
+        65,
+        270,
+        900,
+        1510
+      ],
+      "elements": [
+        {
+          "kind": "logo",
+          "bounds": [
+            65,
+            270,
+            139,
+            344
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "JOAO CRUS BJJ",
+          "bounds": [
+            159,
+            272,
+            334,
+            297
+          ],
+          "size": 31
+        },
+        {
+          "kind": "text",
+          "text": "AUSTIN | ADULT BJJ",
+          "bounds": [
+            159,
+            315,
+            399,
+            338
+          ],
+          "size": 25
+        },
+        {
+          "kind": "text",
+          "text": "NEW TO JIU-JITSU?",
+          "bounds": [
+            65,
+            372,
+            617,
+            434
+          ],
+          "size": 76
+        },
+        {
+          "kind": "text",
+          "text": "START WITH A VISIT.",
+          "bounds": [
+            65,
+            446,
+            656,
+            508
+          ],
+          "size": 76
+        },
+        {
+          "kind": "photo",
+          "bounds": [
+            92,
+            534,
+            872,
+            1054
+          ]
+        },
+        {
+          "kind": "text",
+          "text": "Castle Hill facility. Illustrative space,",
+          "bounds": [
+            65,
+            1072,
+            475,
+            1096
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "not a class or assigned-room photo.",
+          "bounds": [
+            65,
+            1103,
+            478,
+            1127
+          ],
+          "size": 26
+        },
+        {
+          "kind": "text",
+          "text": "1  Complete the finder.",
+          "bounds": [
+            65,
+            1152,
+            407,
+            1184
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "2  Joao calls to discuss fit.",
+          "bounds": [
+            65,
+            1196,
+            460,
+            1221
+          ],
+          "size": 34
+        },
+        {
+          "kind": "text",
+          "text": "EXPLORE A FREE VISIT",
+          "bounds": [
+            83,
+            1266,
+            336,
+            1291
+          ],
+          "size": 31
+        },
+        {
+          "kind": "cta_container",
+          "bounds": [
+            65,
+            1251,
+            535,
+            1313
+          ],
+          "container": true
+        },
+        {
+          "kind": "text",
+          "text": "Free studio visit. Observe or participate.",
+          "bounds": [
+            65,
+            1333,
+            560,
+            1359
+          ],
+          "size": 28
+        }
+      ],
+      "photo_crop": "none; complete source aspect ratio retained"
+    }
+  ],
+  "source_assets": [
+    {
+      "path": "site/assets/campaign-images/kids-gathering.webp",
+      "sha256": "48844d16147d109475d70251797a7a5354ca746cc9f6b7b0abd3885dbf1f9ffd",
+      "dimensions": [
+        797,
+        433
+      ]
+    },
+    {
+      "path": "site/assets/campaign-images/kids-training.webp",
+      "sha256": "bc4d5e21bfcc3a1a433148848b28710fdca3a56e82571e024e3381fe5e6889cc",
+      "dimensions": [
+        1233,
+        817
+      ]
+    },
+    {
+      "path": "site/assets/castle-hill-multisport-room-20260907.webp",
+      "sha256": "5c5beb053f6393f6c7e017d98fd54a1a1c1bfbbe4e73821f0b57090ad8c43b72",
+      "dimensions": [
+        1200,
+        800
+      ]
+    },
+    {
+      "path": "site/assets/castle-hill-youth-group-20260907.webp",
+      "sha256": "daa61df73363fdc7522a4748e9eff16c6ec488ca72db39ff5e179301743a8ea5",
+      "dimensions": [
+        867,
+        672
+      ]
+    },
+    {
+      "path": "site/assets/joao-crus-bjj-logo.png",
+      "sha256": "894985fc6f9a593895ef07ec9bbcd6994b1aa5a9a0aaa6ce9286821dcab3fb29",
+      "dimensions": [
+        512,
+        512
+      ]
+    }
+  ],
+  "fonts": [
+    {
+      "path": "/mnt/c/Windows/Fonts/impact.ttf",
+      "sha256": "d8bbdb72e3f930157824b2e59677d3a912d4512c14a948e6656a2e3fb0c935ad"
+    },
+    {
+      "path": "/mnt/c/Windows/Fonts/arial.ttf",
+      "sha256": "b3658eadae55e682b5f69eb64c439c1ecc8f196c0bb8d4756d145d13bc86476a"
+    }
+  ],
+  "pillow_version": "12.3.0",
+  "safe_zone_policy": "Local conservative bounds only. Vertical reserves 270 top, 410 bottom, 180 right. Native Feed/Stories/Reels previews still required.",
+  "copy_recommendations": {
+    "primary_text": 125,
+    "headline": 40,
+    "description": 30
+  },
+  "contact_sheets": [
+    {
+      "path": "contact-sheet-1x1.jpg",
+      "sha256": "086f8f324819a9b30ba1946301568b0465326e8b6eeb8a0a1a778f7d38af1789",
+      "upload": false
+    },
+    {
+      "path": "contact-sheet-9x16.jpg",
+      "sha256": "a19606744836ad089b414db64e34871de91fd768d32e528828738a4f3faf20f8",
+      "upload": false
+    }
+  ]
+}
