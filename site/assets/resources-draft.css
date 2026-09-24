@@ -35,6 +35,13 @@
 .jr-collection-label p{margin:0;padding-bottom:18px}
 .jr-project{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:52px;align-items:center;padding:56px 0;border-bottom:2px solid var(--jr-black)}
 .jr-project:last-child{border-bottom:0}
+/* Keep previews first in the DOM and mobile stack. Only noninteractive media
+   moves on desktop; each row retains one CTA in resource reading order. */
+@media(min-width:921px){
+  .jr-project:nth-of-type(even){grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);grid-template-areas:"copy preview"}
+  .jr-project:nth-of-type(even)>.jr-preview{grid-area:preview}
+  .jr-project:nth-of-type(even)>.jr-project-copy{grid-area:copy}
+}
 .jr-preview{min-width:0;margin:0;border:3px solid var(--jr-black);box-shadow:6px 6px 0 var(--jr-black);background:var(--jr-cream)}
 .jr-browser{display:flex;align-items:center;gap:16px;border-bottom:2px solid var(--jr-black);padding:10px 14px;font-size:.65rem;font-weight:600;line-height:1.4;overflow-wrap:anywhere}
 .jr-browser>span:first-child{color:var(--jr-blue);font-size:.5rem;flex-shrink:0;letter-spacing:2px}

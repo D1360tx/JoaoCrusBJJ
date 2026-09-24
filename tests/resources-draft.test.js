@@ -7,6 +7,19 @@ const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'site/campaign/resources-draft.html'), 'utf8');
 const expected = ['https://grapplewithemotions.com/', 'https://jiu-jitsuclasses.online/courses/', 'https://blueprint.justjiuit.com/', 'https://boundaryguard.joaocrusbjj.com/', 'https://blackbeltparenting.net/'];
 const cards = [...html.matchAll(/<article\b([^>]*)>([\s\S]*?)<\/article>/g)];
+test('resources: stable preview-first markup and desktop-only alternation', () => {
+  assert.equal(crypto.createHash('sha256').update(html).digest('hex'), 'bbc88693bbfda796e25bd412e251ea81438598735f265854734b00241828e8d9', 'Approved copy, links and HTML remain byte-identical');
+  for (const [, , body] of cards) {
+    assert.match(body, /^\s*<figure class="jr-preview">/);
+    assert.ok(body.indexOf('</figure>') < body.indexOf('<div class="jr-project-copy">'));
+    assert.doesNotMatch(body, /tabindex=/);
+  }
+  const css = fs.readFileSync(path.join(root, 'site/assets/resources-draft.css'), 'utf8');
+  assert.match(css, /@media\(min-width:921px\)\{\s*\.jr-project:nth-of-type\(even\)/);
+  assert.match(css, /grid-template-areas:"copy preview"/);
+  assert.match(css, /\.jr-project:nth-of-type\(even\)>\.jr-preview\{grid-area:preview\}/);
+  assert.match(css, /\.jr-project:nth-of-type\(even\)>\.jr-project-copy\{grid-area:copy\}/);
+});
 test('resources: exact five ordered URLs and live cards', () => {
   assert.equal(cards.length, 5);
   cards.forEach(([,attrs,body], i) => {

@@ -56,10 +56,29 @@ fs.mkdirSync(output, { recursive: true });
         return {
           width: document.documentElement.clientWidth, scrollWidth: document.documentElement.scrollWidth,
           headingLines, clipped,
+          rows: [...document.querySelectorAll('.jr-project')].map(el => {
+            const rect = node => { const r = node.getBoundingClientRect(); return { x:r.x, y:r.y, right:r.right, bottom:r.bottom, width:r.width, height:r.height }; };
+            const preview = el.querySelector('.jr-preview'), copy = el.querySelector('.jr-project-copy');
+            return { preview:rect(preview), copy:rect(copy), cta:rect(copy.querySelector('a')), previewFirst:el.firstElementChild === preview, previewFocusable:preview.querySelectorAll('a,button,input,[tabindex]').length };
+          }),
           images: [...document.images].map(img => ({ loaded: img.complete && img.naturalWidth > 0, src: img.getAttribute('src') })),
           buttons: [...document.querySelectorAll('a.jr-button')].map(el => ({ foreground: getComputedStyle(el).color, background: getComputedStyle(el).backgroundColor, height: el.getBoundingClientRect().height })),
           fontsReady: document.fonts.check('16px "JP Space"') && document.fonts.check('40px "JP Anton"'),
         };
+      });
+      assert.equal(geometry.rows.length, 5);
+      geometry.rows.forEach(({ preview, copy, cta, previewFirst, previewFocusable }, index) => {
+        assert.ok(previewFirst, 'Stable preview-first DOM');
+        assert.equal(previewFocusable, 0, 'Repositioned media has no tab stops');
+        assert.ok(cta.width > 0 && cta.height >= 44 && cta.x >= copy.x && cta.right <= copy.right + 1 && cta.bottom <= copy.bottom + 1, 'CTA contained and visible');
+        if (width <= 920) {
+          assert.ok(preview.bottom < copy.y, 'Mobile preview above content');
+          assert.ok(Math.abs(preview.x - copy.x) < 1 && Math.abs(preview.width - copy.width) < 1, 'Stable single-column stack');
+        } else {
+          const [left, right] = index % 2 === 0 ? [preview, copy] : [copy, preview];
+          assert.ok(left.right < right.x, `Desktop alternation row ${index + 1}`);
+          assert.ok(Math.abs((preview.y + preview.height / 2) - (copy.y + copy.height / 2)) < 1, 'Panels share a centered row');
+        }
       });
       assert.ok(geometry.scrollWidth <= width, JSON.stringify(geometry));
       assert.deepEqual(geometry.clipped, []);
@@ -95,7 +114,11 @@ fs.mkdirSync(output, { recursive: true });
       assert.equal(await page.evaluate(() => document.activeElement.className), 'jr-skip');
       await page.keyboard.press('Enter');
       assert.equal(new URL(page.url()).hash, '#main');
+      // Traverse naturally, rather than focusing each CTA and hiding tab-order bugs.
+      await page.locator('.jr-hero .jr-button').focus();
       for (const link of await page.locator('article a').all()) {
+        await page.keyboard.press('Tab');
+        assert.ok(await link.evaluate(el => el === document.activeElement));
         const expected = await link.getAttribute('href');
         const popupEvent = context.waitForEvent('page');
         await link.focus(); await page.keyboard.press('Enter');
