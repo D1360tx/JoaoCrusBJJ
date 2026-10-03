@@ -258,7 +258,6 @@ function expected_recommendation(array $lead): string
     }
     $private = in_array($lead['experience'], ['private', 'hybrid'], true)
         || in_array($lead['goal'], ['specific', 'schedule'], true)
-        || $lead['preferred_location'] === 'austin'
         || $lead['stage'] === 'competition';
     if ($lead['stage'] === 'after60') {
         return 'jiu_jitsu_after_60';
@@ -294,7 +293,7 @@ function normalize_quiz(array $data): array
     $stage = $audience === 'adult' ? require_enum(clean_text($data['stage'] ?? ($data['age_bands'][0] ?? ''), 20), $stageAllowed, 'stage') : (string)$ageBands[0];
     $routeSource = clean_text($data['route_source'] ?? '', 40);
     if ($routeSource !== '') {
-        require_enum($routeSource, ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'after60-page', 'meta-kids-paid', 'meta-austin-youth-paid', 'meta-austin-adults-paid', 'austin-program-fit'], 'route source');
+        require_enum($routeSource, ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'after60-page', 'meta-kids-paid', 'meta-austin-youth-paid', 'meta-austin-adults-paid', 'austin-program-fit', 'meta-adults-paid', 'meta-youth-paid'], 'route source');
     }
 
     $lead = [
