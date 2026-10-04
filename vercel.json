@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "python3 scripts/build_vercel_site.py && node --test tests/*.test.js && python3 scripts/validate_vercel_build.py",
+  "installCommand": "npm ci --omit=dev",
+  "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "trailingSlash": true,
   "headers": [
