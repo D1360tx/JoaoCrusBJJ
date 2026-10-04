@@ -89,7 +89,7 @@ function log_event(string $requestId, string $event, array $safeContext = []): v
 {
     // Only controlled reasons and operation classes; never payloads, query strings or provider messages.
     $requestId = preg_match('/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/iD', $requestId) ? $requestId : 'unavailable';
-    $allowed = array_intersect_key($safeContext, array_flip(['status', 'curl_errno', 'exception']));
+    $allowed = array_intersect_key($safeContext, array_flip(['status', 'curl_errno', 'exception', 'protocol_version', 'form_id']));
     if (isset($safeContext['reason'])) {
         $allowed['reason'] = in_array($safeContext['reason'], ['trap', 'missing', 'malformed', 'future', 'under_3s', 'over_24h', 'runtime'], true) ? $safeContext['reason'] : 'runtime';
     }
@@ -1140,7 +1140,10 @@ try {
     if (isset($abuse['event'])) {
         $safeRequestId = is_string($data['request_id'] ?? null) && preg_match('/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/iD', $data['request_id'])
             ? $data['request_id'] : 'unavailable';
-        log_event($safeRequestId, $abuse['event'], ['reason' => $abuse['reason']]);
+        $logForms = ['home_guide', 'teens_interest', 'contact_page', 'website_form', 'after60_first_class', 'practice_under_pressure', 'found_the_flyer_v2', 'found_the_flyer_active_pressure_v2', 'found_the_flyer_control_pressure_v2', 'booking_popup', 'program_fit_quiz'];
+        $safeFormId = in_array($data['form_id'] ?? null, $logForms, true) ? $data['form_id'] : 'other';
+        log_event($safeRequestId, $abuse['event'], ['reason' => $abuse['reason'],
+            'protocol_version' => ($data['abuse_protocol_version'] ?? null) === 2 ? 2 : 0, 'form_id' => $safeFormId]);
     }
     if ($abuse['action'] === 'reload') {
         respond(409, ['accepted' => false, 'reload_required' => true, 'error' => 'Please reload this page before sending your request.']);
