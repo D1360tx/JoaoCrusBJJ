@@ -26,8 +26,60 @@ const META_GRAPH_BASE_URL = 'https://graph.facebook.com';
 const LEGACY_ALERT_RECIPIENTS = ['joaocrusbjj@gmail.com', 'diego@icdcventures.com'];
 const LEGACY_ALERT_FROM = 'website@joaocrusbjj.com';
 
+// Test adapters are reachable only in a CLI process, never through HTTP input/env.
+function lead_test_hook(string $name): ?callable
+{
+    return PHP_SAPI === 'cli' && defined('JOAO_LEAD_TEST') && JOAO_LEAD_TEST === true
+        ? ($GLOBALS['joao_lead_test_hooks'][$name] ?? null) : null;
+}
+
+function neutral_response(): array
+{
+    return ['handled' => true, 'outcome' => 'neutral', 'accepted' => false,
+        'contact_accepted' => false, 'opportunity_accepted' => false, 'tracking_allowed' => false];
+}
+
+function evaluate_abuse_signals(array $data, int $receivedAt): array
+{
+    foreach (['website', 'company_website'] as $trap) {
+        if (array_key_exists($trap, $data) && (!is_string($data[$trap]) || trim($data[$trap]) !== '')) {
+            return ['action' => 'neutral', 'event' => 'lead_spam_honeypot', 'reason' => 'trap'];
+        }
+    }
+    if (!array_key_exists('form_started_at', $data)) {
+        return ['action' => ($data['abuse_protocol_version'] ?? null) === 2 ? 'neutral' : 'reload',
+            'event' => 'lead_spam_timing_invalid', 'reason' => 'missing'];
+    }
+    $start = $data['form_started_at'];
+    $numeric = is_int($start) || (is_float($start) && is_finite($start) && floor($start) === $start)
+        || (is_string($start) && preg_match('/^[0-9]{1,16}$/D', $start) === 1);
+    if (!$numeric || (float)$start < 0 || (float)$start > 9007199254740991) {
+        return ['action' => 'neutral', 'event' => 'lead_spam_timing_invalid', 'reason' => 'malformed'];
+    }
+    $elapsed = $receivedAt - (int)$start;
+    if ($elapsed < 3000) {
+        return ['action' => 'neutral', 'event' => 'lead_spam_too_fast', 'reason' => $elapsed < 0 ? 'future' : 'under_3s'];
+    }
+    return $elapsed > 86400000
+        ? ['action' => 'allow', 'event' => 'lead_spam_stale_form', 'reason' => 'over_24h']
+        : ['action' => 'allow'];
+}
+
+// Classification only. Deliberately NOT connected to intake, phone exceptions, tags or transports.
+function classify_suspect_name_phone(string $first, string $last, string $phone): bool
+{
+    $first = trim($first);
+    if (trim($last) !== '' || preg_match('/^[A-Za-z]{12,}$/D', $first) !== 1 || normalize_us_phone($phone, false) !== '') return false;
+    $switches = 0;
+    for ($i = 1; $i < strlen($first); $i++) {
+        if ((ord($first[$i]) <= 90) !== (ord($first[$i - 1]) <= 90)) $switches++;
+    }
+    return $switches >= 3;
+}
+
 function respond(int $status, array $body): never
 {
+    if ($hook = lead_test_hook('respond')) { $hook($status, $body); exit; }
     http_response_code($status);
     echo json_encode($body, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     exit;
@@ -35,7 +87,16 @@ function respond(int $status, array $body): never
 
 function log_event(string $requestId, string $event, array $safeContext = []): void
 {
-    $allowed = array_intersect_key($safeContext, array_flip(['status', 'operation', 'curl_errno', 'provider_trace', 'exception', 'reason']));
+    // Only controlled reasons and operation classes; never payloads, query strings or provider messages.
+    $requestId = preg_match('/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/iD', $requestId) ? $requestId : 'unavailable';
+    $allowed = array_intersect_key($safeContext, array_flip(['status', 'curl_errno', 'exception']));
+    if (isset($safeContext['reason'])) {
+        $allowed['reason'] = in_array($safeContext['reason'], ['trap', 'missing', 'malformed', 'future', 'under_3s', 'over_24h', 'runtime'], true) ? $safeContext['reason'] : 'runtime';
+    }
+    if (isset($safeContext['operation'])) {
+        $allowed['operation'] = str_starts_with($safeContext['operation'], '/contacts') ? 'contacts' : 'opportunities';
+    }
+    if ($hook = lead_test_hook('log')) { $hook($requestId, $event, $allowed); }
     error_log('lead_api ' . json_encode(['request_id' => $requestId, 'event' => $event] + $allowed, JSON_UNESCAPED_SLASHES));
 }
 
@@ -554,6 +615,7 @@ function build_custom_fields(array $lead, array $map): array
 
 function ghl_request(string $method, string $path, array $payload, string $requestId, string $apiVersion = '2021-07-28'): array
 {
+    if ($hook = lead_test_hook('ghl')) return $hook($method, $path, $payload, $requestId);
     if (!function_exists('curl_init')) {
         throw new RuntimeException('HTTP client unavailable.');
     }
@@ -717,6 +779,7 @@ function meta_capi_send_payload(array $payload, string $requestId, int $attemptL
 
 function meta_capi_status(array $lead): string
 {
+    if ($hook = lead_test_hook('meta')) return $hook($lead);
     if (env_value('META_CAPI_ENABLED', 'false') !== 'true') return 'disabled';
     $meta = is_array($lead['meta'] ?? null) ? $lead['meta'] : [];
     if (($meta['ad_storage'] ?? '') !== 'granted' || ($meta['ad_user_data'] ?? '') !== 'granted') {
@@ -1018,6 +1081,7 @@ function create_submission_note(string $contactId, array $lead, array $config): 
 
 function send_legacy_alert(array $lead): void
 {
+    if ($hook = lead_test_hook('mail')) { $hook($lead); return; }
     if (env_value('LEAD_ENABLE_LEGACY_EMAIL', 'true') !== 'true') return;
     $subject = 'Accepted website lead: ' . $lead['form_id'];
     $body = "A website lead was accepted by HighLevel.\r\n\r\n"
@@ -1045,6 +1109,7 @@ function send_legacy_alert(array $lead): void
 if (defined('JOAO_CAPI_LIBRARY_ONLY') && JOAO_CAPI_LIBRARY_ONLY === true) return;
 
 try {
+    $receivedAt = ($clock = lead_test_hook('clock')) ? $clock() : (int)floor(microtime(true) * 1000);
     load_server_env_file();
     if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
         header('Allow: POST');
@@ -1062,7 +1127,7 @@ try {
     if ($declaredLength > MAX_BODY_BYTES) {
         respond(413, ['accepted' => false, 'error' => 'Request is too large.']);
     }
-    $raw = file_get_contents('php://input', false, null, 0, MAX_BODY_BYTES + 1);
+    $raw = ($input = lead_test_hook('input')) ? $input() : file_get_contents('php://input', false, null, 0, MAX_BODY_BYTES + 1);
     if ($raw === false || strlen($raw) > MAX_BODY_BYTES) {
         respond(413, ['accepted' => false, 'error' => 'Request is too large.']);
     }
@@ -1070,10 +1135,17 @@ try {
     if (!is_array($data)) {
         respond(400, ['accepted' => false, 'error' => 'Invalid request.']);
     }
-    if (clean_text($data['website'] ?? '', 200) !== '') {
-        respond(202, ['accepted' => false]);
-    }
     enforce_rate_limit((string)($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
+    $abuse = evaluate_abuse_signals($data, $receivedAt);
+    if (isset($abuse['event'])) {
+        $safeRequestId = is_string($data['request_id'] ?? null) && preg_match('/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/iD', $data['request_id'])
+            ? $data['request_id'] : 'unavailable';
+        log_event($safeRequestId, $abuse['event'], ['reason' => $abuse['reason']]);
+    }
+    if ($abuse['action'] === 'reload') {
+        respond(409, ['accepted' => false, 'reload_required' => true, 'error' => 'Please reload this page before sending your request.']);
+    }
+    if ($abuse['action'] === 'neutral') respond(200, neutral_response());
 
     $lead = ($data['schema_version'] ?? '') === 'program_fit_v1' ? normalize_quiz($data) : normalize_legacy($data);
     $opportunityValueRaw = env_value('GHL_DEFAULT_OPPORTUNITY_VALUE');
