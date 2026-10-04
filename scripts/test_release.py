@@ -31,7 +31,7 @@ with subprocess.Popen(['git', 'archive', sha], cwd=repo, stdout=subprocess.PIPE)
 (archive / 'node_modules').symlink_to(repo / 'node_modules', target_is_directory=True)
 env = {'PATH': os.environ['PATH'], 'HOME': os.environ['HOME'],
        'JOAO_TEST_PHP': str(Path(args.php).resolve()), 'PHP_BINARY': str(Path(args.php).resolve())}
-proof = "import socket; from pathlib import Path; interfaces=Path('/proc/net/dev').read_text(); route=Path('/proc/net/route').read_text(); assert len(route.strip().splitlines())==1; assert all('lo:' in s for s in interfaces.splitlines()[2:]); assert socket.socket().connect_ex(('1.1.1.1',443))==101; print('PASS: loopback only, no routes, outbound ENETUNREACH')"
+proof = "import socket; from pathlib import Path; interfaces=Path('/proc/net/dev').read_text(); route=Path('/proc/net/route').read_text(); assert not route.strip() or (len(route.strip().splitlines())==1 and route.lstrip().startswith('Iface')); assert all('lo:' in s for s in interfaces.splitlines()[2:]); assert socket.socket().connect_ex(('1.1.1.1',443))==101; print('PASS: loopback only, no routes, outbound ENETUNREACH')"
 commands = [
     ('network-proof', ['python3', '-c', proof]),
     ('playwright-version', ['node', '-e', "const v=require('playwright/package.json').version; if(v!==require('./package.json').devDependencies.playwright)throw Error('QA dependency mismatch'); console.log(v)"]),
