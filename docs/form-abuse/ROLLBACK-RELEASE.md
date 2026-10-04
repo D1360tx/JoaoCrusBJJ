@@ -25,6 +25,10 @@ Staff-only intake depends on independently certified canonical GHL tag binding, 
 
 Independent deployed fallback inventory (Vercel/external proxies) remains a **release prerequisite**, not an excuse for a broad live audit in this build. `contact.php` is an independent inactive frontend sibling and is unchanged; do not route stale clients to it. Only the three actual repository frontend submitters are claimed protected. No Turnstile/key setup.
 
+## Independent recovery checkpoint
+
+`TEST-RESULTS.md` records independent exact-SHA tests, the general-quiz durable-note correction, cached-client provenance and unchanged base-validator failures. This is first-tranche code proof only. The second-tranche classifier remains helper-only and no draft PR/check success changes these deployment approval requirements. The final draft PR must record and verify its actual tested head SHA, not rely on earlier checkpoint counts.
+
 ## Future controlled release (separate approval)
 
 1. Require independent exact-head review, compatibility/neutral UX sign-off, fresh main/live hash reconciliation including every stacked overlay, and permitted fallback inventory. Current saved snapshot is provenance, not a fresh cutoff proof.
