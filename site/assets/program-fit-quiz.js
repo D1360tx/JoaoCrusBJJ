@@ -563,7 +563,7 @@
       const body = await response.json().catch(() => ({}));
       const handled = handledLeadOutcome(response, body);
       if (handled) return handled;
-      if (!response.ok || body.accepted !== true || body.contact_accepted !== true || body.opportunity_accepted !== true || body.request_id !== payload.request_id || body.meta_event_id !== `lead_${payload.request_id}`) {
+      if (!response.ok || body.accepted !== true || body.contact_accepted !== true || body.opportunity_accepted !== true || body.note_accepted !== true || body.request_id !== payload.request_id || body.meta_event_id !== `lead_${payload.request_id}`) {
         throw new Error('Lead delivery was not accepted.');
       }
       return { ...body, outcome: 'accepted' };
