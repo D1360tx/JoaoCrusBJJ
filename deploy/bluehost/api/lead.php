@@ -562,9 +562,11 @@ function ghl_request(string $method, string $path, array $payload, string $reque
         throw new RuntimeException('Provider is not configured.');
     }
     $curl = curl_init(GHL_BASE_URL . $path);
+    if ($method !== 'GET') {
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($payload, JSON_UNESCAPED_SLASHES));
+    }
     curl_setopt_array($curl, [
         CURLOPT_CUSTOMREQUEST => $method,
-        CURLOPT_POSTFIELDS => json_encode($payload, JSON_UNESCAPED_SLASHES),
         CURLOPT_HTTPHEADER => [
             'Authorization: Bearer ' . $token,
             $apiVersion === 'v3' ? 'Version: v3' : 'Version: 2021-07-28',
@@ -830,6 +832,62 @@ function build_contact_payload(array $lead, array $map, array $config): array
     return $payload;
 }
 
+function opportunity_program_label(string $program): string
+{
+    // Readable CRM label; quiz enums and legacy website labels both map here. Unknown -> Prospect.
+    $labels = [
+        'little_champions' => 'Little Champions', 'Little Champions 3–7' => 'Little Champions',
+        'youth_bjj' => 'Youth', 'Youth 8–12' => 'Youth',
+        'teen_interest_path' => 'Teens', 'Teens 13–17' => 'Teens', 'Teen Brazilian Jiu-Jitsu Ages 13-17' => 'Teens',
+        'family_program_plan' => 'Family Program Plan',
+        'adult_group_bjj' => 'Adults', 'Adults' => 'Adults', 'Austin Adults' => 'Adults', 'Adults Austin' => 'Adults',
+        'homeschool' => 'Homeschool', 'Homeschool' => 'Homeschool',
+        'jiu_jitsu_after_60' => 'Jiu-Jitsu After 60', 'Jiu-Jitsu After 60' => 'Jiu-Jitsu After 60',
+        'private_coaching' => 'Private Coaching', 'Private Coaching' => 'Private Coaching',
+        'Team / Corporate' => 'Team / Corporate',
+        'Parent Guide' => 'Parent Guide',
+    ];
+    return $labels[$program] ?? 'Prospect';
+}
+
+function opportunity_display_name(array $lead): string
+{
+    $who = trim(($lead['first_name'] ?? '') . ' ' . ($lead['last_name'] ?? ''));
+    if ($who === '') {
+        $who = (string)($lead['email'] ?? '');
+    }
+    if ($who === '') {
+        $who = (string)($lead['phone'] ?? '');
+    }
+    if ($who === '') {
+        $who = 'Website lead';
+    }
+    $program = (string)($lead['recommended_program'] ?? '');
+    // Multi-child family plan whose children all share one age band -> name that class.
+    $ageBands = is_array($lead['age_bands'] ?? null) ? $lead['age_bands'] : [];
+    if ($program === 'family_program_plan' && count($ageBands) === 1) {
+        $program = ['little' => 'little_champions', 'youth' => 'youth_bjj', 'teen' => 'teen_interest_path'][$ageBands[0]] ?? $program;
+    }
+    return clean_text($who . ' - ' . opportunity_program_label($program), 200);
+}
+
+function existing_opportunity_id(string $contactId, array $config, string $requestId): string
+{
+    // Any status counts (open/won/lost/abandoned) so a repeat submission never reopens or moves an opp.
+    $query = http_build_query([
+        'location_id' => $config['location_id'],
+        'pipeline_id' => $config['pipeline_id'],
+        'contact_id' => $contactId,
+        'status' => 'all',
+        'limit' => 1,
+    ]);
+    $response = ghl_request('GET', '/opportunities/search?' . $query, [], $requestId);
+    if (!isset($response['opportunities']) || !is_array($response['opportunities'])) {
+        throw new RuntimeException('Opportunity lookup was ambiguous.');
+    }
+    return clean_text($response['opportunities'][0]['id'] ?? '', 100);
+}
+
 function build_opportunity_payload(array $lead, string $contactId, array $config): array
 {
     // HighLevel v3 opportunity upsert acceptance must be proven against the live sub-account.
@@ -839,7 +897,7 @@ function build_opportunity_payload(array $lead, string $contactId, array $config
         'pipelineId' => $config['pipeline_id'],
         'pipelineStageId' => $config['stage_id'],
         'contactId' => $contactId,
-        'name' => 'Website lead - ' . $lead['recommended_program'],
+        'name' => opportunity_display_name($lead),
         'status' => 'open',
         'monetaryValue' => $config['opportunity_value'],
     ];
@@ -1039,7 +1097,11 @@ try {
         throw new RuntimeException('Contact acceptance was ambiguous.');
     }
     add_tags_if_enabled($contactId, $lead);
-    $opportunityResponse = ghl_request('POST', '/opportunities/upsert', build_opportunity_payload($lead, $contactId, $config), $lead['request_id']);
+    $existingOpportunityId = existing_opportunity_id($contactId, $config, $lead['request_id']);
+    $opportunityResponse = $existingOpportunityId !== ''
+        // Existing opp: name only. Never send stage, status, or value on a repeat submission.
+        ? ghl_request('PUT', '/opportunities/' . rawurlencode($existingOpportunityId), ['name' => opportunity_display_name($lead)], $lead['request_id'])
+        : ghl_request('POST', '/opportunities/upsert', build_opportunity_payload($lead, $contactId, $config), $lead['request_id']);
     $opportunityId = opportunity_id_from_response($opportunityResponse);
     if ($opportunityId === '') {
         throw new RuntimeException('Opportunity acceptance was ambiguous.');
