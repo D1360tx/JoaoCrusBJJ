@@ -1,13 +1,12 @@
 <?php
 declare(strict_types=1);
-// Execute definitions only; all provider calls are intercepted. No dispatcher or env bootstrap.
+// Execute exact definitions only; CLI transport hook intercepts all providers. No env bootstrap.
+define('JOAO_CAPI_LIBRARY_ONLY', true);
+define('JOAO_LEAD_TEST', true);
+require __DIR__ . '/../deploy/bluehost/api/lead.php';
 $source = file_get_contents(__DIR__ . '/../deploy/bluehost/api/lead.php');
-$boundary = strpos($source, "\ntry {\n    load_server_env_file();");
-if ($boundary === false) throw new RuntimeException('Dispatcher boundary missing');
-$definitions = str_replace('function ghl_request(', 'function unused_real_ghl_request(', substr($source, 5, $boundary - 5));
-eval($definitions);
 $calls = [];
-function ghl_request(...$args): array { global $calls; $calls[] = $args; return ['contact' => ['id' => 'fixture-contact']]; }
+$GLOBALS['joao_lead_test_hooks']['ghl'] = function(...$args) use (&$calls): array { $calls[] = $args; return ['contact' => ['id' => 'fixture-contact']]; };
 $checks = 0;
 function check(bool $ok, string $message): void { global $checks; $checks++; if (!$ok) throw new RuntimeException($message); }
 $base = ['request_id' => 'local-routing-fixture-2026', 'form_id' => 'booking_popup', 'name' => 'Local Fixture', 'email' => 'fixture@example.com', 'phone' => '2025550123', 'consent' => true];

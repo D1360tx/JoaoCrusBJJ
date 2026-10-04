@@ -16,6 +16,16 @@
 
 ---
 
+## PR134 anti-spam deployment approval and result (2026-10-04)
+
+✅ Diego's subsequent explicit “Approved” authorized the backup-first **40-path Bluehost first-tranche release** from reviewed SHA `c849a48f2209090139bdc1ebc1ce74411e08cf7d`, including extraction rehearsal, assets → HTML → PHP, GET-only public proof and coordinated rollback on verification failure. **Verified LIVE**: 40/40 origin hashes equal approved/staged hashes; all 116 protected nonmanifest bytes and secure env remain unchanged. Root/contact/teens/guide/both quizzes/book return HTTP200 with exact approved bytes; lead GET405. `/book/` remains zero lead forms/dialogs. Full outside-webroot backup and public/runtime evidence are in `docs/form-abuse/DEPLOYMENT-RESULT.md`. This supersedes the historical no-deploy limit below, not the other prohibitions: **no PR merge, live POST, provider/customer sends, GHL/GTM edits, Turnstile or staff-only classifier integration**. No live lead delivery proof claimed.
+
+### Earlier bounded readiness approval (historical)
+
+✅ Diego's “Ok let's do it” accepts cached-client fail-closed HTTP409 and explicit reload/manual-contact behavior, plus neutral nonconversion “Request processed.” UX. Do not grandfather missing timing, auto-retry, use fallback mail, or claim neutral means a delivered lead. Current new-client form values remain in memory only; copy before reload. Cached old clients retain their historical error diagnostic but must not emit conversion success.
+
+The original approval permits read-only failed Vercel logs and preserving/removing only `api/error_log` and `release-probe-navbar-d7b0132bb605.txt`, conditional on verified private logging safety. **Diego's subsequent bounded approval explicitly adds branch-only Vercel dependency/build/test-toolchain repair and narrow private web-PHP logging configuration, followed by the two-file cleanup once proved safe.** It still does **not** authorize anti-spam deployment, merge, live POSTs, GHL/GTM/Meta mutations, account settings changes, manual redeploys or customer sends. Vercel automatic Git previews are permitted. All native PHP/Chromium acceptance tests remain mandatory in the exact-SHA network-denied local release job (`docs/form-abuse/RELEASE-TEST-JOB.md`), separately from static Vercel build/validation. Readiness results and the exact future 40-path Bluehost deployment request are in `docs/form-abuse/RELEASE-READINESS.md`.
+
 ## 1. Current objectives and priorities
 
 1. ✅ **Generate new qualified leads and convert them into students.** New leads—not merely appointment show-up—is the primary growth problem.
