@@ -240,6 +240,7 @@
         '<div class="field"><label for="booking-email">Email</label><input id="booking-email" name="email" type="email" autocomplete="email" required></div>' +
         '<div class="field"><label for="booking-program">Who wants to train?</label><select id="booking-program" name="program" required><option value="">Choose a program</option><option>Little Champions 3–7</option><option>Youth 8–12</option><option>Teens 13–17</option><option>Adults</option><option>Homeschool</option><option>Jiu-Jitsu After 60</option><option>Private Coaching</option><option>Team / Corporate</option><option>Not sure yet</option></select></div>' +
         '<div class="field"><label for="booking-location">Preferred location</label><select id="booking-location" name="location" required><option value="">Choose a location</option><option>Dripping Springs</option><option>Austin</option><option>Not sure yet</option></select></div>' +
+        '<div class="field website-field" aria-hidden="true"><label for="booking-company-website">Leave this blank</label><input id="booking-company-website" name="company_website" maxlength="200" type="text" tabindex="-1" autocomplete="off"></div>' +
         '<div class="field website-field" aria-hidden="true"><label for="booking-website">Leave this blank</label><input id="booking-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>' +
         '<div class="field full check booking-consent"><input id="booking-consent" name="consent" type="checkbox" required><label for="booking-consent">Joao Crus BJJ may email or call me about this request.</label></div>' +
         '<div class="field full check booking-consent"><input id="booking-sms-consent" name="sms_consent" type="checkbox"><label for="booking-sms-consent">I agree to receive recurring automated non-promotional customer-care text messages from Joao Crus Brazilian Jiu-Jitsu about my request, scheduling, and class information. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is optional and is not a condition of purchase. See the <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms</a>.</label></div>' +
@@ -294,6 +295,7 @@
         setNav(false);
         contextualBookingDefaults();
         bookingDialog.showModal();
+        if (!bookingForm.dataset.formStartedAt) bookingForm.dataset.formStartedAt = String(Date.now());
         b.classList.add("booking-open");
         pushAnalytics("booking_start", {
           form_name: "booking_dialog",
@@ -337,6 +339,16 @@
     }
     initializeBookingDialog();
 
+  function handledLeadOutcome(response, body) {
+    const neutral = { handled: true, outcome: 'neutral', accepted: false, contact_accepted: false, opportunity_accepted: false, tracking_allowed: false };
+    if (response.status === 200 && Object.keys(body).length === Object.keys(neutral).length
+      && Object.keys(neutral).every((key) => body[key] === neutral[key])) return { outcome: 'neutral' };
+    if (response.status === 409 && body.reload_required === true && body.accepted === false
+      && body.handled === undefined && body.tracking_allowed !== true && !body.meta_event_id && !body.contact_id && !body.opportunity_id) return { outcome: 'reload' };
+    if (body.handled !== undefined || body.outcome !== undefined || body.reload_required !== undefined) throw new Error('Invalid handled response.');
+    return null;
+  }
+
     function postLead(data) {
       var controller = new AbortController();
       var timeout = window.setTimeout(function () { controller.abort(); }, 35000);
@@ -354,10 +366,12 @@
           } catch (error) {
             body = {};
           }
-          if (!response.ok || body.accepted !== true || body.contact_accepted !== true || body.opportunity_accepted !== true || body.request_id !== data.request_id || body.meta_event_id !== "lead_" + data.request_id) {
+          var handled = handledLeadOutcome(response, body);
+          if (handled) return handled;
+          if (!response.ok || body.accepted !== true || body.contact_accepted !== true || body.opportunity_accepted !== true || body.note_accepted !== true || body.request_id !== data.request_id || body.meta_event_id !== "lead_" + data.request_id) {
             throw new Error(body.error || "Unable to send your request.");
           }
-          return body;
+          return Object.assign({}, body, { outcome: "accepted" });
         });
       }).finally(function () {
         window.clearTimeout(timeout);
@@ -366,6 +380,7 @@
 
     function submitLeadForm(form, event) {
       event.preventDefault();
+      if (form.querySelector('[type="submit"]').disabled) return;
       var status = form.querySelector(".status"),
         submit = form.querySelector('[type="submit"]'),
         formData = new FormData(form),
@@ -373,6 +388,8 @@
       if (formData.has("availability")) {
         data.availability = formData.getAll("availability").join(", ");
       }
+      data.form_started_at = Number(form.dataset.formStartedAt);
+      data.abuse_protocol_version = 2;
       data.consent = Boolean(form.querySelector('[name="consent"]:checked'));
       data.form_id = form.dataset.formId || "website_form";
       // Only forms displaying this version can submit optional SMS consent.
@@ -397,6 +414,12 @@
       submit.disabled = true;
       postLead(data)
         .then(function (acceptance) {
+          if (acceptance.outcome === "neutral" || acceptance.outcome === "reload") {
+            status.textContent = acceptance.outcome === "neutral" ? "Request processed." : "Please reload this page before sending your request. Your entries are still here; copy them before reloading, or call 512-644-4560.";
+            status.focus();
+            submit.disabled = false;
+            return;
+          }
           var redirected = false;
           function redirectAfterSuccess() {
             if (redirected) return;
@@ -434,6 +457,7 @@
       };
     });
     document.querySelectorAll("[data-form]").forEach(function (f) {
+      if (!f.dataset.formStartedAt) f.dataset.formStartedAt = String(Date.now());
       f.onsubmit = function (e) {
         submitLeadForm(f, e);
       };

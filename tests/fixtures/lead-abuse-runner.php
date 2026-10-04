@@ -6,6 +6,13 @@ $fixture = json_decode(stream_get_contents(STDIN), true, 32, JSON_THROW_ON_ERROR
 $calls = []; $logs = [];
 $_SERVER = ['REQUEST_METHOD' => 'POST', 'HTTP_ORIGIN' => 'https://joaocrusbjj.com', 'CONTENT_TYPE' => 'application/json', 'REMOTE_ADDR' => 'fixture-' . getmypid()];
 foreach (['GHL_ENV_FILE' => '', 'LEAD_RATE_LIMIT_SALT' => str_repeat('local-only-', 4), 'GHL_LOCATION_ID' => 'local-location', 'GHL_PIPELINE_ID' => 'local-pipeline', 'GHL_NEW_LEAD_STAGE_ID' => 'local-stage', 'GHL_DEFAULT_OPPORTUNITY_VALUE' => '2832', 'GHL_ENABLE_TAG_ADD' => 'true', 'GHL_ALLOW_CORE_ONLY' => 'true', 'GHL_ENABLE_SMS_RELEASE' => 'false'] as $key => $value) putenv($key . '=' . $value);
+// Fake deterministic mapped fields exercise booking/consent emission, not core-only fallback.
+$map = [];
+foreach (['request_id', 'form_id', 'schema_version', 'lead_type', 'route_source', 'recommended_program', 'booking_link', 'email_consent', 'sms_consent', 'consent_disclosure_version', 'consent_timestamp', 'analytics_storage', 'ad_storage', 'ad_user_data', 'message', 'role', 'age', 'availability', 'audience', 'child_count', 'age_bands', 'stage', 'goal', 'experience', 'preferred_location', 'sms_marketing_consent'] as $field) {
+    $map[$field] = ['id' => 'local-' . $field, 'key' => 'contact.' . $field];
+}
+putenv('GHL_ALLOW_CORE_ONLY=false');
+putenv('GHL_CUSTOM_FIELD_MAP_JSON=' . json_encode($map));
 $GLOBALS['joao_lead_test_hooks'] = [
     'input' => fn() => json_encode($fixture['data']),
     'clock' => fn() => 1800000000000,

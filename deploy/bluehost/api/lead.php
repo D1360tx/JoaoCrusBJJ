@@ -1132,7 +1132,7 @@ try {
         respond(413, ['accepted' => false, 'error' => 'Request is too large.']);
     }
     $data = json_decode($raw, true, 32, JSON_THROW_ON_ERROR);
-    if (!is_array($data)) {
+    if (!is_array($data) || array_is_list($data)) {
         respond(400, ['accepted' => false, 'error' => 'Invalid request.']);
     }
     enforce_rate_limit((string)($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
