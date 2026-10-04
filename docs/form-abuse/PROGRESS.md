@@ -1,5 +1,9 @@
 # Progress
 
+## Authorized production release complete (2026-10-04)
+
+**First tranche verified LIVE**, superseding the historical undeployed checkpoints below. Diego explicitly approved the exact reviewed SHA `c849a48f2209090139bdc1ebc1ce74411e08cf7d` and 40-path Bluehost release. Fresh 155-file no-drift preflight, full private backup/extraction rehearsal, identical 40-path artifact manifest, PHP lint, 4 assets → 35 HTML → endpoint promotion, 40/40 live hashes, 116 protected nonmanifest hashes and file sets, seven public routes and four JS byte readbacks all pass. GET lead.php405; book zero forms/dialogs; no JS exceptions or console regressions against isolated baseline. One harmless immutable addition produces 156 live files. Rollback prepared but not needed. Report: `DEPLOYMENT-RESULT.md`; private checkpoints: `/home/d1360/joao-form-spam-runtime/deployment-exact40/`. No merge, live POST, provider mutation/send, Turnstile or staff-only classifier integration. Live lead delivery remains untested.
+
 Baseline reviewed against fresh origin/main. PR133 remains OPEN; applied only its 68-line deployed PHP overlay. No other PR merged. Isolated PHP 8.3.6 CLI downloaded as Ubuntu packages and extracted under /home/d1360/joao-form-spam-runtime (no installation or production access). unshare -Urn works for outbound-denied test namespace.
 
 Server checkpoint b42e02b: 38/38 executable PHP tests passed; actual dispatcher, fake mapped provider call sequences, no external namespace interface and mail/process transports disabled. Drops/reload make zero provider/Meta/mail calls; exact3s/24h/stale boundaries covered. Pure AND helper not called by intake.

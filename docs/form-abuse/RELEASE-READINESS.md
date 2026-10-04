@@ -1,4 +1,6 @@
-# PR134 release readiness: bounded repairs GREEN (NO DEPLOY / NO MERGE)
+# PR134 release readiness: first tranche LIVE / NO MERGE
+
+**2026-10-04 deployment result supersedes the pre-release statuses and approval templates below.** Diego explicitly approved and the exact 40-path manifest was deployed from `c849a48f2209090139bdc1ebc1ce74411e08cf7d`, backup-first with extraction rehearsal, ordered assets → HTML → endpoint, origin/public hashes and GET-only browser proof. See [DEPLOYMENT-RESULT.md](DEPLOYMENT-RESULT.md) for exact backup SHA/restore handle, all 40 staged/live hashes, protected file-set proof and limitations. No merge/live POST/provider send or staff-only classifier integration. The following is retained as the reviewed historical preflight/runbook; its no-deploy statements no longer describe current production.
 
 Updated 2026-10-04 after explicit approval of the two bounded repairs. Code/toolchain head `b58987937843ad3ac7298552cdbab1417f48322d` passed the complete exact-SHA release job. Final documentation-head tests/ref/check evidence is retained in the private checkpoint. **No anti-spam deployment, merge, live POST, provider mutation or customer send. The only origin changes are the approved private PHP logging configuration and exact two-file cleanup below.**
 
