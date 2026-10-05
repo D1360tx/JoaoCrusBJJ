@@ -165,10 +165,36 @@
     return touch;
   }
 
+  // Only existing owned modal routes can supply an embedded quiz's landing path.
+  // Read the live parent Window, not referrer or attacker-controlled query hints.
+  // Keep the established path-only contract: no query, hash, credentials or PII.
+  var MODAL_LANDING_PATHS = [
+    "/adults-first-class/", "/youth-first-class/", "/kids-first-class/",
+    "/austin-adults-first-class/", "/austin-youth-first-class/",
+    "/castle-hill-grand-opening/", "/practice-under-pressure/",
+  ];
+
+  function landingPage(context) {
+    var fallback = clean(context.location.pathname || "/", 240) || "/";
+    try {
+      var current = new URL(context.location.href);
+      var isQuiz = current.pathname === "/program-finder/quiz/" ||
+        current.pathname === "/austin-program-finder/quiz/";
+      if (!isQuiz || current.searchParams.get("embed") !== "1" ||
+          !context.parent || context.parent === context) return fallback;
+      var parent = new URL(context.parent.location.href);
+      if (parent.origin === current.origin && !parent.username && !parent.password &&
+          MODAL_LANDING_PATHS.indexOf(parent.pathname) >= 0) return parent.pathname;
+    } catch (error) {
+      // Cross-origin/sandboxed parents are inaccessible; never infer their route.
+    }
+    return fallback;
+  }
+
   function currentTouch(context, nowMs) {
     var query = new URLSearchParams(context.location.search || "");
     var touch = {
-      landing_page: clean(context.location.pathname || "/", 240) || "/",
+      landing_page: landingPage(context),
       captured_at: new Date(nowMs).toISOString(),
     };
     CAMPAIGN_KEYS.forEach(function (key) {
