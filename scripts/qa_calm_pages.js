@@ -54,6 +54,14 @@ const records=[];
     const frame=p.frameLocator('.quiz-modal__frame');await frame.locator('[data-screen="quiz"]').waitFor({state:'visible'});
     const src=await p.locator('.quiz-modal__frame').getAttribute('src');assert.equal(new URL(src).searchParams.get('placement'),placement);assert.equal(new URL(src).searchParams.get('utm_term'),'TEST');
     assert.equal(await frame.locator('[data-fit-form]').getAttribute('data-form-started-at')!==null,true,'protected timer mounted');
+    assert.equal(await frame.locator(`[name="audience"][value="${slug.startsWith('adults')?'adult':'child'}"]`).isChecked(),true,'correct audience preselected');
+    if(placement==='hero') {
+      const child=await (await p.locator('.quiz-modal__frame').elementHandle()).contentFrame();await child.addScriptTag({content:fs.readFileSync(axeFile,'utf8')});
+      const childViolations=await child.evaluate(async()=>(await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>n.target)})));
+      violations.push(...childViolations.map(v=>({...v,context:'quiz iframe'})));
+      await p.screenshot({path:path.join(out,slug+'-'+width+'-modal.png')});
+      await frame.locator('[data-question-heading]').first().focus();
+    }
     if(placement==='hero')await p.keyboard.press('Escape');else await p.locator('.quiz-modal__close').click();
     await p.locator('dialog.quiz-modal').waitFor({state:'hidden'});assert.equal(await trigger.evaluate(e=>document.activeElement===e),true);
    }

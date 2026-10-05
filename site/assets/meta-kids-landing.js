@@ -8,7 +8,7 @@
   const quizLinks = [...document.querySelectorAll('[data-kids-quiz]')];
   const year = document.querySelector('[data-year]');
   const mobileCta = document.querySelector('[data-mobile-cta]');
-  const heroCta = document.querySelector('.mk-hero [data-kids-quiz]');
+  const heroCta = document.querySelector(document.body.classList.contains('calm-page') ? '.mk-hero' : '.mk-hero [data-kids-quiz]');
   const finalSection = document.querySelector('.mk-final');
 
   // Meta's in-app browser can reuse a WebView and restore this dedicated ad

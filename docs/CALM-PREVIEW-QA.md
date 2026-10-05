@@ -13,6 +13,14 @@
 
 Both variants remain `noindex,nofollow`, including production-mode artifacts. Youth is a test variant; `/kids-first-class/` remains the existing destination and its HTML is untouched. No Bluehost deploy, main merge, 301 redirect, live POST, test lead, canary, CRM/Meta/GTM mutation or customer message is authorized or performed. Native PHP fixture calls are inside `unshare -Urn`, without production credentials and with no external route.
 
+## Verified local preview checks
+
+- Nine CALM browser/native-PHP cases pass: adult Austin/Dripping Springs, Youth 8–12 Austin/Dripping Springs, and five retained private triggers. Each checks empty-contact rejection, exact fields, source, UTMs/click IDs, protocol/timer/honeypot, server-derived booking link and paired browser/server event ID.
+- Five widths per page (390/768/1280/1440/1920): 10 local page cases pass, zero horizontal overflow, loaded Anton/Space Grotesk and images, all five CTA placements across their reachable widths, preselected audience, protected iframe timer, close/Escape/focus restoration, query-preserving qualified anchors below the sticky header, FAQ toggles and sticky hero/middle/final states. Axe WCAG 2 A/AA + 2.1 AA reports zero violations in pages and initial quiz iframes. Full-page, hero, CALM, modal and lower-section captures retained privately and fullpage/hero/lower contact sheets visually inspected.
+- Visible yellow CTAs compute to black `rgb(16,16,16)` on yellow `rgb(245,196,0)` at every width. Desktop-hidden mobile CTAs are intentionally excluded from foreground/background checks.
+- CSS/JS changes are scoped: CALM anchor query preservation, CALM sticky hiding for the whole hero, CALM scroll margins and broad section introductions; shared same-origin iframe Escape forwarding retains the existing close fallback. No visitor-copy rewrite.
+- Evidence root: `/home/d1360/joao-calm-evidence/`. The final exact-head release logs and remote HTTP/browser report are retained there and linked from the PR body. Final Git head and PR identifiers are recorded in the external `FINAL-REPORT.json` after push so this document does not create a self-referential SHA.
+
 ## Checkpoint evidence
 
 - Original reconciled patch exact-SHA full release job passed at `f577210` in `/home/d1360/joao-calm-evidence/checkpoint-f577210/` (all 12 stages, preview/production suites, real native PHP).
