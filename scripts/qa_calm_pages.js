@@ -15,9 +15,16 @@ const records=[];
  try {
   for(const slug of pages)for(const width of widths){
    const ctx=await browser.newContext({viewport:{width,height:844},serviceWorkers:'block'}),errors=[],blocked=[];
+   let acknowledgingNotice=false;
+   const http=[];
    await ctx.route('**/*',async route=>{
     const req=route.request(),u=new URL(req.url());
-    if(req.method()!=='GET'){blocked.push(req.url());await route.abort();return;}
+    if(req.method()!=='GET'){
+      // Sole exception: RawGitHack's observed same-page external-content notice.
+      // This is not an intake/provider POST. All quiz/API/analytics writes abort.
+      if(acknowledgingNotice && req.method()==='POST' && req.isNavigationRequest() && remotePrefix && u.origin==='https://raw.githack.com' && u.pathname===new URL(url).pathname){await route.continue();return;}
+      blocked.push(req.url());await route.abort();return;
+    }
     if(fontMap[req.url()]){await route.fulfill({status:200,contentType:u.hostname==='fonts.googleapis.com'?'text/css':'font/ttf',body:fs.readFileSync(fontMap[req.url()])});return;}
     if(remotePrefix&&req.url().startsWith(remotePrefix)){await route.continue();return;}
     if(u.hostname!=='qa.local'){blocked.push(req.url());await route.fulfill({status:200,body:''});return;}
@@ -27,8 +34,24 @@ const records=[];
     await route.fulfill({status:200,contentType:mime,body:fs.readFileSync(f)});
    });
    const p=await ctx.newPage();p.on('pageerror',e=>errors.push(e.message));
+   if(remotePrefix)p.on('response',async response=>{
+     const githubPrefix=remotePrefix.replace('https://raw.githack.com/','https://raw.githubusercontent.com/');
+     const responsePrefix=response.url().startsWith(remotePrefix)?remotePrefix:response.url().startsWith(githubPrefix)?githubPrefix:'';
+     if(!responsePrefix || (response.status()>=300&&response.status()<400))return;
+     try {
+       const file=new URL(response.url()).pathname.slice(new URL(responsePrefix).pathname.length);
+       const bytes=await response.body(),local=path.resolve(__dirname,'..',file);
+       if(bytes.toString().includes('External Content Notice'))return;
+       http.push({file,status:response.status(),bytes:bytes.length,match:fs.existsSync(local)&&bytes.equals(fs.readFileSync(local)),sha256:require('crypto').createHash('sha256').update(bytes).digest('hex')});
+     }catch(e){http.push({error:e.message});}
+   });
    const url=remotePrefix?remotePrefix+'site/campaign/'+slug+'.html':'https://qa.local/'+slug+'/';
    await p.goto(url+'?utm_source=fb&utm_medium=paid_social&utm_term=TEST');
+   if(remotePrefix && (await p.title()).includes('External Content Notice')){
+     acknowledgingNotice=true;
+     await Promise.all([p.waitForNavigation({waitUntil:'load'}),p.getByRole('button',{name:'Open the page',exact:true}).click()]);
+     acknowledgingNotice=false;
+   }
    p.setDefaultTimeout(7000);
    if(await p.locator('.consent-decline').isVisible())await p.locator('.consent-decline').click();
    assert.equal(await p.locator('h1').count(),1);
@@ -56,7 +79,7 @@ const records=[];
     assert.equal(await frame.locator('[data-fit-form]').getAttribute('data-form-started-at')!==null,true,'protected timer mounted');
     assert.equal(await frame.locator(`[name="audience"][value="${slug.startsWith('adults')?'adult':'child'}"]`).isChecked(),true,'correct audience preselected');
     if(placement==='hero') {
-      const child=await (await p.locator('.quiz-modal__frame').elementHandle()).contentFrame();await child.addScriptTag({content:fs.readFileSync(axeFile,'utf8')});
+      const child=await (await p.locator('.quiz-modal__frame').elementHandle()).contentFrame();await child.evaluate(()=>document.fonts.ready);await child.addScriptTag({content:fs.readFileSync(axeFile,'utf8')});
       const childViolations=await child.evaluate(async()=>(await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>n.target)})));
       violations.push(...childViolations.map(v=>({...v,context:'quiz iframe'})));
       await p.screenshot({path:path.join(out,slug+'-'+width+'-modal.png')});
@@ -65,7 +88,8 @@ const records=[];
     if(placement==='hero')await p.keyboard.press('Escape');else await p.locator('.quiz-modal__close').click();
     await p.locator('dialog.quiz-modal').waitFor({state:'hidden'});assert.equal(await trigger.evaluate(e=>document.activeElement===e),true);
    }
-   const record={slug,width,geometry,anchor,violations,errors,blocked};records.push(record);fs.writeFileSync(path.join(out,'results.json'),JSON.stringify(records,null,2));console.log(JSON.stringify({slug,width,overflow:geometry.overflow,violations,anchor,errors}));
+   if(remotePrefix){await p.waitForTimeout(200);assert.ok(http.length>5,'actual remote responses required');assert.ok(http.every(r=>r.status===200&&r.match),JSON.stringify(http));}
+   const record={slug,width,geometry,anchor,violations,errors,blocked,http};records.push(record);fs.writeFileSync(path.join(out,'results.json'),JSON.stringify(records,null,2));console.log(JSON.stringify({slug,width,overflow:geometry.overflow,violations,anchor,errors}));
    await ctx.close();
   }
  }finally{await browser.close();}
