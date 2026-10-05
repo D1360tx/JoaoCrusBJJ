@@ -26,7 +26,7 @@ foreach ([['Adults','Dripping Springs','adults-first-ds'], ['Little Champions 3â
     }
 }
 $quiz = ['schema_version' => 'program_fit_v1', 'form_id' => 'program_fit_quiz', 'request_id' => 'local-quiz-fixture-2026', 'first_name' => 'Fixture', 'email' => 'fixture@example.com', 'phone' => '2025550123', 'email_consent' => true, 'consent_disclosure_version' => 'program_fit_sms_v2', 'booking_link' => 'https://attacker.example/'];
-foreach ([['child','little','dripping','little_champions','little-champions-first-ds'], ['child','youth','dripping','youth_bjj','youth-first-ds'], ['child','youth','austin','youth_bjj','youth-first-austin'], ['adult','','dripping','adult_group_bjj','adults-first-ds'], ['child','little','austin','little_champions',''], ['child','youth','help','youth_bjj',''], ['adult','','either','adult_group_bjj','']] as [$audience,$age,$location,$program,$slug]) {
+foreach ([['child','little','dripping','little_champions','little-champions-first-ds'], ['child','youth','dripping','youth_bjj','youth-first-ds'], ['child','youth','austin','youth_bjj','youth-first-austin'], ['adult','','dripping','adult_group_bjj','adults-first-ds'], ['adult','','austin','adult_group_bjj','adults-first-austin'], ['child','little','austin','little_champions',''], ['child','youth','help','youth_bjj',''], ['adult','','either','adult_group_bjj','']] as [$audience,$age,$location,$program,$slug]) {
     $lead = normalize_quiz($quiz + ['audience' => $audience, 'child_count' => $age ? '1' : '', 'age_bands' => $age ? [$age] : [], 'stage' => $age ?: 'new', 'goal' => $age ? 'confidence' : 'fundamentals', 'experience' => $age ? 'new' : 'group', 'preferred_location' => $location, 'recommended_program' => $program]);
     check(flattened_values($lead)['booking_link'] === ($slug ? $prefix . $slug : $fallback), 'quiz routing');
     foreach (['false','true'] as $release) {
@@ -36,6 +36,12 @@ foreach ([['child','little','dripping','little_champions','little-champions-firs
         check(end($calls)[2]['tags'] === ['website_lead','quiz_lead'], 'quiz only approved tags');
         check(end($calls)[0] === 'POST', 'no tag deletion');
     }
+}
+// CALM landing pages: new paid sources route like the main quiz (Austin adults -> Austin adult group).
+foreach ([['meta-adults-paid','adult','','austin','adult_group_bjj','adults-first-austin'], ['meta-adults-paid','adult','','dripping','adult_group_bjj','adults-first-ds'], ['meta-youth-paid','child','youth','austin','youth_bjj','youth-first-austin'], ['meta-youth-paid','child','youth','dripping','youth_bjj','youth-first-ds']] as [$routeSource,$audience,$age,$location,$program,$slug]) {
+    $lead = normalize_quiz($quiz + ['route_source' => $routeSource, 'audience' => $audience, 'child_count' => $age ? '1' : '', 'age_bands' => $age ? [$age] : [], 'stage' => $age ?: 'new', 'goal' => $age ? 'confidence' : 'fundamentals', 'experience' => $age ? 'new' : 'group', 'preferred_location' => $location, 'recommended_program' => $program]);
+    check($lead['route_source'] === $routeSource, "$routeSource accepted");
+    check(flattened_values($lead)['booking_link'] === $prefix . $slug, "$routeSource/$location routing");
 }
 $lead = normalize_legacy($base + ['program' => 'Adults', 'location' => 'Dripping Springs']);
 add_tags_if_enabled('fixture-contact', $lead);

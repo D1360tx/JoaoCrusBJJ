@@ -17,7 +17,7 @@
   const endpoint = root.dataset.endpoint || '';
   const routeParams = new URLSearchParams(window.location.search);
   if (routeParams.get('embed') === '1') document.body.classList.add('fit-embed');
-  const allowedRouteSources = ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'meta-kids-paid', 'after60-page'];
+  const allowedRouteSources = ['landing-header', 'landing-hero', 'landing-method', 'landing-programs', 'landing-final', 'landing-mobile', 'practice-under-pressure', 'meta-kids-paid', 'after60-page', 'meta-adults-paid', 'meta-youth-paid'];
   const requestedRouteSource = routeParams.get('source');
   const routeSource = allowedRouteSources.includes(requestedRouteSource) ? requestedRouteSource : '';
   let currentStep = 1;
@@ -222,7 +222,7 @@
       location: {
         options: [
           ['Dripping Springs', 'dripping', 'Group programs for Little Champions, Youth, and current adult classes', 'pin'],
-          ['Austin', 'austin', 'Current Youth ages 8–12 group class or adult private coaching', 'pin'],
+          ['Austin', 'austin', 'Current Youth ages 8–12 group class', 'pin'],
           ['Help me decide', 'help', 'Let the program and format guide the location', 'focus']
         ]
       }
@@ -260,7 +260,7 @@
       location: {
         options: [
           ['Dripping Springs', 'dripping', 'Current adult group classes and private coaching', 'pin'],
-          ['Austin', 'austin', 'Adult private coaching by appointment', 'pin'],
+          ['Austin', 'austin', 'Adult group Tue/Thu 6:00 p.m. and private coaching', 'pin'],
           ['Either works', 'either', 'Recommend the strongest format first', 'focus']
         ]
       }
@@ -447,7 +447,7 @@
       next: 'Review the After 60 class and schedule', location: 'Dripping Springs · Tue/Thu 11:20 a.m.–12:10 p.m.'
     };
 
-    const wantsPrivate = ['private', 'hybrid'].includes(answers.experience) || answers.goal === 'specific' || answers.goal === 'schedule' || answers.location === 'austin' || answers.stage === 'competition';
+    const wantsPrivate = ['private', 'hybrid'].includes(answers.experience) || answers.goal === 'specific' || answers.goal === 'schedule' || answers.stage === 'competition';
     if (wantsPrivate) return {
       title: 'Private Coaching',
       summary: 'Your goals, schedule, or preferred format suggest that direct coaching may be the strongest first step.',
@@ -457,10 +457,12 @@
     };
     return {
       title: 'Adult Group BJJ',
-      summary: 'Your answers point toward the current Dripping Springs adult group as the clearest starting path.',
+      summary: answers.location === 'austin'
+        ? 'Your answers point toward the current Austin adult group at Castle Hill Fitness as the clearest starting path.'
+        : 'Your answers point toward the current Dripping Springs adult group as the clearest starting path.',
       reasons: ['Beginner-friendly group instruction', 'A current recurring weekly schedule', 'Private coaching can be added later if a focused need appears'],
       link: 'adults.html', linkText: 'View Adult BJJ', image: '../assets/campaign-images/adults-joao-coaching-hero-2026-07.webp',
-      next: 'Review the current adult class schedule', location: 'Dripping Springs · Mon/Wed 6:40 p.m. + Sat 11:00 a.m.'
+      next: 'Review the current adult class schedule', location: answers.location === 'austin' ? 'Austin · Tue/Thu 6:00–7:00 p.m.' : 'Dripping Springs · Mon/Wed 6:40 p.m. + Sat 11:00 a.m.'
     };
   }
 
