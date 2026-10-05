@@ -27,6 +27,18 @@
 
   if (year) year.textContent = new Date().getFullYear();
 
+  // CALM qualified fragments must stay on this exact URL, including attribution.
+  // Without the search string a clean-route anchor reload drops CTA UTMs.
+  if (document.body.classList.contains('calm-page')) {
+    document.querySelectorAll('a[href]').forEach((link) => {
+      const target = new URL(link.href, window.location.href);
+      if (target.origin === window.location.origin && target.pathname === window.location.pathname && target.hash) {
+        target.search = window.location.search;
+        link.href = target.pathname + target.search + target.hash;
+      }
+    });
+  }
+
   quizLinks.forEach((link) => {
     const target = new URL(link.href, window.location.href);
     attributionKeys.forEach((key) => {

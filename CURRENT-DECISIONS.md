@@ -16,6 +16,14 @@
 
 ---
 
+## CALM preview-only landing pages (2026-10-05)
+
+- Supplied `449ec90` patch preserved on a separate branch stacked on PR #134's protected `f77fc87` source, with a narrow CALM diff. Main and deployed files remain unchanged.
+- Adult and Youth 8–12 variants remain noindex in all build modes. Youth is test-only; `/kids-first-class/` remains the live youth ad control.
+- Austin adult group routing now agrees between shared quiz and candidate PHP; private/hybrid formats, specific/schedule goals and competition remain private routes.
+- Future release must compare fresh deployed protected PHP and apply only the source-enum/recommendation delta surgically. Quiz JS and PHP must ship together. See `docs/CALM-PREVIEW-QA.md`.
+- No deployment, merge, old-route 301, test lead, canary or outbound automation is approved by this preview task.
+
 ## PR134 anti-spam deployment approval and result (2026-10-04)
 
 ✅ Diego's subsequent explicit “Approved” authorized the backup-first **40-path Bluehost first-tranche release** from reviewed SHA `c849a48f2209090139bdc1ebc1ce74411e08cf7d`, including extraction rehearsal, assets → HTML → PHP, GET-only public proof and coordinated rollback on verification failure. **Verified LIVE**: 40/40 origin hashes equal approved/staged hashes; all 116 protected nonmanifest bytes and secure env remain unchanged. Root/contact/teens/guide/both quizzes/book return HTTP200 with exact approved bytes; lead GET405. `/book/` remains zero lead forms/dialogs. Full outside-webroot backup and public/runtime evidence are in `docs/form-abuse/DEPLOYMENT-RESULT.md`. This supersedes the historical no-deploy limit below, not the other prohibitions: **no PR merge, live POST, provider/customer sends, GHL/GTM edits, Turnstile or staff-only classifier integration**. No live lead delivery proof claimed.

@@ -1,6 +1,12 @@
 /* CALM Method landing pages (/adults-first-class/, /youth-first-class/).
    Extends meta-kids-landing.css; load after it. */
 
+/* Keep qualified fragment targets below the sticky header on these pages only. */
+.calm-page [id] { scroll-margin-top: 96px; }
+/* Long CALM introductions need the whole content width, not a narrow poster column. */
+.calm-page .mk-heading { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.calm-page .mk-heading p { max-width: 850px; }
+
 .mk-calm { background: var(--mk-black); color: #fff; }
 .mk-calm .mk-eye::before { background: var(--mk-yellow); }
 .mk-calm .mk-heading h2 span { color: var(--mk-yellow); }
