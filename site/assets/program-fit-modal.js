@@ -18,6 +18,16 @@
 
   const close = () => dialog.close();
 
+  // An embedded quiz can move focus into its document. Keep Escape available
+  // there as well as on the dialog's own close control (same-origin only).
+  frame.addEventListener('load', () => {
+    try {
+      frame.contentDocument.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && dialog.open) { event.preventDefault(); close(); }
+      });
+    } catch (_) { /* Cross-origin fallbacks retain the visible close button. */ }
+  });
+
   triggers.forEach((trigger) => {
     trigger.addEventListener('click', (event) => {
       if (!dialog.showModal) return;

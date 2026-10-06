@@ -606,8 +606,21 @@
       meta: window.JoaoAttribution && typeof window.JoaoAttribution.metaContext === 'function'
         ? window.JoaoAttribution.metaContext(window, attribution)
         : { ad_storage: 'denied', ad_user_data: 'denied' },
+      company_website: String(data.get('company_website') || '').trim(),
+      form_started_at: Number(form.dataset.formStartedAt),
+      abuse_protocol_version: 2,
       website: String(data.get('website') || '').trim()
     };
+  }
+
+  function handledLeadOutcome(response, body) {
+    const neutral = { handled: true, outcome: 'neutral', accepted: false, contact_accepted: false, opportunity_accepted: false, tracking_allowed: false };
+    if (response.status === 200 && Object.keys(body).length === Object.keys(neutral).length
+      && Object.keys(neutral).every((key) => body[key] === neutral[key])) return { outcome: 'neutral' };
+    if (response.status === 409 && body.reload_required === true && body.accepted === false
+      && body.handled === undefined && body.tracking_allowed !== true && !body.meta_event_id && !body.contact_id && !body.opportunity_id) return { outcome: 'reload' };
+    if (body.handled !== undefined || body.outcome !== undefined || body.reload_required !== undefined) throw new Error('Invalid handled response.');
+    return null;
   }
 
   async function submitLead(payload) {
@@ -622,16 +635,19 @@
         signal: controller.signal
       });
       const body = await response.json().catch(() => ({}));
+      const handled = handledLeadOutcome(response, body);
+      if (handled) return handled;
       if (!response.ok || body.accepted !== true || body.contact_accepted !== true || body.opportunity_accepted !== true || body.note_accepted !== true || body.request_id !== payload.request_id || body.meta_event_id !== `lead_${payload.request_id}`) {
         throw new Error('Lead delivery was not accepted.');
       }
-      return body;
+      return { ...body, outcome: 'accepted' };
     } finally {
       window.clearTimeout(timeout);
     }
   }
 
   function startQuiz(entry) {
+    if (!form.dataset.formStartedAt) form.dataset.formStartedAt = String(Date.now());
     showScreen('quiz');
     if (['child', 'adult'].includes(form.elements.audience.value)) { recordStep(); showStep(2); } else showStep(1);
     trackQuizStart(entry);
@@ -669,6 +685,7 @@
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (submitButton.disabled) return;
     if (currentStep !== 6 || !stepIsValid() || answers.location !== 'austin' || (answers.audience === 'child' && (answers.child_count !== '1' || answers.stage[0] !== 'youth'))) {
       error.textContent = 'Complete the required fields to see the recommendation.';
       return;
@@ -705,6 +722,13 @@
     try {
       const payload = leadPayload(result);
       const acceptance = await submitLead(payload);
+      if (acceptance.outcome === 'neutral') { showScreen('neutral'); return; }
+      if (acceptance.outcome === 'reload') {
+        showScreen('quiz');
+        showStep(6);
+        error.textContent = 'Please reload this page before sending your request. Your entries are still here; copy them before reloading, or call 512-644-4560.';
+        return;
+      }
       showScreen('result');
       routeAcceptedLead({
         recommendation,
@@ -729,6 +753,7 @@
     form.reset();
     Object.keys(answers).forEach((key) => delete answers[key]);
     requestId = '';
+    delete form.dataset.formStartedAt;
     completionSignature = '';
     quizStartTracked = false;
     quizStartPending = false;

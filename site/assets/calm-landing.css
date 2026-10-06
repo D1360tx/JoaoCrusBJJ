@@ -1,0 +1,36 @@
+/* CALM Method landing pages (/adults-first-class/, /youth-first-class/).
+   Extends meta-kids-landing.css; load after it. */
+
+/* Keep qualified fragment targets below the sticky header on these pages only. */
+.calm-page [id] { scroll-margin-top: 96px; }
+/* Long CALM introductions need the whole content width, not a narrow poster column. */
+.calm-page .mk-heading { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.calm-page .mk-heading p { max-width: 850px; }
+
+.mk-calm { background: var(--mk-black); color: #fff; }
+.mk-calm .mk-eye::before { background: var(--mk-yellow); }
+.mk-calm .mk-heading h2 span { color: var(--mk-yellow); }
+.mk-calm .mk-heading p { color: #e9e6df; }
+.mk-calm .mk-card { background: var(--mk-warm); color: var(--mk-black); box-shadow: 6px 6px 0 var(--mk-yellow); min-height: 0; }
+.mk-calm-letter { align-items: center; background: var(--mk-yellow); border: 3px solid var(--mk-black); display: inline-flex; font-family: Anton, Impact, sans-serif; font-size: 2.4rem; height: 64px; justify-content: center; line-height: 1; width: 64px; }
+.mk-calm .mk-card h3 { margin: 22px 0 12px; }
+.mk-calm .mk-card .mk-calm-tag { color: var(--mk-blue); font-size: .74rem; font-weight: 800; letter-spacing: .05em; margin: 0 0 10px; text-transform: uppercase; }
+.mk-calm-outcome { border-top: 3px solid var(--mk-yellow); font-family: Anton, Impact, sans-serif; font-size: clamp(1.5rem, 2.6vw, 2.2rem); letter-spacing: .01em; line-height: 1.1; margin: 46px 0 0; padding-top: 24px; text-transform: uppercase; }
+
+.mk-grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.mk-location { background: var(--mk-warm); border: 3px solid var(--mk-black); box-shadow: 7px 7px 0 var(--mk-black); display: flex; flex-direction: column; gap: 6px; padding: 26px 24px; }
+.mk-location h3 { font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 8px; }
+.mk-location p { margin: 0; }
+.mk-location__times { border-top: 2px solid var(--mk-black); font-weight: 700; margin-top: 14px !important; padding-top: 14px; }
+.mk-location a { font-size: .8rem; font-weight: 800; margin-top: 12px; text-transform: uppercase; }
+.mk-note { font-size: .92rem; font-weight: 700; margin: 26px 0 0; }
+
+.mk-first { background: var(--mk-cream); }
+.mk-first__list { counter-reset: first; display: grid; gap: 14px; list-style: none; margin: 0; padding: 0; }
+.mk-first__list li { align-items: start; background: var(--mk-warm); border: 3px solid var(--mk-black); display: grid; gap: 16px; grid-template-columns: 44px 1fr; padding: 16px 18px; }
+.mk-first__list li::before { color: var(--mk-blue); content: counter(first, decimal-leading-zero); counter-increment: first; font-family: Anton, Impact, sans-serif; font-size: 1.6rem; line-height: 1.1; }
+.mk-first__list p { margin: 0; }
+
+@media (max-width: 900px) {
+  .mk-grid--two { grid-template-columns: minmax(0, 1fr); }
+}

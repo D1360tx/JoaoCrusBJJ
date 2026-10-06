@@ -1,0 +1,12 @@
+{
+  "name": "joao-crus-bjj-release-qa",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "python3 scripts/build_vercel_site.py && python3 scripts/validate_vercel_build.py",
+    "test:release": "python3 scripts/test_release.py"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}
