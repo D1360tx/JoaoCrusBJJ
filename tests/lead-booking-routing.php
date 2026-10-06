@@ -1,13 +1,12 @@
 <?php
 declare(strict_types=1);
-// Execute definitions only; all provider calls are intercepted. No dispatcher or env bootstrap.
+// Execute exact definitions only; CLI transport hook intercepts all providers. No env bootstrap.
+define('JOAO_CAPI_LIBRARY_ONLY', true);
+define('JOAO_LEAD_TEST', true);
+require __DIR__ . '/../deploy/bluehost/api/lead.php';
 $source = file_get_contents(__DIR__ . '/../deploy/bluehost/api/lead.php');
-$boundary = strpos($source, "\ntry {\n    load_server_env_file();");
-if ($boundary === false) throw new RuntimeException('Dispatcher boundary missing');
-$definitions = str_replace('function ghl_request(', 'function unused_real_ghl_request(', substr($source, 5, $boundary - 5));
-eval($definitions);
 $calls = [];
-function ghl_request(...$args): array { global $calls; $calls[] = $args; return ['contact' => ['id' => 'fixture-contact']]; }
+$GLOBALS['joao_lead_test_hooks']['ghl'] = function(...$args) use (&$calls): array { $calls[] = $args; return ['contact' => ['id' => 'fixture-contact']]; };
 $checks = 0;
 function check(bool $ok, string $message): void { global $checks; $checks++; if (!$ok) throw new RuntimeException($message); }
 $base = ['request_id' => 'local-routing-fixture-2026', 'form_id' => 'booking_popup', 'name' => 'Local Fixture', 'email' => 'fixture@example.com', 'phone' => '2025550123', 'consent' => true];
@@ -27,7 +26,7 @@ foreach ([['Adults','Dripping Springs','adults-first-ds'], ['Little Champions 3â
     }
 }
 $quiz = ['schema_version' => 'program_fit_v1', 'form_id' => 'program_fit_quiz', 'request_id' => 'local-quiz-fixture-2026', 'first_name' => 'Fixture', 'email' => 'fixture@example.com', 'phone' => '2025550123', 'email_consent' => true, 'consent_disclosure_version' => 'program_fit_sms_v2', 'booking_link' => 'https://attacker.example/'];
-foreach ([['child','little','dripping','little_champions','little-champions-first-ds'], ['child','youth','dripping','youth_bjj','youth-first-ds'], ['child','youth','austin','youth_bjj','youth-first-austin'], ['adult','','dripping','adult_group_bjj','adults-first-ds'], ['child','little','austin','little_champions',''], ['child','youth','help','youth_bjj',''], ['adult','','either','adult_group_bjj','']] as [$audience,$age,$location,$program,$slug]) {
+foreach ([['child','little','dripping','little_champions','little-champions-first-ds'], ['child','youth','dripping','youth_bjj','youth-first-ds'], ['child','youth','austin','youth_bjj','youth-first-austin'], ['adult','','dripping','adult_group_bjj','adults-first-ds'], ['adult','','austin','adult_group_bjj','adults-first-austin'], ['child','little','austin','little_champions',''], ['child','youth','help','youth_bjj',''], ['adult','','either','adult_group_bjj','']] as [$audience,$age,$location,$program,$slug]) {
     $lead = normalize_quiz($quiz + ['audience' => $audience, 'child_count' => $age ? '1' : '', 'age_bands' => $age ? [$age] : [], 'stage' => $age ?: 'new', 'goal' => $age ? 'confidence' : 'fundamentals', 'experience' => $age ? 'new' : 'group', 'preferred_location' => $location, 'recommended_program' => $program]);
     check(flattened_values($lead)['booking_link'] === ($slug ? $prefix . $slug : $fallback), 'quiz routing');
     foreach (['false','true'] as $release) {
@@ -37,6 +36,12 @@ foreach ([['child','little','dripping','little_champions','little-champions-firs
         check(end($calls)[2]['tags'] === ['website_lead','quiz_lead'], 'quiz only approved tags');
         check(end($calls)[0] === 'POST', 'no tag deletion');
     }
+}
+// CALM landing pages: new paid sources route like the main quiz (Austin adults -> Austin adult group).
+foreach ([['meta-adults-paid','adult','','austin','adult_group_bjj','adults-first-austin'], ['meta-adults-paid','adult','','dripping','adult_group_bjj','adults-first-ds'], ['meta-youth-paid','child','youth','austin','youth_bjj','youth-first-austin'], ['meta-youth-paid','child','youth','dripping','youth_bjj','youth-first-ds']] as [$routeSource,$audience,$age,$location,$program,$slug]) {
+    $lead = normalize_quiz($quiz + ['route_source' => $routeSource, 'audience' => $audience, 'child_count' => $age ? '1' : '', 'age_bands' => $age ? [$age] : [], 'stage' => $age ?: 'new', 'goal' => $age ? 'confidence' : 'fundamentals', 'experience' => $age ? 'new' : 'group', 'preferred_location' => $location, 'recommended_program' => $program]);
+    check($lead['route_source'] === $routeSource, "$routeSource accepted");
+    check(flattened_values($lead)['booking_link'] === $prefix . $slug, "$routeSource/$location routing");
 }
 $lead = normalize_legacy($base + ['program' => 'Adults', 'location' => 'Dripping Springs']);
 add_tags_if_enabled('fixture-contact', $lead);

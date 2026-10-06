@@ -16,6 +16,13 @@
 
 ---
 
+## Already-live Git reconciliation (2026-10-06)
+
+- Honeypot/timing first tranche, readable opportunity names, CALM adult/youth pages and same-origin parent attribution are already deployed from reviewed source overlays. Git main reconciliation is pending review; no merge or deployment is authorized by this PR.
+- Adult/youth CALM routes remain noindex; Youth remains test-only and the existing kids landing page remains the ad control. Austin adult group and private routes remain distinct.
+- Four authentic-phone lead journeys, welcome email/SMS and paired browser/server Meta Test Events are not confirmed. Domain TXT verification remains blocked on the exact owner-supplied Meta value.
+- Preserve host-owned logging and private environment configuration; never overwrite it from tracked examples. See `docs/LIVE-GIT-RECONCILIATION-20261006.md` for exact source provenance, testing and limits.
+
 ## 1. Current objectives and priorities
 
 1. ✅ **Generate new qualified leads and convert them into students.** New leads—not merely appointment show-up—is the primary growth problem.

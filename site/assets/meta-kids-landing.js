@@ -8,7 +8,7 @@
   const quizLinks = [...document.querySelectorAll('[data-kids-quiz]')];
   const year = document.querySelector('[data-year]');
   const mobileCta = document.querySelector('[data-mobile-cta]');
-  const heroCta = document.querySelector('.mk-hero [data-kids-quiz]');
+  const heroCta = document.querySelector(document.body.classList.contains('calm-page') ? '.mk-hero' : '.mk-hero [data-kids-quiz]');
   const finalSection = document.querySelector('.mk-final');
 
   // Meta's in-app browser can reuse a WebView and restore this dedicated ad
@@ -26,6 +26,18 @@
   });
 
   if (year) year.textContent = new Date().getFullYear();
+
+  // CALM qualified fragments must stay on this exact URL, including attribution.
+  // Without the search string a clean-route anchor reload drops CTA UTMs.
+  if (document.body.classList.contains('calm-page')) {
+    document.querySelectorAll('a[href]').forEach((link) => {
+      const target = new URL(link.href, window.location.href);
+      if (target.origin === window.location.origin && target.pathname === window.location.pathname && target.hash) {
+        target.search = window.location.search;
+        link.href = target.pathname + target.search + target.hash;
+      }
+    });
+  }
 
   quizLinks.forEach((link) => {
     const target = new URL(link.href, window.location.href);

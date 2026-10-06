@@ -47,20 +47,25 @@ def main() -> None:
     pages = [page for page in DATA["pages"] if page["file"] not in EXCLUDED]
     routes = {page["path"] for page in pages}
     vercel_config = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
-    build_command = vercel_config.get("buildCommand", "")
-    all_node_tests = "tests/*.test.js" in build_command
-
+    package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
+    release_job = (ROOT / "scripts/test_release.py").read_text(encoding="utf-8")
     check(
-        all_node_tests or "node --test tests/attribution.test.js" in build_command,
-        "Vercel build must execute attribution behavior tests",
+        vercel_config.get("buildCommand") == "npm run build"
+        and package["scripts"]["build"] == "python3 scripts/build_vercel_site.py && python3 scripts/validate_vercel_build.py",
+        "Vercel must build and validate the complete static preview artifact",
     )
     check(
-        all_node_tests or "tests/program-fit-integration.test.js" in build_command,
-        "Vercel build must execute Program Fit integration tests",
+        package["scripts"].get("test:release") == "python3 scripts/test_release.py"
+        and "('preview-node', ['sh', '-c', 'node --test tests/*.test.js'])" in release_job
+        and "('production-node', ['sh', '-c', 'node --test tests/*.test.js'])" in release_job,
+        "Required release job must execute ALL Node behavior/integration tests in both modes",
     )
     check(
-        all_node_tests or "tests/call-tracking.test.js" in build_command,
-        "Vercel build must execute call-tracking behavior tests",
+        "['unshare', '-Urn', *command]" in release_job
+        and "'JOAO_TEST_PHP'" in release_job
+        and "('native-php'," in release_job
+        and package["devDependencies"].get("playwright") == "1.63.0",
+        "Required release job must retain native isolated PHP and pinned real browser prerequisites",
     )
     quiz_source = (ASSETS / "program-fit-quiz.js").read_text(encoding="utf-8")
     check(
