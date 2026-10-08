@@ -21,6 +21,22 @@ test('yellow confirmation styling stays page-scoped with black small text and CT
   assert.match(source, /<footer class="footer">/);
 });
 
+test('Austin adult GROUP first-class booking is a visible sibling card, not private or interest-list routing', () => {
+  const card = source.match(/<article class="booking-card" data-booking-card="adults:austin"[\s\S]*?<\/article>/)?.[0];
+  assert.ok(card);
+  assert.equal((source.match(/data-booking-card="adults:austin"/g) || []).length, 1);
+  assert.match(source, /Austin · Castle Hill Fitness/);
+  assert.match(source, /1112 N Lamar Blvd/);
+  assert.match(card, /Adult group classes/);
+  assert.match(card, />Adults<\/h4>/);
+  assert.match(card, /Tuesday &amp; Thursday/);
+  assert.match(card, /6:00–7:00 PM/);
+  assert.match(card, /href="https:\/\/api\.leadconnectorhq\.com\/widget\/bookings\/adults-first-austin"/);
+  assert.match(card, />Book Your Class<\/a>/);
+  assert.doesNotMatch(card, /hidden|aria-disabled|private|interest list/i);
+  assert.match(source, /Your first studio visit is free\./);
+});
+
 test('approved reference anchor and all six existing booking destinations remain honest', () => {
   assert.match(source, /id="first-class-options"/);
   const urls = text => [...text.matchAll(/href="(https:\/\/api\.leadconnectorhq\.com\/widget\/bookings\/[^"\s]+)"/g)].map(m => m[1]).sort();
