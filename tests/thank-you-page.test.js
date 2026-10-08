@@ -5,15 +5,16 @@ const source = fs.readFileSync('site/campaign/thank-you.html', 'utf8');
 const book = fs.readFileSync('site/campaign/book.html', 'utf8');
 
 test('thank-you page uses the exact approved follow-up copy without a personal-call promise', () => {
-  assert.match(source, /<h1>Your request is in\.<\/h1>/);
-  assert.match(source, /<p class="lead">We'll follow up to help you choose the right program, location, and first class\.<\/p>/);
+  assert.match(source, /<h1>Thank you\. <span class="blue">We'll help you start\.<\/span><\/h1>/);
+  assert.match(source, /<p class="lead">Your request is in\. We'll follow up to help you choose the right program, location, and first class\.<\/p>/);
   assert.doesNotMatch(source, /reach out shortly|personally call|Once the production form is connected/i);
   assert.match(source, /Your form did not reserve a calendar slot\./);
 });
 
 test('yellow confirmation styling stays page-scoped with black small text and CTA foreground', () => {
   assert.match(source, /\.thank-hero \{[^}]*background: #f5c400; color: #101010;/);
-  assert.match(source, /\.thank-hero h1 \{[^}]*color: #194fc3;/);
+  assert.match(source, /\.thank-hero h1 \{[^}]*color: #101010;/);
+  assert.match(source, /<span class="blue">We'll help you start\.<\/span>/);
   assert.match(source, /\.thank-hero \.eye, \.thank-hero \.lead, \.thank-hero \.thank-note \{ color: #101010; \}/);
   assert.match(source, /\.thank-hero \.btn \{ background: #f5c400; color: #101010; \}/);
   assert.match(source, /\.booking-card \.btn \{[^}]*background: #f5c400; color: #101010;/);
