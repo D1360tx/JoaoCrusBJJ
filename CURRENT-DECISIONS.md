@@ -16,6 +16,15 @@
 
 ---
 
+## Approved thank-you follow-up copy and layout (2026-10-07)
+
+- Diego approved adapting the thank-you layout from `a1854054b9c10e95e9464b88b4eee26d0806fb7c`, preserving `first-class-options`. His latest correction restores the reference headline: **Thank you. We'll help you start.** The separate paragraph below is exactly: **Your request is in. We'll follow up to help you choose the right program, location, and first class.** Preserve normal source capitalization, with Anton's uppercase display treatment and black headline text plus blue emphasis.
+- Diego's additional screenshot direction makes only the confirmation hero Champion Yellow `#F5C400`, with black body/kicker text and accessible Academy Blue headline emphasis. Keep the warm-cream global navigation, black utility strip and black footer unchanged. This is a scoped thank-you preview decision, not a global brand-shell change; retain the approved confirmation copy rather than copying the screenshot headline.
+- This thank-you page does not promise a personal call from Joao. This is a narrow page-copy decision, not a change to the confirmed personal-call wording in existing quizzes or the broader follow-up strategy.
+- Preserve the six already-approved `/book/` program/location booking destinations and current shared schedule, including Austin adult group Tue/Thu 6:00–7:00 p.m. Do not revive the reference's obsolete paused-calendar URLs or add a booking/lead conversion event. A form submission does not reserve a slot; only provider confirmation books a class.
+- Diego additionally requested visible Austin Adults group booking. Keep exactly one separate Adults card alongside Austin Youth under Castle Hill Fitness, 1112 N Lamar Blvd, Tue/Thu 6:00–7:00 p.m., using the existing verified `https://api.leadconnectorhq.com/widget/bookings/adults-first-austin` URL. The first Austin adult group class is free, not private-coaching or interest-list routing. This card already exists in the adapted preview; verify its responsive visibility instead of duplicating it.
+- Branch/PR preview only. No merge, Bluehost release, provider/workflow changes, lead submissions, or production deployment are authorized by this change.
+
 ## Already-live Git reconciliation (2026-10-06)
 
 - Honeypot/timing first tranche, readable opportunity names, CALM adult/youth pages and same-origin parent attribution are already deployed from reviewed source overlays. Git main reconciliation is pending review; no merge or deployment is authorized by this PR.
