@@ -11,15 +11,27 @@ test('thank-you page uses the exact approved follow-up copy without a personal-c
   assert.match(source, /Your form did not reserve a calendar slot\./);
 });
 
-test('yellow confirmation styling stays page-scoped with black small text and CTA foreground', () => {
+test('yellow confirmation styling stays page-scoped with black small text and booking CTA foreground', () => {
   assert.match(source, /\.thank-hero \{[^}]*background: #f5c400; color: #101010;/);
   assert.match(source, /\.thank-hero h1 \{[^}]*color: #101010;/);
   assert.match(source, /<span class="blue">We'll help you start\.<\/span>/);
   assert.match(source, /\.thank-hero \.eye, \.thank-hero \.lead, \.thank-hero \.thank-note \{ color: #101010; \}/);
-  assert.match(source, /\.thank-hero \.btn \{ background: #f5c400; color: #101010; \}/);
+  assert.match(source, /\.thank-hero \.thankyou-options-cta \{ background: #194fc3; color: #fffdf8; \}/);
   assert.match(source, /\.booking-card \.btn \{[^}]*background: #f5c400; color: #101010;/);
   assert.match(source, /<header class="header">/);
   assert.match(source, /<footer class="footer">/);
+});
+
+test('only the options anchor gets Academy Blue with accessible cream text and visible focus', () => {
+  assert.equal((source.match(/class="btn u thankyou-options-cta"/g) || []).length, 1);
+  assert.match(source, /<a class="btn u thankyou-options-cta" href="#first-class-options">See classes &amp; booking options ↓<\/a>/);
+  assert.match(source, /\.thank-hero \.thankyou-options-cta:focus-visible \{ outline: 3px solid #101010; outline-offset: 4px; \}/);
+  const luminance = hex => {
+    const rgb = hex.match(/../g).map(value => parseInt(value, 16) / 255)
+      .map(value => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4);
+    return rgb[0] * 0.2126 + rgb[1] * 0.7152 + rgb[2] * 0.0722;
+  };
+  assert.ok((luminance('fffdf8') + 0.05) / (luminance('194fc3') + 0.05) >= 4.5);
 });
 
 test('Austin adult GROUP first-class booking is a visible sibling card, not private or interest-list routing', () => {
