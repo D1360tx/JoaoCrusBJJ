@@ -19,6 +19,7 @@
 ## Approved thank-you follow-up copy and layout (2026-10-07)
 
 - Diego approved adapting the thank-you layout from `a1854054b9c10e95e9464b88b4eee26d0806fb7c`, preserving `first-class-options`, with exact confirmation copy: **Your request is in. We'll follow up to help you choose the right program, location, and first class.**
+- Diego's additional screenshot direction makes only the confirmation hero Champion Yellow `#F5C400`, with black body/kicker text and accessible Academy Blue headline emphasis. Keep the warm-cream global navigation, black utility strip and black footer unchanged. This is a scoped thank-you preview decision, not a global brand-shell change; retain the approved confirmation copy rather than copying the screenshot headline.
 - This thank-you page does not promise a personal call from Joao. This is a narrow page-copy decision, not a change to the confirmed personal-call wording in existing quizzes or the broader follow-up strategy.
 - Preserve the six already-approved `/book/` program/location booking destinations and current shared schedule, including Austin adult group Tue/Thu 6:00–7:00 p.m. Do not revive the reference's obsolete paused-calendar URLs or add a booking/lead conversion event. A form submission does not reserve a slot; only provider confirmation books a class.
 - Branch/PR preview only. No merge, Bluehost release, provider/workflow changes, lead submissions, or production deployment are authorized by this change.

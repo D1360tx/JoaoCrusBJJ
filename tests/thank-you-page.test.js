@@ -11,6 +11,16 @@ test('thank-you page uses the exact approved follow-up copy without a personal-c
   assert.match(source, /Your form did not reserve a calendar slot\./);
 });
 
+test('yellow confirmation styling stays page-scoped with black small text and CTA foreground', () => {
+  assert.match(source, /\.thank-hero \{[^}]*background: #f5c400; color: #101010;/);
+  assert.match(source, /\.thank-hero h1 \{[^}]*color: #194fc3;/);
+  assert.match(source, /\.thank-hero \.eye, \.thank-hero \.lead, \.thank-hero \.thank-note \{ color: #101010; \}/);
+  assert.match(source, /\.thank-hero \.btn \{ background: #f5c400; color: #101010; \}/);
+  assert.match(source, /\.booking-card \.btn \{[^}]*background: #f5c400; color: #101010;/);
+  assert.match(source, /<header class="header">/);
+  assert.match(source, /<footer class="footer">/);
+});
+
 test('approved reference anchor and all six existing booking destinations remain honest', () => {
   assert.match(source, /id="first-class-options"/);
   const urls = text => [...text.matchAll(/href="(https:\/\/api\.leadconnectorhq\.com\/widget\/bookings\/[^"\s]+)"/g)].map(m => m[1]).sort();
