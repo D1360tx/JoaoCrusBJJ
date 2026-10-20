@@ -49,6 +49,8 @@
       routedMetaEventIds[metaEventId] = true;
       var attempts = 0;
       function sendWhenReady() {
+        var consent = window.joaoConsentState || {};
+        if (consent.ad_storage !== "granted" || consent.ad_user_data !== "granted" || (window.navigator && window.navigator.globalPrivacyControl === true)) return;
         if (typeof window.fbq === "function") {
           window.fbq("track", "Lead", {
             content_name: clean.form_name || "website_lead",

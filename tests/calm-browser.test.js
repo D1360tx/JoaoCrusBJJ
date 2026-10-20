@@ -16,7 +16,7 @@ async function fixture(audience,location,overrides={}) {
   const req=route.request(),u=new URL(req.url());
   if(u.hostname!=='qa.local'){await route.fulfill({status:200,body:''});return;}
   if(u.pathname==='/api/lead.php') {
-   const data=req.postDataJSON();const p=spawnSync('unshare',['-Urn',process.env.JOAO_TEST_PHP,'-n','-d','allow_url_fopen=0','-d','disable_functions=mail,exec,shell_exec,system,passthru,popen,proc_open',path.join(root,'tests/fixtures/lead-abuse-runner.php')],{input:JSON.stringify({data}),encoding:'utf8',env:{PATH:process.env.PATH}});
+   const data=req.postDataJSON();const p=spawnSync('unshare',['-Urn',process.env.JOAO_TEST_PHP,'-n','-d','allow_url_fopen=0','-d','disable_functions=mail,exec,shell_exec,system,passthru,popen,proc_open',path.join(root,'tests/fixtures/lead-abuse-runner.php')],{input:JSON.stringify({data,capi:true}),encoding:'utf8',env:{PATH:process.env.PATH}});
    assert.equal(p.status,0,p.stderr);const result=JSON.parse(p.stdout);posts.push({data,result});await route.fulfill({status:result.status,contentType:'application/json',body:JSON.stringify(result.body)});return;
   }
   if(req.resourceType()==='script'&&!/\/(program-fit-quiz|attribution)\.js$/.test(u.pathname)){await route.fulfill({status:200,body:''});return;}
@@ -48,6 +48,9 @@ async function fixture(audience,location,overrides={}) {
   if(program==='private_coaching')assert.ok(calls.includes('https://joaocrusbjj.com/book/'));else assert.ok(calls.includes((audience==='child'?'youth':'adults')+'-first-'+(location==='austin'?'austin':'ds')),calls);
   const events=await page.evaluate(()=>({ga:window.__ga,meta:window.__meta,layer:window.dataLayer}));
   assert.equal(events.ga.filter(x=>x[1]==='generate_lead').length,1);assert.equal(events.meta.filter(x=>x[1]==='Lead').length,1);assert.equal(events.meta.find(x=>x[1]==='Lead')[3].eventID,'lead_'+data.request_id);assert.equal(result.body.meta_event_id,'lead_'+data.request_id);
+  const serverEvent=result.calls.find(c=>c.method==='META_MOCK').payload.data[0];
+  assert.equal(result.body.meta_capi_status,'accepted');assert.equal(serverEvent.event_name,'Lead');assert.equal(serverEvent.event_id,events.meta.find(x=>x[1]==='Lead')[3].eventID);
+  assert.ok(!/[?#]/.test(serverEvent.event_source_url)); // Paired native fixture, NOT live Meta receipt.
   assert.deepEqual(errors,[]);
  } finally {await context.close();}
 }
