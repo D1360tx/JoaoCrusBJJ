@@ -673,17 +673,24 @@ function meta_event_id(array $lead): string
 
 function meta_event_source_url(array $lead): string
 {
-    $page = clean_text($lead['page'] ?? '', 300);
-    if (str_starts_with($page, '/')) return 'https://joaocrusbjj.com' . $page;
-    $parts = parse_url($page);
-    if (
-        is_array($parts)
-        && strtolower((string)($parts['scheme'] ?? '')) === 'https'
-        && in_array(strtolower((string)($parts['host'] ?? '')), ['joaocrusbjj.com', 'www.joaocrusbjj.com'], true)
-    ) {
-        return 'https://' . strtolower((string)$parts['host']) . ((string)($parts['path'] ?? '/') ?: '/');
-    }
-    return 'https://joaocrusbjj.com/';
+    $fallback = 'https://joaocrusbjj.com/';
+    $page = $lead['page'] ?? '';
+    if (!is_string($page) || preg_match('/[\x00-\x20\x7F\\\\]/', $page)) return $fallback;
+    // Parse relative and absolute URLs identically. Never forward a query or fragment,
+    // including nested/percent-encoded values under otherwise approved UTM keys.
+    $relative = str_starts_with($page, '/') && !str_starts_with($page, '//');
+    $parts = parse_url($relative ? 'https://joaocrusbjj.com' . $page : $page);
+    if (!is_array($parts)
+        || strtolower((string)($parts['scheme'] ?? '')) !== 'https'
+        || !in_array(strtolower((string)($parts['host'] ?? '')), ['joaocrusbjj.com', 'www.joaocrusbjj.com'], true)
+        || isset($parts['user']) || isset($parts['pass'])
+        || (isset($parts['port']) && $parts['port'] !== 443)) return $fallback;
+    $path = (string)($parts['path'] ?? '/') ?: '/';
+    // Public route slugs only; reject encoded paths/contact-like path values too.
+    if (!preg_match('~^/[A-Za-z0-9/_.-]*$~D', $path)
+        || str_contains($path, '..') || str_contains($path, '//')
+        || preg_match('/[0-9]{7,}/', $path)) return $fallback;
+    return 'https://' . strtolower((string)$parts['host']) . $path;
 }
 
 function meta_capi_configuration(): array
@@ -697,8 +704,40 @@ function meta_capi_configuration(): array
     return ['pixel_id' => $pixelId, 'token' => $token, 'graph_version' => $graphVersion];
 }
 
+function meta_request_consent(array $meta): array
+{
+    // Independent HTTP signal overrides posted claims, without changing regional policy.
+    if (trim((string)($_SERVER['HTTP_SEC_GPC'] ?? '')) === '1') {
+        $meta['ad_storage'] = 'denied';
+        $meta['ad_user_data'] = 'denied';
+        $meta['ad_personalization'] = 'denied';
+    }
+    if (($meta['ad_storage'] ?? '') !== 'granted' || ($meta['ad_user_data'] ?? '') !== 'granted') {
+        unset($meta['fbp'], $meta['fbc']);
+    }
+    return $meta;
+}
+
+function meta_capi_test_payload(array $payload, string $requestId): array
+{
+    // No client-supplied flag can activate this. Never retain a stale queued code.
+    unset($payload['test_event_code']);
+    $code = env_value('META_CAPI_TEST_EVENT_CODE');
+    $allowed = env_value('META_CAPI_TEST_REQUEST_ID');
+    if (preg_match('/^[A-Za-z0-9_-]{1,64}$/D', $code)
+        && preg_match('/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/iD', $allowed)
+        && hash_equals($allowed, $requestId)
+        && count($payload['data'] ?? []) === 1
+        && ($payload['data'][0]['event_name'] ?? '') === 'Lead'
+        && ($payload['data'][0]['event_id'] ?? '') === 'lead_' . $allowed) {
+        $payload['test_event_code'] = $code;
+    }
+    return $payload;
+}
+
 function meta_capi_outbox_dir(bool $create): string
 {
+    // This directory contains sensitive retry payloads, not the optional counters.
     $configured = env_value('META_CAPI_OUTBOX_DIR');
     if ($configured === '' || !str_starts_with($configured, '/') || str_contains($configured, '..')) {
         throw new RuntimeException('Meta CAPI outbox is not safely configured.');
@@ -740,6 +779,8 @@ function meta_capi_write_outbox(array $record): void
 
 function meta_capi_send_payload(array $payload, string $requestId, int $attemptLimit): array
 {
+    $payload = meta_capi_test_payload($payload, $requestId);
+    if ($hook = lead_test_hook('meta_transport')) return $hook($payload, $requestId, $attemptLimit);
     $config = meta_capi_configuration();
     $status = 0;
     $errno = 0;
@@ -780,8 +821,9 @@ function meta_capi_status(array $lead): string
 {
     if ($hook = lead_test_hook('meta')) return $hook($lead);
     if (env_value('META_CAPI_ENABLED', 'false') !== 'true') return 'disabled';
-    $meta = is_array($lead['meta'] ?? null) ? $lead['meta'] : [];
+    $meta = meta_request_consent(is_array($lead['meta'] ?? null) ? $lead['meta'] : []);
     if (($meta['ad_storage'] ?? '') !== 'granted' || ($meta['ad_user_data'] ?? '') !== 'granted') {
+        log_event($lead['request_id'], 'meta_capi_consent_denied');
         return 'consent_denied';
     }
 
@@ -838,6 +880,56 @@ function meta_capi_status(array $lead): string
         log_event($lead['request_id'], 'meta_capi_queue_failed', ['reason' => 'runtime']);
     }
     return 'failed';
+}
+
+function meta_capi_record_outcome(string $status): void
+{
+    // Optional bounded counters, NOT a unique-lead ledger or historical backfill.
+    $configured = env_value('META_CAPI_METRICS_DIR');
+    if ($configured === '') return;
+    $file = false;
+    try {
+        $directory = realpath($configured);
+        $root = realpath((string)($_SERVER['DOCUMENT_ROOT'] ?? ''));
+        if ($directory === false || !is_dir($directory) || !is_writable($directory)
+            || (fileperms($directory) & 0077) !== 0
+            || str_contains($directory . '/', '/public_html/')
+            || ($root !== false && ($directory === $root || str_starts_with($directory . '/', $root . '/')))) {
+            throw new RuntimeException('Unsafe metrics directory.');
+        }
+        $path = $directory . '/meta-capi-daily.json';
+        if (is_link($path)) throw new RuntimeException('Unsafe metrics file.');
+        $previous = umask(0077);
+        try { $file = @fopen($path, 'c+'); } finally { umask($previous); }
+        if ($file === false || !@chmod($path, 0600) || !flock($file, LOCK_EX | LOCK_NB)) {
+            throw new RuntimeException('Metrics unavailable.');
+        }
+        $raw = stream_get_contents($file, 32769);
+        if ($raw === false || strlen($raw) > 32768) throw new RuntimeException('Invalid metrics.');
+        $days = $raw === '' ? [] : json_decode($raw, true, 8, JSON_THROW_ON_ERROR);
+        if (!is_array($days)) throw new RuntimeException('Invalid metrics.');
+        $today = gmdate('Y-m-d');
+        $cutoff = gmdate('Y-m-d', time() - 30 * 86400);
+        $keys = ['accepted', 'consent_denied', 'disabled', 'failed'];
+        $clean = [];
+        foreach ($days as $day => $counts) {
+            if (!is_string($day) || !preg_match('/^\d{4}-\d{2}-\d{2}$/D', $day) || $day < $cutoff || $day > $today || !is_array($counts)) continue;
+            foreach ($keys as $key) $clean[$day][$key] = max(0, min(1000000000, (int)($counts[$key] ?? 0)));
+        }
+        if (!in_array($status, $keys, true)) throw new RuntimeException('Invalid metrics status.');
+        $clean[$today] ??= array_fill_keys($keys, 0);
+        $clean[$today][$status] = min(1000000000, $clean[$today][$status] + 1);
+        ksort($clean);
+        $clean = array_slice($clean, -31, null, true);
+        $json = json_encode($clean, JSON_THROW_ON_ERROR);
+        rewind($file);
+        if (!ftruncate($file, 0) || fwrite($file, $json) !== strlen($json) || !fflush($file)) throw new RuntimeException('Metrics write failed.');
+    } catch (Throwable $exception) {
+        // No identifier, filesystem path, posted value or provider body is logged.
+        log_event('unavailable', 'meta_capi_metrics_failed');
+    } finally {
+        if (is_resource($file)) fclose($file);
+    }
 }
 
 function meta_capi_retry_outbox(int $limit = 20): array
@@ -1150,6 +1242,7 @@ try {
     if ($abuse['action'] === 'neutral') respond(200, neutral_response());
 
     $lead = ($data['schema_version'] ?? '') === 'program_fit_v1' ? normalize_quiz($data) : normalize_legacy($data);
+    $lead['meta'] = meta_request_consent($lead['meta']);
     $opportunityValueRaw = env_value('GHL_DEFAULT_OPPORTUNITY_VALUE');
     if ($opportunityValueRaw === '' || !is_numeric($opportunityValueRaw) || (float)$opportunityValueRaw < 0) {
         throw new RuntimeException('Default opportunity value is not configured.');
@@ -1185,6 +1278,7 @@ try {
         throw new RuntimeException('Submission note acceptance was ambiguous.');
     }
     $metaCapiStatus = meta_capi_status($lead);
+    meta_capi_record_outcome($metaCapiStatus);
     send_legacy_alert($lead);
     log_event($lead['request_id'], 'accepted', [
         'provider_trace' => clean_text($opportunityResponse['traceId'] ?? ($contactResponse['traceId'] ?? ''), 100),

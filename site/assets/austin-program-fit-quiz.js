@@ -61,7 +61,7 @@
     function sendWhenReady() {
       // Consent may be withdrawn while the Pixel is still loading.
       const consent = window.joaoConsentState || {};
-      if (consent.ad_storage !== 'granted' || consent.ad_user_data !== 'granted') return;
+      if (consent.ad_storage !== 'granted' || consent.ad_user_data !== 'granted' || (window.navigator && window.navigator.globalPrivacyControl === true)) return;
       if (typeof window.fbq === 'function') {
         window.fbq('track', 'Lead', {
           content_name: clean.form_name,

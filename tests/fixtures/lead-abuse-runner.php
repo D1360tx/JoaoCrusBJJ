@@ -5,6 +5,7 @@ define('JOAO_LEAD_TEST', true);
 $fixture = json_decode(stream_get_contents(STDIN), true, 32, JSON_THROW_ON_ERROR);
 $calls = []; $logs = [];
 $_SERVER = ['REQUEST_METHOD' => 'POST', 'HTTP_ORIGIN' => 'https://joaocrusbjj.com', 'CONTENT_TYPE' => 'application/json', 'REMOTE_ADDR' => 'fixture-' . getmypid()];
+if (isset($fixture['gpc'])) $_SERVER['HTTP_SEC_GPC'] = $fixture['gpc'];
 foreach (['GHL_ENV_FILE' => '', 'LEAD_RATE_LIMIT_SALT' => str_repeat('local-only-', 4), 'GHL_LOCATION_ID' => 'local-location', 'GHL_PIPELINE_ID' => 'local-pipeline', 'GHL_NEW_LEAD_STAGE_ID' => 'local-stage', 'GHL_DEFAULT_OPPORTUNITY_VALUE' => '2832', 'GHL_ENABLE_TAG_ADD' => 'true', 'GHL_ALLOW_CORE_ONLY' => 'true', 'GHL_ENABLE_SMS_RELEASE' => 'false'] as $key => $value) putenv($key . '=' . $value);
 // Fake deterministic mapped fields exercise booking/consent emission, not core-only fallback.
 $map = [];
@@ -31,6 +32,15 @@ $GLOBALS['joao_lead_test_hooks'] = [
     'mail' => function($lead) use (&$calls) { $calls[] = ['method' => 'MAIL']; },
     'respond' => function($status, $body) use (&$calls, &$logs) { echo json_encode(['status' => $status, 'body' => $body, 'calls' => $calls, 'logs' => $logs]); },
 ];
+if ($fixture['capi'] ?? false) {
+    unset($GLOBALS['joao_lead_test_hooks']['meta']);
+    putenv('META_CAPI_ENABLED=true');
+    foreach (['META_CAPI_TEST_EVENT_CODE', 'META_CAPI_TEST_REQUEST_ID'] as $key) putenv($key . '=' . ($fixture['test_env'][$key] ?? ''));
+    $GLOBALS['joao_lead_test_hooks']['meta_transport'] = function($payload, $id, $attempts) use (&$calls) {
+        $calls[] = ['method' => 'META_MOCK', 'payload' => $payload, 'request_id' => $id];
+        return ['accepted' => true, 'status' => 200, 'curl_errno' => 0];
+    };
+}
 if (isset($fixture['classify'])) {
     define('JOAO_CAPI_LIBRARY_ONLY', true);
     require __DIR__ . '/../../deploy/bluehost/api/lead.php';

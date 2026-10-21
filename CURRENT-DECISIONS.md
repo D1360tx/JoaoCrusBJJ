@@ -16,6 +16,12 @@
 
 ---
 
+## Direct Lead CAPI hardening, PR-only approval (2026-10-20)
+
+- CAPI is already live; do not add another GHL Lead sender, rotate the working token or force a Graph version change. Preserve dataset `592714768141415`, current `v23.0`, `lead_<request_id>`, granular regional consent and GPC/opt-out.
+- Implement only the reviewed URL-query sanitation, deferred Pixel consent/GPC recheck, independent server Sec-GPC override, request-bound two-key Test Events hook and optional minimized status counters with offline native fixtures. No 100% Meta/ad-attribution promise.
+- No merge, production deploy, protected-env write, cron activation, GTM publication, live provider POST, CRM submission, email/SMS test or workflow mutation until separately approved. Retry retention/late withdrawal and a real owner-approved paired Meta Test Events session remain release gates. See `docs/DIRECT-LEAD-CAPI-HARDENING.md`.
+
 ## Approved thank-you follow-up copy and layout (2026-10-07)
 
 - Diego approved adapting the thank-you layout from `a1854054b9c10e95e9464b88b4eee26d0806fb7c`, preserving `first-class-options`. His latest correction restores the reference headline: **Thank you. We'll help you start.** The separate paragraph below is exactly: **Your request is in. We'll follow up to help you choose the right program, location, and first class.** Preserve normal source capitalization, with Anton's uppercase display treatment and black headline text plus blue emphasis.
