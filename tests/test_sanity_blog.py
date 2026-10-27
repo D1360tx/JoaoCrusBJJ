@@ -28,6 +28,8 @@ class BlogTests(unittest.TestCase):
         for value in ['tel:javascript:alert(1)','tel:+15126444560;ext=1','tel:+１５１２６４４４５６０','tel:+1512%0a123456','tel:1234','tel:+15126444560?x=1']:
             self.assertIsNone(blog.safe_link(value))
     def test_production_indexability(self):
+        hosting=(Path(__file__).resolve().parents[1]/'deploy/bluehost/.htaccess').read_text()
+        self.assertNotIn('RewriteRule ^blog/?$',hosting)
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);blog.build_blog(root,[post()],production=True)
             text=(root/'blog/local-test-fixture/index.html').read_text()
