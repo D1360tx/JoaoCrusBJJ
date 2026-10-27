@@ -16,6 +16,7 @@ import re
 import shutil
 from pathlib import Path
 from main_navbar import apply_navbar, validate_navbar
+from sanity_blog import fetch_posts, build_blog
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "site" / "campaign"
@@ -295,12 +296,17 @@ def main() -> None:
         action="store_true",
         help="Build the indexable Bluehost artifact with the PHP HighLevel lead endpoint.",
     )
+    parser.add_argument('--blog', action='store_true', help='Build the published-only, noindex CMS blog preview (requires network).')
     args = parser.parse_args()
+
     if args.production:
         required_endpoints = [BLUEHOST_DEPLOY / "api" / "lead.php", BLUEHOST_DEPLOY / "api" / "lifecycle.php"]
         missing = [str(path.relative_to(ROOT)) for path in required_endpoints if not path.is_file()]
         if missing:
             raise SystemExit("Production build blocked: required endpoint(s) missing: " + ", ".join(missing))
+    # Fetch and validate before touching dist. A CMS/network error must abort,
+    # never silently replace existing blog artifacts with an empty result.
+    blog_posts = fetch_posts() if args.blog else None
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     pages = [page for page in data["pages"] if page["file"] not in EXCLUDED_PAGES]
     routes = {page["file"]: page["path"] for page in pages}
@@ -314,6 +320,8 @@ def main() -> None:
     for page in pages:
         source_path = ROOT / "site" / page["source_file"] if page.get("source_file") else SOURCE / page["file"]
         html = source_path.read_text(encoding="utf-8")
+        if blog_posts is None and page['path']=='/resources/':
+            html=html.replace('        <p><a class="jr-button" href="/blog/">Read the academy blog</a></p>\n','')
         html = add_base_element(html)
         html = version_lead_behavior_scripts(html)
         if page["path"] == "/book/":
@@ -337,8 +345,27 @@ def main() -> None:
         target.write_text(html, encoding="utf-8")
 
 
+    if blog_posts is not None:
+        build_blog(DIST, blog_posts, production=args.production)
+
     for support_file in ("llms.txt", "sitemap.xml"):
         shutil.copy2(SOURCE / support_file, DIST / support_file)
+
+    if args.production and blog_posts is not None:
+        import xml.etree.ElementTree as ET
+        sitemap=DIST/'sitemap.xml'
+        namespace='http://www.sitemaps.org/schemas/sitemap/0.9'
+        ET.register_namespace('',namespace)
+        tree=ET.parse(sitemap); root=tree.getroot()
+        entries=[('/blog/',None)]+[(f'/blog/{p["slug"]["current"]}/',p['publishedAt']) for p in blog_posts]
+        existing={e.text for e in root.findall(f'{{{namespace}}}url/{{{namespace}}}loc')}
+        for route,modified in entries:
+            url='https://joaocrusbjj.com'+route
+            if url in existing:continue
+            node=ET.SubElement(root,f'{{{namespace}}}url')
+            ET.SubElement(node,f'{{{namespace}}}loc').text=url
+            if modified:ET.SubElement(node,f'{{{namespace}}}lastmod').text=modified
+        tree.write(sitemap,encoding='utf-8',xml_declaration=True)
 
     if args.production:
         shutil.copytree(BLUEHOST_DEPLOY, DIST, dirs_exist_ok=True)

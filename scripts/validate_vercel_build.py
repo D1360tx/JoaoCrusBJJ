@@ -46,11 +46,24 @@ def main() -> None:
     args = parser.parse_args()
     pages = [page for page in DATA["pages"] if page["file"] not in EXCLUDED]
     routes = {page["path"] for page in pages}
+    if (DIST/'blog/index.html').is_file():
+        import re as blog_re
+        for target in (DIST/'blog').rglob('index.html'):
+            route='/'+target.parent.relative_to(DIST).as_posix()+'/'
+            routes.add(route)
+            text=target.read_text()
+            directive='index,follow' if args.production else 'noindex,nofollow'
+            check(f'content="{directive}"' in text,f'{route}: incorrect blog robots')
+            check(f'href="https://joaocrusbjj.com{route}"' in text,f'{route}: incorrect blog canonical')
+            if args.production:
+                check('BLOG PREVIEW' not in text,f'{route}: preview label in production')
+                check('https://joaocrusbjj.com'+route in (DIST/'sitemap.xml').read_text(),f'{route}: missing sitemap URL')
     vercel_config = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
     package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
     release_job = (ROOT / "scripts/test_release.py").read_text(encoding="utf-8")
     check(
-        vercel_config.get("buildCommand") == "npm run build"
+        vercel_config.get("buildCommand") == "npm run build:blog"
+        and package["scripts"].get("build:blog") == "python3 scripts/build_vercel_site.py --blog && python3 scripts/validate_vercel_build.py"
         and package["scripts"]["build"] == "python3 scripts/build_vercel_site.py && python3 scripts/validate_vercel_build.py",
         "Vercel must build and validate the complete static preview artifact",
     )

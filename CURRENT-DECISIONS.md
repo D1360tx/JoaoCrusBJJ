@@ -16,6 +16,21 @@
 
 ---
 
+## Approved first blog publication (2026-10-27)
+
+- Diego explicitly approved publishing Joao's supplied article, “Is Jiu-Jitsu Safe for a 5-Year-Old? What to Ask Before You Enroll”, and releasing the blog section on joaocrusbjj.com. This supersedes the preview-only production interlock below for project `9ma5tkiq` only.
+- Publish only `agent-jiu-jitsu-safety-age-5` with its original Joao authorship, body, source, caption and CTA copy. The supplied AI illustration is explicitly approved for this article and credited honestly; this is not a site-wide AI-photo approval. The setup check remains an unpublished draft.
+- Merge PR #141 and use a backup-first, bounded Bluehost static release: blog HTML/CSS, Resources discovery link and additive sitemap entries. Preserve all other live application, lead, analytics, hosting configuration and assets. No Vercel host migration or DNS changes.
+- Published CMS content requires an explicit owner-run production build/release. No automatic deployment webhook, newsletter send, independent-bot publishing permission or new CRM lead is authorized by this publication.
+
+## Sanity CMS setup and isolated blog preview (2026-10-27, historical setup boundary)
+
+- Diego approved Sanity setup using signed-in ThinkPad Chrome. Reuse existing Joao Crus BJJ project `9ma5tkiq` in Diego Campos organization `ovst9k11u`; existing public `production` dataset. No duplicate account/project, paid upgrade, purchases, invitations or DNS changes. Existing $0 Growth Trial explicitly auto-downgrades to Free.
+- Hosted editor: https://joao-crus-bjj.sanity.studio/ . Structured blog, owned-image uploads and owner-controlled API draft creation are live. Setup verification content remains an unpublished draft; no academy advice or invented Joao authorship was published.
+- Website integration is an isolated PR/Vercel preview at `/blog/` and `/blog/<slug>/`, static generated from approved published posts only. Blog routes remain noindex; default Bluehost production build excludes them. Human content approval and a separate surgical production release are required before anything appears on joaocrusbjj.com.
+- No existing-page migration, GHL/lead/tracking changes, broad bot-token distribution, production publish or auto-publish webhook. Native Editor token is not draft-only RBAC; the owner command enforces draft IDs and approval reset, not OS-level process isolation. Muse/Grokbot runtimes are not connected.
+- Operational handles, verified pricing, credential expiry/security boundaries, tests and remaining production promotion gates: `docs/SANITY-BLOG-CMS.md`.
+
 ## Direct Lead CAPI hardening, PR-only approval (2026-10-20)
 
 - CAPI is already live; do not add another GHL Lead sender, rotate the working token or force a Graph version change. Preserve dataset `592714768141415`, current `v23.0`, `lead_<request_id>`, granular regional consent and GPC/opt-out.
