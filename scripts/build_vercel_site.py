@@ -320,6 +320,8 @@ def main() -> None:
     for page in pages:
         source_path = ROOT / "site" / page["source_file"] if page.get("source_file") else SOURCE / page["file"]
         html = source_path.read_text(encoding="utf-8")
+        if blog_posts is None and page['path']=='/resources/':
+            html=html.replace('        <p><a class="jr-button" href="/blog/">Read the academy blog</a></p>\n','')
         html = add_base_element(html)
         html = version_lead_behavior_scripts(html)
         if page["path"] == "/book/":
