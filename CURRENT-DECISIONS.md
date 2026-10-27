@@ -16,6 +16,14 @@
 
 ---
 
+## Sanity CMS setup and isolated blog preview (2026-10-27)
+
+- Diego approved Sanity setup using signed-in ThinkPad Chrome. Reuse existing Joao Crus BJJ project `9ma5tkiq` in Diego Campos organization `ovst9k11u`; existing public `production` dataset. No duplicate account/project, paid upgrade, purchases, invitations or DNS changes. Existing $0 Growth Trial explicitly auto-downgrades to Free.
+- Hosted editor: https://joao-crus-bjj.sanity.studio/ . Structured blog, owned-image uploads and owner-controlled API draft creation are live. Setup verification content remains an unpublished draft; no academy advice or invented Joao authorship was published.
+- Website integration is an isolated PR/Vercel preview at `/blog/` and `/blog/<slug>/`, static generated from approved published posts only. Blog routes remain noindex; default Bluehost production build excludes them. Human content approval and a separate surgical production release are required before anything appears on joaocrusbjj.com.
+- No existing-page migration, GHL/lead/tracking changes, broad bot-token distribution, production publish or auto-publish webhook. Native Editor token is not draft-only RBAC; the owner command enforces draft IDs and approval reset, not OS-level process isolation. Muse/Grokbot runtimes are not connected.
+- Operational handles, verified pricing, credential expiry/security boundaries, tests and remaining production promotion gates: `docs/SANITY-BLOG-CMS.md`.
+
 ## Direct Lead CAPI hardening, PR-only approval (2026-10-20)
 
 - CAPI is already live; do not add another GHL Lead sender, rotate the working token or force a Graph version change. Preserve dataset `592714768141415`, current `v23.0`, `lead_<request_id>`, granular regional consent and GPC/opt-out.

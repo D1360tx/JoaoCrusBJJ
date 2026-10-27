@@ -16,6 +16,7 @@ import re
 import shutil
 from pathlib import Path
 from main_navbar import apply_navbar, validate_navbar
+from sanity_blog import fetch_posts, build_blog
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "site" / "campaign"
@@ -295,12 +296,18 @@ def main() -> None:
         action="store_true",
         help="Build the indexable Bluehost artifact with the PHP HighLevel lead endpoint.",
     )
+    parser.add_argument('--blog', action='store_true', help='Build the published-only, noindex CMS blog preview (requires network).')
     args = parser.parse_args()
+    if args.blog and args.production:
+        parser.error('Blog production promotion is not approved. Use --blog for preview only.')
     if args.production:
         required_endpoints = [BLUEHOST_DEPLOY / "api" / "lead.php", BLUEHOST_DEPLOY / "api" / "lifecycle.php"]
         missing = [str(path.relative_to(ROOT)) for path in required_endpoints if not path.is_file()]
         if missing:
             raise SystemExit("Production build blocked: required endpoint(s) missing: " + ", ".join(missing))
+    # Fetch and validate before touching dist. A CMS/network error must abort,
+    # never silently replace existing blog artifacts with an empty result.
+    blog_posts = fetch_posts() if args.blog else None
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     pages = [page for page in data["pages"] if page["file"] not in EXCLUDED_PAGES]
     routes = {page["file"]: page["path"] for page in pages}
@@ -336,6 +343,9 @@ def main() -> None:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(html, encoding="utf-8")
 
+
+    if blog_posts is not None:
+        build_blog(DIST, blog_posts)
 
     for support_file in ("llms.txt", "sitemap.xml"):
         shutil.copy2(SOURCE / support_file, DIST / support_file)

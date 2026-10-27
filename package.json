@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "build": "python3 scripts/build_vercel_site.py && python3 scripts/validate_vercel_build.py",
+    "build:blog": "python3 scripts/build_vercel_site.py --blog && python3 scripts/validate_vercel_build.py",
+    "test:blog": "python3 -m unittest discover -s tests -p test_sanity_blog.py",
     "test:release": "python3 scripts/test_release.py"
   },
   "devDependencies": {

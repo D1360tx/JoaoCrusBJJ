@@ -50,7 +50,8 @@ def main() -> None:
     package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
     release_job = (ROOT / "scripts/test_release.py").read_text(encoding="utf-8")
     check(
-        vercel_config.get("buildCommand") == "npm run build"
+        vercel_config.get("buildCommand") == "npm run build:blog"
+        and package["scripts"].get("build:blog") == "python3 scripts/build_vercel_site.py --blog && python3 scripts/validate_vercel_build.py"
         and package["scripts"]["build"] == "python3 scripts/build_vercel_site.py && python3 scripts/validate_vercel_build.py",
         "Vercel must build and validate the complete static preview artifact",
     )
