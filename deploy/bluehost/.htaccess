@@ -28,7 +28,7 @@ RewriteRule ^wp-booking-calendar-time-appointments/?$ https://joaocrusbjj.com/co
 RewriteRule ^wp-booking-calendar-time-slots/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
 RewriteRule ^wp-booking-calendar-full-day/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
 RewriteRule ^wpbc-booking-received/?$ https://joaocrusbjj.com/contact/ [R=301,L,NC]
-RewriteRule ^blog/?$ https://joaocrusbjj.com/parent-guide/ [R=301,L,NC]
+
 RewriteRule ^category/uncategorized/?$ https://joaocrusbjj.com/parent-guide/ [R=301,L,NC]
 
 # Permanently retire unrelated template and plugin-preview routes with HTTP 410.

@@ -169,7 +169,7 @@ def main() -> None:
             "wp-booking-calendar-time-slots": "https://joaocrusbjj.com/contact/",
             "wp-booking-calendar-full-day": "https://joaocrusbjj.com/contact/",
             "wpbc-booking-received": "https://joaocrusbjj.com/contact/",
-            "blog": "https://joaocrusbjj.com/parent-guide/",
+
             "category/uncategorized": "https://joaocrusbjj.com/parent-guide/",
         }
         for source, target in redirect_targets.items():
