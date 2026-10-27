@@ -23,6 +23,17 @@ class BlogTests(unittest.TestCase):
             self.assertEqual(blog.safe_link(value),value)
     def test_html_escape(self):
         self.assertNotIn('<script>',blog.portable_text([block('<script>alert(1)</script>')]))
+    def test_phone_links(self):
+        self.assertEqual(blog.safe_link('tel:+15126444560'),'tel:+15126444560')
+        for value in ['tel:javascript:alert(1)','tel:+15126444560;ext=1','tel:+１５１２６４４４５６０','tel:+1512%0a123456','tel:1234','tel:+15126444560?x=1']:
+            self.assertIsNone(blog.safe_link(value))
+    def test_production_indexability(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);blog.build_blog(root,[post()],production=True)
+            text=(root/'blog/local-test-fixture/index.html').read_text()
+            self.assertIn('content="index,follow"',text)
+            self.assertNotIn('NOT LIVE',text)
+            self.assertIn('BreadcrumbList',text)
     def test_marks_lists(self):
         b=block('text',listItem='bullet');b['children'][0]['marks']=['strong','em']
         html=blog.portable_text([b,block('Next',style='h2')])

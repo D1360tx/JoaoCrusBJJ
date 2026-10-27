@@ -13,6 +13,12 @@
 
 ## Editor workflow
 
+### First-publication approval (2026-10-27)
+
+Diego approved publishing the supplied Joao article and a bounded live Bluehost blog release. This supersedes the historical preview-only interlock documented below. `python3 scripts/build_vercel_site.py --production --blog` now emits indexable approved published articles and additive sitemap entries; the ordinary offline build is unchanged. Resources links visibly to `/blog/`. Safe international `tel:+...` links are now supported without allowing arbitrary protocols, extensions or query strings. Original article text remains unchanged and the supplied AI illustration is credited publicly.
+
+Future Studio publication still requires an owner-run static release. No automatic Bluehost webhook or bot publishing gateway is enabled. The draft-only owner command remains draft-only. For releases, export the exact reviewed Git SHA, apply production SEO in that isolated directory, run the production blog build and tests, then deploy only the approved output allowlist after full live-root backup and protected-file parity checks. Never blindly overlay a full new build across existing live drift.
+
 1. Open Studio, choose **Blog articles**, create a draft.
 2. Fill title, lowercase hyphenated slug, SEO summary, actual author, publication date, body and sources. Images require alt text and permission provenance. Use no prospect information.
 3. A human checks claims, source quality, schedules/offers, author attribution and media permission. Never imply Joao reviewed something he did not review. First-person quotes require verified source material.

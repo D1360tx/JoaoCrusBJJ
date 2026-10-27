@@ -13,6 +13,8 @@ QUERY='*[_type == "post" && !(_id in path("drafts.**")) && humanApproved == true
 
 def safe_link(value):
     if not isinstance(value,str) or re.search(r'[\s\\\x00-\x1f\x7f]',value):return None
+    if value.startswith('tel:'):
+        return value if re.fullmatch(r'tel:\+[1-9][0-9]{7,14}',value) else None
     u=urlsplit(value)
     if value.startswith('/') and not value.startswith('//'):return value
     return value if u.scheme=='https' and u.hostname and not u.username and not u.password else None
@@ -88,22 +90,28 @@ def fetch_posts():
     if not isinstance(posts,list):raise ValueError('Invalid CMS response')
     return validate_posts(posts)
 
-def page(title, description, route, content, schema=None):
+def page(title, description, route, content, schema=None, production=False):
+    robots='index,follow' if production else 'noindex,nofollow'
+    label='FROM THE ACADEMY' if production else 'BLOG PREVIEW · NOT LIVE ON BLUEHOST'
     metadata='' if schema is None else '<script type="application/ld+json">'+json.dumps(schema).replace('<','\\u003c')+'</script>'
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="/">
-<title>{escape(title)} | Joao Crus BJJ</title><meta name="description" content="{escape(description,quote=True)}"><meta name="robots" content="noindex,nofollow"><link rel="canonical" href="https://joaocrusbjj.com{route}">
+<title>{escape(title)} | Joao Crus BJJ</title><meta name="description" content="{escape(description,quote=True)}"><meta name="robots" content="{robots}"><link rel="canonical" href="https://joaocrusbjj.com{route}">
+<link rel="icon" href="/assets/joao-crus-bjj-logo.png"><meta property="og:title" content="{escape(title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="https://joaocrusbjj.com{route}"><meta property="og:type" content="{'article' if schema else 'website'}">
 <link rel="stylesheet" href="/assets/campaign-site.css"><link rel="stylesheet" href="/assets/blog.css">{navbar_assets()}{metadata}</head><body>
 <a class="blog-skip" href="{route}#main">Skip to content</a>{render_navbar(route)}
-<main id="main" class="blog-main"><p class="blog-label">BLOG PREVIEW · NOT LIVE ON BLUEHOST</p>{content}</main>
+<main id="main" class="blog-main"><p class="blog-label">{label}</p>{content}</main>
 <footer class="blog-footer"><a href="/parent-guide/">Parent Guide</a><a href="/resources/">Resources</a><a href="/contact/">Contact the academy</a><a href="/privacy/">Privacy</a></footer></body></html>'''
 
-def build_blog(dist, posts):
+def build_blog(dist, posts, production=False):
     validate_posts(posts)
     listing=[]
     for post in posts:
         slug=post['slug']['current']; route=f'/blog/{slug}/'
         body=portable_text(post['body'])
-        if post.get('heroImage'):body=image_html(post['heroImage'])+body
+        if post.get('heroImage'):
+            image=post['heroImage']
+            credit=f'<figcaption>{escape(image["credit"])}</figcaption>' if image.get('credit') else ''
+            body='<figure>'+image_html(image)+credit+'</figure>'+body
         sources=[]
         for source in post.get('sources',[]):
             href=safe_link(source.get('url'))
@@ -112,13 +120,19 @@ def build_blog(dist, posts):
         if sources:body+='<h2>Sources</h2><ul>'+''.join(sources)+'</ul>'
         content=f'<a href="/blog/">All articles</a><article><h1>{escape(post["title"])}</h1><p>{escape(post["description"])}</p><p>By {escape(post["authorName"])} · <time datetime="{escape(post["publishedAt"],quote=True)}">{date(post["publishedAt"]).strftime("%B %d, %Y")}</time></p><div class="blog-body">{body}</div></article><p><a class="blog-button" href="/contact/">Ask about classes</a></p>'
         schema={'@context':'https://schema.org','@type':'Article','headline':post['title'],'description':post['description'],'author':{'@type':'Person','name':post['authorName']},'datePublished':post['publishedAt'],'mainEntityOfPage':'https://joaocrusbjj.com'+route}
+        if post.get('heroImage'):
+            ref=post['heroImage']['asset']['_ref']
+            digest,dimensions,ext=ref.removeprefix('image-').rsplit('-',2)
+            schema['image']=f'https://cdn.sanity.io/images/{PROJECT}/{DATASET}/{digest}-{dimensions}.{ext}'
+        schema['publisher']={'@type':'Organization','name':'Joao Crus Brazilian Jiu-Jitsu','url':'https://joaocrusbjj.com/'}
         if post.get('updatedAt'):schema['dateModified']=post['updatedAt']
         target=dist/'blog'/slug/'index.html';target.parent.mkdir(parents=True,exist_ok=True)
-        target.write_text(page(post['title'],post['description'],route,content,schema))
+        breadcrumbs={'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Home','item':'https://joaocrusbjj.com/'},{'@type':'ListItem','position':2,'name':'Blog','item':'https://joaocrusbjj.com/blog/'},{'@type':'ListItem','position':3,'name':post['title'],'item':'https://joaocrusbjj.com'+route}]}
+        target.write_text(page(post['title'],post['description'],route,content,[schema,breadcrumbs],production))
         listing.append(f'<article class="blog-card"><h2><a href="{route}">{escape(post["title"])}</a></h2><p>{escape(post["description"])}</p></article>')
     content='<h1>From the academy</h1><p>Articles and practical answers from Joao Crus BJJ.</p>'
     content+=''.join(listing) if listing else '<section class="blog-card"><h2>New articles are on the way</h2><p>In the meantime, explore our existing Parent Guide for answers about starting jiu-jitsu.</p><a class="blog-button" href="/parent-guide/">Read the Parent Guide</a></section>'
     target=dist/'blog'/'index.html'; target.parent.mkdir(parents=True,exist_ok=True)
-    target.write_text(page('From the academy','Articles and practical answers from Joao Crus Brazilian Jiu-Jitsu.','/blog/',content))
-    (dist/'blog'/'build-manifest.json').write_text(json.dumps({'projectId':PROJECT,'dataset':DATASET,'perspective':'published','posts':[p['_id'] for p in posts],'releaseStatus':'preview-only'},indent=2))
+    target.write_text(page('From the academy','Articles and practical answers from Joao Crus Brazilian Jiu-Jitsu.','/blog/',content,production=production))
+    (dist/'blog'/'build-manifest.json').write_text(json.dumps({'projectId':PROJECT,'dataset':DATASET,'perspective':'published','posts':[p['_id'] for p in posts],'releaseStatus':'production' if production else 'preview-only'},indent=2))
     print(f'Built blog preview with {len(posts)} approved published articles; drafts excluded')

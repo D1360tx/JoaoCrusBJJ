@@ -298,8 +298,7 @@ def main() -> None:
     )
     parser.add_argument('--blog', action='store_true', help='Build the published-only, noindex CMS blog preview (requires network).')
     args = parser.parse_args()
-    if args.blog and args.production:
-        parser.error('Blog production promotion is not approved. Use --blog for preview only.')
+
     if args.production:
         required_endpoints = [BLUEHOST_DEPLOY / "api" / "lead.php", BLUEHOST_DEPLOY / "api" / "lifecycle.php"]
         missing = [str(path.relative_to(ROOT)) for path in required_endpoints if not path.is_file()]
@@ -345,10 +344,26 @@ def main() -> None:
 
 
     if blog_posts is not None:
-        build_blog(DIST, blog_posts)
+        build_blog(DIST, blog_posts, production=args.production)
 
     for support_file in ("llms.txt", "sitemap.xml"):
         shutil.copy2(SOURCE / support_file, DIST / support_file)
+
+    if args.production and blog_posts is not None:
+        import xml.etree.ElementTree as ET
+        sitemap=DIST/'sitemap.xml'
+        namespace='http://www.sitemaps.org/schemas/sitemap/0.9'
+        ET.register_namespace('',namespace)
+        tree=ET.parse(sitemap); root=tree.getroot()
+        entries=[('/blog/',None)]+[(f'/blog/{p["slug"]["current"]}/',p['publishedAt']) for p in blog_posts]
+        existing={e.text for e in root.findall(f'{{{namespace}}}url/{{{namespace}}}loc')}
+        for route,modified in entries:
+            url='https://joaocrusbjj.com'+route
+            if url in existing:continue
+            node=ET.SubElement(root,f'{{{namespace}}}url')
+            ET.SubElement(node,f'{{{namespace}}}loc').text=url
+            if modified:ET.SubElement(node,f'{{{namespace}}}lastmod').text=modified
+        tree.write(sitemap,encoding='utf-8',xml_declaration=True)
 
     if args.production:
         shutil.copytree(BLUEHOST_DEPLOY, DIST, dirs_exist_ok=True)
