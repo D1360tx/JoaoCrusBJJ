@@ -42,7 +42,8 @@ foreach(['trial_booked','trial_attended','enrolled'] as $stage){
  $payload=json_decode(end($GLOBALS['calls'])->options[CURLOPT_POSTFIELDS],true);
  check($payload['events'][0]['name']===lifecycle_ga4_event_name($stage),$stage.' mapping');
  check($payload['client_id']==='123456789.1729000000',$stage.' real browser ID retained');
- check($payload['events'][0]['params']['session_id']==='1729000000',$stage.' session retained');
+ check(!isset($payload['events'][0]['params']['session_id']),$stage.' offline outcome does not revive old session');
+ check(!isset($payload['events'][0]['params']['engagement_time_msec']),$stage.' offline outcome does not invent browser engagement');
  check($payload['consent']['ad_user_data']==='DENIED' && $payload['consent']['ad_personalization']==='DENIED',$stage.' advertising denied');
  $encoded=json_encode($payload);
  foreach(['offline@example.invalid','contact-fixture','opportunity-fixture'] as $pii)check(!str_contains($encoded,$pii),$stage.' no direct identity');

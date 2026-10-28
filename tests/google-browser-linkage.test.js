@@ -29,3 +29,7 @@ test('malformed, PII, unresolved and partial Google values are discarded', async
 test('Google API exceptions are optional attribution failure, not intake failure', async () => {
  assert.deepEqual(await api.googleContext(context(()=>{throw Error('unavailable');})),{});
 });
+test('a genuine client ID survives missing optional session context for offline outcomes', async () => {
+ const c=context((op,id,key,cb)=>cb(key==='client_id'?'123.456':undefined));
+ assert.deepEqual(await api.googleContext(c),{ga_client_id:'123.456'});
+});

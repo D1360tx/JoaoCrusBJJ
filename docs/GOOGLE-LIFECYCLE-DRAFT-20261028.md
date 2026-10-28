@@ -1,5 +1,17 @@
 # Google lifecycle route: disabled implementation draft
 
+## Later authorized continuation and current blocker
+
+Diego subsequently authorized the complete bounded lifecycle repair, deployment, configuration and owned-fixture test. Earlier no-write/no-test statements in this dated draft describe the earlier authorization only.
+
+**Completed external configuration:** GA4 property `547238162` is now linked to the distinct Joao Ads client `7194154121`, not the ICDC manager. The native Completed (1) table shows Joao, the exact client ID, account type Account, Personalized Advertising Disabled, and the October 28 link date after closing the creation sheet and reloading. Embedded Analytics edit access was explicitly disabled. No conversion action, Primary goal, budget or campaign was changed.
+
+**Major owner-action gate:** the verified web stream `15334887785`, measurement ID `G-EW2F2YKR3Y`, has zero MP secrets. Create is disabled until **User Data Collection Acknowledgement** is accepted. The text certifies necessary privacy disclosures and end-user rights for processing and association with GA visitation information. The agent reviewed but cancelled this attestation without accepting it. The owner must review/complete that policy acknowledgment before secret creation. No credential was generated, no protected env was changed and production GA4 remains disabled. Do not ask for a secret in chat.
+
+**Offline timing correction:** [Google's official MP use cases](https://developers.google.com/analytics/devguides/collection/protocol/ga4/use-cases), retrieved October 28 (page updated October 26), explicitly supports offline-event export to advertising platforms **without session_id**, no later than 63 days after the latest online event for that client, within the configured key-event attribution window, with event timestamps within 72 hours. Original-session attribution instead requires session context and submission within 24 hours, with event time inside that session. Therefore the candidate requires a genuine browser client ID, treats the session ID as optional intake context, and omits it and synthetic engagement time from offline stage payloads. A late enrollment is not falsely attached to an old browser session. Actual processed receipt/ad attribution remains unverified; never invent a click or backdate the outcome.
+
+Current candidate verification: actual PHP fixture **92 assertions**, three mocked Google requests, zero real requests; targeted browser linkage **7 passed**; rebuilt preview validator **5811 checks across 44 routes**; complete network-isolated Node suite, run sequentially to avoid competing Chromium-fixture timeouts, **414 passed, 0 failed/cancelled/skipped**. This clean run supersedes the earlier mixed 412/1 run below, without erasing that historical result. Production build/deployment and destination receipt remain unrun at the owner policy gate. First-touch preservation, live field IDs, workflow mappings, scoped secret, key event/import and real controlled receipt are still release work; the GA4/Ads link alone does not complete the repair.
+
 ## Verified inventory
 
 Native Google Ads, customer `719-415-4121` beneath ICDC `756-226-2368`, was checked with **Status: All**, not All enabled. Pagination reads **1 - 2 of 2**. Both rows are enabled; there are no additional disabled/removed rows in this inventory:

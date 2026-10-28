@@ -135,7 +135,7 @@
         if (done) return;
         done = true;
         context.clearTimeout(timer);
-        resolve(allowed() && result.ga_client_id && result.ga_session_id ? result : {});
+        resolve(allowed() && result.ga_client_id ? result : {});
       }
       try {
         var command = typeof context.gtag === "function" ? context.gtag.bind(context) : function () {

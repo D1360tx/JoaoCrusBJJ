@@ -393,14 +393,16 @@ function lifecycle_ga4_send(array $lead, string $eventId): array
 {
     if (lifecycle_env('GA4_MEASUREMENT_PROTOCOL_ENABLED', 'false') !== 'true') return ['status' => 'disabled'];
     if ($lead['analytics_storage'] !== 'granted') return ['status' => 'consent_denied'];
-    if (lifecycle_client_id($lead) === '' || ($lead['ga_session_id'] ?? '') === '') return ['status' => 'missing_browser_identity'];
+    if (lifecycle_client_id($lead) === '') return ['status' => 'missing_browser_identity'];
     $measurementId = lifecycle_env('GA4_MEASUREMENT_ID');
     $secret = lifecycle_env('GA4_API_SECRET');
     if (!preg_match('/^G-[A-Z0-9]{6,20}$/', $measurementId) || $secret === '') {
         return ['status' => 'failed', 'reason' => 'configuration'];
     }
     $params = [
-        'session_id' => $lead['ga_session_id'],
+        // Offline CRM outcomes are not activity in the original browser session.
+        // Google supports Ads export by client_id without session_id (up to
+        // 63 days after online activity, within the configured attribution window).
         'event_id' => $eventId,
         'lead_receipt_id' => lifecycle_receipt_id($lead),
         'lifecycle_stage' => $lead['stage'],
@@ -408,7 +410,7 @@ function lifecycle_ga4_send(array $lead, string $eventId): array
         'source' => $lead['latest_utm_source'],
         'medium' => $lead['latest_utm_medium'],
         'campaign' => $lead['latest_utm_campaign'],
-        'engagement_time_msec' => 1,
+
     ];
     $params = array_filter($params, static fn(mixed $value): bool => $value !== '');
     $payload = [
