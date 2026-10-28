@@ -1,6 +1,6 @@
 # Joao GHL lifecycle: bounded read-only audit
 
-Audit date: 2026-10-28, America/Chicago. Origin read 19:13:49 UTC. Fresh native workflow-list reload, three exact builders and execution-log pages inspected. **Partial audit: current delivery findings are established; the exact “need review” reason and per-execution HTTP response bodies remain unverified.** No repair or publication is authorized by this report.
+Audit date: 2026-10-28, America/Chicago. Origin read 19:13:49 UTC. Fresh native workflow-list reload, three exact builders and execution-log pages inspected. **Follow-up resolved the native Needs review explanation and exact Attended error; see the superseding targeted follow-up section below. Remaining parity/auth/Google Ads gaps are explicit.** No repair or publication is authorized by this report.
 
 ## Outcomes
 
@@ -55,3 +55,17 @@ Sanitized local evidence is in `/home/d1360/joao-ghl-lifecycle-audit-current/`: 
 ## Change boundary
 
 No workflow save/publish/test/enroll/retry, contact/stage/consent/message change, CAPI send/resend, Google upload, env/origin write, deployment, or old-PR action. Only local sanitized evidence and a new docs-only review branch/PR were created. Existing automatic business activity was not paused. No claim of provider-wide collateral-state census or global zero customer sends is made from this bounded inspection.
+
+
+## Targeted native follow-up: exact Needs review and delivery bodies
+
+Follow-up observed 2026-10-28, completed by 19:44 UTC, same verified Joao location and native HWND 985686. **This section supersedes the earlier unknown need-review/body findings above.** No Mark as read, save, publish, retry or test was clicked.
+
+- **Needs review (2) is a native GHL list tab, not a manual workflow-name prefix.** Its literal explanation is: “Workflows with errors in the past 30 days which are not resolved are listed below.” It contains exactly Trial Attended Webhook and Trial Booked Webhook; Enrolled is absent. The rows expose Mark as read controls, left untouched. Native review-list Last occurred displays Oct 15 2026, 3:55 PM and Oct 02 2026, 1:38 AM respectively. These differ from the execution log's explicit account CDT (-05:00) display; preserve both displayed clocks rather than misdate an execution.
+- **Attended failure, Oct 15 2026 10:55:41 am CDT:** actual View details → Event Details → Message reads exactly `Custom Webhook Action error: Custom Webhook Action error: {"accepted":false,"error":"Invalid analytics consent."}`. This is an explicit consent-validation rejection, not an inferred credential error. The next Finished row at 10:55:42 is End Of Workflow, not delivery success. The native detail panel exposes the error body but **no numeric HTTP status** for this failed event. Exact submitted consent value and historical contact consent were not read; blank/invalid merge or encoding cause is not yet established, and consent must not be changed to bypass it.
+- **Booked review error, Oct 1 2026 8:38:36 pm CDT:** detail panel states “This execution is from an older version of the workflow.” Message: `Custom Webhook Action error: Custom Webhook Action error: {"accepted":false,"error":"Unauthorized."}`. Another failed row at 8:30:29 pm was visible but its body was not opened. The old-version error must not be presented as proof the current header is wrong. Needs review can retain historical unresolved/unread errors despite newer successful deliveries.
+- **Booked latest success, Oct 27 2026 5:06:26 pm CDT:** Event Status Success; native message JSON has `status:200`, `data.accepted:true`, `data.lifecycle_stage:"trial_booked"`, `data.meta_status:"accepted"`, `data.ga4_status:"disabled"`, plus a stable pseudonymous event_id (omitted here). This is execution-specific endpoint-recorded Meta acceptance, not merely an Executed label and not Google delivery.
+- **Enrolled latest success, Oct 16 2026 4:31:01 pm CDT:** Event Status Success; native message JSON has `status:200`, `data.accepted:true`, `data.lifecycle_stage:"enrolled"`, `data.meta_status:"accepted"`, `data.ga4_status:"disabled"`, plus a stable pseudonymous event_id (omitted). Enrolled therefore has direct execution-specific Meta accepted / GA4 disabled evidence. Google Ads import/goals remain unverified independently.
+- All inspected headers visually read **Saved**, and the refreshed list remains Published. This is no visible unsaved-change indicator, **not** serialized saved-versus-published revision equality. No auth header was opened/exported, so current secret equality remains unknown. No exact opportunity-ID/HMAC-to-ledger join or customer-provenance certification is claimed.
+
+Sanitized image crops and `targeted-followup.json` are in the local evidence directory; crops remove all contact details, address-bar query identities and unrelated tabs. The actual failed-event body was opened, not abandoned at the list/status layer. Remaining bounded gaps are failure numeric status, exact historical consent input/provenance, current credential equality, serialized published parity, ledger identity join and Google Ads goals/import.
