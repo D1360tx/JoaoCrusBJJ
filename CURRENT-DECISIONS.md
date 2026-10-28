@@ -2,7 +2,8 @@
 
 # Joao Crus BJJ — Current Decisions
 
-> **Authoritative status as of 2026-09-14**
+> **Authoritative strategy and operational reconciliation as of 2026-10-28**
+> Current implementation evidence: [operational status and known issues](docs/OPERATIONAL-STATUS.md), [release register](docs/RELEASE-REGISTER.md), and [dated open-PR inventory](docs/OPEN-PR-INVENTORY-2026-10-28.md). Historical authorization boundaries below remain historical; later verified outcomes supersede stale implementation-status labels only.
 > This file is the source of truth for current strategy, offers, launch scope, and implementation decisions. When an older document conflicts with this file, **this file wins** until it is updated by a newer dated decision.
 
 ## Status legend
@@ -15,6 +16,15 @@
 | ⛔ Superseded       | Older direction that must not guide new work                                 |
 
 ---
+
+## Operational outcomes reconciled (2026-10-28)
+
+- Fresh origin/main before this documentation update is `e1e094ab36e60ea5d5669c579d64280d798f9d53`. PR #137 reconciled already-live spam/CALM/parent-attribution content; #140 merged direct CAPI hardening; #141/#142 shipped the first blog. Their original PR-only/no-deploy instructions below describe historical approval scope, not a claim that these remain undeployed.
+- The blog index and approved first article are live on Bluehost. Fresh SSH and native Windows Chrome GET/hash checks on Oct 28 match the final published HTML. Source checkout HEAD remains `12c0c5ca3031d93e41a858a6e34cd48a4e955f1b`; the bounded blog overlay is separately registered. Do not overwrite the composite live baseline with a full fresh build.
+- Oct 26 real fresh-contact acceptance verified HTTP 200, contact/opportunity/note, and explicit Meta Browser Processed / Server Deduplicated with matching IDs. Exact fixture cleanup and temporary-config restoration passed. One welcome email and no SMS bubble were observed in the native timeline, not provider-wide zero-SMS certification. Backend SMS release remained false; ordinary nurture was not globally held.
+- Repeat-contact first-touch overwrite remains unresolved. Fresh-contact acceptance did not prove pristine browser first touch or campaign attribution. Intentional CAPI URL-query stripping is a separate privacy rule, not this field-preservation defect.
+- Future Sanity publication still requires owner-run static build/release. No automatic webhook or independent bot publishing permission is enabled. Targeted GHL webhook/automation review is pending after this documentation reconciliation; no new provider settings or findings are implied.
+- All pre-existing open PRs remain untouched. No production code/configuration, CRM, workflow, tracking, retry scheduling or website deployment change is authorized or performed by this docs-only reconciliation. See the linked operational status for specific remaining gates.
 
 ## Approved first blog publication (2026-10-27)
 

@@ -1,5 +1,9 @@
 # Sanity blog CMS: setup and operating contract
 
+## Current publication status (reconciled 2026-10-28)
+
+The first approved article and blog index are live on Bluehost after #141/#142. Fresh native Windows Chrome and SSH hashes match the published HTML; see the [release register](RELEASE-REGISTER.md). Sanity remains the article-content master; do not commit uploaded HTML, embedded base64 images or duplicate full article text. Future Studio publication still requires an owner-run static release; no automatic webhook or independent bot connection is enabled.
+
 ## Verified live CMS (2026-10-27)
 
 - Studio: https://joao-crus-bjj.sanity.studio/
@@ -8,7 +12,7 @@
 - Dataset: existing public `production`. Content only, never contacts, leads, personal data, secrets or private business notes. Anonymous published queries are public; anonymous raw queries for the setup draft returned **zero documents**.
 - Studio application: `rc67ih5333uynyzn29r8aalb`; deployed `_.schemas.default` with the `post` document model. Native signed-in Chrome loaded the actual article editor, title, slug, description, author and the saved draft.
 - Pricing verified in the native project's Plan page: existing **Growth Trial, $0**, 30 days remaining, with explicit **automatic downgrade to Free** afterward. No upgrade, payment method, seat invitation, paid add-on, custom domain or purchase performed. Implementation uses no trial-only capabilities.
-- Setup draft: `drafts.agent-cms-setup-check`. Clearly labeled an internal setup check, not an academy article. `humanApproved=false`; no publication date. Nothing published.
+- Setup draft: `drafts.agent-cms-setup-check`. Clearly labeled an internal setup check, not an academy article. `humanApproved=false`; no publication date. This setup document remains unpublished; the separate approved article is now published.
 - Uploaded existing official logo: `image-07052f10f5a3ed3722065c2c45e0a9cfefee4420-512x512-png`, 245044 bytes. Remote document size and SHA-1 match the existing repository logo. Attached to the setup draft with alt text and ownership provenance.
 
 ## Editor workflow
@@ -34,11 +38,11 @@ npm run test:blog
 
 `/blog/` and `/blog/<slug>/` are generated as crawlable static HTML during the network-enabled preview build. Existing routes, shared navbar, assets and Parent Guide remain intact. Vercel PR builds use `build:blog`; all blog outputs remain `noindex,nofollow` with visible preview labeling. An empty CMS produces an honest empty state linking to the existing Parent Guide, not invented article cards.
 
-The public GROQ query explicitly requires published perspective, non-draft IDs, human approval and a publication date no later than now. The renderer independently rejects draft/release IDs, future dates, missing approval, unsafe/duplicate/reserved slugs, unknown HTML/content blocks, nested lists and images lacking alt/permission metadata. It escapes text, attributes and JSON-LD; allows only HTTPS or root-relative links; supports paragraphs, H2/H3, strong/emphasis, single-level lists, quotes and owned images. Unsupported content fails the build rather than silently dropping it.
+The public GROQ query explicitly requires published perspective, non-draft IDs, human approval and a publication date no later than now. The renderer independently rejects draft/release IDs, future dates, missing approval, unsafe/duplicate/reserved slugs, unknown HTML/content blocks, nested lists and images lacking alt/permission metadata. It escapes text, attributes and JSON-LD; allows HTTPS, root-relative links and strictly validated international `tel:+...` links; supports paragraphs, H2/H3, strong/emphasis, single-level lists, quotes and owned images. Unsupported content fails the build rather than silently dropping it.
 
-CMS fetch/validation happens before clearing `dist`. Failure aborts; no empty fallback on API errors. No Sanity credential is required or sent to Vercel/public builds. Draft HTML is never emitted to public previews. Normal `npm run build` stays offline-compatible. `--production --blog` explicitly refuses; the existing Bluehost build does not add or promote the blog. No public sitemap, robots, navigation discovery, DNS, production hosting or GHL changes are part of this PR.
+CMS fetch/validation happens before clearing `dist`. Failure aborts; no empty fallback on API errors. No Sanity credential is required or sent to Vercel/public builds. Draft HTML is never emitted to public previews. Normal `npm run build` stays offline-compatible. The ordinary production build without `--blog` does not fetch/promote CMS content; explicit `--production --blog` now emits approved published blog routes and additive sitemap entries. The first bounded release added Resources discovery and blog outputs without GHL/DNS changes. This supersedes the initial setup-only production interlock.
 
-The current preview is deliberately not an indexable production launch. Before blog promotion, approve design and content; add blog discovery and sitemap entries through the manifest/release review; implement a blog-only static overlay (not a full-site rebuild over live drift); verify production canonical/schema/robots and exact deployed hashes. CMS publish-to-preview rebuild automation is also not enabled.
+Vercel previews remain nonindexable; the approved Bluehost blog release is indexable and live. For future promotion, approve content and scope, review discovery/sitemap deltas, use a bounded static overlay rather than a full-site rebuild over live drift, and verify canonical/schema/robots and deployed hashes. CMS publish-to-preview rebuild automation remains unenabled.
 
 ## Owner-controlled draft API commands
 
@@ -57,11 +61,11 @@ A dedicated project-only native **Editor robot token** is stored outside Git/web
 
 - Studio `tsc --noEmit`, build, schema deployment and hosted app succeeded.
 - Studio npm audit initially exposed upstream transitive findings. Compatibility-scoped patched overrides for js-yaml 3, smol-toml, undici 7 and typeid-js's uuid resolved them. Final `npm audit`: **0 vulnerabilities**; rebuilt and redeployed successfully. Lockfile committed.
-- **17** blog/draft tests pass, covering escaping, URL filtering, slug traversal/collisions, dates, future/draft/release exclusion, approval, images, Portable Text, empty state, Article JSON-LD and no publish interface.
+- Setup originally passed **17** blog/draft tests; final publication passed **19** CMS tests. Coverage includes escaping, URL filtering, slug traversal/collisions, dates, future/draft/release exclusion, approval, images, Portable Text, empty state, Article JSON-LD and no publish interface.
 - Full existing Node suite with installed Playwright and native PHP 8.3.6: **407 passed, 0 failed, 0 skipped**. Initial run without the repository's PHP binary/dependencies failed; rerun with the correct prerequisites passed.
-- Preview build validator: **5811 checks across 44 existing routes passed**, plus the blog output. The main validator does not count blog routes; blog tests cover those separately.
+- Historical setup preview validator passed **5811 checks across 44 existing routes**, with blog tests separate. The final publication validator is blog-route-aware and passed **5994 checks across 46 generated routes**.
 - Browser QA at 390, 768, 1280, 1440 and 1920: no overflow, broken images or page errors; yellow CTA text is black; noindex verified. Images/HTML tested with external network blocked.
 - Standalone source SEO validator reports **7 existing issues** (duplicate metadata, manifest coverage and meta-kids-first-class metadata). The identical 7 issues reproduce against untouched fresh `origin/main` `12c0c5ca3031d93e41a858a6e34cd48a4e955f1b`. Not introduced or repaired by this CMS work.
-- No full production release job, merge or Bluehost deployment is claimed by this setup.
+- The initial setup alone did not claim production release. The later approved #141/#142 publication was merged and deployed; see the release register for exact source, private rollback receipt, public verification and bounded test results.
 
 Authoritative references: https://www.sanity.io/docs/studio/installation.md ; https://www.sanity.io/docs/content-lake/http-auth.md ; `npx sanity init --help`, `deploy --help`.
