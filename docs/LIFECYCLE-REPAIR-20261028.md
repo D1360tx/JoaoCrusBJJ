@@ -1,5 +1,7 @@
 # Lifecycle repair checkpoint — 2026-10-28
 
+> Continuation supersedes the partial Google inventory and direct-offline candidate below: [complete all-status inventory, zero GA4 links, browser-linked GA4 implementation draft and current read-only Meta summary](GOOGLE-LIFECYCLE-DRAFT-20261028.md). No production release/provider test is claimed.
+
 ## Verified investigation, not a completed production repair
 
 - Fresh origin lifecycle SHA256 `76434393cd81c49a682d44b44426b7809a32c2ef710affb6a32d08fb4efb6d71` matches main. Protected GA4 enable remains false; API secret absent.

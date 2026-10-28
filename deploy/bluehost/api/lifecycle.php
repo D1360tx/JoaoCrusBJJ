@@ -234,6 +234,8 @@ function lifecycle_normalize(array $data): array
         'latest_fbclid' => lifecycle_safe_campaign_value($data['latest_fbclid'] ?? '', true),
         'latest_captured_at' => lifecycle_clean($data['latest_captured_at'] ?? '', 50),
         'stage_changed_at' => $changedTimestamp,
+        'ga_client_id' => is_string($data['ga_client_id'] ?? null) && preg_match('/^\d{1,20}\.\d{1,20}$/D', $data['ga_client_id']) ? $data['ga_client_id'] : '',
+        'ga_session_id' => is_string($data['ga_session_id'] ?? null) && preg_match('/^[1-9]\d{0,19}$/D', $data['ga_session_id']) ? $data['ga_session_id'] : '',
     ];
     return $lead;
 }
@@ -250,9 +252,8 @@ function lifecycle_receipt_id(array $lead): string
 
 function lifecycle_client_id(array $lead): string
 {
-    $binary = hash_hmac('sha256', 'ga4|' . $lead['request_id'], lifecycle_env('LIFECYCLE_EVENT_SALT'), true);
-    $parts = unpack('Nfirst/Nsecond', substr($binary, 0, 8));
-    return (string)($parts['first'] ?? 1) . '.' . (string)($parts['second'] ?? 1);
+    // No synthetic CRM-derived identity: missing browser linkage fails closed.
+    return $lead['ga_client_id'] ?? '';
 }
 
 function lifecycle_ledger_dir(bool $create): string
@@ -392,12 +393,14 @@ function lifecycle_ga4_send(array $lead, string $eventId): array
 {
     if (lifecycle_env('GA4_MEASUREMENT_PROTOCOL_ENABLED', 'false') !== 'true') return ['status' => 'disabled'];
     if ($lead['analytics_storage'] !== 'granted') return ['status' => 'consent_denied'];
+    if (lifecycle_client_id($lead) === '' || ($lead['ga_session_id'] ?? '') === '') return ['status' => 'missing_browser_identity'];
     $measurementId = lifecycle_env('GA4_MEASUREMENT_ID');
     $secret = lifecycle_env('GA4_API_SECRET');
     if (!preg_match('/^G-[A-Z0-9]{6,20}$/', $measurementId) || $secret === '') {
         return ['status' => 'failed', 'reason' => 'configuration'];
     }
     $params = [
+        'session_id' => $lead['ga_session_id'],
         'event_id' => $eventId,
         'lead_receipt_id' => lifecycle_receipt_id($lead),
         'lifecycle_stage' => $lead['stage'],
@@ -453,6 +456,7 @@ function lifecycle_terminal_status(string $status, string $destination = ''): bo
     if ($status === 'validated') {
         return $destination === 'ga4' && lifecycle_env('GA4_MEASUREMENT_PROTOCOL_DEBUG', 'false') === 'true';
     }
+    if ($status === 'missing_browser_identity') return $destination === 'ga4';
     return in_array($status, ['accepted', 'transport_accepted', 'consent_denied', 'disabled'], true);
 }
 

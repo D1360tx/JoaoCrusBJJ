@@ -537,7 +537,13 @@ function booking_link(array $lead): string
 
 function flattened_values(array $lead): array
 {
+    $google = is_array($lead['meta'] ?? null) ? $lead['meta'] : [];
+    $googleAllowed = ($google['analytics_storage'] ?? '') === 'granted';
+    $gaClient = $google['ga_client_id'] ?? '';
+    $gaSession = $google['ga_session_id'] ?? '';
     $values = [
+        'ga_client_id' => $googleAllowed && is_string($gaClient) && preg_match('/^\d{1,20}\.\d{1,20}$/D', $gaClient) ? $gaClient : '',
+        'ga_session_id' => $googleAllowed && is_string($gaSession) && preg_match('/^[1-9]\d{0,19}$/D', $gaSession) ? $gaSession : '',
         'request_id' => $lead['request_id'],
         'form_id' => $lead['form_id'],
         'schema_version' => $lead['schema_version'],

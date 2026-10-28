@@ -118,6 +118,44 @@
     return sanitizeCampaignValue((latest && latest.fbclid) || (first && first.fbclid), "fbclid");
   }
 
+  // Read Google's public get API, not version-dependent GA cookie internals.
+  // Never delay a lead indefinitely or retain IDs after a consent withdrawal.
+  function googleContext(context) {
+    function allowed() {
+      return context && context.joaoConsentState &&
+        context.joaoConsentState.analytics_storage === "granted";
+    }
+    if (!allowed()) return Promise.resolve({});
+    return new Promise(function (resolve) {
+      var result = {};
+      var completed = 0;
+      var done = false;
+      var timer = context.setTimeout(finish, 350);
+      function finish() {
+        if (done) return;
+        done = true;
+        context.clearTimeout(timer);
+        resolve(allowed() && result.ga_client_id && result.ga_session_id ? result : {});
+      }
+      try {
+        var command = typeof context.gtag === "function" ? context.gtag.bind(context) : function () {
+          context.dataLayer = context.dataLayer || [];
+          context.dataLayer.push(arguments);
+        };
+        ["client_id", "session_id"].forEach(function (key) {
+          command("get", "G-EW2F2YKR3Y", key, function (value) {
+            if (done) return;
+            var text = typeof value === "string" || typeof value === "number" ? String(value) : "";
+            var valid = key === "client_id" ? /^\d{1,20}\.\d{1,20}$/.test(text) : /^[1-9]\d{0,19}$/.test(text);
+            if (valid && !/[\r\n]/.test(text)) result["ga_" + key] = text;
+            completed += 1;
+            if (completed === 2) finish();
+          });
+        });
+      } catch (error) { finish(); }
+    });
+  }
+
   function metaContext(context, attribution) {
     var state = context && context.joaoConsentState || {};
     var result = {
@@ -301,6 +339,7 @@
     clear: clear,
     capture: capture,
     metaContext: metaContext,
+    googleContext: googleContext,
     sanitizeCampaignValue: sanitizeCampaignValue,
   };
 });

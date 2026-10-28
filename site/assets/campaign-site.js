@@ -414,7 +414,13 @@
       data.meta = currentMetaContext();
       status.textContent = "Sending your request…";
       submit.disabled = true;
-      postLead(data)
+      (window.JoaoAttribution && window.JoaoAttribution.googleContext
+        ? window.JoaoAttribution.googleContext(window) : Promise.resolve({}))
+        .then(function (google) {
+          // Refresh consent immediately before the actual intake request.
+          data.meta = Object.assign(currentMetaContext(), google);
+          return postLead(data);
+        })
         .then(function (acceptance) {
           if (acceptance.outcome === "neutral" || acceptance.outcome === "reload") {
             status.textContent = acceptance.outcome === "neutral" ? "Request processed." : "Please reload this page before sending your request. Your entries are still here; copy them before reloading, or call 512-644-4560.";

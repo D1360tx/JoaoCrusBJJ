@@ -7,7 +7,7 @@
   "production_enable": false,
   "historical_backfill": false,
   "native_ghl_google_sender": false,
-  "ads_route_candidate": "direct_offline_click_conversion",
+  "ads_route_candidate": "ga4_browser_linked_lifecycle_then_one_secondary_enrollment_import",
   "ads_route_selected_for_activation": false,
   "new_action_optimization": "SECONDARY",
   "change_account_default_goals": false,
@@ -19,10 +19,15 @@
     "trial_attended": "trial_attended",
     "enrolled": "close_convert_lead"
   },
-  "ga4_client_identity": "existing_request_hmac_pseudonym_not_browser_continuity",
+  "ga4_client_identity": "strict_browser_client_and_session_ids_no_synthetic_fallback",
+  "google_ads_all_status_actions_count": 2,
+  "google_ads_removed_or_disabled_actions_count": 0,
+  "ga4_completed_google_ads_links_count": 0,
+  "ga4_link_to_target_customer": false,
+  "future_secondary_import_event": "close_convert_lead",
   "release_blockers": [
-    "All-status Google Ads conversion inventory and GA4 links/key-event audit incomplete",
-    "Direct offline uploader, click-ID eligibility and consent contract not implemented/verified",
+    "GA4 property 547238162 has zero Google Ads links; key-event/stream review remains required",
+    "Live GA client/session custom-field IDs and all four webhook mappings not configured; draft source tested offline only",
     "GA4 API secret absent; production enable remains false",
     "Historical Attended analytics input unavailable; cause unproven",
     "Separate approval required for production deployment/publication and controlled provider tests"
