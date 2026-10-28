@@ -9,7 +9,7 @@
 
 ## Booked historical notice resolution
 
-The reviewed audit PR #144 documents the Oct 1 old-version Unauthorized error and Oct 27 exact HTTP 200 / accepted / Meta accepted / GA4 disabled response. This is evidence that the historical authorization failure was superseded by working later delivery, not proof of current header-byte equality. Only Booked's historical review notice may be marked read. Attended remains unresolved and must stay in Needs review. No workflow publication or event replay is necessary or authorized for notice acknowledgment.
+The reviewed audit PR #144 documents the Oct 1 old-version Unauthorized error and Oct 27 exact HTTP 200 / accepted / Meta accepted / GA4 disabled response. This is evidence that the historical authorization failure was superseded by working later delivery, not proof of current header-byte equality. Only Booked's historical review notice was marked read. A fresh list navigation/reload durably shows **Needs review (1)** with Trial Attended Webhook as the sole remaining row. No workflow save/publication or event replay occurred for this acknowledgment.
 
 ## Google discovery and release boundaries
 
@@ -19,6 +19,6 @@ Existing GA4 MP uses a request-HMAC-generated pseudonymous client_id, not the vi
 
 ## Delivered artifact and verification
 
-`tests/lifecycle-consent-runtime.php` exercises the actual PHP library in a no-curl CLI with mocked transport and socket/mail functions disabled. Booked, Attended and Enrolled fixtures cover canonical denial, malformed/empty/null/boolean/unresolved consent, no direct CRM identity in Google payloads, mapping, advertising denial, stable event ID and terminal destination behavior. Initial run: 69 assertions, three mocked Google requests, zero real provider requests; focused Node contract suite: nine passing. Full build/regression results are recorded in the final local report.
+`tests/lifecycle-consent-runtime.php` exercises the actual PHP library in a no-curl CLI with mocked transport and socket/mail functions disabled. Booked, Attended and Enrolled fixtures cover canonical denial, malformed/empty/null/boolean/unresolved consent, no direct CRM identity in Google payloads, mapping, advertising denial, stable event ID and terminal destination behavior. Verified run: 69 assertions, three mocked Google requests, zero real provider requests under `unshare -Urn`; full Node suite 407 passed, zero failed/skipped under network isolation; Python suite 66 passed; preview build validator passed 5811 checks across 44 routes. The initial broad Node run before build/PHP/dependency setup failed for missing prerequisites; a later run timed out with no failures observed, and the final complete run passed. No production-mode full release is claimed.
 
 Native workflows stayed Published and untouched; no native Draft is claimed. The source branch is an isolated review artifact, not a production release. Remaining gates: recover historical request if provider support can expose it; approve a specific future runtime test after root cause is proven; complete all-status Google/GA4 configuration inventory; review exact code/configuration and separately authorize production release and tests.
