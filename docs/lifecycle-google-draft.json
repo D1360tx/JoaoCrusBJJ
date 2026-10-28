@@ -1,0 +1,30 @@
+{
+  "status": "DRAFT_BLOCKED_NOT_APPLIED",
+  "google_ads_customer_id": "719-415-4121",
+  "manager_customer_id": "756-226-2368",
+  "ga4_property_id": "547238162",
+  "ga4_measurement_id": "G-EW2F2YKR3Y",
+  "production_enable": false,
+  "historical_backfill": false,
+  "native_ghl_google_sender": false,
+  "ads_route_candidate": "direct_offline_click_conversion",
+  "ads_route_selected_for_activation": false,
+  "new_action_optimization": "SECONDARY",
+  "change_account_default_goals": false,
+  "change_bidding": false,
+  "import_ga4_crm_events_into_ads": false,
+  "existing_ga4_crm_mapping": {
+    "qualified": "qualify_lead",
+    "trial_booked": "trial_booked",
+    "trial_attended": "trial_attended",
+    "enrolled": "close_convert_lead"
+  },
+  "ga4_client_identity": "existing_request_hmac_pseudonym_not_browser_continuity",
+  "release_blockers": [
+    "All-status Google Ads conversion inventory and GA4 links/key-event audit incomplete",
+    "Direct offline uploader, click-ID eligibility and consent contract not implemented/verified",
+    "GA4 API secret absent; production enable remains false",
+    "Historical Attended analytics input unavailable; cause unproven",
+    "Separate approval required for production deployment/publication and controlled provider tests"
+  ]
+}

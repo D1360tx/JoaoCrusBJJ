@@ -26,6 +26,13 @@
 - Future Sanity publication still requires owner-run static build/release. No automatic webhook or independent bot publishing permission is enabled. Targeted GHL webhook/automation review is pending after this documentation reconciliation; no new provider settings or findings are implied.
 - All pre-existing open PRs remain untouched. No production code/configuration, CRM, workflow, tracking, retry scheduling or website deployment change is authorized or performed by this docs-only reconciliation. See the linked operational status for specific remaining gates.
 
+## Lifecycle repair scope and checkpoint (2026-10-28)
+
+- Diego approved bounded lifecycle investigation/repair, Google configuration preparation and acknowledgment of documented resolved historical notices. Existing no-send/no-enroll/no-publish boundaries remain: preserve Published workflow owners, prepare source changes for review, and obtain separate production release/runtime-test approval.
+- Trial Attended's saved measurement-consent merge fields match current provider TEXT definitions and website canonical producer values. Historical rejected input remains unavailable; no proven wrong binding or consent grant is introduced. A separately reproduced malformed-type validation defect is defensively hardened in this draft, not asserted as the historical cause.
+- Google client `719-415-4121` is separately verified beneath ICDC; enabled conversion inventory shows only Website Form and Google-hosted Lead form - Submit. No enabled lifecycle action was shown, and the All enabled filter does not certify removed actions. No bidding/default goals or provider conversion setup changed. Existing pseudonymous GA4 CRM stream stays disabled; it does not prove click/session continuity or Google Ads attribution.
+- Only the historical Booked notice may be acknowledged after its older-version Unauthorized error and later successful response are documented. Attended must remain visible pending resolution. See [repair checkpoint](docs/LIFECYCLE-REPAIR-20261028.md).
+
 ## Approved first blog publication (2026-10-27)
 
 - Diego explicitly approved publishing Joao's supplied article, “Is Jiu-Jitsu Safe for a 5-Year-Old? What to Ask Before You Enroll”, and releasing the blog section on joaocrusbjj.com. This supersedes the preview-only production interlock below for project `9ma5tkiq` only.

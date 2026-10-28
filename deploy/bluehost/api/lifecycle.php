@@ -72,6 +72,11 @@ function lifecycle_require_identifier(mixed $value, string $field): string
 
 function lifecycle_require_consent(mixed $value, string $field): string
 {
+    // The CRM contract is canonical TEXT, never a boolean or structured value.
+    // Reject malformed types before string coercion can warn or throw a 502.
+    if (!is_string($value)) {
+        throw new InvalidArgumentException('Invalid ' . $field . '.');
+    }
     $cleaned = lifecycle_clean($value, 20);
     if (!in_array($cleaned, ['granted', 'denied'], true)) {
         throw new InvalidArgumentException('Invalid ' . $field . '.');
