@@ -1,6 +1,6 @@
 # Direct Lead CAPI hardening: review and controlled test runbook
 
-Status: branch/PR only. No production deployment, environment edits, scheduler activation, live lead, provider POST or GTM publication is authorized by this patch.
+Status reconciled 2026-10-28: PR #140 merged at `12c0c5ca3031d93e41a858a6e34cd48a4e955f1b`; the live endpoint hash and Oct 26 real fresh-contact acceptance are recorded in the [release register](RELEASE-REGISTER.md). Meta explicitly showed Browser Processed / Server Deduplicated with matching IDs. The earlier PR-only restriction was a historical approval boundary, not current deployment status. Retry scheduling, repeat-contact first-touch preservation and broad messaging acceptance remain separate gates in [operational status](OPERATIONAL-STATUS.md). This runbook does not authorize a new deployment, environment edit, provider POST or test submission.
 
 ## Existing path, preserved
 

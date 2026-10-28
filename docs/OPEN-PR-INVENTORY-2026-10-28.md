@@ -1,0 +1,38 @@
+# Open PR inventory, 2026-10-28
+
+Read-only snapshot before the new docs-reconciliation PR. GitHub REST open pulls were fetched with `gh api --paginate` and `per_page=100`; all returned pages were parsed and IDs counted/deduplicated. **24 open PRs**, **3** with their exact head already an ancestor of `e1e094ab36e60ea5d5669c579d64280d798f9d53`, **21** non-ancestors. No old PR state, base, labels, reviews or branch was changed. The new reconciliation PR is outside this pre-change snapshot.
+
+Ancestry is mechanical, not a merge recommendation. Non-ancestor does not prove missing functionality: squashes and reviewed hunk reconciliation preserve content without original ancestry. No full patch-equivalence or merge-safety audit is claimed for unassessed rows.
+
+| PR | Title | Base | Draft | Head SHA | Main ancestry / action |
+|---|---|---|---|---|---|
+| [#136](https://github.com/D1360tx/JoaoCrusBJJ/pull/136) | fix: retain verified parent landing attribution for embedded quizzes | `feat/calm-landing-pages-safe-20261005` | yes | `82e6d8722d778fe008974a2bd1dcbd81328a247a` | Non-ancestor; no action, full delta unassessed |
+| [#135](https://github.com/D1360tx/JoaoCrusBJJ/pull/135) | feat: CALM adult and youth landing-page previews (stacked on #134) | `fix/form-abuse-gates-20261003` | no | `e82f0d1f0e82d4441642bea573914a401ccc7754` | Non-ancestor; no action, full delta unassessed |
+| [#134](https://github.com/D1360tx/JoaoCrusBJJ/pull/134) | NO DEPLOY: first-tranche form abuse gates and independent recovery proof | `main` | yes | `f77fc873f6c7319c7ee9344b847874bae4245718` | Non-ancestor; no action, full delta unassessed |
+| [#133](https://github.com/D1360tx/JoaoCrusBJJ/pull/133) | fix: readable opportunity names and name-only repeat submissions | `main` | no | `e4965d990ea991ad7f89d55cd70d53a992f1476b` | Non-ancestor; no action, full delta unassessed |
+| [#128](https://github.com/D1360tx/JoaoCrusBJJ/pull/128) | Consolidate Joao Meta ads creative workroom | `main` | no | `764899fe6163bd195c39f8c591406fd658b0418f` | Non-ancestor; no action, full delta unassessed |
+| [#122](https://github.com/D1360tx/JoaoCrusBJJ/pull/122) | Draft: thank-you booking and consent-safe intent (live gates blocked) | `main` | yes | `7a50712635d43f2a24af3e92b2847d5bfd49cfc4` | Non-ancestor; no action, full delta unassessed |
+| [#120](https://github.com/D1360tx/JoaoCrusBJJ/pull/120) | fix: branded 404 and lossless image hardening (deployment blocked) | `main` | no | `d42bafd80309b77905420116621320bf711bbe04` | Non-ancestor; no action, full delta unassessed |
+| [#117](https://github.com/D1360tx/JoaoCrusBJJ/pull/117) | feat: paused Austin Youth AY07 revision and AY09 video/static comparisons | `main` | no | `5919a79beeccb3dc7e0a06bc99972dc79a5401b0` | Non-ancestor; no action, full delta unassessed |
+| [#114](https://github.com/D1360tx/JoaoCrusBJJ/pull/114) | Castle Hill: 12-image review pack, blocked on scene and release gates | `main` | yes | `4b3059495579ac2796ec4308b05a860224557b54` | Non-ancestor; no action, full delta unassessed |
+| [#110](https://github.com/D1360tx/JoaoCrusBJJ/pull/110) | Add compliant native A2P consent paths | `feat/lifecycle-feedback-phase1-20260904` | no | `550aa874def001dcc4631102342152b4a85ffffb` | Ancestor; no action |
+| [#109](https://github.com/D1360tx/JoaoCrusBJJ/pull/109) | Add phase-one lifecycle conversion feedback | `fix/meta-capi-direct-browser-dedup-20260828` | no | `38211037176e1d195a9bdaa7621d288771f879d2` | Ancestor; no action |
+| [#100](https://github.com/D1360tx/JoaoCrusBJJ/pull/100) | Save shy kid carousel swipe copy | `main` | no | `83588c8b8e986467fa4df35674d2bdbc57287844` | Non-ancestor; no action, full delta unassessed |
+| [#99](https://github.com/D1360tx/JoaoCrusBJJ/pull/99) | Deduplicate browser and server Meta leads | `fix/meta-capi-lead-reliability-20260828` | no | `8fcd095f9a6d5b8513b9a71990ad0814b559a99c` | Ancestor; no action |
+| [#98](https://github.com/D1360tx/JoaoCrusBJJ/pull/98) | Build parent-practice advertorial preview | `feat/swimming-bjj-advertorial-preview-20260828` | no | `94b59bcd05b6fb53255e97bfe3677c029e867505` | Non-ancestor; no action, full delta unassessed |
+| [#97](https://github.com/D1360tx/JoaoCrusBJJ/pull/97) | Build swimming and jiu-jitsu advertorial campaign preview | `main` | no | `bb03b236e035955fb4ece7c7b738502a8183a648` | Non-ancestor; no action, full delta unassessed |
+| [#95](https://github.com/D1360tx/JoaoCrusBJJ/pull/95) | Add six-week Kids Warrior Challenge landing-page preview | `main` | no | `c5f4ff9c37a6e695f883e22bbbe8d9544a8d0546` | Non-ancestor; no action, full delta unassessed |
+| [#94](https://github.com/D1360tx/JoaoCrusBJJ/pull/94) | Set default HighLevel opportunity value | `main` | no | `ba2015a93f2ede68b0cf2e2653d3de99d3d4eab8` | Non-ancestor; no action, full delta unassessed |
+| [#92](https://github.com/D1360tx/JoaoCrusBJJ/pull/92) | Add Meta kids ad image variations | `feat/meta-leadgen-wave1-20260824` | no | `03e0abba7eaf29e8f12252c32fcbe0b1e68c2f81` | Non-ancestor; no action, full delta unassessed |
+| [#90](https://github.com/D1360tx/JoaoCrusBJJ/pull/90) | Document website-only Meta lead strategy | `main` | no | `0e89825e581886b77d241f343ea308da1e16f6f2` | Non-ancestor; no action, full delta unassessed |
+| [#77](https://github.com/D1360tx/JoaoCrusBJJ/pull/77) | Build Meta kids leadgen wave one | `main` | no | `0fe2c41dfb3764a0979e441504143f8206b38c49` | Non-ancestor; no action, full delta unassessed |
+| [#63](https://github.com/D1360tx/JoaoCrusBJJ/pull/63) | Build tracked Practice Under Pressure postcard comparisons | `main` | no | `f7a5d4fbcb04f872dccd508659bee19d87d079eb` | Non-ancestor; no action, full delta unassessed |
+| [#57](https://github.com/D1360tx/JoaoCrusBJJ/pull/57) | Save Meta creative portfolio framework | `main` | no | `5e97691209155cbbe78935e7aee27beb3f7bb91c` | Non-ancestor; no action, full delta unassessed |
+| [#56](https://github.com/D1360tx/JoaoCrusBJJ/pull/56) | Build homeschool BJJ review landing page | `main` | no | `35195b60fab85c998b0f5f15d6a2de75c9c55d59` | Non-ancestor; no action, full delta unassessed |
+| [#54](https://github.com/D1360tx/JoaoCrusBJJ/pull/54) | Story-led campaign visual review lab | `main` | no | `e570ee7fcf91b0636a6b2361fda54fc1095d52e2` | Non-ancestor; no action, full delta unassessed |
+
+## Content-aware spot check of the deployed stack
+
+GitHub file lists for #134, #135 and #136 were read, not inferred solely from titles. #134 contains the endpoint, client gates, generated-route source, tests and deployment documents; #135 adds CALM route/build/runtime changes; #136 changes attribution and its tests plus operational notes. Main's endpoint, quiz attribution adapter and attribution runtime were inspected. The already-merged #137 provenance identifies their reviewed application-source reconciliation, including readable-name behavior from a separate commit. These old PRs cannot be treated as absent production work merely because their heads are not ancestors. Conversely, this does not assert every historical documentation hunk or subsequent branch change is subsumed, or that wholesale merging is safe.
+
+#99, #109 and #110 have ancestor heads, but their still-open tracking state does not prove provider activation, live configuration or complete journey acceptance. All other non-ancestor rows remain explicitly unassessed beyond metadata/ancestry. A future owner-authorized disposition must compare the actual remaining patch against then-current main and preserve intended comparisons, media permission holds and deploy gates. No bulk close/merge is authorized here.

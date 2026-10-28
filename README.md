@@ -1,7 +1,16 @@
 # JaoCrusBJJ — Centralized Project Log
 
 Working hub for the Joao Crus BJJ marketing & business-restructuring engagement.
-Direct Lead CAPI: [hardening scope, blank-default test configuration, offline QA and gated live proof](docs/DIRECT-LEAD-CAPI-HARDENING.md). PR-only; no production/configuration/cron/provider changes authorized.
+## Current operational entry points (2026-10-28)
+
+- [Current decisions](CURRENT-DECISIONS.md): strategy, authorization and dated outcomes.
+- [Operational status](docs/OPERATIONAL-STATUS.md): Git/live/CMS authority map, real CAPI acceptance, known issues and safe operating runbook.
+- [Release register](docs/RELEASE-REGISTER.md): exact blog release source, manifest/rollback receipts and fresh public hash verification.
+- [Open PR inventory](docs/OPEN-PR-INVENTORY-2026-10-28.md): complete pre-reconciliation snapshot; no old PR was merged or closed.
+- [Sanity blog CMS](docs/SANITY-BLOG-CMS.md): Studio/editor workflow; first article is live, future publication still requires owner-run build/release.
+- [Direct Lead CAPI](docs/DIRECT-LEAD-CAPI-HARDENING.md): controlled test/runbook. Code is merged/deployed and Oct 26 fresh-contact Meta deduplication passed; repeat-contact first-touch and retry activation gates remain open. Historical PR-only labels are not current deployment status.
+
+The centralized log below preserves historical research and decisions, not current provider configuration. The status documents above distinguish completed releases from pending targeted GHL webhook/automation review. No production code/configuration change is made by this documentation reconciliation.
 Current Castle Hill iteration: [combined grand-opening draft and verification](docs/CASTLE-HILL-GRAND-OPENING.md). One Meta Leads campaign, one broad local ad set, Youth and Adult creative concepts to `/castle-hill-grand-opening/`. September 14 remains provisional and unconfirmed. On 2026-09-07 Diego explicitly authorized deploying the reviewed funnel with its date unchanged, noindex/nofollow preserved, and all traffic held; this is not date confirmation or ad/GTM activation approval. See CURRENT-DECISIONS.md. Separate audience pages remain comparison artifacts.
 
 Goal: grow private clients + group students, build the digital/info-product side, and

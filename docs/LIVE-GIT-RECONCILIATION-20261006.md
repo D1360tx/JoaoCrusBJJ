@@ -1,5 +1,7 @@
 # Already-live source reconciliation, 2026-10-06
 
+> Outcome reconciled 2026-10-28: PR #137 merged at `c638260f2c22daa966d2e7fe357d08b04f2e9d01`. The text below preserves its original approval scope and release-job contract. The Oct 26 fresh-contact form/CRM/Meta dedup acceptance is now verified, but not four full journeys, campaign attribution or repeat-contact first-touch preservation. See [current operational status](OPERATIONAL-STATUS.md) and [release register](RELEASE-REGISTER.md). No old PR is newly merged or closed.
+
 This PR reconciles already-reviewed, surgically deployed application changes onto fresh main. It is not permission to merge, deploy, change hosting configuration, activate ads, or send test leads. Existing stacked PRs remain open for provenance; do not merge them again after this reconciliation is accepted.
 
 ## Source authority
