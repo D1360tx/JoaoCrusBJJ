@@ -26,6 +26,26 @@
 - Future Sanity publication still requires owner-run static build/release. No automatic webhook or independent bot publishing permission is enabled. Targeted GHL webhook/automation review is pending after this documentation reconciliation; no new provider settings or findings are implied.
 - All pre-existing open PRs remain untouched. No production code/configuration, CRM, workflow, tracking, retry scheduling or website deployment change is authorized or performed by this docs-only reconciliation. See the linked operational status for specific remaining gates.
 
+## Lifecycle repair scope and checkpoint (2026-10-28)
+
+### Later full-repair authorization and owner gate
+
+- Diego subsequently explicitly authorized scoped repair, merge/deployment, provider configuration and controlled owned-fixture testing until completion or a major owner-action blocker. This supersedes the earlier draft-only/no-publish restrictions below within lifecycle repair, not spend/campaign activation, Primary bidding goals, consent manufacture or historical backfill.
+- Exact Joao GA4 property is now linked to Joao Google Ads client `7194154121`. Native completed-row verification survived reload. Personalized advertising and embedded Analytics edit access are disabled; no manager/other-business link, campaign activation or conversion-goal change was made.
+- Google requires a **User Data Collection Acknowledgement** before the first Measurement Protocol secret can be created. It certifies necessary end-user privacy disclosures and rights, including association with visitation information. This owner-level attestation was not accepted by the agent; secret creation, production enable, deployment and the real fixture are paused at that major policy gate. Existing production Meta operation and Published workflow configurations remain untouched.
+- Official Google MP documentation distinguishes session attribution (within 24 hours) from offline advertising export (no session ID required, within 63 days of last online activity and the configured attribution window). The source candidate retains genuine client identity but omits session ID and invented browser engagement on offline CRM outcomes. No ad-credit guarantee or fabricated click is introduced. See the dated authorized continuation below the Google draft document.
+
+- Diego approved bounded lifecycle investigation/repair, Google configuration preparation and acknowledgment of documented resolved historical notices. Existing no-send/no-enroll/no-publish boundaries remain: preserve Published workflow owners, prepare source changes for review, and obtain separate production release/runtime-test approval.
+- Trial Attended's saved measurement-consent merge fields match current provider TEXT definitions and website canonical producer values. Historical rejected input remains unavailable; no proven wrong binding or consent grant is introduced. A separately reproduced malformed-type validation defect is defensively hardened in this draft, not asserted as the historical cause.
+- Google client `719-415-4121` is separately verified beneath ICDC; enabled conversion inventory shows only Website Form and Google-hosted Lead form - Submit. No enabled lifecycle action was shown, and the All enabled filter does not certify removed actions. No bidding/default goals or provider conversion setup changed. Existing pseudonymous GA4 CRM stream stays disabled; it does not prove click/session continuity or Google Ads attribution.
+- Only the historical Booked notice may be acknowledged after its older-version Unauthorized error and later successful response are documented. Attended must remain visible pending resolution. See [repair checkpoint](docs/LIFECYCLE-REPAIR-20261028.md).
+
+## Google draft continuation (2026-10-28, supersedes prior candidate)
+
+- Complete native **Status: All** conversion inventory now verifies exactly two enabled actions, zero removed/disabled actions and no lifecycle action. Exact GA4 property `547238162` has zero completed/pending/requested/cancelled Google Ads links; client `7194154121` is not linked. No conversion or link was created.
+- The implementation draft now uses real consented browser client/session IDs through intake → proposed HighLevel TEXT mappings → existing GA4 lifecycle sender. It removes synthetic GA4 identity fallback. The sole future Ads candidate is one secondary `close_convert_lead` GA4 import, not an additional direct uploader or native GHL sender. It remains blocked, disabled and untested against providers.
+- Proposed fields and webhook mapping additions are not live. Preserve release/test approval gates, no backfill, no Primary action/bidding/default-goal changes. See [Google implementation and verified inventory](docs/GOOGLE-LIFECYCLE-DRAFT-20261028.md).
+
 ## Approved first blog publication (2026-10-27)
 
 - Diego explicitly approved publishing Joao's supplied article, “Is Jiu-Jitsu Safe for a 5-Year-Old? What to Ask Before You Enroll”, and releasing the blog section on joaocrusbjj.com. This supersedes the preview-only production interlock below for project `9ma5tkiq` only.

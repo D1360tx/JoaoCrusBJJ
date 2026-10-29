@@ -554,6 +554,9 @@
   }
 
   async function submitLead(payload) {
+    const google = window.JoaoAttribution && window.JoaoAttribution.googleContext
+      ? await window.JoaoAttribution.googleContext(window) : {};
+    payload.meta = { ...(window.JoaoAttribution ? window.JoaoAttribution.metaContext(window, window.joaoAttribution || {}) : {}), ...google };
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 35000);
     try {

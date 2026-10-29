@@ -537,7 +537,13 @@ function booking_link(array $lead): string
 
 function flattened_values(array $lead): array
 {
+    $google = is_array($lead['meta'] ?? null) ? $lead['meta'] : [];
+    $googleAllowed = ($google['analytics_storage'] ?? '') === 'granted';
+    $gaClient = $google['ga_client_id'] ?? '';
+    $gaSession = $google['ga_session_id'] ?? '';
     $values = [
+        'ga_client_id' => $googleAllowed && is_string($gaClient) && preg_match('/^\d{1,20}\.\d{1,20}$/D', $gaClient) ? $gaClient : '',
+        'ga_session_id' => $googleAllowed && is_string($gaSession) && preg_match('/^[1-9]\d{0,19}$/D', $gaSession) ? $gaSession : '',
         'request_id' => $lead['request_id'],
         'form_id' => $lead['form_id'],
         'schema_version' => $lead['schema_version'],
@@ -971,6 +977,89 @@ function meta_capi_retry_outbox(int $limit = 20): array
     return ['processed' => $processed, 'accepted' => $accepted, 'failed' => $failed, 'dead' => $dead];
 }
 
+function attribution_identity_locks(array $lead): array
+{
+    if ($hook = lead_test_hook('identity_lock')) return $hook($lead);
+    $parent = realpath(dirname(env_value('GHL_ENV_FILE')));
+    $root = realpath((string)($_SERVER['DOCUMENT_ROOT'] ?? ''));
+    $salt = env_value('LEAD_RATE_LIMIT_SALT');
+    if ($parent === false || strlen($salt) < 32 || str_contains($parent . '/', '/public_html/')
+        || ($root !== false && ($parent === $root || str_starts_with($parent . '/', $root . '/')))) {
+        throw new RuntimeException('Private identity lock directory unavailable.');
+    }
+    $directory = $parent . '/lead-identity-locks';
+    if (is_link($directory) || (!is_dir($directory) && !@mkdir($directory, 0700))
+        || (fileperms($directory) & 0077) !== 0) throw new RuntimeException('Unsafe identity lock directory.');
+    $names = [];
+    foreach (['email' => strtolower($lead['email']), 'phone' => $lead['phone']] as $kind => $identity) {
+        if ($identity !== '') $names[] = hash_hmac('sha256', $kind . ':' . $identity, $salt);
+    }
+    sort($names, SORT_STRING);
+    $locks = [];
+    try {
+        foreach ($names as $name) {
+            $path = $directory . '/' . $name . '.lock';
+            if (is_link($path)) throw new RuntimeException('Unsafe identity lock.');
+            $old = umask(0077);
+            try { $handle = @fopen($path, 'c'); } finally { umask($old); }
+            if ($handle === false) throw new RuntimeException('Identity lock unavailable.');
+            $locks[] = $handle;
+            if (!@chmod($path, 0600) || !flock($handle, LOCK_EX | LOCK_NB)) throw new RuntimeException('Identity submission is busy.');
+        }
+        return $locks;
+    } catch (Throwable $exception) {
+        foreach ($locks as $handle) fclose($handle);
+        throw $exception;
+    }
+}
+
+function first_touch_preserving_payload(array $payload, array $map, array $existingFields): array
+{
+    $protected = [];
+    foreach ($map as $logical => $definition) {
+        if (str_starts_with($logical, 'first_') || $logical === 'ga_client_id') {
+            $protected[$definition['id']] = true;
+        }
+    }
+    $occupied = [];
+    foreach ($existingFields as $field) {
+        if (!is_array($field) || !is_string($field['id'] ?? null)) continue;
+        $value = $field['value'] ?? ($field['fieldValue'] ?? null);
+        // Preserve zero and every other existing nonblank scalar; never copy it into a log.
+        if (isset($protected[$field['id']]) && is_scalar($value) && trim((string)$value) !== '') {
+            $occupied[$field['id']] = true;
+        } elseif (isset($protected[$field['id']]) && $value !== null && !is_scalar($value)) {
+            throw new RuntimeException('Existing attribution value was ambiguous.');
+        }
+    }
+    $payload['customFields'] = array_values(array_filter($payload['customFields'],
+        static fn(array $field): bool => !isset($occupied[$field['id']])));
+    return $payload;
+}
+
+function existing_contact_for_attribution(array $lead, array $config): array
+{
+    $ids = [];
+    foreach (['email' => $lead['email'], 'number' => $lead['phone']] as $key => $value) {
+        if ($value === '') continue;
+        $query = http_build_query(['locationId' => $config['location_id'], $key => $value]);
+        $response = ghl_request('GET', '/contacts/search/duplicate?' . $query, [], $lead['request_id']);
+        if (!array_key_exists('contact', $response)) throw new RuntimeException('Contact lookup was ambiguous.');
+        if ($response['contact'] === null) continue;
+        $id = clean_text($response['contact']['id'] ?? '', 100);
+        if ($id === '') throw new RuntimeException('Contact lookup was ambiguous.');
+        $ids[$id] = true;
+    }
+    if (count($ids) > 1) throw new RuntimeException('Contact identities conflict.');
+    if ($ids === []) return [];
+    $response = ghl_request('GET', '/contacts/' . rawurlencode(array_key_first($ids)), [], $lead['request_id']);
+    $contact = $response['contact'] ?? null;
+    if (!is_array($contact) || ($contact['id'] ?? '') !== array_key_first($ids)
+        || ($contact['locationId'] ?? '') !== $config['location_id']
+        || !is_array($contact['customFields'] ?? null)) throw new RuntimeException('Existing attribution lookup was ambiguous.');
+    return $contact['customFields'];
+}
+
 function build_contact_payload(array $lead, array $map, array $config): array
 {
     $payload = [
@@ -1258,7 +1347,14 @@ try {
         throw new RuntimeException('Provider account IDs are not configured.');
     }
     $map = custom_field_map();
-    $contactResponse = ghl_request('POST', '/contacts/upsert', build_contact_payload($lead, $map, $config), $lead['request_id']);
+    $identityLocks = attribution_identity_locks($lead);
+    try {
+        $existingFields = existing_contact_for_attribution($lead, $config);
+        $contactPayload = first_touch_preserving_payload(build_contact_payload($lead, $map, $config), $map, $existingFields);
+        $contactResponse = ghl_request('POST', '/contacts/upsert', $contactPayload, $lead['request_id']);
+    } finally {
+        foreach ($identityLocks as $handle) fclose($handle);
+    }
     $contactId = contact_id_from_response($contactResponse);
     if ($contactId === '') {
         throw new RuntimeException('Contact acceptance was ambiguous.');
