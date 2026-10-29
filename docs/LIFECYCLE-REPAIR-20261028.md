@@ -1,5 +1,7 @@
 # Lifecycle repair checkpoint — 2026-10-28
 
+> **Current live result:** [Live lifecycle acceptance, October 28–29](LIFECYCLE-LIVE-ACCEPTANCE-20261029.md) supersedes the historical investigation below. Exact merged PR #145 code is deployed, permanent GA4 MP is enabled, three controlled stage reporters returned native HTTP 200 and appeared downstream in GA4, one Secondary enrollment import is configured, the new fixture is archived/deleted, and the reloaded GHL list shows Needs review (0). The October 15 historical consent input/root cause remains unproven; no retrospective consent grant or replay was used.
+
 > Continuation supersedes the partial Google inventory and direct-offline candidate below: [complete all-status inventory, zero GA4 links, browser-linked GA4 implementation draft and current read-only Meta summary](GOOGLE-LIFECYCLE-DRAFT-20261028.md). No production release/provider test is claimed.
 
 ## Verified investigation, not a completed production repair

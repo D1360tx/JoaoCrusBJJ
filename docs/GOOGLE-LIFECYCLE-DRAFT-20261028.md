@@ -1,4 +1,6 @@
-# Google lifecycle route: disabled implementation draft
+# Google lifecycle route — historical draft and release record
+
+> **Current live state:** [Live lifecycle acceptance, October 28–29](LIFECYCLE-LIVE-ACCEPTANCE-20261029.md). PR #145 is merged and six files are deployed; GA4 MP is enabled; all three current reporters passed native HTTP 200 acceptance and their events appeared downstream in GA4. The single enrollment import is Secondary / Count One / no value in Joao Ads, and the owned fixture is deleted with exact absence readback. Earlier disabled/draft/no-test statements below are historical, not current instructions.
 
 ## Authorized continuation: owner gate cleared, configuration staged
 
