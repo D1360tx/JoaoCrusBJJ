@@ -24,7 +24,9 @@ Verified 2026-10-30, location `PnNnRDAjstycMWpOmUn7` only.
 | Bulk/delete/exports | Workflow deletion permission added explicitly; some incumbent edit scopes inherently bundle other deletion | No bulk/delete/export tool | Separate explicit execution request; broad provider scope is not execution permission |
 | Payments, charges, billing, users/admin, ownership | **No scopes selected** | No tools | Outside current operational setup authorization |
 
-## Exact state
+## Historical permission-expansion state (before owner-gated activation)
+
+The active nine-tool implementation and current acceptance boundary are documented below; the following inventory records the earlier scope-expansion checkpoint.
 
 - New integration: **27** verified selected scopes, not all 180 available scopes. Reopened exact integration `6ae4a0aed99b788b29c0f566` after saving: all 24 prior scopes preserved, exactly `workflows.publish`, `workflows.delete`, `conversations/message.write` added, zero removed. Human labels: **Publish Workflows**, **Delete Workflows**, **Edit Conversation Messages**.
 - Existing **GoHighLevel** integration: **10** selected scopes, unchanged by this run. It already has `contacts.write`, `opportunities.write` and `locations/customFields.write` despite its read-env filename. The existing MCP still exposes only reads and receives no separately configured write credential.
@@ -34,7 +36,19 @@ Verified 2026-10-30, location `PnNnRDAjstycMWpOmUn7` only.
 
 Scope evidence: `provider-scope-options.json`, `precreate-scope-proof.json`, `saved-provider-scope-proof.json`, `permission-expansion-saved.json`, `permission-expansion-runtime-proof.json` in the private evidence directory. Saved selections were read back by reopening the exact integration. After expansion, GET workflows returned 200 (32), pipelines 200 (1), custom fields 200 (93). An initial custom-fields GET with an unnecessary query parameter returned 422; the correct location-bound path returned 200. No publish/delete/send endpoint was invoked or certified working.
 
-## API commits: decision only, not enabled
+## Active owner-approved API commits — 2026-10-30
+
+The supported Hermes CLI now registers the owner-approved guarded server (implementation `3e76ae9e3e16f65afce818d82ce2496c18d9d9b4`). Managed `hermes mcp test joao-ghl-guarded` and fresh real stdio both discovered nine tools: `get_guarded_context`, `preview_guarded_commit`, `commit_approved_proposal`, `get_guarded_proposal_status`, `reconcile_guarded_proposal`, `preview_record_patch`, `validate_saved_patch`, `save_local_message_draft`, `read_local_message_draft`. This supersedes the preparation-only implementation status below and in the historical matrix; broader permission grants remain distinct from implemented operations.
+
+Only `contact.update_basics` (existing record: firstName, lastName, address1, city, state, postalCode, website) and `opportunity.update_name` (existing record: name) can commit. Notes/tasks, creates, custom fields, identity phone/email, tags, stage/status/value, consent/DND, enrollment, sends, publish and delete are not implemented. Legacy previews remain noncommittable and drafts remain private local recipient-free text.
+
+Every commit requires an exact expiring signed proposal and a genuine independently authenticated owner message through the pinned Telegram topic's `post_gateway_admission` hook. The hook binds the owner/source/message to the complete proposal SHA, operation, target, diff and expiry. There is no MCP approval issuer, LLM approval flag or pasted identity argument. Durable one-use consumption precedes the fixed provider PUT, with whole-record stale-state rejection and exact-target readback. Allowed field edits can still trigger existing automations.
+
+Verification: 94 synthetic/mock unit/HTTP tests passed; real stdio gate readiness and unknown/unapproved commit rejection passed; plugin Doctor passed with zero tools and one hook. Production store: **zero proposals, zero approvals**; activation checks made zero provider requests or business writes. Existing read MCP and other registrations compare unchanged; credential bytes and mode 0600 are unchanged. No full gateway/read-MCP restart, scope change, token rotation or provider canary was performed. The plugin worktree remains retained. Existing session catalogs may require a guarded-only refresh; saved registration readiness does not prove an old parent session has reloaded.
+
+**Real owner-to-provider acceptance is NOT yet tested.** Wait for the first genuine intended exact edit: preview its diff/automation risk, obtain authenticated owner approval, commit once and verify exact readback. No fabricated production proposal/approval or customer fixture is authorized. This is an operational guard, not an OS sandbox; provider exactly-once delivery is not guaranteed, and ambiguous attempts must never be blindly retried.
+
+## Historical permission-expansion boundary (superseded implementation status)
 
 An **API commit** is an actual approved HighLevel HTTP write, not a Git commit: changing a contact field, opportunity stage, workflow configuration, publishing, sending an SMS/email, or deleting an object. Provider permission, implemented gateway tools, and human execution authorization are three separate layers. The broader raw credential could bypass the gateway if leaked: keep it server-private and do not pass it to Muse/Grok or other bots.
 
