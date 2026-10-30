@@ -1,0 +1,547 @@
+From 57b2e6f8716f5e63357173f263bb60a7252a01c3 Mon Sep 17 00:00:00 2001
+From: Diego Campos <diego@icdcventures.com>
+Date: Fri, 30 Oct 2026 11:48:44 -0500
+Subject: [PATCH] fix: exhaust retained CRM census and expose historical
+ coverage gates
+
+---
+ CRM-COVERAGE-REPAIR.md |  34 +++++++
+ crm_coverage.py        | 226 +++++++++++++++++++++++++++++++++++++++++
+ gateway.py             |  83 +++++++++------
+ test_crm_coverage.py   |  99 ++++++++++++++++++
+ test_gateway.py        |   2 +-
+ 5 files changed, 412 insertions(+), 32 deletions(-)
+ create mode 100644 CRM-COVERAGE-REPAIR.md
+ create mode 100644 crm_coverage.py
+ create mode 100644 test_crm_coverage.py
+
+diff --git a/CRM-COVERAGE-REPAIR.md b/CRM-COVERAGE-REPAIR.md
+new file mode 100644
+index 0000000..a0a689d
+--- /dev/null
++++ b/CRM-COVERAGE-REPAIR.md
+@@ -0,0 +1,34 @@
++# CRM retained-history collector repair
++
++## Safety and method
++
++This repair changes only GET collection and PII-free reporting. It does not change credentials, provider scopes, campaigns, CRM records, workflows, consent, integration connections, scheduler settings, or guarded commit controls.
++
++`get_marketing_funnel_summary` retains its ISO-8601 timezone-aware input and 92-day/end-exclusive contract. Methodology version 2 adds:
++
++- Contact and opportunity cursor censuses, stable total/unique-ID reconciliation, duplicate detection, and explicit exhaustion receipts. A 100-page safety bound, missing/repeating cursor, changing total, invalid row or unsafe next-page URL cannot certify coverage. Only fixed provider endpoints receive credentials; next-page URLs can supply validated cursor values, never an authenticated destination.
++- Notes on **every retained contact**, not only current website-tagged records. Four workers use observed provider burst headers with a safety margin; unknown headers retain conservative spacing. GET-only rate-limit retries remain bounded; mutations are not replayed.
++- Request-UUID event identity, HTML/plain-text note normalization, original ISO timestamp and legacy `Submitted at: ... UTC` support. Missing identity, timestamp fallback, ambiguous dates and request conflicts are exposed and fail closed. Exact known disposable QA request hashes are excluded; names and generic business tags are not QA classifiers.
++- Private location-bound materialization, exclusive refresh lock and a 600-second TTL checked against collection completion as well as file time. Notes are not cached on contact-updated timestamps. Cache files are 0600 under a 0700 directory. Returned aggregates contain no identities or notes.
++
++The legacy `accepted_website_leads` metric still means window-created, currently website-tagged contacts. `window_created_website_contacts` names that grain explicitly. Accepted requests and unique submitters remain separate metrics. Current stages/scheduled visits are not historical-ever bookings or attendance.
++
++## Collection is not immutable history
++
++`coverage.collection_verified` certifies the retained GET census and parse quality. It does **not** prove no prior records were deleted. `coverage.history_reconciled` stays false until independently retained evidence closes the historical comparison; a successful larger count is not enough. Multi-day historical summaries remain `source_status: blocked` while this is unresolved. A complete one-day retained snapshot may be verified with that historical limitation still explicit.
++
++The reporting workspace now distinguishes auth failures from collector/history gaps and withholds cumulative CRM economics while history is unresolved. Old official snapshots are not rewritten. The repair evidence directory contains a separate validation revision.
++
++## Executed evidence
++
++The original five-page replay yielded zero September-window requests and 17 launch-window requests. A complete retained census found 1,360 contacts across 14 pages and all 66 opportunities, then read all 1,360 note collections: 86 notes, no GET errors. First-page imports demonstrably displaced older website records beyond record 500.
++
++Observed provider headers allowed 100 reads per 10 seconds. The repaired four-worker cold census completed in 177.22 seconds, below Hermes' documented default 300-second MCP timeout; the preceding conservative 0.45-second collector took roughly ten minutes. Later windows reuse one short-lived snapshot. Larger future populations or degraded provider latency may still exceed that budget: fail/partial results must not be promoted to verified.
++
++Actual stdio and native MCP summaries were exercised for Aug 27–Sep 29, Aug 27–Oct 29 and Oct 29 alone (America/Chicago boundaries). Retained counts and unresolved historical evidence are documented outside Git in the private repair directory; no private business rows are committed.
++
++## Verification
++
++Run `.venv/bin/python -m unittest discover -q` in this repository. Reporting tests run separately with `python -m unittest discover -q` in the marketing control-plane workspace. Provider calls in unit tests use mocks, including mutation-safety regression tests; live acceptance of this repair uses only GETs.
++
++Primary contracts consulted: HighLevel GET contacts cursor documentation, GET opportunity search `startAfter`/`startAfterId`, GET all contact notes; Hermes MCP timeout reference at https://hermes-agent.nousresearch.com/docs/reference/mcp-config-reference.
+diff --git a/crm_coverage.py b/crm_coverage.py
+new file mode 100644
+index 0000000..6cff87b
+--- /dev/null
++++ b/crm_coverage.py
+@@ -0,0 +1,226 @@
++"""GET-only retained CRM census. Completeness is evidence, not a page-size guess."""
++from __future__ import annotations
++import json
++import os
++import threading
++import time
++from concurrent.futures import ThreadPoolExecutor
++from datetime import datetime, timezone
++from pathlib import Path
++from urllib.parse import urlparse, parse_qs
++
++MAX_PAGES = 100
++CACHE_TTL_SECONDS = 600
++# Exact disposable acceptance requests (Oct26 CAPI, Oct29 lifecycle x2).
++# Hashes avoid publishing request identifiers; never infer QA from a real name.
++QA_REQUEST_SHA256 = frozenset({
++    "7dc2e7f2cf823f882f7c8e16b6e040aedf6705425e3f7483002b264bae49131a",
++    "b717215353655cd66774fa682e1664e6e8cc382597749e462d844a05f046b306",
++    "8c4c70d87edc3e96cd700bbbbc8ac1ba062c1ce7a38233a12df3ea51d1b05871",
++})
++
++def utc_now():
++    return datetime.now(timezone.utc).isoformat()
++
++def census(client, path, key, params, *, max_pages=MAX_PAGES):
++    """Follow documented startAfter/startAfterId, never an authenticated URL."""
++    rows, seen, totals, cursors = [], set(), set(), set()
++    base = dict(params)
++    receipt = {"pages": 0, "unique_records": 0, "declared_total": None,
++               "exhausted": False, "reason": None, "duplicate_records": 0}
++    for _ in range(max_pages):
++        payload = client.request("GET", path, params=params)
++        batch = payload.get(key) if isinstance(payload, dict) else None
++        if not isinstance(batch, list) or not all(isinstance(r, dict) for r in batch):
++            receipt["reason"] = "invalid_collection"; break
++        meta = payload.get("meta") or {}
++        receipt["pages"] += 1
++        total = meta.get("total", payload.get("total"))
++        if type(total) is int and total >= 0:
++            totals.add(total); receipt["declared_total"] = total
++        else:
++            total = None
++        before = len(seen)
++        for row in batch:
++            rid = row.get("id") or row.get("_id")
++            if not isinstance(rid, str) or not rid:
++                receipt["reason"] = "missing_record_id"; continue
++            if rid in seen:
++                receipt["duplicate_records"] += 1; continue
++            seen.add(rid); rows.append(row)
++        receipt["unique_records"] = len(seen)
++        if receipt["reason"]: break
++        if len(totals) > 1:
++            receipt["reason"] = "provider_total_changed_during_scan"; break
++        if total is not None and len(seen) == total:
++            receipt["exhausted"] = True; break
++        if not batch:
++            receipt["exhausted"] = total is None or len(seen) == total
++            receipt["reason"] = None if receipt["exhausted"] else "empty_page_total_mismatch"
++            break
++        if len(seen) == before:
++            receipt["reason"] = "pagination_no_progress"; break
++        cursor = {k: meta[k] for k in ("startAfter", "startAfterId") if meta.get(k) is not None}
++        next_url = meta.get("nextPageUrl")
++        if next_url:
++            url = urlparse(next_url)
++            if url.scheme != "https" or url.netloc != "services.leadconnectorhq.com" or url.path.rstrip("/") != path.rstrip("/") or url.username or url.password or url.fragment:
++                receipt["reason"] = "unsafe_next_page_url"; break
++            query = parse_qs(url.query)
++            if any(k not in {"locationId", "location_id", "query", "limit", "startAfter", "startAfterId", "page"} for k in query):
++                receipt["reason"] = "unsupported_next_page_query"; break
++            if any(query[k] != [str(base[k])] for k in ("locationId", "location_id") if k in query and k in base):
++                receipt["reason"] = "next_page_location_mismatch"; break
++            if len(cursor) != 2:
++                cursor = {k: query[k][0] for k in ("startAfter", "startAfterId") if len(query.get(k, [])) == 1}
++        if len(cursor) != 2:
++            receipt["reason"] = "missing_provider_cursor_or_total"; break
++        fingerprint = tuple(str(cursor[k]) for k in ("startAfter", "startAfterId"))
++        if fingerprint in cursors:
++            receipt["reason"] = "repeated_provider_cursor"; break
++        cursors.add(fingerprint)
++        params = {**base, **cursor}
++    else:
++        receipt["reason"] = "page_safety_cap_reached"
++    return rows, receipt
++
++class ReadLimiter:
++    def __init__(self, client=None):
++        self.lock = threading.Lock(); self.next_at = 0.0; self.client = client
++    def wait(self):
++        with self.lock:
++            delay = max(0, self.next_at - time.monotonic())
++            if delay: time.sleep(delay)
++            self.next_at = time.monotonic() + getattr(self.client, "read_spacing", 0.45)
++
++def private_json(path, payload):
++    path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
++    temp = path.with_suffix(path.suffix + ".tmp")
++    fd = os.open(temp, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
++    with os.fdopen(fd, "w") as f: json.dump(payload, f)
++    os.chmod(temp, 0o600); os.replace(temp, path)
++
++def collect(gateway, *, checkpoint=None):
++    """Scan every retained contact's notes; current tags are not event evidence."""
++    started = utc_now()
++    contacts, contact_receipt = census(gateway.client, "/contacts/", "contacts", gateway._loc({"query": "", "limit": 100}))
++    # Minimize the private materialization: no names, email, phone or addresses.
++    contacts = [{k: r[k] for k in ("id", "dateAdded", "tags", "customFields") if k in r} for r in contacts]
++    notes, errors, note_count = {}, {}, 0
++    limiter = ReadLimiter(gateway.client)
++    progress = Path(checkpoint) if checkpoint else None
++    # Resume only this explicitly selected collection checkpoint, never a general
++    # long-lived note cache (notes can change independently of contactUpdated).
++    if progress and progress.exists():
++        for line in progress.read_text().splitlines():
++            row = json.loads(line)
++            if "notes" in row: notes[row["contact_id"]] = row["notes"]
++    pending = [c["id"] for c in contacts if c["id"] not in notes]
++    def one(cid):
++        limiter.wait()
++        try:
++            payload = gateway.notes(cid)
++            result = payload.get("notes") if isinstance(payload, dict) else None
++            if not isinstance(result, list) or not all(isinstance(n, dict) for n in result):
++                return cid, None, "invalid_notes_collection"
++            if payload.get("meta", {}).get("nextPage") or payload.get("hasMore"):
++                return cid, None, "notes_pagination_unresolved"
++            return cid, result, None
++        except Exception as exc:
++            # Exception type only: never echo provider bodies, IDs or credentials.
++            return cid, None, type(exc).__name__
++    with ThreadPoolExecutor(max_workers=4) as pool:
++        for cid, result, error in pool.map(one, pending):
++            if error: errors[cid] = error
++            else:
++                notes[cid] = result
++                if progress:
++                    progress.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
++                    fd = os.open(progress, os.O_APPEND | os.O_CREAT | os.O_WRONLY, 0o600)
++                    with os.fdopen(fd, "a") as f: f.write(json.dumps({"contact_id": cid, "notes": result}) + "\n")
++    opportunities, opp_receipt = census(gateway.client, "/opportunities/search", "opportunities", {"location_id": gateway.s.location_id, "limit": 100})
++    opportunities = [{k: row[k] for k in ("id", "contactId", "pipelineId", "pipelineStageId", "status") if k in row} for row in opportunities]
++    note_count = sum(len(v) for v in notes.values())
++    return {"schema_version": 1, "location_id": gateway.s.location_id, "started_at": started, "finished_at": utc_now(),
++            "contacts": contacts, "notes": notes, "note_errors": errors, "opportunities": opportunities,
++            "coverage": {"contacts": contact_receipt, "opportunities": opp_receipt,
++                         "notes_contacts_scanned": len(notes), "notes_count": note_count,
++                         "notes_error_count": len(errors), "notes_complete": len(notes) == len(contacts) and not errors,
++                         "consistency": "non_transactional_retained_state_scan", "history_reconciled": False}}
++
++def retained_snapshot(gateway):
++    # Only real clients are cached; tests/custom transports must not read live PII.
++    if not hasattr(gateway.client, "http") or gateway.client.http._transport.__class__.__name__ == "MockTransport":
++        return collect(gateway)
++    import hashlib
++    key = hashlib.sha256(gateway.s.location_id.encode()).hexdigest()[:20]
++    path = gateway.s.state_file.parent / "crm-coverage" / ("crm-retained-" + key + ".json")
++    path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
++    os.chmod(path.parent, 0o700)
++    import fcntl
++    lock_fd = os.open(path.with_suffix(".lock"), os.O_CREAT | os.O_RDWR, 0o600)
++    with os.fdopen(lock_fd, "a") as lock:
++        fcntl.flock(lock, fcntl.LOCK_EX)
++        if path.exists() and 0 <= time.time() - path.stat().st_mtime < CACHE_TTL_SECONDS:
++            try:
++                cached = json.loads(path.read_text())
++                finished = datetime.fromisoformat(cached.get("finished_at", ""))
++                age = (datetime.now(timezone.utc) - finished).total_seconds()
++                if cached.get("schema_version") == 1 and cached.get("location_id") == gateway.s.location_id and 0 <= age < CACHE_TTL_SECONDS:
++                    return cached
++            except (ValueError, OSError):
++                pass
++        result = collect(gateway)
++        private_json(path, result)
++        return result
++
++
++def normalized_note_body(note):
++    import html
++    import re
++    body = str(note.get("bodyText") or note.get("body") or note.get("text") or "")
++    body = re.sub(r"(?i)<(?:br\s*/?|/p|/div)>", "\n", body)
++    return html.unescape(re.sub(r"<[^>]+>", "", body)).replace("\u00a0", " ").strip()
++
++
++def submission_evidence(contacts, notes, start, end):
++    from gateway import _website_submission_time, _website_submission_request_id
++    import re
++    events = {}
++    quality = {"accepted_notes_all_dates": 0, "unparseable_dates": 0,
++               "note_date_fallbacks": 0, "idless_requests": 0,
++               "request_identity_conflicts": 0, "duplicate_request_notes": 0,
++               "accepted_notes_without_current_tag": 0, "excluded_qa_requests": 0}
++    tags = {c["id"]: c.get("tags", []) for c in contacts}
++    all_events = {}
++    for cid, note_rows in notes.items():
++        for note in note_rows:
++            body = normalized_note_body(note)
++            if str(note.get("title") or "") != "Website Quiz Submitted" and not body.startswith("Website submission accepted by HighLevel."):
++                continue
++            quality["accepted_notes_all_dates"] += 1
++            if "website_lead" not in tags.get(cid, []):
++                quality["accepted_notes_without_current_tag"] += 1
++            submitted = _website_submission_time(body, note)
++            if submitted is None:
++                quality["unparseable_dates"] += 1; continue
++            if not re.search(r"(?im)^(?:Original submission at|Submitted at):\s*", body):
++                quality["note_date_fallbacks"] += 1
++            request_id = _website_submission_request_id(body)
++            import hashlib
++            if request_id and hashlib.sha256(request_id.encode()).hexdigest() in QA_REQUEST_SHA256:
++                quality["excluded_qa_requests"] += 1
++                continue
++            if not request_id:
++                quality["idless_requests"] += 1
++            key = request_id or "note:" + str(note.get("id") or cid + ":" + submitted.isoformat())
++            value = (cid, submitted)
++            if key in all_events:
++                quality["duplicate_request_notes"] += 1
++                if all_events[key] != value:
++                    quality["request_identity_conflicts"] += 1
++            else:
++                all_events[key] = value
++            if start <= submitted < end:
++                events.setdefault(key, value)
++    return {"events": events, "quality": quality}
+diff --git a/gateway.py b/gateway.py
+index d6c8676..a8ead47 100644
+--- a/gateway.py
++++ b/gateway.py
+@@ -202,6 +202,15 @@ class HighLevelClient:
+                 break
+             self.sleeper(self._rate_limit_delay(response))
+         assert response is not None
++        # Use the provider's observed read burst budget, retaining a 20% margin.
++        # Unknown headers keep the conservative fallback in the census limiter.
++        try:
++            interval_ms = float(response.headers.get("X-RateLimit-Interval-Milliseconds", "0"))
++            burst = float(response.headers.get("X-RateLimit-Max", "0"))
++            if interval_ms > 0 and burst > 0:
++                self.read_spacing = max(0.125, min(10.0, interval_ms / 1000.0 / burst * 1.25))
++        except ValueError:
++            pass
+         if 300 <= response.status_code < 400: raise ProviderError("HighLevel redirect denied")
+         if len(response.content) > MAX_RESPONSE_BYTES: raise ProviderError("HighLevel response exceeded safety limit")
+         try: payload = response.json() if response.content else {}
+@@ -275,16 +284,12 @@ class Gateway:
+         if end <= start or (end - start).total_seconds() > 92 * 86400:
+             raise PolicyError("Summary range must be positive and at most 92 days")
+ 
+-        contacts: list[dict[str, Any]] = []
+-        params: dict[str, Any] = self._loc({"query": "", "limit": 100})
+-        for _ in range(5):
+-            page = self.client.request("GET", "/contacts/", params=params)
+-            rows = _collection(page, "contacts")
+-            contacts.extend(rows)
+-            meta = page.get("meta", {}) if isinstance(page, dict) else {}
+-            if not meta.get("nextPage") or not meta.get("startAfter") or not meta.get("startAfterId"):
+-                break
+-            params = self._loc({"query": "", "limit": 100, "startAfter": meta["startAfter"], "startAfterId": meta["startAfterId"]})
++        from crm_coverage import retained_snapshot
++        snapshot = retained_snapshot(self)
++        contacts = snapshot["contacts"]
++        coverage = dict(snapshot["coverage"])
++        coverage.update({"collection_started_at": snapshot["started_at"],
++                         "collection_finished_at": snapshot["finished_at"]})
+ 
+         window_contacts = [c for c in contacts if start <= _contact_time(c) < end]
+         website_tagged = [c for c in contacts if "website_lead" in _extract_tags(c)]
+@@ -296,24 +301,20 @@ class Gateway:
+         # append-only website quiz notes by original submission time so Meta,
+         # GA4, and CRM reporting use the same event grain.
+         submission_events: dict[str, tuple[str, datetime]] = {}
+-        for contact in website_tagged:
+-            contact_id = str(contact.get("id", ""))
+-            if not contact_id:
+-                continue
+-            for note in _collection(self.notes(contact_id), "notes"):
+-                body = str(note.get("body") or note.get("bodyText") or note.get("text") or "")
+-                title = str(note.get("title") or "")
+-                if title != "Website Quiz Submitted" and not body.startswith("Website submission accepted by HighLevel."):
+-                    continue
+-                submitted_at = _website_submission_time(body, note)
+-                if submitted_at is None or not (start <= submitted_at < end):
+-                    continue
+-                request_id = _website_submission_request_id(body)
+-                event_key = request_id or str(note.get("id") or f"{contact_id}:{submitted_at.isoformat()}")
+-                submission_events.setdefault(event_key, (contact_id, submitted_at))
++        from crm_coverage import submission_evidence
++        evidence = submission_evidence(contacts, snapshot["notes"], start, end)
++        submission_events = evidence["events"]
++        coverage["submission_quality"] = evidence["quality"]
++        coverage["collection_verified"] = bool(
++            coverage["contacts"]["exhausted"] and coverage["opportunities"]["exhausted"]
++            and coverage["notes_complete"] and not evidence["quality"]["unparseable_dates"]
++            and not evidence["quality"]["request_identity_conflicts"]
++            and not evidence["quality"]["idless_requests"]
++            and not evidence["quality"]["note_date_fallbacks"]
++        )
+ 
+         unique_submitters = {contact_id for contact_id, _ in submission_events.values()}
+-        contact_created = {str(contact.get("id", "")): _contact_time(contact) for contact in website_tagged}
++        contact_created = {str(contact.get("id", "")): _contact_time(contact) for contact in contacts}
+         repeat_submissions = sum(
+             1 for contact_id, submitted_at in submission_events.values()
+             if contact_created.get(contact_id, submitted_at) < submitted_at - timedelta(minutes=5)
+@@ -327,8 +328,7 @@ class Gateway:
+         }
+         attribution_complete = sum(1 for c in website if _has_attribution(c, attribution_ids))
+ 
+-        opportunities_payload = self.opportunities("", 100, 0)
+-        opportunities = [o for o in _collection(opportunities_payload, "opportunities") if str(o.get("contactId", "")) in website_ids]
++        opportunities = [o for o in snapshot["opportunities"] if str(o.get("contactId", "")) in website_ids]
+         pipelines_payload = self.pipelines()
+         stage_names: dict[str, str] = {}
+         for pipeline in _collection(pipelines_payload, "pipelines"):
+@@ -366,14 +366,27 @@ class Gateway:
+                     scheduled_visits += 1
+ 
+         return {
+-            "source_status": "verified",
++            "source_status": "verified" if coverage["collection_verified"] and ((end - start).total_seconds() <= 86400 or coverage["history_reconciled"]) else "blocked",
++            "methodology_version": 2,
++            "coverage": coverage,
++            "coverage_reason": ("Retained CRM records fully scanned; historical snapshot comparison remains unresolved."
++                                if coverage["collection_verified"] and not coverage["history_reconciled"]
++                                else "Retained CRM collection incomplete or submission evidence ambiguous."
++                                if not coverage["collection_verified"] else "Retained CRM collection and historical comparison verified."),
++            "historical_coverage_status": "reconciled" if coverage["history_reconciled"] else "unverified_not_an_immutable_history",
++            "window_created_website_contacts": len(website),
++            "cohort_definitions": {"accepted_website_leads": "Legacy: currently website_lead-tagged contacts created in the window; not unique submitters.",
++                                   "accepted_website_submissions": "Distinct retained accepted requests by original submission time, regardless of current tag.",
++                                   "unique_website_submitters": "Distinct contacts with retained accepted requests in the window.",
++                                   "stage_counts": "Current stages of window-created website contacts, not historical-ever stages.",
++                                   "scheduled_visits": "Non-cancelled events in the window for window-created website contacts; not attendance."},
+             "location_pinned": True,
+             "window": {"start": start.isoformat(), "end_exclusive": end.isoformat()},
+             "accepted_website_leads": len(website),
+             "accepted_website_submissions": len(submission_events),
+             "unique_website_submitters": len(unique_submitters),
+             "repeat_website_submissions": repeat_submissions,
+-            "website_submission_status": "verified_from_quiz_notes",
++            "website_submission_status": "verified_from_quiz_notes" if coverage["notes_complete"] and not evidence["quality"]["unparseable_dates"] else "partial_retained_notes",
+             "open_opportunities": sum(1 for o in opportunities if str(o.get("status", "")).lower() == "open"),
+             "stage_counts": dict(sorted(stage_counts.items())),
+             "attribution_complete": attribution_complete,
+@@ -554,7 +567,15 @@ def _contact_time(contact: dict[str, Any]) -> datetime:
+     except PolicyError: return datetime.min.replace(tzinfo=timezone.utc)
+ def _website_submission_time(body: str, note: dict[str, Any]) -> datetime | None:
+     match = re.search(r"(?im)^Original submission at:\s*([^\s]+)", body)
+-    value = match.group(1) if match else note.get("dateAdded")
++    if match:
++        try: return _iso_utc(match.group(1))
++        except PolicyError: return None
++    # Legacy accepted-note contract used an explicit UTC wall-clock line.
++    legacy = re.search(r"(?im)^Submitted at:\s*(.*?)\s*$", body)
++    if legacy:
++        try: return datetime.strptime(legacy.group(1), "%Y-%m-%d %H:%M:%S UTC").replace(tzinfo=timezone.utc)
++        except ValueError: return None
++    value = note.get("dateAdded")
+     try: return _iso_utc(str(value)) if value else None
+     except PolicyError: return None
+ def _website_submission_request_id(body: str) -> str:
+diff --git a/test_crm_coverage.py b/test_crm_coverage.py
+new file mode 100644
+index 0000000..e1fd325
+--- /dev/null
++++ b/test_crm_coverage.py
+@@ -0,0 +1,99 @@
++import hashlib
++import unittest
++from unittest.mock import patch
++from datetime import datetime, timezone
++import crm_coverage as cc
++
++class PageClient:
++    def __init__(self, pages): self.pages=iter(pages); self.calls=[]
++    def request(self, method, path, *, params):
++        self.calls.append((method,path,params)); return next(self.pages)
++
++def page(ids,total=None,cursor=None,**meta):
++    if total is not None: meta['total']=total
++    if cursor is not None: meta.update(startAfter=cursor,startAfterId='cursor_'+str(cursor),nextPage=True)
++    return {'contacts':[{'id':str(i)} for i in ids], 'meta':meta}
++
++class CoverageTests(unittest.TestCase):
++    def scan(self,pages,**kwargs):
++        client=PageClient(pages)
++        rows,receipt=cc.census(client,'/contacts/','contacts',{'locationId':'loc','limit':100},**kwargs)
++        self.assertTrue(all(c[0]=='GET' for c in client.calls))
++        return rows,receipt,client
++    def test_exhausts_beyond_five_pages(self):
++        rows,r,c=self.scan([page([i],7,i) for i in range(7)])
++        self.assertEqual(len(rows),7); self.assertEqual(r['pages'],7); self.assertTrue(r['exhausted'])
++        self.assertEqual(c.calls[1][2]['startAfter'],0)
++    def test_total_wins_over_stale_next_page(self):
++        _,r,c=self.scan([page([1],1,1)])
++        self.assertTrue(r['exhausted']);self.assertEqual(len(c.calls),1)
++    def test_repeated_page_not_verified(self):
++        _,r,_=self.scan([page([1],3,1),page([1],3,2)])
++        self.assertFalse(r['exhausted']); self.assertEqual(r['reason'],'pagination_no_progress')
++    def test_changing_total_not_verified(self):
++        _,r,_=self.scan([page([1],3,1),page([2],4,2)])
++        self.assertFalse(r['exhausted']);self.assertEqual(r['reason'],'provider_total_changed_during_scan')
++    def test_hard_cap_not_verified(self):
++        _,r,_=self.scan([page([1],3,1)],max_pages=1)
++        self.assertEqual(r['reason'],'page_safety_cap_reached');self.assertFalse(r['exhausted'])
++    def test_missing_cursor_partial(self):
++        _,r,_=self.scan([page([1],3)])
++        self.assertFalse(r['exhausted'])
++    def test_unknown_host_rejected(self):
++        _,r,c=self.scan([page([1],3,nextPageUrl='https://evil.example/contacts/?startAfter=1&startAfterId=x')])
++        self.assertEqual(r['reason'],'unsafe_next_page_url');self.assertEqual(len(c.calls),1)
++    def test_location_mismatch_rejected(self):
++        _,r,_=self.scan([page([1],3,nextPageUrl='https://services.leadconnectorhq.com/contacts/?locationId=other&startAfter=1&startAfterId=x')])
++        self.assertEqual(r['reason'],'next_page_location_mismatch')
++    def test_valid_next_url_only_supplies_cursors(self):
++        _,r,c=self.scan([page([1],2,nextPageUrl='https://services.leadconnectorhq.com/contacts/?locationId=loc&startAfter=1&startAfterId=x'),page([2],2)])
++        self.assertTrue(r['exhausted']);self.assertEqual(c.calls[1][2]['locationId'],'loc')
++    def test_empty_page_must_reconcile_total(self):
++        _,r,_=self.scan([page([],2)])
++        self.assertFalse(r['exhausted'])
++    def evidence(self,notes,tags=None):
++        return cc.submission_evidence([{'id':'contact_1','tags':tags or []}],{'contact_1':notes},datetime(2026,8,27,tzinfo=timezone.utc),datetime(2026,9,30,tzinfo=timezone.utc))
++    def note(self,request='request-00000001',date='2026-09-01T10:00:00Z'):
++        return {'id':'note_1','body':f'Website submission accepted by HighLevel.\nOriginal submission at: {date}\nRequest ID: {request}'}
++    def test_accepted_note_survives_tag_removal(self):
++        r=self.evidence([self.note()]);self.assertEqual(len(r['events']),1);self.assertEqual(r['quality']['accepted_notes_without_current_tag'],1)
++    def test_request_deduplication(self):
++        r=self.evidence([self.note(),self.note()]);self.assertEqual(len(r['events']),1);self.assertEqual(r['quality']['duplicate_request_notes'],1)
++    def test_original_time_not_note_time(self):
++        n=self.note();n['dateAdded']='2026-10-30T00:00:00Z';self.assertEqual(len(self.evidence([n])['events']),1)
++    def test_html_and_entities_normalized(self):
++        n=self.note();n['body']=n['body'].replace('\n','<br />');self.assertEqual(len(self.evidence([n])['events']),1)
++    def test_bad_timestamp_not_silent_zero(self):
++        r=self.evidence([self.note(date='invalid')]);self.assertEqual(r['quality']['unparseable_dates'],1)
++    def test_note_date_fallback_explicit(self):
++        n={'id':'note_1','body':'Website submission accepted by HighLevel.\nRequest ID: request-00000001','dateAdded':'2026-09-01T00:00:00Z'}
++        self.assertEqual(self.evidence([n])['quality']['note_date_fallbacks'],1)
++    def test_exact_qa_request_excluded_without_name_heuristic(self):
++        rid='exact-fixture-000001'
++        with patch.object(cc,'QA_REQUEST_SHA256',{hashlib.sha256(rid.encode()).hexdigest()}):
++            r=self.evidence([self.note(rid)]);self.assertEqual(len(r['events']),0);self.assertEqual(r['quality']['excluded_qa_requests'],1)
++    def test_conflicting_request_identity_flagged(self):
++        r=self.evidence([self.note(),self.note(date='2026-09-02T10:00:00Z')]);self.assertEqual(r['quality']['request_identity_conflicts'],1)
++
++    def test_legacy_submitted_at_utc_precedes_note_creation(self):
++        n={'id':'note_1','body':'Website submission accepted by HighLevel.\nSubmitted at: 2026-09-01 10:00:00 UTC\nRequest ID: request-00000001','dateAdded':'2026-10-30T00:00:00Z'}
++        r=self.evidence([n]);self.assertEqual(len(r['events']),1);self.assertEqual(r['quality']['note_date_fallbacks'],0)
++    def test_malformed_explicit_legacy_date_does_not_use_note_date(self):
++        n={'id':'note_1','body':'Website submission accepted by HighLevel.\nSubmitted at: invalid\nRequest ID: request-00000001','dateAdded':'2026-09-01T00:00:00Z'}
++        self.assertEqual(self.evidence([n])['quality']['unparseable_dates'],1)
++    def test_note_read_error_is_partial(self):
++        from types import SimpleNamespace
++        class Client:
++            def request(self,method,path,*,params):
++                return {'contacts':[{'id':'contact_1'}],'meta':{'total':1}} if path=='/contacts/' else {'opportunities':[],'meta':{'total':0}}
++        def fail(cid):raise RuntimeError('private provider error')
++        gw=SimpleNamespace(client=Client(),_loc=lambda p:p,notes=fail,s=SimpleNamespace(location_id='loc'))
++        r=cc.collect(gw)
++        self.assertFalse(r['coverage']['notes_complete']);self.assertEqual(r['coverage']['notes_error_count'],1)
++        self.assertNotIn('private provider error',str(r))
++    def test_opportunity_census_also_exhausts(self):
++        c=PageClient([{'opportunities':[{'id':'opp_1'}],'meta':{'total':2,'startAfter':1,'startAfterId':'opp_1'}},{'opportunities':[{'id':'opp_2'}],'meta':{'total':2}}])
++        rows,r=cc.census(c,'/opportunities/search','opportunities',{'location_id':'loc','limit':100})
++        self.assertTrue(r['exhausted']);self.assertEqual(len(rows),2)
++
++if __name__=='__main__':unittest.main()
+diff --git a/test_gateway.py b/test_gateway.py
+index 8da9e8b..3c0b83f 100644
+--- a/test_gateway.py
++++ b/test_gateway.py
+@@ -176,7 +176,7 @@ class GatewayTests(unittest.TestCase):
+                     return {"customFields": []}
+                 if path == "/opportunities/search":
+                     return {"opportunities": [{
+-                        "contactId": "contact_website_1", "pipelineStageId": "stage_trial", "status": "open",
++                        "id": "opp_summary_1", "contactId": "contact_website_1", "pipelineStageId": "stage_trial", "status": "open",
+                     }]}
+                 if path == "/opportunities/pipelines":
+                     return {"pipelines": [{"stages": [{"id": "stage_trial", "name": "Trial Booked"}]}]}
+-- 
+2.43.0
+

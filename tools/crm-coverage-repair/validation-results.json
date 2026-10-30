@@ -1,0 +1,25 @@
+{
+  "adapter_tests_passed": 83,
+  "portable_reporter_tests_passed": 23,
+  "collector_patch_reverse_check": true,
+  "corrected_revision_dryrun": {
+    "validation_errors": [],
+    "status": "blocked",
+    "recommendation": "Reconcile the historical CRM snapshot against retained submission receipts before cumulative optimization decisions; keep healthy integrations connected.",
+    "cumulative_crm_verified": false,
+    "economics": {
+      "target_qualified_cac_usd": null,
+      "proxy_cost_per_accepted_submission_usd": null,
+      "proxy_cost_per_accepted_lead_usd": null,
+      "cost_per_scheduled_visit_usd": null,
+      "target_learning_ready": false,
+      "learning_gate": {
+        "accepted_submissions": 20,
+        "scheduled_visits": 5
+      },
+      "cumulative_crm_coverage_verified": false,
+      "note": "Cumulative CRM economics withheld until retained collection and historical reconciliation are verified."
+    },
+    "past_snapshot_unchanged": true
+  }
+}
