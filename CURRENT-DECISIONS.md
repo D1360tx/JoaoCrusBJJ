@@ -17,6 +17,12 @@
 
 ---
 
+## Guarded HighLevel operational access (2026-10-30)
+
+- Diego authorized broad common operational capability with safeguards, not arbitrary customer/business changes. A separate Joao-only private integration was created with 24 explicit scopes, excluding standalone workflow publish/delete, message-send, finance and user/admin writes. Existing read integration/token and production were preserved.
+- A separate preparation MCP provides exact-record field diffs and private local recipient-free drafts. Its commits are unconditionally disabled: a signed preview or agent confirmation is not independent human approval. The new provider credential is NOT loaded by active MCPs. No business/customer writes, sends, enrollment or publication were performed during setup.
+- Current UI now exposes workflows.write and forms.write; their mutation contracts are untested, not necessarily browser-only. See [verified permission/capability matrix and release gates](docs/GHL-GUARDED-ACCESS-2026-10-30.md).
+
 ## Operational outcomes reconciled (2026-10-28)
 
 - Fresh origin/main before this documentation update is `e1e094ab36e60ea5d5669c579d64280d798f9d53`. PR #137 reconciled already-live spam/CALM/parent-attribution content; #140 merged direct CAPI hardening; #141/#142 shipped the first blog. Their original PR-only/no-deploy instructions below describe historical approval scope, not a claim that these remain undeployed.
