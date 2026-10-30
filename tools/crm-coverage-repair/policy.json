@@ -1,0 +1,76 @@
+{
+  "version": 2,
+  "mode": "read_only",
+  "timezone": "America/Chicago",
+  "delivery": "local-only",
+  "identities": {
+    "meta_campaign_id": "fixture-meta_campaign_id",
+    "meta_adset_id": "fixture-meta_adset_id",
+    "meta_dataset_id": "fixture-meta_dataset_id",
+    "ga4_property_id": "fixture-ga4_property_id",
+    "gsc_property": "fixture-gsc_property",
+    "ghl_location_id": "fixture-ghl_location_id",
+    "landing_page": "fixture-landing_page",
+    "utm_source": "fixture-utm_source",
+    "utm_medium": "fixture-utm_medium",
+    "utm_campaign": "fixture-utm_campaign"
+  },
+  "denied_actions": [
+    "publish",
+    "pause",
+    "resume",
+    "budget_change",
+    "bid_change",
+    "creative_change",
+    "website_write",
+    "analytics_write",
+    "crm_write",
+    "message_send",
+    "workflow_enrollment",
+    "record_delete"
+  ],
+  "ad_library": {
+    "policy_file": "ad-library-policy.json",
+    "cadence": "weekly_monday",
+    "query_keys": [
+      "jiu_jitsu_dripping_springs",
+      "jiu_jitsu_austin"
+    ]
+  },
+  "decision_policy": {
+    "max_daily_recommendations": 1,
+    "require_second_query_for_discrepancy": true,
+    "declare_winner_only_with_sufficient_evidence": true,
+    "external_write_requires_explicit_approval": true,
+    "target_qualified_cac_usd": null,
+    "minimum_discrepancy_submissions": 3,
+    "discrepancy_absolute_count": 2,
+    "discrepancy_relative_fraction": 0.4,
+    "leak_spend_multiple_of_target_cac": 1.5,
+    "fatigue_min_frequency": 3.0,
+    "fatigue_ctr_decline_fraction": 0.25,
+    "anomaly_min_sessions": 15,
+    "anomaly_relative_change_fraction": 0.5,
+    "candidate_min_leads": 3,
+    "winner_min_leads": 5,
+    "winner_max_cac_multiple": 1.0,
+    "economics_learning_min_submissions": 20,
+    "economics_learning_min_scheduled_visits": 5
+  },
+  "privacy": {
+    "forbidden_key_fragments": [
+      "email",
+      "phone",
+      "first_name",
+      "last_name",
+      "contact_id",
+      "access_token",
+      "refresh_token",
+      "authorization"
+    ],
+    "forbidden_value_patterns": [
+      "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",
+      "(?i)bearer\\s+[A-Za-z0-9._~-]+"
+    ]
+  }
+}

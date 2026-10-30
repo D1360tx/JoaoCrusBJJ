@@ -1,0 +1,39 @@
+{
+  "methodology_version": 2,
+  "revision": "retained-history-rebase-v2",
+  "immutable_old_snapshot_sha256": "d6c62b3e29f66ba246d07e6cffaf4e179fe939e74c6af6852db826f9e67c34e6",
+  "origin_only_requests": 44,
+  "classification_counts": {
+    "accepted_intake_missing_current_receipt_unresolved": 30,
+    "accepted_QA_exact_archive": 14
+  },
+  "September": {
+    "accepted_intake_missing_current_receipt_unresolved": 4,
+    "accepted_QA_exact_archive": 6
+  },
+  "archived_note_identity_rows": 13,
+  "malformed_accepted_rows": 1,
+  "history_reconciled": false,
+  "cumulative_economics_enabled": false,
+  "current_retained_metrics": {
+    "2026-08-27_to_2026-09-29": {
+      "submissions": 42,
+      "window_created_tagged_contacts": 37,
+      "unique_submitters": 38,
+      "source_status": "blocked"
+    },
+    "2026-08-27_to_2026-10-29": {
+      "submissions": 71,
+      "window_created_tagged_contacts": 62,
+      "unique_submitters": 63,
+      "source_status": "blocked"
+    },
+    "2026-10-29": {
+      "submissions": 1,
+      "window_created_tagged_contacts": 1,
+      "unique_submitters": 1,
+      "source_status": "verified"
+    }
+  },
+  "remaining_gap": "No complete row-level 47-note historical export recovered. Four of five QA delta candidates now have exact archived note identities; fifth latest fields cannot reconstruct lost note identity. Aggregate equality is not completeness proof."
+}

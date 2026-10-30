@@ -1,0 +1,2 @@
+# Preserve exact Git-format patches, including context spaces/signatures.
+*.patch -whitespace
