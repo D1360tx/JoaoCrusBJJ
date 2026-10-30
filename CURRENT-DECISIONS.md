@@ -17,6 +17,13 @@
 
 ---
 
+## Guarded HighLevel operational access (2026-10-30)
+
+- Diego authorized broad common operational capability with safeguards, not arbitrary customer/business changes. A separate Joao-only private integration was created with 24 explicit scopes, excluding standalone workflow publish/delete, message-send, finance and user/admin writes. Existing read integration/token and production were preserved.
+- The owner-approved guarded MCP is now activated through supported Hermes CLI registration: nine tools, including exact preview, one-use approved commit, proposal status and GET-only reconciliation. Only existing-contact basics and existing-opportunity name edits are implemented; each requires independently authenticated exact-proposal owner approval through the Telegram hook, never an LLM flag. Legacy preparation IDs and recipient-free local drafts remain separate and noncommittable. No business/customer writes, sends, enrollment or publication were performed during activation.
+- Managed MCP testing and real stdio readiness passed; 94 synthetic/mock tests and plugin Doctor (zero tools, one hook) passed. Production store has zero proposals/approvals. Read connector and credential bytes/mode 0600 remain unchanged; no full gateway restart. Existing sessions may require a guarded-only catalog refresh. Real owner-to-provider acceptance remains **NOT TESTED**, pending the first genuine owner-intended exact edit and approval. This is an operational guard, not an OS sandbox or provider exactly-once guarantee; never blindly retry ambiguous attempts.
+- Current UI now exposes workflows.write and forms.write; their mutation contracts are untested, not necessarily browser-only. See [verified permission/capability matrix and release gates](docs/GHL-GUARDED-ACCESS-2026-10-30.md).
+
 ## Operational outcomes reconciled (2026-10-28)
 
 - Fresh origin/main before this documentation update is `e1e094ab36e60ea5d5669c579d64280d798f9d53`. PR #137 reconciled already-live spam/CALM/parent-attribution content; #140 merged direct CAPI hardening; #141/#142 shipped the first blog. Their original PR-only/no-deploy instructions below describe historical approval scope, not a claim that these remain undeployed.
