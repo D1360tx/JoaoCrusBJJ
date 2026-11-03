@@ -17,6 +17,13 @@
 
 ---
 
+## Approved second blog publication and Little Champions entry policy (2026-11-03)
+
+- Diego explicitly approved the complete Joao-authored article, “Is My Child Ready for Martial Arts? A Simple Readiness Guide for Ages 3 to 5”, for Sanity publication and a bounded live website release. Preserve the supplied first-person wording, headings and phone CTA exactly, with Joao Crus as author. No new illustration or portrait is authorized or needed; publish text-first.
+- New explicit first-party policy supplied and approved with this article: **Little Champions students must be potty trained before starting.** This policy applies to Little Champions, not a newly invented requirement for every academy program. Source: the user's approved Joao article and explicit policy confirmation in the publication instruction, recorded on the actual execution date above.
+- The article's Dripping Springs Little Champions schedule remains Monday/Wednesday, 5:00–5:45 p.m.; retain the canonical shared calendar unchanged. Publish the matching existing readiness-guide draft rather than creating a duplicate article. Use the actual publication clock, not the draft's earlier proposed date.
+- Scope is the new article, blog listing and one additive sitemap entry. Preserve the first article and every unrelated live asset, application endpoint, hosting directive, private environment and provider setting. Sanity remains the content master; future website updates still require a manual owner-run build/release.
+
 ## Operational outcomes reconciled (2026-10-28)
 
 - Fresh origin/main before this documentation update is `e1e094ab36e60ea5d5669c579d64280d798f9d53`. PR #137 reconciled already-live spam/CALM/parent-attribution content; #140 merged direct CAPI hardening; #141/#142 shipped the first blog. Their original PR-only/no-deploy instructions below describe historical approval scope, not a claim that these remain undeployed.

@@ -2,6 +2,26 @@
 
 Reconciled 2026-10-28. Git merges, origin deployment, public proof and provider acceptance are different evidence layers. This document records sanitized receipts, not credentials or private archives. No production release is performed by the documentation reconciliation.
 
+## Second blog article: published and deployed 2026-11-03
+
+- Public article: [Is My Child Ready for Martial Arts? A Simple Readiness Guide for Ages 3 to 5](https://joaocrusbjj.com/blog/is-my-child-ready-for-martial-arts-ages-3-to-5/). The [blog index](https://joaocrusbjj.com/blog/) now lists both approved articles.
+- Existing matching draft reused without a duplicate: published ID `agent-readiness-guide-ages-3-5`, final revision `XHzO36wxj5qHnGMRIEf9YZ`; actual publication time `2026-11-03T16:43:09.478629Z`. Author **Joao Crus**. All 11 supplied body blocks (9 paragraphs, 2 H2 headings) and visible phone CTA match the approved text exactly. No hero image, invented source, rewrite or disclaimer was added.
+- Build source: exact fresh-main archive `3991df3f2d87116a429849964597958d632d6e99` plus the verified CMS snapshot. This source SHA is distinct from the subsequent documentation commit. The persistent Bluehost checkout remains the earlier source listed below; this was a bounded composite overlay, not a full-site rebuild deployment.
+- Deployment time `2026-11-03T16:46:40.621836+00:00`. Private release `blog-readiness-20261103`; full rollback retained outside webroot. Archive SHA256 `87cf6d0bbd193bb382ce639e76e04d8ccf97c6394497016a6235c3bd8ebd7cf3`; complete archive file/entry sets, hashes, modes and ownership checked against the live baseline before promotion.
+- Limited manifest SHA256 `b55212a4d13252c1038ac4c7e196b2ca5a09145595be5ea5c93c84a90af6047d`. Exactly three paths promoted:
+
+| Approved path | Origin and public binary SHA256 |
+|---|---|
+| `blog/index.html` | `702a931e0cbd38860b3eba69edfa194256e440a0cbbbce3371918a167a86bd79` |
+| `blog/is-my-child-ready-for-martial-arts-ages-3-to-5/index.html` | `2f9480f0d0916fdd4fe8f9acfbe7b5f0f1e69a9af4a12a67eb763558736bb3b7` |
+| `sitemap.xml` | `40559087b5b65738e21d404f4a01d7de4222bc2507742dee299b54300c459581` |
+
+- Baseline 164 files, final 165: one addition and two modifications. All 162 protected pre-existing files, existing modes and private environment preserved. First article and shared blog CSS are byte-identical. No API, lifecycle, analytics, hosting, provider, calendar or DNS change; no lead/message submission. Zero residual rsync changes.
+- Fresh genuine Windows Chrome, blocking all non-GET and third-party writes, verified HTTP 200 and exact release hashes for all three paths; both articles are self-canonical, `index,follow`, with no noindex response header. New Article/Breadcrumb JSON-LD, Joao byline, exact title/body and `tel:+15126444560` verified. The existing first article's public hash is unchanged.
+- Public responsive checks at 390/768/1280/1440/1920: no horizontal overflow, broken images or page errors; black-on-yellow article CTA. At 390 and 1440, an actual click on “Ask about classes” reaches the existing contact page/form without submission; phone href inspected without initiating a call or text. Contact and Little Champions routes return HTTP 200. The sitemap preserves all 27 prior URLs and adds only the new canonical URL, for 28. Temporary probe removed and public HTTP 404 verified; no public archive or manifest was created.
+- Exact-source production blog build passed **5998 validator checks across 47 generated routes** and **19 CMS tests**. No runtime source changed, and the full Node/backend suite was not rerun for this content-only release. Initial build exposed the existing renderer's handling of an omitted optional `sources` array; the published article now explicitly stores `sources: []`, with exact revision/readback verified and no added citations or body edits.
+- Setup draft remains unpublished; anonymous eligible query returns exactly two approved articles. Future Studio publications still need a manual owner-run website release; automatic publishing, Google indexing and distribution were not claimed or triggered.
+
 ## Blog: published 2026-10-27, rechecked 2026-10-28
 
 - PR [#141](https://github.com/D1360tx/JoaoCrusBJJ/pull/141): merge `f744839b2696a5295d8cfe751bef0ab8c37aff8a`.
