@@ -7,7 +7,7 @@ Working hub for the Joao Crus BJJ marketing & business-restructuring engagement.
 - [Operational status](docs/OPERATIONAL-STATUS.md): Git/live/CMS authority map, real CAPI acceptance, known issues and safe operating runbook.
 - [Release register](docs/RELEASE-REGISTER.md): exact blog release source, manifest/rollback receipts and fresh public hash verification.
 - [Open PR inventory](docs/OPEN-PR-INVENTORY-2026-10-28.md): complete pre-reconciliation snapshot; no old PR was merged or closed.
-- [Sanity blog CMS](docs/SANITY-BLOG-CMS.md): Studio/editor workflow; first article is live, future publication still requires owner-run build/release.
+- [Sanity blog CMS](docs/SANITY-BLOG-CMS.md): Studio/editor workflow; two approved articles are live as of 2026-11-03, future publication still requires owner-run build/release.
 - [Direct Lead CAPI](docs/DIRECT-LEAD-CAPI-HARDENING.md): controlled test/runbook. Code is merged/deployed and Oct 26 fresh-contact Meta deduplication passed; repeat-contact first-touch and retry activation gates remain open. Historical PR-only labels are not current deployment status.
 
 The centralized log below preserves historical research and decisions, not current provider configuration. The status documents above distinguish completed releases from pending targeted GHL webhook/automation review. No production code/configuration change is made by this documentation reconciliation.

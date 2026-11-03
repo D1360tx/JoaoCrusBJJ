@@ -2,6 +2,12 @@
 
 Verified 2026-10-28. This is a documentation reconciliation, not a production release or a new provider audit. Strategy and authorization remain in [CURRENT-DECISIONS.md](../CURRENT-DECISIONS.md). Historical approvals describe their original scope; later verified outcomes below supersede their stale implementation-status labels, not unrelated safety gates.
 
+## Blog publication update (2026-11-03)
+
+Both approved articles are now published in Sanity and live on joaocrusbjj.com. The second readiness guide is text-first, attributed to Joao Crus, with all 11 approved body blocks preserved. The verified release changed only its new HTML, the blog index and one additive sitemap entry. Exact-source production validator: 5998 checks across 47 generated routes; 19 CMS tests. Five-width native public checks and binary hashes passed. The first article, all 162 protected existing files, hosting/runtime configuration and private environment stayed unchanged. [Release receipt](RELEASE-REGISTER.md#second-blog-article-published-and-deployed-2026-11-03).
+
+This updates the blog status only; the dated application/provider findings below are historical and were not re-audited during publication. Website publishing remains owner-run/manual, not an automatic consequence of Studio Publish.
+
 ## Authority by layer
 
 | Layer | Verified state | Authority and limit |

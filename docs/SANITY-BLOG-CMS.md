@@ -1,8 +1,10 @@
 # Sanity blog CMS: setup and operating contract
 
-## Current publication status (reconciled 2026-10-28)
+## Current publication status (updated 2026-11-03)
 
-The first approved article and blog index are live on Bluehost after #141/#142. Fresh native Windows Chrome and SSH hashes match the published HTML; see the [release register](RELEASE-REGISTER.md). Sanity remains the article-content master; do not commit uploaded HTML, embedded base64 images or duplicate full article text. Future Studio publication still requires an owner-run static release; no automatic webhook or independent bot connection is enabled.
+Two approved Joao-authored articles are now live on Bluehost. The second, [Is My Child Ready for Martial Arts? A Simple Readiness Guide for Ages 3 to 5](https://joaocrusbjj.com/blog/is-my-child-ready-for-martial-arts-ages-3-to-5/), reused the matching existing draft and preserves all supplied wording. It is text-first with no hero image. The blog listing and sitemap were updated in the same verified three-file release; the first article stayed byte-identical. See the [release register](RELEASE-REGISTER.md) for the exact CMS revision, Git source, public hashes and rollback receipt.
+
+The first approved article and blog index went live after #141/#142. Sanity remains the article-content master; do not commit uploaded HTML, embedded base64 images or duplicate full article text. Future Studio publication still requires an owner-run static release; no automatic webhook or independent bot connection is enabled.
 
 ## Verified live CMS (2026-10-27)
 
