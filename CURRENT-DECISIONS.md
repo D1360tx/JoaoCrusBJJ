@@ -17,6 +17,13 @@
 
 ---
 
+## Youth standard website Lead: authorized, blocked by published-ad-set immutability (2026-11-03)
+
+- Diego approved changing only the existing active Youth ad set to standard website Lead, matching Kids, while leaving Kids, Adults and all budgets, statuses, bids, targeting, ads and attribution unchanged. No replacement ad set or new spend was authorized.
+- Fresh Graph validation of the exact Youth target returned HTTP 400, code 100, subcode 3260011: **Can't Make Edits to Published Ad Set**. Meta explicitly prohibits changing this published ad set's pixel, conversion event, custom conversion or optimization. The operation stopped before an actual mutation; no clone or UI bypass was attempted.
+- Exact before/after readback confirms Youth still targets its original URL custom conversion; Kids remains standard Lead on the existing dataset. Youth, Kids, Adults, the Youth campaign budget and the complete bounded Youth ad inventory are unchanged. No rollback is needed. [Sanitized receipt](docs/YOUTH-STANDARD-LEAD-BLOCKER-2026-11-03.md).
+- A replacement ad set would need separate explicit approval, including how to preserve total spend and retire the incumbent. Do not interpret the original approval as permission to create or activate it.
+
 ## Approved second blog publication and Little Champions entry policy (2026-11-03)
 
 - Diego explicitly approved the complete Joao-authored article, “Is My Child Ready for Martial Arts? A Simple Readiness Guide for Ages 3 to 5”, for Sanity publication and a bounded live website release. Preserve the supplied first-person wording, headings and phone CTA exactly, with Joao Crus as author. No new illustration or portrait is authorized or needed; publish text-first.
